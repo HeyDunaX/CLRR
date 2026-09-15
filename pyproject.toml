@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amis-rewire"
+version = "0.1.0"
+description = "Reproducible parameter-neutral residual rewiring experiments for Amis-to-Chinese translation."
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "torch>=2.3,<2.7",
+  "transformers>=4.45,<5",
+  "datasets>=2.20,<4",
+  "sentencepiece>=0.2",
+  "sacrebleu>=2.4,<3",
+  "pandas>=2.0,<3",
+  "numpy>=1.26,<3",
+  "accelerate>=0.34,<2",
+  "tqdm>=4.66,<5",
+  "huggingface_hub>=0.24,<1",
+]
+
+[project.scripts]
+amis-rewire-train = "amis_rewire.train:main"
+amis-rewire-prepare = "amis_rewire.prepare_data:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

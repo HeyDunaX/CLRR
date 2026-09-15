@@ -1,0 +1,11 @@
+# Colab/A100: install the CUDA-matched torch already supplied by the runtime.
+# The setup script verifies it and does not replace it.
+transformers>=4.45,<5
+datasets>=2.20,<4
+sentencepiece>=0.2
+sacrebleu>=2.4,<3
+pandas>=2.0,<3
+numpy>=1.26,<3
+accelerate>=0.34,<2
+tqdm>=4.66,<5
+huggingface_hub>=0.24,<1
