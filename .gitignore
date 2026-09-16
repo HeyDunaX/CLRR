@@ -7,12 +7,12 @@ outputs/
 outputs_smoke/
 backups/
 results_summary.csv
-notebooks/*.ipynb
 wandb/
 data/*.csv
 data/*.jsonl
-data/processed/
 !data/amis_chinese.example.csv
+!data/processed/
+!data/processed/*.csv
 *.zip
 
 # LaTeX and bibliography
