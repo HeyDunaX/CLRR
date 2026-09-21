@@ -105,9 +105,31 @@ class CrossLayerResidualRewire(nn.Module):
         finally:
             self._cache = {k: {} for k in ("encoder", "decoder")}
 
-    def forward(self, *args: Any, **kwargs: Any) -> Any:
+    def __getattr__(self, name: str) -> Any:
+        try:
+            return super().__getattr__(name)
+        except AttributeError:
+            return getattr(self.base_model, name)
+
+    def forward(
+        self,
+        input_ids: torch.Tensor | None = None,
+        attention_mask: torch.Tensor | None = None,
+        decoder_input_ids: torch.Tensor | None = None,
+        decoder_attention_mask: torch.Tensor | None = None,
+        labels: torch.Tensor | None = None,
+        **kwargs: Any,
+    ) -> Any:
+        kwargs.pop("num_items_in_batch", None)
         with self._fresh_cache():
-            return self.base_model(*args, **kwargs)
+            return self.base_model(
+                input_ids=input_ids,
+                attention_mask=attention_mask,
+                decoder_input_ids=decoder_input_ids,
+                decoder_attention_mask=decoder_attention_mask,
+                labels=labels,
+                **kwargs,
+            )
 
     def generate(self, *args: Any, **kwargs: Any) -> Any:
         with self._fresh_cache():
@@ -164,6 +186,12 @@ class CrossLayerResidualRewire(nn.Module):
     def disable_input_require_grads(self) -> Any:
         return self.base_model.disable_input_require_grads()
 
+    def state_dict(self, *args: Any, **kwargs: Any) -> Any:
+        return self.base_model.state_dict(*args, **kwargs)
+
+    def load_state_dict(self, state_dict: Any, strict: bool = True) -> Any:
+        return self.base_model.load_state_dict(state_dict, strict=strict)
+
 
 class JEPAGuidedSeq2SeqLM(nn.Module):
     """JEPA-guided Seq2Seq model for low-resource translation.
@@ -181,6 +209,12 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
         super().__init__()
         self.base_model = base_model
         self.jepa_weight = jepa_weight
+
+    def __getattr__(self, name: str) -> Any:
+        try:
+            return super().__getattr__(name)
+        except AttributeError:
+            return getattr(self.base_model, name)
 
     @property
     def config(self) -> Any:
@@ -213,14 +247,19 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
         self,
         input_ids: torch.Tensor | None = None,
         attention_mask: torch.Tensor | None = None,
+        decoder_input_ids: torch.Tensor | None = None,
+        decoder_attention_mask: torch.Tensor | None = None,
         labels: torch.Tensor | None = None,
         output_hidden_states: bool | None = None,
         **kwargs: Any,
     ) -> Any:
+        kwargs.pop("num_items_in_batch", None)
         # Request hidden states to compute JEPA latent alignment
         outputs = self.base_model(
             input_ids=input_ids,
             attention_mask=attention_mask,
+            decoder_input_ids=decoder_input_ids,
+            decoder_attention_mask=decoder_attention_mask,
             labels=labels,
             output_hidden_states=True,
             **kwargs,
@@ -290,6 +329,12 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
 
     def disable_input_require_grads(self) -> Any:
         return self.base_model.disable_input_require_grads()
+
+    def state_dict(self, *args: Any, **kwargs: Any) -> Any:
+        return self.base_model.state_dict(*args, **kwargs)
+
+    def load_state_dict(self, state_dict: Any, strict: bool = True) -> Any:
+        return self.base_model.load_state_dict(state_dict, strict=strict)
 
 
 def load_model(

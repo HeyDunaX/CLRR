@@ -273,7 +273,8 @@ def main() -> None:
         dataloader_pin_memory=args.dataloader_pin_memory,
         optim="adamw_torch_fused" if torch.cuda.is_available() else "adamw_torch",
         report_to=[],
-        remove_unused_columns=True,
+        remove_unused_columns=False,
+        save_safetensors=False,
     )
     trainer = Seq2SeqTrainer(
         model=model,

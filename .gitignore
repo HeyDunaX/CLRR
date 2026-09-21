@@ -3,6 +3,7 @@ __pycache__/
 .venv/
 .pytest_cache/
 .cache/
+*.egg-info/
 outputs/
 outputs_smoke/
 backups/

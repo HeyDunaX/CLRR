@@ -1,5 +1,7 @@
 # When the Same Layers Learn to Translate: Parameter-Neutral Residual Rewiring for Low-Resource Amis-to-Chinese Translation
 
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HeyDunaX/CLRR/blob/main/notebooks/colab_a100_run.ipynb)
+
 
 This repository contains reproducible experiments for a ComputEL-10 study on Amis-to-Chinese (Mandarin) neural machine translation. The proposed intervention, **Cross-Layer Residual Rewiring (CLRR)**, changes how already-computed hidden states are connected between Transformer layers. It adds no trainable parameter tensor and keeps the tokenizer, data, optimizer, and training protocol fixed.
 
