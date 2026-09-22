@@ -6,7 +6,8 @@ import numpy as np
 from sacrebleu.metrics import BLEU, CHRF
 
 
-BLEU_METRIC = BLEU()
+# Standard Chinese tokenization for SacreBLEU (Mandarin target)
+BLEU_METRIC = BLEU(tokenize="zh")
 CHRFPP_METRIC = CHRF(word_order=2)
 
 

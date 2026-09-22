@@ -33,15 +33,16 @@ for EXP in "${EXPERIMENTS[@]}"; do
     echo "[skip] $RUN_NAME is complete"
     continue
   fi
-  # Safe batch size per model to prevent CUDA OOM while maintaining effective batch size of 256
+  # Optimized batch size 128 for A100 GPU (40GB VRAM) with gradient_accumulation 1
+  TRAIN_BS="${PER_DEVICE_TRAIN_BATCH_SIZE:-128}"
+  EVAL_BS="${PER_DEVICE_EVAL_BATCH_SIZE:-128}"
+  GRAD_ACC="${GRADIENT_ACCUMULATION_STEPS:-1}"
+
+  # Model-specific learning rate (mT5 requires 3e-4 with AdamW, mBART standard 5e-5)
   if [[ "$MODEL" == *"mbart"* ]]; then
-    TRAIN_BS="${MBART_TRAIN_BATCH_SIZE:-32}"
-    EVAL_BS="${MBART_EVAL_BATCH_SIZE:-32}"
-    GRAD_ACC="${MBART_GRAD_ACC:-8}"
+    LR="${MBART_LEARNING_RATE:-5e-5}"
   else
-    TRAIN_BS="${PER_DEVICE_TRAIN_BATCH_SIZE:-128}"
-    EVAL_BS="${PER_DEVICE_EVAL_BATCH_SIZE:-64}"
-    GRAD_ACC="${GRADIENT_ACCUMULATION_STEPS:-2}"
+    LR="${MT5_LEARNING_RATE:-3e-4}"
   fi
 
   python -m amis_rewire.train \
@@ -54,20 +55,21 @@ for EXP in "${EXPERIMENTS[@]}"; do
     --seed 42 \
     --run-name "$RUN_NAME" \
     --backup-dir "$BACKUP_DIR" \
-    --num-train-epochs 5 \
-    --early-stopping-patience 2 \
-    --learning-rate 5e-5 \
+    --num-train-epochs "${NUM_TRAIN_EPOCHS:-20}" \
+    --early-stopping-patience "${EARLY_STOPPING_PATIENCE:-4}" \
+    --learning-rate "$LR" \
     --warmup-ratio 0.06 \
     --per-device-train-batch-size "$TRAIN_BS" \
     --per-device-eval-batch-size "$EVAL_BS" \
     --gradient-accumulation-steps "$GRAD_ACC" \
     --max-source-length 256 \
     --max-target-length 256 \
-    --num-beams 4 \
+    --num-beams "${NUM_BEAMS:-4}" \
+    --eval-beams "${EVAL_BEAMS:-1}" \
     --rewire-distance 2 \
     --rewire-strength 0.1 \
     --bf16 \
-    --gradient-checkpointing \
+    --no-gradient-checkpointing \
     --dataloader-num-workers 4 \
     --dataloader-pin-memory \
     "${HF_ARGS[@]}"

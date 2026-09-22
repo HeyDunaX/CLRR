@@ -138,7 +138,19 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gradient-accumulation-steps", type=int, default=1)
     parser.add_argument("--max-source-length", type=int, default=256)
     parser.add_argument("--max-target-length", type=int, default=256)
-    parser.add_argument("--num-beams", type=int, default=4)
+    parser.add_argument("--num-beams", type=int, default=4, help="Beam size for test evaluation (default: 4).")
+    parser.add_argument(
+        "--eval-beams",
+        type=int,
+        default=1,
+        help="Beam size for intermediate validation during training (default: 1 for fast greedy evaluation).",
+    )
+    parser.add_argument(
+        "--source-prefix",
+        type=str,
+        default="",
+        help="Optional source prefix prepended to input text (e.g. for mT5).",
+    )
     parser.add_argument("--rewire-distance", type=int, default=2)
     parser.add_argument("--rewire-strength", type=float, default=0.1)
     parser.add_argument(
@@ -180,15 +192,22 @@ def configure_mbart(tokenizer: Any, model: Any) -> None:
         return
     if "zh_CN" not in tokenizer.lang_code_to_id:
         raise ValueError("The selected mBART tokenizer does not expose zh_CN.")
-    tokenizer.src_lang = "zh_CN"
+    # Amis is an Austronesian language written in Latin script.
+    # Using zh_CN as src_lang forces Chinese ideographic priors onto Latin text.
+    # We select a Latin-script Austronesian language code (tl_XX / id_XX) or en_XX as source proxy.
+    src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX")
+    tokenizer.src_lang = src_lang
     tokenizer.tgt_lang = "zh_CN"
     model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
 
 
 def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace) -> Dataset:
+    prefix = getattr(args, "source_prefix", "") or ""
+
     def tokenize(batch: dict[str, list[str]]) -> dict[str, Any]:
+        sources = [prefix + text for text in batch["source"]] if prefix else batch["source"]
         model_inputs = tokenizer(
-            batch["source"],
+            sources,
             max_length=args.max_source_length,
             truncation=True,
         )
@@ -260,7 +279,7 @@ def main() -> None:
         logging_steps=args.logging_steps,
         save_total_limit=args.save_total_limit,
         predict_with_generate=True,
-        generation_num_beams=args.num_beams,
+        generation_num_beams=args.eval_beams,
         generation_max_length=args.max_target_length,
         load_best_model_at_end=True,
         metric_for_best_model="eval_chrf++",
@@ -301,6 +320,8 @@ def main() -> None:
             print(f"[resume] continuing from {resume_checkpoint}", flush=True)
     trainer.train(resume_from_checkpoint=resume_checkpoint)
     validation_metrics = trainer.evaluate(validation_dataset, metric_key_prefix="eval")
+    # Switch to full beam search for final test evaluation
+    trainer.args.generation_num_beams = args.num_beams
     test_metrics = trainer.evaluate(test_dataset, metric_key_prefix="test")
     best_model_dir = output_dir / "best_model"
     trainer.save_model(str(best_model_dir))
