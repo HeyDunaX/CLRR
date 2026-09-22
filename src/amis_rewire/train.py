@@ -208,7 +208,7 @@ def build_compute_metrics(tokenizer: Any):
         predictions, labels = eval_prediction
         if isinstance(predictions, tuple):
             predictions = predictions[0]
-        decoded_predictions = tokenizer.batch_decode(predictions, skip_special_tokens=True)
+        decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(predictions), skip_special_tokens=True)
         decoded_labels = tokenizer.batch_decode(safe_decode_inputs(labels), skip_special_tokens=True)
         return generation_metrics(decoded_predictions, decoded_labels)
 
