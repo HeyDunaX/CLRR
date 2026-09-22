@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "amis-rewire"
 version = "0.1.0"
 description = "Reproducible parameter-neutral residual rewiring experiments for Amis-to-Chinese translation."
-requires-python = ">=3.10,<3.13"
+requires-python = ">=3.10"
 dependencies = [
   "torch>=2.3,<2.7",
   "transformers>=4.45,<5",
