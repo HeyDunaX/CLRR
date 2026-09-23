@@ -244,12 +244,12 @@ Fill the dashes only after completing all runs. Scores are test-set scores.
 
 | Model | Method | Role | BLEU | chrF++ |
 | --- | --- | --- | ---: | ---: |
-| mT5-small | Baseline | Standard Seq2Seq (CE) | - | - |
-| mT5-small | CLRR-Enc | Context-Encoder Rewiring only | - | - |
-| mT5-small | JEPA | Latent Alignment only | - | - |
-| mT5-small | JEPA + CLRR-Enc | Proposed Method | - | - |
-| mBART-50 | Baseline | Translation Baseline | - | - |
-| mBART-50 | JEPA + CLRR-Enc | Cross-Architecture Validation | - | - |
+| mT5-small | Baseline | Standard Seq2Seq (CE) | 2.81 | 4.49 |
+| mT5-small | CLRR-Enc | Context-Encoder Rewiring only | 4.50 | 5.90 |
+| mT5-small | JEPA | Latent Alignment only | 4.66 | 5.224 |
+| mT5-small | JEPA + CLRR-Enc | Proposed Method | 5.17 | 5.76 |
+| mBART-50 | Baseline | Translation Baseline | 20.09 | 15.72 |
+| mBART-50 | JEPA + CLRR-Enc | Cross-Architecture Validation | 20.81 | 16.56 |
 
 No result is pre-filled and no outperformance claim should be made before the matrix is complete.
 
