@@ -184,6 +184,8 @@ Secret named `HF_TOKEN` with access to the private
 saved main-run hyperparameters and regenerates test predictions and encoder
 cosine measurements. It then runs two ByT5-small conditions and two mT5-small
 decoder/both rewiring ablations. The main six-run matrix is not rerun.
+Exact main-run test scores are read from `metrics/<run-name>_metrics.json` in the
+private repository; the two-decimal table below is used only to check rounding.
 
 New checkpoints, best-model ZIPs, metrics, and test predictions are uploaded to
 `checkpoints/<run-name>/` in that private repository. Analysis tables, case

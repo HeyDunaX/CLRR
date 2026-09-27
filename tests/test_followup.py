@@ -24,6 +24,7 @@ from followup_analysis import (
     NEW_RUNS,
     extract_best,
     holm_adjust,
+    match_recorded_scores,
     measure_cosines,
     metric_targets_for_backbone,
     predict_like_main_run,
@@ -141,6 +142,23 @@ class FollowupTests(unittest.TestCase):
             wrapped = CrossLayerResidualRewire(model, distance=1)
             self.assertEqual(len(measure_cosines(wrapped, tokenizer, torch.device("cpu"), frame, 2)), 2)
 
+    def test_recorded_scores_identify_reference_mode(self) -> None:
+        from amis_rewire.metrics import generation_metrics
+
+        predictions = ["x y", "x"]
+        raw_targets = ["x y", "y"]
+        decoded_targets = ["x y", "x"]
+        recorded = generation_metrics(predictions, raw_targets)
+        mode, scores = match_recorded_scores(
+            "test-run", predictions, decoded_targets, raw_targets, recorded
+        )
+        self.assertEqual(mode, "raw_targets")
+        self.assertEqual(scores, recorded)
+        with self.assertRaisesRegex(ValueError, "no consistent reference mode"):
+            match_recorded_scores(
+                "test-run", predictions, decoded_targets, raw_targets, recorded, "decoded_labels"
+            )
+
     def test_cosine_uses_only_unmasked_tokens(self) -> None:
         hidden = torch.tensor([[[1.0, 0.0], [0.0, 1.0], [1.0, 0.0]]])
         mask = torch.tensor([[True, True, False]])
@@ -153,6 +171,11 @@ class FollowupTests(unittest.TestCase):
         frame = pd.read_csv(ROOT / "data" / "processed" / "test.csv").fillna("")
         with tempfile.TemporaryDirectory() as temporary:
             output_root = Path(temporary)
+            analysis_dir = output_root / "analysis"
+            analysis_dir.mkdir()
+            pd.DataFrame({
+                "run": list(MAIN_RUNS), "reference_mode": ["raw_targets"] * len(MAIN_RUNS),
+            }).to_csv(analysis_dir / "old_model_scores.csv", index=False)
             for run in (*MAIN_RUNS, *NEW_RUNS):
                 predictions = frame.copy()
                 predictions.insert(0, "index", range(len(frame)))

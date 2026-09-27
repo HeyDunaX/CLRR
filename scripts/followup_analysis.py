@@ -65,6 +65,10 @@ def remote_file(run_name: str, filename: str) -> str:
     return f"{PREFIX}/{run_name}/{filename}"
 
 
+def remote_metrics_file(run_name: str) -> str:
+    return f"metrics/{run_name}_metrics.json"
+
+
 def fetch_file(repo: str, filename: str) -> Path:
     return Path(
         hf_hub_download(repo_id=repo, filename=filename, repo_type="model", token=token())
@@ -124,17 +128,29 @@ def test_frame(data_dir: Path) -> pd.DataFrame:
 def preflight(repo: str, output_root: Path, data_dir: Path) -> dict[str, dict[str, object]]:
     test_frame(data_dir)
     files = set(HfApi(token=token()).list_repo_files(repo, repo_type="model"))
-    required = {remote_file(run, f"{run}-best.zip") for run in MAIN_RUNS}
+    required = {
+        filename
+        for run in MAIN_RUNS
+        for filename in (remote_file(run, f"{run}-best.zip"), remote_metrics_file(run))
+    }
     missing = sorted(required - files)
     if missing:
         raise FileNotFoundError(f"Required best-model archives are missing: {missing}")
     checked: dict[str, dict[str, object]] = {}
-    for run in MAIN_RUNS:
+    for run, (_method, table_bleu, table_chrf) in MAIN_RUNS.items():
         archive = fetch_file(repo, remote_file(run, f"{run}-best.zip"))
         best_dir = output_root / "reference_models" / run / "best_model"
         extract_best(archive, best_dir, run)
-        checked[run] = {"best_dir": str(best_dir), "training_args": read_training_args(best_dir, run)}
-        print(f"[preflight] {run}: archive and training arguments OK", flush=True)
+        recorded = json.loads(fetch_file(repo, remote_metrics_file(run)).read_text(encoding="utf-8"))
+        scores = {"bleu": float(recorded["test_bleu"]), "chrf++": float(recorded["test_chrf++"])}
+        if round(scores["bleu"], 2) != table_bleu or round(scores["chrf++"], 2) != table_chrf:
+            raise ValueError(f"{run}: metrics JSON {scores} does not round to the main table")
+        checked[run] = {
+            "best_dir": str(best_dir),
+            "training_args": read_training_args(best_dir, run),
+            "recorded_test_scores": scores,
+        }
+        print(f"[preflight] {run}: archive, training arguments, and recorded test scores OK {scores}", flush=True)
     analysis_dir = output_root / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
     (analysis_dir / "preflight.json").write_text(
@@ -210,6 +226,24 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
     if abs(scores["bleu"] - result.metrics["test_bleu"]) > 1e-5 or abs(scores["chrf++"] - result.metrics["test_chrf++"]) > 1e-5:
         raise ValueError(f"Decoded predictions disagree with Seq2SeqTrainer: {scores} vs {result.metrics}")
     return predictions, metric_targets
+
+
+def match_recorded_scores(
+    run: str, predictions: list[str], decoded_targets: list[str], raw_targets: list[str],
+    recorded: dict[str, float], preferred_mode: str | None = None,
+) -> tuple[str, dict[str, float]]:
+    candidates = {
+        "decoded_labels": generation_metrics(predictions, decoded_targets),
+        "raw_targets": generation_metrics(predictions, raw_targets),
+    }
+    for mode in ((preferred_mode,) if preferred_mode else candidates):
+        scores = candidates[mode]
+        if all(abs(scores[key] - recorded[key]) <= 1e-4 for key in ("bleu", "chrf++")):
+            return mode, scores
+    raise ValueError(
+        f"{run}: recorded={recorded}, regenerated={candidates}, expected_mode={preferred_mode}; "
+        "no consistent reference mode reproduces the original scores"
+    )
 
 
 def sentence_cosines(hidden: torch.Tensor, mask: torch.Tensor) -> list[float | None]:
@@ -309,7 +343,8 @@ def analyze(repo: str, output_root: Path, data_dir: Path, batch_size: int) -> No
     prediction_dir.mkdir(parents=True, exist_ok=True)
     all_cosines = []
     score_rows = []
-    for run, (method, expected_bleu, expected_chrf) in MAIN_RUNS.items():
+    reference_modes = {}
+    for run, (method, _table_bleu, _table_chrf) in MAIN_RUNS.items():
         model, tokenizer, device = model_and_tokenizer(Path(checked[run]["best_dir"]), method)
         if run in ("mt5-small-ami-cmn-baseline", "mt5-small-ami-cmn-clrr-enc"):
             layer_scores = measure_cosines(model, tokenizer, device, frame, batch_size)
@@ -320,16 +355,23 @@ def analyze(repo: str, output_root: Path, data_dir: Path, batch_size: int) -> No
         )
         if len(predictions) != 575:
             raise ValueError(f"{run} produced {len(predictions)} predictions instead of 575")
-        scores = generation_metrics(predictions, metric_targets)
-        if abs(scores["bleu"] - expected_bleu) > 0.02 or abs(scores["chrf++"] - expected_chrf) > 0.02:
-            raise ValueError(
-                f"{run} score mismatch: regenerated {scores}, reported BLEU={expected_bleu}, chrF++={expected_chrf}"
-            )
+        scores_path = analysis_dir / "diagnostics" / f"{run}.csv"
+        scores_path.parent.mkdir(parents=True, exist_ok=True)
+        pd.DataFrame({
+            "index": range(575), "source": frame["source"], "target": frame["target"],
+            "decoded_target": metric_targets, "prediction": predictions,
+        }).to_csv(scores_path, index=False, encoding="utf-8")
+        backbone = run.split("-ami-cmn-")[0]
+        mode, scores = match_recorded_scores(
+            run, predictions, metric_targets, frame["target"].tolist(),
+            checked[run]["recorded_test_scores"], reference_modes.get(backbone),
+        )
+        reference_modes[backbone] = mode
         pd.DataFrame(
             {"index": range(575), "source": frame["source"], "target": frame["target"], "prediction": predictions}
         ).to_csv(prediction_dir / f"{run}.csv", index=False, encoding="utf-8")
-        score_rows.append({"run": run, **scores})
-        print(f"[analyze] {run}: {scores}", flush=True)
+        score_rows.append({"run": run, "reference_mode": mode, **scores})
+        print(f"[analyze] {run}: {scores} using {mode}", flush=True)
         del model, tokenizer
         gc.collect()
         if torch.cuda.is_available():
@@ -387,9 +429,27 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
     prediction_dir = analysis_dir / "predictions"
     prediction_dir.mkdir(parents=True, exist_ok=True)
     runs = (*MAIN_RUNS, *NEW_RUNS)
+    old_scores = pd.read_csv(analysis_dir / "old_model_scores.csv")
+    reference_modes = {}
+    for run in MAIN_RUNS:
+        rows = old_scores.loc[old_scores["run"] == run]
+        if len(rows) != 1 or "reference_mode" not in rows.columns:
+            raise ValueError(f"Missing verified reference mode for {run}; rerun analyze")
+        backbone = run.split("-ami-cmn-")[0]
+        mode = rows.iloc[0]["reference_mode"]
+        if mode not in ("decoded_labels", "raw_targets"):
+            raise ValueError(f"Unknown reference mode for {run}: {mode}")
+        if backbone in reference_modes and reference_modes[backbone] != mode:
+            raise ValueError(f"Inconsistent reference modes for {backbone}")
+        reference_modes[backbone] = mode
+    reference_modes["byt5-small"] = reference_modes["mt5-small"]
     metric_targets = {
         backbone: metric_targets_for_backbone(backbone, frame, output_root)
         for backbone in ("mt5-small", "mbart-large-50", "byt5-small")
+    }
+    references = {
+        backbone: frame["target"].tolist() if mode == "raw_targets" else metric_targets[backbone]
+        for backbone, mode in reference_modes.items()
     }
     predictions = {}
     scores = []
@@ -405,17 +465,18 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
             raise FileNotFoundError(f"Run analyze first: {path}")
         predictions[run] = read_predictions(path, frame)
         backbone = run.split("-ami-cmn-")[0]
-        run_scores = generation_metrics(predictions[run], metric_targets[backbone])
+        run_scores = generation_metrics(predictions[run], references[backbone])
         if run in NEW_RUNS:
             metrics_path = output_root / run / "metrics.json"
             if not metrics_path.exists():
                 metrics_path = fetch_file(repo, remote_file(run, "metrics.json"))
             recorded = json.loads(metrics_path.read_text(encoding="utf-8"))
-            if abs(run_scores["bleu"] - recorded["test_bleu"]) > 1e-4 or abs(
-                run_scores["chrf++"] - recorded["test_chrf++"]
+            trainer_scores = generation_metrics(predictions[run], metric_targets[backbone])
+            if abs(trainer_scores["bleu"] - recorded["test_bleu"]) > 1e-4 or abs(
+                trainer_scores["chrf++"] - recorded["test_chrf++"]
             ) > 1e-4:
                 raise ValueError(f"Prediction scores disagree with metrics.json for {run}")
-        scores.append({"run": run, **run_scores})
+        scores.append({"run": run, "reference_mode": reference_modes[backbone], **run_scores})
     pd.DataFrame(scores).to_csv(analysis_dir / "all_scores.csv", index=False)
 
     comparisons = [
@@ -431,7 +492,7 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         signatures, results = PairedTest(
             named_systems=[(base, predictions[base]), (challenger, predictions[challenger])],
             metrics={"BLEU": BLEU(tokenize="zh"), "chrF++": CHRF(word_order=2)},
-            references=[metric_targets[base.split("-ami-cmn-")[0]]],
+            references=[references[base.split("-ami-cmn-")[0]]],
             test_type="bs",
             n_samples=10000,
             n_jobs=1,
@@ -476,7 +537,8 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         analysis_dir / "case_candidates.csv", index=False, encoding="utf-8"
     )
     (analysis_dir / "analysis_notes.txt").write_text(
-        "Scores use targets decoded by each backbone tokenizer, matching train.py. "
+        f"Reference modes by backbone: {reference_modes}. "
+        "New-run metrics.json is checked against decoded labels from train.py. "
         "Paired bootstrap resamples 575 test sentences, seed 42, 10,000 samples. "
         "Holm correction applies to the six primary p-values (three backbones x two metrics). "
         "Decoder/both comparisons are exploratory. All models use one training seed, "
