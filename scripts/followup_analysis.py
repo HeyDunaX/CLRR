@@ -187,6 +187,7 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
     args.output_dir = str(output_dir)
     args.generation_num_beams = 4
     args.generation_max_length = 256
+    args.eval_strategy = "no"
     args.report_to = []
     raw_dataset = Dataset.from_pandas(frame, preserve_index=False)
     dataset = tokenize_dataset(
