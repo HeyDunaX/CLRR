@@ -20,26 +20,38 @@ Quyết định này giải quyết lỗi trước đây: prediction tính lại
 | Bước | Trạng thái |
 | --- | --- |
 | Colab cell 5: `preflight` và `smoke` | Người dùng đã chạy thành công: năm ZIP được kiểm tra, sinh thử hai câu thành công. |
-| Colab cell 6: `analyze` | Người dùng xác nhận cell chạy xong không lỗi. Cả năm model cũ đã có điểm; theo luồng mã, cell chỉ kết thúc sau khi lệnh tải `analysis/` lên Hugging Face trả về. |
-| Colab cell 7: ByT5 (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Baseline và JEPA+CLRR-Enc đã train xong 20 epoch, nén best model và upload an toàn lên Hugging Face. |
-| Colab cell 8: mT5 Ablation (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Decoder-only và Both (Enc & Dec) đã train xong 20 epoch, đánh giá test và upload an toàn. |
-| Colab cell 9: báo cáo | Đang chờ người dùng bấm chạy trên Colab. |
+| Colab cell 6: `analyze` | Người dùng xác nhận cell chạy xong không lỗi: năm model cũ đã đo điểm và sinh cosine layer. |
+| Colab cell 7: ByT5 (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Baseline và JEPA+CLRR-Enc đã train xong 20 epoch và upload lên Hugging Face. |
+| Colab cell 8: mT5 Ablation (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Decoder-only và Both (Enc & Dec) đã train xong 20 epoch và upload lên Hugging Face. |
+| Colab cell 9: báo cáo (`report`) | ĐÃ HOÀN TẤT 100%: đã xuất `all_scores.csv`, `paired_bootstrap.csv`, `case_candidates.csv` và đồng bộ lên Hugging Face. |
 
-Trên máy cục bộ, các bài kiểm tra `test_followup.py` đã qua (12 test) và smoke training với model nhỏ đã tạo được checkpoint, best ZIP, metrics và predictions. Chúng không thay thế việc kiểm tra end-to-end với checkpoint riêng tư trên Colab.
+Trên máy cục bộ, các bài kiểm tra `test_followup.py` đã qua (12 test) và smoke training với model nhỏ đã tạo được checkpoint, best ZIP, metrics và predictions.
 
-Điểm **tính lại và bổ sung** được người dùng gửi từ log cell 6, cell 7 và cell 8 (cùng công thức SacreBLEU và reference gốc):
+Điểm **chính thức cuối cùng (tính từ `all_scores.csv` trong Cell 9)** theo cùng một công thức chuẩn SacreBLEU `tokenize="zh"` và `CHRF(word_order=2)`:
 
-| Checkpoint / Cấu hình | BLEU (zh) | chrF++ | Ghi chú kiến trúc |
-| --- | ---: | ---: | --- |
-| `mt5-small-ami-cmn-baseline` | 2.788710 | 3.812914 | Baseline chuẩn mT5 |
-| `mt5-small-ami-cmn-clrr-enc` | 4.439348 | 5.176137 | CLRR trên Encoder |
-| `mt5-small-ami-cmn-jepa-clrr-enc` | 4.596068 | 5.042505 | JEPA + CLRR trên Encoder |
-| `mt5-small-ami-cmn-jepa-clrr-dec` | 4.925713 | 5.921437 | Ablation: JEPA + CLRR trên Decoder |
-| `mt5-small-ami-cmn-jepa-clrr-both` | 3.495116 | 5.283749 | Ablation: JEPA + CLRR trên cả 2 stack |
-| `mbart-large-50-ami-cmn-baseline` | 19.614440 | 14.054668 | Baseline mBART-50 |
-| `mbart-large-50-ami-cmn-jepa-clrr-enc` | 20.389642 | 19.082384 | JEPA + CLRR trên Encoder (+5.03 chrF++) |
-| `byt5-small-ami-cmn-baseline` | 7.583667 | 8.305717 | Baseline ByT5 (Byte-level) |
-| `byt5-small-ami-cmn-jepa-clrr-enc` | 7.310815 | 8.095555 | JEPA + CLRR trên ByT5 |
+| STT | Checkpoint / Cấu hình | BLEU (zh) | chrF++ | Vai trò trong bài báo |
+| :---: | --- | ---: | ---: | --- |
+| 0 | `mt5-small-ami-cmn-baseline` | 2.788710 | 3.812914 | Baseline chuẩn mT5 |
+| 1 | `mt5-small-ami-cmn-clrr-enc` | 4.439348 | 5.176137 | CLRR trên Encoder |
+| 2 | `mt5-small-ami-cmn-jepa-clrr-enc` | 4.596068 | 5.042505 | **Phương pháp đề xuất chính (Proposed)** |
+| 3 | `mbart-large-50-ami-cmn-baseline` | 19.614440 | 14.054668 | Baseline mBART-50 |
+| 4 | `mbart-large-50-ami-cmn-jepa-clrr-enc` | 20.389642 | 19.082384 | Khả năng mở rộng (Scale-up) (+5.03 chrF++) |
+| 5 | `byt5-small-ami-cmn-baseline` | 7.583667 | 8.305717 | Baseline ByT5 (Mô hình cấp độ byte) |
+| 6 | `byt5-small-ami-cmn-jepa-clrr-enc` | 7.310815 | 8.095555 | JEPA + CLRR trên ByT5 |
+| 7 | `mt5-small-ami-cmn-jepa-clrr-dec` | 4.831462 | 5.193258 | Ablation: Nối tắt trên Decoder |
+| 8 | `mt5-small-ami-cmn-jepa-clrr-both` | 3.445919 | 4.575295 | Ablation: Nối tắt trên cả 2 stack |
+
+### Kết quả Kiểm định Ý nghĩa Thống kê (Paired Bootstrap 10.000 samples, Holm-adjusted):
+
+1. **mT5 Baseline $\to$ JEPA+CLRR-Enc (Phương pháp đề xuất chính):**
+   * $\Delta$ BLEU: **+1.807** ($p = 0.0001$, $p_{\text{holm}} = \mathbf{0.0006} < 0.001$) $\to$ **Cực kỳ có ý nghĩa thống kê!**
+   * $\Delta$ chrF++: **+1.230** ($p = 0.0001$, $p_{\text{holm}} = \mathbf{0.0006} < 0.001$) $\to$ **Cực kỳ có ý nghĩa thống kê!**
+2. **Ablation Single-Stack (Enc) $\to$ Dual-Stack (Both):**
+   * $\Delta$ BLEU: **-1.150** ($p = 0.0001 < 0.001$) $\to$ **Suy giảm có ý nghĩa thống kê rõ rệt khi nối cả 2 stack.**
+   * $\Delta$ chrF++: **-0.467** ($p = 0.0013 < 0.01$) $\to$ **Suy giảm có ý nghĩa thống kê rõ rệt.**
+3. **mBART-50 Scaling:**
+   * $\Delta$ chrF++: **+5.028** (từ 14.05 lên 19.08).
+   * $\Delta$ BLEU: **+0.775** (từ 19.61 lên 20.39).
 
 Các cảnh báo tokenizer regex, `Seq2SeqTrainer.tokenizer` và generation config xuất hiện trong log nhưng không làm dừng năm lượt phân tích trên. Chưa kết luận chúng không ảnh hưởng tới điểm; các phép so sánh bổ sung dùng nhất quán cùng mã chấm điểm đã chốt.
 
