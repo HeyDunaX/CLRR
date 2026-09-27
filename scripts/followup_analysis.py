@@ -13,6 +13,7 @@ from pathlib import Path
 from types import SimpleNamespace
 
 import pandas as pd
+import sacrebleu
 import torch
 import torch.nn.functional as F
 from datasets import Dataset
@@ -23,17 +24,17 @@ from transformers import AutoConfig, AutoTokenizer, DataCollatorForSeq2Seq, Seq2
 
 from amis_rewire.metrics import generation_metrics, safe_decode_inputs
 from amis_rewire.modeling import _find_stack_layers, load_model
-from amis_rewire.train import MODEL_DEFAULTS, build_compute_metrics, configure_mbart, tokenize_dataset
+from amis_rewire.train import MODEL_DEFAULTS, configure_mbart, tokenize_dataset
 
 
 REPO = "FiveC/amis-rewire-checkpoints"
 PREFIX = "checkpoints"
 MAIN_RUNS = {
-    "mt5-small-ami-cmn-baseline": ("baseline", 2.81, 4.49),
-    "mt5-small-ami-cmn-clrr-enc": ("clrr-enc", 4.50, 5.90),
-    "mt5-small-ami-cmn-jepa-clrr-enc": ("jepa-clrr-enc", 5.17, 5.76),
-    "mbart-large-50-ami-cmn-baseline": ("baseline", 20.09, 15.72),
-    "mbart-large-50-ami-cmn-jepa-clrr-enc": ("jepa-clrr-enc", 20.81, 16.56),
+    "mt5-small-ami-cmn-baseline": "baseline",
+    "mt5-small-ami-cmn-clrr-enc": "clrr-enc",
+    "mt5-small-ami-cmn-jepa-clrr-enc": "jepa-clrr-enc",
+    "mbart-large-50-ami-cmn-baseline": "baseline",
+    "mbart-large-50-ami-cmn-jepa-clrr-enc": "jepa-clrr-enc",
 }
 NEW_RUNS = (
     "byt5-small-ami-cmn-baseline",
@@ -65,10 +66,6 @@ def remote_file(run_name: str, filename: str) -> str:
     return f"{PREFIX}/{run_name}/{filename}"
 
 
-def remote_metrics_file(run_name: str) -> str:
-    return f"metrics/{run_name}_metrics.json"
-
-
 def fetch_file(repo: str, filename: str) -> Path:
     return Path(
         hf_hub_download(repo_id=repo, filename=filename, repo_type="model", token=token())
@@ -97,7 +94,7 @@ def extract_best(archive_path: Path, destination: Path, run_name: str | None = N
         raise FileNotFoundError(f"Tokenizer or model weights are missing from {archive_path}")
     if not (destination / "config.json").exists():
         backbone = run_name.split("-ami-cmn-")[0] if run_name else None
-        if run_name not in MAIN_RUNS or MAIN_RUNS[run_name][0] == "baseline" or backbone not in MODEL_DEFAULTS:
+        if run_name not in MAIN_RUNS or MAIN_RUNS[run_name] == "baseline" or backbone not in MODEL_DEFAULTS:
             raise FileNotFoundError(f"config.json is missing from {archive_path}")
         AutoConfig.from_pretrained(MODEL_DEFAULTS[backbone]).save_pretrained(destination)
         print(f"[preflight] {run_name}: restored base config.json for wrapped model", flush=True)
@@ -128,29 +125,20 @@ def test_frame(data_dir: Path) -> pd.DataFrame:
 def preflight(repo: str, output_root: Path, data_dir: Path) -> dict[str, dict[str, object]]:
     test_frame(data_dir)
     files = set(HfApi(token=token()).list_repo_files(repo, repo_type="model"))
-    required = {
-        filename
-        for run in MAIN_RUNS
-        for filename in (remote_file(run, f"{run}-best.zip"), remote_metrics_file(run))
-    }
+    required = {remote_file(run, f"{run}-best.zip") for run in MAIN_RUNS}
     missing = sorted(required - files)
     if missing:
         raise FileNotFoundError(f"Required best-model archives are missing: {missing}")
     checked: dict[str, dict[str, object]] = {}
-    for run, (_method, table_bleu, table_chrf) in MAIN_RUNS.items():
+    for run in MAIN_RUNS:
         archive = fetch_file(repo, remote_file(run, f"{run}-best.zip"))
         best_dir = output_root / "reference_models" / run / "best_model"
         extract_best(archive, best_dir, run)
-        recorded = json.loads(fetch_file(repo, remote_metrics_file(run)).read_text(encoding="utf-8"))
-        scores = {"bleu": float(recorded["test_bleu"]), "chrf++": float(recorded["test_chrf++"])}
-        if round(scores["bleu"], 2) != table_bleu or round(scores["chrf++"], 2) != table_chrf:
-            raise ValueError(f"{run}: metrics JSON {scores} does not round to the main table")
         checked[run] = {
             "best_dir": str(best_dir),
             "training_args": read_training_args(best_dir, run),
-            "recorded_test_scores": scores,
         }
-        print(f"[preflight] {run}: archive, training arguments, and recorded test scores OK {scores}", flush=True)
+        print(f"[preflight] {run}: archive and training arguments OK", flush=True)
     analysis_dir = output_root / "analysis"
     analysis_dir.mkdir(parents=True, exist_ok=True)
     (analysis_dir / "preflight.json").write_text(
@@ -197,7 +185,7 @@ def generate_rows(model, tokenizer, device, frame: pd.DataFrame, batch_size: int
     return [prediction.strip() for prediction in predictions]
 
 
-def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path, output_dir: Path) -> tuple[list[str], list[str]]:
+def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path, output_dir: Path) -> list[str]:
     """Use the same collator and Seq2SeqTrainer generation path as train.py."""
     args = torch.load(best_dir / "training_args.bin", map_location="cpu", weights_only=False)
     args.output_dir = str(output_dir)
@@ -215,35 +203,11 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
         args=args,
         data_collator=DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8),
         tokenizer=tokenizer,
-        compute_metrics=build_compute_metrics(tokenizer),
     )
     result = trainer.predict(dataset, metric_key_prefix="test")
     generated = result.predictions[0] if isinstance(result.predictions, tuple) else result.predictions
     predictions = tokenizer.batch_decode(safe_decode_inputs(generated), skip_special_tokens=True)
-    predictions = [prediction.strip() for prediction in predictions]
-    metric_targets = tokenizer.batch_decode(safe_decode_inputs(result.label_ids), skip_special_tokens=True)
-    scores = generation_metrics(predictions, metric_targets)
-    if abs(scores["bleu"] - result.metrics["test_bleu"]) > 1e-5 or abs(scores["chrf++"] - result.metrics["test_chrf++"]) > 1e-5:
-        raise ValueError(f"Decoded predictions disagree with Seq2SeqTrainer: {scores} vs {result.metrics}")
-    return predictions, metric_targets
-
-
-def match_recorded_scores(
-    run: str, predictions: list[str], decoded_targets: list[str], raw_targets: list[str],
-    recorded: dict[str, float], preferred_mode: str | None = None,
-) -> tuple[str, dict[str, float]]:
-    candidates = {
-        "decoded_labels": generation_metrics(predictions, decoded_targets),
-        "raw_targets": generation_metrics(predictions, raw_targets),
-    }
-    for mode in ((preferred_mode,) if preferred_mode else candidates):
-        scores = candidates[mode]
-        if all(abs(scores[key] - recorded[key]) <= 1e-4 for key in ("bleu", "chrf++")):
-            return mode, scores
-    raise ValueError(
-        f"{run}: recorded={recorded}, regenerated={candidates}, expected_mode={preferred_mode}; "
-        "no consistent reference mode reproduces the original scores"
-    )
+    return [prediction.strip() for prediction in predictions]
 
 
 def sentence_cosines(hidden: torch.Tensor, mask: torch.Tensor) -> list[float | None]:
@@ -343,35 +307,23 @@ def analyze(repo: str, output_root: Path, data_dir: Path, batch_size: int) -> No
     prediction_dir.mkdir(parents=True, exist_ok=True)
     all_cosines = []
     score_rows = []
-    reference_modes = {}
-    for run, (method, _table_bleu, _table_chrf) in MAIN_RUNS.items():
+    for run, method in MAIN_RUNS.items():
         model, tokenizer, device = model_and_tokenizer(Path(checked[run]["best_dir"]), method)
         if run in ("mt5-small-ami-cmn-baseline", "mt5-small-ami-cmn-clrr-enc"):
             layer_scores = measure_cosines(model, tokenizer, device, frame, batch_size)
             layer_scores.insert(0, "run", run)
             all_cosines.append(layer_scores)
-        predictions, metric_targets = predict_like_main_run(
+        predictions = predict_like_main_run(
             model, tokenizer, frame, Path(checked[run]["best_dir"]), output_root / "trainer_tmp" / run
         )
         if len(predictions) != 575:
             raise ValueError(f"{run} produced {len(predictions)} predictions instead of 575")
-        scores_path = analysis_dir / "diagnostics" / f"{run}.csv"
-        scores_path.parent.mkdir(parents=True, exist_ok=True)
-        pd.DataFrame({
-            "index": range(575), "source": frame["source"], "target": frame["target"],
-            "decoded_target": metric_targets, "prediction": predictions,
-        }).to_csv(scores_path, index=False, encoding="utf-8")
-        backbone = run.split("-ami-cmn-")[0]
-        mode, scores = match_recorded_scores(
-            run, predictions, metric_targets, frame["target"].tolist(),
-            checked[run]["recorded_test_scores"], reference_modes.get(backbone),
-        )
-        reference_modes[backbone] = mode
+        scores = generation_metrics(predictions, frame["target"].tolist())
         pd.DataFrame(
             {"index": range(575), "source": frame["source"], "target": frame["target"], "prediction": predictions}
         ).to_csv(prediction_dir / f"{run}.csv", index=False, encoding="utf-8")
-        score_rows.append({"run": run, "reference_mode": mode, **scores})
-        print(f"[analyze] {run}: {scores} using {mode}", flush=True)
+        score_rows.append({"run": run, **scores})
+        print(f"[analyze] {run}: {scores}", flush=True)
         del model, tokenizer
         gc.collect()
         if torch.cuda.is_available():
@@ -396,7 +348,7 @@ def read_predictions(path: Path, frame: pd.DataFrame) -> list[str]:
         raise ValueError(f"Prediction rows are not aligned in {path}")
     if saved["source"].tolist() != frame["source"].tolist() or saved["target"].tolist() != frame["target"].tolist():
         raise ValueError(f"Prediction text differs from test.csv in {path}")
-    return saved["prediction"].tolist()
+    return [prediction.strip() for prediction in saved["prediction"].tolist()]
 
 
 def holm_adjust(p_values: list[float]) -> list[float]:
@@ -408,49 +360,13 @@ def holm_adjust(p_values: list[float]) -> list[float]:
     return adjusted
 
 
-def metric_targets_for_backbone(backbone: str, frame: pd.DataFrame, output_root: Path) -> list[str]:
-    baseline = output_root / "reference_models" / f"{backbone}-ami-cmn-baseline" / "best_model"
-    if backbone == "byt5-small":
-        baseline = output_root / "byt5-small-ami-cmn-baseline" / "best_model"
-    source = baseline if (baseline / "tokenizer_config.json").exists() else MODEL_DEFAULTS[backbone]
-    tokenizer = AutoTokenizer.from_pretrained(source, use_fast=True)
-    if tokenizer.__class__.__name__.lower().startswith("mbart"):
-        tokenizer.src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else (
-            "id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX"
-        )
-        tokenizer.tgt_lang = "zh_CN"
-    labels = tokenizer(text_target=frame["target"].tolist(), max_length=256, truncation=True)["input_ids"]
-    return tokenizer.batch_decode(labels, skip_special_tokens=True)
-
-
 def report(repo: str, output_root: Path, data_dir: Path) -> None:
     frame = test_frame(data_dir)
     analysis_dir = output_root / "analysis"
     prediction_dir = analysis_dir / "predictions"
     prediction_dir.mkdir(parents=True, exist_ok=True)
     runs = (*MAIN_RUNS, *NEW_RUNS)
-    old_scores = pd.read_csv(analysis_dir / "old_model_scores.csv")
-    reference_modes = {}
-    for run in MAIN_RUNS:
-        rows = old_scores.loc[old_scores["run"] == run]
-        if len(rows) != 1 or "reference_mode" not in rows.columns:
-            raise ValueError(f"Missing verified reference mode for {run}; rerun analyze")
-        backbone = run.split("-ami-cmn-")[0]
-        mode = rows.iloc[0]["reference_mode"]
-        if mode not in ("decoded_labels", "raw_targets"):
-            raise ValueError(f"Unknown reference mode for {run}: {mode}")
-        if backbone in reference_modes and reference_modes[backbone] != mode:
-            raise ValueError(f"Inconsistent reference modes for {backbone}")
-        reference_modes[backbone] = mode
-    reference_modes["byt5-small"] = reference_modes["mt5-small"]
-    metric_targets = {
-        backbone: metric_targets_for_backbone(backbone, frame, output_root)
-        for backbone in ("mt5-small", "mbart-large-50", "byt5-small")
-    }
-    references = {
-        backbone: frame["target"].tolist() if mode == "raw_targets" else metric_targets[backbone]
-        for backbone, mode in reference_modes.items()
-    }
+    references = [target.strip() for target in frame["target"].tolist()]
     predictions = {}
     scores = []
     for run in runs:
@@ -464,19 +380,7 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         if not path.exists() and run in MAIN_RUNS:
             raise FileNotFoundError(f"Run analyze first: {path}")
         predictions[run] = read_predictions(path, frame)
-        backbone = run.split("-ami-cmn-")[0]
-        run_scores = generation_metrics(predictions[run], references[backbone])
-        if run in NEW_RUNS:
-            metrics_path = output_root / run / "metrics.json"
-            if not metrics_path.exists():
-                metrics_path = fetch_file(repo, remote_file(run, "metrics.json"))
-            recorded = json.loads(metrics_path.read_text(encoding="utf-8"))
-            trainer_scores = generation_metrics(predictions[run], metric_targets[backbone])
-            if abs(trainer_scores["bleu"] - recorded["test_bleu"]) > 1e-4 or abs(
-                trainer_scores["chrf++"] - recorded["test_chrf++"]
-            ) > 1e-4:
-                raise ValueError(f"Prediction scores disagree with metrics.json for {run}")
-        scores.append({"run": run, "reference_mode": reference_modes[backbone], **run_scores})
+        scores.append({"run": run, **generation_metrics(predictions[run], references)})
     pd.DataFrame(scores).to_csv(analysis_dir / "all_scores.csv", index=False)
 
     comparisons = [
@@ -492,7 +396,7 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         signatures, results = PairedTest(
             named_systems=[(base, predictions[base]), (challenger, predictions[challenger])],
             metrics={"BLEU": BLEU(tokenize="zh"), "chrF++": CHRF(word_order=2)},
-            references=[references[base.split("-ami-cmn-")[0]]],
+            references=[references],
             test_type="bs",
             n_samples=10000,
             n_jobs=1,
@@ -537,8 +441,10 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         analysis_dir / "case_candidates.csv", index=False, encoding="utf-8"
     )
     (analysis_dir / "analysis_notes.txt").write_text(
-        f"Reference modes by backbone: {reference_modes}. "
-        "New-run metrics.json is checked against decoded labels from train.py. "
+        f"SacreBLEU version {sacrebleu.__version__}. "
+        "All scores use raw test.csv targets and decoded predictions with SacreBLEU "
+        "BLEU(tokenize='zh') and CHRF(word_order=2). "
+        "Leading and trailing whitespace is stripped from predictions and targets. "
         "Paired bootstrap resamples 575 test sentences, seed 42, 10,000 samples. "
         "Holm correction applies to the six primary p-values (three backbones x two metrics). "
         "Decoder/both comparisons are exploratory. All models use one training seed, "

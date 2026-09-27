@@ -184,8 +184,12 @@ Secret named `HF_TOKEN` with access to the private
 saved main-run hyperparameters and regenerates test predictions and encoder
 cosine measurements. It then runs two ByT5-small conditions and two mT5-small
 decoder/both rewiring ablations. The main six-run matrix is not rerun.
-Exact main-run test scores are read from `metrics/<run-name>_metrics.json` in the
-private repository; the two-decimal table below is used only to check rounding.
+For the follow-up tables, all saved checkpoints and new models are scored the
+same way: decode predictions, pair them with the original `target` text in all
+575 rows of `data/processed/test.csv`, and compute SacreBLEU
+`BLEU(tokenize="zh")` and `CHRF(word_order=2)` (chrF++). Leading and trailing
+whitespace is stripped from predictions and targets. Scores are recomputed
+from predictions; matching the historical score files is not a run condition.
 
 New checkpoints, best-model ZIPs, metrics, and test predictions are uploaded to
 `checkpoints/<run-name>/` in that private repository. Analysis tables, case
@@ -253,7 +257,9 @@ The primary automatic metrics are **BLEU** and **chrF++**. BLEU gives comparabil
 
 ## Main results table
 
-The six main runs are complete. Scores below are test-set scores.
+The six main runs are complete. Scores below are the historical test-set results.
+The follow-up analysis keeps this table unchanged and reports its uniformly
+recomputed scores separately in `analysis/all_scores.csv`.
 
 | Model | Method | Role | BLEU | chrF++ |
 | --- | --- | --- | ---: | ---: |

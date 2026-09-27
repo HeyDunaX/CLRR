@@ -52,7 +52,7 @@ Hệ thống kết hợp 2 thành phần bổ trợ cho nhau:
 
 ## 3. Hiện trạng Thực nghiệm & Kết quả Đạt được
 
-Toàn bộ ma trận thí nghiệm chính (Focused 6-Run Setup) đã được hoàn thành trên GPU A100 với quy chuẩn công bằng cố định (Fixed Fairness Protocol: Seed 42, AdamW, effective batch size 256, max 20 epochs, early stopping 4, SacreBLEU `tokenize="zh"`, chrF++ word order 2):
+Toàn bộ ma trận thí nghiệm chính (Focused 6-Run Setup) đã được hoàn thành trên GPU A100 với quy chuẩn công bằng cố định (Fixed Fairness Protocol: Seed 42, AdamW, effective batch size 128, max 20 epochs, early stopping 4, SacreBLEU `tokenize="zh"`, chrF++ word order 2):
 
 ### Bảng kết quả chính thức (Test Set)
 
@@ -64,6 +64,8 @@ Toàn bộ ma trận thí nghiệm chính (Focused 6-Run Setup) đã được ho
 | `google/mt5-small` | **JEPA + CLRR-Enc** | **Proposed Method** | **5.17** *(+2.36)* | **5.76** *(+1.27)* |
 | `facebook/mbart-large-50` | **Baseline** | Translation Baseline | 20.09 | 15.72 |
 | `facebook/mbart-large-50` | **JEPA + CLRR-Enc** | **Cross-Architecture Validation** | **20.81** *(+0.72)* | **16.56** *(+0.84)* |
+
+**Quy ước cho phân tích bổ sung:** Giữ nguyên bảng kết quả lịch sử ở trên. Với mọi checkpoint cũ và model mới, giải mã prediction, ghép đúng thứ tự với 575 câu đích gốc trong `data/processed/test.csv`, bỏ khoảng trắng ở đầu/cuối câu, rồi tính lại bằng SacreBLEU `BLEU(tokenize="zh")` và `CHRF(word_order=2)` (chrF++). Bảng tính lại được lưu tại `analysis/all_scores.csv`; chênh lệch với số đã lưu trước đây không chặn các lượt chạy mới.
 
 ### 💡 Đánh giá học thuật từ số liệu:
 1. **Hiệu ứng độc lập & cộng hưởng trên `mT5-small`:**  

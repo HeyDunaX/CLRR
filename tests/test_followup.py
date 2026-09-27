@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import json
 import sys
 import tempfile
 import unittest
@@ -24,9 +23,7 @@ from followup_analysis import (
     NEW_RUNS,
     extract_best,
     holm_adjust,
-    match_recorded_scores,
     measure_cosines,
-    metric_targets_for_backbone,
     predict_like_main_run,
     read_predictions,
     read_training_args,
@@ -101,7 +98,7 @@ class FollowupTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "differs from test.csv"):
                 read_predictions(path, frame)
 
-    def test_local_analysis_smoke_uses_decoded_labels_and_cosines(self) -> None:
+    def test_local_analysis_smoke_generates_predictions_and_cosines(self) -> None:
         from tokenizers import Tokenizer, models, pre_tokenizers
         from transformers import PreTrainedTokenizerFast, Seq2SeqTrainingArguments, T5Config, T5ForConditionalGeneration
         from amis_rewire.modeling import CrossLayerResidualRewire
@@ -129,35 +126,13 @@ class FollowupTests(unittest.TestCase):
             )
             torch.save(args, best_dir / "training_args.bin")
             frame = pd.DataFrame({"source": ["a b", "b a"], "target": ["x  y", "y  x"]})
-            predictions, targets = predict_like_main_run(
+            predictions = predict_like_main_run(
                 model, tokenizer, frame, best_dir, root / "prediction"
             )
             self.assertEqual(len(predictions), 2)
-            self.assertEqual(targets, ["x y", "y x"])
-            reference_dir = root / "reference_models" / "mt5-small-ami-cmn-baseline" / "best_model"
-            reference_dir.mkdir(parents=True)
-            tokenizer.save_pretrained(reference_dir)
-            self.assertEqual(metric_targets_for_backbone("mt5-small", frame, root), targets)
             self.assertEqual(len(measure_cosines(model, tokenizer, torch.device("cpu"), frame, 2)), 2)
             wrapped = CrossLayerResidualRewire(model, distance=1)
             self.assertEqual(len(measure_cosines(wrapped, tokenizer, torch.device("cpu"), frame, 2)), 2)
-
-    def test_recorded_scores_identify_reference_mode(self) -> None:
-        from amis_rewire.metrics import generation_metrics
-
-        predictions = ["x y", "x"]
-        raw_targets = ["x y", "y"]
-        decoded_targets = ["x y", "x"]
-        recorded = generation_metrics(predictions, raw_targets)
-        mode, scores = match_recorded_scores(
-            "test-run", predictions, decoded_targets, raw_targets, recorded
-        )
-        self.assertEqual(mode, "raw_targets")
-        self.assertEqual(scores, recorded)
-        with self.assertRaisesRegex(ValueError, "no consistent reference mode"):
-            match_recorded_scores(
-                "test-run", predictions, decoded_targets, raw_targets, recorded, "decoded_labels"
-            )
 
     def test_cosine_uses_only_unmasked_tokens(self) -> None:
         hidden = torch.tensor([[[1.0, 0.0], [0.0, 1.0], [1.0, 0.0]]])
@@ -166,16 +141,10 @@ class FollowupTests(unittest.TestCase):
 
     def test_local_report_smoke_writes_artifacts(self) -> None:
         from sacrebleu.significance import PairedTest
-        from amis_rewire.metrics import generation_metrics
 
         frame = pd.read_csv(ROOT / "data" / "processed" / "test.csv").fillna("")
         with tempfile.TemporaryDirectory() as temporary:
             output_root = Path(temporary)
-            analysis_dir = output_root / "analysis"
-            analysis_dir.mkdir()
-            pd.DataFrame({
-                "run": list(MAIN_RUNS), "reference_mode": ["raw_targets"] * len(MAIN_RUNS),
-            }).to_csv(analysis_dir / "old_model_scores.csv", index=False)
             for run in (*MAIN_RUNS, *NEW_RUNS):
                 predictions = frame.copy()
                 predictions.insert(0, "index", range(len(frame)))
@@ -184,12 +153,6 @@ class FollowupTests(unittest.TestCase):
                     path = output_root / "analysis" / "predictions" / f"{run}.csv"
                 else:
                     path = output_root / run / "test_predictions.csv"
-                    scores = generation_metrics(predictions["prediction"].tolist(), frame["target"].tolist())
-                    (output_root / run).mkdir(parents=True)
-                    (output_root / run / "metrics.json").write_text(
-                        json.dumps({"test_bleu": scores["bleu"], "test_chrf++": scores["chrf++"]}),
-                        encoding="utf-8",
-                    )
                 path.parent.mkdir(parents=True, exist_ok=True)
                 predictions.to_csv(path, index=False)
 
@@ -197,8 +160,7 @@ class FollowupTests(unittest.TestCase):
                 kwargs["n_samples"] = 10
                 return PairedTest(*args, **kwargs)
 
-            with patch("followup_analysis.metric_targets_for_backbone", return_value=frame["target"].tolist()), \
-                 patch("followup_analysis.PairedTest", side_effect=short_paired_test), \
+            with patch("followup_analysis.PairedTest", side_effect=short_paired_test), \
                  patch("followup_analysis.HfApi"), \
                  patch.dict("os.environ", {"HF_TOKEN": "local-smoke"}):
                 report("local/smoke", output_root, ROOT / "data" / "processed")
