@@ -1,37 +1,42 @@
-# Kế Hoạch Triển Khai Thực Nghiệm Nâng Cấp Toàn Diện Cho Bài Báo Hội Thảo Đỉnh Cao ACL (ACL Upgrade Experiment Plan)
+# Kế Hoạch Thực Nghiệm Nâng Cấp ACL: Chạy Phủ Toàn Diện Đa Kiến Trúc (Cross-Architecture Benchmarking) & Phân Tích Chuyên Sâu
 
 > [!IMPORTANT]
 > **NGUYÊN TẮC BẤT BIẾN & CHIẾN LƯỢC NÂNG CẤP ĐẠT CHUẨN ACL (ACL MAIN / FINDINGS):**
-> 1. **Mục tiêu Học thuật Đỉnh cao (Upgrading from Workshop to ACL Tier):** 
->    * Hội thảo chuyên đề (ComputEL-10) đánh giá cao phân tích ngôn ngữ học định tính và nỗ lực bảo tồn tiếng Amis.
->    * Hội nghị ACL chính thống (ACL Main Conference / Findings) đòi hỏi: **(i) Đối chuẩn với các kỹ thuật PEFT hiện đại (LoRA), (ii) Phân tích bóc tách lý thuyết có tính tổng quát (Stop-gradient & Hyperparameter grid), (iii) Bảng hiệu năng phần cứng thực tế (Zero-cost profiling), và (iv) Tính khái quát hóa đa ngôn ngữ cực thấp tài nguyên**.
-> 2. **Bảo tồn Tuyệt đối 100% Mã Nguồn & Toàn bộ 11 Mô hình Đã Chốt:**
->    * Toàn bộ mã nguồn cốt lõi trong `src/amis_rewire/`, `outputs/`, `outputs_extra/` và `outputs_comparative/` **được đóng băng nguyên vẹn 100%**.
->    * 9 mô hình lịch sử (Table 1-4) cùng 2 mô hình đối sánh ACL (Table 5: LayerSkip 3.97 BLEU, Middle-Align 4.75 BLEU) được giữ cố định làm mốc chuẩn.
-> 3. **Tổ chức Mô-đun Độc Lập Cách Ly (Isolated Subfolders in `src/acl_extensions/`):**
->    * Mọi kỹ thuật bổ sung được đóng gói trong các thư mục độc lập riêng biệt (`peft_lora/`, `ablation_stopgrad/`, `ablation_sensitivity/`, v.v.), không gây xung đột dependency.
+> 1. **Tính Cân Xứng Tuyệt Đối Giữa Các Backbone (Symmetrical Cross-Architecture Matrix):**
+>    * Trong bài báo hiện tại, mô hình đề xuất của chúng ta (**CLRR**) đã được kiểm chứng trên cả **3 họ kiến trúc đại diện**:
+>      * `google/mt5-small` (8 enc / 8 dec — Subword đa ngữ chuẩn).
+>      * `facebook/mbart-large-50-many-to-many-mmt` (12 enc / 12 dec — Chuyên biệt dịch máy đa ngữ).
+>      * `google/byt5-small` (12 enc / 4 dec — Byte-level không từ điển, kiến trúc bất đối xứng).
+>    * **Khoảng trống cần bổ sung ngay cho ACL:** Hai phương pháp đối chuẩn gần đây (**LayerSkip - ACL 2024** và **Middle-Layer Alignment - ACL 2025**) mới chỉ được chạy trên `mt5-small`. Để bài báo đạt độ chặt chẽ tuyệt đối trước hội đồng phản biện ACL, **bắt buộc phải chạy phủ đủ LayerSkip và Middle-Align trên cả `mBART-50` và `ByT5-small`**.
+> 2. **Bảo tồn Tuyệt đối 100% Mã Nguồn & Toàn bộ Kết quả Đã Chốt:**
+>    * Tuyệt đối **KHÔNG chỉnh sửa bất kỳ file nào trong `src/amis_rewire/`** và không can thiệp vào các checkpoint/kết quả đã chốt (`outputs_extra/` và `outputs_comparative/`). Toàn bộ 11 điểm số chính thức hiện có được đóng băng vĩnh viễn.
+> 3. **Tổ chức Thư Mục Độc Lập Cho Từng Backbone:**
+>    * Mở rộng `src/comparative_baselines/` để hỗ trợ đa backbone (`--model-name-or-path`) một cách đồng nhất và tự động nhận diện kiến trúc (`t5`, `mbart`, `byt5`).
 > 4. **Cấu hình Công bằng Tuyệt đối (Strict Fairness Protocol):**
->    * Cố định đồng nhất: Backbone `google/mt5-small`, Seed 42, Split 4.600 / 576 / 575, Effective Batch Size 128, LR 3e-4, Warmup 0.06, 20 Epochs, Early Stopping Patience 4 theo chrF++, BF16, Beam Size 4, SacreBLEU `zh` + chrF++ `word_order=2`.
-> 5. **Tận dụng Tối đa Tốc độ GPU A100 & Thực thi Thuần túy Bằng Bash Qua SSH:**
->    * Tiếp tục cơ chế đã được kiểm chứng xuất sắc ở giai đoạn trước: chạy trực tiếp bằng Bash script qua SSH (`ssh colab`), lưu top checkpoint trên ổ SSD NVMe `/content/`, tự động upload kết quả lên Hugging Face Hub (`FiveC/amis-rewire-checkpoints`), và tự động tắt máy Colab (`colab stop -s colab`) để tiết kiệm tối đa Compute Units.
+>    * Cố định đồng nhất: Seed 42, Split 4.600 / 576 / 575, Effective Batch Size 128, LR chuẩn (`3e-4` cho mT5/ByT5, `5e-5` cho mBART-50), Warmup 0.06, 20 Epochs, Early Stopping Patience 4 theo chrF++, BF16, Test Beam Size 4, SacreBLEU `zh` + chrF++ `word_order=2`.
+> 5. **Tận dụng Tối đa Tốc độ GPU A100 & Tự Động Hóa SSH BASH:**
+>    * Thực thi thuần túy bằng Bash script qua SSH (`ssh colab`), lưu top 3 checkpoint trên ổ SSD NVMe `/content/`, nén và đẩy Best Model lên Hugging Face Hub (`FiveC/amis-rewire-checkpoints`), và tự động tắt máy Colab (`colab stop -s colab`) để bảo toàn số dư 298+ Compute Units.
 
 ---
 
-## 1. Cấu Trúc 5 Trụ Cột Thực Nghiệm Bổ Sung Cho ACL
+## 1. Cấu Trúc Hai Giai Đoạn Nâng Cấp Toàn Diện Cho ACL
 
 ```
-                    ┌─────────────────────────────────────────────────────────┐
-                    │      CHIẾN LƯỢC NÂNG CẤP THỰC NGHIỆM ĐẠT CHUẨN ACL      │
-                    └────────────────────────────┬────────────────────────────┘
-                                                 │
-         ┌───────────────────┬───────────────────┼───────────────────┬───────────────────┐
-         ▼                   ▼                   ▼                   ▼                   ▼
-   [TRỤ CỘT 1]         [TRỤ CỘT 2]         [TRỤ CỘT 3]         [TRỤ CỘT 4]         [TRỤ CỘT 5]
-    Đối Chuẩn           Bóc Tách           Phân Tích           Đo Đạc              Khái Quát Hóa
-      PEFT            Lý Thuyết          Độ Nhạy Siêu        Hiệu Năng &           Đa Ngôn Ngữ
-     (LoRA)          Stop-Grad             Tham Số             Độ Trễ              Bản Địa
-  LoRA vs CLRR      sg(h) có thực       Grid cự ly d        0 Params, 0ms        FLORES-200 /
-   vs Hiệp Đồng      sự cần thiết?     và độ mạnh alpha     Overhead Profiling    Extremely Low-Res
+                        ┌─────────────────────────────────────────────────────────┐
+                        │      CHIẾN LƯỢC NÂNG CẤP THỰC NGHIỆM ĐẠT CHUẨN ACL      │
+                        └────────────────────────────┬────────────────────────────┘
+                                                     │
+                             ┌───────────────────────┴───────────────────────┐
+                             ▼                                               ▼
+                     [GIAI ĐOẠN 1: BẮT BUỘC]                        [GIAI ĐOẠN 2: CHUYÊN SÂU]
+                   Chạy Phủ 2 Baseline ACL Trên                    Phân Tích Bóc Tách Lý Thuyết,
+                   2 Backbone Còn Lại (mBART & ByT5)                Độ Trễ & Đối Chuẩn PEFT (LoRA)
+                             │                                               │
+             ┌───────────────┴───────────────┐               ┌───────────────┼───────────────┐
+             ▼                               ▼               ▼               ▼               ▼
+      [mBART-Large-50]                 [ByT5-Small]      [LoRA vs CLRR]  [Stop-Grad]   [Hardware Profiler]
+       • LayerSkip                     • LayerSkip        • PEFT đối     • Kiểm chứng   • Zero-Overhead
+       • Middle-Align (Layer 6)        • Middle-Align       chuẩn         toán học       (VRAM, Latency)
 ```
 
 ---
@@ -42,189 +47,149 @@
 d:\Code\CLRR\
 ├── src\
 │   ├── amis_rewire\                              [BẢO TỒN NGUYÊN VẸN 100% - ĐÓNG BĂNG]
-│   ├── comparative_baselines\                    [BẢO TỒN NGUYÊN VẸN 100% - ĐÃ HOÀN TẤT]
-│   │   ├── layerskip_acl2024\                    # Best model: 3.97 BLEU / 5.29 chrF++
-│   │   └── middle_align_acl2025\                 # Best model: 4.75 BLEU / 5.94 chrF++
 │   │
-│   └── acl_extensions\                           [THƯ MỤC MỚI CHO CÁC THỰC NGHIỆM ACL]
+│   └── comparative_baselines\                    [MỞ RỘNG HỖ TRỢ ĐA BACKBONE]
 │       ├── __init__.py
-│       ├── peft_lora\                            [TRỤ CỘT 1: LORA & CLRR+LORA SYNERGY]
+│       ├── layerskip_acl2024\                    [HỖ TRỢ: mt5-small, mbart-large-50, byt5-small]
 │       │   ├── __init__.py
-│       │   ├── model.py                          # Tích hợp LoRA (PEFT) + CLRR wrapper
-│       │   └── train.py                          # Huấn luyện LoRA baseline & CLRR+LoRA
+│       │   ├── model.py                          # Hook phổ quát cho cả T5Block & MBartEncoderLayer
+│       │   └── train.py                          # Hỗ trợ switch model backbone & configure_mbart
 │       │
-│       ├── ablation_stopgrad\                    [TRỤ CỘT 2: STOP-GRADIENT ABLATION]
-│       │   ├── __init__.py
-│       │   ├── model.py                          # CLRR khi bỏ toán tử stop_gradient
-│       │   └── train.py                          # Đánh giá sự mất ổn định khi thiếu sg
-│       │
-│       ├── ablation_sensitivity\                 [TRỤ CỘT 3: SENSITIVITY GRID d & ALPHA]
-│       │   ├── __init__.py
-│       │   └── run_grid.py                       # Quét ma trận d in {1,2,3,4}, a in {0.05,0.1,0.2}
-│       │
-│       └── efficiency_profiler\                  [TRỤ CỘT 4: PROFILING LATENCY & VRAM]
-│           └── benchmark.py                      # Đo throughput (samples/s), VRAM (GB), latency (ms)
+│       └── middle_align_acl2025\                 [HỖ TRỢ: mt5-small, mbart-large-50, byt5-small]
+│           ├── __init__.py
+│           ├── model.py                          # Tự động chọn middle layer (layer 4 cho mt5, layer 6 cho mbart/byt5)
+│           └── train.py                          # Hỗ trợ switch model backbone & configure_mbart
 │
 ├── scripts\
-│   ├── run_comparative_models.py                 [ĐÃ CHẠY XONG - GIỮ NGUYÊN]
-│   ├── run_acl_experiments.py                    [SCRIPT MỚI - Điều phối pipeline ACL]
-│   └── run_acl_experiments.sh                    [SCRIPT BASH MỚI - Chạy SSH trên Colab A100]
+│   ├── smoke_test_comparative.py                 [Cập nhật kiểm thử 3 backbones]
+│   ├── run_comparative_models.py                 [Thêm tham số --backbones mt5,mbart,byt5]
+│   └── run_comparative_models.sh                 [Runner Bash qua SSH Colab A100]
 │
-├── outputs_comparative\                          [ĐÃ HOÀN TẤT - comparative_scores.csv]
-├── outputs_acl\                                  [THƯ MỤC CHỨA CÁC ARTIFACTS ACL MỚI]
-│   ├── lora_scores.csv                           # Kết quả so sánh LoRA vs CLRR vs CLRR+LoRA
-│   ├── stopgrad_ablation.csv                     # Kết quả kiểm chứng stop-gradient
-│   ├── sensitivity_grid.csv                      # Ma trận quét cự ly d và độ mạnh alpha
-│   ├── efficiency_benchmark.csv                  # Bảng đo đạc VRAM, tham số, độ trễ
-│   └── acl_final_comprehensive_table.csv         # Bảng tổng hợp toàn diện nộp bài ACL
+├── outputs_comparative\                          [KHO KẾT QUẢ ĐỐI SÁNH ĐA BACKBONE]
+│   ├── mt5_small\                                # ĐÃ HOÀN TẤT (LayerSkip: 3.97, Middle-Align: 4.75)
+│   ├── mbart_large_50\                           # SẮP CHẠY (LayerSkip & Middle-Align trên mBART)
+│   ├── byt5_small\                               # SẮP CHẠY (LayerSkip & Middle-Align trên ByT5)
+│   └── full_comparative_matrix.csv               # BẢNG MA TRẬN ĐỐI SÁNH 3x4 HOÀN CHỈNH CHO ACL
 │
 └── docs\
     ├── PAPER_EXPERIMENT_INSIGHTS.md              # Kho dữ liệu chính thức
-    ├── EXPERIMENTAL_EXTENSION_PLAN.md            # Kế hoạch đối chuẩn ACL 2024 & 2025 (Đã xong)
-    └── ACL_UPGRADE_EXPERIMENT_PLAN.md             # Kế hoạch nâng cấp ACL này
+    └── ACL_UPGRADE_EXPERIMENT_PLAN.md             # Kế hoạch nâng cấp chi tiết này
 ```
 
 ---
 
-## 3. Đặc Tả Chi Tiết 5 Trụ Cột Nâng Cấp ACL (Technical Specifications)
+## 3. Đặc Tả Kỹ Thuật Cho Từng Backbone Mới (Technical Specifications)
 
-### 3.1. Trụ Cột 1: Đối Chuẩn Với PEFT (LoRA vs. Parameter-Neutral CLRR vs. Hiệp Đồng)
-* **Ý nghĩa phản biện ACL:** Reviewers ACL chuyên về kiến trúc mô hình luôn đặt câu hỏi: *"So với việc thêm một lượng nhỏ tham số bằng LoRA ($r=8$), giải pháp không tham số CLRR có ưu/nhược điểm gì? Liệu CLRR có trực giao (orthogonal) để kết hợp được với LoRA không?"*
-* **Thiết kế kỹ thuật:**
-  * Thư viện: `peft` chuẩn của Hugging Face.
-  * Cấu hình LoRA: Target modules = Attention projection (`q`, `v`, `k`, `o`), rank $r = 8$, $\alpha_{\text{lora}} = 16$, dropout = 0.05.
-  * Thêm tham số: $\approx 0.35\text{M}$ tham số (chiếm $\sim 0.12\%$ kích thước `mt5-small`).
-* **Các cấu hình chạy:**
-  1. `mt5-small-lora`: Baseline chuẩn chỉ áp dụng LoRA.
-  2. `mt5-small-clrr-lora`: Tích hợp đồng thời kết nối tắt cấu trúc CLRR-Enc (0 params) và cập nhật trọng số thích ứng qua LoRA.
-* **Kỳ vọng học thuật:** Minh chứng CLRR 0-param đạt hiệu năng tương đương hoặc vượt LoRA trên ngữ liệu cực nhỏ (vì LoRA vẫn có thể overfit 0.35M tham số), đồng thời cấu hình kết hợp `CLRR + LoRA` đạt hiệu ứng hiệp đồng vượt trội.
-
----
-
-### 3.2. Trụ Cột 2: Bóc Tách Lý Thuyết Stop-Gradient (Is `stop_gradient` Truly Necessary?)
-* **Ý nghĩa phản biện ACL:** Luận điểm toán học cốt lõi của bài báo là:
-  $$h_i' = h_i + \alpha \cdot \text{sg}(h_{i-d}')$$
-  Reviewers ACL sẽ chất vấn: *"Toán tử $\text{sg}$ (stop-gradient) đóng vai trò gì? Nếu cho gradient chảy tự do ngược về tầng nông thì hiệu năng có tốt hơn không?"*
-* **Thiết kế kỹ thuật:**
-  * Xây dựng biến thể `CLRR-NoStopGrad`: Giữ nguyên kết nối tắt $d=2, \alpha=0.1$ nhưng **loại bỏ hoàn toàn toán tử `detach()` / `stop_gradient`**:
-    $$h_i' = h_i + \alpha \cdot h_{i-d}'$$
-  * Huấn luyện mô hình với cùng seed 42 và siêu tham số chuẩn.
-* **Kỳ vọng học thuật:** Khi không có `stop_gradient`, gradient từ các tầng sâu đổ dồn về làm xáo trộn các tầng trích xuất đặc trưng hình thái ban đầu, khiến mô hình bị suy thoái và giảm điểm BLEU/chrF++. Kết quả này biến giả định toán học của bạn thành **minh chứng thực nghiệm vững chắc không thể phản bác**.
+### 3.1. Backbone 2: `facebook/mbart-large-50-many-to-many-mmt` (12 Layers Encoder, 12 Layers Decoder)
+* **Đặc trưng kiến trúc:**
+  * Mô hình Seq2Seq chuyên biệt cho dịch máy đa ngôn ngữ (Pre-trained Multilingual NMT), kích thước ~610M tham số.
+  * Cần cấu hình Tokenizer đặc thù: Tiếng Amis (chữ Latinh) dùng mã proxy `tl_XX` (Tagalog - cùng ngữ hệ Nam Đảo Formosan) hoặc `en_XX`; Tiếng Trung dùng mã `zh_CN` và đặt `forced_bos_token_id`.
+  * Learning rate chuẩn: **`5e-5`** (đúng theo thiết lập chính thức của bài báo).
+* **Triển khai LayerSkip trên mBART-50:**
+  * Encoder gồm $L=12$ tầng (`model.encoder.layers`).
+  * Tỉ lệ ngắt tầng lũy thừa:
+    $$D(l) = e^{\frac{l \ln 2}{11}} - 1 \quad (l \in [0, 11])$$
+    $p_0 = 0.0$ (tầng đầu luôn giữ), $p_{11} = p_{\max} = 0.2$.
+* **Triển khai Middle-Layer Alignment trên mBART-50:**
+  * Tổng số tầng Encoder $L=12$. Tầng giữa tối ưu được chọn là **Tầng 6** ($i=6$, trung tâm điểm của biểu diễn ngữ nghĩa trừu tượng).
+  * Contrastive Loss căn chỉnh biểu diễn giữa câu Amis và câu tiếng Trung tại tầng 6 với nhiệt độ $\tau = 0.1, \lambda = 0.1$.
 
 ---
 
-### 3.3. Trụ Cột 3: Khảo Sát Độ Nhạy Siêu Tham Số Toàn Diện (Hyperparameter Sensitivity Grid)
-* **Ý nghĩa phản biện ACL:** Tránh việc bị phê bình là "cherry-picking" siêu tham số ($d=2, \alpha=0.1$).
-* **Thiết kế ma trận quét (Grid Search):**
-  * **Khoảng cách nối tầng $d$:** $d \in \{1, 2, 3, 4\}$ (cố định $\alpha = 0.1$).
-    * $d=1$: Nối tầng kế tiếp (Next-layer dense connection).
-    * $d=2$: Cấu hình chuẩn đề xuất của chúng ta.
-    * $d=3$: Nối cách 3 tầng.
-    * $d=4$: Nối trực tiếp từ tầng nông lên tầng sâu nhất ($1 \to 5, 2 \to 6, 3 \to 7, 4 \to 8$).
-  * **Độ mạnh kết nối $\alpha$:** $\alpha \in \{0.01, 0.05, 0.1, 0.2, 0.5\}$ (cố định $d = 2$).
-* **Kỳ vọng học thuật:** Xuất ra biểu đồ đường (Line Plot) hoặc Heatmap cho thấy $d=2, \alpha=0.1$ là điểm ngọt (sweet spot) lý tưởng. Độ mạnh quá lớn ($\alpha \ge 0.5$) làm loãng biểu diễn tầng hiện tại; cự ly quá xa ($d=4$) gây độ lệch ngữ nghĩa quá lớn.
-
----
-
-### 3.4. Trụ Cột 4: Đo Đạc Hiệu Năng & Tài Nguyên Phần Cứng (Hardware Efficiency Profiling)
-* **Ý nghĩa phản biện ACL:** Bài báo đề xuất phương pháp kiến trúc mới bắt buộc phải chứng minh tính khả thi thực tế (real-world practicality).
-* **Quy chuẩn đo đạc (trên GPU NVIDIA A100-SXM4-40GB):**
-  1. **Số tham số huấn luyện ($\Delta \theta$):** Đếm chính xác số lượng parameters có `requires_grad=True`.
-  2. **Bộ nhớ GPU cực đại (Peak VRAM Footprint in GB):** Đo bằng `torch.cuda.max_memory_allocated()`.
-  3. **Tốc độ huấn luyện (Training Throughput):** Số mẫu xử lý mỗi giây (`samples/second`).
-  4. **Độ trễ suy luận (Inference Latency):** Thời gian sinh văn bản trung bình trên mỗi câu (`ms/sentence`, batch size 1 và batch size 16 với beam size 4).
-* **Đối tượng so sánh đồng nhất:**
-  * Vanilla Baseline
-  * LayerSkip (ACL 2024)
-  * Middle-Layer Alignment (ACL 2025)
-  * LoRA ($r=8$)
-  * **CLRR-Enc (Ours)**
-  * **JEPA + CLRR-Enc (Ours)**
-* **Kỳ vọng học thuật:** Bảng số liệu khẳng định CLRR đạt **Zero Parameter Overhead (0 tham số)** và **Gần như Zero Latency Overhead (<1% chênh lệch so với baseline)**, trong khi LayerSkip cần chi phí suy luận sớm và Middle-Align tốn gấp đôi chi phí forward encoder trong lúc train.
-
----
-
-### 3.5. Trụ Cột 5: Khái Quát Hóa Đa Ngôn Ngữ Bản Địa Cực Thấp Tài Nguyên (Cross-Lingual Generalization)
-* **Ý nghĩa phản biện ACL:** Đập tan nghi ngại: *"Phương pháp này chỉ ăn may trên tập dữ liệu 5.751 câu tiếng Amis"*.
-* **Thiết kế:**
-  * Lấy thêm một ngôn ngữ bản địa thuộc ngữ hệ Nam Đảo (Austronesian) cực thấp tài nguyên từ benchmark chuẩn quốc tế **FLORES-200** (ví dụ: **Pangasinan (`pag_Latn`)** hoặc **Maori (`mri_Latn`)** hoặc **Samoan (`smo_Latn`)** $\to$ Tiếng Trung (`zho_Hans`)), lấy mẫu tập nhỏ (subset $\sim 2.000$ câu) để mô phỏng điều kiện tài nguyên cực thấp tương đương tiếng Amis.
-  * Huấn luyện và so sánh: `mT5 Baseline` vs. `mT5 CLRR-Enc`.
-* **Kỳ vọng học thuật:** CLRR tiếp tục vượt trội Vanilla Baseline trên ngôn ngữ Nam Đảo thứ hai, chứng minh giá trị phổ quát cho cả họ ngôn ngữ ít tài nguyên.
+### 3.2. Backbone 3: `google/byt5-small` (12 Layers Encoder, 4 Layers Decoder — Byte-Level)
+* **Đặc trưng kiến trúc:**
+  * Mô hình xử lý cấp độ Byte (UTF-8, Token-free), không phụ thuộc vào từ vựng SentencePiece cố định.
+  * Kiến trúc **bất đối xứng cao**: 12 tầng Encoder nhưng chỉ có 4 tầng Decoder.
+  * Learning rate chuẩn: **`3e-4`**.
+* **Triển khai LayerSkip trên ByT5-small:**
+  * Encoder gồm $L=12$ tầng (`encoder.block`).
+  * Áp dụng stochastic layer dropout trên 12 tầng Encoder ($p_{\max} = 0.2$).
+* **Triển khai Middle-Layer Alignment trên ByT5-small:**
+  * Tổng số tầng Encoder $L=12$. Tầng giữa được chọn là **Tầng 6** ($i=6$).
+  * Đo lường khả năng căn chỉnh ngữ nghĩa trực tiếp từ chuỗi byte UTF-8 của tiếng Amis sang tiếng Trung.
 
 ---
 
 ## 4. Bảng Quy Chuẩn Siêu Tham Số Công Bằng Tuyệt Đối (Fair Comparison Protocol)
 
-| Siêu tham số | Vanilla Baseline | LoRA Baseline | CLRR-Enc (Ours) | CLRR + LoRA (Ours) | CLRR No-StopGrad |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Backbone Model** | `google/mt5-small` | `google/mt5-small` | `google/mt5-small` | `google/mt5-small` | `google/mt5-small` |
-| **Tham số thêm ($\Delta\theta$)** | **0** | **~0.35M** | **0** | **~0.35M** | **0** |
-| **Ngữ liệu (Train/Val/Test)** | 4.600 / 576 / 575 | 4.600 / 576 / 575 | 4.600 / 576 / 575 | 4.600 / 576 / 575 | 4.600 / 576 / 575 |
-| **Effective Batch Size** | 128 | 128 | 128 | 128 | 128 |
-| **Learning Rate** | `3e-4` | `3e-4` | `3e-4` | `3e-4` | `3e-4` |
-| **Epochs / Early Stopping** | 20 / Patience 4 | 20 / Patience 4 | 20 / Patience 4 | 20 / Patience 4 | 20 / Patience 4 |
-| **Precision** | BF16 | BF16 | BF16 | BF16 | BF16 |
-| **Test Beam Size** | 4 | 4 | 4 | 4 | 4 |
-| **Metric đánh giá** | SacreBLEU `zh` + chrF++ `word_order=2` | SacreBLEU `zh` + chrF++ `word_order=2` | SacreBLEU `zh` + chrF++ `word_order=2` | SacreBLEU `zh` + chrF++ `word_order=2` | SacreBLEU `zh` + chrF++ `word_order=2` |
+| Siêu tham số | `google/mt5-small` | `facebook/mbart-large-50` | `google/byt5-small` |
+| :--- | :---: | :---: | :---: |
+| **Loại Tokenizer** | SentencePiece Subword (250k) | mBART Subword (250k) | Raw UTF-8 Byte-level (256) |
+| **Số tầng Encoder / Decoder** | 8 / 8 | 12 / 12 | 12 / 4 (Bất đối xứng) |
+| **Middle Layer Index ($i$)** | **Layer 4** | **Layer 6** | **Layer 6** |
+| **Tập dữ liệu** | 4.600 train / 576 val / 575 test | 4.600 train / 576 val / 575 test | 4.600 train / 576 val / 575 test |
+| **Effective Batch Size** | 128 (16 x 8) | 128 (16 x 8) | 128 (16 x 8) |
+| **Learning Rate** | `3e-4` | **`5e-5`** | `3e-4` |
+| **Warmup Ratio** | 0.06 | 0.06 | 0.06 |
+| **Epochs / Early Stopping** | 20 / Patience 4 (val chrF++) | 20 / Patience 4 (val chrF++) | 20 / Patience 4 (val chrF++) |
+| **Precision** | BF16 | BF16 | BF16 |
+| **Generation Beam Size** | 4 | 4 | 4 |
+| **Metric đánh giá** | SacreBLEU `zh` + chrF++ `w=2` | SacreBLEU `zh` + chrF++ `w=2` | SacreBLEU `zh` + chrF++ `w=2` |
 
 ---
 
-## 5. Quy Trình Thực Thi BASH Qua SSH Colab (Tiết Kiệm Tối Đa Compute Units)
+## 5. Quy Trình Preflight Smoke Test Bắt Buộc
+
+Trước khi kích hoạt huấn luyện 20 epochs trên GPU A100:
+1. Nạp đồng thời cả 3 backbone: `mt5-small`, `mbart-large-50`, `byt5-small`.
+2. Kiểm tra forward pass 1 batch mẫu ($B=2$) cho cả `LayerSkip` và `MiddleAlign` trên từng backbone.
+3. Kiểm tra backward pass (`loss.backward()`) đảm bảo gradient cập nhật đầy đủ.
+4. Kiểm tra `generate(beam_size=4)` trên cả 3 tokenizer.
+5. Thời gian chạy smoke test: **~40 giây**.
+
+---
+
+## 6. Cơ Chế Thực Thi Thuần Túy Bằng BASH Qua SSH Colab
 
 ```
-[BƯỚC 1: Khởi động VM Colab A100]
+[BƯỚC 1: Khởi tạo Máy ảo A100]
   Lệnh: colab new -s colab --gpu A100
          │
-[BƯỚC 2: Preflight Smoke Test Tự Động (15 giây)]
-  ssh colab "cd /content/CLRR && git pull origin main && python scripts/smoke_test_acl.py"
+[BƯỚC 2: Đồng Bộ Code & Chạy Smoke Test 3 Backbone]
+  ssh colab "cd /content/CLRR && git pull origin main && python scripts/smoke_test_comparative.py"
          │
-[BƯỚC 3: Kích Hoạt Huấn Luyện Chuỗi Các Mô Hình ACL Mới]
-  ssh colab "export HF_TOKEN=... && bash /content/CLRR/scripts/run_acl_experiments.sh"
-  ├── Chạy LoRA & CLRR+LoRA (~6 phút)
-  ├── Chạy Stop-Gradient Ablation (~3 phút)
-  ├── Chạy Sensitivity Grid d & alpha (~12 phút)
-  ├── Chạy Efficiency Benchmark Profiling (~2 phút)
-  └── Tự động tổng hợp bảng kết quả vào outputs_acl/ và đẩy lên Hugging Face Hub
+[BƯỚC 3: Kích Hoạt Huấn Luyện 4 Mô Hình Bổ Sung Bằng BASH]
+  ssh colab "export HF_TOKEN=... && bash /content/CLRR/scripts/run_comparative_models.sh --backbones mbart,byt5"
+  ├── [Run 1] mBART-50 + LayerSkip (~15 phút) -> Push HF
+  ├── [Run 2] mBART-50 + Middle-Align (~18 phút) -> Push HF
+  ├── [Run 3] ByT5-small + LayerSkip (~12 phút) -> Push HF
+  └── [Run 4] ByT5-small + Middle-Align (~14 phút) -> Push HF
          │
-[BƯỚC 4: Ngắt Kết Nối & Tắt Máy Ngay Lập Tức]
-  Lệnh: colab stop -s colab (Bảo toàn tuyệt đối số dư 298+ Compute Units!)
+[BƯỚC 4: Tự Động Xuất Bảng Ma Trận Tổng Hợp 3x4 & Tắt Máy Ngay Lập Tức]
+  Lệnh: colab stop -s colab (Bảo toàn tuyệt đối số dư 290+ Compute Units!)
 ```
 
 ---
 
-## 6. Dự Toán Thời Gian & Tài Nguyên Trên GPU A100
+## 7. Dự Toán Thời Gian & Tài Nguyên Trên GPU A100
 
-* **Tổng thời gian GPU thực tế:** Khoảng **25 – 30 phút** trên GPU NVIDIA A100.
-* **Mức tiêu hao Compute Units:** ~2.0 – 2.5 compute units.
-* **Số dư khả dụng hiện tại của bạn:** **~298 compute units** $\to$ Chỉ tiêu tốn chưa tới **1%** tổng tài khoản của bạn, cực kỳ an toàn!
-* **Dung lượng lưu trữ:** Tối đa ~8 GB SSD NVMe trên 150 GB có sẵn tại `/content`.
+* **Tổng thời gian chạy 4 mô hình:** Khoảng **55 – 60 phút** trên GPU NVIDIA A100-SXM4-40GB.
+* **Mức tiêu hao Compute Units:** ~4.0 – 4.2 compute units.
+* **Số dư khả dụng hiện tại của bạn:** **~298.5 compute units** $\to$ Sau khi chạy xong vẫn còn **hơn 294 compute units** (chỉ tiêu tốn ~1.4% số dư)!
+* **Dung lượng lưu trữ:** Tối đa ~12 GB trên 150 GB SSD NVMe tại `/content`.
 
 ---
 
-## 7. Các Bảng Kết Quả Kỳ Vọng Cho Bài Báo ACL (Tables for ACL Submission)
+## 8. Bảng Kết Quả Kỳ Vọng Cho Bài Báo ACL (MA TRẬN ĐỐI SÁNH ĐA KIẾN TRÚC 3x4 HOÀN HẢO)
 
-### Bảng A: Đối Sánh Toàn Diện Giữa Parameter-Neutral, PEFT và ACL Baselines (Table 6)
-| Mô hình | Phương pháp | Bài báo tham chiếu | $\Delta\theta$ (Params) | Test BLEU | Test chrF++ | Kết luận học thuật |
+> [!TIP]
+> Đây sẽ là **Bảng Trung Tâm (Table 1 / Table 5 chính thức)** trong bài báo nộp ACL. Nó bao quát toàn diện mọi khía cạnh: từ Subword nhỏ, Mô hình dịch lớn, đến Byte-level không từ điển:
+
+| Backbone Kiến Trúc | Phương Pháp | Bài Báo Tham Chiếu | Extra Params | BLEU (zh) | chrF++ (w=2) | Phân Loại Học Thuật |
 | :--- | :--- | :--- | :---: | :---: | :---: | :--- |
-| `mt5-small` | Vanilla Baseline | Standard Seq2Seq | 0 | 2.79 | 3.81 | Baseline cơ sở |
-| `mt5-small` | **LayerSkip** | Elhoushi et al. (ACL 2024) | 0 | 3.97 | 5.29 | Stochastic Layer Dropout |
-| `mt5-small` | **LoRA** ($r=8$) | Hu et al. (ICLR 2022) | ~0.35M | *[Đang đo]* | *[Đang đo]* | Chuẩn PEFT hiện đại |
-| `mt5-small` | **Middle-Align** | Liu & Niehues (ACL 2025) | 0 | 4.75 | 5.94 | Semantic Middle Contrastive |
-| `mt5-small` | **CLRR-Enc (Ours)** | Proposed (0 params) | **0** | **4.44** | **5.18** | Đề xuất chính (Ablation) |
-| `mt5-small` | **JEPA+CLRR (Ours)** | Proposed (0 params) | **0** | **4.60** | **5.04** | Đề xuất chính (Main) |
-| `mt5-small` | **CLRR + LoRA (Ours)**| Proposed + PEFT | ~0.35M | *[Kỳ vọng >5.0]*| *[Kỳ vọng >6.0]*| **Hiệp đồng đa cơ chế đỉnh cao** |
-
-### Bảng B: Kiểm Chứng Vai Trò của Stop-Gradient (Table 7)
-| Biến thể kiến trúc | Toán tử Stop-Gradient | Test BLEU | Test chrF++ | $\Delta$ BLEU so với có sg | Cơ chế tác động |
-| :--- | :---: | :---: | :---: | :---: | :--- |
-| **CLRR-Enc (Ours)** | **CÓ (`detach()`)** | **4.44** | **5.18** | — | Bảo vệ ranh giới hình thái tầng nông |
-| **CLRR-Enc No-StopGrad**| **KHÔNG** | *[Kỳ vọng sụt giảm]* | *[Kỳ vọng sụt giảm]* | âm | Gradient sâu làm nhiễu tầng nông |
-
-### Bảng C: Bảng Hiệu Năng & Độ Trễ Phần Cứng Thực Tế (Table 8: Hardware Profile)
-| Phương pháp | Extra Params ($\Delta\theta$) | Train VRAM (GB) | Train Throughput (samples/s) | Inference Latency (ms/sent) | Relative Overhead |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Vanilla Baseline** | 0 | ~6.2 GB | ~120 s/s | ~42 ms | 1.00x (Base) |
-| **LayerSkip** | 0 | ~6.2 GB | ~111 s/s | ~43 ms | +2% |
-| **Middle-Align** | 0 | ~9.8 GB | ~68 s/s *(2x encoder)* | ~42 ms | +40% train cost |
-| **LoRA ($r=8$)** | ~0.35M | ~5.8 GB | ~122 s/s | ~43 ms | 0.95x |
-| **CLRR-Enc (Ours)** | **0** | **~6.2 GB** | **~118 s/s** | **~42 ms** | **0% (Zero Overhead)** |
+| **`mT5-small`** *(8-enc / 8-dec)* | Standard Fine-Tuning | Standard Baseline | 0 | 2.79 | 3.81 | Baseline cơ sở (Đã chốt) |
+| | **LayerSkip** | Elhoushi et al. (**ACL 2024**) | 0 | **3.97** | **5.29** | Measured Baseline (Đã chốt) |
+| | **Middle-Layer Align** | Liu & Niehues (**ACL 2025**) | 0 | **4.75** | **5.94** | Measured Baseline (Đã chốt) |
+| | **CLRR-Enc** (Ours) | Proposed (Ablation) | **0** | **4.44** | **5.18** | **Đề xuất của bạn (Đã chốt)** |
+| | **JEPA + CLRR-Enc** (Ours)| **Proposed (Main)** | **0** | **4.60** | **5.04** | **Đề xuất chính (Đã chốt)** |
+| | **JEPA + CLRR-Dec** (Ours)| Proposed (Decoder-only) | **0** | **4.83** | **5.19** | **Đề xuất của bạn (Đã chốt)** |
+| :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+| **`mBART-large-50`** *(12-enc / 12-dec)*| Standard Fine-Tuning | Translation Baseline | 0 | 19.61 | 14.05 | Baseline cơ sở (Đã chốt) |
+| | **LayerSkip** | Elhoushi et al. (**ACL 2024**) | 0 | *[Sắp chạy]* | *[Sắp chạy]* | Đối chuẩn ACL trên NMT lớn |
+| | **Middle-Layer Align** | Liu & Niehues (**ACL 2025**) | 0 | *[Sắp chạy]* | *[Sắp chạy]* | Đối chuẩn ACL trên NMT lớn |
+| | **JEPA + CLRR-Enc** (Ours)| **Proposed (Main)** | **0** | **20.39** | **19.08** | **Đề xuất chính (+5.03 chrF++)** |
+| :--- | :--- | :--- | :---: | :---: | :---: | :--- |
+| **`ByT5-small`** *(12-enc / 4-dec)* | Standard Fine-Tuning | Byte-Level Baseline | 0 | 7.58 | 8.31 | Baseline cơ sở (Đã chốt) |
+| | **LayerSkip** | Elhoushi et al. (**ACL 2024**) | 0 | *[Sắp chạy]* | *[Sắp chạy]* | Đối chuẩn ACL trên Byte-level |
+| | **Middle-Layer Align** | Liu & Niehues (**ACL 2025**) | 0 | *[Sắp chạy]* | *[Sắp chạy]* | Đối chuẩn ACL trên Byte-level |
+| | **JEPA + CLRR-Enc** (Ours)| **Proposed (Main)** | **0** | **7.31** | **8.10** | **Đề xuất chính (Đã chốt)** |
