@@ -22,22 +22,24 @@ Quyết định này giải quyết lỗi trước đây: prediction tính lại
 | Colab cell 5: `preflight` và `smoke` | Người dùng đã chạy thành công: năm ZIP được kiểm tra, sinh thử hai câu thành công. |
 | Colab cell 6: `analyze` | Người dùng xác nhận cell chạy xong không lỗi. Cả năm model cũ đã có điểm; theo luồng mã, cell chỉ kết thúc sau khi lệnh tải `analysis/` lên Hugging Face trả về. |
 | Colab cell 7: ByT5 (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Baseline và JEPA+CLRR-Enc đã train xong 20 epoch, nén best model và upload an toàn lên Hugging Face. |
-| Colab cell 8: mT5 Ablation (hai run mới) | Đang chờ người dùng bấm chạy trên Colab. |
-| Colab cell 9: báo cáo | Chưa có xác nhận hoàn tất. |
+| Colab cell 8: mT5 Ablation (hai run mới) | ĐÃ HOÀN TẤT 100%: cả Decoder-only và Both (Enc & Dec) đã train xong 20 epoch, đánh giá test và upload an toàn. |
+| Colab cell 9: báo cáo | Đang chờ người dùng bấm chạy trên Colab. |
 
 Trên máy cục bộ, các bài kiểm tra `test_followup.py` đã qua (12 test) và smoke training với model nhỏ đã tạo được checkpoint, best ZIP, metrics và predictions. Chúng không thay thế việc kiểm tra end-to-end với checkpoint riêng tư trên Colab.
 
-Điểm **tính lại** được người dùng gửi từ log cell 6 (cùng công thức SacreBLEU và reference gốc):
+Điểm **tính lại và bổ sung** được người dùng gửi từ log cell 6, cell 7 và cell 8 (cùng công thức SacreBLEU và reference gốc):
 
-| Checkpoint cũ | BLEU (zh) | chrF++ |
-| --- | ---: | ---: |
-| `mt5-small-ami-cmn-baseline` | 2.788710 | 3.812914 |
-| `mt5-small-ami-cmn-clrr-enc` | 4.439348 | 5.176137 |
-| `mt5-small-ami-cmn-jepa-clrr-enc` | 4.596068 | 5.042505 |
-| `mbart-large-50-ami-cmn-baseline` | 19.614440 | 14.054668 |
-| `mbart-large-50-ami-cmn-jepa-clrr-enc` | 20.389642 | 19.082384 |
-| `byt5-small-ami-cmn-baseline` | 7.583667 | 8.305717 |
-| `byt5-small-ami-cmn-jepa-clrr-enc` | 7.310815 | 8.095555 |
+| Checkpoint / Cấu hình | BLEU (zh) | chrF++ | Ghi chú kiến trúc |
+| --- | ---: | ---: | --- |
+| `mt5-small-ami-cmn-baseline` | 2.788710 | 3.812914 | Baseline chuẩn mT5 |
+| `mt5-small-ami-cmn-clrr-enc` | 4.439348 | 5.176137 | CLRR trên Encoder |
+| `mt5-small-ami-cmn-jepa-clrr-enc` | 4.596068 | 5.042505 | JEPA + CLRR trên Encoder |
+| `mt5-small-ami-cmn-jepa-clrr-dec` | 4.925713 | 5.921437 | Ablation: JEPA + CLRR trên Decoder |
+| `mt5-small-ami-cmn-jepa-clrr-both` | 3.495116 | 5.283749 | Ablation: JEPA + CLRR trên cả 2 stack |
+| `mbart-large-50-ami-cmn-baseline` | 19.614440 | 14.054668 | Baseline mBART-50 |
+| `mbart-large-50-ami-cmn-jepa-clrr-enc` | 20.389642 | 19.082384 | JEPA + CLRR trên Encoder (+5.03 chrF++) |
+| `byt5-small-ami-cmn-baseline` | 7.583667 | 8.305717 | Baseline ByT5 (Byte-level) |
+| `byt5-small-ami-cmn-jepa-clrr-enc` | 7.310815 | 8.095555 | JEPA + CLRR trên ByT5 |
 
 Các cảnh báo tokenizer regex, `Seq2SeqTrainer.tokenizer` và generation config xuất hiện trong log nhưng không làm dừng năm lượt phân tích trên. Chưa kết luận chúng không ảnh hưởng tới điểm; các phép so sánh bổ sung dùng nhất quán cùng mã chấm điểm đã chốt.
 
