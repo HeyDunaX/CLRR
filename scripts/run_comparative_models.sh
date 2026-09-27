@@ -18,9 +18,10 @@ echo "[Runner] Current working directory: $(pwd)"
 echo "[Runner] Checking GPU specifications:"
 nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader || echo "No nvidia-smi found"
 
-# Ensure runtime dependencies
+# Ensure runtime dependencies matching pyproject.toml
 echo "[Runner] Ensuring required Python packages are installed..."
-pip install --quiet sacrebleu protobuf pypdf huggingface_hub
+pip install --quiet sacrebleu protobuf pypdf huggingface_hub "transformers>=4.45,<5"
+
 
 # Step 1: Preflight Smoke Test
 echo ""
