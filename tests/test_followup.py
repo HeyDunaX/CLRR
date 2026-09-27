@@ -55,6 +55,32 @@ class FollowupTests(unittest.TestCase):
             with self.assertRaisesRegex(FileNotFoundError, "model weights"):
                 extract_best(archive_path, root / "best_model")
 
+    def test_wrapped_archive_restores_missing_base_config(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive_path = root / "wrapped.zip"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                for name in ("training_args.bin", "tokenizer_config.json", "pytorch_model.bin"):
+                    archive.writestr(name, b"placeholder")
+            best_dir = root / "best_model"
+            with patch("followup_analysis.AutoConfig.from_pretrained") as from_pretrained:
+                from_pretrained.return_value.save_pretrained.side_effect = lambda path: (
+                    Path(path) / "config.json"
+                ).write_text("{}", encoding="utf-8")
+                extract_best(archive_path, best_dir, "mt5-small-ami-cmn-clrr-enc")
+            from_pretrained.assert_called_once_with("google/mt5-small")
+            self.assertTrue((best_dir / "config.json").exists())
+
+    def test_baseline_archive_without_config_is_rejected(self) -> None:
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            archive_path = root / "baseline.zip"
+            with zipfile.ZipFile(archive_path, "w") as archive:
+                for name in ("training_args.bin", "tokenizer_config.json", "pytorch_model.bin"):
+                    archive.writestr(name, b"placeholder")
+            with self.assertRaisesRegex(FileNotFoundError, "config.json"):
+                extract_best(archive_path, root / "best_model", "mt5-small-ami-cmn-baseline")
+
     def test_prediction_rows_must_match_original_test_order(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "predictions.csv"

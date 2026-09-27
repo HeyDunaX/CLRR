@@ -19,11 +19,11 @@ from datasets import Dataset
 from huggingface_hub import HfApi, hf_hub_download
 from sacrebleu.metrics import BLEU, CHRF
 from sacrebleu.significance import PairedTest
-from transformers import AutoTokenizer, DataCollatorForSeq2Seq, Seq2SeqTrainer
+from transformers import AutoConfig, AutoTokenizer, DataCollatorForSeq2Seq, Seq2SeqTrainer
 
 from amis_rewire.metrics import generation_metrics, safe_decode_inputs
 from amis_rewire.modeling import _find_stack_layers, load_model
-from amis_rewire.train import build_compute_metrics, configure_mbart, tokenize_dataset
+from amis_rewire.train import MODEL_DEFAULTS, build_compute_metrics, configure_mbart, tokenize_dataset
 
 
 REPO = "FiveC/amis-rewire-checkpoints"
@@ -71,7 +71,7 @@ def fetch_file(repo: str, filename: str) -> Path:
     )
 
 
-def extract_best(archive_path: Path, destination: Path) -> None:
+def extract_best(archive_path: Path, destination: Path, run_name: str | None = None) -> None:
     has_weights = (destination / "pytorch_model.bin").exists() or (
         destination / "model.safetensors"
     ).exists()
@@ -87,12 +87,16 @@ def extract_best(archive_path: Path, destination: Path) -> None:
         archive.extractall(destination)
     if not (destination / "training_args.bin").exists():
         raise FileNotFoundError(f"training_args.bin is missing from {archive_path}")
-    if not (destination / "config.json").exists():
-        raise FileNotFoundError(f"config.json is missing from {archive_path}")
     if not (destination / "tokenizer_config.json").exists() or not (
         (destination / "pytorch_model.bin").exists() or (destination / "model.safetensors").exists()
     ):
         raise FileNotFoundError(f"Tokenizer or model weights are missing from {archive_path}")
+    if not (destination / "config.json").exists():
+        backbone = run_name.split("-ami-cmn-")[0] if run_name else None
+        if run_name not in MAIN_RUNS or MAIN_RUNS[run_name][0] == "baseline" or backbone not in MODEL_DEFAULTS:
+            raise FileNotFoundError(f"config.json is missing from {archive_path}")
+        AutoConfig.from_pretrained(MODEL_DEFAULTS[backbone]).save_pretrained(destination)
+        print(f"[preflight] {run_name}: restored base config.json for wrapped model", flush=True)
 
 
 def read_training_args(best_dir: Path, run_name: str) -> dict[str, object]:
@@ -128,7 +132,7 @@ def preflight(repo: str, output_root: Path, data_dir: Path) -> dict[str, dict[st
     for run in MAIN_RUNS:
         archive = fetch_file(repo, remote_file(run, f"{run}-best.zip"))
         best_dir = output_root / "reference_models" / run / "best_model"
-        extract_best(archive, best_dir)
+        extract_best(archive, best_dir, run)
         checked[run] = {"best_dir": str(best_dir), "training_args": read_training_args(best_dir, run)}
         print(f"[preflight] {run}: archive and training arguments OK", flush=True)
     analysis_dir = output_root / "analysis"
