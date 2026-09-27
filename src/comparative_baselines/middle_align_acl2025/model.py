@@ -84,8 +84,10 @@ class MiddleAlignMT5(nn.Module):
         labels: Optional[torch.Tensor] = None,
         **kwargs: Any,
     ) -> Seq2SeqLMOutput:
+        kwargs.pop("num_items_in_batch", None)
         # Standard Seq2Seq forward pass
         outputs = self.base_model(
+
             input_ids=input_ids,
             attention_mask=attention_mask,
             decoder_input_ids=decoder_input_ids,

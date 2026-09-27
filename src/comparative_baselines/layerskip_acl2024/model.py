@@ -99,7 +99,9 @@ class LayerSkipMT5(nn.Module):
         return hook
 
     def forward(self, *args: Any, **kwargs: Any) -> Any:
+        kwargs.pop("num_items_in_batch", None)
         return self.base_model(*args, **kwargs)
+
 
     def generate(self, *args: Any, **kwargs: Any) -> Any:
         return self.base_model.generate(*args, **kwargs)
