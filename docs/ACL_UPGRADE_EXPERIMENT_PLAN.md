@@ -7,13 +7,13 @@
 >    * Tránh tạo thêm nhiều file kế hoạch `.md` rời rạc trong thư mục `docs/`.
 > 2. **Tài Liệu Này Là Bộ Khung Chuẩn (Canonical Blueprint):**
 >    * File này lưu trữ mẫu cấu trúc định dạng (Format Template) chuẩn mực mà USER yêu cầu.
->    * Mọi phiên làm việc sau khi cần khởi tạo hoặc tái cấu trúc `implementation_plan` bắt buộc phải đọc và bám sát chính xác **8 phần bất biến** được định nghĩa dưới đây.
+>    * Mọi phiên làm việc sau khi cần khởi tạo hoặc tái cấu trúc `implementation_plan` bắt buộc phải đọc và bám sát chính xác **9 phần bất biến** được định nghĩa dưới đây.
 
 ---
 
-## CẤU TRÚC 8 PHẦN BẤT BIẾN CỦA MỘT PLAN THỰC NGHIỆM CHUẨN
+## CẤU TRÚC 9 PHẦN BẤT BIẾN CỦA MỘT PLAN THỰC NGHIỆM CHUẨN
 
-Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_plan`, nội dung phải tuân thủ nghiêm ngặt cấu trúc 8 phần sau:
+Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_plan`, nội dung phải tuân thủ nghiêm ngặt cấu trúc 9 phần sau:
 
 ---
 
@@ -39,7 +39,16 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 
 ---
 
-### PHẦN 3: ĐẶC TẢ KỸ THUẬT CHI TIẾT (TECHNICAL SPECIFICATIONS)
+### PHẦN 3: DANH SÁCH FILE SẼ CHỈNH SỬA, TẠO MỚI & BẢO TỒN (FILES TO BE MODIFIED / CREATED)
+* **Thẻ định dạng:** Bảng Markdown (`| Loại Thao Tác | Đường Dẫn File | Mục Đích & Phạm Vi Thay Đổi Cụ Thể |`).
+* **Nội dung bắt buộc:**
+  1. **Nhóm File Chỉnh Sửa (Modified Files):** Ghi rõ tên file và nội dung thay đổi chính xác.
+  2. **Nhóm File Tạo Mới (New / Created Files):** Liệt kê script chạy mới, runner bash, artifact output mới.
+  3. **Nhóm File Bảo Tồn Nguyên Vẹn (Strictly Frozen / Untouched Files):** Khẳng định danh sách file cốt lõi không bao giờ bị đụng chạm.
+
+---
+
+### PHẦN 4: ĐẶC TẢ KỸ THUẬT CHI TIẾT (TECHNICAL SPECIFICATIONS)
 * **Nội dung bắt buộc cho từng phương pháp / backbone:**
   * **Trích dẫn BibTeX chính thức** của bài báo tham chiếu.
   * **Công thức toán học chuẩn LaTeX:** Diễn giải rõ các biến, chỉ số tầng, hàm loss, hệ số phạt, nhiệt độ $\tau$.
@@ -48,7 +57,7 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 
 ---
 
-### PHẦN 4: BẢNG QUY CHUẨN SIÊU THAM SỐ CÔNG BẰNG TUYỆT ĐỐI (FAIR COMPARISON PROTOCOL)
+### PHẦN 5: BẢNG QUY CHUẨN SIÊU THAM SỐ CÔNG BẰNG TUYỆT ĐỐI (FAIR COMPARISON PROTOCOL)
 * **Thẻ định dạng:** Bảng Markdown (`| Cột 1 | Cột 2 | ... |`).
 * **Các tham số bắt buộc phải liệt kê so sánh:**
   * Model Backbone
@@ -66,15 +75,15 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 
 ---
 
-### PHẦN 5: QUY TRÌNH PREFLIGHT SMOKE TEST BẮT BUỘC
+### PHẦN 6: QUY TRÌNH PREFLIGHT SMOKE TEST BẮT BUỘC
 * **Nội dung bắt buộc:**
   * Mục tiêu kiểm thử: Nạp mô hình trên 1 batch nhỏ ($B=2$), chạy 1 forward pass, 1 backward pass (`loss.backward()`), 1 bước sinh mẫu (`generate()`), và kiểm tra quyền ghi Hugging Face Hub.
-  * Giới hạn thời gian: $\le 30$ giây.
+  * Giới hạn thời gian: $\le 30 - 45$ giây.
   * Câu lệnh thực thi cụ thể: `python scripts/smoke_test_....py`.
 
 ---
 
-### PHẦN 6: CƠ CHẾ THỰC THI THUẦN TÚY BẰNG BASH QUA SSH COLAB
+### PHẦN 7: CƠ CHẾ THỰC THI THUẦN TÚY BẰNG BASH QUA SSH COLAB
 * **Nội dung bắt buộc:** Sơ đồ luồng xử lý dạng khối (ASCII Flowchart):
   * **Bước 1:** Khởi tạo phiên máy ảo (`colab new -s colab --gpu A100`).
   * **Bước 2:** Chạy Smoke Test xác thực môi trường (`ssh colab "python scripts/smoke_test_..."`).
@@ -83,7 +92,7 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 
 ---
 
-### PHẦN 7: DỰ TOÁN THỜI GIAN & TÀI NGUYÊN TRÊN GPU A100
+### PHẦN 8: DỰ TOÁN THỜI GIAN & TÀI NGUYÊN TRÊN GPU A100
 * **Nội dung bắt buộc:**
   * Tổng thời gian GPU thực tế dự kiến (phút / giờ).
   * Lượng Compute Units tiêu hao dự kiến (tính theo đơn giá ~4.2 CU/giờ cho A100).
@@ -92,7 +101,7 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 
 ---
 
-### PHẦN 8: BẢNG KẾT QUẢ KỲ VỌNG CHO BÀI BÁO (EXPECTED RESULT TABLE/MATRIX)
+### PHẦN 9: BẢNG KẾT QUẢ KỲ VỌNG CHO BÀI BÁO (EXPECTED RESULT TABLE/MATRIX)
 * **Thẻ định dạng:** Bảng Markdown hoàn chỉnh với đầy đủ các cột:
   * Backbone Kiến trúc
   * Tên Phương pháp
@@ -124,21 +133,28 @@ Mỗi khi soạn thảo hoặc cập nhật kế hoạch trong `implementation_p
 ## 2. Cây Thư Mục Dự Án (Project Directory Tree)
 ...
 
-## 3. Đặc Tả Kỹ Thuật Chi Tiết (Technical Specifications)
+## 3. Danh Sách File Sẽ Chỉnh Sửa, Tạo Mới & Bảo Tồn (Files to be Modified / Created)
+| Loại thao tác | Đường dẫn file | Mục đích & Phạm vi thay đổi cụ thể |
+| :--- | :--- | :--- |
+| **Chỉnh sửa (Modified)** | `src/...` | ... |
+| **Tạo mới (New/Created)** | `scripts/...` | ... |
+| **Bảo tồn (Frozen 100%)** | `src/amis_rewire/...` | Giữ nguyên tuyệt đối 100% |
+
+## 4. Đặc Tả Kỹ Thuật Chi Tiết (Technical Specifications)
 ...
 
-## 4. Bảng Quy Chuẩn Siêu Tham Số Công Bằng Tuyệt Đối (Fair Comparison Protocol)
+## 5. Bảng Quy Chuẩn Siêu Tham Số Công Bằng Tuyệt Đối (Fair Comparison Protocol)
 ...
 
-## 5. Quy Trình Preflight Smoke Test Bắt Buộc
+## 6. Quy Trình Preflight Smoke Test Bắt Buộc
 ...
 
-## 6. Cơ Chế Thực Thi Thuần Túy Bằng BASH Qua SSH Colab
+## 7. Cơ Chế Thực Thi Thuần Túy Bằng BASH Qua SSH Colab
 ...
 
-## 7. Dự Toán Thời Gian & Tài Nguyên Trên GPU A100
+## 8. Dự Toán Thời Gian & Tài Nguyên Trên GPU A100
 ...
 
-## 8. Bảng Kết Quả Kỳ Vọng Cho Bài Báo (Expected Result Table/Matrix)
+## 9. Bảng Kết Quả Kỳ Vọng Cho Bài Báo (Expected Result Table/Matrix)
 ...
 ```
