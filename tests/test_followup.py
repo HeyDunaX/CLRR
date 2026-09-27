@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import sys
 import tempfile
 import unittest
@@ -19,10 +20,16 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from followup_analysis import (
     EXPECTED_ARGS,
+    MAIN_RUNS,
+    NEW_RUNS,
     extract_best,
     holm_adjust,
+    measure_cosines,
+    metric_targets_for_backbone,
+    predict_like_main_run,
     read_predictions,
     read_training_args,
+    report,
     sentence_cosines,
 )
 from run_followup_models import restore_latest, training_command
@@ -93,10 +100,87 @@ class FollowupTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "differs from test.csv"):
                 read_predictions(path, frame)
 
+    def test_local_analysis_smoke_uses_decoded_labels_and_cosines(self) -> None:
+        from tokenizers import Tokenizer, models, pre_tokenizers
+        from transformers import PreTrainedTokenizerFast, Seq2SeqTrainingArguments, T5Config, T5ForConditionalGeneration
+        from amis_rewire.modeling import CrossLayerResidualRewire
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            best_dir = root / "best_model"
+            best_dir.mkdir()
+            vocab = {"[PAD]": 0, "[UNK]": 1, "</s>": 2, "a": 3, "b": 4, "x": 5, "y": 6}
+            vocab.update({f"extra{i}": i for i in range(7, 20)})
+            backend = Tokenizer(models.WordLevel(vocab, unk_token="[UNK]"))
+            backend.pre_tokenizer = pre_tokenizers.Whitespace()
+            tokenizer = PreTrainedTokenizerFast(tokenizer_object=backend, pad_token="[PAD]", unk_token="[UNK]", eos_token="</s>")
+            model = T5ForConditionalGeneration(T5Config(
+                vocab_size=20, d_model=16, d_ff=32, num_layers=1, num_decoder_layers=1,
+                num_heads=2, pad_token_id=0, eos_token_id=2, decoder_start_token_id=0,
+            ))
+            model.generate = lambda **kwargs: torch.full(
+                (kwargs["input_ids"].shape[0], 2), 2, dtype=torch.long, device=kwargs["input_ids"].device
+            )
+            args = Seq2SeqTrainingArguments(
+                output_dir=str(root / "training"), eval_strategy="epoch", save_strategy="epoch",
+                load_best_model_at_end=True, predict_with_generate=True,
+                per_device_eval_batch_size=2, use_cpu=True, report_to=[],
+            )
+            torch.save(args, best_dir / "training_args.bin")
+            frame = pd.DataFrame({"source": ["a b", "b a"], "target": ["x  y", "y  x"]})
+            predictions, targets = predict_like_main_run(
+                model, tokenizer, frame, best_dir, root / "prediction"
+            )
+            self.assertEqual(len(predictions), 2)
+            self.assertEqual(targets, ["x y", "y x"])
+            reference_dir = root / "reference_models" / "mt5-small-ami-cmn-baseline" / "best_model"
+            reference_dir.mkdir(parents=True)
+            tokenizer.save_pretrained(reference_dir)
+            self.assertEqual(metric_targets_for_backbone("mt5-small", frame, root), targets)
+            self.assertEqual(len(measure_cosines(model, tokenizer, torch.device("cpu"), frame, 2)), 2)
+            wrapped = CrossLayerResidualRewire(model, distance=1)
+            self.assertEqual(len(measure_cosines(wrapped, tokenizer, torch.device("cpu"), frame, 2)), 2)
+
     def test_cosine_uses_only_unmasked_tokens(self) -> None:
         hidden = torch.tensor([[[1.0, 0.0], [0.0, 1.0], [1.0, 0.0]]])
         mask = torch.tensor([[True, True, False]])
         self.assertAlmostEqual(sentence_cosines(hidden, mask)[0], 0.0, places=6)
+
+    def test_local_report_smoke_writes_artifacts(self) -> None:
+        from sacrebleu.significance import PairedTest
+        from amis_rewire.metrics import generation_metrics
+
+        frame = pd.read_csv(ROOT / "data" / "processed" / "test.csv").fillna("")
+        with tempfile.TemporaryDirectory() as temporary:
+            output_root = Path(temporary)
+            for run in (*MAIN_RUNS, *NEW_RUNS):
+                predictions = frame.copy()
+                predictions.insert(0, "index", range(len(frame)))
+                predictions["prediction"] = predictions["target"]
+                if run in MAIN_RUNS:
+                    path = output_root / "analysis" / "predictions" / f"{run}.csv"
+                else:
+                    path = output_root / run / "test_predictions.csv"
+                    scores = generation_metrics(predictions["prediction"].tolist(), frame["target"].tolist())
+                    (output_root / run).mkdir(parents=True)
+                    (output_root / run / "metrics.json").write_text(
+                        json.dumps({"test_bleu": scores["bleu"], "test_chrf++": scores["chrf++"]}),
+                        encoding="utf-8",
+                    )
+                path.parent.mkdir(parents=True, exist_ok=True)
+                predictions.to_csv(path, index=False)
+
+            def short_paired_test(*args, **kwargs):
+                kwargs["n_samples"] = 10
+                return PairedTest(*args, **kwargs)
+
+            with patch("followup_analysis.metric_targets_for_backbone", return_value=frame["target"].tolist()), \
+                 patch("followup_analysis.PairedTest", side_effect=short_paired_test), \
+                 patch("followup_analysis.HfApi"), \
+                 patch.dict("os.environ", {"HF_TOKEN": "local-smoke"}):
+                report("local/smoke", output_root, ROOT / "data" / "processed")
+            for name in ("all_scores.csv", "paired_bootstrap.csv", "case_candidates.csv", "analysis_notes.txt"):
+                self.assertTrue((output_root / "analysis" / name).exists())
 
     def test_followup_command_keeps_protocol_and_remote_folder(self) -> None:
         command = training_command(

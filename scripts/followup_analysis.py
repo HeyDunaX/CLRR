@@ -181,7 +181,7 @@ def generate_rows(model, tokenizer, device, frame: pd.DataFrame, batch_size: int
     return [prediction.strip() for prediction in predictions]
 
 
-def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path, output_dir: Path) -> list[str]:
+def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path, output_dir: Path) -> tuple[list[str], list[str]]:
     """Use the same collator and Seq2SeqTrainer generation path as train.py."""
     args = torch.load(best_dir / "training_args.bin", map_location="cpu", weights_only=False)
     args.output_dir = str(output_dir)
@@ -205,10 +205,11 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
     generated = result.predictions[0] if isinstance(result.predictions, tuple) else result.predictions
     predictions = tokenizer.batch_decode(safe_decode_inputs(generated), skip_special_tokens=True)
     predictions = [prediction.strip() for prediction in predictions]
-    scores = generation_metrics(predictions, frame["target"].tolist())
+    metric_targets = tokenizer.batch_decode(safe_decode_inputs(result.label_ids), skip_special_tokens=True)
+    scores = generation_metrics(predictions, metric_targets)
     if abs(scores["bleu"] - result.metrics["test_bleu"]) > 1e-5 or abs(scores["chrf++"] - result.metrics["test_chrf++"]) > 1e-5:
-        raise ValueError("Decoded predictions do not reproduce Seq2SeqTrainer test metrics")
-    return predictions
+        raise ValueError(f"Decoded predictions disagree with Seq2SeqTrainer: {scores} vs {result.metrics}")
+    return predictions, metric_targets
 
 
 def sentence_cosines(hidden: torch.Tensor, mask: torch.Tensor) -> list[float | None]:
@@ -243,7 +244,7 @@ def measure_cosines(model, tokenizer, device, frame: pd.DataFrame, batch_size: i
                 valid = encoded["attention_mask"].bool()
                 for special_id in tokenizer.all_special_ids:
                     valid &= encoded["input_ids"] != special_id
-                encoded = {key: value.to(device) for key, value in encoded.items()}
+                encoded = {key: encoded[key].to(device) for key in ("input_ids", "attention_mask")}
                 fresh_cache = model._fresh_cache() if hasattr(model, "_fresh_cache") else nullcontext()
                 captured.clear()
                 with fresh_cache:
@@ -314,12 +315,12 @@ def analyze(repo: str, output_root: Path, data_dir: Path, batch_size: int) -> No
             layer_scores = measure_cosines(model, tokenizer, device, frame, batch_size)
             layer_scores.insert(0, "run", run)
             all_cosines.append(layer_scores)
-        predictions = predict_like_main_run(
+        predictions, metric_targets = predict_like_main_run(
             model, tokenizer, frame, Path(checked[run]["best_dir"]), output_root / "trainer_tmp" / run
         )
         if len(predictions) != 575:
             raise ValueError(f"{run} produced {len(predictions)} predictions instead of 575")
-        scores = generation_metrics(predictions, frame["target"].tolist())
+        scores = generation_metrics(predictions, metric_targets)
         if abs(scores["bleu"] - expected_bleu) > 0.02 or abs(scores["chrf++"] - expected_chrf) > 0.02:
             raise ValueError(
                 f"{run} score mismatch: regenerated {scores}, reported BLEU={expected_bleu}, chrF++={expected_chrf}"
@@ -365,12 +366,31 @@ def holm_adjust(p_values: list[float]) -> list[float]:
     return adjusted
 
 
+def metric_targets_for_backbone(backbone: str, frame: pd.DataFrame, output_root: Path) -> list[str]:
+    baseline = output_root / "reference_models" / f"{backbone}-ami-cmn-baseline" / "best_model"
+    if backbone == "byt5-small":
+        baseline = output_root / "byt5-small-ami-cmn-baseline" / "best_model"
+    source = baseline if (baseline / "tokenizer_config.json").exists() else MODEL_DEFAULTS[backbone]
+    tokenizer = AutoTokenizer.from_pretrained(source, use_fast=True)
+    if tokenizer.__class__.__name__.lower().startswith("mbart"):
+        tokenizer.src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else (
+            "id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX"
+        )
+        tokenizer.tgt_lang = "zh_CN"
+    labels = tokenizer(text_target=frame["target"].tolist(), max_length=256, truncation=True)["input_ids"]
+    return tokenizer.batch_decode(labels, skip_special_tokens=True)
+
+
 def report(repo: str, output_root: Path, data_dir: Path) -> None:
     frame = test_frame(data_dir)
     analysis_dir = output_root / "analysis"
     prediction_dir = analysis_dir / "predictions"
     prediction_dir.mkdir(parents=True, exist_ok=True)
     runs = (*MAIN_RUNS, *NEW_RUNS)
+    metric_targets = {
+        backbone: metric_targets_for_backbone(backbone, frame, output_root)
+        for backbone in ("mt5-small", "mbart-large-50", "byt5-small")
+    }
     predictions = {}
     scores = []
     for run in runs:
@@ -384,7 +404,8 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         if not path.exists() and run in MAIN_RUNS:
             raise FileNotFoundError(f"Run analyze first: {path}")
         predictions[run] = read_predictions(path, frame)
-        run_scores = generation_metrics(predictions[run], frame["target"].tolist())
+        backbone = run.split("-ami-cmn-")[0]
+        run_scores = generation_metrics(predictions[run], metric_targets[backbone])
         if run in NEW_RUNS:
             metrics_path = output_root / run / "metrics.json"
             if not metrics_path.exists():
@@ -410,7 +431,7 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         signatures, results = PairedTest(
             named_systems=[(base, predictions[base]), (challenger, predictions[challenger])],
             metrics={"BLEU": BLEU(tokenize="zh"), "chrF++": CHRF(word_order=2)},
-            references=[frame["target"].tolist()],
+            references=[metric_targets[base.split("-ami-cmn-")[0]]],
             test_type="bs",
             n_samples=10000,
             n_jobs=1,
@@ -455,6 +476,7 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
         analysis_dir / "case_candidates.csv", index=False, encoding="utf-8"
     )
     (analysis_dir / "analysis_notes.txt").write_text(
+        "Scores use targets decoded by each backbone tokenizer, matching train.py. "
         "Paired bootstrap resamples 575 test sentences, seed 42, 10,000 samples. "
         "Holm correction applies to the six primary p-values (three backbones x two metrics). "
         "Decoder/both comparisons are exploratory. All models use one training seed, "
