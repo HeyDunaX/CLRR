@@ -20,7 +20,8 @@ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader ||
 
 # Ensure runtime dependencies matching pyproject.toml
 echo "[Runner] Ensuring required Python packages are installed..."
-pip install --quiet sacrebleu protobuf pypdf huggingface_hub "transformers>=4.45,<5"
+pip install --quiet sacrebleu protobuf pypdf huggingface_hub 'transformers<5.0'
+
 
 
 # Step 1: Preflight Smoke Test
