@@ -18,6 +18,7 @@ dependencies = [
   "accelerate>=0.34,<2",
   "tqdm>=4.66,<5",
   "huggingface_hub>=0.24,<1",
+  "matplotlib>=3.7,<4",
 ]
 
 [project.scripts]

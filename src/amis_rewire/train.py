@@ -54,10 +54,17 @@ class ConsoleMetricsCallback(TrainerCallback):
 class CheckpointBackupCallback(TrainerCallback):
     """Archives each saved checkpoint so an ephemeral Colab runtime is recoverable."""
 
-    def __init__(self, backup_dir: Path, run_name: str, hf_backup_repo: str | None = None):
+    def __init__(
+        self,
+        backup_dir: Path,
+        run_name: str,
+        hf_backup_repo: str | None = None,
+        hf_backup_prefix: str = "",
+    ):
         self.backup_dir = backup_dir / run_name
         self.run_name = run_name
         self.hf_backup_repo = hf_backup_repo
+        self.hf_backup_prefix = hf_backup_prefix.strip("/")
         self.hf_api = None
         if hf_backup_repo:
             token = os.environ.get("HF_TOKEN")
@@ -82,14 +89,27 @@ class CheckpointBackupCallback(TrainerCallback):
         if self.hf_api is not None:
             self.hf_api.upload_file(
                 path_or_fileobj=str(archive_path),
-                path_in_repo=f"{self.run_name}/{archive_path.name}",
+                path_in_repo=remote_path(self.hf_backup_prefix, self.run_name, archive_path.name),
                 repo_id=self.hf_backup_repo,
                 repo_type="model",
             )
-            print(f"[backup] uploaded {self.run_name}/{archive_path.name}", flush=True)
+            print(
+                f"[backup] uploaded {remote_path(self.hf_backup_prefix, self.run_name, archive_path.name)}",
+                flush=True,
+            )
 
 
-def archive_best_model(best_model_dir: Path, backup_dir: Path, run_name: str, hf_backup_repo: str | None) -> None:
+def remote_path(prefix: str, run_name: str, filename: str) -> str:
+    return "/".join(part for part in (prefix.strip("/"), run_name, filename) if part)
+
+
+def archive_best_model(
+    best_model_dir: Path,
+    backup_dir: Path,
+    run_name: str,
+    hf_backup_repo: str | None,
+    hf_backup_prefix: str = "",
+) -> None:
     """Archive the selected best model separately from resumable checkpoints."""
     backup_run_dir = backup_dir / run_name
     backup_run_dir.mkdir(parents=True, exist_ok=True)
@@ -107,11 +127,15 @@ def archive_best_model(best_model_dir: Path, backup_dir: Path, run_name: str, hf
             raise RuntimeError("HF_TOKEN is required when --hf-backup-repo is set.")
         HfApi(token=token).upload_file(
             path_or_fileobj=str(archive_path),
-            path_in_repo=f"{run_name}/{archive_path.name}",
+            path_in_repo=remote_path(hf_backup_prefix, run_name, archive_path.name),
             repo_id=hf_backup_repo,
             repo_type="model",
         )
-        print(f"[backup] best model uploaded to {hf_backup_repo}/{run_name}/{archive_path.name}", flush=True)
+        print(
+            f"[backup] best model uploaded to {hf_backup_repo}/"
+            f"{remote_path(hf_backup_prefix, run_name, archive_path.name)}",
+            flush=True,
+        )
 
 
 def parse_args() -> argparse.Namespace:
@@ -127,6 +151,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", default="outputs")
     parser.add_argument("--backup-dir", default="backups")
     parser.add_argument("--hf-backup-repo", default=None, help="Private HF repo, e.g. user/amis-rewire-checkpoints.")
+    parser.add_argument("--hf-backup-prefix", default="", help="Optional folder inside the HF backup repo.")
     parser.add_argument("--run-name", default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--num-train-epochs", type=float, default=5.0)
@@ -306,7 +331,9 @@ def main() -> None:
         callbacks=[
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
-            CheckpointBackupCallback(Path(args.backup_dir), run_name, args.hf_backup_repo),
+            CheckpointBackupCallback(
+                Path(args.backup_dir), run_name, args.hf_backup_repo, args.hf_backup_prefix
+            ),
         ],
     )
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
@@ -322,11 +349,32 @@ def main() -> None:
     validation_metrics = trainer.evaluate(validation_dataset, metric_key_prefix="eval")
     # Switch to full beam search for final test evaluation
     trainer.args.generation_num_beams = args.num_beams
-    test_metrics = trainer.evaluate(test_dataset, metric_key_prefix="test")
+    test_output = trainer.predict(test_dataset, metric_key_prefix="test")
+    test_metrics = test_output.metrics
+    test_predictions = test_output.predictions
+    if isinstance(test_predictions, tuple):
+        test_predictions = test_predictions[0]
+    decoded_predictions = tokenizer.batch_decode(
+        safe_decode_inputs(test_predictions), skip_special_tokens=True
+    )
+    raw_test = pd.read_csv(data_dir / "test.csv", encoding="utf-8").fillna("")
+    if len(raw_test) != len(decoded_predictions):
+        raise ValueError("Test prediction count does not match test.csv")
+    predictions_path = output_dir / "test_predictions.csv"
+    pd.DataFrame(
+        {
+            "index": range(len(raw_test)),
+            "source": raw_test["source"],
+            "target": raw_test["target"],
+            "prediction": [prediction.strip() for prediction in decoded_predictions],
+        }
+    ).to_csv(predictions_path, index=False, encoding="utf-8")
     best_model_dir = output_dir / "best_model"
     trainer.save_model(str(best_model_dir))
     tokenizer.save_pretrained(best_model_dir)
-    archive_best_model(best_model_dir, Path(args.backup_dir), run_name, args.hf_backup_repo)
+    archive_best_model(
+        best_model_dir, Path(args.backup_dir), run_name, args.hf_backup_repo, args.hf_backup_prefix
+    )
     final_metrics = {
         "model": model_name,
         "method": args.method,
@@ -340,7 +388,17 @@ def main() -> None:
         **{key: float(value) for key, value in test_metrics.items() if isinstance(value, (int, float))},
     }
     output_dir.mkdir(parents=True, exist_ok=True)
-    (output_dir / "metrics.json").write_text(json.dumps(final_metrics, indent=2), encoding="utf-8")
+    metrics_path = output_dir / "metrics.json"
+    metrics_path.write_text(json.dumps(final_metrics, indent=2), encoding="utf-8")
+    if args.hf_backup_repo:
+        api = HfApi(token=os.environ["HF_TOKEN"])
+        for artifact in (metrics_path, predictions_path):
+            api.upload_file(
+                path_or_fileobj=str(artifact),
+                path_in_repo=remote_path(args.hf_backup_prefix, run_name, artifact.name),
+                repo_id=args.hf_backup_repo,
+                repo_type="model",
+            )
     print(json.dumps(final_metrics, indent=2), flush=True)
 
 

@@ -138,20 +138,21 @@ python -m amis_rewire.train \
   --output-dir outputs \
   --seed 42 \
   --backup-dir backups \
-  --num-train-epochs 5 \
-  --early-stopping-patience 2 \
-  --learning-rate 5e-5 \
+  --num-train-epochs 20 \
+  --early-stopping-patience 4 \
+  --learning-rate 3e-4 \
   --warmup-ratio 0.06 \
-  --per-device-train-batch-size 256 \
-  --per-device-eval-batch-size 64 \
+  --per-device-train-batch-size 128 \
+  --per-device-eval-batch-size 128 \
   --gradient-accumulation-steps 1 \
   --max-source-length 256 \
   --max-target-length 256 \
   --num-beams 4 \
+  --eval-beams 1 \
   --rewire-distance 2 \
   --rewire-strength 0.1 \
   --bf16 \
-  --gradient-checkpointing \
+  --no-gradient-checkpointing \
   --dataloader-num-workers 4 \
   --dataloader-pin-memory
 ```
@@ -168,15 +169,25 @@ Supported `--method` options:
 bash scripts/run_all_models.sh
 ```
 
-The script iterates through all three backbones across the evaluation matrix with the fixed seed `42`. Completed runs are skipped automatically; an interrupted run resumes from its latest checkpoint.
-fixed seed `42`. It uses the same optimizer settings, length limits, generation
-beams, and batch protocol for every run. Completed runs are skipped automatically;
-an interrupted run resumes from its latest checkpoint.
+The script runs six conditions across two backbones (mT5-small and mBART-50)
+with seed `42`. Its defaults are a maximum of 20 epochs, validation after every
+epoch, and early stopping after four non-improving validation checks. The
+learning rate is `3e-4` for mT5-small and `5e-5` for mBART-50. Completed runs
+are skipped automatically; an interrupted run resumes from its latest checkpoint.
 
-The maximum is five epochs, with validation after every epoch and early stopping
-after two non-improving validation checks. Ten epochs is unnecessary for this
-pretrained, low-resource setting and increases overfitting risk. The maximum and
-patience are fixed before inspecting test results.
+### Follow-up Colab experiments
+
+After pushing the repository changes, open
+[the follow-up A100 notebook](notebooks/colab_followup_run.ipynb) and add a Colab
+Secret named `HF_TOKEN` with access to the private
+`FiveC/amis-rewire-checkpoints` model repository. The notebook first checks the
+saved main-run hyperparameters and regenerates test predictions and encoder
+cosine measurements. It then runs two ByT5-small conditions and two mT5-small
+decoder/both rewiring ablations. The main six-run matrix is not rerun.
+
+New checkpoints, best-model ZIPs, metrics, and test predictions are uploaded to
+`checkpoints/<run-name>/` in that private repository. Analysis tables, case
+candidates, and the encoder-cosine figure are uploaded to `analysis/`.
 
 Checkpoints are saved locally under `outputs/<run-name>/checkpoint-*` and are
 also zipped after every save under `backups/<run-name>/`. To use a custom backup
@@ -190,15 +201,15 @@ At startup, `run_all_models.sh` restores the newest ZIP checkpoint for each
 incomplete run before invoking the trainer. An interrupted run therefore resumes
 from the latest checkpoint automatically.
 
-Run and artifact names are intentionally short:
+Run and artifact names follow the six-condition matrix:
 
 ```text
-mt5-small-ami-cmn/              # original backbone
-mt5-small-ami-cmn-clrr/         # backbone with CLRR
-mbart-large-50-ami-cmn/
-mbart-large-50-ami-cmn-clrr/
-byt5-small-ami-cmn/
-byt5-small-ami-cmn-clrr/
+mt5-small-ami-cmn-baseline/
+mt5-small-ami-cmn-clrr-enc/
+mt5-small-ami-cmn-jepa/
+mt5-small-ami-cmn-jepa-clrr-enc/
+mbart-large-50-ami-cmn-baseline/
+mbart-large-50-ami-cmn-jepa-clrr-enc/
 ```
 
 After each run, the selected best checkpoint is saved under
@@ -240,7 +251,7 @@ The primary automatic metrics are **BLEU** and **chrF++**. BLEU gives comparabil
 
 ## Main results table
 
-Fill the dashes only after completing all runs. Scores are test-set scores.
+The six main runs are complete. Scores below are test-set scores.
 
 | Model | Method | Role | BLEU | chrF++ |
 | --- | --- | --- | ---: | ---: |
@@ -251,19 +262,17 @@ Fill the dashes only after completing all runs. Scores are test-set scores.
 | mBART-50 | Baseline | Translation Baseline | 20.09 | 15.72 |
 | mBART-50 | JEPA + CLRR-Enc | Cross-Architecture Validation | 20.81 | 16.56 |
 
-No result is pre-filled and no outperformance claim should be made before the matrix is complete.
-
-## Fixed fairness protocol
+## Main six-run protocol
 
 - seed and data seed: `42`;
 - full-model fine-tuning for baseline and CLRR;
-- AdamW from `Seq2SeqTrainer`, learning rate `5e-5`;
-- maximum 5 epochs, warmup ratio `0.06`, early stopping patience `2`;
-- effective batch size `256` on A100 GPU (train batch size 256, gradient accumulation 1);
+- AdamW from `Seq2SeqTrainer`; learning rate `3e-4` for mT5-small and `5e-5` for mBART-50;
+- maximum 20 epochs, warmup ratio `0.06`, early stopping patience `4`;
+- effective batch size `128` on one A100 GPU (train batch size 128, gradient accumulation 1); evaluation batch size `128`;
 - A100 acceleration: BF16, TF32 matmul, fused AdamW, pinned-memory dataloaders,
-  four dataloader workers, and gradient checkpointing;
+  and four dataloader workers; gradient checkpointing disabled;
 - source/target truncation: `256/256` tokens;
-- beam size: `4`;
+- beam size: `1` during validation and `4` for final test generation;
 - best checkpoint selected by validation chrF++;
 - no data augmentation, tokenizer changes, prompt tokens, LoRA, or adapters;
 - test set is evaluated once after model selection.

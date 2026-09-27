@@ -6,7 +6,9 @@ __pycache__/
 *.egg-info/
 outputs/
 outputs_smoke/
+outputs_extra/
 backups/
+backups_extra/
 results_summary.csv
 wandb/
 data/*.csv
