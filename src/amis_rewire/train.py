@@ -38,7 +38,12 @@ MODEL_DEFAULTS = {
 
 
 class ConsoleMetricsCallback(TrainerCallback):
-    """Prints the exact loss/metric fields needed for experiment logs."""
+    """Prints the exact loss/metric fields needed for experiment logs in real time."""
+
+    def on_epoch_begin(self, args: Any, state: Any, control: Any, **kwargs: Any):
+        epoch_idx = int(state.epoch or 0) + 1
+        total_epochs = int(args.num_train_epochs)
+        print(f"[epoch {epoch_idx}/{total_epochs}] starting training...", flush=True)
 
     def on_log(self, args: Any, state: Any, control: Any, logs: dict[str, float] | None = None, **kwargs: Any):
         if not logs:
@@ -48,7 +53,15 @@ class ConsoleMetricsCallback(TrainerCallback):
             if name in logs:
                 fields.append(f"{name}={logs[name]:.4f}")
         if fields:
-            print(f"[step={state.global_step}] " + " | ".join(fields), flush=True)
+            epoch_str = f"epoch={state.epoch:.2f}" if state.epoch is not None else ""
+            prefix = f"[step={state.global_step}" + (f" | {epoch_str}] " if epoch_str else "] ")
+            print(prefix + " | ".join(fields), flush=True)
+
+    def on_evaluate(self, args: Any, state: Any, control: Any, metrics: dict[str, float] | None = None, **kwargs: Any):
+        if metrics:
+            eval_fields = [f"{k}={v:.4f}" for k, v in metrics.items() if k in ("eval_loss", "eval_bleu", "eval_chrf++")]
+            if eval_fields:
+                print(f"[eval @ step {state.global_step}] " + " | ".join(eval_fields), flush=True)
 
 
 class CheckpointBackupCallback(TrainerCallback):
@@ -270,6 +283,7 @@ def main() -> None:
     output_dir = Path(args.output_dir) / run_name
     data_dir = Path(args.data_dir)
 
+    print(f"[init] loading tokenizer and base model for {model_name}...", flush=True)
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     model = load_model(
         model_name,
@@ -282,6 +296,7 @@ def main() -> None:
     configure_mbart(tokenizer, model.base_model if hasattr(model, "base_model") else model)
     if args.gradient_checkpointing:
         model.config.use_cache = False
+    print(f"[init] tokenizing dataset splits from {data_dir}...", flush=True)
     train_dataset = tokenize_dataset(load_split(data_dir, "train"), tokenizer, args)
     validation_dataset = tokenize_dataset(load_split(data_dir, "validation"), tokenizer, args)
     test_dataset = tokenize_dataset(load_split(data_dir, "test"), tokenizer, args)
@@ -338,8 +353,8 @@ def main() -> None:
     )
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     trainable_count = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
-    print(f"[run] model={model_name} method={args.method} parameters={parameter_count:,} trainable={trainable_count:,}")
-    print(f"[run] rewiring stack={args.rewire_stack} extra_parameters=0 distance={args.rewire_distance} strength={args.rewire_strength} jepa_weight={args.jepa_weight}")
+    print(f"[run] model={model_name} method={args.method} parameters={parameter_count:,} trainable={trainable_count:,}", flush=True)
+    print(f"[run] rewiring stack={args.rewire_stack} extra_parameters=0 distance={args.rewire_distance} strength={args.rewire_strength} jepa_weight={args.jepa_weight}", flush=True)
     resume_checkpoint = args.resume_from_checkpoint
     if resume_checkpoint is None and args.auto_resume:
         resume_checkpoint = get_last_checkpoint(str(output_dir))

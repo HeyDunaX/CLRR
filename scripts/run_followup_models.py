@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import json
 import re
 import subprocess
@@ -104,7 +105,7 @@ def training_command(
     output_root: Path, backup_root: Path, data_dir: Path,
 ) -> list[str]:
     return [
-        sys.executable, "-m", "amis_rewire.train",
+        sys.executable, "-u", "-m", "amis_rewire.train",
         "--model", model, "--method", method, "--rewire-stack", stack,
         "--jepa-weight", "0.1", "--data-dir", str(data_dir),
         "--output-dir", str(output_root), "--backup-dir", str(backup_root),
@@ -148,7 +149,20 @@ def main() -> None:
                 args.output_dir, args.backup_dir, args.data_dir,
             )
             print("[train] " + " ".join(command), flush=True)
-            subprocess.run(command, check=True)
+            process = subprocess.Popen(
+                command,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                bufsize=1,
+                env={**os.environ, "PYTHONUNBUFFERED": "1"},
+            )
+            assert process.stdout is not None
+            for line in process.stdout:
+                sys.stdout.write(line)
+                sys.stdout.flush()
+            if process.wait() != 0:
+                raise subprocess.CalledProcessError(process.returncode, command)
             remote = set(HfApi(token=token()).list_repo_files(args.repo, repo_type="model"))
             missing = required_remote_files(run_name) - remote
             if missing:
