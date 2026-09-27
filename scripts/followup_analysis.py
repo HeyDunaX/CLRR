@@ -369,6 +369,19 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
     references = [target.strip() for target in frame["target"].tolist()]
     predictions = {}
     scores = []
+
+    if os.environ.get("HF_TOKEN"):
+        try:
+            repo_files = HfApi(token=token()).list_repo_files(repo, repo_type="model")
+            if isinstance(repo_files, (list, tuple, set)):
+                for rel_path in [f for f in set(repo_files) if isinstance(f, str) and f.startswith("analysis/")]:
+                    target_dest = output_root / rel_path
+                    if not target_dest.exists():
+                        target_dest.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(fetch_file(repo, rel_path), target_dest)
+        except Exception as exc:
+            print(f"[warning] could not sync analysis files from Hugging Face: {exc}", flush=True)
+
     for run in runs:
         path = prediction_dir / f"{run}.csv"
         if not path.exists() and run in NEW_RUNS:
@@ -378,7 +391,11 @@ def report(repo: str, output_root: Path, data_dir: Path) -> None:
             else:
                 shutil.copyfile(fetch_file(repo, remote_file(run, "test_predictions.csv")), path)
         if not path.exists() and run in MAIN_RUNS:
-            raise FileNotFoundError(f"Run analyze first: {path}")
+            try:
+                shutil.copyfile(fetch_file(repo, f"analysis/predictions/{run}.csv"), path)
+                print(f"[restore] {run}: predictions downloaded from Hugging Face", flush=True)
+            except Exception:
+                raise FileNotFoundError(f"Run analyze first or predictions missing on remote: {path}")
         predictions[run] = read_predictions(path, frame)
         scores.append({"run": run, **generation_metrics(predictions[run], references)})
     pd.DataFrame(scores).to_csv(analysis_dir / "all_scores.csv", index=False)
