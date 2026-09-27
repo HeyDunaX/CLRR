@@ -219,16 +219,14 @@ $$\text{CosSim}(l) = \frac{1}{n(n-1)} \sum_{i \neq j} \frac{h_{i,l}^\top h_{j,l}
 
 ## 6. Kế hoạch Hoàn thiện cho Bài báo (Roadmap to Submission)
 
-### 6.1. Trạng thái thực nghiệm trên Colab
+### 6.1. Trạng thái thực nghiệm hoàn tất 100%
 1. **Cell 7 — ByT5-small (Byte-Level / Tokenizer-Free):**
-   * ĐÃ HOÀN TẤT 100%: ByT5 Baseline đạt **7.58 BLEU / 8.31 chrF++** (vượt trội hoàn toàn mT5 baseline 2.79 BLEU), ByT5 JEPA+CLRR đạt **7.31 BLEU / 8.10 chrF++**.
+   * ĐÃ HOÀN TẤT: ByT5 Baseline đạt **7.58 BLEU / 8.31 chrF++** (vượt trội hoàn toàn mT5 baseline 2.79 BLEU), ByT5 JEPA+CLRR đạt **7.31 BLEU / 8.10 chrF++**.
 2. **Cell 8 — Ablation Vị trí Nối tắt (Rewiring Stack):**
-   * ĐÃ HOÀN TẤT 100%: Decoder-only đạt **4.93 BLEU / 5.92 chrF++** (cao nhất trong các cấu hình mT5), Both đạt **3.50 BLEU / 5.28 chrF++**.
-   * Chứng minh thực nghiệm: Cả 3 cấu hình nối tầng đều thắng Baseline (2.79); cô lập đơn stack (Single-stack) vượt trội hoàn toàn so với nối cả 2 stack (Dual-stack).
-3. **Cell 9 — Xuất báo cáo tổng hợp cuối cùng (`report`):**
-   * Tạo bảng `all_scores.csv` gồm đầy đủ các họ mô hình.
-   * Tính toán kiểm định ý nghĩa thống kê **Paired Bootstrap Resampling** (10.000 samples, hiệu chỉnh Holm) $\to$ `paired_bootstrap.csv`.
-   * Trích xuất danh sách các câu phân tích định tính ngôn ngữ $\to$ `case_candidates.csv`.
+   * ĐÃ HOÀN TẤT: Decoder-only đạt **4.83 BLEU / 5.19 chrF++**, Both đạt **3.45 BLEU / 4.58 chrF++**.
+   * Chứng minh thực nghiệm & thống kê: Cả 3 cấu hình nối tầng đều thắng Baseline (2.79); cô lập đơn stack (Single-stack) vượt trội hoàn toàn so với nối cả 2 stack (Dual-stack, tụt -1.15 BLEU với $p < 0.001$).
+3. **Cell 9 — Xuất báo cáo tổng hợp & Kiểm định thống kê (`report`):**
+   * ĐÃ HOÀN TẤT: Xuất thành công `all_scores.csv`, `paired_bootstrap.csv` (10.000 samples, hiệu chỉnh Holm), `case_candidates.csv` và `encoder_cosine.png`. Đã đồng bộ an toàn lên Hugging Face.
 
 ### 6.2. Cấu trúc bài báo ComputEL-10 dự kiến
 * **Section 1: Introduction** — Giới thiệu thách thức ngôn ngữ Amis, bài toán 5.751 câu, và khái niệm over-smoothing trong NMT.
