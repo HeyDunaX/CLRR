@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import shutil
+import time
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -100,16 +101,47 @@ class CheckpointBackupCallback(TrainerCallback):
         temporary_path.replace(archive_path)
         print(f"[backup] saved {archive_path}", flush=True)
         if self.hf_api is not None:
-            self.hf_api.upload_file(
-                path_or_fileobj=str(archive_path),
-                path_in_repo=remote_path(self.hf_backup_prefix, self.run_name, archive_path.name),
-                repo_id=self.hf_backup_repo,
+            target = remote_path(self.hf_backup_prefix, self.run_name, archive_path.name)
+            uploaded = safe_hf_upload(
+                self.hf_api,
+                archive_path,
+                self.hf_backup_repo,
+                target,
+                max_retries=3,
+                initial_delay=5.0,
+            )
+            if uploaded:
+                print(f"[backup] uploaded {target}", flush=True)
+            else:
+                print(
+                    f"[backup] warning: remote upload of {archive_path.name} timed out; local checkpoint is safe, continuing training...",
+                    flush=True,
+                )
+
+
+def safe_hf_upload(
+    api: Any,
+    path: Path,
+    repo_id: str,
+    path_in_repo: str,
+    max_retries: int = 3,
+    initial_delay: float = 5.0,
+) -> bool:
+    """Uploads a file to Hugging Face Hub with exponential backoff on transient errors."""
+    for attempt in range(1, max_retries + 1):
+        try:
+            api.upload_file(
+                path_or_fileobj=str(path),
+                path_in_repo=path_in_repo,
+                repo_id=repo_id,
                 repo_type="model",
             )
-            print(
-                f"[backup] uploaded {remote_path(self.hf_backup_prefix, self.run_name, archive_path.name)}",
-                flush=True,
-            )
+            return True
+        except Exception as exc:
+            print(f"[backup] upload attempt {attempt}/{max_retries} for {path_in_repo} failed ({type(exc).__name__}): {exc}", flush=True)
+            if attempt < max_retries:
+                time.sleep(initial_delay * attempt)
+    return False
 
 
 def remote_path(prefix: str, run_name: str, filename: str) -> str:
@@ -138,17 +170,22 @@ def archive_best_model(
         token = os.environ.get("HF_TOKEN")
         if not token:
             raise RuntimeError("HF_TOKEN is required when --hf-backup-repo is set.")
-        HfApi(token=token).upload_file(
-            path_or_fileobj=str(archive_path),
-            path_in_repo=remote_path(hf_backup_prefix, run_name, archive_path.name),
-            repo_id=hf_backup_repo,
-            repo_type="model",
+        target = remote_path(hf_backup_prefix, run_name, archive_path.name)
+        uploaded = safe_hf_upload(
+            HfApi(token=token),
+            archive_path,
+            hf_backup_repo,
+            target,
+            max_retries=5,
+            initial_delay=5.0,
         )
-        print(
-            f"[backup] best model uploaded to {hf_backup_repo}/"
-            f"{remote_path(hf_backup_prefix, run_name, archive_path.name)}",
-            flush=True,
-        )
+        if uploaded:
+            print(f"[backup] best model uploaded to {hf_backup_repo}/{target}", flush=True)
+        else:
+            print(
+                f"[backup] warning: best model upload will be finalized by post-training upload check",
+                flush=True,
+            )
 
 
 def parse_args() -> argparse.Namespace:

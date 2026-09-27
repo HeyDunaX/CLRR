@@ -7,6 +7,7 @@ import os
 import json
 import re
 import subprocess
+import time
 import sys
 import zipfile
 from pathlib import Path
@@ -50,10 +51,17 @@ def upload_completed_local(repo: str, run_name: str, output_root: Path, backup_r
     for filename, path in local_files.items():
         target = remote_file(run_name, filename)
         if target not in remote:
-            api.upload_file(
-                path_or_fileobj=str(path), path_in_repo=target, repo_id=repo, repo_type="model"
-            )
-            print(f"[upload] {target}", flush=True)
+            for attempt in range(1, 4):
+                try:
+                    api.upload_file(
+                        path_or_fileobj=str(path), path_in_repo=target, repo_id=repo, repo_type="model"
+                    )
+                    print(f"[upload] {target}", flush=True)
+                    break
+                except Exception as exc:
+                    print(f"[upload] attempt {attempt}/3 failed for {target} ({type(exc).__name__}): {exc}", flush=True)
+                    if attempt < 3:
+                        time.sleep(5 * attempt)
 
 
 def restore_latest(repo: str, run_name: str, output_root: Path, remote: set[str]) -> None:
