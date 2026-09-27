@@ -20,11 +20,23 @@ Quyết định này giải quyết lỗi trước đây: prediction tính lại
 | Bước | Trạng thái |
 | --- | --- |
 | Colab cell 5: `preflight` và `smoke` | Người dùng đã chạy thành công: năm ZIP được kiểm tra, sinh thử hai câu thành công. |
-| Colab cell 6: `analyze` | Các lần chạy trước lỗi do mã phân tích và cổng kiểm tra điểm cũ. Mã mới đã bỏ cổng đó; **chưa có xác nhận cell 6 chạy xong với phiên bản mới**. |
+| Colab cell 6: `analyze` | Người dùng xác nhận cell chạy xong không lỗi. Cả năm model cũ đã có điểm; theo luồng mã, cell chỉ kết thúc sau khi lệnh tải `analysis/` lên Hugging Face trả về. |
 | Colab cell 7–8: bốn run mới | Chưa có xác nhận đã chạy xong hoặc đã tải đủ artifact lên Hugging Face. |
 | Colab cell 9: báo cáo | Chưa có xác nhận hoàn tất. |
 
 Trên máy cục bộ, các bài kiểm tra `test_followup.py` đã qua (12 test) và smoke training với model nhỏ đã tạo được checkpoint, best ZIP, metrics và predictions. Chúng không thay thế việc kiểm tra end-to-end với checkpoint riêng tư trên Colab.
+
+Điểm **tính lại** được người dùng gửi từ log cell 6 (cùng công thức SacreBLEU và reference gốc):
+
+| Checkpoint cũ | BLEU (zh) | chrF++ |
+| --- | ---: | ---: |
+| `mt5-small-ami-cmn-baseline` | 2.788710 | 3.812914 |
+| `mt5-small-ami-cmn-clrr-enc` | 4.439348 | 5.176137 |
+| `mt5-small-ami-cmn-jepa-clrr-enc` | 4.596068 | 5.042505 |
+| `mbart-large-50-ami-cmn-baseline` | 19.614440 | 14.054668 |
+| `mbart-large-50-ami-cmn-jepa-clrr-enc` | 20.389642 | 19.082384 |
+
+Các cảnh báo tokenizer regex, `Seq2SeqTrainer.tokenizer` và generation config xuất hiện trong log nhưng không làm dừng năm lượt phân tích trên. Chưa kết luận chúng không ảnh hưởng tới điểm; các phép so sánh bổ sung dùng nhất quán cùng mã chấm điểm đã chốt.
 
 ## Điểm vào và nơi lưu
 
@@ -35,8 +47,8 @@ Trên máy cục bộ, các bài kiểm tra `test_followup.py` đã qua (12 test
 
 ## Việc tiếp theo
 
-1. Mở notebook mới nhất, chạy các cell thiết lập/đăng nhập cần thiết, rồi chạy lại **cell 6**. Cell này `git pull` và reload module phân tích trước khi chạy. Xác nhận có đủ năm file prediction, `old_model_scores.csv` và đồ thị cosine trong `analysis/` của repo backup.
-2. Khi cell 6 hoàn tất, chạy **cell 7** (hai run ByT5), rồi **cell 8** (hai ablation mT5). Mỗi run cần đủ best ZIP, metrics và test predictions trên Hugging Face.
+1. Chạy **cell 7** (hai run ByT5). Sau mỗi run, kiểm tra best ZIP, metrics và test predictions trong `checkpoints/<run-name>/` trên Hugging Face.
+2. Chạy **cell 8** (hai ablation mT5) và kiểm tra ba artifact tương tự cho từng run. Nếu runtime bị ngắt, chạy lại cell tương ứng để khôi phục checkpoint hoặc bỏ qua run đã hoàn tất.
 3. Chạy **cell 9** để tạo `all_scores.csv`, `paired_bootstrap.csv`, `case_candidates.csv` và `analysis_notes.txt`. Kiểm định paired bootstrap lấy mẫu 10.000 lần, seed 42; hiệu chỉnh Holm cho sáu phép thử chính. Mỗi model hiện chỉ có một seed huấn luyện, nên phép thử này không đo biến thiên giữa các seed. Các câu ví dụ về phụ tố Amis cần kiểm tra thủ công trước khi đưa vào bài.
 
 Nếu cell nào lỗi, lưu **traceback gốc phía trước `CalledProcessError`** cùng commit đang chạy trên Colab; chỉ dòng `CalledProcessError` không cho biết nguyên nhân.
