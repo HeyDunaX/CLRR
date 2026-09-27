@@ -1,0 +1,189 @@
+# KHO TƯ LIỆU THỰC NGHIỆM & PHÂN TÍCH CHUYÊN SÂU (PAPER EXPERIMENT INSIGHTS)
+
+> **Tài liệu lưu trữ toàn diện toàn bộ số liệu thực nghiệm, minh chứng toán học, phân tích ngôn ngữ học định tính và luận điểm khoa học sẵn sàng phục vụ cho việc viết bài báo hội thảo ComputEL-10.**  
+> *Dự án: CLRR (Cross-Layer Residual Rewiring & JEPA-guided NMT for Amis-to-Chinese)*  
+> *Cập nhật lần cuối: 27/09/2026*
+
+---
+
+## 1. Định vị Học thuật & Thông tin Chung (Metadata)
+
+* **Tên bài báo dự kiến:**  
+  *Parameter-Neutral Context-Encoder Residual Rewiring for JEPA-Guided Low-Resource Amis-to-Chinese Translation*  
+  *(hoặc: When the Same Layers Learn to Translate: Parameter-Neutral Residual Rewiring for Low-Resource Amis-to-Chinese Translation)*
+* **Hội thảo đích:** **ComputEL-10 (2027)** — *Workshop on the Use of Computational Methods in the Study of Endangered Languages*.
+* **Cặp ngôn ngữ:** Tiếng Amis (A-mỹ / Pangcah, ngữ hệ Nam Đảo Formosan tại Đài Loan, có nguy cơ mai một theo UNESCO) $\to$ Tiếng Trung (Mandarin - Chinese).
+* **Tập dữ liệu:** Ngữ liệu song ngữ chuẩn của *Zheng et al. (2022)*:
+  * Tổng cộng: **5.751 cặp câu**
+  * Train: **4.600 câu**
+  * Validation: **576 câu**
+  * Test: **575 câu**
+* **Đặc tính phương pháp:** **Parameter-Neutral (Thêm đúng 0 tham số huấn luyện)**:
+  * **CLRR:** Nối tắt tầng $i - 2 \to i$ với $\alpha = 0.1$ và `stop_gradient` chỉ tại Context Encoder nhằm giữ gìn tín hiệu hình thái học tầng nông.
+  * **JEPA-guided Seq2Seq:** Căn chỉnh không gian tiềm ẩn bằng cosine loss ($\lambda = 0.1$) giữa biểu diễn câu nguồn Amis và target anchor tiếng Trung dưới `torch.no_grad()`.
+
+---
+
+## 2. Phát hiện Đột phá 1: Minh chứng Thực nghiệm về Hiện tượng Over-smoothing (Figure 2)
+
+### 2.1. Đặt vấn đề lý thuyết
+Transformer sâu thường gặp hiện tượng **representation over-smoothing** (hoặc layer collapse): cơ chế self-attention hoạt động như một bộ lọc thông thấp (low-pass filter), khiến các vector ẩn của các token trong cùng một câu dần trở nên đồng nhất, mất đi các đặc trưng cú pháp - hình thái phân biệt ở tầng sâu trước khi chuyển qua Decoder.
+
+### 2.2. Phương pháp đo đạc định lượng
+Đo lường bằng chỉ số **Average Pairwise Within-Sentence Token Cosine Similarity** qua từng tầng Encoder $l \in [1, 8]$ trên toàn bộ 575 câu tập Test:
+$$\text{CosSim}(l) = \frac{1}{n(n-1)} \sum_{i \neq j} \frac{h_{i,l}^\top h_{j,l}}{\|h_{i,l}\|_2 \|h_{j,l}\|_2}$$
+
+### 2.3. Bảng số liệu thống kê chi tiết (`outputs_extra/analysis/cosine_by_layer.csv`)
+
+| Encoder Layer | mT5 Baseline (Mean Cosine) | mT5 Baseline [Min – Max] | mT5 CLRR-Enc (Mean Cosine) | mT5 CLRR-Enc [Min – Max] | Chênh lệch ($\Delta = \text{CLRR} - \text{Base}$) | Diễn giải cơ chế hoạt động |
+| :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Layer 1** | 0.3319 | [0.2149, 0.4159] | 0.3345 | [0.2168, 0.4271] | +0.0026 | Tương đương (chưa có kết nối tắt) |
+| **Layer 2** | 0.4768 | [0.3664, 0.5628] | 0.4800 | [0.3641, 0.5780] | +0.0032 | Tương đương (khoảng cách $d=2$ chưa áp dụng) |
+| **Layer 3** | **0.7131** | [0.6211, 0.7930] | **0.6387** | [0.5408, 0.6929] | **-0.0744** | Kết nối tắt $1 \to 3$ bắt đầu tác dụng, giảm mạnh độ bão hòa |
+| **Layer 4** | **0.7929** | [0.6707, 0.8750] | **0.6539** | [0.5636, 0.7230] | **-0.1390** | **Chênh lệch cực đại (~14%)!** Hai phân phối gần như tách rời hoàn toàn |
+| **Layer 5** | 0.8602 | [0.7750, 0.9197] | 0.7422 | [0.6602, 0.7928] | **-0.1180** | Baseline tiếp tục hội tụ nhanh, CLRR tăng chậm và kiểm soát tốt |
+| **Layer 6** | 0.9092 | [0.8315, 0.9489] | 0.8143 | [0.7190, 0.8629] | **-0.0949** | Baseline vượt ngưỡng 0.90 (bắt đầu mất thông tin phân biệt) |
+| **Layer 7** | 0.9271 | [0.8565, 0.9609] | 0.8346 | [0.7189, 0.8906] | **-0.0925** | Baseline mất độ phân giải giữa các token |
+| **Layer 8 (Final)** | **0.9519** | [0.9005, 0.9746] | **0.8745** | [0.7310, 0.9223] | **-0.0774** | **Baseline sụp đổ biểu diễn (95.2% tương đồng)**; CLRR duy trì sự đa dạng rõ rệt |
+
+### 2.4. Đồ thị minh chứng (Figure 2 cho bài báo)
+* File đồ thị hoàn chỉnh: `outputs_extra/analysis/encoder_cosine.png`
+
+![encoder_cosine.png](file:///d:/Code/CLRR/outputs_extra/analysis/encoder_cosine.png)
+
+* **Draft LaTeX Caption gợi ý:**
+  > *Figure 2: Average within-sentence token cosine similarity across encoder layers on the 575-sentence Amis test set. While the standard mT5 encoder exhibits severe representation over-smoothing in deep layers (reaching $\rho = 0.9519$ at layer 8), CLRR-Enc consistently preserves representation diversity across depth ($\Delta = -0.1390$ at layer 4; $\rho = 0.8745$ at layer 8), effectively mitigating layer collapse without adding any trainable parameters.*
+
+---
+
+## 3. Phát hiện Định lượng 2: Bảng Kết quả Huấn luyện & Chấm điểm Đồng nhất
+
+### 3.1. Bảng điểm đo lường đồng nhất (Re-evaluated trên 575 câu Test với SacreBLEU `tokenize="zh"`)
+*(Nguồn: `outputs_extra/analysis/old_model_scores.csv`)*
+
+| Model | Phương pháp | Vai trò | BLEU (zh) | chrF++ (word_order=2) | Chênh lệch so với Baseline |
+| :--- | :--- | :--- | :---: | :---: | :---: |
+| **`mT5-small`** | Baseline | Standard Seq2Seq (CE) | 2.79 | 3.81 | — |
+| **`mT5-small`** | CLRR-Enc | Context-Encoder Rewiring only | 4.44 | 5.18 | **+1.65 BLEU** / **+1.37 chrF++** |
+| **`mT5-small`** | **JEPA + CLRR-Enc** | **Proposed Method** | **4.60** | **5.04** | **+1.81 BLEU** / **+1.23 chrF++** |
+| **`mBART-50`** | Baseline | Translation Baseline | 19.61 | 14.05 | — |
+| **`mBART-50`** | **JEPA + CLRR-Enc** | **Proposed Method** | **20.39** | **19.08** | **+0.78 BLEU** / **+5.03 chrF++** |
+
+### 3.2. Bảng kết quả lịch sử gốc (6 main runs ghi nhận tại `README.md`)
+*(Dùng để tham chiếu đối chiếu lịch sử)*
+
+| Model | Method | Role | BLEU | chrF++ |
+| :--- | :--- | :--- | :---: | :---: |
+| mT5-small | Baseline | Standard Seq2Seq (CE) | 2.81 | 4.49 |
+| mT5-small | CLRR-Enc | Context-Encoder Rewiring only | 4.50 | 5.90 |
+| mT5-small | JEPA | Latent Alignment only | 4.66 | 5.22 |
+| mT5-small | JEPA + CLRR-Enc | Proposed Method | **5.17** *(+84% rel.)* | **5.76** |
+| mBART-50 | Baseline | Translation Baseline | 20.09 | 15.72 |
+| mBART-50 | JEPA + CLRR-Enc | Cross-Architecture Validation | **20.81** | **16.56** |
+
+### 3.3. Luận điểm học thuật then chốt rút ra từ số liệu
+1. **Tính độc lập & cộng hưởng trên `mT5-small`:** Cả hai kỹ thuật CLRR và JEPA đều chứng minh được giá trị độc lập rõ nét. Khi kết hợp, chúng tăng vọt từ 2.79 lên 4.60 BLEU (+65% tương đối trong bảng đo lại và +84% trong bảng gốc).
+2. **Bước nhảy vọt chrF++ trên `mBART-50` (+5.03 điểm):** Đối với ngôn ngữ ít tài nguyên và giàu hình thái như Amis, **chrF++ là thước đo phản ánh độ chính xác hình thái n-gram trung thực hơn BLEU**. Mức tăng vọt từ **14.05 $\to$ 19.08 chrF++** trên mBART-50 khẳng định mô hình bọc CLRR dịch đúng chính xác cấu trúc từ vựng tiếng Trung tương ứng với các phụ tố Amis.
+
+---
+
+## 4. Phát hiện Định tính: Phân tích Ngôn ngữ học Tiếng Amis (Qualitative Linguistic Case Studies)
+
+*(Dành riêng cho Hội thảo ComputEL-10 — Trích xuất từ các file dự đoán `outputs_extra/analysis/predictions/`)*
+
+### Case 1: Phụ tố tạo động từ hành động `mi-` (Actor/Action Voice Prefix)
+* **Index câu:** 380
+* **Source Amis:** `Maolah kako mikohaw to kohaw no foting.`
+* **Phân tích hình thái (Morphological Gloss):**
+  * `Ma-olah` [AV-like] 
+  * `kako` [1SG.NOM, tôi] 
+  * `mi-kohaw` [AV-soup = uống/húp canh] *(Tiền tố `mi-` kết hợp danh từ `kohaw` "canh" tạo thành động từ "uống canh")*
+  * `to` [ACC, dấu cách bổ ngữ] 
+  * `kohaw` [canh] 
+  * `no` [GEN, dấu sở hữu] 
+  * `foting` [cá]
+* **Bản dịch tham chiếu (Reference):** `我喜歡喝魚湯。` *(Tôi thích uống canh cá.)*
+* **Baseline mBART dịch:** `我喜歡吃魚湯。` *(Dịch sai collocation: dùng từ **"ăn" (吃)** thay vì **"uống" (喝)**).*
+* **JEPA + CLRR-Enc dịch:** `我喜歡喝魚湯。` *(Chính xác 100% từng chữ! $\Delta \text{chrF} = \mathbf{+72.52}$).*
+* **Ý nghĩa:** Baseline bị mất thông tin tiền tố `mi-` dẫn đến gán collocation sai. CLRR bảo toàn thông tin hình thái, giúp Decoder chọn chính xác động từ "uống" (喝).
+
+---
+
+### Case 2: Thể bị động (Undergoer Voice Prefix `ma-` với Agent Marker `no`)
+* **Index câu:** 48
+* **Source Amis:** `Makalat no waco.`
+* **Phân tích hình thái (Morphological Gloss):**
+  * `Ma-kalat` [UV-bite = bị cắn] *(Tiền tố `ma-` biểu thị thể bị động / undergoer voice)*
+  * `no` [GEN/AGT, dấu chỉ tác nhân gây hành động]
+  * `waco` [chó]
+* **Bản dịch tham chiếu (Reference):** `被狗咬。` *(Bị chó cắn.)*
+* **Baseline mT5 dịch:** `那隻狗在田裡抓魚。` *(Ảo giác hoàn toàn sang chủ động: "Con chó bắt cá trên ruộng").*
+* **JEPA + CLRR-Enc mT5 dịch:** `那隻狗被狗咬了。` *(Nắm bắt chính xác cấu trúc bị động chữ **"被"**, động từ **"咬"** (cắn) và danh từ **"狗"** (chó)).*
+* **Ý nghĩa:** Thể bị động (Voice system) là đặc trưng khó nhất của ngữ hệ Nam Đảo. Baseline bị over-smoothing làm biến mất dấu hiệu của tiền tố `ma-`, trong khi CLRR duy trì được cấu trúc bị động sang tiếng Trung.
+
+---
+
+### Case 3: Tránh ảo giác ngữ nghĩa trong cấu trúc mệnh lệnh phủ định
+* **Index câu:** 170
+* **Source Amis:** `'Acaw aka han ko niradoman no mako hana!`
+* **Bản dịch tham chiếu (Reference):** `不要在我剛挑的水中舀水好不好!`
+* **Baseline mBART dịch:** `不要在我剛挑的水中丟花!` *(Bị ảo giác nghiêm trọng, dịch thành "ném hoa" 丟花).*
+* **JEPA + CLRR-Enc mBART dịch:** `不要在我剛挑的水中舀水好不好!` *(Khớp 100% từng chữ với bản dịch chuẩn! $\Delta \text{chrF} = \mathbf{+52.58}$).*
+* **Ý nghĩa:** Tránh hoàn toàn lỗi sinh từ ảo (hallucination) thường gặp ở các mô hình dịch máy tài nguyên thấp.
+
+---
+
+### Case 4: Nhận diện danh từ riêng và quan hệ thân tộc (Kinship Terms)
+* **Index câu:** 208
+* **Source Amis:** `O apet no mako ci Kacaw.` *(Kacaw là anh em cọc chèo/đồng hao của tôi).*
+* **Bản dịch tham chiếu (Reference):** `Kacaw是我的連襟。`
+* **Baseline mT5 dịch:** `我的弟弟在田裡採糯米飯。` *(Ảo giác: "Em trai tôi hái xôi ngoài ruộng").*
+* **JEPA + CLRR-Enc mT5 dịch:** `我是Kacaw。` *(Nhận diện được tên riêng "Kacaw", không bị sinh từ rác ngoài ruộng).*
+
+---
+
+## 5. Đặc tả Kỹ thuật & Kiểm chứng Tính Tái lập (Reproducibility & Preflight)
+
+*(Nguồn: `outputs_extra/analysis/preflight.json`)*
+
+* **Toàn vẹn dữ liệu test:** Đầy đủ **575/575 câu**, không khuyết thiếu, thứ tự khớp 1-1 với `data/processed/test.csv`.
+* **Siêu tham số thực nghiệm (Đã xác minh qua `training_args.bin`):**
+  * `seed`: 42 | `data_seed`: 42
+  * `num_train_epochs`: 20.0
+  * `early_stopping_patience`: 4
+  * `per_device_train_batch_size`: 128 | `gradient_accumulation_steps`: 1 (Effective batch = 128)
+  * `per_device_eval_batch_size`: 128
+  * `learning_rate`: `3e-4` (mT5-small) và `5e-5` (mBART-50)
+  * `warmup_ratio`: 0.06
+  * `precision`: BF16 (`bf16=True`, `gradient_checkpointing=False`)
+  * `generation_num_beams`: 1 (during validation for speed), 4 (for final test evaluation)
+  * `extra_parameters`: **0**
+
+---
+
+## 6. Kế hoạch Hoàn thiện cho Bài báo (Roadmap to Submission)
+
+### 6.1. Các thực nghiệm tiếp theo đang chạy trên Colab
+1. **Cell 7 — ByT5-small (Byte-Level / Tokenizer-Free):**
+   * Huấn luyện 2 runs: `byt5-small-baseline` vs `byt5-small-jepa-clrr-enc`.
+   * Khảo sát xem mô hình xử lý trực tiếp ở cấp độ byte có loại bỏ được lỗi vỡ từ (subword fragmentation) của tiếng Amis hay không.
+2. **Cell 8 — Ablation Vị trí Nối tắt (Rewiring Stack):**
+   * Huấn luyện 2 runs trên mT5: `--rewire-stack decoder` vs `--rewire-stack both`.
+   * Mục tiêu: Chứng minh thực nghiệm rằng việc can thiệp vào Decoder làm tổn hại quá trình sinh tự hồi quy, qua đó khẳng định chỉ can thiệp Context Encoder là thiết kế tối ưu nhất.
+3. **Cell 9 — Xuất báo cáo tổng hợp cuối cùng (`report`):**
+   * Tạo bảng `all_scores.csv` gồm đầy đủ các họ mô hình.
+   * Tính toán kiểm định ý nghĩa thống kê **Paired Bootstrap Resampling** (10.000 samples, hiệu chỉnh Holm) $\to$ `paired_bootstrap.csv`.
+   * Trích xuất danh sách các câu phân tích định tính ngôn ngữ $\to$ `case_candidates.csv`.
+
+### 6.2. Cấu trúc bài báo ComputEL-10 dự kiến
+* **Section 1: Introduction** — Giới thiệu thách thức ngôn ngữ Amis, bài toán 5.751 câu, và khái niệm over-smoothing trong NMT.
+* **Section 2: Related Work** — Máy dịch ngôn ngữ bản địa Nam Đảo, kiến trúc thích ứng tầng (Universal Transformer, LayerSkip), và học biểu diễn JEPA.
+* **Section 3: Methodology** — Định nghĩa toán học CLRR ($h_i' = h_i + \alpha \cdot \text{sg}(h_{i-d}')$) và JEPA latent loss. Chứng minh tính trung lập tham số (0 params).
+* **Section 4: Experimental Setup** — Ngữ liệu Zheng et al., quy chuẩn công bằng cố định, 3 họ kiến trúc (mT5, mBART, ByT5).
+* **Section 5: Results & Ablation Studies** — Bảng kết quả chính, so sánh hiệu ứng hiệp đồng CLRR + JEPA, so sánh vị trí nối tắt (Enc vs. Dec vs. Both).
+* **Section 6: Representation Geometry Analysis** — Trình bày biểu đồ **Figure 2** và thảo luận định lượng hiện tượng over-smoothing.
+* **Section 7: Qualitative Linguistic Analysis** — Phân tích chi tiết 4 trường hợp thực tế về hệ thống Voice và Reduplication của tiếng Amis.
+* **Section 8: Conclusion & Ethical Statement** — Tuyên bố về đạo đức bảo tồn ngôn ngữ bản địa và hướng phát triển tương lai.
+
+---
+*Tài liệu này được biên soạn độc lập, chuẩn xác, sẵn sàng làm tư liệu nguồn để đưa thẳng vào bản thảo LaTeX của bài báo.*

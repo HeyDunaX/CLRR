@@ -1,7 +1,8 @@
 # PROJECT CONTEXT & ROADMAP
 
 > **Tài liệu lưu trữ ngữ cảnh nghiên cứu, hiện trạng thực nghiệm và kế hoạch triển khai của dự án CLRR.**  
-> *Cập nhật lần cuối: 26/09/2026*
+> *Xem thêm tài liệu chuyên sâu phục vụ viết bài báo tại: [PAPER_EXPERIMENT_INSIGHTS.md](PAPER_EXPERIMENT_INSIGHTS.md)*  
+> *Cập nhật lần cuối: 27/09/2026*
 
 ---
 
