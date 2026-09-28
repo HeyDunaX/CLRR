@@ -85,7 +85,7 @@ class ConsoleMetricsCallback(TrainerCallback):
                 print(f"[LayerSkip Eval @ step {state.global_step}] " + " | ".join(eval_fields), flush=True)
 
 
-def configure_mbart(tokenizer: Any, model: Any) -> None:
+def configure_mbart(tokenizer: Any, model: Any = None) -> None:
     """Configures language codes and forced_bos_token_id for mBART models."""
     if not tokenizer.__class__.__name__.lower().startswith("mbart"):
         return
@@ -94,8 +94,10 @@ def configure_mbart(tokenizer: Any, model: Any) -> None:
     src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX")
     tokenizer.src_lang = src_lang
     tokenizer.tgt_lang = "zh_CN"
-    base_model = getattr(model, "base_model", model)
-    base_model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
+    if model is not None:
+        base_model = getattr(model, "base_model", model)
+        if hasattr(base_model, "config"):
+            base_model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
 
 
 def parse_args() -> argparse.Namespace:

@@ -44,6 +44,7 @@ def test_model_family(family: str, model_name: str, device: str) -> None:
 
     print(f"Loading tokenizer: {model_name}...")
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
+    configure_mbart(tokenizer)
 
     src_texts = ["Mirecep to kofa ko kapah.", "O ma'oripay a tamdaw."]
     tgt_texts = ["青年喝咖啡。", "活著的人。"]
