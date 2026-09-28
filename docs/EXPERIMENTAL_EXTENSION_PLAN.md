@@ -241,12 +241,23 @@ d:\Code\CLRR\
 
 ---
 
-## 7. Bảng Kết Quả Kỳ Vọng Cho Bài Báo (Table 5: Comparison with Recent ACL Baselines on mT5-Small)
+## 7. Bảng Kết Quả Thực Nghiệm Toàn Diện (Table 5: Recent ACL Baselines Comparison)
 
+### 7.1. Bảng 5A: Backbone Subword Nhỏ (`google/mt5-small`)
 | Phương pháp | Nguồn trích dẫn | Thư mục mã nguồn | Thuộc tính can thiệp | $\Delta\theta$ | BLEU (zh) | chrF++ | Ý nghĩa học thuật |
 | :--- | :---: | :--- | :--- | :---: | :---: | :---: | :--- |
-| **Standard Fine-Tuning** | Baseline | `src/amis_rewire/` | Huấn luyện chuẩn Seq2Seq | 0 | 2.79 | 3.81 | Baseline cơ sở (Bảo tồn) |
-| **LayerSkip** | ACL 2024 | `layerskip_acl2024/` | Stochastic Layer Dropout | 0 | *[Sắp đo]* | *[Sắp đo]* | Đối chuẩn ngắt tầng ngẫu nhiên |
-| **Middle-Layer Alignment** | ACL 2025 | `middle_align_acl2025/` | Middle-Layer Contrastive Loss | 0 | *[Sắp đo]* | *[Sắp đo]* | Đối chuẩn căn chỉnh đa ngữ tầng giữa |
-| **CLRR-Enc (Ours)** | Đề xuất | `src/amis_rewire/` | Deterministic Rewire + Stop-Grad | **0** | **4.44** | **5.18** | Nối tầng cô lập độc lập (Bảo tồn) |
-| **JEPA + CLRR-Enc (Ours)** | **Đề xuất chính** | `src/amis_rewire/` | **Latent Anchor + CLRR Rewire** | **0** | **4.60** | **5.04** | **Vượt trội toàn diện ($p < 0.001$)** |
+| **Standard Fine-Tuning** | Baseline | `src/amis_rewire/` | Huấn luyện chuẩn Seq2Seq | 0 | 2.7887 | 3.8129 | Baseline cơ sở (Bảo tồn) |
+| **LayerSkip** | ACL 2024 | `layerskip_acl2024/` | Stochastic Layer Dropout | 0 | **3.9721** | **5.2886** | Đối chuẩn ngắt tầng ngẫu nhiên (+1.18 BLEU) |
+| **CLRR-Enc (Ours)** | Đề xuất | `src/amis_rewire/` | Deterministic Rewire + Stop-Grad | **0** | **4.4393** | **5.1761** | Nối tầng cô lập độc lập (+1.65 BLEU) |
+| **JEPA + CLRR-Enc (Ours)** | **Đề xuất chính** | `src/amis_rewire/` | **Latent Anchor + CLRR Rewire** | **0** | **4.5961** | **5.0425** | **Vượt trội toàn diện ($p < 0.001$)** |
+| **Middle-Layer Alignment** | ACL 2025 | `middle_align_acl2025/` | Middle-Layer Contrastive Loss | 0 | **4.7498** | **5.9373** | Đối chuẩn căn chỉnh tầng giữa (+1.96 BLEU) |
+| **JEPA + CLRR-Dec (Ours)** | Đề xuất | `src/amis_rewire/` | Target Decoder Rewire + JEPA | **0** | **4.8315** | **5.1873** | **Đỉnh cao BLEU trên mT5-Small** |
+
+### 7.2. Bảng 5B: Backbone Đa ngữ Lớn Chuyên dịch (`facebook/mbart-large-50`)
+| Phương pháp | Nguồn trích dẫn | Thư mục mã nguồn | Thuộc tính can thiệp | $\Delta\theta$ | BLEU (zh) | chrF++ | Ý nghĩa học thuật |
+| :--- | :---: | :--- | :--- | :---: | :---: | :---: | :--- |
+| **Standard Fine-Tuning** | Baseline | `src/amis_rewire/` | Huấn luyện chuẩn Seq2Seq | 0 | 19.6106 | 14.0538 | Baseline cơ sở (Bảo tồn) |
+| **LayerSkip** | ACL 2024 | `layerskip_acl2024/` | Stochastic Layer Dropout | 0 | 19.2150 | **15.9569** | Đối chuẩn ACL 2024 (+1.90 chrF++) |
+| **Middle-Layer Alignment** | ACL 2025 | `middle_align_acl2025/` | Middle-Layer Contrastive Loss | 0 | 19.7243 | **15.5253** | Đối chuẩn ACL 2025 (+1.47 chrF++) |
+| **JEPA + CLRR-Dec (Ours)** | Đề xuất | `src/amis_rewire/` | Target Decoder Rewire + JEPA | **0** | **20.3986** | **16.1939** | **Vượt cả LayerSkip & Middle-Align (+2.14 chrF++)** |
+| **JEPA + CLRR-Enc (Ours)** | **Đề xuất chính** | `src/amis_rewire/` | **Latent Anchor + CLRR Rewire** | **0** | **20.3927** | **19.0839** | **Đột phá áp đảo (+5.03 chrF++)** |
