@@ -56,10 +56,14 @@ class MiddleAlignMT5(nn.Module):
         input_ids: torch.Tensor,
         attention_mask: Optional[torch.Tensor] = None,
     ) -> torch.Tensor:
-        """Passes tokens through the encoder and extracts mean-pooled layer-4 representation."""
-        encoder = getattr(self.base_model, "encoder", None)
-        if encoder is None and hasattr(self.base_model, "model"):
-            encoder = getattr(self.base_model.model, "encoder", None)
+        """Passes tokens through the encoder and extracts mean-pooled layer-i representation."""
+        encoder = getattr(self.base_model, "get_encoder", None)
+        if callable(encoder):
+            encoder = self.base_model.get_encoder()
+        elif hasattr(self.base_model, "encoder"):
+            encoder = self.base_model.encoder
+        elif hasattr(self.base_model, "model") and hasattr(self.base_model.model, "encoder"):
+            encoder = self.base_model.model.encoder
         if encoder is None:
             raise ValueError(f"Could not locate encoder in {self.base_model.__class__.__name__}")
 
@@ -70,7 +74,6 @@ class MiddleAlignMT5(nn.Module):
             return_dict=True,
         )
         # hidden_states: tuple of (initial_embeds, layer_1, ..., layer_L)
-        # layer_idx 4 is hidden_states[4] or hidden_states[middle_layer_idx]
         idx = min(self.middle_layer_idx, len(encoder_outputs.hidden_states) - 1)
         layer_hidden = encoder_outputs.hidden_states[idx]
         return _masked_mean_pool(layer_hidden, attention_mask)
@@ -87,7 +90,6 @@ class MiddleAlignMT5(nn.Module):
         kwargs.pop("num_items_in_batch", None)
         # Standard Seq2Seq forward pass
         outputs = self.base_model(
-
             input_ids=input_ids,
             attention_mask=attention_mask,
             decoder_input_ids=decoder_input_ids,
@@ -105,9 +107,13 @@ class MiddleAlignMT5(nn.Module):
         if batch_size <= 1:
             return outputs
 
-        # Extract source representation h_s^4
-        idx = min(self.middle_layer_idx, len(outputs.encoder_hidden_states) - 1)
-        h_s = _masked_mean_pool(outputs.encoder_hidden_states[idx], attention_mask)
+        # Extract source representation h_s^i
+        enc_hidden_states = getattr(outputs, "encoder_hidden_states", None)
+        if enc_hidden_states is not None:
+            idx = min(self.middle_layer_idx, len(enc_hidden_states) - 1)
+            h_s = _masked_mean_pool(enc_hidden_states[idx], attention_mask)
+        else:
+            h_s = self._extract_middle_rep(input_ids=input_ids, attention_mask=attention_mask)
 
         # Build target tokens from labels (replacing -100 with pad_token_id)
         target_ids = torch.where(labels != -100, labels, self.pad_token_id)
@@ -163,7 +169,7 @@ def load_middle_align_model(
     temperature: float = 0.1,
     align_weight: float = 0.1,
 ) -> MiddleAlignMT5:
-    """Loads mT5 and wraps with Middle-Layer Alignment."""
+    """Loads any Seq2Seq model (mT5, ByT5, mBART) and wraps with Middle-Layer Alignment."""
     base = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
     pad_id = getattr(base.config, "pad_token_id", 0) or 0
     return MiddleAlignMT5(
@@ -173,3 +179,6 @@ def load_middle_align_model(
         align_weight=align_weight,
         pad_token_id=pad_id,
     )
+
+
+MiddleAlignSeq2SeqModel = MiddleAlignMT5

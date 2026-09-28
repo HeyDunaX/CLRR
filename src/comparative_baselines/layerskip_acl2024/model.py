@@ -26,12 +26,25 @@ def _hidden_and_repack(output: Any, hidden: torch.Tensor) -> Any:
 
 
 def _find_encoder_layers(model: nn.Module) -> list[nn.Module]:
-    """Locate encoder blocks for T5 / mT5 models."""
-    if hasattr(model, "encoder") and hasattr(model.encoder, "block"):
-        return list(model.encoder.block)
-    if hasattr(model, "model") and hasattr(model.model, "encoder") and hasattr(model.model.encoder, "block"):
-        return list(model.model.encoder.block)
-    raise ValueError(f"Could not locate encoder blocks for {model.__class__.__name__}")
+    """Locate encoder blocks/layers for T5, ByT5, and mBART models."""
+    encoder = getattr(model, "get_encoder", None)
+    if callable(encoder):
+        enc = model.get_encoder()
+        if hasattr(enc, "block"):
+            return list(enc.block)
+        if hasattr(enc, "layers"):
+            return list(enc.layers)
+    if hasattr(model, "encoder"):
+        if hasattr(model.encoder, "block"):
+            return list(model.encoder.block)
+        if hasattr(model.encoder, "layers"):
+            return list(model.encoder.layers)
+    if hasattr(model, "model") and hasattr(model.model, "encoder"):
+        if hasattr(model.model.encoder, "block"):
+            return list(model.model.encoder.block)
+        if hasattr(model.model.encoder, "layers"):
+            return list(model.model.encoder.layers)
+    raise ValueError(f"Could not locate encoder blocks/layers for {model.__class__.__name__}")
 
 
 class LayerSkipMT5(nn.Module):
@@ -120,6 +133,9 @@ def load_layerskip_model(
     model_name_or_path: str = "google/mt5-small",
     p_max: float = 0.2,
 ) -> LayerSkipMT5:
-    """Loads mT5 and wraps with LayerSkip."""
+    """Loads any Seq2Seq model (mT5, ByT5, mBART) and wraps with LayerSkip."""
     base = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
     return LayerSkipMT5(base, p_max=p_max)
+
+
+LayerSkipSeq2SeqModel = LayerSkipMT5

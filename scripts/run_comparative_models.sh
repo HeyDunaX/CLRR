@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
-# Pure Bash runner script for Comparative Baseline Experiments on Colab A100 VM.
+# Pure Bash runner script for Comprehensive Comparative Experiments on Colab A100 VM.
+# Detached execution ready: logs to /content/run.log, uploads to HF, and automatically unassigns VM upon completion.
 set -e
 
 echo "================================================================="
-echo "COLAB SSH RUNNER: ACL 2024 & ACL 2025 BASELINE EXPERIMENTS"
+echo "COLAB SSH RUNNER: ACL MULTI-BACKBONE & COMPARATIVE EXPERIMENTS"
+echo "Start time: $(date)"
 echo "================================================================="
 
 # Navigate to project repository
@@ -20,25 +22,31 @@ nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader ||
 
 # Ensure runtime dependencies matching pyproject.toml
 echo "[Runner] Ensuring required Python packages are installed..."
-pip install --quiet sacrebleu protobuf pypdf huggingface_hub 'transformers<5.0'
+pip install --quiet sacrebleu protobuf pypdf huggingface_hub pandas 'transformers<5.0'
 
+export PYTHONUNBUFFERED=1
 
-
-# Step 1: Preflight Smoke Test
+# Step 1: Preflight Smoke Test for all backbones
 echo ""
 echo "================================================================="
-echo "STEP 1: RUNNING MANDATORY PREFLIGHT SMOKE TEST"
+echo "STEP 1: RUNNING MANDATORY PREFLIGHT SMOKE TEST (ALL BACKBONES)"
 echo "================================================================="
-python -u scripts/smoke_test_comparative.py
+python -u scripts/smoke_test_comparative.py --backbone all
 
-# Step 2: Full Training & Evaluation
+# Step 2: Full Training & Evaluation across all 6 extension models
 echo ""
 echo "================================================================="
-echo "STEP 2: LAUNCHING FULL COMPARATIVE TRAINING PIPELINE"
+echo "STEP 2: LAUNCHING FULL 6-MODEL EXTENSION PIPELINE"
 echo "================================================================="
-python -u scripts/run_comparative_models.py
+python -u scripts/run_comparative_models.py --run-group all_extensions
 
 echo ""
 echo "================================================================="
-echo "ALL EXPERIMENTS COMPLETED SUCCESSFULLY! CHECKPOINTS UPLOADED."
+echo "ALL EXPERIMENTS COMPLETED SUCCESSFULLY! TABLE 5 GENERATED."
+echo "Checkpoints & Table 5 pushed to Hugging Face Hub (FiveC/amis-rewire-checkpoints)."
+echo "End time: $(date)"
 echo "================================================================="
+
+# Step 3: Automatically terminate Colab instance to preserve compute units
+echo "[Runner] Terminating Colab instance to preserve Compute Units..."
+python3 -c "import google.colab; google.colab.runtime.unassign()" 2>/dev/null || sudo poweroff 2>/dev/null || true

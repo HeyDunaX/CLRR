@@ -85,19 +85,33 @@ class ConsoleMetricsCallback(TrainerCallback):
                 print(f"[Middle-Align Eval @ step {state.global_step}] " + " | ".join(eval_fields), flush=True)
 
 
+def configure_mbart(tokenizer: Any, model: Any) -> None:
+    """Configures language codes and forced_bos_token_id for mBART models."""
+    if not tokenizer.__class__.__name__.lower().startswith("mbart"):
+        return
+    if "zh_CN" not in tokenizer.lang_code_to_id:
+        raise ValueError("The selected mBART tokenizer does not expose zh_CN.")
+    src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX")
+    tokenizer.src_lang = src_lang
+    tokenizer.tgt_lang = "zh_CN"
+    base_model = getattr(model, "base_model", model)
+    base_model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train Middle-Layer Alignment Baseline on Amis-Chinese")
     parser.add_argument("--model-name", default="google/mt5-small")
+    parser.add_argument("--run-name", default=None)
     parser.add_argument("--data-dir", default="data/processed")
     parser.add_argument("--output-dir", default="outputs_comparative/middle_align_acl2025")
     parser.add_argument("--hf-backup-repo", default="FiveC/amis-rewire-checkpoints")
-    parser.add_argument("--middle-layer-idx", type=int, default=4)
+    parser.add_argument("--middle-layer-idx", type=int, default=None)
     parser.add_argument("--temperature", type=float, default=0.1)
     parser.add_argument("--align-weight", type=float, default=0.1)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--num-train-epochs", type=float, default=20.0)
     parser.add_argument("--early-stopping-patience", type=int, default=4)
-    parser.add_argument("--learning-rate", type=float, default=3e-4)
+    parser.add_argument("--learning-rate", type=float, default=None)
     parser.add_argument("--warmup-ratio", type=float, default=0.06)
     parser.add_argument("--per-device-train-batch-size", type=int, default=16)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=8)
@@ -153,17 +167,30 @@ def main() -> None:
     data_dir = Path(args.data_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    short_name = args.model_name.split("/")[-1].replace("-many-to-many-mmt", "")
+    run_name = args.run_name or f"{short_name}-middle-align-acl2025"
+    if args.learning_rate is None:
+        learning_rate = 5e-5 if "mbart" in args.model_name.lower() else 3e-4
+    else:
+        learning_rate = args.learning_rate
+
+    if args.middle_layer_idx is None:
+        middle_layer_idx = 6 if ("mbart" in args.model_name.lower() or "byt5" in args.model_name.lower()) else 4
+    else:
+        middle_layer_idx = args.middle_layer_idx
+
     print(
-        f"[Middle-Align] Loading tokenizer & model for {args.model_name} (layer={args.middle_layer_idx}, tau={args.temperature}, weight={args.align_weight})...",
+        f"[Middle-Align] Loading tokenizer & model for {args.model_name} (run_name={run_name}, lr={learning_rate}, layer={middle_layer_idx}, tau={args.temperature}, weight={args.align_weight})...",
         flush=True,
     )
     tokenizer = AutoTokenizer.from_pretrained(args.model_name, use_fast=True)
     model = load_middle_align_model(
         args.model_name,
-        middle_layer_idx=args.middle_layer_idx,
+        middle_layer_idx=middle_layer_idx,
         temperature=args.temperature,
         align_weight=args.align_weight,
     )
+    configure_mbart(tokenizer, model)
 
     print(f"[Middle-Align] Tokenizing dataset splits from {data_dir}...", flush=True)
     train_dataset = tokenize_dataset(load_split(data_dir, "train"), tokenizer, args)
@@ -173,11 +200,11 @@ def main() -> None:
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=str(output_dir),
-        run_name="mt5-small-middle-align-acl2025",
+        run_name=run_name,
         seed=args.seed,
         data_seed=args.seed,
         num_train_epochs=args.num_train_epochs,
-        learning_rate=args.learning_rate,
+        learning_rate=learning_rate,
         warmup_ratio=args.warmup_ratio,
         per_device_train_batch_size=args.per_device_train_batch_size,
         per_device_eval_batch_size=args.per_device_eval_batch_size,
@@ -246,7 +273,7 @@ def main() -> None:
     pred_df.to_csv(pred_path, index=False, encoding="utf-8")
 
     all_metrics = {
-        "model": "mt5-small-middle-align-acl2025",
+        "model": run_name,
         "method": "middle_align",
         "reference_paper": "Liu & Niehues (ACL 2025)",
         "training_time_seconds": training_time,
@@ -282,19 +309,19 @@ def main() -> None:
             api.create_repo(args.hf_backup_repo, repo_type="model", private=True, exist_ok=True)
             api.upload_file(
                 path_or_fileobj=str(zip_path),
-                path_in_repo="comparative_baselines/middle_align_acl2025/best_model.zip",
+                path_in_repo=f"comparative_baselines/{run_name}/best_model.zip",
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
             api.upload_file(
                 path_or_fileobj=str(metrics_path),
-                path_in_repo="comparative_baselines/middle_align_acl2025/metrics.json",
+                path_in_repo=f"comparative_baselines/{run_name}/metrics.json",
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
             api.upload_file(
                 path_or_fileobj=str(pred_path),
-                path_in_repo="comparative_baselines/middle_align_acl2025/test_predictions.csv",
+                path_in_repo=f"comparative_baselines/{run_name}/test_predictions.csv",
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
