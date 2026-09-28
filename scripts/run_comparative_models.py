@@ -72,6 +72,11 @@ def parse_args() -> argparse.Namespace:
 
 def run_command_streaming(cmd: list[str]) -> int:
     print(f"\n[EXEC] Running: {' '.join(cmd)}", flush=True)
+    env = dict(os.environ)
+    src_dir = str(PROJECT_ROOT / "src")
+    repo_dir = str(PROJECT_ROOT)
+    existing_pp = env.get("PYTHONPATH", "")
+    env["PYTHONPATH"] = f"{src_dir}{os.pathsep}{repo_dir}{os.pathsep}{existing_pp}"
     process = subprocess.Popen(
         cmd,
         stdout=subprocess.PIPE,
@@ -80,6 +85,7 @@ def run_command_streaming(cmd: list[str]) -> int:
         bufsize=1,
         universal_newlines=True,
         cwd=str(PROJECT_ROOT),
+        env=env,
     )
     for line in iter(process.stdout.readline, ""):
         print(line, end="", flush=True)
@@ -173,7 +179,7 @@ def main() -> None:
         mbart_dec_run = "mbart-large-50-ami-cmn-jepa-clrr-dec"
         mbart_dec_dir = output_dir / mbart_dec_run
         cmd = [
-            py_exec, "-u", "-m", "amis_rewire.train",
+            py_exec, "-u", "-m", "src.amis_rewire.train",
             "--model", "mbart-large-50",
             "--method", "jepa-clrr",
             "--rewire-stack", "decoder",
@@ -280,7 +286,7 @@ def main() -> None:
         byt5_dec_run = "byt5-small-ami-cmn-jepa-clrr-dec"
         byt5_dec_dir = output_dir / byt5_dec_run
         cmd = [
-            py_exec, "-u", "-m", "amis_rewire.train",
+            py_exec, "-u", "-m", "src.amis_rewire.train",
             "--model", "byt5-small",
             "--method", "jepa-clrr",
             "--rewire-stack", "decoder",
