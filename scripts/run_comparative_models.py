@@ -340,12 +340,6 @@ def main() -> None:
             print(f"[ERROR] Task failed with exit code {ret}: {task['name']}", flush=True)
             sys.exit(ret)
 
-        if task["run_name"] == "mbart-large-50-ami-cmn-jepa-clrr-dec":
-            print(f"\n=======================================================", flush=True)
-            print(f"[PAUSE] Task 3 (mBART-50 JEPA + CLRR-Dec) completed successfully!", flush=True)
-            print(f"[PAUSE] Halting execution per user request before ByT5 tasks (4, 5, 6 will be run in next session).", flush=True)
-            print(f"=======================================================", flush=True)
-            break
 
     # Compile Table 5 (Full 3x5 Comparative Matrix)
     print("\n=================================================================", flush=True)
