@@ -309,12 +309,7 @@ def main() -> None:
             print(f"[Middle-Align] Uploading best model and metrics to Hugging Face ({args.hf_backup_repo})...", flush=True)
             api = HfApi(token=hf_token)
             api.create_repo(args.hf_backup_repo, repo_type="model", private=True, exist_ok=True)
-            api.upload_file(
-                path_or_fileobj=str(zip_path),
-                path_in_repo=f"comparative_baselines/{run_name}/best_model.zip",
-                repo_id=args.hf_backup_repo,
-                repo_type="model",
-            )
+            # Upload lightweight metrics and predictions FIRST so results are never lost
             api.upload_file(
                 path_or_fileobj=str(metrics_path),
                 path_in_repo=f"comparative_baselines/{run_name}/metrics.json",
@@ -327,6 +322,22 @@ def main() -> None:
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
+            print("[Middle-Align] Metrics and predictions uploaded to Hugging Face!", flush=True)
+            # Upload large model archive with retry
+            for attempt in range(1, 4):
+                try:
+                    api.upload_file(
+                        path_or_fileobj=str(zip_path),
+                        path_in_repo=f"comparative_baselines/{run_name}/best_model.zip",
+                        repo_id=args.hf_backup_repo,
+                        repo_type="model",
+                    )
+                    print(f"[Middle-Align] best_model.zip uploaded successfully!", flush=True)
+                    break
+                except Exception as zip_exc:
+                    print(f"[Middle-Align] Upload best_model.zip attempt {attempt}/3 failed: {zip_exc}", flush=True)
+                    if attempt < 3:
+                        time.sleep(5.0 * attempt)
             print("[Middle-Align] Hugging Face upload completed successfully!", flush=True)
         except Exception as e:
             print(f"[Middle-Align] Warning: Hugging Face upload failed: {e}", flush=True)
