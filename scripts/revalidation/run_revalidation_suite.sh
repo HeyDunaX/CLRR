@@ -53,7 +53,17 @@ echo "=========================================================="
 date
 
 # 5. Automatically shut down Colab instance to preserve Compute Units
+echo "[colab] Shutting down instance to protect Compute Units..."
+python -c "
+try:
+    from google.colab import runtime
+    print('[colab] Triggering runtime.unassign()...')
+    runtime.unassign()
+except Exception as e:
+    print(f'[colab] runtime.unassign failed: {e}')
+" || true
+
 if command -v colab &> /dev/null; then
-    echo "[colab] Shutting down instance to protect Compute Units..."
     colab stop || colab stop -s colab || colab stop -s 780099 || true
 fi
+
