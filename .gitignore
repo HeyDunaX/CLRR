@@ -33,3 +33,4 @@ data/*.jsonl
 
 # Paper templates and reference drafts
 docs/CLRR-paper/
+scratch/
