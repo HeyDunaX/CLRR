@@ -97,14 +97,20 @@ class CrossLayerResidualRewireNoStopGrad(nn.Module):
         return self.base_model.get_decoder()
 
     def forward(self, *args: Any, **kwargs: Any) -> Any:
+        kwargs.pop("num_items_in_batch", None)
         self._cache.clear()
         self._cache[self.stack] = {}
         return self.base_model(*args, **kwargs)
 
     def generate(self, *args: Any, **kwargs: Any) -> Any:
+        kwargs.pop("num_items_in_batch", None)
         self._cache.clear()
         self._cache[self.stack] = {}
         return self.base_model.generate(*args, **kwargs)
+
+    def prepare_decoder_input_ids_from_labels(self, labels: torch.Tensor) -> torch.Tensor:
+        return self.base_model.prepare_decoder_input_ids_from_labels(labels=labels)
+
 
 
 class GradientNormTracker(TrainerCallback):
