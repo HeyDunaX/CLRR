@@ -1,0 +1,10 @@
+{
+  "model": "byt5-small-layerskip-acl2024",
+  "method": "layerskip",
+  "reference_paper": "Elhoushi et al. (ACL 2024)",
+  "training_time_seconds": 997.6157329082489,
+  "eval_bleu": 2.177847480104019,
+  "eval_chrf++": 4.838262465615598,
+  "test_bleu": 2.553348110458502,
+  "test_chrf++": 4.856777706986477
+}

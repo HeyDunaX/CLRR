@@ -1,0 +1,10 @@
+{
+  "model": "mbart-large-50-layerskip-acl2024",
+  "method": "layerskip",
+  "reference_paper": "Elhoushi et al. (ACL 2024)",
+  "training_time_seconds": 1016.6645660400391,
+  "eval_bleu": 17.085556640843762,
+  "eval_chrf++": 13.871960255931967,
+  "test_bleu": 19.21495251112564,
+  "test_chrf++": 15.956868158736576
+}

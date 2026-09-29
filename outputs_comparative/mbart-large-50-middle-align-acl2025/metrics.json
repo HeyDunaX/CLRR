@@ -1,0 +1,10 @@
+{
+  "model": "mbart-large-50-middle-align-acl2025",
+  "method": "middle_align",
+  "reference_paper": "Liu & Niehues (ACL 2025)",
+  "training_time_seconds": 1058.4739804267883,
+  "eval_bleu": 16.47175719929574,
+  "eval_chrf++": 13.804218853371154,
+  "test_bleu": 19.724321324084165,
+  "test_chrf++": 15.525257452735413
+}

@@ -1,0 +1,23 @@
+{
+  "model": "google/byt5-small",
+  "method": "jepa-clrr",
+  "stack": "decoder",
+  "jepa_weight": 0.1,
+  "seed": 42,
+  "parameters": 299637760,
+  "trainable_parameters": 299637760,
+  "extra_parameters": 0,
+  "eval_loss": 1.2363942861557007,
+  "eval_bleu": 6.227740771467956,
+  "eval_chrf++": 7.617072096139757,
+  "eval_runtime": 25.8831,
+  "eval_samples_per_second": 22.254,
+  "eval_steps_per_second": 0.695,
+  "epoch": 20.0,
+  "test_loss": 1.2360801696777344,
+  "test_bleu": 7.439418507223576,
+  "test_chrf++": 8.062955067252458,
+  "test_runtime": 40.8604,
+  "test_samples_per_second": 14.072,
+  "test_steps_per_second": 0.441
+}

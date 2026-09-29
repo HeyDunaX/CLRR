@@ -12,3 +12,6 @@ google/byt5-small,JEPA + CLRR-Enc (Ours),Proposed (Main),0,7.30896,8.096336,Offi
 facebook/mbart-large-50,LayerSkip,Elhoushi et al. (ACL 2024),0,19.21495251112564,15.956868158736576,Measured (This Run)
 facebook/mbart-large-50,Middle-Layer Alignment,Liu & Niehues (ACL 2025),0,19.724321324084165,15.525257452735413,Measured (This Run)
 facebook/mbart-large-50,JEPA + CLRR-Dec (Ours),Proposed (Decoder-only),0,20.398582178984505,16.193865224006256,Measured (This Run)
+google/byt5-small,LayerSkip,Elhoushi et al. (ACL 2024),0,2.553348110458502,4.856777706986477,Measured (This Run)
+google/byt5-small,Middle-Layer Alignment,Liu & Niehues (ACL 2025),0,7.5659742156337,8.341379844556513,Measured (This Run)
+google/byt5-small,JEPA + CLRR-Dec (Ours),Proposed (Decoder-only),0,7.439418507223576,8.062955067252458,Measured (This Run)

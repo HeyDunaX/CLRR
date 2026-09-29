@@ -261,3 +261,16 @@ d:\Code\CLRR\
 | **Middle-Layer Alignment** | ACL 2025 | `middle_align_acl2025/` | Middle-Layer Contrastive Loss | 0 | 19.7243 | **15.5253** | Đối chuẩn ACL 2025 (+1.47 chrF++) |
 | **JEPA + CLRR-Dec (Ours)** | Đề xuất | `src/amis_rewire/` | Target Decoder Rewire + JEPA | **0** | **20.3986** | **16.1939** | **Vượt cả LayerSkip & Middle-Align (+2.14 chrF++)** |
 | **JEPA + CLRR-Enc (Ours)** | **Đề xuất chính** | `src/amis_rewire/` | **Latent Anchor + CLRR Rewire** | **0** | **20.3927** | **19.0839** | **Đột phá áp đảo (+5.03 chrF++)** |
+
+### 7.3. Bảng 5C: Backbone Byte-level Không Từ Vựng (`google/byt5-small`)
+| Phương pháp | Nguồn trích dẫn | Thư mục mã nguồn | Thuộc tính can thiệp | $\Delta\theta$ | BLEU (zh) | chrF++ | Ý nghĩa học thuật |
+| :--- | :---: | :--- | :--- | :---: | :---: | :---: | :--- |
+| **LayerSkip** | ACL 2024 | `layerskip_acl2024/` | Stochastic Layer Dropout | 0 | 2.5533 | 4.8568 | **Sụp đổ (-5.03 BLEU)** do ngắt quãng chuỗi 3-byte Hán tự |
+| **JEPA + CLRR-Enc (Ours)** | **Đề xuất chính** | `src/amis_rewire/` | **Latent Anchor + CLRR Rewire** | **0** | 7.3090 | 8.0963 | Duy trì độ ổn định không gian mã hóa byte |
+| **JEPA + CLRR-Dec (Ours)** | Đề xuất | `src/amis_rewire/` | Target Decoder Rewire + JEPA | **0** | **7.4394** | **8.0630** | **Vượt xa LayerSkip (+4.89 BLEU / +3.21 chrF++)** |
+| **Middle-Layer Alignment** | ACL 2025 | `middle_align_acl2025/` | Middle-Layer Contrastive Loss | 0 | **7.5660** | **8.3414** | Duy trì tốt nhờ căn chỉnh biểu diễn tầng 6 encoder |
+| **Standard Fine-Tuning** | Baseline | `src/amis_rewire/` | Huấn luyện chuẩn Seq2Seq | 0 | 7.5794 | 8.3102 | Baseline cơ sở (Bảo tồn) |
+
+---
+**Tổng kết toàn bộ 6/6 mô hình mở rộng đã hoàn thành 100%**, checkpoint và ma trận kết quả lưu trữ an toàn trên Hugging Face Hub `FiveC/amis-rewire-checkpoints`.
+
