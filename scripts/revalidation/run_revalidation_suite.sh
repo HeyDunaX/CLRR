@@ -13,6 +13,23 @@ echo ""
 echo "[Step 1/4] Running Preflight Smoke Test..."
 python -u scripts/revalidation/smoke_test_revalidation.py
 
+# Pre-download existing revalidation artifacts from Hugging Face
+if [ -n "$HF_TOKEN" ] && [ ! -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+    python -c "
+import os, shutil
+from huggingface_hub import hf_hub_download
+token = os.environ.get('HF_TOKEN')
+try:
+    p = hf_hub_download(repo_id='FiveC/amis-rewire-checkpoints', filename='revalidation/no_sg_gradient_trace.json', token=token)
+    os.makedirs('outputs_revalidation', exist_ok=True)
+    shutil.copy(p, 'outputs_revalidation/no_sg_gradient_trace.json')
+    print('[hf] Downloaded existing no_sg_gradient_trace.json from Hugging Face!')
+except Exception as e:
+    print(f'[hf] Notice: no_sg_gradient_trace.json not found on remote ({e})')
+" || true
+fi
+
+
 # 2. Run Task 3: mT5 No-Stop-Gradient
 if [ ! -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
     echo ""
