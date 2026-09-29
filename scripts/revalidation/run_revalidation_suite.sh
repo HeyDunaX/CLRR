@@ -55,5 +55,5 @@ date
 # 5. Automatically shut down Colab instance to preserve Compute Units
 if command -v colab &> /dev/null; then
     echo "[colab] Shutting down instance to protect Compute Units..."
-    colab stop -s colab || true
+    colab stop || colab stop -s colab || colab stop -s 780099 || true
 fi
