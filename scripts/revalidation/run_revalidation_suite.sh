@@ -14,9 +14,33 @@ echo "[Step 1/4] Running Preflight Smoke Test..."
 python -u scripts/revalidation/smoke_test_revalidation.py
 
 # 2. Run Task 3: mT5 No-Stop-Gradient
-echo ""
-echo "[Step 2/4] Task 3: Running mT5 No-Stop-Gradient Experiment (5 epochs)..."
-python -u scripts/revalidation/run_no_stop_gradient.py
+if [ ! -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+    echo ""
+    echo "[Step 2/4] Task 3: Running mT5 No-Stop-Gradient Experiment (5 epochs)..."
+    python -u scripts/revalidation/run_no_stop_gradient.py
+
+    if [ -n "$HF_TOKEN" ] && [ -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+        echo "[hf] Uploading Task 3 gradient trace..."
+        python -c "
+import os
+from huggingface_hub import HfApi
+token = os.environ.get('HF_TOKEN')
+if token:
+    api = HfApi(token=token)
+    api.upload_file(
+        path_or_fileobj='outputs_revalidation/no_sg_gradient_trace.json',
+        path_in_repo='revalidation/no_sg_gradient_trace.json',
+        repo_id='FiveC/amis-rewire-checkpoints',
+        repo_type='model'
+    )
+    print('[hf] Uploaded no_sg_gradient_trace.json')
+" || true
+    fi
+else
+    echo ""
+    echo "[Step 2/4] Task 3: no_sg_gradient_trace.json already exists! Skipping."
+fi
+
 
 # 3. Run Task 2: mBART-50 Ablations (CLRR-only and LSR-only)
 echo ""

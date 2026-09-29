@@ -52,6 +52,41 @@ def run_mbart_ablations() -> None:
         print(f"Run name: {run_name}")
         print(f"=======================================================", flush=True)
 
+        # 1. Restore newest checkpoint from Hugging Face if local checkpoint doesn't exist
+        run_dir = out_dir / run_name
+        has_local_ckpt = run_dir.exists() and any(run_dir.glob("checkpoint-*"))
+        if not has_local_ckpt and "HF_TOKEN" in os.environ:
+            try:
+                import re
+                import zipfile
+                from huggingface_hub import HfApi, hf_hub_download
+                api = HfApi(token=os.environ["HF_TOKEN"])
+                remote_files = api.list_repo_files(hf_repo, repo_type="model")
+                prefix = f"revalidation_ablations/{run_name}"
+                matches = [f for f in remote_files if f.startswith(prefix) and f.endswith(".zip")]
+                if matches:
+                    def get_step(s: str) -> int:
+                        m = re.search(r"checkpoint-(\d+)\.zip", s)
+                        return int(m.group(1)) if m else -1
+                    best_archive = max(matches, key=get_step)
+                    step = get_step(best_archive)
+                    if step > 0:
+                        print(f"[restore] Found remote {best_archive}. Downloading to resume...")
+                        local_zip = hf_hub_download(
+                            repo_id=hf_repo,
+                            filename=best_archive,
+                            repo_type="model",
+                            token=os.environ["HF_TOKEN"],
+                        )
+                        target_ckpt = run_dir / f"checkpoint-{step}"
+                        target_ckpt.mkdir(parents=True, exist_ok=True)
+                        with zipfile.ZipFile(local_zip) as z:
+                            z.extractall(target_ckpt)
+                        print(f"[restore] Successfully restored {target_ckpt} (resuming from step {step})!")
+            except Exception as e:
+                print(f"[restore] Checkpoint restore notice: {e}")
+
+
         cmd = [
             sys.executable,
             "-u",
