@@ -30,3 +30,6 @@ data/*.jsonl
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Paper templates and reference drafts
+docs/CLRR-paper/
