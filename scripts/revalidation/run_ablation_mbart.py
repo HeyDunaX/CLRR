@@ -52,59 +52,68 @@ def run_mbart_ablations() -> None:
         print(f"Run name: {run_name}")
         print(f"=======================================================", flush=True)
 
-        # Clean local run directory to ensure fresh start from scratch (exact runtime benchmarking on A100)
         run_dir = out_dir / run_name
-        if run_dir.exists():
-            import shutil
-            shutil.rmtree(run_dir, ignore_errors=True)
+        has_checkpoint = any(run_dir.glob("checkpoint-*")) if run_dir.exists() else False
+        has_completed = (run_dir / "metrics.json").exists()
 
-        cmd = [
-            sys.executable,
-            "-u",
-            "-m",
-            "amis_rewire.train",
-            "--model",
-            "mbart-large-50",
-            "--method",
-            ab["method"],
-            "--jepa-weight",
-            str(ab["jepa_weight"]),
-            "--learning-rate",
-            "5e-5",
-            "--num-train-epochs",
-            "20",
-            "--early-stopping-patience",
-            "4",
-            "--per-device-train-batch-size",
-            "4",
-            "--gradient-accumulation-steps",
-            "32",  # Effective batch = 128
-            "--per-device-eval-batch-size",
-            "8",
-            "--num-beams",
-            "4",
-            "--eval-beams",
-            "1",
-            "--save-total-limit",
-            "2",
-            "--no-auto-resume",
-            "--run-name",
-            run_name,
-            "--output-dir",
-            str(out_dir),
-            "--backup-dir",
-            str(repo_root / "backups"),
-        ]
+        if has_completed:
+            print(f"[skip] {run_name} already completed with metrics.json. Skipping training.", flush=True)
+        else:
+            if not has_checkpoint and run_dir.exists():
+                import shutil
+                shutil.rmtree(run_dir, ignore_errors=True)
 
-        if "HF_TOKEN" in os.environ:
-            cmd.extend([
-                "--hf-backup-repo",
-                hf_repo,
-                "--hf-backup-prefix",
-                "revalidation_ablations",
-            ])
+            auto_resume_arg = "--auto-resume" if has_checkpoint else "--no-auto-resume"
+            if has_checkpoint:
+                print(f"[resume] Existing checkpoints detected in {run_dir}. Resuming training seamlessly...", flush=True)
 
-        run_command(cmd, cwd=repo_root)
+            cmd = [
+                sys.executable,
+                "-u",
+                "-m",
+                "amis_rewire.train",
+                "--model",
+                "mbart-large-50",
+                "--method",
+                ab["method"],
+                "--jepa-weight",
+                str(ab["jepa_weight"]),
+                "--learning-rate",
+                "5e-5",
+                "--num-train-epochs",
+                "20",
+                "--early-stopping-patience",
+                "4",
+                "--per-device-train-batch-size",
+                "4",
+                "--gradient-accumulation-steps",
+                "32",  # Effective batch = 128
+                "--per-device-eval-batch-size",
+                "8",
+                "--num-beams",
+                "4",
+                "--eval-beams",
+                "1",
+                "--save-total-limit",
+                "2",
+                auto_resume_arg,
+                "--run-name",
+                run_name,
+                "--output-dir",
+                str(out_dir),
+                "--backup-dir",
+                str(repo_root / "backups"),
+            ]
+
+            if "HF_TOKEN" in os.environ:
+                cmd.extend([
+                    "--hf-backup-repo",
+                    hf_repo,
+                    "--hf-backup-prefix",
+                    "revalidation_ablations",
+                ])
+
+            run_command(cmd, cwd=repo_root)
 
         # Read results
         metrics_file = out_dir / run_name / "metrics.json"

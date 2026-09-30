@@ -88,35 +88,8 @@ class CheckpointBackupCallback(TrainerCallback):
             self.hf_api.create_repo(hf_backup_repo, repo_type="model", private=True, exist_ok=True)
 
     def on_save(self, args: Any, state: Any, control: Any, **kwargs: Any):
-        checkpoint_dir = Path(args.output_dir) / f"checkpoint-{state.global_step}"
-        if not checkpoint_dir.exists():
-            return
-        self.backup_dir.mkdir(parents=True, exist_ok=True)
-        archive_path = self.backup_dir / f"checkpoint-{state.global_step}.zip"
-        temporary_path = archive_path.with_suffix(".tmp.zip")
-        with zipfile.ZipFile(temporary_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-            for file_path in checkpoint_dir.rglob("*"):
-                if file_path.is_file():
-                    archive.write(file_path, file_path.relative_to(checkpoint_dir))
-        temporary_path.replace(archive_path)
-        print(f"[backup] saved {archive_path}", flush=True)
-        if self.hf_api is not None:
-            target = remote_path(self.hf_backup_prefix, self.run_name, archive_path.name)
-            uploaded = safe_hf_upload(
-                self.hf_api,
-                archive_path,
-                self.hf_backup_repo,
-                target,
-                max_retries=3,
-                initial_delay=5.0,
-            )
-            if uploaded:
-                print(f"[backup] uploaded {target}", flush=True)
-            else:
-                print(
-                    f"[backup] warning: remote upload of {archive_path.name} timed out; local checkpoint is safe, continuing training...",
-                    flush=True,
-                )
+        # Per-epoch backup disabled to maximize throughput; best_model is archived at completion.
+        return
 
 
 def safe_hf_upload(
