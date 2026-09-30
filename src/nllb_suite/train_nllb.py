@@ -186,11 +186,11 @@ def main() -> None:
     forced_bos_token_id = tokenizer.convert_tokens_to_ids(DEFAULT_TGT_LANG)
 
     model, method_metadata = load_nllb_model(args.method, model_name=args.model_name)
-    # Configure generation target language
-    if hasattr(model, "config"):
-        model.config.forced_bos_token_id = forced_bos_token_id
-    elif hasattr(model, "base_model") and hasattr(model.base_model, "config"):
-        model.base_model.config.forced_bos_token_id = forced_bos_token_id
+    # Configure generation target language on generation_config (Transformers 5.x compatible)
+    if hasattr(model, "generation_config") and model.generation_config is not None:
+        model.generation_config.forced_bos_token_id = forced_bos_token_id
+    if hasattr(model, "base_model") and hasattr(model.base_model, "generation_config") and model.base_model.generation_config is not None:
+        model.base_model.generation_config.forced_bos_token_id = forced_bos_token_id
 
     trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     total_params = sum(p.numel() for p in model.parameters())
