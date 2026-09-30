@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import inspect
 import json
 import logging
 import os
@@ -312,39 +313,50 @@ def main() -> None:
     test_dataset = tokenize_dataset(load_split(data_dir, "test"), tokenizer, args)
     collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8)
 
-    training_args = Seq2SeqTrainingArguments(
-        output_dir=str(output_dir),
-        run_name=run_name,
-        seed=args.seed,
-        data_seed=args.seed,
-        num_train_epochs=args.num_train_epochs,
-        learning_rate=args.learning_rate,
-        warmup_ratio=args.warmup_ratio,
-        per_device_train_batch_size=args.per_device_train_batch_size,
-        per_device_eval_batch_size=args.per_device_eval_batch_size,
-        gradient_accumulation_steps=args.gradient_accumulation_steps,
-        eval_strategy="epoch",
-        save_strategy="epoch",
-        logging_strategy="steps",
-        logging_steps=args.logging_steps,
-        save_total_limit=args.save_total_limit,
-        predict_with_generate=True,
-        generation_num_beams=args.eval_beams,
-        generation_max_length=args.max_target_length,
-        load_best_model_at_end=True,
-        metric_for_best_model="eval_chrf++",
-        greater_is_better=True,
-        fp16=args.fp16 and torch.cuda.is_available(),
-        bf16=args.bf16 and torch.cuda.is_available(),
-        tf32=torch.cuda.is_available(),
-        gradient_checkpointing=args.gradient_checkpointing,
-        dataloader_num_workers=args.dataloader_num_workers,
-        dataloader_pin_memory=args.dataloader_pin_memory,
-        optim="adamw_torch_fused" if torch.cuda.is_available() else "adamw_torch",
-        report_to=[],
-        remove_unused_columns=False,
-        save_safetensors=False,
-    )
+    training_kwargs: dict[str, Any] = {
+        "output_dir": str(output_dir),
+        "run_name": run_name,
+        "seed": args.seed,
+        "data_seed": args.seed,
+        "num_train_epochs": args.num_train_epochs,
+        "learning_rate": args.learning_rate,
+        "per_device_train_batch_size": args.per_device_train_batch_size,
+        "per_device_eval_batch_size": args.per_device_eval_batch_size,
+        "gradient_accumulation_steps": args.gradient_accumulation_steps,
+        "save_strategy": "epoch",
+        "logging_strategy": "steps",
+        "logging_steps": args.logging_steps,
+        "save_total_limit": args.save_total_limit,
+        "predict_with_generate": True,
+        "generation_num_beams": args.eval_beams,
+        "generation_max_length": args.max_target_length,
+        "load_best_model_at_end": True,
+        "metric_for_best_model": "eval_chrf++",
+        "greater_is_better": True,
+        "fp16": args.fp16 and torch.cuda.is_available(),
+        "bf16": args.bf16 and torch.cuda.is_available(),
+        "tf32": torch.cuda.is_available(),
+        "gradient_checkpointing": args.gradient_checkpointing,
+        "dataloader_num_workers": args.dataloader_num_workers,
+        "dataloader_pin_memory": args.dataloader_pin_memory,
+        "optim": "adamw_torch_fused" if torch.cuda.is_available() else "adamw_torch",
+        "report_to": [],
+        "remove_unused_columns": False,
+        "save_safetensors": False,
+    }
+    sig = inspect.signature(Seq2SeqTrainingArguments.__init__)
+    if "eval_strategy" in sig.parameters:
+        training_kwargs["eval_strategy"] = "epoch"
+    else:
+        training_kwargs["evaluation_strategy"] = "epoch"
+
+    if "warmup_ratio" in sig.parameters:
+        training_kwargs["warmup_ratio"] = args.warmup_ratio
+    else:
+        steps_per_epoch = max(1, len(train_dataset) // (args.per_device_train_batch_size * args.gradient_accumulation_steps))
+        training_kwargs["warmup_steps"] = max(1, int(steps_per_epoch * args.num_train_epochs * args.warmup_ratio))
+
+    training_args = Seq2SeqTrainingArguments(**training_kwargs)
     trainer = Seq2SeqTrainer(
         model=model,
         args=training_args,
