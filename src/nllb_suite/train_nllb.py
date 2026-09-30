@@ -227,6 +227,7 @@ def main() -> None:
         "tf32": torch.cuda.is_available(),
         "dataloader_num_workers": args.dataloader_num_workers,
         "remove_unused_columns": False,
+        "save_safetensors": False,
         "report_to": "none",
     }
 
