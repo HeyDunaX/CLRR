@@ -1,0 +1,12 @@
+{
+  "model": "facebook/mbart-large-50-many-to-many-mmt",
+  "method": "clrr-only",
+  "desc": "CLRR-only (alpha=0.1, lambda=0)",
+  "best_checkpoint": "checkpoint-504 (epoch 14)",
+  "bleu_zh": 18.4697194429371,
+  "chrf_plus_plus_raw_w2": 13.24427443445707,
+  "chrf_raw_w0": 17.233093579161572,
+  "chrf_plus_plus_segmented_w2": 21.901234099294538,
+  "test_bleu": 18.4697194429371,
+  "test_chrf++": 13.24427443445707
+}

@@ -1,0 +1,16 @@
+{
+  "num_test_sentences": 575,
+  "mbart_baseline": {
+    "bleu_zh": 19.6144,
+    "chrf_plus_plus_raw_w2": 14.0547,
+    "chrf_raw_w0": 18.2288,
+    "chrf_plus_plus_segmented_w2": 22.7229
+  },
+  "mbart_clrr_enc": {
+    "bleu_zh": 20.3896,
+    "chrf_plus_plus_raw_w2": 19.0824,
+    "chrf_raw_w0": 18.9195,
+    "chrf_plus_plus_segmented_w2": 23.5869
+  },
+  "explanation": "In sacrebleu chrF++ (word_order=2), word n-grams are extracted via whitespace splitting. Because Chinese sentences have no inter-word whitespace, unsegmented sentences yield zero word bigram matches, heavily deflating raw chrF++ to ~14.05. When segmented into Chinese words, chrF++ is 22.72 for baseline and 23.59 for CLRR-Enc, aligning with BLEU."
+}

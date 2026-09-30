@@ -1,0 +1,353 @@
+
+=== PAGE 1 ===
+Parameter-Neutral Context-Encoder Residual
+Rewiring
+for JEPA-Guided Low-Resource Amis-to-Chinese
+Translation
+Anonymous
+Anonymous
+Abstract.We proposeContext-Encoder Cross-Layer Residual Rewiring
+(CLRR), a parameter-neutral intervention designed for low-resource
+neural machine translation of morphologically rich languages under a
+Joint-Embedding Predictive Architecture (JEPA) objective. In polysyn-
+thetic and agglutinative languages such as Amis, deep Transformer en-
+coders frequently suer from representation over-smoothing, discarding
+essential morphosyntactic axes before representations reach the de-
+coder. CLRR inserts a xed, detached skip residual from layeri−dto
+layeristrictly within the context encoder stack using a scalar scaling fac-
+torα= 0.1. To evaluate its eectiveness in representation learning, we in-
+tegrate CLRR with JEPA-guided Seq2Seq translation, jointly optimizing
+autoregressive cross-entropy with latent cosine alignment between source
+context representations and stop-gradient target anchors. The method
+introduces zero trainable parameters. We evaluate CLRR across three
+multilingual backbonesmT5-small, mBART-50, and ByT5-smallon
+the 5,751-sentence AmisMandarin parallel corpus of Zheng et al. (2022).
+Under a xed fairness protocol with batch size 256 on an A100 GPU, we
+measure translation quality via BLEU and chrF++ to isolate the eect
+of multi-layer context preservation.
+1 Introduction
+Machine translation for endangered languages operates under constraints that
+dier fundamentally from high-resource settings: corpora are small, annotators
+are scarce, and computational budgets for practitioners in documentation com-
+munities are limited [5,8]. When a parallel corpus contains fewer than 6,000
+sentence pairs, the standard approach is to ne-tune a pretrained multilingual
+modelmT5, mBART, or ByT5on the available data. The question then be-
+comes whether the internal representation ow of the pretrained model is well-
+suited to the target language pair, or whether it can be improved without adding
+parameters that risk overtting on scarce data.
+This paper investigates a specic parameter-neutral modication:Context-
+Encoder Cross-Layer Residual Rewiring (CLRR), coupled with aJoint-
+Embedding Predictive Architecture (JEP A)latent alignment objective.
+=== PAGE 2 ===
+2 Anonymous
+In polysynthetic and agglutinative languages such as Amis, deep Transformer
+encoders frequently over-smooth representations, causing the loss of low-level
+morphosyntactic axes. At each layeristrictly within the context encoder stack,
+CLRR adds a scaled, detached copy of the hidden state from layeri−dto the cur-
+rent hidden state. The operation introduces no learned parametersthe scaling
+factorα= 0.1and distanced= 2are xed hyperparameters. Furthermore, the
+Context Encoder representations are aligned with stop-gradient target represen-
+tations via a cosine JEPA loss, regularizing representation space while standard
+autoregressive generation preserves BLEU/chrF++ evaluation.
+We evaluate this approach on Amis-to-Chinese (Mandarin) translation. Amis
+(Pangcah) is a Formosan Austronesian language spoken in eastern Taiwan, classi-
+ed as endangered by UNESCO. The parallel corpus of Zheng et al. [15] provides
+5,751 aligned sentence pairs with a pre-dened train/dev/test split, making it a
+controlled benchmark for low-resource MT experiments. Recent work by Schep-
+pat et al. [14] has explored Amis MT using diverse corpora, establishing that
+multilingual ne-tuning is viable for this language pair.
+The contribution is methodological: we present a controlled 6-run experiment
+measuring whether context-encoder rewiring and JEPA latent alignment improve
+low-resource translation quality under a xed fairness protocol.
+2 Related Work
+Layer-adaptive architectures.The idea that not all Transformer layers contribute
+equally to a given input is well established. Universal Transformers [2] share pa-
+rameters across depth, allowing dynamic computation. LayerDrop [4] introduces
+structured dropout over layers during training, enabling depth reduction at in-
+ference. LayerSkip [3] extends this to early-exit inference with self-speculative
+decoding. Mixture-of-Depths [13] allocates compute dynamically per token un-
+der a xed budget. These methods modify the model architecture or training
+procedure in ways that add complexity or change the parameter count. CLRR
+diers: it adds no parameters, uses no gating or routing mechanism, and requires
+no change to the training loop. The rewiring is a deterministic, xed residual
+applied through forward hooks.
+Parameter-ecient ne-tuning.LoRA [6] reduces the number of trainable pa-
+rameters by injecting low-rank weight matrices, but still adds parameters to the
+model. CLRR is distinct from PEFT methods because it adds exactly zero pa-
+rameters. The baseline and CLRR conditions have identical parameter counts,
+identical optimizers, and identical datathe only dierence is the cross-layer
+residual.
+Endangered-language machine translation.Translation systems for endangered
+and Indigenous languages have been explored in several recent shared tasks
+and workshops. The AmericasNLP shared tasks [1] evaluate MT for Indigenous
+languages of the Americas, with recent submissions using mT5 and mBART
+=== PAGE 3 ===
+Context-Encoder Rewiring for JEPA-Guided Amis MT 3
+ne-tuning. Rangel and Kobayashi [12] apply NMT to Yucatec Mayan and
+Chol. Nguyen et al. [10] propose a hybrid approach for Ojibwe verbs, combining
+rule-based morphological analysis with neural models. Prieto et al. [11] frame
+translation as cultural preservation for Colombian Indigenous languages. These
+works establish that ne-tuning multilingual pretrained models is the dominant
+paradigm for low-resource MT, but few investigate whether the internal hidden-
+state ow can be improved without adding parameters.
+Amis language processing.Amis is an Austronesian language with agglutinative
+morphology. Zheng et al. [15] introduce the 5,751-sentence AmisMandarin par-
+allel corpus and a 7,800-entry dictionary used in this study. Scheppat et al. [14]
+train Amis MT systems by integrating diverse Amis, English, and Mandarin re-
+sources, demonstrating that multilingual pretraining transfers usefully to Amis
+despite its typological distance from the pretraining languages.
+Computational methods for endangered languages.The ComputEL workshop
+series emphasizes that infrastructure and resource constraints matter as much
+as modeling advances [5]. Moeller and Arppe [9] advocate for machine-in-the-
+loop workows that keep linguists central. Mainzinger [8] maps technology to
+revitalization needs. Kriukova et al. [7] highlight the challenges of unstandard-
+ized orthography and polysynthesis for ASRconcerns that apply equally to
+MT input normalization. Our work aligns with this community's emphasis on
+practical, resource-conscious interventions.
+3 Methodology
+3.1 Context-Encoder Cross-Layer Residual Rewiring
+Leth i∈R B×L×H denote the hidden state output of Transformer encoder layeri,
+whereBis batch size,Lsequence length, andHhidden dimension. In standard
+Transformer encoders, each layer receives only the output of its immediate pre-
+decessor:
+hi =EncoderLayer i(hi−1).(1)
+For polysynthetic languages with rich axation like Amis, deep encoder rep-
+resentations can over-smooth morphological granularities into broad semantics.
+To retain low-level morphosyntactic information, CLRR modies the hidden
+state of theContext Encoderat each layer by adding a scaled, detached resid-
+ual from layeri−d:
+h′
+i =
+(
+hi +α·sg(h ′
+i−d)ifi≥d,
+hi otherwise, (2)
+whereα∈[0,1]is the rewiring strength and sg(·)denotes the stop-gradient op-
+erator. The stop-gradient ensures that the residual does not create additional
+backpropagation paths through earlier layers, keeping optimization completely
+stable. Forward hooks are installed strictly on the Context Encoder layers, main-
+taining pristine decoder dynamics.
+=== PAGE 4 ===
+4 Anonymous
+3.2 JEP A-Guided Latent Alignment
+In Joint-Embedding Predictive Architectures (JEPA), learning is formulated in
+latent representation space rather than solely reconstructing surface tokens. We
+adapt this principle to neural machine translation by introducing a joint objec-
+tive:
+L=L NMT +λ JEPA ·L JEPA ,(3)
+whereL NMT is the autoregressive cross-entropy loss, andL JEPA is the latent
+alignment loss between the source context representation and the target repre-
+sentation.
+Specically, letH X∈R B×LX×H denote the nal output of the rewired Con-
+text Encoder for source sentenceX. Under a stop-gradient condition, the target
+Chinese sentenceYis passed through the encoder to obtain target representa-
+tionH Y ∈R B×LY×H . We apply masked mean-pooling andℓ 2-normalization to
+obtain sentence-level representations:
+¯zX = Pool(H X)
+∥Pool(H X)∥2
+, ¯zY = Pool(sg(H Y ))
+∥Pool(sg(H Y ))∥2
+.(4)
+The JEPA latent loss is computed as cosine distance:
+LJEPA = 1− ¯z⊤
+X¯zY.(5)
+This latent alignment acts as a regularizer, anchoring Amis source representa-
+tions to target semantic space without adding any trainable parameters.
+3.3 Implementation and Hyperparameters
+The system is implemented as two modular wrappers:CrossLayerResidualRewire
+(handling forward hooks on encoder stacks) andJEPAGuidedSeq2SeqLM(han-
+dling joint latent and autoregressive optimization). The wrappers expose iden-
+tical interfaces to HuggingFaceSeq2SeqTrainerand beam generation. The
+method introduces exactlyzeroextra parameters (extra_parameter_count()
+= 0). Hyperparameters are xed a priori without validation tuning:
+Skip distance:d= 2.
+Rewiring strength:α= 0.1.
+JEPA loss weight:λ JEPA = 0.1.
+4 Experiment Setup
+4.1 Dataset
+We use the AmisMandarin parallel corpus introduced by Zheng et al. [15],
+containing 5,751 aligned sentence pairs collected from Amis language textbooks
+and educational materials. The corpus provides a pre-dened split:
+The source language is Amis and the target language is Chinese (Mandarin).
+Each sentence pair is stored as asource,targetCSV row. No data augmenta-
+tion, back-translation, or external monolingual data is used.
+=== PAGE 5 ===
+Context-Encoder Rewiring for JEPA-Guided Amis MT 5
+T able 1.Dataset statistics.
+Split Sentences
+Train 4,600
+Validation 576
+Test 575
+4.2 Models and Evaluation Matrix
+To balance scientic depth with the computational constraints of endangered-
+language research, we evaluate a focused 6-run matrix across two pretrained
+multilingual backbones:
+1.mT5-small(google/mt5-small): the central research backbone, covering
+101 languages. On mT5-small, we conduct a full 4-condition ablation study:
+ Baseline: standard Seq2Seq ne-tuning with cross-entropy loss.
+ CLRR-Enc: Context-Encoder residual rewiring without JEPA loss.
+ JEP A: JEPA latent alignment objective without residual rewiring.
+ JEP A + CLRR-Enc: the full proposed method combining Context-
+Encoder rewiring with JEPA latent alignment.
+2.mBAR T-50(facebook/mbart-large-50-many-to-many-mmt): a translation-
+specic model pretrained on 50 language pairs (usingzh_CNlanguage code).
+On mBART-50, we conduct cross-architecture validation comparingBase-
+lineagainstJEP A + CLRR-Enc(2 runs).
+This design yields exactly 6 controlled runs, cleanly dissociating the individual
+impacts of context rewiring and latent alignment while verifying cross-architecture
+generalization.
+4.3 Metrics
+We report two automatic metrics on the test set:
+ BLEU(SacreBLEU): standard corpus-level BLEU for comparability with
+prior MT work.
+ chrF++(SacreBLEU, word order 2): charactern-gram F-score with word
+bigrams. Preferred for morphologically rich and low-resource settings because
+it is less sensitive to exact word-boundary matches.
+Model selection uses validation chrF++ (best checkpoint across epochs). The
+test set is evaluated exactly once after model selection.
+4.4 T raining Protocol
+All six runs follow an identical protocol to ensure fair comparison:
+No LoRA, adapters, prompt tuning, data augmentation, or tokenizer mod-
+ications are applied in any condition. Full-model ne-tuning is used for both
+baseline and CLRR.
+=== PAGE 6 ===
+6 Anonymous
+T able 2.Fixed training protocol.
+Parameter Value
+Seed (train + data) 42
+Optimizer AdamW (fused)
+Learning rate5×10 −5
+Warmup ratio 0.06
+Max epochs 5
+Early stopping patience 2 epochs
+Batch size (per device) 256
+Gradient accumulation 1 (eective batch = 256)
+Max source/target length 256 / 256 tokens
+Beam size (generation) 4
+Precision BF16
+TF32 matmul enabled
+Gradient checkpointing enabled
+5 Conclusion
+This paper presents Context-Encoder Cross-Layer Residual Rewiring (CLRR)
+coupled with a JEPA latent alignment objective for low-resource Amis-to-Chinese
+machine translation. The method adds zero trainable parameters: it propagates
+lower-level morphosyntactic features forward to prevent encoder over-smoothing
+in agglutinative languages, while regularizing latent representation space with
+stop-gradient target anchors.
+The proposed 6-run protocol provides a disciplined, resource-ecient evalu-
+ation: a 4-condition ablation study on the central mT5-small backbone to disen-
+tangle the benets of residual rewiring and JEPA alignment, alongside cross-
+architecture validation on mBART-50. By standardizing on a 256-batch-size
+training protocol on an A100 GPU with identical seeds, optimizers, and stopping
+criteria, this work directly addresses the ComputEL community's call for com-
+putationally reproducible and practically grounded interventions. Future work
+includes extending this framework to additional Formosan and Indigenous lan-
+guages, measuring inference latency, and analyzing latent clustering geometry.
+References
+1. De Gibert, O., Pugh, R., Marashian, A., Vazquez, R., Ebrahimi, A., Denisov, P.,
+Rice, E., Gow-Smith, E., Prieto, J., Robles, M., Manrique, R., Moreno, O., Lino,
+A., Coto-Solano, R., Alvarez, A., Aguero-Torales, M., Ortega, J.E., Chiruzzo, L.,
+Oncevay, A., Rijhwani, S., von der Wense, K., Mager, M.: Findings of the Americ-
+asNLP 2025 shared tasks on machine translation, creation of educational material,
+and translation metrics for indigenous languages of the Americas. In: Proceedings
+of the Fifth Workshop on NLP for Indigenous Languages of the Americas (Amer-
+icasNLP). pp. 134152. Association for Computational Linguistics, Albuquerque,
+New Mexico (May 2025).https://doi.org/10.18653/v1/2025.americasnlp-1.
+=== PAGE 7 ===
+Context-Encoder Rewiring for JEPA-Guided Amis MT 7
+16,https://aclanthology.org/2025.americasnlp-1.16/, americasNLP; recent
+shared-task evidence for Indigenous-language MT and evaluation
+2. Dehghani, M., Gouws, S., Vinyals, O., Uszkoreit, J., Kaiser, L.: Universal
+transformers. In: International Conference on Learning Representations (2019),
+https://openreview.net/forum?id=HyzdRiR9Y7, foundational recurrent/shared-
+depth Transformer architecture
+3. Elhoushi, M., Shrivastava, A., Liskovich, D., Hosmer, B., Wasti, B., Lai, L., Mah-
+moud, A., Acun, B., Agarwal, S., Roman, A., Aly, A., Chen, B., Wu, C.J.: Layer-
+Skip: Enabling early exit inference and self-speculative decoding. In: Proceedings
+of the 62nd Annual Meeting of the Association for Computational Linguistics (Vol-
+ume 1: Long Papers). pp. 1262212642. Association for Computational Linguistics,
+Bangkok, Thailand (Aug 2024).https://doi.org/10.18653/v1/2024.acl-long.
+681,https://aclanthology.org/2024.acl-long.681/, aCL main-track; relevant
+to shared computation, layer reuse, and no auxiliary modules
+4. Fan, A., Grave, E., Joulin, A.: Reducing transformer depth on demand
+with structured dropout. In: International Conference on Learning Repre-
+sentations (2020),https://openreview.net/forum?id=SylO2yStDr, foundational
+depth-adaptive and layer-dropping baseline
+5. Gessler, L., Anastasopoulos, A., Auderset, S., Bodt, T., Chelliah, S., Christian,
+S., Fily, M., Herrera, S., Huber, E., Loaiciga, S., Meelen, M., Ostling, R., Palmer,
+A., Visser, E.: The missing middle: Language documentation needs better infras-
+tructure, not better models. In: Proceedings of the Ninth Workshop on the Use
+of Computational Methods in the Study of Endangered Languages (ComputEL-
+9). pp. 136147. Association for Computational Linguistics, San Diego, California,
+USA (Jul 2026).https://doi.org/10.18653/v1/2026.computel-1.15,https://
+aclanthology.org/2026.computel-1.15/, computEL; motivates infrastructure-
+aware and resource-conscious modeling
+6. Hu, E.J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., Chen,
+W.: Lora: Low-rank adaptation of large language models. In: International Con-
+ference on Learning Representations (2022),https://openreview.net/forum?id=
+nZeVKeeFYf9, important PEFT contrast; unlike the proposed method, adds train-
+able low-rank parameters
+7. Kriukova, O., Arppe, A., Lovick, O.: Choosing an ASR model for dënë su ªné:
+Navigating polysynthesis and unstandardized orthography. In: Proceedings of the
+Ninth Workshop on the Use of Computational Methods in the Study of En-
+dangered Languages (ComputEL-9). pp. 1525. Association for Computational
+Linguistics, San Diego, California, USA (Jul 2026).https://doi.org/10.18653/
+v1/2026.computel-1.3,https://aclanthology.org/2026.computel-1.3/, com-
+putEL; relevant to low-resource modeling under orthographic and morphological
+variation
+8. Mainzinger, J.: Technology and language revitalization: A roadmap for the mvskoke
+language. In: Proceedings of the Seventh Workshop on the Use of Computational
+Methods in the Study of Endangered Languages. pp. 712. Association for Compu-
+tational Linguistics, St. Julians, Malta (Mar 2024).https://doi.org/10.18653/
+v1/2024.computel-1.2,https://aclanthology.org/2024.computel-1.2/, com-
+putEL; relevant to the revitalization impact argument
+9. Moeller, S., Arppe, A.: Machine-in-the-loop with documentary and de-
+scriptive linguists. In: Proceedings of the Seventh Workshop on the
+Use of Computational Methods in the Study of Endangered Lan-
+guages. pp. 2732. Association for Computational Linguistics, St. Julians,
+=== PAGE 8 ===
+8 Anonymous
+Malta (Mar 2024).https://doi.org/10.18653/v1/2024.computel-1.5,
+https://aclanthology.org/2024.computel-1.5/, computEL; supports the
+documentation-oriented and human-centered positioning
+10. Nguyen, M., Hammerly, C., Slifverberg, M.: A hybrid approach to low-resource
+machine translation for Ojibwe verbs. In: Proceedings of the Fifth Work-
+shop on NLP for Indigenous Languages of the Americas (AmericasNLP). pp.
+1826. Association for Computational Linguistics, Albuquerque, New Mexico
+(May 2025).https://doi.org/10.18653/v1/2025.americasnlp-1.3,https://
+aclanthology.org/2025.americasnlp-1.3/, americasNLP; relevant low-resource
+translation baseline and morphology-aware motivation
+11. Prieto, J., Martinez, C., Robles, M., Moreno, A., Palacios, S., Manrique, R.: Trans-
+lation systems for low-resource colombian indigenous languages, a rst step to-
+wards cultural preservation. In: Proceedings of the 4th Workshop on Natural
+Language Processing for Indigenous Languages of the Americas (AmericasNLP
+2024). pp. 714. Association for Computational Linguistics, Mexico City, Mex-
+ico (Jun 2024).https://doi.org/10.18653/v1/2024.americasnlp-1.2,https:
+//aclanthology.org/2024.americasnlp-1.2/, americasNLP; directly relevant to
+translation as cultural preservation
+12. Rangel, J., Kobayashi, N.: Advancing NMT for indigenous languages: A case study
+on Yucatec Mayan and Chol. In: Proceedings of the 4th Workshop on Natural
+Language Processing for Indigenous Languages of the Americas (AmericasNLP
+2024). pp. 138142. Association for Computational Linguistics, Mexico City, Mex-
+ico (Jun 2024).https://doi.org/10.18653/v1/2024.americasnlp-1.16,https:
+//aclanthology.org/2024.americasnlp-1.16/, americasNLP; recent NMT work
+for Indigenous languages
+13. Raposo, D., Ritter, S., Richards, B., Lillicrap, T., Humphreys, P.C., Santoro,
+A.: Mixture-of-depths: Dynamically allocating compute in transformer-based lan-
+guage models. arXiv preprint arXiv:2404.02258 (2024).https://doi.org/10.
+48550/arXiv.2404.02258,https://arxiv.org/abs/2404.02258, recent preprint;
+relevant to input-dependent computation allocation under a xed budget
+14. Scheppat, H., Hartshorne, J., Leddy, D., Le Ferrand, E., Prudhommeaux, E.: In-
+tegrating diverse corpora for training an endangered language machine transla-
+tion system. In: Proceedings of the Eighth Workshop on the Use of Computa-
+tional Methods in the Study of Endangered Languages. pp. 162169. Associa-
+tion for Computational Linguistics, Honolulu, Hawaii, USA (Mar 2025),https:
+//aclanthology.org/2025.computel-main.19/, computEL prior work on Amis
+MT using diverse Amis, English, and Mandarin resources
+15. Zheng, F., Marrese-Taylor, E., Matsuo, Y.: A parallel corpus and dictionary
+for Amis-Mandarin translation. In: Proceedings of the 2nd International Work-
+shop on Natural Language Processing for Digital Humanities. pp. 7984. As-
+sociation for Computational Linguistics, Taipei, Taiwan (Nov 2022).https:
+//doi.org/10.18653/v1/2022.nlp4dh-1.11,https://aclanthology.org/2022.
+nlp4dh-1.11/, introduces the 5,751-sentence AmisMandarin parallel corpus and
+a 7,800-entry dictionary

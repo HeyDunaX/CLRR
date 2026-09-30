@@ -288,20 +288,22 @@ recomputed scores separately in `analysis/all_scores.csv`.
 ## Repository layout
 
 ```text
+docs/
+├── EXPERIMENTS.md           # Full 16-model matrix, mBART ablation suite, Task 1-5 revalidation
+├── RESEARCH_INSIGHTS.md     # Theory, stop-gradient math derivation, ByT5 UTF-8 analysis, case studies
+├── COLAB_SSH_GUIDE.md       # Google Colab SSH workflows, autonomous bash scripts, templates
+└── archive/                 # Historical phase documentation (backed up)
 src/amis_rewire/
-├── modeling.py              # CLRR and model loading
-├── train.py                 # CLI, fixed protocol, training, validation, test
-├── metrics.py               # BLEU and chrF++
+├── modeling.py              # CLRR hooks, stop-gradient routing, model loading
+├── train.py                 # CLI, fixed fairness protocol, training, validation, test
+├── metrics.py               # Standardized SacreBLEU (tokenize='zh') and chrF++ (word_order=2)
 └── prepare_data.py          # CSV validation and split export
+src/comparative_baselines/   # Isolated implementations of LayerSkip (ACL 2024) and Mid-Align (ACL 2025)
 data/
-├── README.md
-└── amis_chinese.example.csv
+└── processed/               # Fixed splits: train.csv (4600), val.csv (576), test.csv (575)
 scripts/
-├── unpack_parallel_data.py  # unpack parallel data → data/processed/*.csv
-├── run_all_models.sh        # full 6-run experiment matrix
-├── setup_colab.sh           # Colab-specific environment setup
-├── restore_backups.py       # checkpoint recovery from backups
-└── summarize_results.py     # aggregate metrics.json into CSV
+├── run_all_models.sh        # Batch execution matrix
+└── revalidation/            # Targeted defense & ablation scripts
 ```
 
 ## Data citation

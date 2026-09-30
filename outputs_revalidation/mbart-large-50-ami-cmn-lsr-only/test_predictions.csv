@@ -1,0 +1,576 @@
+index,source,target,prediction
+0,Sasepatay ko wawa nira.,他有四個孩子。,她的小孩很懶惰。
+1,Mifoting i no walian a riyar.,在東海岸捉魚。,抓魚在東邊的海裡。
+2,Sanengseng cira a cinikotay.,他打領帶看起來很帥。,他穿鞋子很合身。
+3,Simsim hato ko somal no mako i tisowanan.,你就去思考我對你講的話。,就跟著我去想那件事。
+4,Tasato ko rinom ni Ina.,媽媽的針還有兩根。,媽媽的指甲很長。
+5,"Nanikorahotan no 'ayam kira waco, saka matalaw to a miraod to 'ayam kira waco.",那隻狗被雞抓過，所以那隻狗再也不會靠近雞。,"那隻狗被鳥嚇到,所以那隻狗被鳥嚇到。"
+6,O pikoliniw nira wawa to fatikar ko sakapolol.,那個孩子被關是因為偷單車。,那個孩子用三角手網拖車子。
+7,O tolako a maemin ko sakatayal niyam i niyaro'.,我們在部落裡工作都是用卡車。,我們在部落的工作都是工作夥伴。
+8,Micodad ko kaka i kocong.,哥哥就讀國中。,哥哥在牆上畫圖。
+9,O aapeten no miso ciira.,你要稱他是連襟。,他是你的繼承人。
+10,"Ano caay ka patay ci ina ako, caay ka haen ko pi'alitec no mama ako i takowanan.",我母親要是没死，我父親就不會虐待我。,"我的媽媽不發脾氣,不過我的爸爸對我發脾氣。"
+11,Caay kalecad ko serangawan no kakoniyaro'.,每一個部落的文化都不一樣。,部落的秩序不好。
+12,Lalima ko mikacaway i pikacawan.,守望台有五人在看守。,抓燕子的地方有五隻燕子。
+13,Maromotay ko loma' no mako.,我家很窄。,我的家被火燒。
+14,O toko nora kolong a caay to kamakat.,那隻牛就是停止不再走了。,那隻牛的袋子是用來抓蝦的。
+15,Halipacamahaw to sowal ko malakiingay.,議員喜歡誇大其詞。,富有者很喜歡講故事。
+16,Milikiyam ciira to widang.,他去向朋友討債。,他去向朋友借錢。
+17,Lawiten ita koni lotok.,我們要越過這座山。,我們從這個山上跳下。
+18,Matatekotekol kami to mali.,我們互相投球。,我們互相撞球。
+19,O pi'acawan naira to nanom kiraan a nemnem.,那個泉水是他們舀水的地方,那個泉水是他們要喝水的地方。
+20,O mita'emoday to fitakola kira 'oner i matini.,現在那隻蛇正吞下青蛙。,那隻蛇現在在埋伏等青蛙。
+21,O ma'elocay to ko saripa' no paliding no mako.,我車子的輪胎己經被磨損了。,我牛車的腳踏車已經倒了。
+22,Madadotos to onol ko malatomokay a mipo^po to niyaro'.,頭目交接管理部落的責任。,原生種番石榴的種子被種在山坡地。
+23,Nanay tanektek ko tireng no miso!,祝你身體健康！,希望你的身體輕巧有力!
+24,O naniwac ko sinafel no mita a malafi.,我們晚餐的菜是綠豆。,我們晚餐的菜餚都是從水裡舀水的。
+25,Milosimet ci ina to loma' to romi'ami'ad.,媽媽每天整理家務。,媽媽天天整理家務。
+26,"Ora tatosa a wawa, makapah ko takaraway to poeneray.",那兩個小孩，高的比矮的漂亮。,"那個兩個孩子,互相逗樂玩耍都很好笑。"
+27,I 'ayaw no kasienawan a romi'ad misakereng ko kakarayan.,冬天之前天際會有打雷聲。,在冬天時天空呈現雷聲。
+28,O ma'imacay a impic ko micocokay to feso.,是尖尖的鉛筆刺破氣球的。,買糖果的人很會領糖果。
+29,Makapah a co'erong saan ko kasoy i saikoran.,後院一捆捆柴火倒立排放儲藏很漂亮。,木材在後院看起來很漂亮。
+30,Ka'osian to ko likes.,蚊子真令人討厭。,尿臭味消失了。
+31,Midohdoh ca Raway to fafoy.,拉外他們在烤山豬。,拉外他們去圍捕豬。
+32,Ota'en!,吐出來！,彎腰!
+33,Ma'osi kako to kasienawan.,我不喜歡冬天。,我喜歡冬天。
+34,"Enaw haca, o maan ko matawalay iso?",又來了，你到底忘了什麼？,"一點一點,你到底用什麼呢?"
+35,Moraraw ko picakay saka falicen.,買錯了所以要換掉。,竹筍長出毛茸茸。
+36,Kifetolay ko filfil nira.,她的嘴唇很厚。,他的評論有偏離。
+37,'Adawis o sanay kita anini a romi'ad to 'icep i lotok.,今天我們的工作就是在山上摘取檳榔。,我們今天到山上拿檳榔。
+38,Sapingiriwaw sanay kako to tireng no mako.,我很想瘦下來。,我因為身體疼痛。
+39,Riting han i sariri no loma' kira folo'.,將那竹子栓在柱子上。,就把那箭竹捆起來放在家的後面。
+40,Cifadowacay a pinanowang ko tamdaw.,人是有肋骨的動物。,人是有錢人家。
+41,Paramoden ko wawa no miso.,為你的孩子覓得伴侶。,你要照顧你的小孩。
+42,O 'ikay kira makapkapay no mako i koror no miso.,在你背後我摸到塊狀的（東西）。,我是在你的後面蓋房子的玻璃。
+43,Mapakoto no waco ko posi.,貓被狗傳染長頭蝨。,狗被貓嚇到。
+44,Minanam ko kapah to ki'ecie.,青年人在學領唱。,青年人去學習電腦。
+45,Malakomoing kako ano ta'angay to.,我長大要當公務員。,我長大要當醫生。
+46,Awaay a makilim no mako ko katomayi'an.,我找不到廁所。,我不喜歡水木耳。
+47,Ciecoay a kanatal ko Taykok.,泰國是有大象的國家。,台北是有城巿的。
+48,Makalat no waco.,被狗咬。,狗被咬了。
+49,Hineng han nira kora kaolahan nira a kaying.,他注視著他喜歡的小姐。,他一手抓那些他很喜歡的小姐。
+50,Adihay ko ngayaw i 'ayaw i tini i Taywan.,台灣這裡很久以前有很多戰爭。,在台灣以前有很多地震。
+51,O patanektekay ko sowal ni faki i takowanan.,舅舅的話使我堅強。,舅舅對我說的話是令人生氣的。
+52,"Pakodohen ko tarodo' a mi'anip, ta caay ka doka'.",手指套上套子插秧才不會受傷。,將傷口塗藥才會好。
+53,Pacakaten ko lifon no mikoliay.,請提昇工人的待遇。,跳躍的距離要長一點。
+54,O katalawan no fafahiyan ko lica'esay.,女生最怕蝨卵。,乞丐的生活使女性生氣。
+55,Kaopohen a dademak!,做事勤快一點！,做事要勤奮!
+56,Malakasini'adaan ko salikaka naira.,他們的弟兄姐妹變成可憐的狀況。,他們的弟兄姐妹們變成巫師。
+57,Maopohay kami a mafafilo mipanay i dafak.,我們早上互相幫忙迅速的去割稻。,早上我們一網打盡田地抓田鼠。
+58,O nipahafayan ni Mayaw a kolong konini.,這隻牛是Mayaw餵養的。,這是Mayaw放牧的牛。
+59,Papicakay ci ina ako to cilah.,媽媽叫我去買鹽巴。,我的媽媽去買鹽巴。
+60,Caay ka olah ci Osay to ci^ci sanay a faloco' ni Toray.,Osay不喜歡Toray迫人的性格。,Toray不喜歡Osay多一點心。
+61,Mipitaw ci Karo to omah.,Karo在田裏用鋤頭耕田。,Karo去田裏採玉米。
+62,Cikotoay kina kolong.,這隻牛有頭蝨。,這隻牛有脊椎。
+63,Falo ko mihecaan ni safa ako.,我的妹妹八歲。,我妹妹的年紀是八歲。
+64,Malifawaay ko kaci'eng nora wawa.,那小孩的臉頰腫起來。,那小孩的腳底裂了。
+65,Caay pakadayom kako to kalim no wadis ako.,我無法忍受我的牙齒的酸痛。,我無法勝任我的牙齒。
+66,O misatafalongay ko tato'asan naira.,他們的先祖是太巴塱氏族。,他們開墾山坡地。
+67,Malacecay ko kapah midipang to niyaro'.,青年同心協力防衛部落。,青年變成部落領袖。
+68,O pafasiyawan ko pihifangan a romi'ad.,放假天最好放風箏。,休息的時間是放風箏。
+69,Rihaked kako i tisowanan a malawidang.,我信任你成為朋友。,我要跟隨你成為朋友。
+70,Palesles han no mita ko tayal tangasa katahecereman no cidal.,我們就一直做到太陽下山。,我們把工作當作太陽的晚霞來照亮。
+71,Maacek kako to sowal nira.,我很討厭他的話。,我對他的話摸不著頭緒。
+72,Mafana' a misatakotakod ko fitakola.,青蛙很會跳。,青蛙很會抓青蛙。
+73,Kofetol ko cipoh no mianingay.,演員粧很厚。,測量人員的手掌很有力。
+74,O lihay ko sanga'ay a safaloco'en no mita a ma'orip.,我們生活最先要思考的是禮拜。,我們來學是讀第一課課文。
+75,Ocong ko daydam ni fayi ako i padatengan.,我嬸嬸的菜園裡有很多辣椒。,我的阿姨在菜園裡有很多霉味。
+76,Micelcel kako a madakaw to faso.,我是硬擠進巴士上車的。,我緊靠著坐車。
+77,O ma'iwilay ko mato'asay no pangcah i niyaro'.,原住民的老人在部落是孤單的。,部落的阿美族的老人家都很勤勞。
+78,Malalisan kako.,我感冒發燒。,我肚子餓。
+79,"tamdaw i, maolah ciiraan, o roma i, maosi' ciiraan.",有人喜歡她，也有人討厭她。,"那個人,他喜歡吃毛柿子,而那個人,他很喜歡吃毛柿子。"
+80,Mamaan ko faloco' no miso?,你的心臟怎麼了？,你心裏想什麼?
+81,Aka pifalah to lakaw i lalan.,不要在路上丟垃圾。,不要在路上燒垃圾。
+82,O rimood no piyang kinian a nitatoyan no mako.,我手上拿的這個是整塊的糖果。,我買的糖果是糖果。
+83,Maolah a mikalatim ko wawa to tatipelok.,小朋友很喜歡剪紙張。,小孩喜歡抓蜻蜓。
+84,"Ano matini ko romi'ad a faedet i, o 'acis to no hana ita.",如果我們的天氣如此悶熱，我們的花一定枯萎。,"如果今天天氣熱,我們的花就會長新芽。"
+85,O kangayawan no to'as i herek no ilisin.,豐年祭之後是先輩狩獵祭。,東海岸是祖先開墾的地。
+86,I mapoheday a kilang ciira a mitangila.,他在腐朽的木頭上找木耳。,他在下毛毛雨的樹上睡覺。
+87,Makapah ko misaholam nira a caciyaw.,他講漢語很標準。,他演得很漂亮。
+88,Papikorahoten no mita kira posi to to 'edo.,我們讓猫抓老鼠。,讓我們那隻貓抓蝦。
+89,Papingatowa'en no singsi kamo a mipasifana a romadiw.,老師教我們張開嘴巴練習唱歌。,你們要由老師指導唱歌。
+90,O ma'inap kako to fana' nira a micodad.,我很嫉妒他很會讀書。,我能領悟他的智慧讀書。
+91,Lilid han naira a tatosa ko fafoy nani pafafoyan.,他們兩個人從豬舍將豬隻抬出。,他們從豬舍裡舉出兩隻豬。
+92,Komaingay kora wawa ako a masakero.,我那個小孩跳舞很柔軟。,我那的孩子跳舞很合身。
+93,O kafaliyosan ko kaciferangan.,夏季是颱風季節。,夏天常有颱風。
+94,Misapeti' to kolong a maomah i fonofononan ci mama.,爸爸在田裡鞭打牛工作。,爸爸在田裏鞭打牛。
+95,Maca'it ko dangah niyam i talo'an.,我們的大圓鍋吊在工寮。,我們的鍋子在工寮被燒了。
+96,Mikopit ci ina to fodoy ako.,媽媽縫製我破裂的衣物。,媽媽抓我的衣服。
+97,Nga'ayay todohen ko katol no kolong a komaem.,牛的生皮可以烤來吃。,牛的生皮可以烤來吃。
+98,Cohcoh han no mako ko 'alotoc.,我吮吸田螺。,我將尖尾螺吸住。
+99,Mapawpaw ko sikela i riyar.,漂流木漂浮在海上。,kelas在海裡互生。
+100,Kedecen ko tatelecan no miso!,請你將腰帶繫緊！,把你的屁股抬起來!
+101,Mangoyos kora fafahiyan.,那個女人喋喋不休。,那女生很幽默。
+102,Kakahad ko pingingoyan na Toray.,Toray他家的浴室很寬敞。,Toray家的椅子很寬。
+103,Lima a romi'ad ko faking nira a matayal.,他的懲罰是五天的勞工。,他工作五天。
+104,Mapacahekit no fiteli' ko dipodipot i pipaisingan.,醫院裏的嬰孩被閃電聲所驚嚇。,嬰孩在醫院被燒成焦屍。
+105,Maino'ay ci kaka.,哥哥正在洗澡。,哥哥有錢。
+106,Ira ko ceka i tatoro' no kamay ako.,我的手指上有刺。,有傷口在我手上。
+107,Cakcak han ni mama a mipitaw ko sera no sadatengan.,爸爸用鋤頭大塊大塊地開挖菜園的泥土。,爸爸劈開菜園的地瓜葉。
+108,Mangta'ay ho kina minowad.,這顆李子還很青澀。,這顆李子還未熟。
+109,Aka kamatiya o rakarak sanay ko tayal.,工作不可像到處游蕩一樣。,工作不要很辛苦。
+110,Karalalangaw i pisakacawasan.,種西瓜的地方滿是蒼蠅。,各樣的花開了很久。
+111,Makapah ko lengaw no panay tina mihecaan.,今天稻子長得很漂亮。,今年稻米比預期的還要多。
+112,Matatood ko 'ali ako a siwawa.,我的弟媳們一個接著一個有小孩。,我還有兩個小孩。
+113,Cifakici kita a peco' to minowad.,我要帶桶子摘李子。,我們剝取水田。
+114,Masakawkaw ko folad i kalonipan.,弦月時月亮彎得像鐮刀。,颱風時月亮如眉毛。
+115,Fahal san minokay ciira nani Amilika.,他突然從美國回來。,他從美國一無所獲。
+116,I kaetip kamo a maro'.,你們坐西邊。,你們在下毛毛雨的地方睡覺。
+117,Aka dicohen ko tektek no 'adipel.,不要把籬笆的木樁拔除。,不要把鋤頭的底部撕裂。
+118,"Linot sato ko po'ot i, hasapo'oten ho iso saw?",刀子都已經鈍了，妳為何還要一直使用呢？,"刀已斷了,你怎麼才拿呢?"
+119,O papinaay kita a tayra i picodadan?,我們有多少人去學校？,我們要一起去學校嗎?
+120,Nanocila caka koma'en to maamaan ciira.,他從昨天就没吃任何東西。,昨天他們才分開吃東西。
+121,Tahini saho kako nani pala.,剛從田間到達這裡。,我剛從田裡回來。
+122,Pacaliw kako to kawkaw i matayalay.,我出借鎌刀給工人。,我在店裡賣糯米飯。
+123,Pa'aliwacen a tayni i 'Olalip a mipeco' to wirok.,撥一些時間短暫的來屋拉力部落採文旦。,請從'Olalip出發逆流而上去接木。
+124,O pipanemnem no kawas ititaanan.,這是上帝賜給我們的湧泉。,這是上帝賜給我們的湧泉。
+125,"Fadi' saan ko nipalomaan, ano caay ka fosfosen to nanom.",植物若不澆水就會枯萎。,"種水容易枯萎,若不用水才會枯萎。"
+126,Fotek han ko mata a micakay.,閉著眼睛買。(喻為已經沒有錢了但硬要買之意。),閉上眼睛做客。
+127,O rohem to no pawli i 'ariri no mita.,我們倉庫裡的香蕉已熟了。,我們倉庫裡的香蕉已經形成構樹了。
+128,Pa'atimen no tayring a miliclic koya mitakaway.,警察用夾指方式拷問那位小偷。,警察幫那逃犯洗臉。
+129,Patata'aken ho kira roni ta mipeco'.,先讓絲瓜大一點再來摘下。,讓絲瓜先熟一點才摘取。
+130,Matociko ko ca'ang no lalidec i pala ako.,我田裡九芎樹的長相像手肘。,在我的田裡九芎樹的樹葉枯萎了。
+131,Awaay ko wawa no ma'acicay a fafahian.,不孕的女人沒有孩子。,沒有一個女生有尿騷味。
+132,Co'ep han no mita a minanom i lakelal.,我們在河溝就伏在水面上直接用嘴啜飲。,我們在河邊抓水。
+133,O maan ko epoc nora nidemakan no miso?,你所做的那件事有什麼價值？,你所燒的煙是什麼顏色?
+134,Lawop han no waco kira fafoy no lotok.,狗將山豬圍住。,狗將山豬一網打盡。
+135,I kawanan no miso kako a maro'.,我在你的右邊坐下。,我坐在你的旁邊。
+136,"Caay picakay ciira, nawhani awaay ko pida.",他不買，是因為沒有錢。,"他没有錢,因為没有錢。"
+137,Ma'alol no lenlen ko niyaro'.,洪水沖毀了部落。,部落被占卜。
+138,Hakowa ko kareteng noni enor hani?,這個錨有多重呢？,這個錨有多重呢?
+139,Peric han to kamay no i 'ayaway ko panay.,以前是用手將稻米脫殼。,伸直前面的稻穗。
+140,Aka pipacoli to mama ato ina no miso.,不要對你的父母親頂嘴。,不要煩你的父母親。
+141,O mangawa'ay ko safa ako i enemay ko mihecaan.,我妹妹在六歲時掉牙。,我的弟弟今年下毛毛雨的。
+142,Paronien no mako a micacak to dateng.,我煮菜時加了絲瓜。,我煮菜加了梨子。
+143,Tanektek kako a misi'ayaw to masamaamaanay a pades no tamdaw.,人各式各樣的苦難我會堅強面對。,我被別人的腳踏車撞了。
+144,'Afesaw ko fodoy no mako a mifolod to mitamakoay.,跟抽香煙的人在一起我的衣服會有煙燻味。,我穿上衣服來跟隨軍人。
+145,Nanociting ko sakafana' ako to fa^lohay a sowal.,我從字典學會新的詞,"我讀高中了,所以很會說故事。"
+146,Ca'edongen ko fodoy no miso.,將你的衣服穿上。,請穿上你的衣服。
+147,"Pangala'en ko romi'ad na, manga'ay a tayni kiso.",空一天出來，這樣你才可以來。,"天氣晴朗出出去,你可以出去。"
+148,El^eel^el sa kora tamdaw ano somowal.,那個人說話時動不動就哽咽。,那個人說話很生氣。
+149,Tolo a ditek ko omah niyam.,我們家有三分地。,我們的田地是三畦地。
+150,Cacay noli' ko dadoy nora fafoy.,那條豬一佰斤重。,那隻豬的雞冠一無所有。
+151,O ma'atemay to kikay ko kamay no wawa ako.,我的孩子的手被機器夾住。,我孩子的手是動著機器。
+152,Cidamay to koni fakeloh.,這顆石頭上長水草了。,這個石頭有刺。
+153,O kalalisanan ho i matini.,現在還在感冒流行期。,現在還是捕魚的季節。
+154,Ci'anekakay ko niyaro' no Kalotongan.,加禮洞的部落有烏鴉。,Kalotongan部落有大的部落。
+155,Maolah kako a midangoy.,我喜歡游泳。,我喜歡游泳。
+156,O kilang ko tatangalan no mako.,我的枕頭是木製的。,我的頭是木頭。
+157,Karalangkes sa ko hemay ita anini.,我們今天的飯真多砂子。,今天我們的飯多筋。
+158,Ci'alilis i pa'ayaman no niyam i dafak.,早上在我們的雞舍裡有老鷹。,早上我們的田埂有小水災。
+159,O kaciki ko sasimi ita anini.,我們今天的生魚片是旗魚。,我們今天的孩子都很勇敢。
+160,Patalada'ocen ko lalok no miso a matayal.,請你把工作的勤快持續到終點。,工作要像你的工作一樣繁重。
+161,Cefis han noya tamdaw ko papaysoan nora kay^ing.,那個人搶奪那位小姐的錢包。,那個人剝開那小姐的錢包。
+162,Kara'edo ko Iwatan a finacadan.,布農族小腿肌很大。,城市很多老鼠。
+163,Pakalafi to paliaw saka oraor sato ko fekac niyam a taloma' a misakalafi.,今天晚上要請農者吃飯所以我們急行，三步併兩步回家煮晚餐。,"農夫煮晚餐,所以我們就回家煮晚餐。"
+164,Misa'icel kako a micodad.,我要努力讀書。,我努力讀書。
+165,O pa'asoloan i tira.,那裡是放置木杵的地方。,那裡是放置木杵的地方。
+166,Ma'enoc no mako ko 'okak.,我嚥噬了骨頭。,我把骨頭折斷了。
+167,Cisinofoay to epah kira mato'asay a talalotok.,那個長輩有攜帶酒去山上。,那位老人家有酒醉就上山去。
+168,O ni kacaw kiraan a mali.,那是卡照的球。,那個球是 kacaw的。
+169,Parariting to sapifahoy to 'ayam i pala.,在田裡連結趕鳥的器材。,在田裡將雞牽上牛去。
+170,'Acaw aka han ko niradoman no mako hana!,不要在我剛挑的水中舀水好不好!,不要在我剛挑的水中舀水好不好!
+171,O ciedoxay ca Kacaw.,卡照家有草莓。,Kacaw他們是採藤心的人。
+172,Dadahal ko rafar ni akong ako i nowalian a lotok.,阿公在東邊的山區遊耕山坡地很寬廣。,我阿公在東邊的山上有很多山蘇。
+173,O misimsimay to tatayalen.,去思考工作的。,是打電話的。
+174,Pafafoyen kira pafafoyan namo.,你們的豬舍要放豬。,讓你們的孩子變成豬。
+175,Kahot han nira wawa a komaen ko kodasing i sapad.,那孩子一手握抓桌子上的花生來吃。,那個孩子把花生放在桌子上吃。
+176,Mi'al'al ca Tomay malekaka to fokeloh i sa'owac a mikalang.,Tomay兄弟在河中掘翻石頭捉螃蟹。,Tomay兄弟在溪裡砍材砍木瓜。
+177,Koracen ko taliyokan no kamokoan no mita.,我們住的四週都要去清潔。,我們船行走最短。
+178,Folesaken no maomahay sapaloma no dateng i omah.,農夫在田裏撒下菜籽。,農夫將田裡的菜園開墾。
+179,O lawmingay a nengneng ko sofitay no aniniay.,現在的軍人看起來軟弱無力。,今天的商品是皮革製成的。
+180,O pakatastasay to fatikar kira wawa.,那個孩子將單車用到壞掉。,那個孩子是使腳踏車倒的。
+181,I patihen ni faki a mica'it ko sapi'adop nira.,舅舅將他的獵具掛在牆壁上。,他的獵物放在舅舅的旁邊。
+182,Maolah ko kolong a komaen to semot.,牛喜歡吃草。,牛喜歡吃草。
+183,Halihecep to nanom kina fonon.,這水田很會吸乾田水。,這個水族很愛吸水。
+184,Maofangay ko kocosita nira.,他的襪子破了。,他的梳子很好穿。
+185,Awai ko mitongoday to ngato no miso i pala.,你在田裡未完成的工作沒有人會接續工作。,田裡沒有遮陽(雨)具。
+186,Ira i laeno no codad ko impic.,書本底下有筆。,是書的下面。
+187,Cifokes ko sinasera.,地上有頭髮。,地瓜。
+188,Aloman ko mapatayay toya kakedalan.,那次的旱災好多人死亡。,那件工作有很多工作要做。
+189,Marafiyasay ko nanom i fakici nira kapah.,那年輕人水桶挑的水溢出來了。,那個青年的水桶的水溢出。
+190,Hepiken no 'ayam ko sapikpik niira a midipot to ciwciw.,雞將牠的翅膀垂下來保護小雞。,鳥兒將牠的翅膀伸長抓小雞。
+191,Pakoesanen to mamang kora 'acicimay.,把那酸的加點糖。,請讓電腦認識電腦。
+192,Fangad han no faliyos ko kilang.,颱風將樹連根拔起。,颱風將樹吹倒。
+193,Feso sa ko tiyad no takora'.,青蛙肚子脹起來。,青蛙的肚皮腫起來。
+194,Kalacokoren ni akong ko cacelakan.,阿公把雨傘當作拐杖使用。,外公把celacan當成鞋子。
+195,Mi'awol a mifadatek kako to loma'.,我採竹子為房子防颱。,我去擠填家務。
+196,Pina ko 'aca no cecay a kalong no simal?,油一加侖多少錢？,一升油是多少錢?
+197,O niolian no kaka nira kako a tayni.,我來這裡是他姐姐差來的。,是我他姐姐的同級人。
+198,O rarongay ko kamokoan i 'ayaw.,早期住屋都是茅舍。,早期的水桶是粗糙的。
+199,Kolay kolay han no koko' ko sera a mikilim to kakaenen.,雞撥開土尋找食物。,雞將食物捲進盤子裡。
+200,O coker no mita ko finawlan.,部落的族人是我們的支助。,部落是我們的靠山。
+201,Malapara' no sala i sapad kira tipelok.,那張紙變成盤子的底部。,那個紙張成為桌子的支架。
+202,Mamiparayray ko mato'asay to serangwan no Pangcah.,長者有責任傳承阿美族的文化給後代。,老人家開始將阿美族的文化擴展。
+203,Omelaen ko 'orip no miso.,要珍惜你的生命。,要珍惜你的生命。
+204,Malasawadto ko mafana'ay a mi'olicay a tamdaw i niyaro.,在部落裡會唱詩的人已經消失了。,部落的乞丐都被歸還了。
+205,Papiridriden no mato'asay ci kaka ako a mipalowad to kapah no niyaro'.,我的哥哥被耆老引導帶領復興部落青年。,老人家叫我的姐姐去牽引部落的青年。
+206,Cima kira mipolitiay to fokeloh a mipeci to kalas ako.,是誰丟石頭打破我的玻璃。,是誰將石頭裂出一道縫隙。
+207,Miciker kako to fatikar ako i picodadan.,我在學校有去把單車上鎖。,在學校我坐的單車有位子。
+208,O apet no mako ci Kacaw.,Kacaw是我的連襟。,我對Kacaw很失望。
+209,O 'imer to kaen ko saka kapah no tireng.,吃的謹慎身體才健康。,因吃飽所以身體很疲倦。
+210,"Mafokilay ho a mikofit to sakofit ko safa, padangen ciira a mikofit!",妹妹還不會扣鈕扣，去幫他扣鈕扣。,"妹妹一瘸一拐地綁束衣服,請她綁起來!"
+211,Mihamham kami to na i Taypakay a lafang.,我們迎接來自台北的客人。,我們在台北做客。
+212,O fowahan no loma' koni.,這是家戶之門。,這是家的門。
+213,Cimalolemay i tini i takaraway a lotok.,這個高山上有很多梅花鹿。,這裡有熊熊山。
+214,O tadaciepocay ko nika 'orip no to'as ita.,我們的祖先活得非常有價值。,我們祖先的生活是令人感到很感動的。
+215,Nora a tamdaw ko payso.,錢是屬於那個人的。,有錢的人很多。
+216,Maco'is ko pipaloma ni fayi to tefos.,祖母把甘蔗倒著栽種。,嬸嬸摘取甘蔗的果實有毛。
+217,Aka kapipedoc kiso anohoni!,你等一下不要一溜煙走了！,你待會不可拔刀!
+218,O niocoran no Kawas a malacoyoh ko ina ita.,我們的母親是上帝派來的天使。,我們的母親是被神賜福的。
+219,Nanay malecad kako tisowan a mafana' micodad.,但願我能像你一樣那麼會讀書。,但願我能像你一樣讀書。
+220,O pisaciciwan no finawlan i tira.,那裡是部落養小豬的地方。,那裡是部落採生薑的地方。
+221,Tafesiw hato no mita ko fana' no mato'asay.,我們超過了長輩的智慧。,我們把老人的知識擴展出來。
+222,Piyaken ko wa'ay namo a mionto.,請打開你們的雙腳運動。,請將你們的腳踢下。
+223,Kakofel saan ko laway nona waco.,這隻狗臉上長滿了皺紋。,那隻狗的臉色很蒼白。
+224,O mi'afofoay to 'ayam kira wawa a patalatalokan.,那個孩子抱著雞拿到雞舍去。,那個孩子將雞 ejected放進地上。
+225,O paliw kita mapolong.,我們全部都是工作夥伴。,我們一起使用車子。
+226,Papancoen kira wawa.,為那個孩子穿上褲子。,讓孩子穿鞋子。
+227,O kacifaloco'an no mako kiso.,你是我最愛慕的。,你是我的天使。
+228,Liyoc sato ko faliyos a pasani i Kalingko.,颱風已轉向花蓮來了。,花蓮的颱風頻繁。
+229,Kacifalohang to riyar a milayap to firang no tawo.,要以海量接納別人的謾罵。,跳上海浪去阻擋別人的入侵。
+230,"Mamaanay kiso, mana makodic?",你是怎麼了，怎會得皮膚病？,"你老是如此,何時才走完呢?"
+231,Cidahetal i takaraway a lotok.,高山上有平原。,高山上有很多甲蟲。
+232,Mapatada to mingtang ko lesa' no 'orad.,已用盆子墊上雨滴。,雨水滴下後使竹筍長出。
+233,Mitaroh to kilang no Taykok.,泰國的大象會拉木材。,他在砍台北的木頭。
+234,Nanikaemangay ko litapang no tayal ako.,我的工作原是從小的做起。,我的工作配刀很銳利。
+235,O marihaway caira a maemin inacila.,他們昨天都聲音嘶啞。,他們昨天全都吵架。
+236,Liyawen no mita ko 'odot hanay a demak a misafaloco'.,我們來重新思考吵架這件事。,我們要用溫柔的心來思考。
+237,O niredatan no mako kira kakamayan iso.,你的手袖縫合線被我撕裂開的。,你那件衣服是我故意弄髒的。
+238,Mangici' ko fonos ni akong.,阿公的番刀有缺口。,阿公的子腐壞了。
+239,Mipadang kami miso'ac to paliding ni mama anini.,我們今天幫忙洗爸爸的車子。,今天爸爸的車子使我們一無所有。
+240,Mitodaay ko wawa i tarawadaw.,小孩在河邊捉鰻魚。,有小孩到河裡抓蝦。
+241,Makayakayay no masay kira kilang.,那些蔓藤爬上樹。,那棵樹被其他的木頭壓住。
+242,Yasiyas san ko nanom.,水溢四濺。,水沸騰了。
+243,Congedis san kora waco a matelii.,那隻狗露出牙齒生氣。,那隻狗使身體抖動。
+244,Na'ang hato kira payso ako i yofin.,就把我的錢存在郵局。,我的錢在郵局存下來。
+245,Ong^ong sa tomangic caira toya mapatay ko mama naira.,他們爸爸死亡時嗚咽地哭泣著。,他們父子倆休假的時侯叫醒他們。
+246,"Masakakereman to ko romi'ad,pahanhan to kita.",天已經陰暗了，我們收工休息。,"天氣晴朗了,我們休息一下。"
+247,Cietokay ko lodak.,百步蛇有毒。,山上有虎頭蜂。
+248,Mipakawanan ci kaka ako i takowanan.,我哥哥指導我。,我的哥哥幫我工作。
+249,Osay to tomorak.,Osay只拿一粒南瓜。,去坐公車。
+250,O masarekaday ko nikalahitay niyam a malakapot.,我們同學當兵是成梯次的。,我們搭船去海邊。
+251,Paco'erongen i lotok ko kasoy ano roma sato a mipaliding kita.,請在山上一捆捆柴火倒立排放儲藏，待下次我們用牛車來載。,若柴火燒山上就請將柴火燒掉我們。
+252,Mademdem ako ko adada no wadis ako.,我忍受得了我的牙疼。,我的牙齒一陣陣刺痛。
+253,Dadotos san kami a mi'olong to pawti i omah.,我們在田裏一個接著一個扛麻袋。,我們都很珍惜田裡的麻袋。
+254,Parihenawen no tireng to kako.,我自己使自己恐懼。,我的身體要癒合。
+255,O cifanohay ko falohang ni kaka.,哥哥的胸部有毛。,姐姐的蝴蝶有蝴蝶。
+256,Pa'aliwac kamo anini haw?,你們今天有放假嗎？,你們今天可以洗臉嗎?
+257,Mitefad to kakaenen koya hikoki no sofitay.,那架軍機降下食物。,廚房裡的糯米飯加了糯米飯。
+258,Macerenoh ko safanohan niyam mapolong a mita'elif to pitademan.,我們經過墓地時體毛全部都豎立起來。,我們所有一起用鐵撬開挖所挖的石頭。
+259,Parikecen ko kapah a selal no mita.,使我們的年輕階級有法則。,讓我們的年青人成家了。
+260,O nisanga'an ni akong ako a 'onoc kiraan.,那是我的阿公做的扁擔。,那是我阿公做的芋頭。
+261,O sakatingalaw no nanom kira fonak.,那個砂子會使水清澈。,那個 fonak是引起水的。
+262,Ci Ina ako ko papitamorakay i takowanan.,是我的媽媽叫我採南瓜的。,是我的媽媽叫我去接續工作。
+263,Awaay ko cikaf no toda.,鰻魚没有魚鱗。,鰻魚没有魚鱗。
+264,Mikidiheko ko wawawawa i pingiroan.,小孩子們在火烤處邊取暖。,孩子們在田裡抓兔子。
+265,O caloh ako to sakatayraaw i Taypak.,我急著想要去台北。,是我使台北交通工具短暫的。
+266,Ma'osi kako to 'acefel no tamako.,我討厭煙味。,我討厭煙味。
+267,O nisilsilan no mako kira codad.,那些書是我排列的。,那封書是我寫的。
+268,Caliwen ko pitaw no sakafiyaw!,去跟鄰居借鋤頭！,去接續鄰居的配刀!
+269,Kapara' kora kayoing.,那位小姐屁股真大。,那女孩很懶惰。
+270,Misahalaka kako to sakatayra i Ripon ano roma mihecaan.,我計畫明年要去日,我計畫明年要去日本。
+271,Mato'ol ko faloco' ako.,我的心霊很孤獨。,我心灰意冷。
+272,Madingac no folo' ko kamay ni mama.,爸爸的手被箭竹割傷。,爸爸的手被竹子壓住。
+273,Pakafangen kora mafoti'ay.,給那位睡覺者蓋棉被。,安慰那睡覺的。
+274,O nanicowa kita a misatapang?,我們要從哪裡開始？,我們要去開墾嗎?
+275,Do^do han ko lilis no riyar a romakat.,順著海的沿岸走。,順著海邊走。
+276,Adihay ko manawnaway a kasoy i riyar.,海上好多漂流的木材。,海上好多漂流的木材。
+277,O malo 'adif ni faki i pala kiraan a kilang.,那個木樹是叔叔用在田裡的圍牆。,那個木頭是舅舅在田裡挖莎草的地方。
+278,Pariharayen kami Wama.,上帝賜我們和平。,讓我們跟隨瓦瑪。
+279,Mifalic kako to katayalan.,我換工作。,我去工作的地方。
+280,O karihakedan no niyam ko sinsi i picodadan.,在學校我們信任老師。,我們的老師在學校很勤勞。
+281,"Fokil san kako a miharateng, naw patayen nora wawa ko ina nira.",我真想不通那個孩子為何要殺死他的媽媽。,"我忘記了,因為那小孩不和他的媽媽合好。"
+282,Macocokay no folo' konini a doka'.,這個傷口是被箭竹刺傷的。,這條傷口被箭竹纏住。
+283,Tada'anglis ko kalalicakayan to foting.,魚市場的腥味太濃了。,釣魚的地方很湍急。
+284,Papihatipeden no ina nira a papiala to karo' a minokay.,他媽媽叫他一起帶柚子回家。,他的媽媽叫他帶拐杖回家。
+285,Caay pa'aca a pawadis to sapatarod a wadis ko mato'asay.,老人裝假牙免費。,老人家不能沒有發脾氣。
+286,Misatapang kami a minanam.,我們重新開始學習。,我們一起學習電腦。
+287,Adihayen ko nialaan!,拿多一點！,請拿很多冰塊!
+288,Matalacay to kina pala.,這塊田地已經採收鳳梨了。,這個田很平坦。
+289,Mafana' ci Fotol misateka.,福杜很會發明。,福特很會設陷阱。
+290,Caay ka konayat koni kafer.,這件褲子没有伸縮性。,這個褲子不方便穿。
+291,Misatamohong kira faki.,那個叔叔製作帽子。,那位舅舅在做屋頂。
+292,O papikakoyay to fafoy no lotok ci mama ako.,父親要人抬起山豬。,我的父親是宰山豬的人。
+293,Malecad to to'as nira koya sapitatamek nira.,那個他經常用來烤地瓜的工具像他的年紀一樣老。,他雕刻的作品是根據他的祖先的歷史。
+294,Karacikaf konini a foting.,這條魚的魚鱗真多。,這條魚長滿刺。
+295,Papateken ko hawan no miso a faki.,叔叔你的刀要做刀柄。,你要砍你的叔叔的刀。
+296,Ciira ko misetolay to paliding ako.,是他衝撞我的車子。,他是將我的車子燒掉的。
+297,Mikali ko matayalay i ka'ayaw no loma' niyam.,工人在我們家前面挖水溝。,工作人員在我們家前面爬梯子。
+298,"Alaf^af ko nanom, ta nanomen.",水温了，再喝。,"水很熱,請洗澡。"
+299,Makadit ko kaci'eng nora wawa.,那小孩的臉頰很髒。,那小孩的腳受傷。
+300,O misatarimasa'ay i pihololan ko tayal no mako anini.,我今天的工作是在遊樂場製作瀑布的。,我今天的工作是測量田地的。
+301,Panoli'en a pafeli kako to payso.,給我一百元整的錢。,請給我錢。
+302,Aka pakokampiwta to tangal no mako.,不要誤把我的頭腦當成電腦。,不要讓我的頭暈。
+303,"Mahinokop ko fa'inayan, tomireng ko fafahiyan.",男生趴下，女生站起來。,"男人俯伏,女人站著。"
+304,'Adepet kira wawa to piyang.,那位小孩很吝嗇給糖。,那個孩子很用力吃糖。
+305,Mifo'enot ci ina to fanoh no 'ayam.,媽媽拔雞的毛。,媽媽用鋤頭挖取雞的毛。
+306,Adahien kako to fana' no wawa ako a micodad.,我對我的小孩的成績感到差強人意。,我很討厭我孩子在讀書的錯誤。
+307,O ma'engiway ko radiw no kohetingay a tamdaw.,黑人唱的歌都很高音。,黑色的人唱歌口不擇言。
+308,Macedeng ko tayal nira.,他工作緩慢。,他的工作是染色的。
+309,Aka palawaco to tamdaw!,不要待人如狗！,不要奴役人如狗!
+310,O patihiay kako to sito ako.,我是來協助我的學生的。,我要催促我的學生。
+311,Macoca' no tahefod ko mata no mako.,有塵埃進到我的眼睛。,我的眼睛被塵埃刺傷。
+312,O ni'ateman no mako to codad ko pida ako.,我原來是用我的書來挾住錢的。,我的錢包是我的朋友。
+313,Sakohenac sa ko fanges nira.,她的皮膚很光滑。,他的皮膚真滑。
+314,Cacay polo' ko salikaka.,有十位弟兄姐妹。,兄弟只有五位。
+315,Celi' san ci Kacaw mitahidang i takowanan.,Kacaw大聲地呼叫我。,Kacaw偷偷地瞧不起我。
+316,Away ko foting i mangotaay a nanom.,在混濁的水裡沒有魚。,污水裡沒有魚。
+317,Talariyar mifoting ci Foting.,福定去海邊捕魚。,福特到海邊捕魚。
+318,Citomay ko lotok no Taywan.,台灣的山有熊。,台灣的山有熊。
+319,O sakalefotan to ko sasela'an nina waco i rikor no kamaen to sawarak.,那隻狗吃了毒藥之後將要斷氣了。,這隻狗在開墾山坡地之後已成為第二批了。
+320,Pacaheni i takowanan ko tahefod no panay.,稻穀的粉末使我發癢。,請給我稻穀粉末。
+321,Na'onen ko rakat.,路上小心。,要小心一點!
+322,Fiyok sa ko fali.,風突然間吹來。,風沙沙作聲。
+323,Fongfong san ko fokes ako to nikaiyofen no fali.,我的頭髮因風吹而非常散亂。,我的頭髮被風吹動著。
+324,Cocok han no mako to rinom ko kaliwates no cepi' ako.,我用針刺破我腿上的疔瘡。,我用橡皮筋吸吮我的大腿。
+325,O niditditan ni mama ako a maomah kira lotok.,那個山是我的父親一點一點的開墾。,那座山是我爸爸開墾的。
+326,"Lalat han to ko tangal no miso, na masapinang kako a misanga' to kafong iso.",要測量你的頭，這樣我才能作合身的帽子。,"你的頭一直暈眩,我要使你的頭暈眩。"
+327,Tolo ko nikacayan no mako a codad.,我買了三本書。,我共有三本书。
+328,Mi'iyotay kami to kilang  malosanga' no loma'.,我們把木頭鑽洞做家的圍牆。,我們靠著樹蓋房子。
+329,Ciadada no fowa' ciira saka fotos ciira.,他有腎臟病所以他的身體浮腫。,他有小孩的病所以他 fotos.
+330,Hatotamdaw kiso anini.,你今天比較像人樣。,你今天很可憐。
+331,Misakoti'ay ciira i takowan.,她駡我活該。,他挨近我的耳旁。
+332,Ini ciira.,他在這裡。,這是他。
+333,Pa'alangaden kira wawa iso to hemay.,請為著你的孩子用手端上米飯。,讓你的孩子吃飯。
+334,Halikiyafes kako.,我愛吃芭樂。,我很愛飛魚。
+335,Maolah a mihowad to para' no tawo ciira.,他喜歡頂舉別人的屁股。（他喜歡拍馬屁。）,她很喜歡拔別人的頭巾。
+336,I cepo'ay a niyaro' no Siwkolan a tarawadaw ko kasofocan nira.,他出生地在秀姑巒溪末端的部落。,他的出生地是秀姑巒溪。
+337,"Dakaw sa ho ci Osay, romakat to ko cinamalay.",Osay才剛踏上火車，火車就起動了。,"烏賽一瘸一拐地走路,只穿鞋子。"
+338,Rangi saan ko pising ako ato no miso.,我的臉和你的很相似。,我的臉和你的臉很相像。
+339,O fafahekolen anohoni kiraan a kafang.,那件棉被待會要被丟棄。,那個湯匙是待會兒要倒的。
+340,O kacicengo'an to no kilang i matini.,現在是樹木長芽的季節(現在是春天)。,現在的樹已經成為蒸籠了。
+341,O misafa^lohay kami a malowama a misatafiling.,我們父子倆重新開墾山坡地。,我們父子倆重新開墾山坡地。
+342,Padadaydayen i mamangay a hako o papatayraen no mako i picodadan.,我要把裝了蟬的盒子帶去學校。,我要在學校工作很久才會回家。
+343,O mikeliway ko tayal no kapakapah anini a romi'ad.,今天青年們的工作是採集繩子材料。,今天豐年祭的舞蹈是跳躍
+344,Malemed ko ci'alopalay anini a mihecaan.,今年有種杮子的很幸運。,今年田裡的田鼠都很健康。
+345,Cicawhi ko tarawadaw i rikor no kalilisian.,水災之後大河有鱸魚棲息。,水災之後河流有鯉魚。
+346,mifo'ot I takowanan ci fayi ako I Tafalong.,我的嬸嬸把我留住在太巴塱。,我的舅媽在太巴裡嫁禍於我。
+347,O sasoraraten kinian a demak no mita.,這是我們即將要聚會解決的事情。,我們來所做的事是差點的。
+348,Pa'afaten ko kadikoan no kodiwis.,兔舍裡放乾草讓兔子窩著。,兔子的尾巴要掛上長尾巴。
+349,Wata ko raay no rarakaten ita a talalotok.,我們到山上要走的路還很遙遠。,我們去山上的行程有兩個路途。
+350,O fita'ota'ol ko pipafitelakan to ciwciw.,小雞孵化場都是蛋。,用鋤頭挖取小雞的蛋。
+351,Fanohong ko siraw na Dakoc.,Dakoc她們的醃肉很香。,Dakoc的raw很香。
+352,Maolah misakenikeni' to mata ci Mayaw to tamdaw.,Mayaw喜歡對人眨眼睛。,馬耀喜歡對人眨眼。
+353,O hengad ko nikiliman nora wawa a fawo.,那個在尋找的蟲是甲蟲。,那小孩的演戲很相似。
+354,Masa'apeladay ko toron no finawlan a patala to lafang.,部落人準備塊狀的年糕召待客人。,部落的頭目為客人蓋廚房。
+355,Dadico saan kina koco i takowanan.,這雙鞋子跟我很剛好。,這個鞋子對我很有價值。
+356,Tahacerem ko tayal no maomahay.,農人的工作做到日落時分。,農夫的工作很快。
+357,Songaliw saan ko fana no niyam a micodad.,我的讀書的認知參差不齊。,我們讀書的池塘都是鯉魚。
+358,Ma'araw no mako ko pitafesiw namo to picodadan.,我看見你們經過學校。,我看到你們放紙張去學校。
+359,Salafii saan a milaling kora adadaay.,那位病人整晚呻吟。,那生病的治療真可口。
+360,O ma'emecay no wayya kira fafoy no lotok.,那頭山豬是被鋼索勒死的。,那隻山豬被那個人用煙燻黑了。
+361,O nirenokan no 'ada ko to'as ita.,我們的祖先曾被敵人侵犯。,我們的祖先是敵人的後代。
+362,Adihay ko ciriciri i lotolotokan.,山中有很多白耳畫眉鳥。,山林中有很多芒草。
+363,Makaleng ko ngiha' iso i tingwa.,你的聲音在電話裡面很低沉。,你說話口不擇言。
+364,Pa'apolen no mato'asay ko fila' a micep.,老人家在荖葉上摻石灰來吃檳榔。,老人家用石頭壓石頭。
+365,Cekok saan kako a paka'araw toya 'oner.,我看見那條蛇時嚇一跳。,我看見那隻蛇時嚇一跳。
+366,'Arawen mihapinan ko cacakayen no miso a fodoy.,要仔細看你想要買的衣服。,你要用糯米飯來製成衣服。
+367,Tanokamay saan ciira a mikahot to hemay a komaen.,他用手抓一把米飯來吃。,他忙著飯煮來吃。
+368,Misaehoehoh kora ciadadaay to fala'.,罹患肺病者不停地吐氣。,那個人在燻製飛魚。
+369,Faesis ko cicalengay a loma'.,有松樹的家很香。,有芒草的家庭。
+370,Calemcem kako to tayal no wawa ako i lonan.,我很擔心我孩子在海上的工作。,我對我孩子在船上的工作感到很放心。
+371,Mielik ci ina to panay.,媽媽用腳板摩擦脫稻殼。,媽媽在碾米。
+372,O pidefongan no Ripon a tayni i Taywan kira hadhad.,那個旱地是日本入侵上岸的地方。,那個糯米飯是日本被日本吞没的。
+373,Naw maan ko sakatepo i nanom?,是什麼原因掉在水裡？,為什麼在水中跌倒呢?
+374,Mikesi' i riyar ko fa'inayan no niyaro' to tolo a romi'ad.,男生在海邊進行三天的海祭。,部落的青年全部沉浸在海中。
+375,I potal kami a malafi.,我們在前院吃晚餐。,我們在廣場吃晚餐。
+376,Malotong kina wawa nira.,他的孩子的脾氣像猴子。,她的小孩個個都很懶惰。
+377,I 'adawangay a maca'it ko paya no loma' ako.,我家的門牌掛在門口的。,我家的錢放在門口。
+378,Miolatek a miharateng.,任意想。,採生薑時加點生薑。
+379,O mapacedamay to 'atakiway kina kohaw.,這個湯已加入小辣椒了。,這個湯已經有蒸氣了。
+380,Maolah kako mikohaw to kohaw no foting.,我喜歡喝魚湯。,我喜歡吃魚湯。
+381,Ma'atipil ko tangal no wawa ako.,我孩子的頭是扁形的。,我孩子的頭是扁平的。
+382,Ci'atayay kina tamdaw.,這個人有心機。,這個人很有肉。
+383,O payso saca ko sakaromakat no aniniay a tamdaw.,現在的人只有錢才可以走路。,現在的人走路一瘸一拐的原因是錢不足。
+384,"Kawawen ko sowal, ta matengil  niyam.",說話大聲一點，我們才能聽到。,"說話要溫和,我們才來聽。"
+385,Palakida aka kasaan to kiyafes.,不要誤把芭樂當成釋迦。,不要把芭樂當成菜餚。
+386,Kaemed ko nipaliwalan nira a fodoy.,她賣的衣服價格很便宜。,他穿上很髒的衣服。
+387,Matadipohaw cira yo macorah ko loma' nira.,他在他家發生火災時喪失視力。,她一心一意長大要當家主。
+388,Talapatekay ko pineneng no mako to cacay no li' a payso.,我把一百元看成是一千元的。,我把錢放在
+389,Ci faki ko pakilacay to titi i tamiyanan.,分配肉給我們的是舅舅。,是舅舅讓我們賣肉的。
+390,Adihay ko rawraw no 'orip i hekal.,世間生活有很多煩惱。,生活上有很多煩惱。
+391,Fa^lohay ho koni kikay.,這一部機器還很新。,這個機器還很新。
+392,O sito ni Namoh singsi kako.,我是Namoh老師的學生。,我是Namoh老師的學生。
+393,Mitahidang ci ina to faki a patayni i loma'.,媽媽邀請舅舅來家裏。,媽媽在家裡探望叔叔的死去。
+394,'Opiren no mako ko keliw a misalopo.,我要把線編成辮子做成拔河繩。,我用鐵槓將線彎曲曲。
+395,Sa'iko'ikong sanay ko kalolalan no lotolotokan.,山上的每條道路都是彎彎曲曲的。,山嶺的路幾乎都是彎曲的。
+396,Parakaten no mako ko tolako.,我開了卡車。,我要將摩托車連結起來。
+397,Himaw han ni mama ko omah nira.,爸爸看守他的田。,爸爸覆蓋他的田地。
+398,So'elin saw?,真的嗎？,有差別嗎?
+399,Maocor talapicodadan pasifana' to sowal no Pangcah kako.,我被差派到學校教母語。,我去學校讀阿美語。
+400,Kinatosa to kako misaliyaw a somowal tonini demak.,這件事我已重複講兩遍了。,我已領悟了這件事。
+401,O sakakaya'ay ko fokes no wawa ako.,我孩子的頭髮最長。,我孩子的頭髮長得很長。
+402,O macidemay ko po'ot no mako.,我的小刀很尖銳。,我的刀有刺。
+403,Mipaloma to kilang i lotok no finawlan.,在部落公有之山上種樹。,部落的山上種植樹木。
+404,Parafacen to kira kolong aka to rofoen.,不要再把牛關起來放出來自由了。,不要將那隻牛當成牆壁。
+405,O cidek a kilang ko cepi' no kowang no Ripon.,日本的槍身是樫木做的。,是 cidek(木 cidek)是日本武裝的支架。
+406,O tayo a cecay ko  iraay a kakawaw no matokaay.,懶人的行為就是工作不積極。,小孩的行為只有很小的。
+407,Awaay ko pinang to pinokayan nira.,他回來的時間不一定。,他没有穿鞋子。
+408,Haenen no miso a pasowal ciira.,你對他一定要這麼說。,你來講話給他聽。
+409,Cicanemay i kasienawan ko niyaro' niyam.,我們的部落冬天會有霧氣。,我們的部落冬天有颱風。
+410,Adihay ko lilam no mako to nipafeli no singsi a odax.,老師分送給我的糖果很多。,我歸還了老師的禮物。
+411,Makapahay ko koco no miso.,你的鞋子很漂亮。,你的鞋子很漂亮。
+412,Karaonih ko papah no tefos.,甘蔗葉很多毛毛蟲。,甘蔗的葉子很多毛。
+413,O mamatangay a pala kinafacal.,這塊田地是很肥沃的。,這個田地是種西瓜的。
+414,Pakamilaen ko paliding no miso.,請在你的車子上裝設相機。,請將你的車子裝上玻璃。
+415,Talakingko ci ina mina'ang to pida.,媽媽到銀行存錢。,媽媽因錢的遺失了。
+416,Kalamkam ko pikelac nira to tefos.,他削甘蔗削得很快。,他挖甘蔗的行程是一無所獲。
+417,Awai ko lawad no mako a mikapot to sa'opo namo I nacila.,昨天我真的沒有空閒參與你們的聚會。,我昨天没有時間做你們的聚會。
+418,O marifowasay ko lipahak no faloco' no ina ako.,我媽媽心裡的快樂滿出來了。,我媽媽心灰意冷的回到家來。
+419,"'Ongteden ko pitodoh to titi, ta mapatay ko cirekay.",肉要燒成焦燼，才能燒死細菌。,煮肉時要加點辣椒才好吃。
+420,"Caay kahakowa ko nipaliwalan a alomi, nikaorira, adahi sapiaca to piyang no wawa.",今天賣的鋁製空瓶没多少錢，但是買個小朋友的糖就聊勝於無了。,"今天賣的糖果没多少錢,但是比孩子買糖果好多。"
+421,Pakacafool i takowanan kira soni no cascas.,那個瀑布的傾瀉聲催我尿急。,那聲音從水溝彈落下來。
+422,Paca'ofen kako!,請回答我！,讓我倒霉!
+423,Maolah ko posi a dihdihen ni kaka ko fanoh nira.,貓喜歡姐姐撫摸牠的毛。,姐姐喜歡貓頭鷹。
+424,Copa han no mako i tangila nira a mipalihod.,我挨近他的耳旁秘密的說。,我抓著他的耳朵責罵他。
+425,Misaciyo' ko nipoletian no wawa a fokeloh i nanom.,孩子所丟的石頭在水中發出聲響。,小孩在水中撕裂石頭。
+426,Cingala' kiso anini?,你今天有空嗎？,你今天有禮拜嗎?
+427,'Orong han to ko kasoy ano minokay kiso.,你要回家時扛些木材回來。,你要回家時請捆綁木材。
+428,Milosimet kako toya tanolakaw sanay ako a kafoti'an.,我要去整理我那骯髒的房間。,我坐的房間靠著那長方的玻璃。
+429,Matiya mielikay ko pikadi to riko'.,就像用腳板摩擦脫殼地踐踩衣服。,抓衣服時要小心。
+430,Aloman ko misamami'ay a Taywan.,很多漢人種植橘子。,在台灣有很多做豐年祭的。
+431,Mifedfed ko towaso no patay i takowanan.,死亡的絞繩環繞著我。,上帝使我的罪有赦免。
+432,Makadofahay ko parod na Mayaw.,馬耀家是有錢人家。,Mayaw家的家裡很多房間。
+433,Pakifakicien ki'rafoting.,把魚放在桶子裡。,讓竹筍茂盛。
+434,Haop han nira a mayoyang ko romakatay a tamdaw i lalan.,他一竿打全船地罵路上走路的人。,她搖動左邊的路人。
+435,Liyawen a misanga' ko faloco' mararamoday.,重新建立夫妻好的心。,要努力用功讀書。
+436,Adihay ko masacapa'ay a lalan i niyaro' niyam.,我們的部落有很多分叉的路。,我們的部落有很多開墾的路。
+437,Moetep ko fiher no cecay tolako.,一輛卡車有十個輪胎。,一隻小雞的翅膀吱吱喳喳地叫。
+438,Awai ko dingki saka to'eman to dadaya i tini.,這裡沒有燈所以晚上很暗。,"這裡沒有電線,所以在晚上會有雷聲。"
+439,Nanay tahira i da'oc ko kalaidang no mita.,但願我們的友誼直到永遠。,但願我們的友誼直到永遠。
+440,O mikadkaday to sowal no Pangcah ci Sawmah.,掃瑪是一位研究阿美族語言的學者。,掃瑪聽信阿美族的談話。
+441,Mipacokisay to matini ko mato'asay i fadahong.,老人家現在正在屋頂放覆蓋茅草屋頂的支架。,老人家在屋頂搖動搖籃。
+442,"O ta'angayay, o mimingay, emin han a miala.",大的小的全部拿去。,是啊!是啊!還試一次!
+443,Micaa' ciira a pasafaled mineneng to hikoki.,他仰首看飛機。,他脫光衣服來納涼。
+444,Tata'ang ko tayi' no kolong.,牛的大便很大。,牛的喘息很大。
+445,Iyof han ni Osay a milikat ko namal.,Osay吹起火苗。,Osay一掃地瓜。
+446,Pacarcaren ho pasela' ko matayalay no miso a mifariw i lotok.,讓你在,在山上幫你的工作者做堤防。
+447,Mi'idoc to tomay caira.,他們去標射狗熊。,他們抓虎頭蜂。
+448,Lacalen ko no kaemangan a tadawidang iso.,聯絡你小時候的好朋友。,讓你的眼淚一滴一滴地流出來。
+449,Patiyamay to sapaamid ciira.,他開了一間禮品店。,他在寄信。
+450,Awa ko misa'apolay i niyaro' no niyam.,在我們的部落沒有人製造石灰。,我們部落沒有製造水壩。
+451,Aka sawidangen ko misaicahay a tamdaw.,不要和愛慕虛榮的人交朋友。,壞人不要視力不好。
+452,Kinih han no singsi ko pipatingsu i tamiyanan.,老人打分數給我們不公平。,老師用搖的叫我們。
+453,Maolah a komaen to 'acicimay ko cipoyapoyay.,孕婦很喜歡吃酸的。,鴿子喜歡吃水木耳。
+454,O mi'em'emay to roray ko masikoay ko 'orip.,那忍受痛苦的生活會成功。,那忍受痛苦的生活是值得欣賞的。
+455,Aloman ko tamdaw i pikacedoan.,電影院有很多人。,電影院裡有很多人。
+456,I siwaay ko toki ko katokoan no kikay.,機器是在九點鐘停止。,機器的跑道在西邊。
+457,Alomanay ko maco'koyay a mato'asay i niyaro'.,部落有很多垂著頭的老人。,部落裡很多砍伐者。
+458,Lima ko nialaan no mako a fonga i pala.,在田裡我拿了五個地瓜。,我拿了五塊地的地瓜。
+459,Mafokil ko roma a tamdaw a mies^es.,有些人不會吹口哨。,別人穿鞋子會跌倒。
+460,Nonini a faki ko kafong.,是這位叔叔的帽子。,這個是叔叔的帽子。
+461,Maratar a mitipos anini a mihecaan.,今天提早收割在來米。,今年採西瓜很特別。
+462,Malata'ang kami a ira ci Panay i kapot niyam.,我們以巴奈在我們班上為榮。,我們跟不上Panay的同學。
+463,Citangalay ko micodaday.,讀書人是聰明人。,學生穿鞋子。
+464,Matefoc no sinsi kami i nacila.,我們昨天被老師懲罰。,我們昨天被醫生檢查。
+465,Pamolesa'en no mita saan ko maapaay to tamdaw to tamina i riyar.,在海中那個愚蠢的人說要讓船龜裂漏水。,我們差遣公海人員搭船去海。
+466,Nanifafaeday a matefad ko 'orad.,雨是從天上掉下來的。,雨會帶來霧氣。
+467,O talalotok ko kapah a mikasoy i mamalahok saan ko ratoh no mipahosoay.,"那個廣播的信息說,在中午以前年青人要去山上砍木材。",砍材的人到山上砍材時樹枝就長出。
+468,Cima kiya emekalay a tamdaw i niyaro'?,那個在部落裡高聲喊叫的人是誰?,部落誰有頭目?
+469,Enemen ko 'alalpit!,要六支筷子！,請採集狀年紅!
+470,Patalariyar ci ina to tafo ni mama i kalahokan.,媽媽中午去海邊送爸爸的便當。,媽媽在中午時帶便當給爸爸吃。
+471,Ca'ay ka eca ciriko' kita to fa^lohay i pipafilongan.,過新年我們總是會穿上新衣服。,我們在豐年祭時都無法勝任。
+472,Hawang han nira malasangay a kapah ko taheka.,那個醉酒年青人跨越飯桌。,那個酒醉的青年用手肘抓取糯米飯。
+473,Mipacafay ci ina nira ci Mayawan talapicodadan.,他的媽媽陪伴Mayaw去上學。,他的媽媽催促Mayawan上學。
+474,O pinangan no pangcah a makero.,跳舞是原住民的性格。,這是阿美族的習俗。
+475,I kanatalay ko 'orip no tamdaw.,人的生活在這世界。,人的生活在下坡地。
+476,O ma'aditay to ko katilo'an a doka' nira wawa.,那孩子跌倒時的傷口已經結硬皮了。,那個孩子的傷口已經結硬皮了。
+477,O reda' no mako a mafoti i herek no lahok.,我吃完午後就熟睡了。,下午我睡覺的地方是門口。
+478,O maan ko kafana'an no miso?,你會什麼？,你到底不懂什麼呢?
+479,Mikoyod ci ina to fakar a midateng.,媽媽揹著籮筐去採菜。,媽媽拔竹筍餵食。
+480,Kalikien a komaen!,吃快一點！,要一口吃!
+481,Pamokoen ho ko paliding no miso i tatihi no lalan.,你的車子先停留在路旁。,請將你的車子立在路邊。
+482,O so'oso'or ko tatoro'an no loma ako.,我家的門前都是一灘灘的積水。,我們家四周種有樹豆。
+483,O ma'edefay ko talo'an ni faki.,叔叔的草屋已關了。,叔叔的工寮有隔間。
+484,Tahakefeng ko rakat nira.,她跌入坑洞裏。,他走路一瘸一拐地。
+485,O paliding niyam a tayra i Takao kinian.,這部是我們去高雄的車子。,這是我們去高雄的車子。
+486,Palecaden ko nitilidan iso to no kaka a makapah.,你寫的字要像姐姐一樣好。,讓你的哥哥和姐姐相像的漂亮。
+487,Kipapotalan saan no loma' a mafekac kira wawa.,那個孩子一直在屋子的外面跑步。,那個孩子一瘸一拐地跳到家裡。
+488,O cifar ko pitenesan naira to sinafel.,他們以葉子做成的船型盤煮菜(石頭火鍋法)。,他們用山坡地來煮菜。
+489,Macafi' no safa kiso a comikay.,你跑步被妹妹趕過。,你被妹妹輕視。
+490,"Pa'pa'en ko nikaenan ta, enocen!",吃東西要咀嚼才可吞嚥！,"吃東西要點,要點!"
+491,O coperasay ko piyang nora wawa.,那個孩子的糖果是很酥的。,那小孩的糖果有糖果。
+492,Matalaw kako a mikalic to hikoki.,我不敢坐飛機。,我急著要買單車。
+493,O karacicax i kilakilangan no Hito i kasienawan.,冬季屏東樹林裡有很多伯勞鳥棲息。,冬至時Hito的部落的樹林長滿芒草。
+494,Mikocong to ko wawa no mako.,我的孩子已讀國中了。,我的孩子已讀高中了。
+495,Talakasi ko harateng no mako.,我的想法想到糖果了。,我的心向上爬山。
+496,Awaay ko kapot no ma'adepetay a tamdaw.,吝嗇的人沒有朋友。,貪婪的人沒有朋友。
+497,Kohepic ko katofil nira.,她的嘴唇很薄。,她的綽號很薄。
+498,Macacokecoker ko malikakaay a matayal.,兄弟們工作相互支持。,兄弟工作一起做堤防。
+499,Rasit hato no kapah no niyaro' ko 'Olalip.,部落的青年在屋拉力挨家挨戶報喜。,部落青年將屋拉力 split開。
+500,Pakarahayen ni ina nira ci Osay i omah.,烏賽的媽媽在田裏給她戴上遮陽（雨）具。,烏賽的媽媽在田裏給她戴上花冠。
+501,Paamel ciira a mimetmet to kamay.,他握手暗中使勁搞鬼。,他搖動手。
+502,Langtoen ko kasoy malosapi'id'id to titi.,將柴燒成炭以作烤肉用。,用寬大的木材煮肉。
+503,Papising to finawlan kita.,我們召會部落群眾。,讓我們去拜訪部落。
+504,O mamipapelo kako ano honi.,待會兒我將要演講。,待會兒我要七位。
+505,Malodi' ko kakarayan.,天空呈現彩霞般的景色。,天空多雲。
+506,Maolah mikadat ci mama ako to fokes nira.,我爸爸很喜歡梳頭髮。,我的爸爸喜歡梳他的頭髮。
+507,Mikolismas kami anocila.,我們明天要過聖誕節。,我們明天要採釋迦。
+508,Mafayo' ciira toya kakomaen nira toya 'icep.,他吃了那顆檳榔後胸悶出汗。,他對那顆檳榔吃得很滿足。
+509,Sacalascas saan ko nanom i dasidas.,湍急的河道流水聲隆隆作響。,雨水湍急。
+510,Matocicax ko cirot a nengnengen.,赤背伯勞鳥看起來很像伯勞鳥。,赤背伯勞鳥看起來很像蜘蛛。
+511,O mapi'iway cira.,他是跛腳的人。,他發脾氣。
+512,Miasip kita to sakacecay a liyad.,我們來唸第一課。,我們要寫第一頁。
+513,Pela' sato ko sinar a marohem.,西瓜熟透而裂開了。,天將我生氣。(意指天將我生氣。)
+514,I sa'amisan no Pangcah ko likowat no Taloko.,太魯閣族的領域在阿美族的北邊。,太魯閣族的部落就在阿美族的東邊。
+515,Cipat saan ko kasi i ngapa ako.,糖果黏在我的嘴巴裡。,口香糖黏在我的嘴巴裡。
+516,O macohelay kako i kalahokan.,中午的時候我流汗。,中午時我有流汗的。
+517,Ehoh san cira a mafaha.,他咳嗽咳得吐大氣。,她傻傻地笑。
+518,O pasasifinay ko cirohefay a loma'.,衰家有贈送毛巾的。,有圍牆的房屋是種植西瓜的。
+519,Ka^dah ko damdam a ka^enen.,辣椒吃起來很辣。,damdam吃起來很好吃。
+520,Maso'aw kiso?,你口渴嗎？,你發脾氣嗎?
+521,Siwar han no mako kira sapad i loma'.,我把家裡的桌子調動位置。,我將那個桌子放在家裡。
+522,Apener ko adipel no loma' naira.,他們家的圍牆很矮。,他們家門扇很小。
+523,Panganganen ko wawa to no Pangcah.,給小孩冠原住民的名字！,讓原住民的孩子學習原住民語。
+524,O hitay ko tireng ni mama no mako i kaRiponan.,我爸爸日據時代是日本兵。,我爸爸在豐年祭時的身體是鈍的。
+525,Papimecmecen ni kaka kako to feso.,姐姐叫我手掌捏住氣球。,哥哥要我拔花生。
+526,Madecdec ni kaka ko maamaan a pateli i kafoti'an nira.,姐姐把東西繄密地置放在她的房間。,姐姐把珍珠藏在她的口袋。
+527,Mililis i lalan a romakat kami.,我們沿著路邊走。,我們在路上走路。
+528,Litod han iso koni caay ho karohem a kowa' saw?,你怎麼把未成熟的木瓜給摘下來呢？,你怎麼把這個還没發芽的木瓜丟掉呢?
+529,Maolah a micoled i dofot to kamay kora wawa.,那個小孩喜歡將手插入口袋。,那小孩喜歡將手放在口袋裡。
+530,Misakotekotem to ko romi'ad.,天色漸漸暗了。,天氣會下毛毛雨。
+531,O himerac no sowal no mako kinian.,這是我說話的結論。,這是我的話的根源。
+532,Ma'iwil kako to sowal nira i nacila.,他昨天講的話讓我感到尷尬。,我昨天不懂他的話。
+533,Mifetak ci mama to kasoy.,爸爸劈柴成兩半。,爸爸砍木材。
+534,Mikitakaraw ko efer no fasiyaw ako to no miso.,我的風箏飛得比你的高。,你襲擊我的車子時是一無所有的。
+535,Onocen ko opih no kaciw!,去拔幾根鵝毛！,去拔幾根鵝毛!
+536,Pakadom kako tora kosi.,我有投資那間公司。,我在安慰那間公司。
+537,O kefeng sanay ko lalan niyam.,我們的路都是坑洞。,我們的路是寬廣的。
+538,O mi'ot'otay ko tayal no mako i pasaetip.,在西部我的工作是雕刻。,西部我的工作是染布的。
+539,Milosimet kako to sakipasifana' ako to sowal no Pangcah.,我在準備阿美語課程。,我很珍惜阿美族的語言。
+540,O marekoay to naira ko papanayen i pala.,田裡要割的稻被他們完成了。,他們在田裡將稻子撒落一地。
+541,Misorarat to kala'afas to sera no finawlan ko tomok.,頭目要去聚會解決部落爭執的土地。,頭目將部落的 soil連結起來。
+542,O 'a'ikakongen kinian a marad a misakimolmol.,將這枝鐵彎曲做圓形的。,這個竹蓆是用竹筍製成的。
+543,Mihinam ci Panay to pinangan no malokadafo nira.,Panay去打聽她未來女婿的品性。,Panay去採集她所採集的果實。
+544,"O fafoy, o mangcel, o malonem ko ma'adopay ni mama ako.",我爸爸的獵獲有野豬、山羌和水鹿。,"豬,豬籠,是我爸爸打獵的用具。"
+545,Masongaliw ko cilamalay.,火車交錯而過。,新的工作夥伴加入了。
+546,Mafana'ay cira mi'edaw.,他會占卜術。,他很會吹口哨。
+547,"Tadato'eman ko romi'ad, caay kanga'ay a romakat.",天太黑了，不好走。,"天氣真熱,走路不方便。"
+548,Matotofor kira wawa a cai pitengil.,那個小孩很像小牛不聽話。,那個孩子很會發脾氣。
+549,Mafotfot to ni mama a maemin ko semot no omah.,田裏的雜草全都被爸,爸爸已將田裏的草全砍完。
+550,Matolo' ci Kacaw i kalikelonan nira.,卡照在他下樓梯時跌倒。,Kacaw急急忙忙地忙著他的工作。
+551,Kinafalah sa cira a mipa'orip toya ma'alolay.,他奮不顧身救那位溺水者。,他一心一意送福予那貧窮的人。
+552,Karalalipana' ko lalidec a kilang.,九芎樹容易長毛毛蟲。,九芎樹長滿葉子。
+553,Or^or han no kaka kira safa a papikoliniw to kamaya no fiyaw.,哥哥唆使弟弟去偷鄰居的紅毛杮。,哥哥牽著妹妹的手送給鄰居看。
+554,Ira ko hongko nonini a loma'.,這戶人家有風穀機。,這戶人家有一間廚房。
+555,O maciwangay ko nicakayan no safa ako to hakama.,我妹妹買了開叉的裙子。,我妹妹用橡皮筋彈打糯米飯。
+556,"Eroren ko lamal, mitapay kita to titi.",將火吹旺，我們來烤肉。,"火燒一下,我們就吃肉。"
+557,"Paca'angen ko kilakilang, ta makapah.",讓樹盡情生長樹枝才會漂亮。,樹上加點檳榔可以很好吃。
+558,Kafit han no karapiyatay ko kafel ako.,我的褲子被咸豐草鈎住。,捕魚者將我的褲子綁起來。
+559,Caniwciw saan ko tiyad no mako na komaen to fasaw a dateng.,我吃了剩菜之後肚子陣陣劇痛。,我肚子餓得想吃午餐。
+560,Miaray kako to picoker no miso i tisowanan.,你對我的支持向你道謝。,我要你帶領我到你那裡。
+561,Kaeso ko ma'afesaway a titi no fiyaw ako.,我鄰居用煙燻味的肉很好吃。,我鄰居煮的豬肉很好吃。
+562,Mikaliling ci ina to kafi.,媽媽用湯匙舀湯。,媽媽在煮湯。
+563,O niraekedan no mako kina tayal i niyaro'.,在部落這個工作我勤力完成的。,在部落這個工作我承包了。
+564,Mafecol to kako.,我吃飽了。,我已洗臉了。
+565,O pikolasan anini.,現在是除間苖的季節。,今天是節儉的日子。
+566,Midadimaway ci fayi ako to sona nira i fafisonan.,我的嬸嬸輕搖著搖籃使他的孫子睡覺。,我的姨媽在風騷擾她的孫子。
+567,O cedi no faloco' ko sapakalaheci' to tayal.,信心是事業成功的要件。,工作是值得欣賞的。
+568,Parenecen kako to sacawaw no miso i loma'.,在家裡使我滿足你的照顧。,我要在家裡遵守你的命令。
+569,Takaraw ko taneng no tamdaw.,人的智慧很高。,人的頭很大。
+570,Asipen ko sakalima a liyad!,請唸第五課！,請朗讀第一課!
+571,Papicekiwen ko ina no mita a mipasadak to ceka i wa'ay no miso.,請你的媽媽把你腳上的刺刺挖起來。,叫我們的媽媽去拔你的腳上的牙齒。
+572,Eses san ko foti' ako i dadaya.,昨晚我睡得很安穏。,昨晚我睡得很沉。
+573,O hifang ko adihayay nora wawa a micodad.,那小孩曠課很多。,那孩子努力讀書。
+574,Cengawen ko mata a misirimrim to widang.,睜大眼睛細選朋友。,閉上眼睛想一想 saw.

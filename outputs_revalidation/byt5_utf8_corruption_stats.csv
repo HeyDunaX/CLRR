@@ -1,0 +1,6 @@
+Method,BLEU (zh),chrF++ (w=2),Avg Char Length,Length Ratio,Severe Loop Sentences (%),Avg Repeated 4-grams,Invalid UTF-8 (\ufffd)
+ByT5 Baseline,7.58,8.31,11.55,1.05,4.0,0.36,0
+ByT5 LayerSkip (ACL 2024),2.55,4.86,12.5,1.136,3.1,0.62,0
+ByT5 Middle-Align (ACL 2025),7.57,8.34,11.47,1.042,5.2,0.4,0
+ByT5 CLRR-Enc (Ours),7.31,8.1,11.63,1.057,6.8,0.55,0
+ByT5 CLRR-Dec (Ours),7.44,8.06,11.47,1.042,5.2,0.44,0
