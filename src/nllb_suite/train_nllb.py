@@ -213,7 +213,6 @@ def main() -> None:
         "per_device_eval_batch_size": args.per_device_eval_batch_size,
         "gradient_accumulation_steps": args.gradient_accumulation_steps,
         "save_strategy": "epoch",
-        "evaluation_strategy": "epoch",
         "logging_strategy": "steps",
         "logging_steps": args.logging_steps,
         "save_total_limit": args.save_total_limit,
@@ -230,6 +229,13 @@ def main() -> None:
         "warmup_ratio": args.warmup_ratio,
         "report_to": "none",
     }
+
+    import inspect
+    sig = inspect.signature(Seq2SeqTrainingArguments.__init__)
+    if "eval_strategy" in sig.parameters:
+        training_kwargs["eval_strategy"] = "epoch"
+    else:
+        training_kwargs["evaluation_strategy"] = "epoch"
 
     training_args = Seq2SeqTrainingArguments(**training_kwargs)
     callbacks: list[TrainerCallback] = [
