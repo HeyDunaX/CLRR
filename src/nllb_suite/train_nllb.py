@@ -226,6 +226,7 @@ def main() -> None:
         "bf16": args.bf16 and torch.cuda.is_available(),
         "tf32": torch.cuda.is_available(),
         "dataloader_num_workers": args.dataloader_num_workers,
+        "remove_unused_columns": False,
         "report_to": "none",
     }
 
