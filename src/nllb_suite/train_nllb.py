@@ -226,18 +226,28 @@ def main() -> None:
         "bf16": args.bf16 and torch.cuda.is_available(),
         "tf32": torch.cuda.is_available(),
         "dataloader_num_workers": args.dataloader_num_workers,
-        "warmup_ratio": args.warmup_ratio,
         "report_to": "none",
     }
 
     import inspect
     sig = inspect.signature(Seq2SeqTrainingArguments.__init__)
-    if "eval_strategy" in sig.parameters:
+    valid_params = set(sig.parameters.keys())
+
+    if "eval_strategy" in valid_params:
         training_kwargs["eval_strategy"] = "epoch"
-    else:
+    elif "evaluation_strategy" in valid_params:
         training_kwargs["evaluation_strategy"] = "epoch"
 
-    training_args = Seq2SeqTrainingArguments(**training_kwargs)
+    if "warmup_ratio" in valid_params:
+        training_kwargs["warmup_ratio"] = args.warmup_ratio
+    elif "warmup_steps" in valid_params:
+        eff_bs = args.per_device_train_batch_size * args.gradient_accumulation_steps
+        steps_per_epoch = max(1, len(train_dataset) // eff_bs)
+        total_steps = int(steps_per_epoch * args.num_train_epochs)
+        training_kwargs["warmup_steps"] = max(1, int(total_steps * args.warmup_ratio))
+
+    final_kwargs = {k: v for k, v in training_kwargs.items() if k in valid_params}
+    training_args = Seq2SeqTrainingArguments(**final_kwargs)
     callbacks: list[TrainerCallback] = [
         ConsoleMetricsCallback(),
         EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
