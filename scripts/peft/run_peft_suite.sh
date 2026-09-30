@@ -8,9 +8,13 @@ date
 
 cd /content/CLRR || cd "$(dirname "$0")/../.."
 
+export LD_LIBRARY_PATH=/usr/lib64-nvidia:${LD_LIBRARY_PATH:-}
+pip uninstall -y torchao 2>/dev/null || true
+
 # 0. Ensure peft is installed in Colab environment
 echo "[Step 0/4] Checking PEFT library..."
-python -c "import peft" 2>/dev/null || pip install peft -q
+python3 -c "import peft" 2>/dev/null || pip install peft -q
+
 
 # 1. Run Preflight Smoke Test (< 25s)
 echo ""
