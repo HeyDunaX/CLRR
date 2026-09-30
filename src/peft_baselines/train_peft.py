@@ -331,23 +331,11 @@ def main() -> None:
     print(f"Trainable params: {peft_stats.get('trainable_params', 0):,} ({peft_stats.get('trainable_percent', 0):.4f}%)", flush=True)
     print(f"=======================================================\n", flush=True)
 
-    # Save best model to zip
-    best_model_dir = output_dir / "best_model"
-    trainer.save_model(str(best_model_dir))
-    tokenizer.save_pretrained(str(best_model_dir))
-
-    zip_path = output_dir / "best_model.zip"
-    print(f"[{args.method.upper()}] Archiving best model to {zip_path}...", flush=True)
-    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
-        for file_p in best_model_dir.rglob("*"):
-            if file_p.is_file():
-                archive.write(file_p, file_p.relative_to(best_model_dir))
-
-    # Push to Hugging Face if HF_TOKEN is available
+    # Push metrics and test predictions immediately so they are never lost
     hf_token = os.environ.get("HF_TOKEN")
     if hf_token and args.hf_backup_repo:
         try:
-            print(f"[{args.method.upper()}] Uploading best model and metrics to Hugging Face ({args.hf_backup_repo})...", flush=True)
+            print(f"[{args.method.upper()}] Uploading metrics & predictions to Hugging Face ({args.hf_backup_repo})...", flush=True)
             api = HfApi(token=hf_token)
             api.create_repo(args.hf_backup_repo, repo_type="model", private=True, exist_ok=True)
             api.upload_file(
@@ -362,15 +350,37 @@ def main() -> None:
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
+            print(f"[{args.method.upper()}] Metrics & predictions uploaded to HF successfully!", flush=True)
+        except Exception as e:
+            print(f"[{args.method.upper()}] Warning during early HF upload: {e}", flush=True)
+
+    # Save best model to zip
+    best_model_dir = output_dir / "best_model"
+    trainer.save_model(str(best_model_dir))
+    tokenizer.save_pretrained(str(best_model_dir))
+
+    zip_path = output_dir / "best_model.zip"
+    print(f"[{args.method.upper()}] Archiving best model to {zip_path}...", flush=True)
+    with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for file_p in best_model_dir.rglob("*"):
+            if file_p.is_file():
+                archive.write(file_p, file_p.relative_to(best_model_dir))
+
+    # Push weights archive to Hugging Face
+    if hf_token and args.hf_backup_repo:
+        try:
+            print(f"[{args.method.upper()}] Uploading best model archive to Hugging Face...", flush=True)
+            api = HfApi(token=hf_token)
             api.upload_file(
                 path_or_fileobj=str(zip_path),
                 path_in_repo=f"peft_baselines/{run_name}/best_model.zip",
                 repo_id=args.hf_backup_repo,
                 repo_type="model",
             )
-            print(f"[{args.method.upper()}] Successfully uploaded artifacts to {args.hf_backup_repo}/peft_baselines/{run_name}/", flush=True)
+            print(f"[{args.method.upper()}] Best model archive uploaded to HF!", flush=True)
         except Exception as e:
-            print(f"[{args.method.upper()}] Warning: HF upload encountered: {e}", flush=True)
+            print(f"[{args.method.upper()}] Warning during zip upload: {e}", flush=True)
+
 
 
 if __name__ == "__main__":

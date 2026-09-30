@@ -161,6 +161,22 @@ def main() -> None:
     print(f"\nFinal Comparative Matrix saved to: {csv_path}\n")
     print(df.to_string(index=False), flush=True)
 
+    hf_token = os.environ.get("HF_TOKEN")
+    if hf_token and args.hf_backup_repo and csv_path.exists():
+        try:
+            from huggingface_hub import HfApi
+            api = HfApi(token=hf_token)
+            api.upload_file(
+                path_or_fileobj=str(csv_path),
+                path_in_repo="peft_baselines/peft_scores.csv",
+                repo_id=args.hf_backup_repo,
+                repo_type="model",
+            )
+            print(f"Uploaded peft_scores.csv to {args.hf_backup_repo} successfully!", flush=True)
+        except Exception as e:
+            print(f"HF upload note: {e}", flush=True)
+
 
 if __name__ == "__main__":
+
     main()
