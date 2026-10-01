@@ -19,9 +19,17 @@ from datasets import Dataset
 from huggingface_hub import HfApi
 from sacrebleu.metrics import BLEU, CHRF
 from sacrebleu.tokenizers.tokenizer_zh import TokenizerZh
+try:
+    from peft import PeftModel
+    _HAS_PEFT = True
+except ImportError:
+    PeftModel = None
+    _HAS_PEFT = False
+
 from transformers import (
     DataCollatorForSeq2Seq,
     EarlyStoppingCallback,
+    PreTrainedModel,
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
     TrainerCallback,
@@ -41,6 +49,47 @@ DEFAULT_LR_BY_METHOD = {
     "clrr_enc": 5e-5,
     "clrr_dec": 5e-5,
 }
+
+
+class SafeSeq2SeqTrainer(Seq2SeqTrainer):
+    """Seq2SeqTrainer that safely saves custom nn.Module wrappers with tied weights.
+
+    In Transformers >= 4.40 / 5.x, Trainer._save unconditionally invokes safetensors
+    for models that are not PreTrainedModel or PeftModel. For NLLB-200 with tied embeddings,
+    safetensors raises RuntimeError: Some tensors share memory.
+    This class falls back to torch.save(..., 'pytorch_model.bin') for custom wrappers,
+    which handles tied weights natively and allows Trainer._load_best_model to reload cleanly.
+    """
+
+    def _save(self, output_dir: str | None = None, state_dict: dict | None = None) -> None:
+        output_dir = output_dir if output_dir is not None else self.args.output_dir
+        os.makedirs(output_dir, exist_ok=True)
+        unwrapped = self.accelerator.unwrap_model(self.model, keep_torch_compile=False)
+
+        supported = (PreTrainedModel, PeftModel) if _HAS_PEFT and PeftModel is not None else (PreTrainedModel,)
+        if isinstance(unwrapped, supported):
+            super()._save(output_dir=output_dir, state_dict=state_dict)
+            return
+
+        # For custom nn.Module wrappers (MiddleAlignMT5, JEPAGuidedSeq2SeqLM):
+        if state_dict is None:
+            state_dict = unwrapped.state_dict()
+
+        # Save weights as pytorch_model.bin using standard PyTorch serialization (handles tied embeddings)
+        torch.save(state_dict, os.path.join(output_dir, "pytorch_model.bin"))
+
+        # Save processing class / tokenizer if available
+        if self.processing_class is not None:
+            self.processing_class.save_pretrained(output_dir)
+        elif (
+            self.data_collator is not None
+            and hasattr(self.data_collator, "tokenizer")
+            and self.data_collator.tokenizer is not None
+        ):
+            self.data_collator.tokenizer.save_pretrained(output_dir)
+
+        # Save training arguments
+        torch.save(self.args, os.path.join(output_dir, "training_args.bin"))
 
 
 class ConsoleMetricsCallback(TrainerCallback):
@@ -255,7 +304,7 @@ def main() -> None:
         EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
     ]
 
-    trainer = Seq2SeqTrainer(
+    trainer = SafeSeq2SeqTrainer(
         model=model,
         args=training_args,
         train_dataset=train_dataset,
