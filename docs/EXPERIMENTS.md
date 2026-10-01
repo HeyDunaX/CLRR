@@ -72,8 +72,8 @@
 | **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | 0 | 131.0K (0.0213%) | **1.0750** | **2.9643** | **5.7081** | Nghẽn biểu diễn nghiêm trọng do chỉ cập nhật bias |
 | **LoRA** ($r=8, \alpha=16$) | Hu et al. (ICLR 2022) | +1.18M | 1.18M (0.1914%) | **3.5383** | **4.9407** | **9.1651** | Adapter 1.18M vượt trội BitFit nhưng tụt xa Baseline (-9.96 BLEU) |
 | **Middle-Layer Alignment** | Liu & Niehues (ACL 2025) | 0 | 614.9M (100%) | **13.9648** | **10.6596** | **18.4448** | Căn chỉnh tầng giữa (+0.46 BLEU, +0.36 chrF++ Zh so với Baseline) |
-| **CLRR-Enc + LSR (Ours)** | Đề xuất chính (Enc) | 0 | 614.9M (100%) | *Đang huấn luyện...* | *Đang huấn luyện...* | *Đang huấn luyện...* | Đang huấn luyện trên GPU A100 |
-| **CLRR-Dec + LSR (Ours)** | Đề xuất (Dec) | 0 | 614.9M (100%) | *Xếp hàng* | *Xếp hàng* | *Xếp hàng* | Chạy sau CLRR-Enc |
+| **CLRR-Enc + LSR (Ours)** | **Đề xuất chính (Enc)** | **0** | **614.9M (100%)** | **14.2820** | **10.9152** | **18.7482** | **Thiết lập SOTA mới trên NLLB-200 (+0.78 BLEU, +0.66 chrF++ Zh so với Baseline, Zero new params)** |
+| **CLRR-Dec + LSR (Ours)** | Đề xuất (Dec) | 0 | 614.9M (100%) | *Đang huấn luyện...* | *Đang huấn luyện...* | *Đang huấn luyện...* | Phương pháp cuối cùng đang chạy trên GPU A100 |
 
 ---
 
@@ -138,7 +138,8 @@ Toàn bộ mô hình đã được lưu trữ an toàn tại repository chính t
 | `nllb-200/nllb-200-baseline-best.zip` | 6.84 GB | Đã tải lên |
 | `nllb-200/nllb-200-bitfit-best.zip` | 1.46 GB | Đã tải lên |
 | `nllb-200/nllb-200-lora-best.zip` | 18.9 MB | Đã tải lên |
-| `nllb-200/nllb-200-middle_align-best.zip` | ~6.8 GB | Đã hoàn thành / Tải lên HF Hub |
+| `nllb-200/nllb-200-middle_align-best.zip` | 6.83 GB | Đã tải lên |
+| `nllb-200/nllb-200-clrr_enc-best.zip` | ~6.8 GB | Đã hoàn thành / Tải lên HF Hub |
 | `revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/mbart-large-50-ami-cmn-lsr-only-best.zip` | 2.27 GB | Đã tải lên |
 | `revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/mbart-large-50-ami-cmn-clrr-only-best.zip` | 2.27 GB | Đã tải lên |
 | `outputs_revalidation.zip` (Metrics, predictions, log kiểm định) | ~15 MB | Đã tải lên |
