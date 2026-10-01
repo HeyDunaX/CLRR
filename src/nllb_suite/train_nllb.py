@@ -369,12 +369,15 @@ def main() -> None:
     print(f"[eval] Saved predictions to {preds_path}", flush=True)
 
     # Compute official scores
-    bleu_score = float(BLEU(tokenize="zh").corpus_score(clean_preds, [test_targets]).score)
+    bleu_score = float(BLEU(tokenize=bleu_tokenizer).corpus_score(clean_preds, [test_targets]).score)
     chrf_score = float(CHRF(word_order=2).corpus_score(clean_preds, [test_targets]).score)
-    tok_zh = TokenizerZh()
-    preds_zh = [tok_zh(p) for p in clean_preds]
-    refs_zh = [[tok_zh(t) for t in test_targets]]
-    chrf_zh_score = float(CHRF(word_order=2).corpus_score(preds_zh, refs_zh).score)
+    if bleu_tokenizer == "zh":
+        tok_zh = TokenizerZh()
+        preds_zh = [tok_zh(p) for p in clean_preds]
+        refs_zh = [[tok_zh(t) for t in test_targets]]
+        chrf_zh_score = float(CHRF(word_order=2).corpus_score(preds_zh, refs_zh).score)
+    else:
+        chrf_zh_score = chrf_score
 
     report: dict[str, Any] = {
         "model": args.model_name,
