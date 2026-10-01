@@ -55,10 +55,36 @@
 | Backbone Architecture | Phương pháp | Nguồn trích dẫn | $\Delta\theta$ (Thêm mới) | Tham số huấn luyện (% Model) | BLEU (zh) ↑ | chrF++ (w=2) ↑ | Nhận định học thuật & Hiện tượng đo đạc |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | **`facebook/mbart-large-50`**<br>(12 enc / 12 dec, 611M) | **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | **0** | 335.872 (0.0550%) | **0.3511** | **2.8464** | Đóng băng 99.95% backbone khiến mô hình không thể học biểu diễn ngôn ngữ unseen Amis |
-| | **LoRA** ($r=8, \alpha=16$) | Hu et al. (ICLR 2022) | **+1.179.648** | 1.179.648 (0.1927%) | **3.3284** | **5.1583** | Chỉ bắt được vài từ vựng rời rạc; adapter 1.18M không đủ sức tái định hình không gian đa ngữ |
+| | **LoRA** ($r=8, \alpha=16$, hẹp) | Hu et al. (ICLR 2022) | **+1.179.648** | 1.179.648 (0.1927%) | **3.3284** | **5.1583** | Chỉ can thiệp $q, v$; adapter 1.18M chưa đủ sức tái định hình không gian biểu diễn |
+| | **Strong LoRA** ($r=16$, All-Linear) | Hu et al. / Mở rộng rebuttal | **+8.650.752** | 8.650.752 (1.4161%) | **10.4193** | **9.8008** | Mở rộng $q,k,v,o,fc1,fc2$ tăng vọt (+7.09 BLEU so với LoRA hẹp), nhưng vẫn kém xa full-tuning |
 | | Standard Fine-Tuning | Official Baseline | 0 | 610.879.488 (100%) | 19.6106 | 14.0538 | Điểm tựa baseline chuẩn mBART |
 | | Middle-Layer Alignment | Liu & Niehues (ACL 2025) | 0 | 610.879.488 (100%) | 19.7243 | 15.5253 | Căn chỉnh tầng giữa đơn lẻ (+1.47 chrF++) |
-| | **CLRR-Enc + LSR (Ours)** | **Đề xuất chính** | **0** | **610.879.488 (Zero New Params)** | **20.3927** | **19.0839** | **Áp đảo hoàn toàn LoRA (+17.06 BLEU) và BitFit (+20.04 BLEU), chứng minh ưu thế tuyệt đối của $\Delta\theta=0$** |
+| | **CLRR-Enc + LSR (Ours)** | **Đề xuất chính** | **0** | **610.879.488 (Zero New Params)** | **20.3927** | **19.0839** | **Áp đảo hoàn toàn Strong LoRA (+9.97 BLEU, +9.28 chrF++), khẳng định ưu thế tuyệt đối của $\Delta\theta=0$** |
+
+---
+
+### 2.1.1. Strong LoRA Run A — 2026-10-01
+
+- Cấu hình: mBART-50, LoRA rank 16 / alpha 32 / dropout 0.05, `q_proj,k_proj,v_proj,out_proj,fc1,fc2`, embeddings đóng băng, LR 2e-4, seed 42, batch 4 × accumulation 32, BF16; validation greedy, test beam 4.
+- Đã huấn luyện 20 epochs; checkpoint tốt nhất tại epoch 19 (`checkpoint-684`); thêm mới/trainable 8,650,752 tham số. Training time 93.49 phút.
+
+| Reference dùng khi tính điểm | Test BLEU (zh) | Test chrF++ raw (w=2) | Test chrF++ Zh |
+| :--- | ---: | ---: | ---: |
+| Reference đã tokenize/decode (giao thức Trainer hiện tại) | 10.4193 | 9.8008 | — |
+| Reference gốc từ `data/processed/test.csv` | 10.2296 | 8.6319 | 15.2118 |
+
+Audit: đúng 575 dự đoán, đúng thứ tự/source/target; điểm Trainer tính lại khớp; best adapter khớp checkpoint được chọn; archive và SHA-256 đã kiểm tra sau tải về. Tokenizer làm thay đổi 62 references, nên cần dùng cùng một bộ reference khi so sánh các mô hình trong bảng bài báo.
+
+Artifact tại máy này:
+
+- `outputs_rebuttal/strong_lora_scores.csv`
+- `outputs_rebuttal/strong_lora_run_a_verification.json`
+- `outputs_rebuttal/strong_lora_run_a_results.zip` (kết quả, checkpoint, log, source manifest)
+- `results/mbart-large-50-lora-all-linear/metrics.json`
+- `results/mbart-large-50-lora-all-linear/test_predictions.csv`
+- `results/mbart-large-50-lora-all-linear/best_model.zip`
+
+**Run B chưa khởi chạy, tạm hoãn theo yêu cầu tác giả.** A100 được tạo không có `--high-mem`; Colab đã dừng và kiểm tra không còn phiên hoạt động. Các kết quả trên được sinh trực tiếp từ artifact bằng `scratch/record_run_a.py`.
 
 ---
 

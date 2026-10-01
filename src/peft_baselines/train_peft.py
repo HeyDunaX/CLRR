@@ -212,7 +212,7 @@ def main() -> None:
     peft_stats = {}
     if args.method == "lora":
         target_modules = [m.strip() for m in args.target_modules.split(",") if m.strip()]
-        modules_to_save = ["shared", "lm_head"] if args.unfreeze_embeddings else None
+        modules_to_save = ["shared", "embed_tokens", "lm_head"] if args.unfreeze_embeddings else None
         model, peft_stats = apply_lora_to_model(
             raw_model,
             r=args.lora_r,
@@ -317,6 +317,8 @@ def main() -> None:
     pred_df.to_csv(pred_path, index=False, encoding="utf-8")
 
     all_metrics = {
+        "configuration": vars(args),
+        "peft_configuration": peft_stats,
         "model": run_name,
         "method": args.method,
         "reference_paper": "Hu et al. (ICLR 2022)" if args.method == "lora" else "Ben-Zaken et al. (ACL 2022)",

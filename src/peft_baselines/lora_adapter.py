@@ -38,6 +38,7 @@ def apply_lora_to_model(
     if target_modules is None:
         target_modules = ["q_proj", "v_proj"]
 
+    base_params = sum(p.numel() for p in model.parameters())
     peft_config = LoraConfig(
         task_type=TaskType.SEQ_2_SEQ_LM,
         r=r,
@@ -50,8 +51,22 @@ def apply_lora_to_model(
 
     peft_model = get_peft_model(model, peft_config)
 
+    # mBART exposes separate embedding modules with a shared weight. PEFT's
+    # modules_to_save copies them, so explicitly share the trainable copies.
+    if modules_to_save and "shared" in modules_to_save:
+        core = peft_model.get_base_model()
+        shared_weight = core.model.shared.modules_to_save["default"].weight
+        for module in (core.model.encoder.embed_tokens, core.model.decoder.embed_tokens, core.lm_head):
+            module.modules_to_save["default"].weight = shared_weight
+        assert core.model.encoder.embed_tokens.weight is shared_weight
+        assert core.model.decoder.embed_tokens.weight is shared_weight
+        assert core.lm_head.weight is shared_weight
+
     trainable_params = sum(p.numel() for p in peft_model.parameters() if p.requires_grad)
-    all_params = sum(p.numel() for p in peft_model.parameters())
+    added_params = sum(p.numel() for name, p in peft_model.named_parameters() if "lora_" in name)
+    # Frozen originals retained by modules_to_save are storage copies, not
+    # additional model parameters in the deployed adapted model.
+    all_params = base_params + added_params
     percent = (100.0 * trainable_params / all_params) if all_params > 0 else 0.0
 
     print(
@@ -66,6 +81,9 @@ def apply_lora_to_model(
         "lora_alpha": lora_alpha,
         "lora_dropout": lora_dropout,
         "target_modules": target_modules,
+        "modules_to_save": modules_to_save,
+        "base_params": base_params,
+        "added_params": added_params,
         "trainable_params": trainable_params,
         "all_params": all_params,
         "trainable_percent": percent,

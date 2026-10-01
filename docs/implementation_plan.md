@@ -1,11 +1,39 @@
 # KẾ HOẠCH TRIỂN KHAI & RUNBOOK THỰC NGHIỆM ĐỐI CHẤT REVIEWER (PEFT ENHANCEMENT & SCIENTIFIC RUNBOOK)
 
+> **Ghi chú vận hành 2026-10-01:** Chạy A100 bằng `colab new -s colab --gpu A100`, không truyền `--high-mem`. Run A/B: rank 16, alpha 32, dropout 0.05, targets `q_proj,k_proj,v_proj,out_proj,fc1,fc2`; LR lần lượt 2e-4/1e-4, seed 42, batch 4 × accumulation 32, tối đa 20 epochs, patience 4, validation greedy và test beam 4. Run B đã sửa để các bản sao trainable của `shared`, encoder/decoder `embed_tokens` và `lm_head` dùng chung một weight; kiểm tra gradient, optimizer update và lưu/nạp lại bằng `scripts/peft/smoke_test_strong_lora.py`. Số LoRA thực tế dự kiến 8,650,752; embedding 250,054 × 1024 = 256,055,296; Run B trainable 264,706,048. Dùng số đo trong artifact thay các ước lượng cũ phía dưới. Đồng bộ trực tiếp code đã sửa và dữ liệu từ máy này; báo tiến độ mỗi 10 phút, tải artifact trước khi dừng phiên.
+
+> **Điều chỉnh theo yêu cầu tác giả:** Hoàn thành Run A, ghi và tải kết quả/checkpoint về máy rồi dừng Colab. Run B tạm hoãn; runner đã bị chặn trước khi có thể khởi động Run B.
+
 > [!IMPORTANT]
 > **NGUYÊN TẮC BẤT BIẾN & TỐI ƯU HÓA TÀI NGUYÊN (SCIENTIFIC RIGOR, FAIRNESS, SPEED & CU PROTECTION):**
 > 1. **Mục tiêu tối thượng:** Giải tỏa triệt để mọi "Red Flag" từ báo cáo phản biện (nghi ngờ cấu hình PEFT đối chứng hẹp, thiếu đối chứng byte-level, nghi ngờ sụp đổ biểu diễn LSR, và thiếu bằng chứng over-smoothing qua layer-wise probing), đưa vị thế bài báo lên *Strong Accept*.
 > 2. **Bảo tồn toàn vẹn thành quả đã đạt được:** Đóng băng toàn bộ kết quả SOTA của CLRR-Enc trên `mBART-large-50` (20.39 BLEU, 19.08 chrF++), `mT5-small` (4.83 BLEU), và `NLLB-200-distilled-600M` (14.28 BLEU, 18.75 chrF++). Checkpoint đã lưu trữ an toàn trên Hugging Face Hub (`FiveC/amis-rewire-checkpoints`).
 > 3. **Giao thức công bằng tuyệt đối (Strict Fairness Protocol):** Cố định toàn diện: Seed 42, Split 4.600 / 576 / 575, Effective Batch Size 128, Early Stopping Patience 4 theo chrF++, Precision BF16 (hoặc FP16), Generation Beam Size 4, SacreBLEU `zh` + chrF++ `word_order=2`.
 > 4. **Chuẩn mực nghiệm thu (No Hand-copied Numbers):** Kết quả bắt buộc xuất ra `metrics.json` và `test_predictions.csv` (đủ đúng 575 dòng dữ liệu kiểm thử + 1 dòng header). Tuyệt đối không chép tay số liệu.
+
+### Kết quả Run A — 2026-10-01 (đã hoàn tất, phiên đã dừng)
+
+- Cấu hình: mBART-50, LoRA rank 16 / alpha 32 / dropout 0.05, `q_proj,k_proj,v_proj,out_proj,fc1,fc2`, embeddings đóng băng, LR 2e-4, seed 42, batch 4 × accumulation 32, BF16; validation greedy, test beam 4.
+- Đã huấn luyện 20 epochs; checkpoint tốt nhất tại epoch 19 (`checkpoint-684`); thêm mới/trainable 8,650,752 tham số. Training time 93.49 phút.
+
+| Reference dùng khi tính điểm | Test BLEU (zh) | Test chrF++ raw (w=2) | Test chrF++ Zh |
+| :--- | ---: | ---: | ---: |
+| Reference đã tokenize/decode (giao thức Trainer hiện tại) | 10.4193 | 9.8008 | — |
+| Reference gốc từ `data/processed/test.csv` | 10.2296 | 8.6319 | 15.2118 |
+
+Audit: đúng 575 dự đoán, đúng thứ tự/source/target; điểm Trainer tính lại khớp; best adapter khớp checkpoint được chọn; archive và SHA-256 đã kiểm tra sau tải về. Tokenizer làm thay đổi 62 references, nên cần dùng cùng một bộ reference khi so sánh các mô hình trong bảng bài báo.
+
+Artifact tại máy này:
+
+- `outputs_rebuttal/strong_lora_scores.csv`
+- `outputs_rebuttal/strong_lora_run_a_verification.json`
+- `outputs_rebuttal/strong_lora_run_a_results.zip` (kết quả, checkpoint, log, source manifest)
+- `results/mbart-large-50-lora-all-linear/metrics.json`
+- `results/mbart-large-50-lora-all-linear/test_predictions.csv`
+- `results/mbart-large-50-lora-all-linear/best_model.zip`
+
+**Run B chưa khởi chạy, tạm hoãn theo yêu cầu tác giả.** A100 được tạo không có `--high-mem`; Colab đã dừng và kiểm tra không còn phiên hoạt động. Các kết quả trên được sinh trực tiếp từ artifact bằng `scratch/record_run_a.py`.
+
 
 ---
 
@@ -19,7 +47,7 @@
          ┌──────────────────────────────────────────┼──────────────────────────────────────────┐
          ▼                                          ▼                                          ▼
  [ƯU TIÊN 2: CHẨN ĐOÁN]                    [ƯU TIÊN 1: STRONG LoRA]                   [ƯU TIÊN 3: ByT5]
-  ✅ 100% HOÀN THÀNH                        ⏳ ĐANG CHỜ CHẠY GPU A100                 ✅ ĐÃ CÓ SỐ LIỆU SẴN
+  ✅ 100% HOÀN THÀNH                        ⏸️ RUN A XONG; RUN B TẠM HOÃN                 ✅ ĐÃ CÓ SỐ LIỆU SẴN
   - Affix Probing (L1-12): Done             - Run A: All-Linear (r=16)                 - Base: 7.58 BLEU
   - LSR Anti-Collapse SVD: Done             - Run B: All-Linear + Unfreeze Embed       - CLRR: 7.44 BLEU
   - Morphological Overlap: Done             - Ước tính: ~35-40 phút / run              - Đưa vào Discussion
@@ -35,7 +63,7 @@
 | **P2** | **Layer-wise Linear Probing** | `probe_affixes_layerwise.py` | ✅ **DONE** | F1 của CLRR giảm nhẹ (~4–5%) ở tầng sâu L11–L12 so với Baseline. **Đi ngược giả thuyết over-smoothing ban đầu**. Diễn giải chuẩn xác: cơ chế *Distributed Representation / Superposition* (Elhage et al., 2022). chrF++ và BLEU vẫn tăng mạnh. Đã ghi chi tiết vào `docs/RESEARCH_INSIGHTS.md`. |
 | **P2** | **Audit Checkpoint PEFT cũ** | `audit_peft_predictions.py` | ✅ **DONE** | Tái lập chính xác 100% điểm số báo cáo trong bài: LoRA (r=8, q/v) đạt 3.3284 BLEU / 8.0858 chrF++, BitFit đạt 0.3511 BLEU / 4.4408 chrF++. Khẳng định mô hình sinh ra thật, không phải lỗi đánh giá. |
 | **P3** | **Khôi phục đối chứng ByT5** | `EXPERIMENTS_v1_with_layerskip_byt5.md` | ✅ **DONE** | Số liệu sẵn có: ByT5-small Baseline 7.58 BLEU vs CLRR 7.44 BLEU. Tích hợp vào Discussion phân tích ranh giới inductive bias giữa byte-level và subword-level. |
-| **P1** | **Strong LoRA Suite (`mBART-50`)** | `run_strong_lora_mbart.py` | ⏳ **SẮP CHẠY** | **TRỌNG TÂM HIỆN TẠI:** Chạy 2 run: Run A (LoRA All-Linear $r=16, \alpha=32$) và Run B (All-Linear + Unfrozen Embeddings). Chứng minh CLRR ($\Delta\theta = 0$) vẫn ưu việt trước baseline LoRA mở rộng tối đa. |
+| **P1** | **Strong LoRA Suite (`mBART-50`)** | `run_strong_lora_mbart.py` | ⏸️ **A DONE / B PAUSED** | Run A đã xong 20 epochs, best epoch 19, 8,650,752 trainable params. Test theo Trainer: 10.4193 BLEU / 9.8008 chrF++; reference gốc: 10.2296 / 8.6319. Artifact đã tải về; Colab đã dừng. Run B chưa chạy. |
 | **P4** | **Strong LoRA Suite (`NLLB-200`)** | `train_peft.py` (NLLB) | ⏸️ **DỰ PHÒNG** | Chạy nếu còn dư Compute Units trên Colab A100. |
 
 ---
@@ -260,9 +288,9 @@ Sau khi hoàn tất, kết quả từ `outputs_rebuttal/strong_lora_scores.csv` 
 | **`mBART-large-50`** (611M) | Standard Fine-Tuning | Toàn bộ mô hình | 0 | 611M (100%) | 19.6106 | 14.0538 | Điểm mốc chuẩn full-tuning |
 | | BitFit (Bias-only) | Vector Bias | 0 | 336k (0.055%) | 0.3511 | 2.8464 | Nghẽn biểu diễn nghiêm trọng |
 | | LoRA ($r=8$, Ban đầu) | $W_q, W_v$ | +1.18M | 1.18M (0.193%) | 3.3284 | 5.1583 | Baseline LoRA hẹp ban đầu |
-| | **LoRA All-Linear ($r=16$)** | $q, k, v, o, fc1, fc2$ | +6.20M | 6.20M (1.01%) | *[Chờ số liệu]* | *[Chờ số liệu]* | Khảo sát dung lượng adapter mở rộng |
-| | **LoRA All-Lin + Unfreeze** | All-Linear + Embeddings | +6.20M | ~268M (43.9%) | *[Chờ số liệu]* | *[Chờ số liệu]* | Giải phóng nghẽn từ vựng Amis |
-| | **CLRR-Enc + LSR (Ours)** | **Residual Rewiring + LSR** | **0** | **611M (100%)** | **20.3927** | **19.0839** | **SOTA vượt trội, $\Delta\theta=0$** |
+| | **LoRA All-Linear ($r=16$)** | $q, k, v, o, fc1, fc2$ | +8.65M | 8.65M (1.416%) | **10.4193** | **9.8008** | Adapter tăng gấp 7 lần (+7.09 BLEU so với LoRA hẹp), nhưng vẫn thua xa full-tuning |
+| | **LoRA All-Lin + Unfreeze** | All-Linear + Embeddings | +8.65M | ~265M (43.3%) | *[Tạm hoãn]* | *[Tạm hoãn]* | Run B tạm hoãn theo yêu cầu tác giả |
+| | **CLRR-Enc + LSR (Ours)** | **Residual Rewiring + LSR** | **0** | **611M (100%)** | **20.3927** | **19.0839** | **SOTA vượt trội (+9.97 BLEU, +9.28 chrF++ so với Strong LoRA), $\Delta\theta=0$** |
 
 ---
 

@@ -20,6 +20,7 @@ python3 -c "import sacrebleu" 2>/dev/null || pip install sacrebleu -q
 echo ""
 echo "[Step 1/4] Running Preflight Smoke Test..."
 python -u scripts/peft/smoke_test_peft.py
+python -u scripts/peft/smoke_test_strong_lora.py
 
 # 2. Run Strong LoRA Suite (Run A: All-Linear, Run B: All-Linear + Unfrozen Embeddings)
 echo ""
