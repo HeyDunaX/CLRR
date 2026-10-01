@@ -17,7 +17,7 @@
   * **Random Seed:** Cố định 42 cho toàn bộ dataloader, model weights và CUDA runtime.
   * **Effective Batch Size:** 128 (Per-device batch size 16 $\times$ 8 gradient accumulation steps, hoặc 8 $\times$ 16).
   * **Optimizer:** AdamW ($\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}$, weight decay 0.01).
-  * **Learning Rate & Warmup:** $3 \times 10^{-4}$ cho `mT5-small`; $5 \times 10^{-5}$ cho `mBART-large-50`; Linear Warmup 0.06 qua 20 epochs (700-720 optimizer steps).
+  * **Learning Rate & Warmup:** Full-tuning dùng $3 \times 10^{-4}$ cho `mT5-small`, $5 \times 10^{-5}$ cho `mBART-large-50`; LoRA cũ/Strong LoRA A dùng 2e-4, Strong LoRA B/BitFit dùng 1e-4. Warmup ratio 0.06, tối đa 20 epochs. LR không cố định giữa các nhóm phương pháp; xem giới hạn tuning tại §2.1.2.
   * **Early Stopping:** Patience 4 epochs theo Validation chrF++.
   * **Precision:** Mixed Precision BF16 với TF32 trên GPU NVIDIA A100-SXM4-40GB.
   * **Độ đo chuẩn hóa:** 
@@ -56,10 +56,11 @@
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
 | **`facebook/mbart-large-50`**<br>(12 enc / 12 dec, 611M) | **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | **0** | 335.872 (0.0550%) | **0.3511** | **2.8464** | Đóng băng 99.95% backbone khiến mô hình không thể học biểu diễn ngôn ngữ unseen Amis |
 | | **LoRA** ($r=8, \alpha=16$, hẹp) | Hu et al. (ICLR 2022) | **+1.179.648** | 1.179.648 (0.1927%) | **3.3284** | **5.1583** | Chỉ can thiệp $q, v$; adapter 1.18M chưa đủ sức tái định hình không gian biểu diễn |
-| | **Strong LoRA** ($r=16$, All-Linear) | Hu et al. / Mở rộng rebuttal | **+8.650.752** | 8.650.752 (1.4161%) | **10.4193** | **9.8008** | Mở rộng $q,k,v,o,fc1,fc2$ tăng vọt (+7.09 BLEU so với LoRA hẹp), nhưng vẫn kém xa full-tuning |
+| | **Strong LoRA** ($r=16$, All-Linear) | Hu et al. / Mở rộng rebuttal | **+8.650.752** | 8.650.752 (1.4161%) | **10.4193** | **9.8008** | Run A; reference Trainer, xem audit §2.1.1; chưa tuning LR đầy đủ |
+| | **Strong LoRA B** ($r=16$, All-Linear + Embeddings) | Mở rộng rebuttal | **+8.650.752** | 264,706,048 (42.73% model có adapter) | **14.0432** | **11.4901** | Reference Trainer; reference gốc và giới hạn LR tại §2.1.2 |
 | | Standard Fine-Tuning | Official Baseline | 0 | 610.879.488 (100%) | 19.6106 | 14.0538 | Điểm tựa baseline chuẩn mBART |
 | | Middle-Layer Alignment | Liu & Niehues (ACL 2025) | 0 | 610.879.488 (100%) | 19.7243 | 15.5253 | Căn chỉnh tầng giữa đơn lẻ (+1.47 chrF++) |
-| | **CLRR-Enc + LSR (Ours)** | **Đề xuất chính** | **0** | **610.879.488 (Zero New Params)** | **20.3927** | **19.0839** | **Áp đảo hoàn toàn Strong LoRA (+9.97 BLEU, +9.28 chrF++), khẳng định ưu thế tuyệt đối của $\Delta\theta=0$** |
+| | **CLRR-Enc + LSR (Ours)** | **Đề xuất chính** | **0** | **610.879.488 (Zero New Params)** | **20.3927** | **19.0839** | Kết quả lịch sử full-tuning; cần thống nhất reference và audit tuning LR trước khi kết luận đối sánh |
 
 ---
 
@@ -71,7 +72,7 @@
 | Reference dùng khi tính điểm | Test BLEU (zh) | Test chrF++ raw (w=2) | Test chrF++ Zh |
 | :--- | ---: | ---: | ---: |
 | Reference đã tokenize/decode (giao thức Trainer hiện tại) | 10.4193 | 9.8008 | — |
-| Reference gốc từ `data/processed/test.csv` | 10.2296 | 8.6319 | 15.2118 |
+| Reference gốc từ `data_processed/amis_mandarin/test.csv` | 10.2296 | 8.6319 | 15.2118 |
 
 Audit: đúng 575 dự đoán, đúng thứ tự/source/target; điểm Trainer tính lại khớp; best adapter khớp checkpoint được chọn; archive và SHA-256 đã kiểm tra sau tải về. Tokenizer làm thay đổi 62 references, nên cần dùng cùng một bộ reference khi so sánh các mô hình trong bảng bài báo.
 
@@ -84,7 +85,33 @@ Artifact tại máy này:
 - `results/mbart-large-50-lora-all-linear/test_predictions.csv`
 - `results/mbart-large-50-lora-all-linear/best_model.zip`
 
-**Run B chưa khởi chạy, tạm hoãn theo yêu cầu tác giả.** A100 được tạo không có `--high-mem`; Colab đã dừng và kiểm tra không còn phiên hoạt động. Các kết quả trên được sinh trực tiếp từ artifact bằng `scratch/record_run_a.py`.
+**Run B đã hoàn tất theo yêu cầu tiếp tục của tác giả; xem §2.1.2.** A100 được tạo không có `--high-mem`; Colab đã dừng và kiểm tra không còn phiên hoạt động. Các kết quả trên được sinh trực tiếp từ artifact bằng `scratch/record_run_a.py`.
+
+---
+
+### 2.1.2. Strong LoRA Run B — 2026-10-01
+
+- Chạy riêng từ backbone `facebook/mbart-large-50-many-to-many-mmt`, không nạp checkpoint Run A. Bắt đầu 19:04 ICT trên A100 40GB, không yêu cầu `--high-mem`.
+- LoRA r=16 / alpha=32 / dropout=0.05; targets `q_proj,k_proj,v_proj,out_proj,fc1,fc2`; embeddings trainable dùng chung weight giữa `shared`, encoder/decoder `embed_tokens` và `lm_head`.
+- LR 0.0001, seed 42, batch 4 × accumulation 32, BF16, warmup 0.06; tối đa 20 epochs, patience 4, validation greedy, test beam 4.
+- Hoàn tất 20 epochs; best epoch 19 (`checkpoint-684`); thêm 8,650,752 tham số, train 264,706,048/619,530,240 (42.7269%). Training time 95.13 phút.
+
+| Reference dùng khi tính điểm | Test BLEU (zh) | Test chrF++ raw (w=2) | Test chrF++ Zh |
+| :--- | ---: | ---: | ---: |
+| Reference đã tokenize/decode (Trainer) | 14.0432 | 11.4901 | — |
+| Reference gốc từ `data_processed/amis_mandarin/test.csv` | 13.8066 | 10.3293 | 17.6304 |
+
+Audit: 575 dự đoán, đúng thứ tự/source/target; điểm Trainer tính lại khớp; best adapter bằng checkpoint được chọn; ZIP và SHA-256 được kiểm tra sau tải về. Cả ba split có hash khớp Run A. Tokenizer thay đổi 62 references; dùng thống nhất reference khi đối sánh. Kết quả sinh từ artifact, không chép tay.
+
+Artifact: `outputs_rebuttal/strong_lora_scores.csv`, `outputs_rebuttal/strong_lora_run_b_verification.json`, `outputs_rebuttal/strong_lora_run_b_source_manifest.json`, `outputs_rebuttal/strong_lora_run_b_results.zip`, `outputs_rebuttal/strong_lora_run_b.log`, và `results/mbart-large-50-lora-all-linear-unfreeze-embed/{metrics.json,test_predictions.csv,best_model.zip}`.
+
+Phiên Colab đã dừng sau khi tải và xác minh artifact trên máy.
+
+#### Giới hạn đối sánh learning rate
+
+Script full-tuning mBART (baseline/CLRR/các phương pháp full-tuning đối chứng) dùng LR 5e-5; LoRA A dùng 2e-4; LoRA B/BitFit dùng 1e-4. LR riêng cho mỗi phương pháp có cơ sở vì nhóm tham số và cách tham số hóa khác nhau; paper LoRA cũng tuning LR theo phương pháp ([Appendix D.4, Table 12](https://arxiv.org/html/2106.09685#A4.SS4)). Tuy nhiên, chưa xác minh một sweep LR với ngân sách tương đương trong các artifact hiện có; các kết quả này phản ánh cấu hình đã chạy, chưa chứng minh mức tối ưu của mỗi phương pháp.
+
+A–B đổi đồng thời LR và việc mở khóa embeddings, nên chưa tách được ảnh hưởng riêng của embeddings. Để bổ sung: kiểm tra LR trên validation với ngân sách thử tương đương, chọn cấu hình bằng validation chrF++, ghi toàn bộ trials/seeds và protocol; bổ sung A/B cùng LR nếu cần ablation embeddings. Không dùng test để chọn LR. Chưa chạy thêm sweep trong phiên này. CLRR thêm 0 tham số nhưng vẫn full-tuning, cần báo riêng added/trainable params. Các bảng lịch sử cần audit thống nhất reference và cấu hình trước khi khẳng định ưu thế phương pháp.
 
 ---
 

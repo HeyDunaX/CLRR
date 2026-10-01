@@ -142,7 +142,7 @@ class FollowupTests(unittest.TestCase):
     def test_local_report_smoke_writes_artifacts(self) -> None:
         from sacrebleu.significance import PairedTest
 
-        frame = pd.read_csv(ROOT / "data" / "processed" / "test.csv").fillna("")
+        frame = pd.read_csv(ROOT / "data_processed" / "amis_mandarin" / "test.csv").fillna("")
         with tempfile.TemporaryDirectory() as temporary:
             output_root = Path(temporary)
             for run in (*MAIN_RUNS, *NEW_RUNS):
@@ -163,14 +163,14 @@ class FollowupTests(unittest.TestCase):
             with patch("followup_analysis.PairedTest", side_effect=short_paired_test), \
                  patch("followup_analysis.HfApi"), \
                  patch.dict("os.environ", {"HF_TOKEN": "local-smoke"}):
-                report("local/smoke", output_root, ROOT / "data" / "processed")
+                report("local/smoke", output_root, ROOT / "data_processed" / "amis_mandarin")
             for name in ("all_scores.csv", "paired_bootstrap.csv", "case_candidates.csv", "analysis_notes.txt"):
                 self.assertTrue((output_root / "analysis" / name).exists())
 
     def test_followup_command_keeps_protocol_and_remote_folder(self) -> None:
         command = training_command(
             "mt5-small-ami-cmn-jepa-clrr-dec", "mt5-small", "jepa-clrr", "decoder",
-            "FiveC/amis-rewire-checkpoints", Path("outputs_extra"), Path("backups_extra"), Path("data/processed"),
+            "FiveC/amis-rewire-checkpoints", Path("results"), Path("backups_extra"), Path("data_processed/amis_mandarin"),
         )
         self.assertEqual(command[command.index("--rewire-stack") + 1], "decoder")
         self.assertEqual(command[command.index("--num-train-epochs") + 1], "20")
@@ -187,7 +187,7 @@ class FollowupTests(unittest.TestCase):
                 with zipfile.ZipFile(archive_path, "w") as archive:
                     archive.writestr(
                         "trainer_state.json",
-                        '{"best_model_checkpoint": "outputs_extra/' + run + '/checkpoint-5"}',
+                        '{"best_model_checkpoint": "results/' + run + '/checkpoint-5"}',
                     )
                     archive.writestr("pytorch_model.bin", b"model")
                     archive.writestr("optimizer.pt", b"optimizer")

@@ -104,7 +104,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train LayerSkip Baseline on Amis-Chinese")
     parser.add_argument("--model-name", default="google/mt5-small")
     parser.add_argument("--run-name", default=None)
-    parser.add_argument("--data-dir", default="data/processed")
+    parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--output-dir", default="results")
     parser.add_argument("--hf-backup-repo", default="FiveC/amis-rewire-checkpoints")
     parser.add_argument("--p-max", type=float, default=0.2)

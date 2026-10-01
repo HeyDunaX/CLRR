@@ -129,7 +129,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-path", required=True, help="Path to model checkpoint directory or HF ID.")
     parser.add_argument("--model-label", required=True, help="Label for this model (e.g. Vanilla_Baseline or CLRR_Enc).")
-    parser.add_argument("--data-csv", default="data/processed/test.csv")
+    parser.add_argument("--data-csv", default="data_processed/amis_mandarin/test.csv")
     parser.add_argument("--output-dir", default="outputs_rebuttal")
     parser.add_argument("--batch-size", type=int, default=16)
     return parser.parse_args()

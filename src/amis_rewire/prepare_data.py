@@ -11,7 +11,7 @@ import pandas as pd
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input-csv", required=True)
-    parser.add_argument("--output-dir", default="data/processed")
+    parser.add_argument("--output-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--source-col", default="amis")
     parser.add_argument("--target-col", default="chinese")
     parser.add_argument("--split-col", default="split")

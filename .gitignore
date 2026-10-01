@@ -14,8 +14,9 @@ wandb/
 data/*.csv
 data/*.jsonl
 !data/amis_chinese.example.csv
-!data/processed/
-!data/processed/*.csv
+!data_processed/amis_mandarin/
+!data_processed/amis_mandarin/*.csv
+data_processed/*/raw/
 *.zip
 
 # LaTeX and bibliography

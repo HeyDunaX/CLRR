@@ -1,0 +1,14 @@
+{
+  "dataset": "amis_mandarin",
+  "source_language": "ami",
+  "target_language": "cmn",
+  "source": "https://github.com/francisdzheng/amis-mandarin",
+  "paper": "https://aclanthology.org/2022.nlp4dh-1.11/",
+  "previous_directory": "data/processed",
+  "migration": "Moved existing CSVs byte-for-byte; original splits and order preserved.",
+  "files_sha256": {
+    "test.csv": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+    "train.csv": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6",
+    "validation.csv": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+  }
+}

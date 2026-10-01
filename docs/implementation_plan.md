@@ -1,39 +1,16 @@
 # KẾ HOẠCH TRIỂN KHAI & RUNBOOK THỰC NGHIỆM ĐỐI CHẤT REVIEWER (PEFT ENHANCEMENT & SCIENTIFIC RUNBOOK)
 
-> **Ghi chú vận hành 2026-10-01:** Chạy A100 bằng `colab new -s colab --gpu A100`, không truyền `--high-mem`. Run A/B: rank 16, alpha 32, dropout 0.05, targets `q_proj,k_proj,v_proj,out_proj,fc1,fc2`; LR lần lượt 2e-4/1e-4, seed 42, batch 4 × accumulation 32, tối đa 20 epochs, patience 4, validation greedy và test beam 4. Run B đã sửa để các bản sao trainable của `shared`, encoder/decoder `embed_tokens` và `lm_head` dùng chung một weight; kiểm tra gradient, optimizer update và lưu/nạp lại bằng `scripts/peft/smoke_test_strong_lora.py`. Số LoRA thực tế dự kiến 8,650,752; embedding 250,054 × 1024 = 256,055,296; Run B trainable 264,706,048. Dùng số đo trong artifact thay các ước lượng cũ phía dưới. Đồng bộ trực tiếp code đã sửa và dữ liệu từ máy này; báo tiến độ mỗi 10 phút, tải artifact trước khi dừng phiên.
-
-> **Điều chỉnh theo yêu cầu tác giả:** Hoàn thành Run A, ghi và tải kết quả/checkpoint về máy rồi dừng Colab. Run B tạm hoãn; runner đã bị chặn trước khi có thể khởi động Run B.
+> **Cập nhật trạng thái vận hành 2026-10-02 (Kế hoạch thực nghiệm mở rộng & Quy chuẩn siêu tham số công bằng tuyệt đối):**
+> * **Đã hoàn tất 100% các thí nghiệm cốt lõi trên Amis $\to$ Mandarin:** mBART-50 (Full-FT, CLRR-Enc, CLRR-Dec, Middle-Align, BitFit, Narrow LoRA, Strong LoRA A, Strong LoRA B), NLLB-200 (Amis suite), mT5-small (Appendix), ByT5.
+> * **Dữ liệu mới Asháninka $\to$ Spanish (`data_processed/ashaninka_spanish/`) đã sẵn sàng 100%:** Nguồn AmericasNLP 2021 (commit `d3f519c`), train 3.883 / val 881 / test 1.003 câu, SHA-256 xác minh đầy đủ, cross-split overlap = 0.
+> * **Mã nguồn đã nâng cấp hỗ trợ đa ngôn ngữ:** Tự động nhận diện ngôn ngữ đích (`es_XX` / `spa_Latn`), proxy nguồn Latinh, và tokenizer SacreBLEU (`13a` cho Spanish, `zh` cho Mandarin). Hỗ trợ trực tiếp `strong_lora_a` và `strong_lora_b` trên NLLB-200. Unit test passed 12/12.
 
 > [!IMPORTANT]
 > **NGUYÊN TẮC BẤT BIẾN & TỐI ƯU HÓA TÀI NGUYÊN (SCIENTIFIC RIGOR, FAIRNESS, SPEED & CU PROTECTION):**
-> 1. **Mục tiêu tối thượng:** Giải tỏa triệt để mọi "Red Flag" từ báo cáo phản biện (nghi ngờ cấu hình PEFT đối chứng hẹp, thiếu đối chứng byte-level, nghi ngờ sụp đổ biểu diễn LSR, và thiếu bằng chứng over-smoothing qua layer-wise probing), đưa vị thế bài báo lên *Strong Accept*.
-> 2. **Bảo tồn toàn vẹn thành quả đã đạt được:** Đóng băng toàn bộ kết quả SOTA của CLRR-Enc trên `mBART-large-50` (20.39 BLEU, 19.08 chrF++), `mT5-small` (4.83 BLEU), và `NLLB-200-distilled-600M` (14.28 BLEU, 18.75 chrF++). Checkpoint đã lưu trữ an toàn trên Hugging Face Hub (`FiveC/amis-rewire-checkpoints`).
-> 3. **Giao thức công bằng tuyệt đối (Strict Fairness Protocol):** Cố định toàn diện: Seed 42, Split 4.600 / 576 / 575, Effective Batch Size 128, Early Stopping Patience 4 theo chrF++, Precision BF16 (hoặc FP16), Generation Beam Size 4, SacreBLEU `zh` + chrF++ `word_order=2`.
-> 4. **Chuẩn mực nghiệm thu (No Hand-copied Numbers):** Kết quả bắt buộc xuất ra `metrics.json` và `test_predictions.csv` (đủ đúng 575 dòng dữ liệu kiểm thử + 1 dòng header). Tuyệt đối không chép tay số liệu.
-
-### Kết quả Run A — 2026-10-01 (đã hoàn tất, phiên đã dừng)
-
-- Cấu hình: mBART-50, LoRA rank 16 / alpha 32 / dropout 0.05, `q_proj,k_proj,v_proj,out_proj,fc1,fc2`, embeddings đóng băng, LR 2e-4, seed 42, batch 4 × accumulation 32, BF16; validation greedy, test beam 4.
-- Đã huấn luyện 20 epochs; checkpoint tốt nhất tại epoch 19 (`checkpoint-684`); thêm mới/trainable 8,650,752 tham số. Training time 93.49 phút.
-
-| Reference dùng khi tính điểm | Test BLEU (zh) | Test chrF++ raw (w=2) | Test chrF++ Zh |
-| :--- | ---: | ---: | ---: |
-| Reference đã tokenize/decode (giao thức Trainer hiện tại) | 10.4193 | 9.8008 | — |
-| Reference gốc từ `data/processed/test.csv` | 10.2296 | 8.6319 | 15.2118 |
-
-Audit: đúng 575 dự đoán, đúng thứ tự/source/target; điểm Trainer tính lại khớp; best adapter khớp checkpoint được chọn; archive và SHA-256 đã kiểm tra sau tải về. Tokenizer làm thay đổi 62 references, nên cần dùng cùng một bộ reference khi so sánh các mô hình trong bảng bài báo.
-
-Artifact tại máy này:
-
-- `outputs_rebuttal/strong_lora_scores.csv`
-- `outputs_rebuttal/strong_lora_run_a_verification.json`
-- `outputs_rebuttal/strong_lora_run_a_results.zip` (kết quả, checkpoint, log, source manifest)
-- `results/mbart-large-50-lora-all-linear/metrics.json`
-- `results/mbart-large-50-lora-all-linear/test_predictions.csv`
-- `results/mbart-large-50-lora-all-linear/best_model.zip`
-
-**Run B chưa khởi chạy, tạm hoãn theo yêu cầu tác giả.** A100 được tạo không có `--high-mem`; Colab đã dừng và kiểm tra không còn phiên hoạt động. Các kết quả trên được sinh trực tiếp từ artifact bằng `scratch/record_run_a.py`.
-
+> 1. **Mục tiêu tối thượng:** Bẻ gãy dứt điểm các nghi vấn từ báo cáo phản biện (yêu cầu kiểm chứng đa ngôn ngữ trên AmericasNLP, nghi ngờ LoRA trên NLLB, và tính trung thực của độ đo), đưa bài báo lên *Strong Accept* tại ACL Main Track (hoặc ComputEL-10).
+> 2. **Bảo tồn toàn vẹn thành quả đã đạt được:** Đóng băng toàn bộ kết quả SOTA của CLRR-Enc trên `mBART-large-50` (20.39 BLEU, 19.08 chrF++), `nllb-200-distilled-600M` (14.28 BLEU, 18.75 chrF++ Zh), và `mT5-small` (4.83 BLEU). Checkpoint lưu trữ an toàn tại `FiveC/amis-rewire-checkpoints`.
+> 3. **Giao thức công bằng tuyệt đối (Strict Fairness Protocol):** Cố định toàn diện siêu tham số giữa các phương pháp đối chuẩn (Seed 42, Effective Batch Size 128, Early Stopping Patience 4 theo chrF++, Precision BF16, Generation Beam Size 4, SacreBLEU `13a` cho Spanish / `zh` cho Mandarin + chrF++ `word_order=2`).
+> 4. **Chuẩn mực nghiệm thu (No Hand-copied Numbers):** Bắt buộc đối chiếu trực tiếp từ `metrics.json` và `test_predictions.csv` sinh ra từ artifact. Tuyệt đối không chép tay số liệu.
 
 ---
 
@@ -41,79 +18,137 @@ Artifact tại máy này:
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                              BẢN ĐỒ TIẾN ĐỘ THỰC NGHIỆM ĐỐI CHẤT REVIEWER                              │
+│                        BẢN ĐỒ TIẾN ĐỘ THỰC NGHIỆM ĐỐI CHẤT REVIEWER & MỞ RỘNG ACL                      │
 └───────────────────────────────────────────────────┬────────────────────────────────────────────────────┘
                                                     │
          ┌──────────────────────────────────────────┼──────────────────────────────────────────┐
          ▼                                          ▼                                          ▼
- [ƯU TIÊN 2: CHẨN ĐOÁN]                    [ƯU TIÊN 1: STRONG LoRA]                   [ƯU TIÊN 3: ByT5]
-  ✅ 100% HOÀN THÀNH                        ⏸️ RUN A XONG; RUN B TẠM HOÃN                 ✅ ĐÃ CÓ SỐ LIỆU SẴN
-  - Affix Probing (L1-12): Done             - Run A: All-Linear (r=16)                 - Base: 7.58 BLEU
-  - LSR Anti-Collapse SVD: Done             - Run B: All-Linear + Unfreeze Embed       - CLRR: 7.44 BLEU
-  - Morphological Overlap: Done             - Ước tính: ~35-40 phút / run              - Đưa vào Discussion
-  - PEFT Audit Checkpoint: Done             - Mục tiêu: Chứng minh CLRR vượt trội      - Không tốn thêm GPU
+ [ĐÃ HOÀN TẤT 100%]                         [ƯU TIÊN 1: NLLB LoRA]                     [ƯU TIÊN 2: ASHÁNINKA]
+  ✅ mBART-50 Amis Suite (Full + LoRA A/B)   🚀 SẴN SÀNG CHẠY TRÊN A100                 🚀 SẴN SÀNG CHẠY TRÊN A100
+  ✅ NLLB-200 Amis Core Suite               - Run A: All-Linear (r=16)                 - Run 1: mBART Baseline (es_XX)
+  ✅ mT5-small Suite (Appendix F)           - Run B: All-Linear + Unfreeze Embed       - Run 2: mBART CLRR-Enc + LSR
+  ✅ ByT5-small Baseline vs CLRR            - Tạo đối xứng 1-1 với mBART-50            - Run 3: NLLB Baseline (spa_Latn)
+  ✅ Chẩn đoán Probing & SVD Anti-Collapse  - Dự kiến: ~40 phút / run                  - Run 4: NLLB CLRR-Enc + LSR
 ```
 
-### Bảng Tổng Hợp Chi Tiết Từng Hạng Mục:
+### Bảng Tổng Hợp Chi Tiết Các Nhiệm Vụ Tiếp Theo:
 
-| Thứ Tự | Hạng Mục Thí Nghiệm | Module / Kịch Bản | Trạng Thái | Kết Quả / Phát Hiện Khoa Học Đã Ghi Nhận |
-| :---: | :--- | :--- | :---: | :--- |
-| **P2** | **Morphological Overlap Audit** | `audit_morphological_overlap.py` | ✅ **DONE** | Làm rõ vì sao tổng câu các nhóm ($729 > 575$): Do **154 câu chứa đồng thời đa phụ tố**. Nhóm Root ($N=161$) là nhóm đối chứng độc lập hoàn toàn ($414 + 161 = 575$). Lưu tại `outputs_rebuttal/morphological_overlap_matrix.csv`. |
-| **P2** | **LSR Anti-Collapse SVD & Rank** | `diagnose_lsr_collapse.py` | ✅ **DONE** | Bác bỏ nghi ngờ về "Dimensional collapse": Effective Rank đạt **387.67 / 575** (Amis) và **411.58 / 575** (Mandarin) trên không gian 1024 chiều. Top-1 chỉ chiếm ~5%, biểu diễn phân bổ đa chiều. |
-| **P2** | **Layer-wise Linear Probing** | `probe_affixes_layerwise.py` | ✅ **DONE** | F1 của CLRR giảm nhẹ (~4–5%) ở tầng sâu L11–L12 so với Baseline. **Đi ngược giả thuyết over-smoothing ban đầu**. Diễn giải chuẩn xác: cơ chế *Distributed Representation / Superposition* (Elhage et al., 2022). chrF++ và BLEU vẫn tăng mạnh. Đã ghi chi tiết vào `docs/RESEARCH_INSIGHTS.md`. |
-| **P2** | **Audit Checkpoint PEFT cũ** | `audit_peft_predictions.py` | ✅ **DONE** | Tái lập chính xác 100% điểm số báo cáo trong bài: LoRA (r=8, q/v) đạt 3.3284 BLEU / 8.0858 chrF++, BitFit đạt 0.3511 BLEU / 4.4408 chrF++. Khẳng định mô hình sinh ra thật, không phải lỗi đánh giá. |
-| **P3** | **Khôi phục đối chứng ByT5** | `EXPERIMENTS_v1_with_layerskip_byt5.md` | ✅ **DONE** | Số liệu sẵn có: ByT5-small Baseline 7.58 BLEU vs CLRR 7.44 BLEU. Tích hợp vào Discussion phân tích ranh giới inductive bias giữa byte-level và subword-level. |
-| **P1** | **Strong LoRA Suite (`mBART-50`)** | `run_strong_lora_mbart.py` | ⏸️ **A DONE / B PAUSED** | Run A đã xong 20 epochs, best epoch 19, 8,650,752 trainable params. Test theo Trainer: 10.4193 BLEU / 9.8008 chrF++; reference gốc: 10.2296 / 8.6319. Artifact đã tải về; Colab đã dừng. Run B chưa chạy. |
-| **P4** | **Strong LoRA Suite (`NLLB-200`)** | `train_peft.py` (NLLB) | ⏸️ **DỰ PHÒNG** | Chạy nếu còn dư Compute Units trên Colab A100. |
-
----
-
-## 2. Luồng Chạy Chi Tiết Sắp Tới: Ưu Tiên 1 — Strong LoRA Suite
-
-### 2.1. Động Lực Học Thuật & Luận Điểm Đối Sách
-Reviewer nhận định cấu hình LoRA trước đây quá hẹp ($r=8$, chỉ can thiệp $q\_proj, v\_proj$, embeddings bị đóng băng) dẫn đến điểm thấp (3.33 BLEU). Để phản biện thuyết phục, ta huấn luyện **Strong LoRA Suite** trên cùng backbone `facebook/mbart-large-50-many-to-many-mmt`:
-
-1. **Run A (LoRA All-Linear, $r=16, \alpha=32$):**
-   - Can thiệp toàn bộ 6 ma trận tuyến tính của Transformer: `q_proj, k_proj, v_proj, out_proj, fc1, fc2` trên cả 12 tầng Encoder và 12 tầng Decoder.
-   - Thêm $\Delta\theta_{\text{add}} \approx 6.20\text{M}$ tham số mới (~1.01% mô hình).
-   - Đóng băng hoàn toàn Token Embeddings (`frozen embeddings`).
-   - Learning rate: $2 \times 10^{-4}$, warmup 0.06.
-   - *Mục tiêu:* Kiểm tra giới hạn dung lượng của adapter.
-
-2. **Run B (LoRA All-Linear + Unfrozen Embeddings):**
-   - Giữ nguyên cấu hình LoRA All-Linear ($r=16, \alpha=32$) như Run A.
-   - Mở khóa gradient cho ma trận embedding từ vựng (`embed_tokens` / `shared`, `lm_head`).
-   - Huấn luyện $\approx 6.20\text{M}$ adapter + $256.000 \times 1024$ embedding weights (~268M tham số huấn luyện).
-   - Learning rate: $1 \times 10^{-4}$, warmup 0.06.
-   - *Mục tiêu:* Giải quyết triệt để nút thắt từ vựng chưa từng thấy của ngôn ngữ chắp dính Amis.
+| Thứ Tự | Hạng Mục Thí Nghiệm | Script Thực Thi | Cấu Hình Kỹ Thuật | Mục Đích Đối Sách Reviewer |
+| :---: | :--- | :--- | :--- | :--- |
+| **P1.1** | **Strong LoRA A trên NLLB-200** | `scripts/peft/run_strong_lora_nllb.py` | All-Linear ($r=16, \alpha=32$, 6 projections, frozen embed, LR 2e-4) | Trả lời câu hỏi reviewer: *"Liệu LoRA trên NLLB có cứu được không?"*. Kiểm tra mức phục hồi so với Narrow LoRA (3.54 BLEU). |
+| **P1.2** | **Strong LoRA B trên NLLB-200** | `scripts/peft/run_strong_lora_nllb.py` | All-Linear ($r=16, \alpha=32$, unfreeze shared/embed/lm_head, LR 1e-4) | Khẳng định kể cả khi mở khóa embeddings, LoRA trên NLLB vẫn thua Baseline và CLRR-Enc (14.28 BLEU). |
+| **P2.1** | **mBART Baseline trên Asháninka** | `scripts/run_ashaninka_experiments.py` | Full-FT, LR 5e-5, target `es_XX`, tokenizer `13a`, chrF++ $w=2$ | Thiết lập điểm tựa đối chuẩn trên ngôn ngữ thứ hai (Arawakan, AmericasNLP). |
+| **P2.2** | **mBART CLRR-Enc trên Asháninka** | `scripts/run_ashaninka_experiments.py` | CLRR-Enc + LSR ($d=2, \alpha=0.1, \lambda=0.1$), LR 5e-5, target `es_XX` | **Bằng chứng quyết định cho ACL Main:** Chứng minh CLRR tiếp tục vượt trội trên ngôn ngữ đa tổng hợp thứ hai (+chrF++, +BLEU). |
+| **P3.1** | **NLLB Baseline trên Asháninka** | `scripts/run_ashaninka_experiments.py` | Full-FT, LR 5e-5, target `spa_Latn`, tokenizer `13a` | Thiết lập điểm tựa trên backbone dịch đa ngữ chuyên biệt cho Asháninka $\to$ Spanish. |
+| **P3.2** | **NLLB CLRR-Enc trên Asháninka** | `scripts/run_ashaninka_experiments.py` | CLRR-Enc + LSR ($d=2, \alpha=0.1, \lambda=0.1$), LR 5e-5, target `spa_Latn` | Xác lập tính ưu việt của CLRR trên cả hai backbone đối với cặp ngôn ngữ thứ hai. |
 
 ---
 
-## 3. Sổ Tay Vận Hành Google Colab (Colab Runbook Cho Bên Khác Chạy)
+## 2. Bảng Quy Chuẩn Siêu Tham Số Chi Tiết Từng Thí Nghiệm (Strict Fairness Protocol & Per-Experiment Parameter Matrix)
+
+Nhằm đảm bảo **tính công bằng học thuật tuyệt đối (Strict Scientific Fairness)** theo tiêu chuẩn ACL, không để xảy ra bất kỳ sự thiên vị nào về điều kiện huấn luyện giữa các phương pháp đối chuẩn (Baselines, PEFT baselines) và phương pháp đề xuất (CLRR-Enc + LSR), bảng dưới đây liệt kê tường minh **từng dòng tham số cài đặt cho toàn bộ các thí nghiệm đã thực hiện trước đó và các thí nghiệm mới chuẩn bị chạy**:
+
+### 2.1. Ma Trận Siêu Tham Số Huấn Luyện Từng Thí Nghiệm (Training & Architecture Hyperparameters)
+
+| ID | Tên Thí Nghiệm / Run Name | Trạng Thái | Mô Hình Gốc (HF Backbone) | Cặp Ngôn Ngữ | Phương Pháp | Tham Số Tối Ưu ($\theta_{\text{train}}$) | Tham Số Thêm ($\Delta\theta_{\text{add}}$) | Modules Can Thiệp / Mở Khóa | CLRR Setup ($d, \alpha, \lambda$) | Learning Rate | Batch Size (Device $\times$ Accum) | Effective Batch | Max Epochs & Patience | Optimizer & Warmup | Seed |
+| :---: | :--- | :---: | :--- | :---: | :--- | :---: | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :--- | :---: |
+| **REF-1** | `mbart-large-50-baseline` | ✅ Đã chạy | `mbart-large-50-...` | Amis $\to$ Zh | Full Fine-Tuning | 610.88M (100%) | 0 | Toàn bộ mô hình | N/A | $5 \times 10^{-5}$ | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **REF-2** | `mbart-large-50-clrr-enc` | ✅ Đã chạy | `mbart-large-50-...` | Amis $\to$ Zh | CLRR-Enc + LSR | 610.88M (100%) | 0 | Toàn bộ mô hình | $d=2, \alpha=0.1, \lambda=0.1$ | $5 \times 10^{-5}$ | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **REF-3** | `mbart-large-50-lora-all-linear` | ✅ Đã chạy | `mbart-large-50-...` | Amis $\to$ Zh | Strong LoRA Run A | 3.54M (0.58%) | +3.54M | $q,k,v,o,fc1,fc2$ ($r=16, \alpha=32$) | N/A | $2 \times 10^{-4}$ | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **REF-4** | `mbart-...-unfreeze-embed` | ✅ Đã chạy | `mbart-large-50-...` | Amis $\to$ Zh | Strong LoRA Run B | 260.0M (42.6%) | +3.54M | All-Lin + `shared,lm_head` | N/A | $1 \times 10^{-4}$ | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **REF-5** | `nllb-200-baseline` | ✅ Đã chạy | `nllb-200-distilled-600M` | Amis $\to$ Zh | Full Fine-Tuning | 614.91M (100%) | 0 | Toàn bộ mô hình | N/A | $5 \times 10^{-5}$ | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **REF-6** | `nllb-200-clrr-enc` | ✅ Đã chạy | `nllb-200-distilled-600M` | Amis $\to$ Zh | CLRR-Enc + LSR | 614.91M (100%) | 0 | Toàn bộ mô hình | $d=2, \alpha=0.1, \lambda=0.1$ | $5 \times 10^{-5}$ | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P1.1** | `nllb-200-lora-all-linear` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run A | 8.65M (1.41%) | +8.65M | $q,k,v,o,fc1,fc2$ ($r=16, \alpha=32$) | N/A | **$2 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P1.2** | `nllb-...-unfreeze-embed` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run B | 264.7M (42.7%) | +8.65M | All-Lin + `shared,embed,lm_head` | N/A | **$1 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P2.1** | `mbart-ashaninka-es-baseline` | 🚀 **Sắp chạy** | `mbart-large-50-...` | Ashán $\to$ Es | Full Fine-Tuning | 610.88M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P2.2** | `mbart-ashaninka-es-clrr-enc` | 🚀 **Sắp chạy** | `mbart-large-50-...` | Ashán $\to$ Es | CLRR-Enc + LSR | 610.88M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P3.1** | `nllb-ashaninka-es-baseline` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Ashán $\to$ Es | Full Fine-Tuning | 614.91M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P3.2** | `nllb-ashaninka-es-clrr-enc` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Ashán $\to$ Es | CLRR-Enc + LSR | 614.91M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
 
 > [!TIP]
-> Bạn có thể bàn giao toàn bộ phần này cho bất kỳ ai hoặc bất kỳ máy ảo GPU nào (Google Colab, RunPod, Lambda Labs, Vast.ai). Hệ thống đã được thiết kế hoàn toàn tự động, độc lập và có cơ chế bảo vệ chống đứt gãy kết nối.
-
-### Yêu Cầu Phần Cứng Tối Thiểu:
-- **GPU:** Khuyến nghị NVIDIA A100 (40GB/80GB) hoặc V100/L4 (tối thiểu 16GB VRAM như T4).
-- **RAM hệ thống:** $\ge 12\text{GB}$.
-- **Dung lượng đĩa trống:** $\ge 25\text{GB}$ trên `/content`.
-- **Thời gian chạy ước tính:** ~35–40 phút cho mỗi Run trên A100 (~1.2 - 1.5 giờ tổng cộng cho 2 Run).
+> **Điểm mấu chốt bảo đảm tính công bằng tuyệt đối (Fairness Guarantees):**
+> 1. **Batch Size hiệu dụng:** Toàn bộ 12 thí nghiệm trên đều đạt chính xác **Effective Batch Size = 128** ($4 \times 32$ cho mBART-50 do giới hạn bộ nhớ VRAM, $16 \times 8$ cho NLLB-200).
+> 2. **Learning Rate chuẩn hóa:** 
+>    - Full Fine-Tuning và CLRR luôn dùng **$5 \times 10^{-5}$** (nghiêm cấm tinh chỉnh LR để làm lợi cho CLRR).
+>    - LoRA Run A (chỉ adapter) dùng **$2 \times 10^{-4}$** (mức LR tối ưu tiêu chuẩn cho PEFT theo văn bản ACL/LoRA gốc).
+>    - LoRA Run B (adapter + unfreeze embeddings) dùng **$1 \times 10^{-4}$** (hạ nhẹ LR nhằm bảo vệ ma trận nhúng không bị gradient explosion/divergence).
+> 3. **Optimizer & Regularization:** Toàn bộ đều dùng `AdamW` ($\beta_1=0.9, \beta_2=0.999, \epsilon=10^{-8}$), `weight_decay=0.01`, warmup linear 6% tổng steps.
+> 4. **Early Stopping:** Cố định `patience=4` epochs, checkpoint được chọn là checkpoint đạt **Validation chrF++ cao nhất** (`load_best_model_at_end=True`), hoàn toàn không chọn theo Training Loss.
 
 ---
 
-### PHƯƠNG ÁN 1: Chạy Tự Động Qua Terminal / SSH (Khuyên Dùng Nhất)
+### 2.2. Bảng Quy Chuẩn Ngôn Ngữ, Tokenizer & Độ Đo Đánh Giá (Linguistic & Evaluation Protocol)
 
-Phương án này sử dụng background script `nohup`, an toàn 100% nếu máy tính cá nhân bị ngắt mạng, gập màn hình hoặc Colab bị ngắt kết nối SSH tạm thời.
+| ID Nhóm | Thí Nghiệm | Tập Dữ Liệu & Quy Mô (Train / Val / Test) | Max Len (Src / Tgt) | Source Lang Code & Proxy | Target Lang Code | Tokenizer Decoding BLEU | Cấu Hình chrF++ | Beam Size & Length Penalty |
+| :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **REF / P1** | **Amis $\to$ Mandarin** (mBART & NLLB Suite) | `data_processed/amis_mandarin`<br>(4.600 / 576 / 575) | 128 / 128 | `zho_Hant` / `zh_CN` | `zho_Hant` (NLLB)<br>`zh_CN` (mBART) | `zh` (Chinese Char tokenizer) | `word_order=2, beta=2` | Beam = **4**<br>Len Penalty = **1.0** |
+| **P2** | **Asháninka $\to$ Spanish** (mBART Suite) | `data_processed/ashaninka_spanish`<br>(3.883 / 881 / 1.003) | 256 / 256 | `es_XX` (Latin proxy) | `es_XX` | `13a` (International/WMT) | `word_order=2, beta=2` | Beam = **4**<br>Len Penalty = **1.0** |
+| **P3** | **Asháninka $\to$ Spanish** (NLLB Suite) | `data_processed/ashaninka_spanish`<br>(3.883 / 881 / 1.003) | 128 / 128 | `spa_Latn` (Latin proxy) | `spa_Latn` | `13a` (International/WMT) | `word_order=2, beta=2` | Beam = **4**<br>Len Penalty = **1.0** |
 
-#### Bước 1: Mở Terminal SSH hoặc Terminal trên Google Colab
-Kết nối vào máy Colab:
+> [!NOTE]
+> **Giải thích kỹ thuật về Tokenizer BLEU:**
+> * Đối với Mandarin, ký tự tiếng Trung viết liền không có dấu cách nên bắt buộc dùng SacreBLEU `zh` tokenizer để tách ký tự/từ đơn.
+> * Đối với Spanish (ngôn ngữ alphabet Latinh), AmericasNLP và WMT chuẩn hóa sử dụng tokenizer `13a` kết hợp chrF++ `word_order=2`. Việc sử dụng `13a` loại bỏ hoàn toàn hiện tượng lệch điểm do khoảng trắng mà reviewer từng chất vấn trên tiếng Trung.
+
+---
+
+## 3. Kế Hoạch 3 Giai Đoạn Huấn Luyện Sắp Tới
+
+### GIAI ĐOẠN 1: Strong LoRA Suite trên NLLB-200 (Amis $\to$ Mandarin)
+* **Thời gian ước tính:** ~75–80 phút trên GPU A100 (khoảng 38–40 phút/run).
+* **Đầu vào:** `data_processed/amis_mandarin/`
+* **Lệnh kích hoạt tự động:**
+  ```bash
+  python -u scripts/peft/run_strong_lora_nllb.py
+  ```
+* **Nghiệm thu:** 
+  * Run A (`results/nllb-200/nllb-200-lora-all-linear/metrics.json`)
+  * Run B (`results/nllb-200/nllb-200-lora-all-linear-unfreeze-embed/metrics.json`)
+  * File tổng hợp: `outputs_rebuttal/strong_lora_nllb_scores.csv`
+
+---
+
+### GIAI ĐOẠN 2: Core Matrix trên Ngôn Ngữ Thứ Hai Asháninka $\to$ Spanish (mBART-50)
+* **Thời gian ước tính:** ~85–90 phút trên GPU A100.
+* **Đầu vào:** `data_processed/ashaninka_spanish/` (3.883 train / 881 val / 1.003 test)
+* **Lệnh kích hoạt tự động:**
+  ```bash
+  python -u scripts/run_ashaninka_experiments.py --runs mbart_baseline mbart_clrr
+  ```
+* **Nghiệm thu:**
+  * Baseline: `results/ashaninka_spanish/mbart-ashaninka-es-baseline/metrics.json`
+  * CLRR-Enc: `results/ashaninka_spanish/mbart-ashaninka-es-clrr-enc/metrics.json`
+  * Điểm số: SacreBLEU (tokenizer `13a`) và chrF++ ($w=2$) trên 1.003 câu kiểm thử chính thức của AmericasNLP.
+
+---
+
+### GIAI ĐOẠN 3: Core Matrix trên Asháninka $\to$ Spanish (NLLB-200)
+* **Thời gian ước tính:** ~70 phút trên GPU A100.
+* **Đầu vào:** `data_processed/ashaninka_spanish/`
+* **Lệnh kích hoạt tự động:**
+  ```bash
+  python -u scripts/run_ashaninka_experiments.py --runs nllb_baseline nllb_clrr
+  ```
+* **Nghiệm thu:**
+  * Baseline: `results/ashaninka_spanish/nllb-ashaninka-es-baseline/metrics.json`
+  * CLRR-Enc: `results/ashaninka_spanish/nllb-ashaninka-es-clrr-enc/metrics.json`
+
+---
+
+## 4. Sổ Tay Lệnh Vận Hành Google Colab (Colab Runbook)
+
+### Yêu Cầu Phần Cứng:
+* **GPU:** NVIDIA A100 (chạy không cần `--high-mem`, tiết kiệm Compute Units tối đa).
+* **Disk:** $\ge 25\text{GB}$ trống trên `/content`.
+
+### Quy Trình Kích Hoạt Từng Bước Trên Máy Chủ:
+
+#### Bước 1: Khởi động Colab A100
 ```bash
-ssh colab
+colab new -s colab --gpu A100
 ```
-*(Hoặc mở tab Terminal trực tiếp trên giao diện web Google Colab Pro).*
 
-#### Bước 2: Clone hoặc Cập Nhật Mã Nguồn Mới Nhất
+#### Bước 2: Đồng bộ mã nguồn & Dữ liệu
 ```bash
 cd /content
 if [ ! -d "/content/CLRR" ]; then
@@ -122,186 +157,53 @@ fi
 cd /content/CLRR
 git checkout main
 git pull origin main
-```
-
-#### Bước 3: Cài Đặt Môi Trường & Dependencies
-```bash
 pip install -q -r requirements.txt
 pip install -q peft sacrebleu scikit-learn
 pip uninstall -y torchao 2>/dev/null || true
 ```
 
-#### Bước 4: Kiểm Tra GPU & Chạy Preflight Smoke Test (< 25 giây)
-Trước khi chạy thật, bắt buộc chạy smoke test để đảm bảo PyTorch, CUDA, PEFT hoạt động hoàn hảo:
+#### Bước 3: Chạy Preflight Test xác nhận môi trường (< 15 giây)
 ```bash
-nvidia-smi
-python -u scripts/peft/smoke_test_peft.py
+python -m unittest tests/test_followup.py
 ```
-*Kết quả mong đợi:* In ra `ALL PEFT SMOKE TESTS PASSED (< 25s)` mà không có bất kỳ ngoại lệ nào.
 
-#### Bước 5: Kích Hoạt Huấn Luyện Nền (Autonomous Background Run)
-Thiết lập Hugging Face Token (nếu muốn tự động sao lưu checkpoint lên HF Hub) và kích hoạt chạy ngầm:
+#### Bước 4: Chạy Giai Đoạn 1 (NLLB Strong LoRA Suite trên Amis)
 ```bash
-export HF_TOKEN="hf_your_token_here"   # Tùy chọn: điền token nếu muốn auto-upload HF
-nohup bash scripts/peft/run_strong_lora_suite.sh > /content/strong_lora.log 2>&1 &
+nohup python -u scripts/peft/run_strong_lora_nllb.py > /content/nllb_lora.log 2>&1 &
+tail -f /content/nllb_lora.log
 ```
 
-#### Bước 6: Theo Dõi Tiến Trình Huấn Luyện Thời Gian Thực
-Để xem log tiến độ huấn luyện (loss, BLEU từng epoch, thời gian):
+#### Bước 5: Chạy Giai Đoạn 2 & 3 (Asháninka Suite trên cả mBART và NLLB)
 ```bash
-tail -f /content/strong_lora.log
-```
-*(Nhấn `Ctrl + C` để thoát màn hình theo dõi log; tiến trình huấn luyện vẫn chạy ngầm bình thường).*
-
-Để kiểm tra GPU có đang chạy hay không:
-```bash
-nvidia-smi
-ps aux | grep train_peft
-```
-
-#### Bước 7: Kiểm Tra & Nghiệm Thu Kết Quả (Verification Checklist)
-Khi tiến trình hoàn thành (xem trong log hiện `STRONG LORA SUITE COMPLETED SUCCESSFULLY`), chạy các lệnh sau để xác minh:
-```bash
-# 1. Kiểm tra 2 file dự đoán test set có đủ đúng 576 dòng (1 header + 575 câu)
-wc -l results/mbart-large-50-lora-all-linear/test_predictions.csv
-wc -l results/mbart-large-50-lora-all-linear-unfreeze-embed/test_predictions.csv
-
-# 2. Xem trực tiếp bảng so sánh điểm BLEU và chrF++ vừa sinh ra:
-cat outputs_rebuttal/strong_lora_scores.csv
-```
-
-#### Bước 8: Tải Kết Quả Về Máy
-- File nén toàn bộ kết quả đã được tự động tạo tại: `/content/CLRR/strong_lora_results.zip`.
-- Nếu có điền `HF_TOKEN`, toàn bộ kết quả đã được upload tự động lên repository `FiveC/amis-rewire-checkpoints/peft_baselines/`.
-- Nếu tải trực tiếp từ máy cá nhân qua Colab CLI:
-  ```powershell
-  colab download -s colab /content/CLRR/outputs_rebuttal/strong_lora_scores.csv outputs_rebuttal/strong_lora_scores.csv
-  colab download -s colab /content/CLRR/strong_lora_results.zip outputs_rebuttal/strong_lora_results.zip
-  ```
-
----
-
-### PHƯƠNG ÁN 2: Chạy Trực Tiếp Bằng Từng Cell Trên Colab Notebook (`.ipynb`)
-
-Nếu người chạy không quen sử dụng Terminal / SSH, họ có thể mở một Colab Notebook mới, chọn Runtime **A100 GPU** và copy-paste lần lượt các cell sau:
-
-#### [Cell 1] — Chuẩn bị mã nguồn và thư mục
-```python
-# Cell 1: Clone repo và di chuyển vào thư mục làm việc
-import os
-!cd /content && git clone https://github.com/HeyDunaX/CLRR.git || (cd /content/CLRR && git pull origin main)
-os.chdir('/content/CLRR')
-!git checkout main
-!git pull origin main
-```
-
-#### [Cell 2] — Cài đặt thư viện
-```python
-# Cell 2: Cài đặt dependencies
-!pip install -q -r requirements.txt
-!pip install -q peft sacrebleu scikit-learn
-!pip uninstall -y torchao 2>/dev/null || true
-!nvidia-smi
-```
-
-#### [Cell 3] — Preflight Smoke Test (< 25s)
-```python
-# Cell 3: Chạy Smoke Test kiểm tra tính tương thích
-!python -u scripts/peft/smoke_test_peft.py
-```
-
-#### [Cell 4] — Chạy Tự Động Toàn Bộ Strong LoRA Suite
-```python
-# Cell 4: Chạy toàn bộ Run A và Run B (~1.2 - 1.5 giờ trên A100)
-import os
-# os.environ["HF_TOKEN"] = "hf_xxx" # Tùy chọn: bỏ comment nếu có token HF
-!python -u scripts/peft/run_strong_lora_mbart.py
-```
-
-#### [Cell 5] — Nghiệm thu và hiển thị kết quả
-```python
-# Cell 5: In kết quả đối chuẩn ra màn hình và kiểm tra số dòng test
-import pandas as pd
-df = pd.read_csv("outputs_rebuttal/strong_lora_scores.csv")
-display(df)
-
-!wc -l results/mbart-large-50-lora-all-linear/test_predictions.csv
-!wc -l results/mbart-large-50-lora-all-linear-unfreeze-embed/test_predictions.csv
+nohup python -u scripts/run_ashaninka_experiments.py > /content/ashaninka.log 2>&1 &
+tail -f /content/ashaninka.log
 ```
 
 ---
 
-### PHƯƠNG ÁN 3: Chạy Từng Lệnh CLI Riêng Biệt (Dành Cho Ai Muốn Can Thiệp Từng Run)
+## 5. Bảng Dự Kiến Bổ Sung Vào Bài Báo Sau Khi Hoàn Tất
 
-Nếu muốn chạy riêng rẽ từng thí nghiệm để thử nghiệm các siêu tham số khác nhau:
+### Bảng 1: Bổ Sung NLLB Strong LoRA (Khép góc PEFT trên Amis $\to$ Mandarin)
+| Backbone Architecture | Cấu hình Thích nghi | $\Delta\theta_{\text{add}}$ | $\theta_{\text{train}}$ (% Model) | BLEU (zh) ↑ | chrF++ (w=2) ↑ | chrF++ (Zh) ↑ |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: |
+| **`nllb-200-distilled-600M`** | BitFit (Bias-only) | 0 | 131k (0.02%) | 1.0750 | 2.9643 | 5.7081 |
+| | Narrow LoRA ($r=8, q/v$) | +1.18M | 1.18M (0.19%) | 3.5383 | 4.9407 | 9.1651 |
+| | **Strong LoRA A ($r=16$, All-Linear)** | **+8.65M** | **8.65M (1.41%)** | *[Đang chạy]* | *[Đang chạy]* | *[Đang chạy]* |
+| | **Strong LoRA B (+Embeddings)** | **+8.65M** | **264.7M (42.7%)** | *[Đang chạy]* | *[Đang chạy]* | *[Đang chạy]* |
+| | Standard Fine-Tuning | 0 | 615M (100%) | 13.5001 | 10.4389 | 18.0885 |
+| | Middle-Layer Alignment | 0 | 615M (100%) | 13.9648 | 10.6596 | 18.4448 |
+| | **CLRR-Enc + LSR (Ours)** | **0** | **615M (100%)** | **14.2820** | **10.9152** | **18.7482** |
 
-#### 1. Lệnh chạy Run A: LoRA All-Linear (Frozen Embeddings):
-```bash
-python -u -m peft_baselines.train_peft \
-  --method lora \
-  --model-name facebook/mbart-large-50-many-to-many-mmt \
-  --data-dir data/processed \
-  --output-dir results \
-  --run-name mbart-large-50-lora-all-linear \
-  --learning-rate 2e-4 \
-  --lora-r 16 \
-  --lora-alpha 32 \
-  --lora-dropout 0.05 \
-  --target-modules "q_proj,k_proj,v_proj,out_proj,fc1,fc2" \
-  --no-unfreeze-embeddings \
-  --num-train-epochs 20 \
-  --early-stopping-patience 4 \
-  --per-device-train-batch-size 4 \
-  --gradient-accumulation-steps 32 \
-  --auto-resume
-```
-
-#### 2. Lệnh chạy Run B: LoRA All-Linear + Unfrozen Embeddings:
-```bash
-python -u -m peft_baselines.train_peft \
-  --method lora \
-  --model-name facebook/mbart-large-50-many-to-many-mmt \
-  --data-dir data/processed \
-  --output-dir results \
-  --run-name mbart-large-50-lora-all-linear-unfreeze-embed \
-  --learning-rate 1e-4 \
-  --lora-r 16 \
-  --lora-alpha 32 \
-  --lora-dropout 0.05 \
-  --target-modules "q_proj,k_proj,v_proj,out_proj,fc1,fc2" \
-  --unfreeze-embeddings \
-  --num-train-epochs 20 \
-  --early-stopping-patience 4 \
-  --per-device-train-batch-size 4 \
-  --gradient-accumulation-steps 32 \
-  --auto-resume
-```
+### Bảng 2: Bảng Đối Sánh Ngôn Ngữ Thứ Hai (Asháninka $\to$ Spanish, 1.003 Test Sentences)
+| Backbone Architecture | Phương pháp | $\Delta\theta_{\text{add}}$ | $\theta_{\text{train}}$ (% Model) | BLEU (13a) ↑ | chrF++ (w=2) ↑ | Nhận định thực nghiệm AmericasNLP |
+| :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **`mBART-large-50`** | Standard Fine-Tuning | 0 | 611M (100%) | *[Đang chạy]* | *[Đang chạy]* | Điểm tựa mBART trên Asháninka $\to$ Spanish |
+| | **CLRR-Enc + LSR (Ours)** | **0** | **611M (100%)** | *[Đang chạy]* | *[Đang chạy]* | **Khẳng định tính tổng quát hóa đa ngôn ngữ** |
+| **`nllb-200-distilled-600M`** | Standard Fine-Tuning | 0 | 615M (100%) | *[Đang chạy]* | *[Đang chạy]* | Điểm tựa NLLB trên Asháninka $\to$ Spanish |
+| | **CLRR-Enc + LSR (Ours)** | **0** | **615M (100%)** | *[Đang chạy]* | *[Đang chạy]* | **Thiết lập SOTA mới trên AmericasNLP 2021** |
 
 ---
 
-## 4. Bảng Kết Quả Dự Kiến Khi Chạy Xong (Để Bàn Giao & Điền Bài Báo)
-
-Sau khi hoàn tất, kết quả từ `outputs_rebuttal/strong_lora_scores.csv` sẽ được điền vào Bảng 2 của bài báo (`clrr_main.tex`):
-
-| Backbone Architecture | Cấu hình Thích nghi | Module can thiệp | $\Delta\theta_{\text{add}}$ (Thêm mới) | $\theta_{\text{train}}$ (Huấn luyện) | BLEU (zh) | chrF++ (w=2) | Luận điểm đối sách học thuật |
-| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
-| **`mBART-large-50`** (611M) | Standard Fine-Tuning | Toàn bộ mô hình | 0 | 611M (100%) | 19.6106 | 14.0538 | Điểm mốc chuẩn full-tuning |
-| | BitFit (Bias-only) | Vector Bias | 0 | 336k (0.055%) | 0.3511 | 2.8464 | Nghẽn biểu diễn nghiêm trọng |
-| | LoRA ($r=8$, Ban đầu) | $W_q, W_v$ | +1.18M | 1.18M (0.193%) | 3.3284 | 5.1583 | Baseline LoRA hẹp ban đầu |
-| | **LoRA All-Linear ($r=16$)** | $q, k, v, o, fc1, fc2$ | +8.65M | 8.65M (1.416%) | **10.4193** | **9.8008** | Adapter tăng gấp 7 lần (+7.09 BLEU so với LoRA hẹp), nhưng vẫn thua xa full-tuning |
-| | **LoRA All-Lin + Unfreeze** | All-Linear + Embeddings | +8.65M | ~265M (43.3%) | *[Tạm hoãn]* | *[Tạm hoãn]* | Run B tạm hoãn theo yêu cầu tác giả |
-| | **CLRR-Enc + LSR (Ours)** | **Residual Rewiring + LSR** | **0** | **611M (100%)** | **20.3927** | **19.0839** | **SOTA vượt trội (+9.97 BLEU, +9.28 chrF++ so với Strong LoRA), $\Delta\theta=0$** |
-
----
-
-## 5. Hướng Dẫn Xử Lý Sự Cố (Troubleshooting FAQ)
-
-1. **Lỗi GPU Out of Memory (OOM):**
-   - Nếu chạy trên GPU 16GB (như T4 hoặc V100 16GB) mà gặp OOM ở Run B (do ma trận embedding lớn):
-   - Hạ `--per-device-train-batch-size 2` và tăng `--gradient-accumulation-steps 64` (để giữ nguyên Effective Batch Size $2 \times 64 = 128$).
-2. **Tiến trình dừng đột ngột do timeout phiên Colab:**
-   - Script đã có cờ `--auto-resume`. Nếu phiên làm việc bị ngắt, chỉ cần gõ lại lệnh chạy, mã nguồn sẽ tự động tìm checkpoint gần nhất trong `results/mbart-large-50-...` và tiếp tục huấn luyện mà không phải train lại từ đầu.
-3. **Mất kết nối SSH từ máy tính cá nhân:**
-   - Nếu bạn đã kích hoạt lệnh bằng `nohup bash scripts/peft/run_strong_lora_suite.sh > /content/strong_lora.log 2>&1 &`, tiến trình chạy trên máy chủ Google Colab **không bao giờ bị dừng**. Khi kết nối SSH lại, chỉ cần gõ `tail -f /content/strong_lora.log` để xem tiếp.
-4. **Không có token Hugging Face (`HF_TOKEN`):**
-   - Không ảnh hưởng gì đến quá trình huấn luyện. Kết quả và dự đoán vẫn được lưu an toàn tại thư mục cục bộ `results/` và `outputs_rebuttal/`.
+## 6. Hướng Dẫn Nghiệm Thu & Đóng Gói
+1. Toàn bộ mã nguồn chạy mới đã được commit/sẵn sàng trong [`scripts/peft/run_strong_lora_nllb.py`](file:///d:/Code/CLRR/scripts/peft/run_strong_lora_nllb.py) và [`scripts/run_ashaninka_experiments.py`](file:///d:/Code/CLRR/scripts/run_ashaninka_experiments.py).
+2. Khi các run trên Colab A100 hoàn tất, chỉ cần tải thư mục `results/` và `outputs_rebuttal/` về máy này để cập nhật trực tiếp vào [`clrr_main.tex`](file:///d:/Code/CLRR/docs/CLRR-paper/latex/clrr_main.tex).

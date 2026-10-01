@@ -50,6 +50,20 @@ For mBART, Amis has no dedicated mBART-50 language ID. The tokenizer uses its sh
 
 ## Data
 
+Processed datasets are organized under `data_processed/<dataset_name>/`:
+`amis_mandarin` contains the original Amis splits; `ashaninka_spanish` contains
+the prepared AmericasNLP splits (3,883 train / 881 validation / 1,003 test).
+See [dataset sources, manifests, and language configuration notes](data_processed/README.md).
+Run local Python commands in the existing conda environment `clrr`.
+
+```powershell
+conda run -n clrr python scripts/prepare_ashaninka_spanish.py
+```
+
+Asháninka data preparation is complete. Its training configuration still needs
+Spanish language tags and evaluation settings; changing `--data-dir` alone is
+insufficient with the current Mandarin-specific trainers.
+
 The parallel corpus used in this study is the 5,751-sentence Amis–Mandarin dataset introduced by [Zheng et al. (2022)](https://aclanthology.org/2022.nlp4dh-1.11/). The data archive can be downloaded from Google Drive:
 
 - **Google Drive Folder**: [Amis–Chinese Dataset](https://drive.google.com/drive/folders/1W-glGBpCz9R16Oy-P96jdK7YGSVuvdg2)
@@ -69,7 +83,7 @@ source,target
 AMIS_SENTENCE,CHINESE_TRANSLATION
 ```
 
-Use `data/amis_chinese.example.csv` only as a schema example. Do not train on its placeholder rows. The preparation script validates all three splits and writes `data/processed/{train,validation,test}.csv`. It runs on CPU and does not require CUDA.
+Use `data/amis_chinese.example.csv` only as a schema example. Do not train on its placeholder rows. The preparation script validates all three splits and writes `data_processed/amis_mandarin/{train,validation,test}.csv`. It runs on CPU and does not require CUDA.
 
 ## Installation
 
@@ -108,7 +122,7 @@ Run this once after extracting the parallel data from `parallel.zip`:
 ```bash
 python scripts/unpack_parallel_data.py \
   --zip-path parallel.zip \
-  --output-dir data/processed
+  --output-dir data_processed/amis_mandarin
 ```
 
 Alternatively, if you have a single CSV with columns `amis,chinese,split`:
@@ -116,13 +130,13 @@ Alternatively, if you have a single CSV with columns `amis,chinese,split`:
 ```bash
 python -m amis_rewire.prepare_data \
   --input-csv data/amis_chinese.csv \
-  --output-dir data/processed \
+  --output-dir data_processed/amis_mandarin \
   --source-col amis \
   --target-col chinese \
   --split-col split
 ```
 
-The command validates UTF-8, removes empty pairs, normalizes split names, requires all three splits, and writes `data/processed/{train,validation,test}.csv`. No tokenizer or language-specific preprocessing is performed. This step is CPU-only and does not require CUDA; only model training and generation use the GPU.
+The command validates UTF-8, removes empty pairs, normalizes split names, requires all three splits, and writes `data_processed/amis_mandarin/{train,validation,test}.csv`. No tokenizer or language-specific preprocessing is performed. This step is CPU-only and does not require CUDA; only model training and generation use the GPU.
 
 ## One experiment
 
@@ -134,7 +148,7 @@ python -m amis_rewire.train \
   --method jepa-clrr-enc \
   --rewire-stack encoder \
   --jepa-weight 0.1 \
-  --data-dir data/processed \
+  --data-dir data_processed/amis_mandarin \
   --output-dir outputs \
   --seed 42 \
   --backup-dir backups \
@@ -186,7 +200,7 @@ cosine measurements. It then runs two ByT5-small conditions and two mT5-small
 decoder/both rewiring ablations. The main six-run matrix is not rerun.
 For the follow-up tables, all saved checkpoints and new models are scored the
 same way: decode predictions, pair them with the original `target` text in all
-575 rows of `data/processed/test.csv`, and compute SacreBLEU
+575 rows of `data_processed/amis_mandarin/test.csv`, and compute SacreBLEU
 `BLEU(tokenize="zh")` and `CHRF(word_order=2)` (chrF++). Leading and trailing
 whitespace is stripped from predictions and targets. Scores are recomputed
 from predictions; matching the historical score files is not a run condition.
@@ -299,8 +313,9 @@ src/amis_rewire/
 ├── metrics.py               # Standardized SacreBLEU (tokenize='zh') and chrF++ (word_order=2)
 └── prepare_data.py          # CSV validation and split export
 src/comparative_baselines/   # Isolated implementations of LayerSkip (ACL 2024) and Mid-Align (ACL 2025)
-data/
-└── processed/               # Fixed splits: train.csv (4600), val.csv (576), test.csv (575)
+data_processed/
+├── amis_mandarin/            # train.csv (4600), validation.csv (576), test.csv (575)
+└── ashaninka_spanish/        # train.csv (3883), validation.csv (881), test.csv (1003)
 scripts/
 ├── run_all_models.sh        # Batch execution matrix
 └── revalidation/            # Targeted defense & ablation scripts

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DATA_DIR="${DATA_DIR:-data/processed}"
+DATA_DIR="${DATA_DIR:-data_processed/amis_mandarin}"
 OUTPUT_DIR="${OUTPUT_DIR:-outputs}"
 BACKUP_DIR="${BACKUP_DIR:-backups}"
 HF_BACKUP_REPO="${HF_BACKUP_REPO:-}"

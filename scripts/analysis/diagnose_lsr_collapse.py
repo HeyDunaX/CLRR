@@ -155,7 +155,7 @@ def run_diagnostics(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--model-path", required=True, help="Path to model checkpoint directory or HF hub ID.")
-    parser.add_argument("--data-csv", default="data/processed/test.csv", help="Path to test CSV.")
+    parser.add_argument("--data-csv", default="data_processed/amis_mandarin/test.csv", help="Path to test CSV.")
     parser.add_argument("--output-dir", default="outputs_rebuttal", help="Output directory for reports.")
     parser.add_argument("--label", default="LSR_Model", help="Label for this model evaluation.")
     parser.add_argument("--batch-size", type=int, default=16)

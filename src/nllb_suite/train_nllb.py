@@ -44,6 +44,8 @@ DEFAULT_LR_BY_METHOD = {
     "baseline": 5e-5,
     "bitfit": 1e-4,
     "lora": 2e-4,
+    "strong_lora_a": 2e-4,
+    "strong_lora_b": 1e-4,
     "layerskip": 5e-5,
     "middle_align": 5e-5,
     "clrr_enc": 5e-5,
@@ -169,8 +171,17 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 
 
-def build_compute_metrics(tokenizer: Any):
-    bleu_metric = BLEU(tokenize="zh")
+def detect_nllb_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
+    path_str = str(data_dir).lower()
+    is_spanish = "ashaninka" in path_str or "spanish" in path_str
+    tgt_lang = cli_tgt or ("spa_Latn" if is_spanish else "zho_Hant")
+    src_lang = cli_src or ("spa_Latn" if is_spanish else "zho_Hant")
+    bleu_tok = cli_tok or ("13a" if is_spanish else "zh")
+    return src_lang, tgt_lang, bleu_tok
+
+
+def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh"):
+    bleu_metric = BLEU(tokenize=bleu_tokenizer)
     chrfpp_metric = CHRF(word_order=2)
 
     def compute_metrics(eval_prediction: Any) -> dict[str, float]:
@@ -194,12 +205,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--method",
         required=True,
-        choices=["baseline", "bitfit", "lora", "layerskip", "middle_align", "clrr_enc", "clrr_dec"],
+        choices=["baseline", "bitfit", "lora", "strong_lora_a", "strong_lora_b", "layerskip", "middle_align", "clrr_enc", "clrr_dec"],
         help="Experimental method to run on NLLB-200.",
     )
     parser.add_argument("--model-name", default=DEFAULT_NLLB_MODEL, help="NLLB-200 model checkpoint.")
-    parser.add_argument("--data-dir", default="data/processed", help="Path to processed dataset directory.")
+    parser.add_argument("--data-dir", default="data_processed/amis_mandarin", help="Path to processed dataset directory.")
+    parser.add_argument("--src-lang", default=None, help="Source language code (auto-detected if None).")
+    parser.add_argument("--tgt-lang", default=None, help="Target language code (auto-detected if None).")
+    parser.add_argument("--bleu-tokenizer", default=None, help="Tokenizer for BLEU (zh or 13a, auto-detected if None).")
     parser.add_argument("--output-dir", default="results/nllb-200", help="Root directory for outputs.")
+    parser.add_argument("--run-name", default=None, help="Run name override.")
     parser.add_argument("--seed", type=int, default=42, help="Random seed for fairness.")
     parser.add_argument("--num-train-epochs", type=float, default=20.0, help="Total training epochs.")
     parser.add_argument("--learning-rate", type=float, default=None, help="Learning rate override.")
@@ -229,15 +244,17 @@ def main() -> None:
     torch.backends.cuda.matmul.allow_tf32 = True
     torch.backends.cudnn.allow_tf32 = True
 
+    data_dir = Path(args.data_dir)
+    src_lang, tgt_lang, bleu_tokenizer = detect_nllb_languages(data_dir, args.src_lang, args.tgt_lang, args.bleu_tokenizer)
+
     lr = args.learning_rate or DEFAULT_LR_BY_METHOD[args.method]
-    run_name = args.method
+    run_name = args.run_name or args.method
     output_dir = Path(args.output_dir) / run_name
     output_dir.mkdir(parents=True, exist_ok=True)
-    data_dir = Path(args.data_dir)
 
-    print(f"[init] NLLB-200 Suite: method={args.method}, lr={lr}, seed={args.seed}", flush=True)
-    tokenizer = get_nllb_tokenizer(args.model_name, src_lang="zho_Hant", tgt_lang="zho_Hant")
-    forced_bos_token_id = tokenizer.convert_tokens_to_ids(DEFAULT_TGT_LANG)
+    print(f"[init] NLLB-200 Suite: method={args.method}, lr={lr}, seed={args.seed}, src={src_lang}, tgt={tgt_lang}, tok={bleu_tokenizer}", flush=True)
+    tokenizer = get_nllb_tokenizer(args.model_name, src_lang=src_lang, tgt_lang=tgt_lang)
+    forced_bos_token_id = tokenizer.convert_tokens_to_ids(tgt_lang)
 
     model, method_metadata = load_nllb_model(args.method, model_name=args.model_name)
     # Configure generation target language on generation_config (Transformers 5.x compatible)
@@ -315,7 +332,7 @@ def main() -> None:
         train_dataset=train_dataset,
         eval_dataset=validation_dataset,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer),
+        compute_metrics=build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
         callbacks=callbacks,
     )
 

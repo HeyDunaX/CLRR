@@ -6,16 +6,22 @@ import numpy as np
 from sacrebleu.metrics import BLEU, CHRF
 
 
-# Standard Chinese tokenization for SacreBLEU (Mandarin target)
-BLEU_METRIC = BLEU(tokenize="zh")
+# Standard tokenizers for SacreBLEU (Mandarin: zh, Spanish/Latin: 13a)
+BLEU_METRIC_ZH = BLEU(tokenize="zh")
+BLEU_METRIC_13A = BLEU(tokenize="13a")
 CHRFPP_METRIC = CHRF(word_order=2)
 
 
-def generation_metrics(predictions: list[str], references: list[str]) -> dict[str, float]:
+def generation_metrics(
+    predictions: list[str],
+    references: list[str],
+    tokenize: str = "zh",
+) -> dict[str, float]:
     predictions = [prediction.strip() for prediction in predictions]
     references = [[reference.strip() for reference in references]]
+    bleu_metric = BLEU_METRIC_ZH if tokenize == "zh" else (BLEU_METRIC_13A if tokenize == "13a" else BLEU(tokenize=tokenize))
     return {
-        "bleu": float(BLEU_METRIC.corpus_score(predictions, references).score),
+        "bleu": float(bleu_metric.corpus_score(predictions, references).score),
         "chrf++": float(CHRFPP_METRIC.corpus_score(predictions, references).score),
     }
 

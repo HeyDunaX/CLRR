@@ -19,7 +19,7 @@ import pandas as pd
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parents[2]
-    test_csv = repo_root / "data" / "processed" / "test.csv"
+    test_csv = repo_root / "data_processed" / "amis_mandarin" / "test.csv"
     output_dir = repo_root / "outputs_rebuttal"
     output_dir.mkdir(parents=True, exist_ok=True)
 

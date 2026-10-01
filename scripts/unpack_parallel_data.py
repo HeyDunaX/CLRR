@@ -1,4 +1,4 @@
-"""Unpack parallel.zip into data/processed/{train,validation,test}.csv.
+"""Unpack parallel.zip into data_processed/amis_mandarin/{train,validation,test}.csv.
 
 Reads the aligned Amis and Chinese (Mandarin) text files from the ZIP archive
 and writes CSV files with columns ``source,target`` for the training pipeline.
@@ -28,8 +28,8 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-dir",
-        default="data/processed",
-        help="Directory for output CSV files (default: data/processed)",
+        default="data_processed/amis_mandarin",
+        help="Directory for output CSV files (default: data_processed/amis_mandarin)",
     )
     return parser.parse_args()
 

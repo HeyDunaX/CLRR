@@ -136,7 +136,7 @@ def main() -> None:
     parser.add_argument("--repo", default=REPO)
     parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument("--backup-dir", type=Path, default=Path("backups_extra"))
-    parser.add_argument("--data-dir", type=Path, default=Path("data/processed"))
+    parser.add_argument("--data-dir", type=Path, default=Path("data_processed/amis_mandarin"))
     args = parser.parse_args()
     preflight(args.repo, args.output_dir, args.data_dir)
     stages = ("byt5", "ablation") if args.stage == "all" else (args.stage,)

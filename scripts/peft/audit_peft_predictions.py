@@ -16,7 +16,7 @@ from sacrebleu.tokenizers.tokenizer_zh import TokenizerZh
 
 def main() -> None:
     repo_root = Path(__file__).resolve().parents[2]
-    data_test_csv = repo_root / "data" / "processed" / "test.csv"
+    data_test_csv = repo_root / "data_processed" / "amis_mandarin" / "test.csv"
     peft_dir = repo_root / "results" / "mbart-large-50"
     output_dir = repo_root / "outputs_rebuttal"
     output_dir.mkdir(parents=True, exist_ok=True)

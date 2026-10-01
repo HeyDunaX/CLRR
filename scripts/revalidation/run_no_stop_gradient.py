@@ -147,7 +147,7 @@ class GradientNormTracker(TrainerCallback):
 
 def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
     repo_root = Path(__file__).resolve().parents[2]
-    data_dir = repo_root / "data" / "processed"
+    data_dir = repo_root / "data_processed" / "amis_mandarin"
     out_dir = repo_root / "results" / "mt5-small" / "no-stop-gradient"
     out_dir.mkdir(parents=True, exist_ok=True)
 

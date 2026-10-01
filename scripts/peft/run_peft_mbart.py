@@ -25,7 +25,7 @@ def run_command(cmd: list[str], cwd: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data-dir", default="data/processed")
+    parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--output-dir", default="results")
     parser.add_argument("--model-name", default="facebook/mbart-large-50-many-to-many-mmt")
     parser.add_argument("--num-train-epochs", type=str, default="20")

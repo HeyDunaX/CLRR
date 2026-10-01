@@ -22,7 +22,7 @@ def eval_morphology() -> pd.DataFrame:
     out_dir = repo_root / "results" / "analysis"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    test_csv = repo_root / "data" / "processed" / "test.csv"
+    test_csv = repo_root / "data_processed" / "amis_mandarin" / "test.csv"
     if not test_csv.exists():
         raise FileNotFoundError(f"Missing {test_csv}")
 

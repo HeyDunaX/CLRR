@@ -84,6 +84,30 @@ def load_nllb_model(
         metadata.update(stats)
         metadata["description"] = f"LoRA (r={lora_r}, alpha={lora_alpha}, ICLR 2022)"
 
+    elif method == "strong_lora_a":
+        model, stats = apply_lora_to_model(
+            base_model,
+            r=16,
+            lora_alpha=32,
+            lora_dropout=lora_dropout,
+            target_modules=["q_proj", "k_proj", "v_proj", "out_proj", "fc1", "fc2"],
+            modules_to_save=None,
+        )
+        metadata.update(stats)
+        metadata["description"] = "Strong LoRA A: All-Linear (r=16, alpha=32, frozen embeddings)"
+
+    elif method == "strong_lora_b":
+        model, stats = apply_lora_to_model(
+            base_model,
+            r=16,
+            lora_alpha=32,
+            lora_dropout=lora_dropout,
+            target_modules=["q_proj", "k_proj", "v_proj", "out_proj", "fc1", "fc2"],
+            modules_to_save=["shared", "embed_tokens", "lm_head"],
+        )
+        metadata.update(stats)
+        metadata["description"] = "Strong LoRA B: All-Linear + Unfrozen Embeddings (r=16, alpha=32)"
+
     elif method == "layerskip":
         model = LayerSkipMT5(base_model, p_max=layerskip_p_max)
         metadata["p_max"] = layerskip_p_max

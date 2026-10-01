@@ -56,7 +56,7 @@ OFFICIAL_BASELINE_SCORES = [
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run comparative and multi-backbone experiments for ACL")
     parser.add_argument("--run-group", choices=["all_extensions", "mbart_only", "byt5_only", "all"], default="all_extensions")
-    parser.add_argument("--data-dir", default="data/processed")
+    parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--output-dir", default="results")
     parser.add_argument("--backup-dir", default="backups_comparative")
     parser.add_argument("--hf-backup-repo", default="FiveC/amis-rewire-checkpoints")

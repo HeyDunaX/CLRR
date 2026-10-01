@@ -1,0 +1,77 @@
+{
+  "dataset": "ashaninka_spanish",
+  "source_language": "cni",
+  "target_language": "es",
+  "repository": "https://github.com/AmericasNLP/americasnlp2021",
+  "revision": "d3f519c6b38299d8149311e65a369047350e6849",
+  "raw_files": {
+    "train.cni": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/data/ashaninka-spanish/train.cni",
+      "sha256": "dd528a5b61284dde62d1c957a8e7bdbad296f40cb9ed128b592e5aaa9bdf6d84"
+    },
+    "train.es": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/data/ashaninka-spanish/train.es",
+      "sha256": "d86a5aecc2b9ea0e1ac684cb1984d8fb6420482c8d750d3ed58d04739348002e"
+    },
+    "dev.cni": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/data/ashaninka-spanish/dev.cni",
+      "sha256": "90c85ba9bee92e3ff871e3128a6d2f376387978d108538f552d87874b9f35161"
+    },
+    "dev.es": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/data/ashaninka-spanish/dev.es",
+      "sha256": "5ea9455bee5e67f56db261a7969cf410a8f833305afc669cc6d5ee39ef7b10d3"
+    },
+    "test.cni": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/test_data/test.cni",
+      "sha256": "9927b2daa5a4d607945cfed06bfd83a83517fa455af31d0753e911d9a0a1e004"
+    },
+    "test.es": {
+      "url": "https://raw.githubusercontent.com/AmericasNLP/americasnlp2021/d3f519c6b38299d8149311e65a369047350e6849/test_data/test.es",
+      "sha256": "a30e58fe429dcaeaf17699e38e2e23ffc13722ae530c4c724f9855d26c73aa8f"
+    }
+  },
+  "splits": {
+    "train": {
+      "raw_rows": 3883,
+      "rows": 3883,
+      "empty_pair_line_numbers": [],
+      "duplicate_pair_rows": 23,
+      "duplicate_source_rows": 33,
+      "sha256": "03822ef66d4a46160f09698d3ddc0cedc8f83cd43e8e6ab554faca5baa6684ce"
+    },
+    "validation": {
+      "raw_rows": 883,
+      "rows": 881,
+      "empty_pair_line_numbers": [
+        72,
+        123
+      ],
+      "duplicate_pair_rows": 0,
+      "duplicate_source_rows": 2,
+      "sha256": "345e48572ea755240f4639bd5009f7e7127fb13a315eab7f879b28a1de945059"
+    },
+    "test": {
+      "raw_rows": 1003,
+      "rows": 1003,
+      "empty_pair_line_numbers": [],
+      "duplicate_pair_rows": 0,
+      "duplicate_source_rows": 0,
+      "sha256": "e2232da892f0fed6c5f6572aff8dbeae11e0d1eff3757b7144ea303fb74cd36e"
+    }
+  },
+  "cross_split_overlap": {
+    "train/validation": {
+      "exact_pairs": 0,
+      "exact_sources": 0
+    },
+    "train/test": {
+      "exact_pairs": 0,
+      "exact_sources": 0
+    },
+    "validation/test": {
+      "exact_pairs": 0,
+      "exact_sources": 0
+    }
+  },
+  "preprocessing": "UTF-8; strip outer whitespace; drop empty aligned pairs jointly; preserve official split and order. No synthetic data."
+}

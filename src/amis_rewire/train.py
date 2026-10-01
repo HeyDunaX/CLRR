@@ -171,7 +171,7 @@ def parse_args() -> argparse.Namespace:
         choices=("baseline", "rewire", "clrr", "clrr-enc", "jepa", "jepa-clrr", "jepa-clrr-enc"),
         default="baseline",
     )
-    parser.add_argument("--data-dir", default="data/processed")
+    parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--output-dir", default="outputs")
     parser.add_argument("--backup-dir", default="backups")
     parser.add_argument("--hf-backup-repo", default=None, help="Private HF repo, e.g. user/amis-rewire-checkpoints.")
@@ -217,6 +217,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--logging-steps", type=int, default=10)
     parser.add_argument("--save-total-limit", type=int, default=2)
     parser.add_argument("--resume-from-checkpoint", default=None)
+    parser.add_argument("--src-lang", default=None, help="Source language code (auto-detected if None).")
+    parser.add_argument("--tgt-lang", default=None, help="Target language code (auto-detected if None).")
+    parser.add_argument("--bleu-tokenizer", default=None, help="Tokenizer for BLEU (zh or 13a, auto-detected if None).")
     parser.add_argument("--auto-resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--fp16", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
@@ -236,18 +239,25 @@ def load_split(data_dir: Path, split: str) -> Dataset:
     return Dataset.from_pandas(frame, preserve_index=False)
 
 
-def configure_mbart(tokenizer: Any, model: Any) -> None:
+def detect_mbart_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
+    path_str = str(data_dir).lower()
+    is_spanish = "ashaninka" in path_str or "spanish" in path_str
+    tgt_lang = cli_tgt or ("es_XX" if is_spanish else "zh_CN")
+    src_lang = cli_src or ("es_XX" if is_spanish else "tl_XX")
+    bleu_tok = cli_tok or ("13a" if is_spanish else "zh")
+    return src_lang, tgt_lang, bleu_tok
+
+
+def configure_mbart(tokenizer: Any, model: Any, src_lang: str = "tl_XX", tgt_lang: str = "zh_CN") -> None:
     if not tokenizer.__class__.__name__.lower().startswith("mbart"):
         return
-    if "zh_CN" not in tokenizer.lang_code_to_id:
-        raise ValueError("The selected mBART tokenizer does not expose zh_CN.")
-    # Amis is an Austronesian language written in Latin script.
-    # Using zh_CN as src_lang forces Chinese ideographic priors onto Latin text.
-    # We select a Latin-script Austronesian language code (tl_XX / id_XX) or en_XX as source proxy.
-    src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX")
+    if tgt_lang not in tokenizer.lang_code_to_id:
+        raise ValueError(f"The selected mBART tokenizer does not expose {tgt_lang}.")
+    if src_lang not in tokenizer.lang_code_to_id:
+        src_lang = "en_XX"
     tokenizer.src_lang = src_lang
-    tokenizer.tgt_lang = "zh_CN"
-    model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
+    tokenizer.tgt_lang = tgt_lang
+    model.config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
 
 
 def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace) -> Dataset:
@@ -271,14 +281,14 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 
 
-def build_compute_metrics(tokenizer: Any):
+def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh"):
     def compute_metrics(eval_prediction: Any) -> dict[str, float]:
         predictions, labels = eval_prediction
         if isinstance(predictions, tuple):
             predictions = predictions[0]
         decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(predictions), skip_special_tokens=True)
         decoded_labels = tokenizer.batch_decode(safe_decode_inputs(labels), skip_special_tokens=True)
-        return generation_metrics(decoded_predictions, decoded_labels)
+        return generation_metrics(decoded_predictions, decoded_labels, tokenize=bleu_tokenizer)
 
     return compute_metrics
 
@@ -294,6 +304,9 @@ def main() -> None:
     output_dir = Path(args.output_dir) / run_name
     data_dir = Path(args.data_dir)
 
+    src_lang, tgt_lang, bleu_tokenizer = detect_mbart_languages(data_dir, args.src_lang, args.tgt_lang, args.bleu_tokenizer)
+    print(f"[init] language configuration: src={src_lang}, tgt={tgt_lang}, bleu_tok={bleu_tokenizer}", flush=True)
+
     print(f"[init] loading tokenizer and base model for {model_name}...", flush=True)
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     model = load_model(
@@ -304,7 +317,7 @@ def main() -> None:
         stack=args.rewire_stack,
         jepa_weight=args.jepa_weight,
     )
-    configure_mbart(tokenizer, model.base_model if hasattr(model, "base_model") else model)
+    configure_mbart(tokenizer, model.base_model if hasattr(model, "base_model") else model, src_lang=src_lang, tgt_lang=tgt_lang)
     if args.gradient_checkpointing:
         model.config.use_cache = False
     print(f"[init] tokenizing dataset splits from {data_dir}...", flush=True)
@@ -364,7 +377,7 @@ def main() -> None:
         eval_dataset=validation_dataset,
         tokenizer=tokenizer,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer),
+        compute_metrics=build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
         callbacks=[
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
