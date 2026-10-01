@@ -2,10 +2,15 @@
 
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 from typing import Any
 import torch
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+
+repo_root = Path(__file__).resolve().parents[2]
+if str(repo_root) not in sys.path:
+    sys.path.insert(0, str(repo_root))
 
 
 def load_eval_model_and_tokenizer(model_path: str | Path, model_family: str = "auto") -> tuple[Any, Any]:

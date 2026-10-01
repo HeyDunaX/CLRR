@@ -37,9 +37,13 @@ def download_and_extract(subpath: str, extract_to: Path) -> Path:
     return extract_to
 
 
-def run_command(cmd: list[str]) -> None:
+def run_command(cmd: list[str], cwd: Path | None = None) -> None:
     print(f"\n[Exec] {' '.join(cmd)}", flush=True)
-    ret = subprocess.run(cmd)
+    import os
+    env = dict(os.environ)
+    repo_root = Path(__file__).resolve().parents[2]
+    env["PYTHONPATH"] = f"{repo_root}:{env.get('PYTHONPATH', '')}"
+    ret = subprocess.run(cmd, env=env, cwd=cwd or repo_root)
     if ret.returncode != 0:
         print(f"[Error] Command failed with return code {ret.returncode}", flush=True)
         sys.exit(ret.returncode)
