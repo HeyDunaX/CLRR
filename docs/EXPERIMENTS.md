@@ -48,6 +48,35 @@
 
 ---
 
+### 2.1. Bảng Đối Chuẩn Parameter-Efficient Fine-Tuning (PEFT Baselines on mBART-50)
+
+Đánh giá thực nghiệm trên 575 câu Test Set (Beam Search size 4) nhằm giải quyết phản biện về tính hiệu quả tham số (Parameter-Efficiency):
+
+| Backbone Architecture | Phương pháp | Nguồn trích dẫn | $\Delta\theta$ (Thêm mới) | Tham số huấn luyện (% Model) | BLEU (zh) ↑ | chrF++ (w=2) ↑ | Nhận định học thuật & Hiện tượng đo đạc |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: | :--- |
+| **`facebook/mbart-large-50`**<br>(12 enc / 12 dec, 611M) | **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | **0** | 335.872 (0.0550%) | **0.3511** | **2.8464** | Đóng băng 99.95% backbone khiến mô hình không thể học biểu diễn ngôn ngữ unseen Amis |
+| | **LoRA** ($r=8, \alpha=16$) | Hu et al. (ICLR 2022) | **+1.179.648** | 1.179.648 (0.1927%) | **3.3284** | **5.1583** | Chỉ bắt được vài từ vựng rời rạc; adapter 1.18M không đủ sức tái định hình không gian đa ngữ |
+| | Standard Fine-Tuning | Official Baseline | 0 | 610.879.488 (100%) | 19.6106 | 14.0538 | Điểm tựa baseline chuẩn mBART |
+| | Middle-Layer Alignment | Liu & Niehues (ACL 2025) | 0 | 610.879.488 (100%) | 19.7243 | 15.5253 | Căn chỉnh tầng giữa đơn lẻ (+1.47 chrF++) |
+| | **CLRR-Enc + LSR (Ours)** | **Đề xuất chính** | **0** | **610.879.488 (Zero New Params)** | **20.3927** | **19.0839** | **Áp đảo hoàn toàn LoRA (+17.06 BLEU) và BitFit (+20.04 BLEU), chứng minh ưu thế tuyệt đối của $\Delta\theta=0$** |
+
+---
+
+### 2.2. Bảng Thực Nghiệm SOTA NLLB-200 (`facebook/nllb-200-distilled-600M`)
+
+Đánh giá thực nghiệm trên 575 câu Test Set (Beam Search size 4) trên mô hình dịch đa ngôn ngữ chuyên biệt NLLB-200 (Phương án A — chạy các mô hình độc lập):
+
+| Phương pháp | Nguồn trích dẫn | $\Delta\theta$ (Thêm mới) | Tham số huấn luyện (% Model) | BLEU (zh) ↑ | chrF++ (w=2) ↑ | chrF++ (Zh) ↑ | Nhận xét thực nghiệm |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Vanilla Baseline** | Official Fine-Tuning | 0 | 614.9M (100%) | **13.5001** | **10.4389** | **18.0885** | Điểm tựa pre-trained NLLB-200 sau 20 epochs |
+| **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | 0 | 131.0K (0.0213%) | **1.0750** | **2.9643** | **5.7081** | Nghẽn biểu diễn nghiêm trọng do chỉ cập nhật bias |
+| **LoRA** ($r=8, \alpha=16$) | Hu et al. (ICLR 2022) | +1.18M | 1.18M (0.1914%) | **3.5383** | **4.9407** | **9.1651** | Adapter 1.18M vượt trội BitFit nhưng tụt xa Baseline (-9.96 BLEU) |
+| **Middle-Layer Alignment** | Liu & Niehues (ACL 2025) | 0 | 614.9M (100%) | **13.9648** | **10.6596** | **18.4448** | Căn chỉnh tầng giữa (+0.46 BLEU, +0.36 chrF++ Zh so với Baseline) |
+| **CLRR-Enc + LSR (Ours)** | Đề xuất chính (Enc) | 0 | 614.9M (100%) | *Đang huấn luyện...* | *Đang huấn luyện...* | *Đang huấn luyện...* | Đang huấn luyện trên GPU A100 |
+| **CLRR-Dec + LSR (Ours)** | Đề xuất (Dec) | 0 | 614.9M (100%) | *Xếp hàng* | *Xếp hàng* | *Xếp hàng* | Chạy sau CLRR-Enc |
+
+---
+
 ## 3. Bảng Bóc Tách Thành Phần Độc Lập trên mBART-50 (Component Ablation Suite)
 
 Nhằm làm sáng tỏ cơ chế đóng góp của từng thành phần:
@@ -106,10 +135,14 @@ Toàn bộ mô hình đã được lưu trữ an toàn tại repository chính t
 
 | Checkpoint Path trên Hugging Face | Dung lượng | Trạng thái |
 | :--- | :---: | :---: |
+| `nllb-200/nllb-200-baseline-best.zip` | 6.84 GB | Đã tải lên |
+| `nllb-200/nllb-200-bitfit-best.zip` | 1.46 GB | Đã tải lên |
+| `nllb-200/nllb-200-lora-best.zip` | 18.9 MB | Đã tải lên |
+| `nllb-200/nllb-200-middle_align-best.zip` | ~6.8 GB | Đã hoàn thành / Tải lên HF Hub |
 | `revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/mbart-large-50-ami-cmn-lsr-only-best.zip` | 2.27 GB | Đã tải lên |
 | `revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/mbart-large-50-ami-cmn-clrr-only-best.zip` | 2.27 GB | Đã tải lên |
 | `outputs_revalidation.zip` (Metrics, predictions, log kiểm định) | ~15 MB | Đã tải lên |
-| `outputs_extra/` & `outputs/` (Checkpoints mBART và mT5 gốc) | ~12 GB | Đã tải lên |
+| `outputs/` & `outputs_extra/` (Checkpoints mBART và mT5 gốc — lưu trên HF) | ~12 GB | Đã tải lên |
 
 ---
 

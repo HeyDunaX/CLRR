@@ -166,7 +166,22 @@ class CrossLayerResidualRewire(nn.Module):
         return self.base_model.save_pretrained(*args, **kwargs)
 
     def prepare_decoder_input_ids_from_labels(self, labels: torch.Tensor) -> torch.Tensor:
-        return self.base_model.prepare_decoder_input_ids_from_labels(labels=labels)
+        if hasattr(self.base_model, "prepare_decoder_input_ids_from_labels"):
+            return self.base_model.prepare_decoder_input_ids_from_labels(labels=labels)
+        decoder_start_token_id = getattr(self.config, "decoder_start_token_id", None)
+        pad_token_id = getattr(self.config, "pad_token_id", None)
+        if decoder_start_token_id is None and hasattr(self.base_model, "config"):
+            decoder_start_token_id = getattr(self.base_model.config, "decoder_start_token_id", None)
+        if pad_token_id is None and hasattr(self.base_model, "config"):
+            pad_token_id = getattr(self.base_model.config, "pad_token_id", None)
+
+        shifted_input_ids = labels.new_zeros(labels.shape)
+        shifted_input_ids[:, 1:] = labels[:, :-1].clone()
+        if decoder_start_token_id is not None:
+            shifted_input_ids[:, 0] = decoder_start_token_id
+        if pad_token_id is not None:
+            shifted_input_ids.masked_fill_(shifted_input_ids == -100, pad_token_id)
+        return shifted_input_ids
 
     def gradient_checkpointing_enable(self, *args: Any, **kwargs: Any) -> Any:
         return self.base_model.gradient_checkpointing_enable(*args, **kwargs)
@@ -310,7 +325,22 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
         return self.base_model.save_pretrained(*args, **kwargs)
 
     def prepare_decoder_input_ids_from_labels(self, labels: torch.Tensor) -> torch.Tensor:
-        return self.base_model.prepare_decoder_input_ids_from_labels(labels=labels)
+        if hasattr(self.base_model, "prepare_decoder_input_ids_from_labels"):
+            return self.base_model.prepare_decoder_input_ids_from_labels(labels=labels)
+        decoder_start_token_id = getattr(self.config, "decoder_start_token_id", None)
+        pad_token_id = getattr(self.config, "pad_token_id", None)
+        if decoder_start_token_id is None and hasattr(self.base_model, "config"):
+            decoder_start_token_id = getattr(self.base_model.config, "decoder_start_token_id", None)
+        if pad_token_id is None and hasattr(self.base_model, "config"):
+            pad_token_id = getattr(self.base_model.config, "pad_token_id", None)
+
+        shifted_input_ids = labels.new_zeros(labels.shape)
+        shifted_input_ids[:, 1:] = labels[:, :-1].clone()
+        if decoder_start_token_id is not None:
+            shifted_input_ids[:, 0] = decoder_start_token_id
+        if pad_token_id is not None:
+            shifted_input_ids.masked_fill_(shifted_input_ids == -100, pad_token_id)
+        return shifted_input_ids
 
     def gradient_checkpointing_enable(self, *args: Any, **kwargs: Any) -> Any:
         return self.base_model.gradient_checkpointing_enable(*args, **kwargs)
