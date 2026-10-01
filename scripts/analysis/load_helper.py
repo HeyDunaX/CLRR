@@ -17,14 +17,18 @@ def load_eval_model_and_tokenizer(model_path: str | Path, model_family: str = "a
     model_path = Path(model_path)
     str_path = str(model_path).lower()
 
-    if "nllb" in str_path or model_family == "nllb":
+    leaf_name = model_path.name.lower()
+    if "nllb" in leaf_name or "nllb" in str_path or model_family == "nllb":
         family = "nllb"
         base_name = "facebook/nllb-200-distilled-600M"
     else:
         family = "mbart"
         base_name = "facebook/mbart-large-50-many-to-many-mmt"
 
-    is_clrr = any(tag in str_path for tag in ("clrr", "lsr", "jepa"))
+    if "baseline" in leaf_name:
+        is_clrr = False
+    else:
+        is_clrr = any(tag in leaf_name for tag in ("clrr", "lsr", "jepa"))
 
     # Tokenizer
     tok_dir = model_path if (model_path / "tokenizer_config.json").is_file() else base_name
@@ -40,7 +44,7 @@ def load_eval_model_and_tokenizer(model_path: str | Path, model_family: str = "a
     bin_file = model_path / "pytorch_model.bin"
     safe_file = model_path / "model.safetensors"
 
-    print(f"[LoadHelper] Loading {model_path} (family={family}, is_clrr={is_clrr})...", flush=True)
+    print(f"[LoadHelper] Loading {model_path} (leaf={leaf_name}, family={family}, is_clrr={is_clrr})...", flush=True)
 
     if is_clrr:
         if family == "nllb":
@@ -69,9 +73,15 @@ def load_eval_model_and_tokenizer(model_path: str | Path, model_family: str = "a
                 model = AutoModelForSeq2SeqLM.from_pretrained(base_name)
                 if bin_file.is_file():
                     model.load_state_dict(torch.load(bin_file, map_location="cpu"), strict=False)
+                elif safe_file.is_file():
+                    from safetensors.torch import load_file
+                    model.load_state_dict(load_file(str(safe_file)), strict=False)
         else:
             model = AutoModelForSeq2SeqLM.from_pretrained(base_name)
             if bin_file.is_file():
                 model.load_state_dict(torch.load(bin_file, map_location="cpu"), strict=False)
+            elif safe_file.is_file():
+                from safetensors.torch import load_file
+                model.load_state_dict(load_file(str(safe_file)), strict=False)
 
     return model, tokenizer

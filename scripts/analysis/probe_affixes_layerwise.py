@@ -106,7 +106,7 @@ def evaluate_probe(
         X_train, X_test = features[train_idx], features[test_idx]
         y_train, y_test = labels[train_idx], labels[test_idx]
 
-        clf = LogisticRegression(max_iter=1000, random_state=seed, solver="lbfgs", C=1.0)
+        clf = LogisticRegression(max_iter=200, random_state=seed, solver="lbfgs", C=1.0)
         clf.fit(X_train, y_train)
         preds = clf.predict(X_test)
 
@@ -145,25 +145,26 @@ def main() -> None:
         "pa_causative": has_pa,
     }
 
-    print(f"[Init] Loading {args.model_label} from {args.model_path}...")
+    print(f"[Init] Loading {args.model_label} from {args.model_path}...", flush=True)
     try:
         from scripts.analysis.load_helper import load_eval_model_and_tokenizer
     except ImportError:
         from load_helper import load_eval_model_and_tokenizer
     model, tokenizer = load_eval_model_and_tokenizer(args.model_path)
 
-    print(f"[Extract] Extracting layer-wise hidden states for {len(sources)} test sentences...")
+    print(f"[Extract] Extracting layer-wise hidden states for {len(sources)} test sentences...", flush=True)
     layer_states = extract_layerwise_hidden_states(model, tokenizer, sources, batch_size=args.batch_size)
     num_layers = len(layer_states) - 1
-    print(f"[Extract] Extracted {len(layer_states)} layers (Layer 0 = embedding, Layers 1..{num_layers} = blocks).")
+    print(f"[Extract] Extracted {len(layer_states)} layers (Layer 0 = embedding, Layers 1..{num_layers} = blocks).", flush=True)
 
     records = []
-    print(f"\n{'='*75}")
-    print(f"LAYER-WISE AFFIX PROBING: {args.model_label.upper()}")
-    print(f"{'='*75}")
+    print(f"\n{'='*75}", flush=True)
+    print(f"LAYER-WISE AFFIX PROBING: {args.model_label.upper()}", flush=True)
+    print(f"{'='*75}", flush=True)
 
     for l_idx, feats in enumerate(layer_states):
         layer_name = f"Layer_{l_idx}" if l_idx > 0 else "Embedding"
+        layer_f1s = []
         for task_name, targets in affix_tasks.items():
             acc, f1 = evaluate_probe(feats, targets)
             records.append({
@@ -176,13 +177,13 @@ def main() -> None:
                 "Accuracy": acc,
                 "F1_Score": f1,
             })
-            if l_idx in (1, num_layers // 2, num_layers):
-                print(f"  * {layer_name:<10} | Task: {task_name:<12} | Acc: {acc*100:.2f}% | F1: {f1:.4f}")
+            layer_f1s.append(f"{task_name[:2]}:{f1:.3f}")
+        print(f"  * {layer_name:<11} | F1: {' | '.join(layer_f1s)}", flush=True)
 
     df_results = pd.DataFrame(records)
     out_csv = out_dir / f"layerwise_probing_{args.model_label.lower()}.csv"
     df_results.to_csv(out_csv, index=False)
-    print(f"\n[Done] Exported layer-wise probing results to {out_csv}\n")
+    print(f"\n[Done] Exported layer-wise probing results to {out_csv}\n", flush=True)
 
 
 if __name__ == "__main__":
