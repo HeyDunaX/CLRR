@@ -198,12 +198,17 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
         raw_dataset, tokenizer,
         SimpleNamespace(max_source_length=256, max_target_length=256, source_prefix=""),
     )
-    trainer = Seq2SeqTrainer(
-        model=model,
-        args=args,
-        data_collator=DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8),
-        tokenizer=tokenizer,
-    )
+    trainer_kwargs = {
+        "model": model,
+        "args": args,
+        "data_collator": DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8),
+    }
+    trainer_sig = inspect.signature(Seq2SeqTrainer.__init__)
+    if "processing_class" in trainer_sig.parameters:
+        trainer_kwargs["processing_class"] = tokenizer
+    elif "tokenizer" in trainer_sig.parameters:
+        trainer_kwargs["tokenizer"] = tokenizer
+    trainer = Seq2SeqTrainer(**trainer_kwargs)
     result = trainer.predict(dataset, metric_key_prefix="test")
     generated = result.predictions[0] if isinstance(result.predictions, tuple) else result.predictions
     predictions = tokenizer.batch_decode(safe_decode_inputs(generated), skip_special_tokens=True)

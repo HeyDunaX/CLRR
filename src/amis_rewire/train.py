@@ -370,22 +370,27 @@ def main() -> None:
         training_kwargs["warmup_steps"] = max(1, int(steps_per_epoch * args.num_train_epochs * args.warmup_ratio))
 
     training_args = Seq2SeqTrainingArguments(**training_kwargs)
-    trainer = Seq2SeqTrainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset,
-        eval_dataset=validation_dataset,
-        tokenizer=tokenizer,
-        data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
-        callbacks=[
+    trainer_kwargs = {
+        "model": model,
+        "args": training_args,
+        "train_dataset": train_dataset,
+        "eval_dataset": validation_dataset,
+        "data_collator": collator,
+        "compute_metrics": build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
+        "callbacks": [
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
             CheckpointBackupCallback(
                 Path(args.backup_dir), run_name, args.hf_backup_repo, args.hf_backup_prefix
             ),
         ],
-    )
+    }
+    trainer_sig = inspect.signature(Seq2SeqTrainer.__init__)
+    if "processing_class" in trainer_sig.parameters:
+        trainer_kwargs["processing_class"] = tokenizer
+    elif "tokenizer" in trainer_sig.parameters:
+        trainer_kwargs["tokenizer"] = tokenizer
+    trainer = Seq2SeqTrainer(**trainer_kwargs)
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     trainable_count = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
     print(f"[run] model={model_name} method={args.method} parameters={parameter_count:,} trainable={trainable_count:,}", flush=True)

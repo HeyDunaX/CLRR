@@ -266,19 +266,25 @@ def main() -> None:
         save_safetensors=False,
     )
 
-    trainer = Seq2SeqTrainer(
-        model=model,
-        args=training_args,
-        train_dataset=train_dataset,
-        eval_dataset=validation_dataset,
-        tokenizer=tokenizer,
-        data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer),
-        callbacks=[
+    import inspect
+    trainer_kwargs = {
+        "model": model,
+        "args": training_args,
+        "train_dataset": train_dataset,
+        "eval_dataset": validation_dataset,
+        "data_collator": collator,
+        "compute_metrics": build_compute_metrics(tokenizer),
+        "callbacks": [
             ConsoleMetricsCallback(args.method.upper()),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
         ],
-    )
+    }
+    trainer_sig = inspect.signature(Seq2SeqTrainer.__init__)
+    if "processing_class" in trainer_sig.parameters:
+        trainer_kwargs["processing_class"] = tokenizer
+    elif "tokenizer" in trainer_sig.parameters:
+        trainer_kwargs["tokenizer"] = tokenizer
+    trainer = Seq2SeqTrainer(**trainer_kwargs)
 
     # Resume handling
     has_checkpoints = any(output_dir.glob("checkpoint-*"))
