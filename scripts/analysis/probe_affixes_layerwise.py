@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import re
 import sys
+import warnings
 from pathlib import Path
 from typing import Any
 
@@ -25,12 +26,15 @@ if str(repo_root) not in sys.path:
 
 import numpy as np
 import pandas as pd
+from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.model_selection import StratifiedKFold
 import torch
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+
+warnings.filterwarnings("ignore", category=ConvergenceWarning)
 
 
 class SimpleTextDataset(Dataset):
@@ -106,7 +110,7 @@ def evaluate_probe(
         X_train, X_test = features[train_idx], features[test_idx]
         y_train, y_test = labels[train_idx], labels[test_idx]
 
-        clf = LogisticRegression(max_iter=200, random_state=seed, solver="lbfgs", C=1.0)
+        clf = LogisticRegression(max_iter=500, random_state=seed, solver="lbfgs", C=1.0)
         clf.fit(X_train, y_train)
         preds = clf.predict(X_test)
 
