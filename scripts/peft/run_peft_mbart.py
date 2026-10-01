@@ -4,7 +4,7 @@ Executes sequential training:
 1. mBART-large-50 + LoRA (Hu et al., ICLR 2022) with r=8, alpha=16, lr=2e-4
 2. mBART-large-50 + BitFit (Ben-Zaken et al., ACL 2022) with bias tuning, lr=1e-4
 
-Consolidates all metrics into outputs_rebuttal/peft_scores.csv.
+Consolidates all metrics into results/peft_scores.csv.
 """
 
 from __future__ import annotations
@@ -26,7 +26,7 @@ def run_command(cmd: list[str], cwd: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data-dir", default="data/processed")
-    parser.add_argument("--output-dir", default="outputs_rebuttal")
+    parser.add_argument("--output-dir", default="results")
     parser.add_argument("--model-name", default="facebook/mbart-large-50-many-to-many-mmt")
     parser.add_argument("--num-train-epochs", type=str, default="20")
     parser.add_argument("--early-stopping-patience", type=str, default="4")

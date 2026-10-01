@@ -26,10 +26,10 @@ echo ""
 echo "[Step 2/4] Running mBART-50 PEFT Training (LoRA & BitFit)..."
 python -u scripts/peft/run_peft_mbart.py
 
-# 3. Packaging and Uploading outputs_rebuttal to Hugging Face
+# 3. Packaging and Uploading results to Hugging Face
 echo ""
-echo "[Step 3/4] Packaging PEFT Rebuttal Outputs..."
-zip -r outputs_rebuttal.zip outputs_rebuttal/
+echo "[Step 3/4] Packaging PEFT Results..."
+zip -r peft_results.zip results/mbart-large-50/lora/ results/mbart-large-50/bitfit/ results/peft_scores.csv
 
 if [ -n "$HF_TOKEN" ]; then
     echo "[hf] Uploading artifacts to Hugging Face Hub..."
@@ -40,14 +40,14 @@ token = os.environ.get('HF_TOKEN')
 if token:
     api = HfApi(token=token)
     api.upload_file(
-        path_or_fileobj='outputs_rebuttal.zip',
-        path_in_repo='peft_baselines/outputs_rebuttal.zip',
+        path_or_fileobj='peft_results.zip',
+        path_in_repo='peft_baselines/peft_results.zip',
         repo_id='FiveC/amis-rewire-checkpoints',
         repo_type='model'
     )
-    if os.path.exists('outputs_rebuttal/peft_scores.csv'):
+    if os.path.exists('results/peft_scores.csv'):
         api.upload_file(
-            path_or_fileobj='outputs_rebuttal/peft_scores.csv',
+            path_or_fileobj='results/peft_scores.csv',
             path_in_repo='peft_baselines/peft_scores.csv',
             repo_id='FiveC/amis-rewire-checkpoints',
             repo_type='model'

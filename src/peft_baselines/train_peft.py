@@ -9,7 +9,7 @@ Strictly follows the project's Fair Comparison Protocol:
 - Early stopping: patience 4 on validation chrF++
 - Generation: greedy during validation, beam_size=4 on final test set
 - Metrics: SacreBLEU (tokenize='zh') + chrF++ (word_order=2)
-- Artifacts: metrics.json, test_predictions.csv, best_model.zip saved to outputs_rebuttal/
+- Artifacts: metrics.json, test_predictions.csv, best_model.zip saved to results/
 """
 
 from __future__ import annotations
@@ -41,8 +41,12 @@ from transformers import (
     set_seed,
 )
 
-from .lora_adapter import apply_lora_to_model
-from .bitfit_adapter import apply_bitfit_to_model
+try:
+    from .lora_adapter import apply_lora_to_model
+    from .bitfit_adapter import apply_bitfit_to_model
+except ImportError:
+    from src.peft_baselines.lora_adapter import apply_lora_to_model
+    from src.peft_baselines.bitfit_adapter import apply_bitfit_to_model
 
 
 BLEU_METRIC = BLEU(tokenize="zh")
@@ -146,7 +150,7 @@ def parse_args() -> argparse.Namespace:
         help="Hugging Face model checkpoint (default: mbart-large-50).",
     )
     parser.add_argument("--data-dir", default="data/processed")
-    parser.add_argument("--output-dir", default="outputs_rebuttal")
+    parser.add_argument("--output-dir", default="results")
     parser.add_argument("--run-name", default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--num-train-epochs", type=float, default=20.0)
@@ -168,6 +172,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--lora-r", type=int, default=8, help="LoRA rank r (default: 8).")
     parser.add_argument("--lora-alpha", type=int, default=16, help="LoRA alpha scaling (default: 16).")
     parser.add_argument("--lora-dropout", type=float, default=0.05, help="LoRA dropout.")
+    parser.add_argument("--target-modules", type=str, default="q_proj,v_proj", help="Comma-separated module names for LoRA.")
+    parser.add_argument("--unfreeze-embeddings", action=argparse.BooleanOptionalAction, default=False, help="Whether to unfreeze and train token embeddings.")
     return parser.parse_args()
 
 
@@ -205,12 +211,15 @@ def main() -> None:
     # Apply PEFT method
     peft_stats = {}
     if args.method == "lora":
+        target_modules = [m.strip() for m in args.target_modules.split(",") if m.strip()]
+        modules_to_save = ["shared", "lm_head"] if args.unfreeze_embeddings else None
         model, peft_stats = apply_lora_to_model(
             raw_model,
             r=args.lora_r,
             lora_alpha=args.lora_alpha,
             lora_dropout=args.lora_dropout,
-            target_modules=["q_proj", "v_proj"],
+            target_modules=target_modules,
+            modules_to_save=modules_to_save,
         )
     elif args.method == "bitfit":
         model, peft_stats = apply_bitfit_to_model(raw_model, bias_components=["bias"])

@@ -13,7 +13,7 @@ Methods:
   - JEPA + CLRR-Enc (Ours Main)
   - JEPA + CLRR-Dec (Ours Decoder-only)
 
-Aggregates all results into outputs_comparative/full_comparative_matrix_acl.csv and displays Table 5.
+Aggregates all results into results/full_comparative_matrix_acl.csv and displays Table 5.
 """
 
 from __future__ import annotations
@@ -57,7 +57,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run comparative and multi-backbone experiments for ACL")
     parser.add_argument("--run-group", choices=["all_extensions", "mbart_only", "byt5_only", "all"], default="all_extensions")
     parser.add_argument("--data-dir", default="data/processed")
-    parser.add_argument("--output-dir", default="outputs_comparative")
+    parser.add_argument("--output-dir", default="results")
     parser.add_argument("--backup-dir", default="backups_comparative")
     parser.add_argument("--hf-backup-repo", default="FiveC/amis-rewire-checkpoints")
     parser.add_argument("--num-train-epochs", type=float, default=20.0)

@@ -30,7 +30,7 @@ def detect_repeated_ngrams(text: str, n: int = 4) -> int:
 
 def analyze_byt5() -> pd.DataFrame:
     repo_root = Path(__file__).resolve().parents[2]
-    out_dir = repo_root / "outputs_revalidation"
+    out_dir = repo_root / "results" / "analysis"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     repo_id = "FiveC/amis-rewire-checkpoints"

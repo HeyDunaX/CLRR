@@ -14,15 +14,15 @@ echo "[Step 1/4] Running Preflight Smoke Test..."
 python -u scripts/revalidation/smoke_test_revalidation.py
 
 # Pre-download existing revalidation artifacts from Hugging Face
-if [ -n "$HF_TOKEN" ] && [ ! -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+if [ -n "$HF_TOKEN" ] && [ ! -f "results/analysis/no_sg_gradient_trace.json" ]; then
     python -c "
 import os, shutil
 from huggingface_hub import hf_hub_download
 token = os.environ.get('HF_TOKEN')
 try:
     p = hf_hub_download(repo_id='FiveC/amis-rewire-checkpoints', filename='revalidation/no_sg_gradient_trace.json', token=token)
-    os.makedirs('outputs_revalidation', exist_ok=True)
-    shutil.copy(p, 'outputs_revalidation/no_sg_gradient_trace.json')
+    os.makedirs('results/analysis', exist_ok=True)
+    shutil.copy(p, 'results/analysis/no_sg_gradient_trace.json')
     print('[hf] Downloaded existing no_sg_gradient_trace.json from Hugging Face!')
 except Exception as e:
     print(f'[hf] Notice: no_sg_gradient_trace.json not found on remote ({e})')
@@ -31,12 +31,12 @@ fi
 
 
 # 2. Run Task 3: mT5 No-Stop-Gradient
-if [ ! -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+if [ ! -f "results/analysis/no_sg_gradient_trace.json" ]; then
     echo ""
     echo "[Step 2/4] Task 3: Running mT5 No-Stop-Gradient Experiment (5 epochs)..."
     python -u scripts/revalidation/run_no_stop_gradient.py
 
-    if [ -n "$HF_TOKEN" ] && [ -f "outputs_revalidation/no_sg_gradient_trace.json" ]; then
+    if [ -n "$HF_TOKEN" ] && [ -f "results/analysis/no_sg_gradient_trace.json" ]; then
         echo "[hf] Uploading Task 3 gradient trace..."
         python -c "
 import os
@@ -45,7 +45,7 @@ token = os.environ.get('HF_TOKEN')
 if token:
     api = HfApi(token=token)
     api.upload_file(
-        path_or_fileobj='outputs_revalidation/no_sg_gradient_trace.json',
+        path_or_fileobj='results/analysis/no_sg_gradient_trace.json',
         path_in_repo='revalidation/no_sg_gradient_trace.json',
         repo_id='FiveC/amis-rewire-checkpoints',
         repo_type='model'
@@ -66,8 +66,8 @@ python -u scripts/revalidation/run_ablation_mbart.py
 
 # 4. Packaging and Push to Hugging Face
 echo ""
-echo "[Step 4/4] Packaging Revalidation Outputs..."
-zip -r outputs_revalidation.zip outputs_revalidation/
+echo "[Step 4/4] Packaging Revalidation Results..."
+zip -r revalidation_results.zip results/mbart-large-50/clrr-only/ results/mbart-large-50/lsr-only/ results/analysis/
 
 if [ -n "$HF_TOKEN" ]; then
     echo "[hf] Uploading artifacts to Hugging Face Hub..."
@@ -78,12 +78,12 @@ token = os.environ.get('HF_TOKEN')
 if token:
     api = HfApi(token=token)
     api.upload_file(
-        path_or_fileobj='outputs_revalidation.zip',
-        path_in_repo='revalidation/outputs_revalidation.zip',
+        path_or_fileobj='revalidation_results.zip',
+        path_in_repo='revalidation/revalidation_results.zip',
         repo_id='FiveC/amis-rewire-checkpoints',
         repo_type='model'
     )
-    print('[hf] Successfully uploaded outputs_revalidation.zip to FiveC/amis-rewire-checkpoints')
+    print('[hf] Successfully uploaded revalidation_results.zip to FiveC/amis-rewire-checkpoints')
 "
 fi
 

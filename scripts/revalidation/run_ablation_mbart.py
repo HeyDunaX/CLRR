@@ -24,7 +24,7 @@ def run_command(cmd: list[str], cwd: Path) -> None:
 
 def run_mbart_ablations() -> None:
     repo_root = Path(__file__).resolve().parents[2]
-    out_dir = repo_root / "outputs_revalidation"
+    out_dir = repo_root / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     ablations = [

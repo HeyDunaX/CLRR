@@ -16,8 +16,8 @@ from sacrebleu.tokenizers.tokenizer_zh import TokenizerZh
 
 def run_audit() -> dict:
     repo_root = Path(__file__).resolve().parents[2]
-    pred_dir = repo_root / "outputs_extra" / "analysis" / "predictions"
-    out_dir = repo_root / "outputs_revalidation"
+    pred_dir = repo_root / "results" / "analysis" / "predictions"
+    out_dir = repo_root / "results" / "analysis"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     base_path = pred_dir / "mbart-large-50-ami-cmn-baseline.csv"

@@ -148,7 +148,7 @@ class GradientNormTracker(TrainerCallback):
 def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
     repo_root = Path(__file__).resolve().parents[2]
     data_dir = repo_root / "data" / "processed"
-    out_dir = repo_root / "outputs_revalidation" / "mt5-small-no-sg"
+    out_dir = repo_root / "results" / "mt5-small" / "no-stop-gradient"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print("[init] Loading google/mt5-small for No-Stop-Gradient experiment...")
@@ -229,7 +229,7 @@ def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
         "gradient_trace": grad_tracker.trace,
     }
 
-    trace_file = repo_root / "outputs_revalidation" / "no_sg_gradient_trace.json"
+    trace_file = repo_root / "results" / "analysis" / "no_sg_gradient_trace.json"
     with open(trace_file, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 

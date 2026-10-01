@@ -134,7 +134,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stage", choices=("byt5", "ablation", "all"), required=True)
     parser.add_argument("--repo", default=REPO)
-    parser.add_argument("--output-dir", type=Path, default=Path("outputs_extra"))
+    parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument("--backup-dir", type=Path, default=Path("backups_extra"))
     parser.add_argument("--data-dir", type=Path, default=Path("data/processed"))
     args = parser.parse_args()

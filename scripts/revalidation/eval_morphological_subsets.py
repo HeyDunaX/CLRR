@@ -18,8 +18,8 @@ import sacrebleu
 
 def eval_morphology() -> pd.DataFrame:
     repo_root = Path(__file__).resolve().parents[2]
-    pred_dir = repo_root / "outputs_extra" / "analysis" / "predictions"
-    out_dir = repo_root / "outputs_revalidation"
+    pred_dir = repo_root / "results" / "analysis" / "predictions"
+    out_dir = repo_root / "results" / "analysis"
     out_dir.mkdir(parents=True, exist_ok=True)
 
     test_csv = repo_root / "data" / "processed" / "test.csv"

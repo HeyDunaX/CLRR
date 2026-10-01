@@ -153,13 +153,18 @@ def load_split(data_dir: Path, split: str) -> Dataset:
 
 def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace) -> Dataset:
     def tokenize(batch: dict[str, list[str]]) -> dict[str, Any]:
-        return tokenizer(
-            text=batch["source"],
-            text_target=batch["target"],
+        model_inputs = tokenizer(
+            batch["source"],
             max_length=args.max_source_length,
-            max_target_length=args.max_target_length,
             truncation=True,
         )
+        labels = tokenizer(
+            text_target=batch["target"],
+            max_length=args.max_target_length,
+            truncation=True,
+        )
+        model_inputs["labels"] = labels["input_ids"]
+        return model_inputs
 
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 

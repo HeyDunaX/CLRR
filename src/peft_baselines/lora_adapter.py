@@ -19,6 +19,7 @@ def apply_lora_to_model(
     lora_alpha: int = 16,
     lora_dropout: float = 0.05,
     target_modules: list[str] | None = None,
+    modules_to_save: list[str] | None = None,
 ) -> tuple[nn.Module, dict[str, Any]]:
     """Applies LoRA to a Seq2Seq model using official Hugging Face PEFT library.
 
@@ -28,6 +29,7 @@ def apply_lora_to_model(
         lora_alpha: LoRA scaling factor (default: 16).
         lora_dropout: Dropout probability for LoRA layers (default: 0.05).
         target_modules: List of module names to apply LoRA to. Defaults to ["q_proj", "v_proj"].
+        modules_to_save: Modules to unfreeze and train alongside LoRA adapters.
 
     Returns:
         peft_model: The wrapped PeftModel.
@@ -42,6 +44,7 @@ def apply_lora_to_model(
         lora_alpha=lora_alpha,
         lora_dropout=lora_dropout,
         target_modules=target_modules,
+        modules_to_save=modules_to_save,
         bias="none",
     )
 

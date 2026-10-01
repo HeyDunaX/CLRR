@@ -489,7 +489,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("stage", choices=("preflight", "smoke", "analyze", "report"))
     parser.add_argument("--repo", default=REPO)
-    parser.add_argument("--output-dir", type=Path, default=Path("outputs_extra"))
+    parser.add_argument("--output-dir", type=Path, default=Path("results"))
     parser.add_argument("--data-dir", type=Path, default=Path("data/processed"))
     parser.add_argument("--batch-size", type=int, default=16)
     args = parser.parse_args()

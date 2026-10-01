@@ -1,0 +1,14 @@
+Category,Count,Percent,Type
+Total Test Set,575,100.0,Full
+Affixed Sentences (>=1 prefix),414,72.0,Superset
+Root / Simple (No voice prefix),161,28.000000000000004,Disjoint Control
+Marginal: mi- (Actor Voice),195,33.91304347826087,Marginal
+Marginal: ma- (Patient/Stative),246,42.78260869565217,Marginal
+Marginal: pa- (Causative),127,22.086956521739133,Marginal
+Venn: Exclusive mi- only,86,14.956521739130435,Venn Cell
+Venn: Exclusive ma- only,138,24.0,Venn Cell
+Venn: Exclusive pa- only,49,8.521739130434783,Venn Cell
+Venn: mi- & ma- co-occurrence,63,10.956521739130434,Venn Cell
+Venn: mi- & pa- co-occurrence,33,5.739130434782608,Venn Cell
+Venn: ma- & pa- co-occurrence,32,5.565217391304348,Venn Cell
+Venn: mi- & ma- & pa- all three,13,2.2608695652173916,Venn Cell
