@@ -30,6 +30,7 @@ from sklearn.exceptions import ConvergenceWarning
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.model_selection import StratifiedKFold
+from sklearn.preprocessing import StandardScaler
 import torch
 from torch.utils.data import DataLoader, Dataset
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
@@ -109,6 +110,10 @@ def evaluate_probe(
     for train_idx, test_idx in skf.split(features, labels):
         X_train, X_test = features[train_idx], features[test_idx]
         y_train, y_test = labels[train_idx], labels[test_idx]
+
+        scaler = StandardScaler()
+        X_train = scaler.fit_transform(X_train)
+        X_test = scaler.transform(X_test)
 
         clf = LogisticRegression(max_iter=500, random_state=seed, solver="lbfgs", C=1.0)
         clf.fit(X_train, y_train)
