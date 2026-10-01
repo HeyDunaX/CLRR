@@ -135,7 +135,9 @@ class CrossLayerResidualRewire(nn.Module):
         with self._fresh_cache():
             return self.base_model.generate(*args, **kwargs)
 
-    def num_parameters(self, only_trainable: bool = False) -> int:
+    def num_parameters(self, only_trainable: bool = False, exclude_embeddings: bool = False, **kwargs: Any) -> int:
+        if hasattr(self.base_model, "num_parameters"):
+            return self.base_model.num_parameters(only_trainable=only_trainable, exclude_embeddings=exclude_embeddings, **kwargs)
         parameters: Iterable[nn.Parameter] = self.parameters()
         if only_trainable:
             parameters = (parameter for parameter in parameters if parameter.requires_grad)
@@ -238,7 +240,9 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
     def extra_parameter_count(self) -> int:
         return 0
 
-    def num_parameters(self, only_trainable: bool = False) -> int:
+    def num_parameters(self, only_trainable: bool = False, exclude_embeddings: bool = False, **kwargs: Any) -> int:
+        if hasattr(self.base_model, "num_parameters"):
+            return self.base_model.num_parameters(only_trainable=only_trainable, exclude_embeddings=exclude_embeddings, **kwargs)
         parameters: Iterable[nn.Parameter] = self.parameters()
         if only_trainable:
             parameters = (parameter for parameter in parameters if parameter.requires_grad)
