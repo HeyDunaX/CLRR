@@ -42,6 +42,12 @@ def main() -> None:
     out_dir = repo_root / args.output_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    if Path("/content/PAUSE_AFTER_LORA").exists() or (repo_root / "PAUSE_AFTER_LORA").exists():
+        print("\n=======================================================", flush=True)
+        print("[PAUSE] PAUSE_AFTER_LORA flag detected. Pausing suite after NLLB LoRA as requested.", flush=True)
+        print("=======================================================\n", flush=True)
+        sys.exit(0)
+
     experiments = [
         {
             "id": "mbart_baseline",
