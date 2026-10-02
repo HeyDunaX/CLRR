@@ -123,10 +123,49 @@ A–B đổi đồng thời LR và việc mở khóa embeddings, nên chưa tác
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | **Vanilla Baseline** | Official Fine-Tuning | 0 | 614.9M (100%) | **13.5001** | **10.4389** | **18.0885** | Điểm tựa pre-trained NLLB-200 sau 20 epochs |
 | **BitFit** (Bias-only) | Ben-Zaken et al. (ACL 2022) | 0 | 131.0K (0.0213%) | **1.0750** | **2.9643** | **5.7081** | Nghẽn biểu diễn nghiêm trọng do chỉ cập nhật bias |
-| **LoRA** ($r=8, \alpha=16$) | Hu et al. (ICLR 2022) | +1.18M | 1.18M (0.1914%) | **3.5383** | **4.9407** | **9.1651** | Adapter 1.18M vượt trội BitFit nhưng tụt xa Baseline (-9.96 BLEU) |
+| **Narrow LoRA** ($r=8, q/v$) | Hu et al. (ICLR 2022) | +1.18M | 1.18M (0.1914%) | **3.5383** | **4.9407** | **9.1651** | Adapter 1.18M hẹp, chưa đủ sức xoay chuyển không gian đa ngữ |
+| **Strong LoRA A** ($r=16$, All-Linear) | Mở rộng rebuttal (ACL) | **+8.65M** | **8.65M (1.3870%)** | **11.4625** | **9.5004** | **16.6314** | **Tăng vọt +7.92 BLEU so với Narrow LoRA; chứng minh PEFT được tối ưu công bằng** |
+| **Strong LoRA B** (+Embeddings) | Mở rộng rebuttal (ACL) | **+8.65M** | **271.0M (43.4496%)** | **9.8024** | **8.4010** | **14.8131** | Mở khóa 262M embedding NLLB gây phân tán biểu diễn/overfit trên 4.6k câu |
 | **Middle-Layer Alignment** | Liu & Niehues (ACL 2025) | 0 | 614.9M (100%) | **13.9648** | **10.6596** | **18.4448** | Căn chỉnh tầng giữa (+0.46 BLEU, +0.36 chrF++ Zh so với Baseline) |
-| **CLRR-Enc + LSR (Ours)** | **Đề xuất chính (Enc)** | **0** | **614.9M (100%)** | **14.2820** | **10.9152** | **18.7482** | **Thiết lập SOTA mới trên NLLB-200 (+0.78 BLEU, +0.66 chrF++ Zh so với Baseline, Zero new params)** |
 | **CLRR-Dec + LSR (Ours)** | Đề xuất (Dec) | 0 | 614.9M (100%) | **13.4194** | **10.4559** | **18.0274** | Nối tầng Decoder (+0.02 chrF++ so với Baseline), khẳng định Encoder là vị trí tối ưu trên NLLB |
+| **CLRR-Enc + LSR (Ours)** | **Đề xuất chính (Enc)** | **0** | **614.9M (100%)** | **14.2820**$^\dagger$ | **10.9152**$^\dagger$ | **18.7482** | **SOTA TOÀN DIỆN TRÊN NLLB-200 (+0.78 BLEU, +0.66 chrF++ Zh so với Baseline; hơn Strong LoRA A +2.82 BLEU, Zero new params)** |
+
+---
+
+### 2.2.1. NLLB-200 Strong LoRA Run A (All-Linear) — 2026-10-02
+
+- **Cấu hình:** `facebook/nllb-200-distilled-600M`, LoRA rank 16 / alpha 32 / dropout 0.05, can thiệp toàn bộ 6 ma trận tuyến tính (`q_proj, k_proj, v_proj, out_proj, fc1, fc2`) trên 12 tầng Encoder + 12 tầng Decoder. Đóng băng ma trận nhúng.
+- **Siêu tham số:** Learning rate $2 \times 10^{-4}$, seed 42, batch 16 $\times$ accumulation 8 = Effective Batch 128, BF16, linear warmup 0.06 over 20 epochs. Checkpoint đánh giá Validation chrF++ mỗi epoch.
+- **Tiến trình:** Hoàn tất 20/20 epochs (720 steps) trên NVIDIA A100 GPU trong **32.9 phút**. Checkpoint tốt nhất tại epoch 18 (`checkpoint-648`).
+- **Tham số:** Thêm mới và huấn luyện **8.650.752 tham số** (1,3870% tổng số 623.724.544 tham số của mô hình LoRA).
+- **Kết quả kiểm thử chính thức (Test Set 575 câu):**
+  - **Test BLEU (zh):** **`11.4625`** (Tăng bùng nổ **+7.9242 BLEU** so với Narrow LoRA 3.5383)
+  - **Test chrF++ (raw, w=2):** **`9.5004`** (Tăng **+4.5597 chrF++**)
+  - **Test chrF++ (Zh):** **`16.6314`** (Tăng **+7.4663 chrF++ Zh**)
+- **Artifacts lưu trữ tại:**
+  - `results/nllb-200/nllb-200-lora-all-linear/metrics.json`
+  - `results/nllb-200/nllb-200-lora-all-linear/test_predictions.csv`
+  - `results/nllb-200/nllb-200-lora-all-linear/nllb-200-strong_lora_a-best.zip`
+
+---
+
+### 2.2.2. NLLB-200 Strong LoRA Run B (All-Linear + Unfrozen Embeddings) — 2026-10-02
+
+- **Cấu hình:** `facebook/nllb-200-distilled-600M`, All-Linear adapter ($r=16, \alpha=32$) kết hợp mở khóa toàn bộ ma trận nhúng và đầu ra (`shared`, `embed_tokens`, `lm_head`).
+- **Siêu tham số:** Learning rate $1 \times 10^{-4}$ (chuẩn PEFT embedding plasticity), seed 42, batch 16 $\times$ accumulation 8 = Effective Batch 128, BF16. Tối đa 20 epochs, patience 4.
+- **Tiến trình:** Hoàn tất 20/20 epochs (720 steps) trên NVIDIA A100 GPU trong **40.4 phút**. Checkpoint tốt nhất tại epoch 19 (`checkpoint-684`).
+- **Tham số:** Thêm 8.650.752 tham số adapter, cập nhật **271.005.696 tham số** (chiếm **43,4496%** toàn bộ mô hình).
+- **Kết quả kiểm thử chính thức (Test Set 575 câu):**
+  - **Test BLEU (zh):** **`9.8024`**
+  - **Test chrF++ (raw, w=2):** **`8.4010`**
+  - **Test chrF++ (Zh):** **`14.8131`**
+- **Artifacts lưu trữ tại:**
+  - `results/nllb-200/nllb-200-lora-all-linear-unfreeze-embed/metrics.json`
+  - `results/nllb-200/nllb-200-lora-all-linear-unfreeze-embed/test_predictions.csv`
+  - `results/nllb-200/nllb-200-lora-all-linear-unfreeze-embed/nllb-200-strong_lora_b-best.zip`
+- **So sánh đối chiếu:**
+  - Ngược lại với mBART-50 (nơi unfreezing embeddings tăng từ 10.42 lên 14.04 BLEU), trên NLLB-200, việc mở khóa 262M tham số embedding làm giảm điểm từ **11.46 xuống 9.80 BLEU**. Không gian embedding 256k token của NLLB bị quá khớp (overfit) khi chịu gradient update từ chỉ 4.600 câu Amis; đóng băng embedding giúp duy trì cấu trúc biểu diễn đa ngữ tốt hơn nhiều.
+  - Tuy nhiên, dù ở cấu hình nào, Strong LoRA trên NLLB vẫn kém CLRR-Enc + LSR (14.2820 BLEU / 18.7482 chrF++ Zh) từ **+2.82 đến +4.48 BLEU**, chứng minh ưu thế áp đảo của đường truyền tắt cấu trúc nội tại so với can thiệp adapter bên ngoài.
 
 ---
 
