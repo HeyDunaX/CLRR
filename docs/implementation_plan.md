@@ -24,11 +24,11 @@
          ┌──────────────────────────────────────────┼──────────────────────────────────────────┐
          ▼                                          ▼                                          ▼
  [ĐÃ HOÀN TẤT 100%]                         [ƯU TIÊN 1: NLLB LoRA]                     [ƯU TIÊN 2: ASHÁNINKA]
-  ✅ mBART-50 Amis Suite (Full + LoRA A/B)   🚀 SẴN SÀNG CHẠY TRÊN A100                 🚀 SẴN SÀNG CHẠY TRÊN A100
-  ✅ NLLB-200 Amis Core Suite               - Run A: All-Linear (r=16)                 - Run 1: mBART Baseline (es_XX)
-  ✅ mT5-small Suite (Appendix F)           - Run B: All-Linear + Unfreeze Embed       - Run 2: mBART CLRR-Enc + LSR
-  ✅ ByT5-small Baseline vs CLRR            - Tạo đối xứng 1-1 với mBART-50            - Run 3: NLLB Baseline (spa_Latn)
-  ✅ Chẩn đoán Probing & SVD Anti-Collapse  - Dự kiến: ~40 phút / run                  - Run 4: NLLB CLRR-Enc + LSR
+  ✅ mBART-50 Amis Suite (Full + LoRA A/B)   ✅ Run A: All-Linear (11.46 BLEU)          ⏸️ TẠM DỪNG THEO CHỈ THỊ
+  ✅ NLLB-200 Amis Core Suite                ✅ Run B: Unfreeze Embed (9.80 BLEU)       - Sẵn sàng kích hoạt khi cần
+  ✅ mT5-small Suite (Appendix F)            ✅ Đã lưu checkpoint & metrics             - Run 1: mBART Baseline (es_XX)
+  ✅ ByT5-small Baseline vs CLRR             ✅ Đối xứng 1-1 hoàn chỉnh với mBART       - Run 2: mBART CLRR-Enc + LSR
+  ✅ Chẩn đoán Probing & SVD Anti-Collapse   ⏸️ PIPELINE ĐÃ TẠM DỪNG THÀNH CÔNG         - Run 3-4: NLLB Core Matrix
 ```
 
 ### Bảng Tổng Hợp Chi Tiết Các Nhiệm Vụ Tiếp Theo:
@@ -58,12 +58,12 @@ Nhằm đảm bảo **tính công bằng học thuật tuyệt đối (Strict Sc
 | **REF-4** | `mbart-...-unfreeze-embed` | ✅ Đã chạy | `mbart-large-50-...` | Amis $\to$ Zh | Strong LoRA Run B | 260.0M (42.6%) | +3.54M | All-Lin + `shared,lm_head` | N/A | $1 \times 10^{-4}$ | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
 | **REF-5** | `nllb-200-baseline` | ✅ Đã chạy | `nllb-200-distilled-600M` | Amis $\to$ Zh | Full Fine-Tuning | 614.91M (100%) | 0 | Toàn bộ mô hình | N/A | $5 \times 10^{-5}$ | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
 | **REF-6** | `nllb-200-clrr-enc` | ✅ Đã chạy | `nllb-200-distilled-600M` | Amis $\to$ Zh | CLRR-Enc + LSR | 614.91M (100%) | 0 | Toàn bộ mô hình | $d=2, \alpha=0.1, \lambda=0.1$ | $5 \times 10^{-5}$ | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P1.1** | `nllb-200-lora-all-linear` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run A | 8.65M (1.41%) | +8.65M | $q,k,v,o,fc1,fc2$ ($r=16, \alpha=32$) | N/A | **$2 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P1.2** | `nllb-...-unfreeze-embed` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run B | 264.7M (42.7%) | +8.65M | All-Lin + `shared,embed,lm_head` | N/A | **$1 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P2.1** | `mbart-ashaninka-es-baseline` | 🚀 **Sắp chạy** | `mbart-large-50-...` | Ashán $\to$ Es | Full Fine-Tuning | 610.88M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P2.2** | `mbart-ashaninka-es-clrr-enc` | 🚀 **Sắp chạy** | `mbart-large-50-...` | Ashán $\to$ Es | CLRR-Enc + LSR | 610.88M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P3.1** | `nllb-ashaninka-es-baseline` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Ashán $\to$ Es | Full Fine-Tuning | 614.91M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
-| **P3.2** | `nllb-ashaninka-es-clrr-enc` | 🚀 **Sắp chạy** | `nllb-200-distilled-600M` | Ashán $\to$ Es | CLRR-Enc + LSR | 614.91M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P1.1** | `nllb-200-lora-all-linear` | ✅ **Đã hoàn thành** (BLEU: **11.46**, chrF++: **9.50**) | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run A | 8.65M (1.39%) | +8.65M | $q,k,v,o,fc1,fc2$ ($r=16, \alpha=32$) | N/A | **$2 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P1.2** | `nllb-...-unfreeze-embed` | ✅ **Đã hoàn thành** (BLEU: **9.80**, chrF++: **8.40**) | `nllb-200-distilled-600M` | Amis $\to$ Zh | Strong LoRA Run B | 271.0M (43.4%) | +8.65M | All-Lin + `shared,embed,lm_head` | N/A | **$1 \times 10^{-4}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P2.1** | `mbart-ashaninka-es-baseline` | ⏸️ **Tạm dừng (Chờ lệnh)** | `mbart-large-50-...` | Ashán $\to$ Es | Full Fine-Tuning | 610.88M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P2.2** | `mbart-ashaninka-es-clrr-enc` | ⏸️ **Tạm dừng (Chờ lệnh)** | `mbart-large-50-...` | Ashán $\to$ Es | CLRR-Enc + LSR | 610.88M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $4 \times 32$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P3.1** | `nllb-ashaninka-es-baseline` | ⏸️ **Tạm dừng (Chờ lệnh)** | `nllb-200-distilled-600M` | Ashán $\to$ Es | Full Fine-Tuning | 614.91M (100%) | 0 | Toàn bộ mô hình | N/A | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
+| **P3.2** | `nllb-ashaninka-es-clrr-enc` | ⏸️ **Tạm dừng (Chờ lệnh)** | `nllb-200-distilled-600M` | Ashán $\to$ Es | CLRR-Enc + LSR | 614.91M (100%) | 0 | Toàn bộ mô hình | **$d=2, \alpha=0.1, \lambda=0.1$** | **$5 \times 10^{-5}$** | $16 \times 8$ | **128** | 20 ep / 4 pat | AdamW, 6% linear | 42 |
 
 > [!TIP]
 > **Điểm mấu chốt bảo đảm tính công bằng tuyệt đối (Fairness Guarantees):**
@@ -188,8 +188,8 @@ tail -f /content/ashaninka.log
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: |
 | **`nllb-200-distilled-600M`** | BitFit (Bias-only) | 0 | 131k (0.02%) | 1.0750 | 2.9643 | 5.7081 |
 | | Narrow LoRA ($r=8, q/v$) | +1.18M | 1.18M (0.19%) | 3.5383 | 4.9407 | 9.1651 |
-| | **Strong LoRA A ($r=16$, All-Linear)** | **+8.65M** | **8.65M (1.41%)** | *[Đang chạy]* | *[Đang chạy]* | *[Đang chạy]* |
-| | **Strong LoRA B (+Embeddings)** | **+8.65M** | **264.7M (42.7%)** | *[Đang chạy]* | *[Đang chạy]* | *[Đang chạy]* |
+| | **Strong LoRA A ($r=16$, All-Linear)** | **+8.65M** | **8.65M (1.39%)** | **11.4625** | **9.5004** | **16.6314** |
+| | **Strong LoRA B (+Embeddings)** | **+8.65M** | **271.0M (43.4%)** | **9.8024** | **8.4010** | **14.8131** |
 | | Standard Fine-Tuning | 0 | 615M (100%) | 13.5001 | 10.4389 | 18.0885 |
 | | Middle-Layer Alignment | 0 | 615M (100%) | 13.9648 | 10.6596 | 18.4448 |
 | | **CLRR-Enc + LSR (Ours)** | **0** | **615M (100%)** | **14.2820** | **10.9152** | **18.7482** |
