@@ -1,0 +1,30 @@
+{
+  "dataset": "opus100_turkish_english_20k",
+  "source_language": "tr",
+  "target_language": "en",
+  "dataset_source": "Helsinki-NLP/opus-100",
+  "sampling": "Fixed seed 42 sampling of 20,000 train pairs; official validation (2,000) and test (2,000)",
+  "splits": {
+    "train": {
+      "rows": 20000,
+      "sha256": "b20c042e7d096f1cd61e7235dd4ded8477ae79afd6c7c9b2da86e75352916068"
+    },
+    "validation": {
+      "rows": 2000,
+      "sha256": "645664aab1c33bfdb767df112340d2d8b5cf3d00c7ef5c6692f54136a3d6e9ba"
+    },
+    "test": {
+      "rows": 2000,
+      "sha256": "6135d9a7daa39e69b542f7fe972216694b736e5713f6a0311cd6230ed9d4e051"
+    }
+  },
+  "cross_split_overlap": {
+    "train/validation": {
+      "exact_sources": 0
+    },
+    "train/test": {
+      "exact_sources": 0
+    }
+  },
+  "preprocessing": "UTF-8; stripped whitespace; non-empty strings; strictly disjoint splits."
+}

@@ -181,6 +181,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--num-train-epochs", type=float, default=5.0)
     parser.add_argument("--early-stopping-patience", type=int, default=2)
     parser.add_argument("--learning-rate", type=float, default=5e-5)
+    parser.add_argument("--weight-decay", type=float, default=0.0)
     parser.add_argument("--warmup-ratio", type=float, default=0.06)
     parser.add_argument("--per-device-train-batch-size", type=int, default=256)
     parser.add_argument("--per-device-eval-batch-size", type=int, default=64)
@@ -220,6 +221,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--src-lang", default=None, help="Source language code (auto-detected if None).")
     parser.add_argument("--tgt-lang", default=None, help="Target language code (auto-detected if None).")
     parser.add_argument("--bleu-tokenizer", default=None, help="Tokenizer for BLEU (zh or 13a, auto-detected if None).")
+    parser.add_argument("--test-reference", choices=["trainer", "original_csv"], default="trainer",
+                        help="Keep historical Trainer scoring by default; new suites can use original references.")
     parser.add_argument("--auto-resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--fp16", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
@@ -242,9 +245,19 @@ def load_split(data_dir: Path, split: str) -> Dataset:
 def detect_mbart_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
     path_str = str(data_dir).lower()
     is_spanish = "ashaninka" in path_str or "spanish" in path_str
-    tgt_lang = cli_tgt or ("es_XX" if is_spanish else "zh_CN")
-    src_lang = cli_src or ("es_XX" if is_spanish else "tl_XX")
-    bleu_tok = cli_tok or ("13a" if is_spanish else "zh")
+    is_turkish = "turkish" in path_str or "tr_en" in path_str or "opus100" in path_str
+    if is_turkish:
+        tgt_lang = cli_tgt or "en_XX"
+        src_lang = cli_src or "tr_TR"
+        bleu_tok = cli_tok or "13a"
+    elif is_spanish:
+        tgt_lang = cli_tgt or "es_XX"
+        src_lang = cli_src or "es_XX"
+        bleu_tok = cli_tok or "13a"
+    else:
+        tgt_lang = cli_tgt or "zh_CN"
+        src_lang = cli_src or "tl_XX"
+        bleu_tok = cli_tok or "zh"
     return src_lang, tgt_lang, bleu_tok
 
 
@@ -258,6 +271,7 @@ def configure_mbart(tokenizer: Any, model: Any, src_lang: str = "tl_XX", tgt_lan
     tokenizer.src_lang = src_lang
     tokenizer.tgt_lang = tgt_lang
     model.config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
+    model.generation_config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
 
 
 def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace) -> Dataset:
@@ -317,7 +331,7 @@ def main() -> None:
         stack=args.rewire_stack,
         jepa_weight=args.jepa_weight,
     )
-    configure_mbart(tokenizer, model.base_model if hasattr(model, "base_model") else model, src_lang=src_lang, tgt_lang=tgt_lang)
+    configure_mbart(tokenizer, model, src_lang=src_lang, tgt_lang=tgt_lang)
     if args.gradient_checkpointing:
         model.config.use_cache = False
     print(f"[init] tokenizing dataset splits from {data_dir}...", flush=True)
@@ -333,6 +347,7 @@ def main() -> None:
         "data_seed": args.seed,
         "num_train_epochs": args.num_train_epochs,
         "learning_rate": args.learning_rate,
+        "weight_decay": args.weight_decay,
         "per_device_train_batch_size": args.per_device_train_batch_size,
         "per_device_eval_batch_size": args.per_device_eval_batch_size,
         "gradient_accumulation_steps": args.gradient_accumulation_steps,
@@ -400,7 +415,9 @@ def main() -> None:
         resume_checkpoint = get_last_checkpoint(str(output_dir))
         if resume_checkpoint:
             print(f"[resume] continuing from {resume_checkpoint}", flush=True)
+    start_time = time.time()
     trainer.train(resume_from_checkpoint=resume_checkpoint)
+    training_time_seconds = time.time() - start_time
     validation_metrics = trainer.evaluate(validation_dataset, metric_key_prefix="eval")
     # Switch to full beam search for final test evaluation
     trainer.args.generation_num_beams = args.num_beams
@@ -427,6 +444,8 @@ def main() -> None:
     best_model_dir = output_dir / "best_model"
     trainer.save_model(str(best_model_dir))
     tokenizer.save_pretrained(best_model_dir)
+    model.config.save_pretrained(best_model_dir)
+    model.generation_config.save_pretrained(best_model_dir)
     archive_best_model(
         best_model_dir, Path(args.backup_dir), run_name, args.hf_backup_repo, args.hf_backup_prefix
     )
@@ -439,9 +458,21 @@ def main() -> None:
         "parameters": parameter_count,
         "trainable_parameters": trainable_count,
         "extra_parameters": 0,
+        "configuration": vars(args),
+        "training_time_seconds": training_time_seconds,
+        "best_model_checkpoint": trainer.state.best_model_checkpoint,
+        "completed_epochs": trainer.state.epoch,
         **{key: float(value) for key, value in validation_metrics.items() if isinstance(value, (int, float))},
         **{key: float(value) for key, value in test_metrics.items() if isinstance(value, (int, float))},
     }
+    final_metrics["test_reference"] = args.test_reference
+    if args.test_reference == "original_csv":
+        final_metrics["trainer_test_bleu"] = final_metrics.get("test_bleu")
+        final_metrics["trainer_test_chrf++"] = final_metrics.get("test_chrf++")
+        official_scores = generation_metrics(
+            decoded_predictions, raw_test["target"].tolist(), tokenize=bleu_tokenizer
+        )
+        final_metrics.update({f"test_{key}": value for key, value in official_scores.items()})
     output_dir.mkdir(parents=True, exist_ok=True)
     metrics_path = output_dir / "metrics.json"
     metrics_path.write_text(json.dumps(final_metrics, indent=2), encoding="utf-8")

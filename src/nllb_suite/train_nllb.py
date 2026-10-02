@@ -174,9 +174,19 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
 def detect_nllb_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
     path_str = str(data_dir).lower()
     is_spanish = "ashaninka" in path_str or "spanish" in path_str
-    tgt_lang = cli_tgt or ("spa_Latn" if is_spanish else "zho_Hant")
-    src_lang = cli_src or ("spa_Latn" if is_spanish else "zho_Hant")
-    bleu_tok = cli_tok or ("13a" if is_spanish else "zh")
+    is_turkish = "turkish" in path_str or "tr_en" in path_str or "opus100" in path_str
+    if is_turkish:
+        tgt_lang = cli_tgt or "eng_Latn"
+        src_lang = cli_src or "tur_Latn"
+        bleu_tok = cli_tok or "13a"
+    elif is_spanish:
+        tgt_lang = cli_tgt or "spa_Latn"
+        src_lang = cli_src or "spa_Latn"
+        bleu_tok = cli_tok or "13a"
+    else:
+        tgt_lang = cli_tgt or "zho_Hant"
+        src_lang = cli_src or "zho_Hant"
+        bleu_tok = cli_tok or "zh"
     return src_lang, tgt_lang, bleu_tok
 
 
@@ -218,6 +228,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed", type=int, default=42, help="Random seed for fairness.")
     parser.add_argument("--num-train-epochs", type=float, default=20.0, help="Total training epochs.")
     parser.add_argument("--learning-rate", type=float, default=None, help="Learning rate override.")
+    parser.add_argument("--weight-decay", type=float, default=0.0)
     parser.add_argument("--per-device-train-batch-size", type=int, default=16)
     parser.add_argument("--per-device-eval-batch-size", type=int, default=16)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=8)
@@ -229,7 +240,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--logging-steps", type=int, default=10)
     parser.add_argument("--save-total-limit", type=int, default=1)
     parser.add_argument("--fp16", action="store_true")
-    parser.add_argument("--bf16", action="store_true", default=True)
+    parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--gradient-checkpointing", action="store_true")
     parser.add_argument("--dataloader-num-workers", type=int, default=2)
     parser.add_argument("--hf-backup-repo", default="FiveC/amis-rewire-checkpoints")
@@ -257,6 +268,8 @@ def main() -> None:
     forced_bos_token_id = tokenizer.convert_tokens_to_ids(tgt_lang)
 
     model, method_metadata = load_nllb_model(args.method, model_name=args.model_name)
+    if args.gradient_checkpointing:
+        model.config.use_cache = False
     # Configure generation target language on generation_config (Transformers 5.x compatible)
     if hasattr(model, "generation_config") and model.generation_config is not None:
         model.generation_config.forced_bos_token_id = forced_bos_token_id
@@ -280,6 +293,7 @@ def main() -> None:
         "data_seed": args.seed,
         "num_train_epochs": args.num_train_epochs,
         "learning_rate": lr,
+        "weight_decay": args.weight_decay,
         "per_device_train_batch_size": args.per_device_train_batch_size,
         "per_device_eval_batch_size": args.per_device_eval_batch_size,
         "gradient_accumulation_steps": args.gradient_accumulation_steps,
@@ -296,6 +310,7 @@ def main() -> None:
         "fp16": args.fp16 and torch.cuda.is_available(),
         "bf16": args.bf16 and torch.cuda.is_available(),
         "tf32": torch.cuda.is_available(),
+        "gradient_checkpointing": args.gradient_checkpointing,
         "dataloader_num_workers": args.dataloader_num_workers,
         "remove_unused_columns": False,
         "save_safetensors": False,
@@ -382,6 +397,11 @@ def main() -> None:
     report: dict[str, Any] = {
         "model": args.model_name,
         "method": args.method,
+        "seed": args.seed,
+        "configuration": vars(args),
+        "best_model_checkpoint": trainer.state.best_model_checkpoint,
+        "completed_epochs": trainer.state.epoch,
+        "test_reference": "original_csv",
         "trainable_parameters": trainable_params,
         "total_parameters": total_params,
         "trainable_percent": (100.0 * trainable_params / total_params) if total_params > 0 else 0.0,
@@ -390,9 +410,10 @@ def main() -> None:
         "eval_chrf++": val_metrics.get("eval_chrf++", 0.0),
         "test_bleu": bleu_score,
         "test_chrf++": chrf_score,
-        "test_chrf++_zh": chrf_zh_score,
         "metadata": method_metadata,
     }
+    if bleu_tokenizer == "zh":
+        report["test_chrf++_zh"] = chrf_zh_score
 
     metrics_path = output_dir / "metrics.json"
     with open(metrics_path, "w", encoding="utf-8") as f:
@@ -401,10 +422,13 @@ def main() -> None:
     print(f"=== RESULT for {args.method} ===")
     print(f"Test BLEU:        {bleu_score:.4f}")
     print(f"Test chrF++:      {chrf_score:.4f}")
-    print(f"Test chrF++ (Zh): {chrf_zh_score:.4f}")
+    if bleu_tokenizer == "zh":
+        print(f"Test chrF++ (Zh): {chrf_zh_score:.4f}")
 
     # Archive best checkpoint and optionally upload to HF
     best_dir = Path(trainer.state.best_model_checkpoint) if trainer.state.best_model_checkpoint else output_dir
+    model.config.save_pretrained(best_dir)
+    model.generation_config.save_pretrained(best_dir)
     archive_path = output_dir / f"nllb-200-{args.method}-best.zip"
     print(f"[archive] Archiving best checkpoint from {best_dir} to {archive_path}...", flush=True)
     with zipfile.ZipFile(archive_path, "w", compression=zipfile.ZIP_DEFLATED) as zipf:
