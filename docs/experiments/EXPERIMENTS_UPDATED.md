@@ -13,6 +13,14 @@ Số của bản paper trước revision nằm riêng tại [experiments gốc �
 
 ### Cập nhật follow-up đang thực hiện — 03/10/2026
 
+- **Yêu cầu mới:** xong Full α0.20/λ0.10/seed42 thì tạm ngưng. Chi tiết thao tác và
+  điểm dừng: [CONFIGURATION_SEARCH_HANDOFF.md](CONFIGURATION_SEARCH_HANDOFF.md).
+- Trial D Full α0.05/λ0.10/seed42 đã xong20epochs; selected checkpoint720.
+  Validation BLEU17.1224519, chrF++14.4091973, chrF16.4997872; chưa evaluate test.
+  Validation chrF++ thấp hơn Full gốc α0.10/λ0.10/seed42 (14.7316677).
+  HF archive2,270,687,637bytes đã verify SHA256/size, COMPLETE và predictions lưu local.
+  Bỏ riêng validation row197: chrF++14.4440285; điểm chính vẫn giữ đủ576rows.
+
 - Audit C không train đã hoàn tất: 12outputs ×575rows, 24 comparisons chrF/chrF++,
   hashes/source/targets đạt; chrF++ tái tính khớp số cũ <1e-8. Không sửa điểm A/B/C.
 - Nguồn mới: `outputs_rebuttal/amis_confirmation_20261003/metric_influence/`:

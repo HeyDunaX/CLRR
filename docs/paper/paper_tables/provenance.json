@@ -1,0 +1,68 @@
+{
+  "manuscript_sha256": "8af2fda2cbd672c261bd8958976fc943dd2755c0086fe75a77194dabe304c324",
+  "source_files": {
+    "audit_a": {
+      "path": "outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv",
+      "sha256": "38e27ea974742c00b5f37e5e541b708e193aeecd2eb0d34199f980773bcf2df0"
+    },
+    "scores_b": {
+      "path": "outputs_rebuttal/followup_20261003/matched_inference_scores.csv",
+      "sha256": "5e2a52d4a61e1521b236aa086621e728a8c147bd327179f25e4f6f3581767521"
+    },
+    "bootstrap_b": {
+      "path": "outputs_rebuttal/followup_20261003/matched_inference_bootstrap.csv",
+      "sha256": "032ce3fc2129ebf0cf3d3297fbcce0d102bc97bf61165b1e0feff180d46f95f6"
+    },
+    "mechanisms": {
+      "path": "outputs_rebuttal/checkpoint_diagnostics_20261002/mechanism_summary.csv",
+      "sha256": "b2ecde9968c02a10feeb66addd657343b4b89a279f9d81b8b672b0cc86418d1c"
+    },
+    "seeds": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/seed_scores.csv",
+      "sha256": "fa1bc6b3f707ef246f504b59c67620f95a29484964422bd816bc0ba8cc9beea2"
+    },
+    "summary": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/seed_summary.csv",
+      "sha256": "6d9a806af07d4ed60ed3a0bbc6383764a674785bc971566ca02ed17827888393"
+    },
+    "deltas": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/paired_seed_deltas.csv",
+      "sha256": "ff5bfe699663030461562886b1f4fa14d692be38b232af1f0c421cf6b72713fb"
+    },
+    "bootstrap_c": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/paired_bootstrap24.csv",
+      "sha256": "64e803210b35e80b5f6fceb6d93355d892f72e01c4d420a148a3ceaef1730207"
+    },
+    "trajectory": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/trajectory_summary.csv",
+      "sha256": "d09e0cfd5e37cd6d6bde9fac3763d116fe8872e9e01d2f44c99f7401df8b35e6"
+    }
+  },
+  "generated_files": {
+    "docs\\paper\\paper_tables\\backbones.tex": "7a81da34670dff3e9ebe77fe62256cafa396bbb4e5fe9db64555dbdb349eded1",
+    "docs\\paper\\paper_tables\\fresh_tests.tex": "7912e17860bd59c8f018fc4a26e354d92845015f2563e8e473d8bbca7534906b",
+    "docs\\paper\\paper_tables\\historical_a.tex": "a687dff7bda63ff2c2a9cf8e32daf1687fde3ae4337626560835b6214a11cd2a",
+    "docs\\paper\\paper_tables\\historical_tests.tex": "41b544049158b8da0d0b4d33c25b929083b068e3a684d9339328c8b882d85be6",
+    "docs\\paper\\paper_tables\\individual_seeds.tex": "d9a0cdd6fba7c241bd4047ab69926f26269a96f8206fb1555019eac439c93af3",
+    "docs\\paper\\paper_tables\\means.tex": "efcee82beefbb4b726b6652787d728f9c355ea9a73a8352dc60da917c6e323c4",
+    "docs\\paper\\paper_tables\\mechanisms.tex": "33f53343f2419a7fee6affd43da500d37947ec6e946e507506cfc126f896a8a8",
+    "docs\\paper\\paper_tables\\routing.tex": "416bc69a8b84c7cb725bcf2aba83864d982a73cdd0c806c6039b0a3b1f60a3cc",
+    "docs\\paper\\paper_tables\\seed_deltas.tex": "3cdd970556b270244f6eb604ac0f84f80569b9506f61a8445423c0c4728db91b",
+    "docs\\paper\\paper_tables\\trajectory.tex": "4cbfd8a2659131303664bbe9911648ad724b39e2e791696152aab2c4553e716d"
+  },
+  "protocols": {
+    "A": "28 retained Amis outputs from original 36-output audit",
+    "B": "10 retained Amis FP32 checkpoints + 4 routing-off outputs",
+    "C": "12 new matched four-branch mBART runs, three seeds"
+  },
+  "scope": {
+    "dataset": "amis_mandarin",
+    "historical_a_remaining": 18,
+    "retained_checkpoint_gradient_batches": 80,
+    "unchanged_original_holm_families": {
+      "A": 42,
+      "B": 36,
+      "C": 24
+    }
+  }
+}

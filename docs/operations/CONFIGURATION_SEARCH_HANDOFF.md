@@ -17,8 +17,9 @@ Không tự chạy tiếp khi đọc file này; đợi tác giả yêu cầu ti�
 
 Tìm cấu hình tốt **trong ngân sách đã khai báo**, rồi kiểm tra CLRR có đóng góp vượt
 LSR-only được tune hay không. Không chọn cấu hình bằng test và không bảo đảm kết quả tốt.
-Xem `CLRR_GO_NOGO_PLAN.md`, `EXPERIMENTS_UPDATED.md`, `RESEARCH_INSIGHTS.md`, `METRICS.md`.
-Paper hiện tại là `docs/clrr_main.tex`; chưa đưa các trial tuning mới vào paper.
+Xem `docs/research/CLRR_GO_NOGO_PLAN.md`, `docs/experiments/EXPERIMENTS_UPDATED.md`,
+`docs/research/RESEARCH_INSIGHTS.md`, `docs/experiments/METRICS.md`.
+Paper hiện tại là `docs/paper/clrr_main.tex`; chưa đưa các trial tuning mới vào paper.
 
 Nhóm C cũ: Baseline, CLRR-only, LSR-only, Full × seeds42/43/44. Protocol matched đã chạy.
 Vòng D mới: tối đa20 lượt train Amis, gồm8 screening + tối đa6 confirmation + tối đa6 controls.
@@ -83,6 +84,9 @@ Các audit mới:
 | Params | 610,879,488, tất cả trainable; extra params0 |
 | GPU / environment | Colab A10040GB Standard, **không high-mem**, conda `clrr` |
 
+Dependencies thực tế: `outputs_rebuttal/amis_configuration_20261003_v1/environment_freeze.txt`.
+Khi phục hồi, đối chiếu với file này; không âm thầm nâng versions giữa các trial.
+
 `src/amis_rewire/train.py --validation-only` không load actual test dataset; đã smoke test
 với test.csv bị bỏ khỏi fixture. GPU smoke bốn nhánh cũng đã đạt.
 Generation FP32 là tường minh, không dựa vào BF16 autocast mặc định của Trainer.
@@ -127,6 +131,9 @@ colab exec -s colab -f scratch/configuration_setup_status.py --timeout 60
 
 **Không chạy lại `scratch/package_configuration_search.py` để thay zip hiện có.**
 Zip ban đầu cùng `inputs.json` khóa source/data của screening; source mới có thể đổi hashes.
+Nếu `scratch/` không đi theo Git, dùng `configuration_resume_bundle.zip` trong artifacts D
+để phục hồi helper và frozen zip về workspace. Bundle có manifest SHA256,
+không chứa token hoặc checkpoint. Trên cùng máy, các helper đã có trong `scratch/`.
 Phục hồi receipts trước để không train lại hai trial đã xong:
 
 ```powershell
@@ -220,7 +227,9 @@ Không có bằng chứng gradient của detached implementation cũ bị lỗi;
 
 Sau khóa candidate và đạt gates, load **đúng archive/commit/SHA**. Strict-check missing,
 unexpected và mismatched keys; tokenizer/proxy đúng; FP32 beam4/raw references/TF32off.
-Nguồn helper inference/extraction: `reevaluate_checkpoints.py`, `measure_checkpoint_mechanisms.py`.
+Đặt tường minh `num_beams=4`, `max_length=256` khi generation; không dùng defaults
+trong saved generation_config để suy ra protocol. Nguồn helper inference/extraction:
+`reevaluate_checkpoints.py`, `measure_checkpoint_mechanisms.py`.
 Scripts cũ có manifest mặc định nhóm B; phải truyền/viết manifest D riêng, không chạy mặc định
 rồi gọi là D. No-detach inference forward như detached, nhưng weights/provenance phải đúng.
 
@@ -240,7 +249,7 @@ rồi gọi là D. No-detach inference forward như detached, nhưng weights/pro
 
 ## 7. Lưu tài liệu, dừng GPU và các file không được chạy nhầm
 
-- Số mới → `EXPERIMENTS_UPDATED.md`; diễn giải → `RESEARCH_INSIGHTS.md` hiện hành.
+- Số mới → `docs/experiments/EXPERIMENTS_UPDATED.md`; diễn giải → `docs/research/RESEARCH_INSIGHTS.md`.
 - Số cũ/paper ban đầu đã ở archive, không phục hồi vào file active.
 - File này là bàn giao thao tác, không tạo thêm một ledger số liệu cạnh tranh.
 - Sau backup và sync:
@@ -257,7 +266,7 @@ sau restore; không thay bằng các launcher Turkish/PEFT/historical có tên t
 
 ## 8. Câu giao việc cho chat tiếp
 
-> Đọc docs/CONFIGURATION_SEARCH_HANDOFF.md, docs/CLRR_GO_NOGO_PLAN.md và hai file
+> Đọc docs/operations/CONFIGURATION_SEARCH_HANDOFF.md, docs/research/CLRR_GO_NOGO_PLAN.md và hai file
 > EXPERIMENTS_UPDATED/RESEARCH_INSIGHTS. Tiếp tục sáu trial screening mBART Amis còn lại,
 > phục hồi receipts HF để không train lại trial đã xong, giữ protocol validation-only,
 > conda clrr, Colab A100 Standard không high-mem. Sau screening chọn và khóa candidate

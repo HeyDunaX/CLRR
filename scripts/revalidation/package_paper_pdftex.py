@@ -11,18 +11,20 @@ import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
-DOCS = ROOT/'docs'
-OUT = DOCS/'paper_upload'
+DOCS = ROOT / 'docs/paper' if (ROOT / 'docs/paper/clrr_main.tex').exists() else ROOT / 'docs'
+OUT = DOCS / 'paper_upload'
 
 
 def embed_paper_tables(manuscript):
     """Refresh inline tables, also accepting the older input-based manuscript."""
     sources = {}
-    tables = sorted((DOCS/'paper_tables').glob('*.tex'))
+    table_dir = (DOCS / 'paper_tables') if (DOCS / 'paper_tables').exists() else (ROOT / 'docs/paper_tables')
+    tables = sorted(table_dir.glob('*.tex'))
     if len(tables) != 10:
         raise ValueError('Expected exactly ten generated paper tables.')
     for path in tables:
-        relative = path.relative_to(DOCS).as_posix()
+        relative = 'paper_tables/' + path.name
+
         begin = '% BEGIN embedded ' + relative
         end = '% END embedded ' + relative
         pattern = (re.escape(begin) + r'\n.*?\n' + re.escape(end)

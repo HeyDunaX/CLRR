@@ -35,12 +35,15 @@ data_processed/*/raw/
 # Paper templates and reference drafts
 docs/CLRR-paper/
 docs/archive/CLRR-paper/
+docs/paper/paper_upload/
 scratch/
 
 # Active audited manuscript; historical drafts remain ignored.
-!docs/clrr_main.tex
-!docs/clrr_references.bib
-!docs/paper_tables/*.tex
+!docs/paper/clrr_main.tex
+!docs/paper/clrr_references.bib
+!docs/paper/paper_tables/*.tex
+!docs/paper/acl.sty
+!docs/paper/acl_natbib.bst
 
 # Checkpoints, model weights, and heavy training dumps
 *.safetensors

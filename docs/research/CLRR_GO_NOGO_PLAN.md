@@ -1,6 +1,10 @@
 # CLRR: quy trình Go / No-Go để phát triển và kiểm chứng phương pháp
 
 Ngày lập: 03/10/2026. Đây là **kế hoạch**, không phải sổ kết quả hoặc lệnh khởi chạy GPU.
+
+**Điểm dừng mới theo tác giả:** xong Full α0.20/λ0.10/seed42 thì tạm ngưng.
+Không tự chạy tiếp theo quyền tự động trước đó. Xem [bàn giao](CONFIGURATION_SEARCH_HANDOFF.md)
+để biết receipts, kết quả cuối và cách phục hồi six remaining screening trials.
 Turkish vẫn dừng cho đến khi tác giả cho chạy.
 
 **Cập nhật thực thi:** tác giả đã cho tự chạy các bước cần thiết để tìm cấu hình tốt

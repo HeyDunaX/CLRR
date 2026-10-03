@@ -2,12 +2,14 @@
 
 ## Paper và kết quả hiện hành
 
-- [clrr_main.tex](docs/clrr_main.tex): paper đã revision theo kết quả xác minh, với suite matched 12run/3seed làm bằng chứng chính.
-- [EXPERIMENTS_UPDATED.md](docs/EXPERIMENTS_UPDATED.md): sổ kết quả hiện hành duy nhất; A/B/C, số âm tính và provenance.
-- [RESEARCH_INSIGHTS.md](docs/RESEARCH_INSIGHTS.md): diễn giải kết quả đã xác minh và bước chẩn đoán tiếp theo; insight cũ được giữ trong archive.
-- [METRICS.md](docs/METRICS.md): protocol metrics; [Go/No-Go](docs/CLRR_GO_NOGO_PLAN.md): quy trình tối ưu tiếp theo.
+- [clrr_main.tex](docs/paper/clrr_main.tex): paper đã revision theo kết quả xác minh, với suite matched 12run/3seed làm bằng chứng chính ([PDF xem trước](docs/paper/clrr_main.pdf)).
+- [EXPERIMENTS_UPDATED.md](docs/experiments/EXPERIMENTS_UPDATED.md): sổ kết quả hiện hành duy nhất; A/B/C, số âm tính và provenance.
+- [RESEARCH_INSIGHTS.md](docs/research/RESEARCH_INSIGHTS.md): diễn giải kết quả đã xác minh và bước chẩn đoán tiếp theo; insight cũ được giữ trong archive.
+- [METRICS.md](docs/experiments/METRICS.md): protocol metrics; [Go/No-Go](docs/research/CLRR_GO_NOGO_PLAN.md): quy trình tối ưu tiếp theo.
+- [CONFIGURATION_SEARCH_HANDOFF.md](docs/operations/CONFIGURATION_SEARCH_HANDOFF.md): hướng dẫn bàn giao tối ưu cấu hình mBART Amis.
+- [docs/README.md](docs/README.md): trung tâm tra cứu và sơ đồ toàn bộ tài liệu dự án.
 - [Experiments gốc đã archive](docs/archive/EXPERIMENTS_ORIGINAL_20261003.md): gắn với bản paper trước revision, không dùng làm nguồn số hiện hành.
-- Bản paper cũ và các báo cáo cũ nằm trong `docs/archive/`; không có training đang chạy.
+- Bản paper cũ và các báo cáo cũ nằm trong docs/archive/; không có training đang chạy.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HeyDunaX/CLRR/blob/main/notebooks/colab_a100_run.ipynb)
 

@@ -2,6 +2,10 @@
 
 ## Trạng thái
 
+- **Yêu cầu mới nhất:** hoàn tất Full α0.20/λ0.10/seed42 rồi tạm ngưng; không chạy trial tiếp.
+  Hướng dẫn phục hồi và chạy tiếp: [CONFIGURATION_SEARCH_HANDOFF.md](CONFIGURATION_SEARCH_HANDOFF.md).
+  File bàn giao là nơi tra điểm dừng mới nhất, thay các dòng trạng thái khởi chạy cũ bên dưới.
+
 - Follow-up đã bắt đầu theo phép tác giả: influence C hoàn tất, vòng D validation-only
   đang chạy Full α0.05/λ0.10/seed42 trên Colab A100 Standard. Xem mục9 của insight
   và phần cập nhật đầu EXPERIMENTS_UPDATED; chưa có candidate score mới.

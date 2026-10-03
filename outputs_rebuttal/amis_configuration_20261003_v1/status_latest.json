@@ -1,24 +1,11 @@
 {
-  "utc": "2026-10-03T13:29:05.291779+00:00",
+  "utc": "2026-10-03T13:38:42.547265+00:00",
   "status": {
-    "status": "TRAINING_VALIDATION_ONLY",
-    "run": "mbart-amis-full_a020_l010-seed42",
-    "alpha": 0.2,
-    "lambda_": 0.1,
-    "completed_runs": 1,
-    "started_utc": "2026-10-03T13:12:30Z"
+    "status": "FAILED",
+    "stage": "screening.log",
+    "exit_code": -15
   },
-  "progress": {
-    "last_eval_step": 540,
-    "last_eval": "eval_loss=2.8901 | eval_bleu=16.0162 | eval_chrf++=13.6918",
-    "epoch": 16,
-    "last_lines": [
-      "",
-      " 75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 541/720 [16:15<36:22, 12.19s/it]",
-      " 75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 542/720 [16:16<25:55,  8.74s/it]",
-      " 75%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c  | 543/720 [16:17<18:40,  6.33s/it]"
-    ]
-  },
+  "progress": {},
   "metrics": {
     "mbart-amis-full_a005_l010-seed42": {
       "model": "/root/.cache/huggingface/hub/models--facebook--mbart-large-50-many-to-many-mmt/snapshots/e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
@@ -99,6 +86,86 @@
       "eval_samples_per_second": 29.652,
       "eval_steps_per_second": 3.707,
       "eval_chrf0": 16.499787190352215
+    },
+    "mbart-amis-full_a020_l010-seed42": {
+      "model": "/root/.cache/huggingface/hub/models--facebook--mbart-large-50-many-to-many-mmt/snapshots/e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "jepa-clrr-enc",
+      "seed": 42,
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "configuration": {
+        "model": "mbart-large-50",
+        "model_name": "/root/.cache/huggingface/hub/models--facebook--mbart-large-50-many-to-many-mmt/snapshots/e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "jepa-clrr-enc",
+        "data_dir": "/content/clrr_configuration/project/data_processed/amis_mandarin",
+        "output_dir": "/content/clrr_configuration/project/outputs_rebuttal/amis_configuration_20261003_v1/runs",
+        "backup_dir": "/content/clrr_configuration/project/outputs_rebuttal/amis_configuration_20261003_v1/backups",
+        "hf_backup_repo": "FiveC/amis-rewire-checkpoints",
+        "hf_backup_prefix": "amis_configuration_20261003_v1",
+        "run_name": "mbart-amis-full_a020_l010-seed42",
+        "seed": 42,
+        "num_train_epochs": 20.0,
+        "early_stopping_patience": 4,
+        "learning_rate": 5e-05,
+        "weight_decay": 0.0,
+        "warmup_ratio": 0.06,
+        "per_device_train_batch_size": 32,
+        "per_device_eval_batch_size": 8,
+        "gradient_accumulation_steps": 4,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "num_beams": 4,
+        "eval_beams": 1,
+        "source_prefix": "",
+        "rewire_distance": 2,
+        "rewire_strength": 0.2,
+        "rewire_stack": "encoder",
+        "jepa_weight": 0.1,
+        "logging_steps": 10,
+        "save_total_limit": 2,
+        "resume_from_checkpoint": null,
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "bleu_tokenizer": "zh",
+        "test_reference": "original_csv",
+        "validation_only": true,
+        "auto_resume": false,
+        "fp16": false,
+        "bf16": true,
+        "gradient_checkpointing": true,
+        "generation_precision": "fp32",
+        "dataloader_num_workers": 2,
+        "dataloader_pin_memory": true
+      },
+      "training_time_seconds": 1293.7275366783142,
+      "best_model_checkpoint": "/content/clrr_configuration/project/outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a020_l010-seed42/checkpoint-720",
+      "completed_epochs": 20.0,
+      "test_evaluated": false,
+      "evaluation_protocol": {
+        "reference": "original_csv",
+        "library": "sacrebleu",
+        "version": "2.6.0",
+        "aggregation": "corpus",
+        "bleu_tokenizer": "zh",
+        "bleu_lowercase": false,
+        "bleu_smooth_method": "exp",
+        "bleu_effective_order": false,
+        "chrf_char_order": 6,
+        "chrf_word_order": 2,
+        "chrf_beta": 2,
+        "chrf_lowercase": false,
+        "chrf_whitespace": false,
+        "chrf_eps_smoothing": false,
+        "chrf_external_tokenizer": null
+      },
+      "eval_loss": 2.936951160430908,
+      "eval_bleu": 17.45858017443448,
+      "eval_chrf++": 14.5737573883841,
+      "eval_runtime": 20.1514,
+      "eval_samples_per_second": 28.584,
+      "eval_steps_per_second": 3.573,
+      "eval_chrf0": 16.746949071764767
     }
   },
   "receipts": {
@@ -114,7 +181,20 @@
       "archive_bytes": 2270687637,
       "validation_prediction_sha256": "3fe0cf586cd71c27d82b4a2fa520451657d11b99f6c5fbbfc3653b3ca536390b",
       "test_evaluated": false
+    },
+    "mbart-amis-full_a020_l010-seed42": {
+      "run": "mbart-amis-full_a020_l010-seed42",
+      "alpha": 0.2,
+      "lambda_": 0.1,
+      "seed": 42,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_20261003_v1/mbart-amis-full_a020_l010-seed42/mbart-amis-full_a020_l010-seed42-best.zip",
+      "revision": "d0a5c7b4a958f6f320dcbd8644c1b2dc2f1ac7dd",
+      "archive_sha256": "f091ccd40093ec514b2115e77158dd0b86a8641b1b5beca06e9a6bbf9f1945cc",
+      "archive_bytes": 2270706593,
+      "validation_prediction_sha256": "da6a005c3789baaa260e89c2568d0fe225e92ddfd31cba50e2f98eccad832e63",
+      "test_evaluated": false
     }
   },
-  "gpu": "15874 MiB, 47 %"
+  "gpu": "0 MiB, 0 %"
 }

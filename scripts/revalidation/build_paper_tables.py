@@ -9,7 +9,7 @@ import json
 from package_paper_pdftex import embed_paper_tables
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / 'docs/paper_tables'
+OUT = (ROOT / 'docs/paper/paper_tables') if (ROOT / 'docs/paper').exists() else (ROOT / 'docs/paper_tables')
 SOURCES = {
     'audit_a': 'outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv',
     'scores_b': 'outputs_rebuttal/followup_20261003/matched_inference_scores.csv',
@@ -139,7 +139,7 @@ def main():
     table('historical_a', 'lllr r', ['Data', 'Backbone', 'Method/checkpoint (A)', 'BLEU', 'chrF++'], [
         ['Amis', r['backbone'], tex(r['method']), f(r['bleu'], 4), f(r['chrfpp'], 4)]
         for r in historical], 'Remaining 18 historical Amis outputs verified from saved predictions (A). These share raw-reference scoring; B standardizes inference on ten other Amis checkpoints. No A/B prediction mixing is used for significance tests.', wide=True)
-    manuscript_path = ROOT / 'docs/clrr_main.tex'
+    manuscript_path = (ROOT / 'docs/paper/clrr_main.tex') if (ROOT / 'docs/paper/clrr_main.tex').exists() else (ROOT / 'docs/clrr_main.tex')
     manuscript, _ = embed_paper_tables(manuscript_path.read_text(encoding='utf-8'))
     manuscript_path.write_text(manuscript, encoding='utf-8')
     provenance = dict(manuscript_sha256=hashlib.sha256(manuscript_path.read_bytes()).hexdigest(),
