@@ -12,7 +12,8 @@ Không tự chạy tiếp khi đọc file này; đợi tác giả yêu cầu ti�
 - Đã xong20epochs, selected checkpoint720; validation và HF backup đã hoàn tất.
 - Hai trial có COMPLETE receipts, metrics/predictions đã sync local; **không còn training**.
 - Suite tạm ngưng trước `mbart-amis-full_a010_l003-seed42`; còn6trial screening.
-- Colab đang được tắt sau kiểm tra bàn giao; trạng thái tắt cập nhật khi lệnh hoàn tất.
+- **Colab đã tắt:** `colab stop -s colab` trả `Session terminated`;
+  kiểm tra lại trả `Session 'colab' not found` lúc khoảng20:43 ngày03/10/2026 (UTC+7).
 - **Không chạy Turkish**, không chạy NLLB và chưa nâng cấp kiến trúc trong vòng này.
 
 ## 2. Mục tiêu khoa học
@@ -50,6 +51,7 @@ Character-only gap cùng seed còn +0.8602, nên gain chrF++ lớn không chứn
 | Full gốc, reuse metadata C | 0.10 | 0.10 | 42 | 17.6437 | 14.7317 | Chưa có validation predictions |
 | `full_a005_l010` | 0.05 | 0.10 | 42 | 17.1225 | 14.4092 | 16.4998 |
 | `full_a020_l010` | 0.20 | 0.10 | 42 | 17.4586 | 14.5738 | 16.7469 |
+| `full_a010_l003` | 0.10 | 0.03 | 42 | 17.1141 | 14.4355 | 16.5587 |
 
 α=0.05 chưa cải thiện so cấu hình gốc ở validation seed42. Chưa kết luận toàn bộ phương pháp.
 α=0.20 cũng thấp hơn cấu hình gốc14.7317, nhưng tốt hơn α0.05 trên cả ba metrics.
@@ -166,6 +168,8 @@ conda run -n clrr python -X utf8 scripts/revalidation/audit_configuration_predic
 ```
 
 Snapshot lấy metrics/receipts; sync lấy validation predictions có SHA đúng. Báo tiến độ chat mỗi10phút.
+Colab SSH chỉ cho một kết nối hoạt động; chạy snapshot, sync và SCP tuần tự để tránh HTTP429.
+CLI `colab exec` có thể trả exit0 dù cell in traceback; đọc output và receipt, không chỉ exit code.
 SSH monitor cần `LD_LIBRARY_PATH=/usr/lib64-nvidia:/usr/local/cuda/lib64`; helper đã đặt.
 Thiếu libnvidia-ml trong SSH không tự chứng minh CUDA training bị lỗi.
 

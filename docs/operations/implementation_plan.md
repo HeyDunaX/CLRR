@@ -9,6 +9,9 @@
 - Influence C đã hoàn tất; vòng D đã xong2trial Full α0.05 và α0.20, cùng λ0.10/seed42.
   Validation chrF++14.4092/14.5738, chưa vượt Full gốc14.7317. HF backups verified,
   metrics/predictions lưu local; suite tạm ngưng theo tác giả trước trial3.
+- Vòng D đang chạy song song 2 máy A100: Máy 1 hoàn tất trial 3 (`full_a010_l003`),
+  chạy tiếp `lsr_l003` và `full_a010_l030`; Máy 2 chạy song song nhánh LSR (`lsr_l060`, `lsr_l001`, `lsr_l030`).
+  Tất cả trial hoàn thành đều tự động push Hugging Face, verify SHA256 và sync local.
 - Đã hoàn tất 12run matched mBART Amis (Baseline, CLRR-only, LSR-only, Full ×seeds42/43/44), 35probe và kiểm định Holm24.
 - 10weights archive còn đầy đủ đã được backup HF; LSR/Full seed42 mất weights trước backup, predictions/metrics còn đủ.
 - Turkish và Colab đã dừng; chưa có trained-test comparison Turkish.

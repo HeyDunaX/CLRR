@@ -24,7 +24,13 @@ Số của bản paper trước revision nằm riêng tại [experiments gốc �
   Validation BLEU17.4585802, chrF++14.5737574, chrF16.7469491; chưa evaluate test.
   HF archive2,270,706,593bytes đã verify SHA256/size, receipts/predictions đã sync local.
   Bỏ riêng validation row197: chrF++14.6108370; thứ hạng hai trial mới không đổi.
-  Suite tạm ngưng trước trial3 theo tác giả; hai trial mới đều chưa vượt validation Full gốc.
+- Trial D Full α0.10/λ0.03/seed42 đã xong20epochs; selected checkpoint720.
+  Validation BLEU17.1141186, chrF++14.4354908, chrF16.5587225; chưa evaluate test.
+  HF archive đã verify SHA256/size, receipts/predictions đã sync local.
+  Bỏ riêng validation row197: chrF++14.4696526.
+  Thứ hạng 3 trial mới: α0.20 > α0.10/λ0.03 > α0.05 trên cả 3 metrics và leave-one-out.
+- Hai máy A100 đang chạy song song: Máy 1 chạy tiếp `lsr_l003` và `full_a010_l030`;
+  Máy 2 chạy song song nhánh LSR `lsr_l060`, `lsr_l001`, `lsr_l030`.
 
 - Audit C không train đã hoàn tất: 12outputs ×575rows, 24 comparisons chrF/chrF++,
   hashes/source/targets đạt; chrF++ tái tính khớp số cũ <1e-8. Không sửa điểm A/B/C.

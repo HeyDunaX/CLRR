@@ -1,11 +1,24 @@
 {
-  "utc": "2026-10-03T13:38:42.547265+00:00",
+  "utc": "2026-10-03T14:12:13.988094+00:00",
   "status": {
-    "status": "FAILED",
-    "stage": "screening.log",
-    "exit_code": -15
+    "status": "TRAINING_VALIDATION_ONLY",
+    "run": "mbart-amis-full_a010_l003-seed42",
+    "alpha": 0.1,
+    "lambda_": 0.03,
+    "completed_runs": 2,
+    "started_utc": "2026-10-03T13:52:55Z"
   },
-  "progress": {},
+  "progress": {
+    "last_eval_step": 648,
+    "last_eval": "eval_loss=2.9132 | eval_bleu=17.1629 | eval_chrf++=14.3946",
+    "epoch": 18,
+    "last_lines": [
+      "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 72/72 [00:19<00:00,  3.58it/s][eval @ step 648] eval_loss=2.9132 | eval_bleu=17.1629 | eval_chrf++=14.3946",
+      "",
+      "",
+      "                                               "
+    ]
+  },
   "metrics": {
     "mbart-amis-full_a005_l010-seed42": {
       "model": "/root/.cache/huggingface/hub/models--facebook--mbart-large-50-many-to-many-mmt/snapshots/e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
@@ -196,5 +209,5 @@
       "test_evaluated": false
     }
   },
-  "gpu": "0 MiB, 0 %"
+  "gpu": "15874 MiB, 12 %"
 }
