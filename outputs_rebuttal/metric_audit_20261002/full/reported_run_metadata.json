@@ -1,0 +1,269 @@
+[
+  {
+    "backbone": "mBART",
+    "method": "CLRR-only",
+    "path": "results/mbart-large-50/clrr-only/metrics.json",
+    "metadata": {}
+  },
+  {
+    "backbone": "mBART",
+    "method": "LSR-only",
+    "path": "results/mbart-large-50/lsr-only/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "eval_runtime": 21.2823,
+      "epoch": 19.577391304347827,
+      "test_runtime": 28.9598
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "CLRR-Dec+LSR",
+    "path": "results/mbart-large-50/clrr-dec/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "eval_runtime": 12.9762,
+      "epoch": 20.0,
+      "test_runtime": 21.5028
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "BitFit",
+    "path": "results/mbart-large-50/bitfit/metrics.json",
+    "metadata": {
+      "trainable_parameters": 335872,
+      "total_parameters": 610879488,
+      "training_time_seconds": 1637.6091527938843
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "Narrow LoRA",
+    "path": "results/mbart-large-50/lora/metrics.json",
+    "metadata": {
+      "trainable_parameters": 1179648,
+      "total_parameters": 612059136,
+      "training_time_seconds": 3453.395165681839
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "Strong LoRA A",
+    "path": "results/mbart-large-50-lora-all-linear/metrics.json",
+    "metadata": {
+      "trainable_parameters": 8650752,
+      "total_parameters": 619530240,
+      "training_time_seconds": 5609.329554796219
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "Strong LoRA B",
+    "path": "results/mbart-large-50-lora-all-linear-unfreeze-embed/metrics.json",
+    "metadata": {
+      "trainable_parameters": 264706048,
+      "total_parameters": 619530240,
+      "training_time_seconds": 5707.852093935013
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Strong LoRA A",
+    "path": "results/nllb-200/nllb-200-lora-all-linear/metrics.json",
+    "metadata": {
+      "trainable_parameters": 8650752,
+      "total_parameters": 623724544,
+      "training_time_seconds": 1975.0519933700562
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Strong LoRA B",
+    "path": "results/nllb-200/nllb-200-lora-all-linear-unfreeze-embed/metrics.json",
+    "metadata": {
+      "trainable_parameters": 271005696,
+      "total_parameters": 886079488,
+      "training_time_seconds": 2428.213733434677
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "Middle-Layer Alignment",
+    "path": "results/mbart-large-50/middle-align/metrics.json",
+    "metadata": {
+      "training_time_seconds": 1058.4739804267883
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Baseline",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\baseline\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 615073792,
+      "total_parameters": 615073792,
+      "training_time_seconds": 1585.3495638370514
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "CLRR+LSR",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 615073792,
+      "total_parameters": 615073792,
+      "training_time_seconds": 1518.1580789089203
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "CLRR-Dec+LSR",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_dec\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 615073792,
+      "total_parameters": 615073792,
+      "training_time_seconds": 1601.0176830291748
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Middle-Layer Alignment",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\middle_align\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 615073792,
+      "total_parameters": 615073792,
+      "training_time_seconds": 1664.3204374313354
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "BitFit",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\bitfit\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 333824,
+      "total_parameters": 615073792,
+      "training_time_seconds": 2125.845890045166
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Narrow LoRA",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\lora\\metrics.json",
+    "metadata": {
+      "trainable_parameters": 1179648,
+      "total_parameters": 616253440,
+      "training_time_seconds": 1539.12610912323
+    }
+  },
+  {
+    "backbone": "mT5",
+    "method": "CLRR-Dec+LSR",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-dec-metrics.json",
+    "metadata": {
+      "parameters": 300176768,
+      "trainable_parameters": 300176768,
+      "extra_parameters": 0,
+      "eval_runtime": 2.1332,
+      "epoch": 20.0,
+      "test_runtime": 3.3145
+    }
+  },
+  {
+    "backbone": "mT5",
+    "method": "CLRR-Both+LSR",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-both-metrics.json",
+    "metadata": {
+      "parameters": 300176768,
+      "trainable_parameters": 300176768,
+      "extra_parameters": 0,
+      "eval_runtime": 2.4835,
+      "epoch": 20.0,
+      "test_runtime": 9.3965
+    }
+  },
+  {
+    "backbone": "mT5",
+    "method": "Middle-Layer Alignment",
+    "path": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-middle-metrics.json",
+    "metadata": {
+      "training_time_seconds": 1413.9926671981812
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "Baseline (patience 4)",
+    "path": "results/ashaninka_spanish/mbart-ashaninka-es-baseline/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "training_time_seconds": 5143.4242289066315,
+      "completed_epochs": 16.0,
+      "eval_runtime": 95.1508,
+      "epoch": 16.0,
+      "test_runtime": 112.8549
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "CLRR+LSR (patience 4)",
+    "path": "results/ashaninka_spanish/mbart-ashaninka-es-clrr-enc/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "training_time_seconds": 3922.489185333252,
+      "completed_epochs": 12.0,
+      "eval_runtime": 94.8557,
+      "epoch": 12.0,
+      "test_runtime": 94.542
+    }
+  },
+  {
+    "backbone": "NLLB",
+    "method": "Baseline (epoch 20)",
+    "path": "results/ashaninka_spanish/nllb-ashaninka-es-baseline/metrics.json",
+    "metadata": {
+      "completed_epochs": 20.0,
+      "trainable_parameters": 615073792,
+      "total_parameters": 615073792,
+      "training_time_seconds": null
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "CLRR+LSR (patience 10, selected epoch 14)",
+    "path": "results/ashaninka_patience10/runs/mbart-ashaninka-es-clrr-enc/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "training_time_seconds": 5963.789750814438,
+      "completed_epochs": 20.0,
+      "eval_runtime": 76.2415,
+      "epoch": 20.0,
+      "test_runtime": 91.1154
+    }
+  },
+  {
+    "backbone": "mBART",
+    "method": "CLRR+LSR (patience 10, fixed epoch 20)",
+    "path": "results/ashaninka_patience10/epoch20/mbart-ashaninka-es-clrr-enc-epoch20/metrics.json",
+    "metadata": {
+      "parameters": 610879488,
+      "trainable_parameters": 610879488,
+      "extra_parameters": 0,
+      "completed_epochs": 20.0,
+      "eval_model_preparation_time": 0.0065,
+      "eval_runtime": 72.4123,
+      "epoch": 20.0,
+      "test_model_preparation_time": 0.0065,
+      "test_runtime": 92.1503,
+      "training_time_seconds": null
+    }
+  }
+]

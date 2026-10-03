@@ -1,0 +1,27 @@
+﻿[
+    {
+        "path":  "D:\\Code\\CLRR\\scratch\\checkpoint_mechanisms_complete.tar.gz",
+        "bytes":  709830219,
+        "sha256":  "66a9eb8b9ed530970476a0399a20ba66d5cf81f3457c02b2383ffaf61b9efac4"
+    },
+    {
+        "path":  "D:\\Code\\CLRR\\scratch\\checkpoint_partial_reports.tar.gz",
+        "bytes":  936108,
+        "sha256":  "e3ef595198109f7eeb266acbc052813614ef614827221decf40e3c9608613c0f"
+    },
+    {
+        "path":  "D:\\Code\\CLRR\\scratch\\checkpoint_diagnostics_inputs.zip",
+        "bytes":  559318,
+        "sha256":  "1ee14ded2bf974dc1007340e833b6e68d17018e8cc7ecee7ec86b923d544cc2f"
+    },
+    {
+        "path":  "D:\\Code\\CLRR\\scratch\\checkpoint_diagnostics_code.zip",
+        "bytes":  7208,
+        "sha256":  "c104bc50651d87d0295aba2e17b1b1bf2873b4bcd011960d12851f0c44106670"
+    },
+    {
+        "path":  "D:\\Code\\CLRR\\scratch\\checkpoint_summary.json",
+        "bytes":  42018,
+        "sha256":  "1f9ec1628b8c7019ae07339788ff2b956d48d4fda99b83f455f1ef2637bc0744"
+    }
+]

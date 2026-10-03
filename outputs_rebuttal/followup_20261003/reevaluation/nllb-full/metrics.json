@@ -1,0 +1,60 @@
+{
+  "id": "nllb-full",
+  "rows": 575,
+  "scores": {
+    "bleu": 14.283543312714782,
+    "chrf++": 10.917928026721063
+  },
+  "checkpoint": {
+    "id": "nllb-full",
+    "family": "NLLB",
+    "method": "full",
+    "dataset": "amis_mandarin",
+    "archive": "nllb-200/nllb-200-clrr_enc-best.zip",
+    "bytes": 6832528692,
+    "sha256": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6",
+    "max_length": 128,
+    "src_lang": "zho_Hant",
+    "tgt_lang": "zho_Hant",
+    "reference_prediction_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\test_predictions.csv",
+    "reference_prediction_sha256": "731a8b2e4a40a62ffb5d76166ddc3c4c2c8620df6a7cbe9a7306eed4d5424a1f"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {
+    "config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/nllb-200/nllb-200-baseline-best.zip",
+      "member": "config.json",
+      "sha256": "34871f60c22c9b70b86e0235cbd4e1ed8f351fca711c5dbbf8a261c3d96b6f28"
+    },
+    "generation_config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/nllb-200/nllb-200-baseline-best.zip",
+      "member": "generation_config.json",
+      "sha256": "b7fef8f1ad8f0168514797dfea6de19b2f6f5731ede9cbbcb2714f512d08cabf"
+    }
+  },
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "zh",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 20.648376941680908,
+  "prediction_sha256": "cf3833f5f994639a65fe1242fc2028b3718bb9f4e8eb61d1c9bf35234f96ef29",
+  "reference_sha256": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+}

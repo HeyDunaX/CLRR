@@ -1,0 +1,62 @@
+[
+  {
+    "method": "baseline",
+    "default_accelerate_generation_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.bfloat16"
+    },
+    "explicit_fp32_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_bf16_projection": {
+      "encoder": "torch.bfloat16",
+      "decoder": "torch.bfloat16"
+    }
+  },
+  {
+    "method": "clrr",
+    "default_accelerate_generation_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_fp32_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_bf16_projection": {
+      "encoder": "torch.bfloat16",
+      "decoder": "torch.bfloat16"
+    }
+  },
+  {
+    "method": "lsr",
+    "default_accelerate_generation_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_fp32_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_bf16_projection": {
+      "encoder": "torch.bfloat16",
+      "decoder": "torch.bfloat16"
+    }
+  },
+  {
+    "method": "full",
+    "default_accelerate_generation_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_fp32_projection": {
+      "encoder": "torch.float32",
+      "decoder": "torch.float32"
+    },
+    "explicit_bf16_projection": {
+      "encoder": "torch.bfloat16",
+      "decoder": "torch.bfloat16"
+    }
+  }
+]

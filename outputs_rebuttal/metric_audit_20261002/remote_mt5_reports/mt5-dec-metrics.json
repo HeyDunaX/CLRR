@@ -1,0 +1,23 @@
+{
+  "model": "google/mt5-small",
+  "method": "jepa-clrr",
+  "stack": "decoder",
+  "jepa_weight": 0.1,
+  "seed": 42,
+  "parameters": 300176768,
+  "trainable_parameters": 300176768,
+  "extra_parameters": 0,
+  "eval_loss": 3.4086575508117676,
+  "eval_bleu": 4.513551988147556,
+  "eval_chrf++": 5.916856811037014,
+  "eval_runtime": 2.1332,
+  "eval_samples_per_second": 270.013,
+  "eval_steps_per_second": 2.344,
+  "epoch": 20.0,
+  "test_loss": 3.394519805908203,
+  "test_bleu": 4.925736422809917,
+  "test_chrf++": 5.921443126141787,
+  "test_runtime": 3.3145,
+  "test_samples_per_second": 173.481,
+  "test_steps_per_second": 1.509
+}

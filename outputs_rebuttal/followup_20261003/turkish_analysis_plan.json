@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-03",
+  "locked_before": "LSR-only, CLRR-only and Full quality training/test; baseline training underway",
+  "test_dataset": "opus100_turkish_english_20k_v2, original official test2000 order, 1982unique pairs",
+  "primary_comparisons": [
+    "Full-Baseline",
+    "Full-LSR-only"
+  ],
+  "metrics": [
+    "BLEU13a primary",
+    "chrF++6/2 secondary",
+    "chrF6/0 diagnostic"
+  ],
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 42,
+    "unit": "paired original test rows",
+    "ci": "signed corpus-score difference percentile95%",
+    "p": "SacreBLEU centered absolute-difference bootstrap",
+    "family": "2 primary pairs x3metrics =6, Holm6 reported consistently"
+  },
+  "scope": "one seed exploratory pilot; no training-seed uncertainty claim",
+  "secondary": "CLRR-only and zero-shot point scores reported, not used to tune method on test",
+  "duplicate_sensitivity": "primary BLEU CI also resampled by exact-source clusters; no score rows dropped",
+  "decisions": "report all methods; no post-test lambda/alpha/patience changes; assess effect sizes/CI before extra seeds"
+}

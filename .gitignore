@@ -34,4 +34,32 @@ data_processed/*/raw/
 
 # Paper templates and reference drafts
 docs/CLRR-paper/
+docs/archive/CLRR-paper/
 scratch/
+
+# Active audited manuscript; historical drafts remain ignored.
+!docs/clrr_main.tex
+!docs/clrr_references.bib
+!docs/paper_tables/*.tex
+
+# Checkpoints, model weights, and heavy training dumps
+*.safetensors
+*.pt
+*.bin
+*.ckpt
+*.npz
+checkpoint-*/
+*/checkpoint-*/
+runs/
+best_archives/
+interrupted_attempt_*/
+trajectory/
+outputs_rebuttal/checkpoint_diagnostics_20261002/
+outputs_rebuttal/amis_confirmation_20261003/runs/
+outputs_rebuttal/amis_confirmation_20261003/trajectory/
+outputs_rebuttal/amis_confirmation_20261003/interrupted_attempt_*/
+outputs_rebuttal/amis_confirmation_20261003/best_archives/
+outputs_rebuttal/amis_confirmation_20261003/metric_influence/
+outputs_rebuttal/amis_confirmation_20261003/metric_influence_preparation/
+outputs_rebuttal/**/*.log
+

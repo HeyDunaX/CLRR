@@ -1,0 +1,131 @@
+{
+  "removed": [
+    {
+      "path": "outputs_rebuttal/followup_20261003/turkish_baseline_epoch2_resumable.tar",
+      "bytes": 7354408960,
+      "reason": "Explicitly discarded Turkish epoch-2 attempt; not an experiment used in the paper"
+    },
+    {
+      "path": "results/ashaninka_spanish/nllb-ashaninka-es-baseline/nllb-200-baseline-best.zip.partial",
+      "bytes": 101810176,
+      "reason": "Incomplete download; complete checkpoint exists in HF per verified inventory"
+    },
+    {
+      "path": ".venv",
+      "bytes": 1566298566,
+      "reason": "Unused repository virtualenv; active environment is conda clrr"
+    },
+    {
+      "path": "src\\amis_rewire\\__pycache__",
+      "bytes": 127220,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "src\\comparative_baselines\\__pycache__",
+      "bytes": 475,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "src\\comparative_baselines\\layerskip_acl2024\\__pycache__",
+      "bytes": 39674,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "src\\comparative_baselines\\middle_align_acl2025\\__pycache__",
+      "bytes": 41016,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "src\\nllb_suite\\__pycache__",
+      "bytes": 35948,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "src\\peft_baselines\\__pycache__",
+      "bytes": 40111,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "scripts\\__pycache__",
+      "bytes": 124616,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "scripts\\peft\\__pycache__",
+      "bytes": 26825,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "scripts\\revalidation\\__pycache__",
+      "bytes": 80076,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "tests\\__pycache__",
+      "bytes": 35289,
+      "reason": "Regenerable Python bytecode"
+    },
+    {
+      "path": "outputs_rebuttal/mbart_epoch20_reports.zip",
+      "bytes": 75069,
+      "reason": "All ZIP members identical to preserved local reports or verified HF archives"
+    },
+    {
+      "path": "outputs_rebuttal/mbart_patience10_reports.zip",
+      "bytes": 77615,
+      "reason": "All ZIP members identical to preserved local reports or verified HF archives"
+    },
+    {
+      "path": "outputs_rebuttal\\strong_lora_run_a_results.zip",
+      "bytes": 38774561,
+      "reason": "ZIP weights match verified HF backups; all report members extracted and preserved",
+      "preserved": [
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\results\\mbart-large-50-lora-all-linear\\metrics.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\results\\mbart-large-50-lora-all-linear\\test_predictions.csv",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\outputs_rebuttal\\strong_lora_run_a_verification.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\outputs_rebuttal\\strong_lora_scores.csv",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\run_source_manifest.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\results\\mbart-large-50-lora-all-linear\\checkpoint-720\\trainer_state.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_a_results\\strong_lora.log"
+      ]
+    },
+    {
+      "path": "outputs_rebuttal\\strong_lora_run_b_results.zip",
+      "bytes": 989193958,
+      "reason": "ZIP weights match verified HF backups; all report members extracted and preserved",
+      "preserved": [
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\results\\mbart-large-50-lora-all-linear-unfreeze-embed\\metrics.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\results\\mbart-large-50-lora-all-linear-unfreeze-embed\\test_predictions.csv",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\outputs_rebuttal\\strong_lora_run_b_verification.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\outputs_rebuttal\\strong_lora_run_b_scores.csv",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\run_source_manifest.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\results\\mbart-large-50-lora-all-linear-unfreeze-embed\\checkpoint-720\\trainer_state.json",
+        "outputs_rebuttal\\workspace_cleanup_20261003\\preserved_bundle_reports\\strong_lora_run_b_results\\strong_lora_run_b.log"
+      ]
+    }
+  ],
+  "archived": [
+    {
+      "source": "docs/EXPERIMENTS.md",
+      "target": "docs/archive/EXPERIMENTS_ORIGINAL_20261003.md",
+      "sha256": "151d705e0db56fa138c99e0217b7001598c1242a515eb9429842c6b3b2700bcb"
+    },
+    {
+      "source": "docs/implementation_plan.md",
+      "target": "docs/archive/implementation_plan_original_20261003.md",
+      "sha256": "761e950060c9ba5f8623786e646c92332e1055f1c02c976fadd9d08daa6b3cff"
+    },
+    {
+      "source": "docs/CLRR-paper",
+      "target": "docs/archive/CLRR-paper",
+      "sha256": null
+    },
+    {
+      "source": "docs/clrr_main.tex",
+      "target": "docs\\archive\\clrr_main_before_revision_20261003.tex",
+      "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+      "operation": "copy"
+    }
+  ],
+  "bytes_freed": 11079053847
+}

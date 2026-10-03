@@ -1,0 +1,137 @@
+{
+  "samples": 10000,
+  "seed": 42,
+  "unit": "sentence; paired sampling of original test rows",
+  "metrics": "BLEU zh/13a and raw chrF++; original CSV references",
+  "ci": "percentile 2.5 and 97.5 of signed corpus-score delta",
+  "p": "SacreBLEU centered absolute-difference bootstrap p, not one-sided win probability",
+  "holm_family": "all 42 metric comparisons in this audit; post-hoc, one training seed",
+  "comparisons": [
+    [
+      "amis_mandarin",
+      "mBART",
+      "Baseline",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "LSR-only",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "CLRR-only",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "Middle-Layer Alignment",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "CLRR-Dec+LSR",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "BitFit",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "Narrow LoRA",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "Strong LoRA A",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mBART",
+      "Strong LoRA B",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "NLLB",
+      "Baseline",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "NLLB",
+      "Middle-Layer Alignment",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "NLLB",
+      "Narrow LoRA",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "NLLB",
+      "Strong LoRA A",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "NLLB",
+      "Strong LoRA B",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mT5",
+      "Baseline",
+      "CLRR-Dec+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mT5",
+      "Middle-Layer Alignment",
+      "CLRR-Dec+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mT5",
+      "Baseline",
+      "CLRR+LSR"
+    ],
+    [
+      "amis_mandarin",
+      "mT5",
+      "CLRR+LSR",
+      "CLRR-Both+LSR"
+    ],
+    [
+      "ashaninka_spanish",
+      "mBART",
+      "Baseline (patience 4)",
+      "CLRR+LSR (patience 4)"
+    ],
+    [
+      "ashaninka_spanish",
+      "mBART",
+      "Baseline (patience 4)",
+      "CLRR+LSR (patience 10, selected epoch 14)"
+    ],
+    [
+      "ashaninka_spanish",
+      "mBART",
+      "Baseline (patience 4)",
+      "CLRR+LSR (patience 10, fixed epoch 20)"
+    ]
+  ]
+}

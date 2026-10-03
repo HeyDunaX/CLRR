@@ -1,0 +1,11 @@
+{
+  "task1": "UNAVAILABLE_CORRECT_BEST504",
+  "task2": "UNAVAILABLE_HISTORICAL_LSR_FULL_INTERMEDIATES",
+  "historical_trajectory_files": {
+    "baseline": [],
+    "full": [],
+    "lsr": []
+  },
+  "task3": "PREPARING_12_MATCHED_TRIALS",
+  "replacement_scope": "fresh training is separate from historical reevaluation; collect new trajectories without substituting old checkpoint432"
+}

@@ -28,8 +28,9 @@ from transformers import (
 )
 from transformers.trainer_utils import get_last_checkpoint
 
-from .metrics import generation_metrics, safe_decode_inputs
+from .metrics import generation_metrics, safe_decode_inputs, build_compute_metrics as original_reference_metrics, metric_protocol
 from .modeling import load_model
+from .evaluation import PrecisionSeq2SeqTrainer
 
 
 MODEL_DEFAULTS = {
@@ -221,12 +222,16 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--src-lang", default=None, help="Source language code (auto-detected if None).")
     parser.add_argument("--tgt-lang", default=None, help="Target language code (auto-detected if None).")
     parser.add_argument("--bleu-tokenizer", default=None, help="Tokenizer for BLEU (zh or 13a, auto-detected if None).")
-    parser.add_argument("--test-reference", choices=["trainer", "original_csv"], default="trainer",
-                        help="Keep historical Trainer scoring by default; new suites can use original references.")
+    parser.add_argument("--test-reference", choices=["original_csv"], default="original_csv",
+                        help="Score predictions against the original ordered CSV references.")
+    parser.add_argument("--validation-only", action="store_true",
+                        help="Select and save using validation only; do not load or evaluate test during tuning.")
     parser.add_argument("--auto-resume", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--fp16", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--generation-precision", choices=["fp32", "bf16"], default="fp32",
+                        help="Declared generation precision shared by all methods.")
     parser.add_argument("--dataloader-num-workers", type=int, default=4)
     parser.add_argument("--dataloader-pin-memory", action=argparse.BooleanOptionalAction, default=True)
     return parser.parse_args()
@@ -236,7 +241,7 @@ def load_split(data_dir: Path, split: str) -> Dataset:
     path = data_dir / f"{split}.csv"
     if not path.exists():
         raise FileNotFoundError(f"Missing {path}. Run amis-rewire-prepare first.")
-    frame = pd.read_csv(path, encoding="utf-8").fillna("")
+    frame = pd.read_csv(path, encoding="utf-8", dtype=str, keep_default_na=False).fillna("")
     if list(frame.columns) != ["source", "target"]:
         raise ValueError(f"{path} must have exactly columns source,target")
     return Dataset.from_pandas(frame, preserve_index=False)
@@ -244,7 +249,7 @@ def load_split(data_dir: Path, split: str) -> Dataset:
 
 def detect_mbart_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
     path_str = str(data_dir).lower()
-    is_spanish = "ashaninka" in path_str or "spanish" in path_str
+    is_spanish = "spanish" in path_str
     is_turkish = "turkish" in path_str or "tr_en" in path_str or "opus100" in path_str
     if is_turkish:
         tgt_lang = cli_tgt or "en_XX"
@@ -295,17 +300,10 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 
 
-def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh"):
-    def compute_metrics(eval_prediction: Any) -> dict[str, float]:
-        predictions, labels = eval_prediction
-        if isinstance(predictions, tuple):
-            predictions = predictions[0]
-        decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(predictions), skip_special_tokens=True)
-        decoded_labels = tokenizer.batch_decode(safe_decode_inputs(labels), skip_special_tokens=True)
-        return generation_metrics(decoded_predictions, decoded_labels, tokenize=bleu_tokenizer)
-
-    return compute_metrics
-
+def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh", references: list[str] | None = None):
+    if references is None:
+        raise ValueError("Original references for the evaluation split are required")
+    return original_reference_metrics(tokenizer, references, tokenize=bleu_tokenizer)
 
 def main() -> None:
     args = parse_args()
@@ -337,7 +335,7 @@ def main() -> None:
     print(f"[init] tokenizing dataset splits from {data_dir}...", flush=True)
     train_dataset = tokenize_dataset(load_split(data_dir, "train"), tokenizer, args)
     validation_dataset = tokenize_dataset(load_split(data_dir, "validation"), tokenizer, args)
-    test_dataset = tokenize_dataset(load_split(data_dir, "test"), tokenizer, args)
+    test_dataset = None if args.validation_only else tokenize_dataset(load_split(data_dir, "test"), tokenizer, args)
     collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8)
 
     training_kwargs: dict[str, Any] = {
@@ -391,7 +389,7 @@ def main() -> None:
         "train_dataset": train_dataset,
         "eval_dataset": validation_dataset,
         "data_collator": collator,
-        "compute_metrics": build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
+        "compute_metrics": build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer, references=load_split(data_dir, "validation")["target"]),
         "callbacks": [
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
@@ -405,7 +403,10 @@ def main() -> None:
         trainer_kwargs["processing_class"] = tokenizer
     elif "tokenizer" in trainer_sig.parameters:
         trainer_kwargs["tokenizer"] = tokenizer
-    trainer = Seq2SeqTrainer(**trainer_kwargs)
+    if args.generation_precision:
+        trainer = PrecisionSeq2SeqTrainer(**trainer_kwargs, generation_dtype=args.generation_precision)
+    else:
+        trainer = Seq2SeqTrainer(**trainer_kwargs)
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     trainable_count = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
     print(f"[run] model={model_name} method={args.method} parameters={parameter_count:,} trainable={trainable_count:,}", flush=True)
@@ -418,18 +419,59 @@ def main() -> None:
     start_time = time.time()
     trainer.train(resume_from_checkpoint=resume_checkpoint)
     training_time_seconds = time.time() - start_time
+    if args.validation_only:
+        validation_output = trainer.predict(validation_dataset, metric_key_prefix="eval")
+        validation_metrics = validation_output.metrics
+        predictions = validation_output.predictions
+        if isinstance(predictions, tuple):
+            predictions = predictions[0]
+        decoded = tokenizer.batch_decode(safe_decode_inputs(predictions, tokenizer.pad_token_id), skip_special_tokens=True)
+        raw_validation = pd.read_csv(data_dir / "validation.csv", encoding="utf-8", dtype=str, keep_default_na=False).fillna("")
+        if len(decoded) != len(raw_validation):
+            raise ValueError("Validation prediction count does not match validation.csv")
+        predictions_path = output_dir / "validation_predictions.csv"
+        pd.DataFrame({"index": range(len(decoded)), "source": raw_validation["source"],
+                      "target": raw_validation["target"], "prediction": [p.strip() for p in decoded]}).to_csv(
+                          predictions_path, index=False, encoding="utf-8")
+        best_model_dir = output_dir / "best_model"
+        trainer.save_model(str(best_model_dir))
+        tokenizer.save_pretrained(best_model_dir)
+        model.config.save_pretrained(best_model_dir)
+        model.generation_config.save_pretrained(best_model_dir)
+        archive_best_model(best_model_dir, Path(args.backup_dir), run_name, args.hf_backup_repo, args.hf_backup_prefix)
+        final_metrics = {"model": model_name, "method": args.method, "seed": args.seed,
+                         "parameters": parameter_count, "trainable_parameters": trainable_count,
+                         "extra_parameters": 0, "configuration": vars(args),
+                         "training_time_seconds": training_time_seconds,
+                         "best_model_checkpoint": trainer.state.best_model_checkpoint,
+                         "completed_epochs": trainer.state.epoch, "test_evaluated": False,
+                         "evaluation_protocol": metric_protocol(bleu_tokenizer),
+                         **{key: float(value) for key, value in validation_metrics.items() if isinstance(value, (int, float))}}
+        final_metrics.update({f"eval_{key}": value for key, value in generation_metrics(
+            decoded, raw_validation["target"].tolist(), tokenize=bleu_tokenizer).items()})
+        metrics_path = output_dir / "metrics.json"
+        metrics_path.write_text(json.dumps(final_metrics, indent=2), encoding="utf-8")
+        if args.hf_backup_repo:
+            api = HfApi(token=os.environ["HF_TOKEN"])
+            for artifact in (metrics_path, predictions_path):
+                api.upload_file(path_or_fileobj=str(artifact),
+                                path_in_repo=remote_path(args.hf_backup_prefix, run_name, artifact.name),
+                                repo_id=args.hf_backup_repo, repo_type="model")
+        print(json.dumps(final_metrics, indent=2), flush=True)
+        return
     validation_metrics = trainer.evaluate(validation_dataset, metric_key_prefix="eval")
     # Switch to full beam search for final test evaluation
     trainer.args.generation_num_beams = args.num_beams
+    trainer.compute_metrics = build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer, references=load_split(data_dir, "test")["target"])
     test_output = trainer.predict(test_dataset, metric_key_prefix="test")
     test_metrics = test_output.metrics
     test_predictions = test_output.predictions
     if isinstance(test_predictions, tuple):
         test_predictions = test_predictions[0]
     decoded_predictions = tokenizer.batch_decode(
-        safe_decode_inputs(test_predictions), skip_special_tokens=True
+        safe_decode_inputs(test_predictions, tokenizer.pad_token_id), skip_special_tokens=True
     )
-    raw_test = pd.read_csv(data_dir / "test.csv", encoding="utf-8").fillna("")
+    raw_test = pd.read_csv(data_dir / "test.csv", encoding="utf-8", dtype=str, keep_default_na=False).fillna("")
     if len(raw_test) != len(decoded_predictions):
         raise ValueError("Test prediction count does not match test.csv")
     predictions_path = output_dir / "test_predictions.csv"
@@ -465,14 +507,12 @@ def main() -> None:
         **{key: float(value) for key, value in validation_metrics.items() if isinstance(value, (int, float))},
         **{key: float(value) for key, value in test_metrics.items() if isinstance(value, (int, float))},
     }
-    final_metrics["test_reference"] = args.test_reference
-    if args.test_reference == "original_csv":
-        final_metrics["trainer_test_bleu"] = final_metrics.get("test_bleu")
-        final_metrics["trainer_test_chrf++"] = final_metrics.get("test_chrf++")
-        official_scores = generation_metrics(
-            decoded_predictions, raw_test["target"].tolist(), tokenize=bleu_tokenizer
-        )
-        final_metrics.update({f"test_{key}": value for key, value in official_scores.items()})
+    final_metrics["test_reference"] = "original_csv"
+    final_metrics["evaluation_protocol"] = metric_protocol(bleu_tokenizer)
+    official_scores = generation_metrics(
+        decoded_predictions, raw_test["target"].tolist(), tokenize=bleu_tokenizer
+    )
+    final_metrics.update({f"test_{key}": value for key, value in official_scores.items()})
     output_dir.mkdir(parents=True, exist_ok=True)
     metrics_path = output_dir / "metrics.json"
     metrics_path.write_text(json.dumps(final_metrics, indent=2), encoding="utf-8")

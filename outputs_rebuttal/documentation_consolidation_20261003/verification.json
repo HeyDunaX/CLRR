@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "paper_byte_identical": true,
+  "paper_tables_exact": 10,
+  "current_score_rows_verified": 36,
+  "stage_B_rows_verified": 12,
+  "source_csv_unchanged": 4,
+  "original_doc_snapshots_verified": 12,
+  "broken_primary_links": 0,
+  "experiments_started": 0
+}

@@ -1,9 +1,18 @@
 # When the Same Layers Learn to Translate: Parameter-Neutral Residual Rewiring for Low-Resource Amis-to-Chinese Translation
 
+## Paper và kết quả hiện hành
+
+- [clrr_main.tex](docs/clrr_main.tex): paper đã revision theo kết quả xác minh, với suite matched 12run/3seed làm bằng chứng chính.
+- [EXPERIMENTS_UPDATED.md](docs/EXPERIMENTS_UPDATED.md): sổ kết quả hiện hành duy nhất; A/B/C, số âm tính và provenance.
+- [RESEARCH_INSIGHTS.md](docs/RESEARCH_INSIGHTS.md): diễn giải kết quả đã xác minh và bước chẩn đoán tiếp theo; insight cũ được giữ trong archive.
+- [METRICS.md](docs/METRICS.md): protocol metrics; [Go/No-Go](docs/CLRR_GO_NOGO_PLAN.md): quy trình tối ưu tiếp theo.
+- [Experiments gốc đã archive](docs/archive/EXPERIMENTS_ORIGINAL_20261003.md): gắn với bản paper trước revision, không dùng làm nguồn số hiện hành.
+- Bản paper cũ và các báo cáo cũ nằm trong `docs/archive/`; không có training đang chạy.
+
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/HeyDunaX/CLRR/blob/main/notebooks/colab_a100_run.ipynb)
 
 
-This repository contains reproducible experiments for a ComputEL-10 study on Amis-to-Chinese (Mandarin) neural machine translation. The proposed intervention, **Cross-Layer Residual Rewiring (CLRR)**, changes how already-computed hidden states are connected between Transformer layers. It adds no trainable parameter tensor and keeps the tokenizer, data, optimizer, and training protocol fixed.
+This repository contains reproducible experiments for a study on Amis-to-Chinese (Mandarin) neural machine translation. The proposed intervention, **Cross-Layer Residual Rewiring (CLRR)**, changes how already-computed hidden states are connected between Transformer layers. It adds no trainable parameter tensor and keeps the tokenizer, data, optimizer, and training protocol fixed.
 
 The title makes the required formulation explicit:
 
@@ -13,12 +22,12 @@ The title makes the required formulation explicit:
 
 The method is an experimental hypothesis, not a guaranteed improvement. This repository measures whether CLRR outperforms the corresponding unmodified backbone under a controlled protocol.
 
-## What CLRR changes & JEPA for NMT
+## CLRR and Latent Semantic Regularization (LSR)
 
 ### 1. Context-Encoder Cross-Layer Residual Rewiring (CLRR)
-Amis is a Formosan language with agglutinative and polysynthetic morphology (voice affixes, aspect markers, reduplication). In deep Transformer encoders, lower-level morphosyntactic distinctions are easily over-smoothed into broad semantic abstractions.
+Amis is a Formosan language with agglutinative and polysynthetic morphology (voice affixes, aspect markers, reduplication). The working hypothesis is that access to earlier encoder activations can help adaptation when parallel supervision is limited.
 
-To preserve these granular structural cues, CLRR is applied specifically to the **Context Encoder** (source stack) at each layer index `i` from distance `d = 2`:
+To study this reuse of intermediate information, CLRR is applied to the **Context Encoder** (source stack) at each layer index `i` from distance `d = 2`:
 
 ```text
 h_i = TransformerEncoderLayer_i(h_{i-1})
@@ -27,42 +36,36 @@ h_i' = h_i + alpha * stop_gradient(h_{i-d}')
 
 The residual is inserted through a deterministic forward hook with `alpha = 0.1` and `stop_gradient` detach, introducing **zero trainable parameters** while keeping the tokenizer, optimizer, and model capacity identical.
 
-### 2. JEPA-Guided Latent Alignment for NMT
-In Joint-Embedding Predictive Architectures (JEPA), learning occurs in representation space rather than solely reconstructing surface tokens. We formulate **JEPA-guided Seq2Seq**:
+### 2. Shared-Encoder Latent Alignment for NMT
+In Joint-Embedding Predictive Architectures (JEPA), learning occurs in representation space rather than solely reconstructing surface tokens. LSR uses shared encoder weights and a detached target branch without a predictor or momentum teacher. Legacy code uses `jepa` method names:
 - **Context Representation** $H_X$: Output of the Context Encoder (Amis), optionally enhanced by CLRR.
 - **Target Anchor** $H_Y$: Encoded target sequence (Chinese) computed under `stop-gradient`.
 - **Training Loss**:
   $$\mathcal{L} = \mathcal{L}_{\text{NMT}} + \lambda_{\text{JEPA}} \cdot (1 - \text{CosineSimilarity}(\bar{H}_X, \bar{H}_Y))$$
   with $\lambda_{\text{JEPA}} = 0.1$. This enforces latent semantic alignment between source and target while the decoder generates surface tokens to compute standard BLEU and chrF++.
 
-## Models & Evaluation Protocol (Focused 6-Run Setup)
+## Models and current evaluation
 
-To maximize scientific rigor while respecting workshop compute budgets, we adopt a **focused 6-run experiment protocol**:
-1. **Central Research Backbone (`google/mt5-small`)**: Undergoes a full 4-condition ablation study to isolate the contribution of Context-Encoder residual rewiring vs. JEPA representation alignment.
-2. **Cross-Architecture Validation Backbone (`facebook/mbart-large-50-many-to-many-mmt`)**: Evaluates the generalization of the proposed method (Baseline vs. JEPA + CLRR-Enc).
+The primary study is **12 matched mBART runs**: fine-tuning, CLRR-only,
+LSR-only, and CLRR+LSR with seeds 42, 43, and 44 on Amis→Mandarin.
+Historical Amis checkpoints additionally cover mT5, NLLB, and ByT5.
+The paper uses 28 retained historical outputs, ten FP32 checkpoint evaluations,
+and four routing-off evaluations; their distinct protocols are documented in
+[the current ledger](docs/EXPERIMENTS_UPDATED.md).
 
-| Backbone | Role | Conditions |
-| --- | --- | --- |
-| `google/mt5-small` | Central research backbone (full ablation) | Baseline, CLRR-Enc, JEPA, JEPA+CLRR-Enc |
-| `facebook/mbart-large-50-many-to-many-mmt` | Cross-architecture validation | Baseline, JEPA+CLRR-Enc |
-
-For mBART, Amis has no dedicated mBART-50 language ID. The tokenizer uses its shared vocabulary and Chinese (`zh_CN`) as the target language tag. This limitation must be reported in the paper.
+For mBART, the source proxy is `tl_XX` and the target tag is `zh_CN`.
+The shared protocol uses LR `5e-5`, weight decay `0`, effective batch 128,
+maximum 20 epochs, patience 4, and explicit FP32 generation. Checkpoints are
+selected on validation chrF++; the held-out test uses beam 4. All four methods
+update the same backbone parameter set and add zero parameters.
 
 ## Data
 
-Processed datasets are organized under `data_processed/<dataset_name>/`:
-`amis_mandarin` contains the original Amis splits; `ashaninka_spanish` contains
-the prepared AmericasNLP splits (3,883 train / 881 validation / 1,003 test).
-See [dataset sources, manifests, and language configuration notes](data_processed/README.md).
-Run local Python commands in the existing conda environment `clrr`.
-
-```powershell
-conda run -n clrr python scripts/prepare_ashaninka_spanish.py
-```
-
-Asháninka data preparation is complete. Its training configuration still needs
-Spanish language tags and evaluation settings; changing `--data-dir` alone is
-insufficient with the current Mandarin-specific trainers.
+Processed datasets live under `data_processed/<dataset_name>/`, with
+`train.csv`, `validation.csv`, and `test.csv` containing `source,target`.
+`amis_mandarin` is the current manuscript dataset; Turkish OPUS-100 v2 is prepared
+for a future experiment and remains stopped. See [dataset notes](data_processed/README.md).
+Run Python commands in the existing conda environment `clrr`.
 
 The parallel corpus used in this study is the 5,751-sentence Amis–Mandarin dataset introduced by [Zheng et al. (2022)](https://aclanthology.org/2022.nlp4dh-1.11/). The data archive can be downloaded from Google Drive:
 
@@ -303,8 +306,8 @@ recomputed scores separately in `analysis/all_scores.csv`.
 
 ```text
 docs/
-├── EXPERIMENTS.md           # Full 16-model matrix, mBART ablation suite, Task 1-5 revalidation
-├── RESEARCH_INSIGHTS.md     # Theory, stop-gradient math derivation, ByT5 UTF-8 analysis, case studies
+├── EXPERIMENTS_UPDATED.md   # Audited A/B/C results; historical ledger in archive/
+├── clrr_main.tex           # Active audited manuscript; numerical tables in paper_tables/
 ├── COLAB_SSH_GUIDE.md       # Google Colab SSH workflows, autonomous bash scripts, templates
 └── archive/                 # Historical phase documentation (backed up)
 src/amis_rewire/
@@ -312,10 +315,10 @@ src/amis_rewire/
 ├── train.py                 # CLI, fixed fairness protocol, training, validation, test
 ├── metrics.py               # Standardized SacreBLEU (tokenize='zh') and chrF++ (word_order=2)
 └── prepare_data.py          # CSV validation and split export
-src/comparative_baselines/   # Isolated implementations of LayerSkip (ACL 2024) and Mid-Align (ACL 2025)
+src/comparative_baselines/   # Shared-encoder Middle-Align adaptation (ACL 2025)
 data_processed/
 ├── amis_mandarin/            # train.csv (4600), validation.csv (576), test.csv (575)
-└── ashaninka_spanish/        # train.csv (3883), validation.csv (881), test.csv (1003)
+└── opus100_turkish_english_20k_v2/ # Prepared 20k sample; training stopped
 scripts/
 ├── run_all_models.sh        # Batch execution matrix
 └── revalidation/            # Targeted defense & ablation scripts

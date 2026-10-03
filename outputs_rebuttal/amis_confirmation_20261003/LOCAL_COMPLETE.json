@@ -1,0 +1,104 @@
+{
+  "status": "ALL12_ANALYZED_WITH_DISCLOSED_ARTIFACT_LOSSES",
+  "verified_snapshot_files": 241,
+  "best_archives_verified": 10,
+  "artifact_losses": [
+    {
+      "run_name": "mbart-amis-lsr-seed42",
+      "lost": "selected best weights archive incomplete",
+      "preserved": [
+        "final metrics",
+        "575 ordered test predictions",
+        "early/middle/late probes"
+      ],
+      "partial_bytes": 1950351360,
+      "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+    },
+    {
+      "run_name": "mbart-amis-full-seed42",
+      "lost": "selected best weights archive incomplete",
+      "preserved": [
+        "final metrics",
+        "575 ordered test predictions",
+        "early/middle/late probes"
+      ],
+      "partial_bytes": 40894464,
+      "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+    }
+  ],
+  "local_archives": [
+    {
+      "run_name": "mbart-amis-baseline-seed42",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-baseline-seed42.zip",
+      "bytes": 2270664334,
+      "sha256": "aaed1e8cf39b4f1ad6a5f4bef6fa04d44fbeb9fb2599e2649702e937822a10c8",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-baseline-seed43",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-baseline-seed43.zip",
+      "bytes": 2270678573,
+      "sha256": "4524afeff8761db29b108feb4ff8c19fd54e84172135d9d6845b5d5a2551a26e",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-baseline-seed44",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-baseline-seed44.zip",
+      "bytes": 2270716284,
+      "sha256": "ce2d3ac8a4e734bdcc8240e1180785f7314782ea13ebdf9bedeba6816d8f71ad",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-clrr-seed42",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-clrr-seed42.zip",
+      "bytes": 2270684687,
+      "sha256": "9916dae4217809f41cae3aff0aa974e14528860683091a1c67ff0f0396ac4c30",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-clrr-seed43",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-clrr-seed43.zip",
+      "bytes": 2270664838,
+      "sha256": "9dc354c383df3c0adf6bddb488c2d73c1ec4f0950e07f8756f2ef763f27f6e06",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-clrr-seed44",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-clrr-seed44.zip",
+      "bytes": 2270687639,
+      "sha256": "413e8ebde299bef49410df02bdd450fecbb10b991035a913d70bcd5ed812f131",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-full-seed43",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-full-seed43.zip",
+      "bytes": 2270678254,
+      "sha256": "b7cb3cd50f610a8e8119aa4213d649a5acc4077270938cfe0aae148b399bc5d4",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-full-seed44",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-full-seed44.zip",
+      "bytes": 2270670074,
+      "sha256": "3de3cfc733d60f9070d15fd02aaef0391f6a1a8569f3759adebef3b81e4eb0ee",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-lsr-seed43",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-lsr-seed43.zip",
+      "bytes": 2270688287,
+      "sha256": "6dc2d63c8fac7c78f95e207462c056a3d86b380c21b2d7ca81093d0a7e520749",
+      "verified": true
+    },
+    {
+      "run_name": "mbart-amis-lsr-seed44",
+      "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-lsr-seed44.zip",
+      "bytes": 2270670174,
+      "sha256": "2a720426aa5bf8b07493d765a93c20a94eef930c99f55d534059bae984b9548a",
+      "verified": true
+    }
+  ],
+  "turkish_started": false,
+  "colab_stopped": true,
+  "colab_stop_output": "[colab] Stopping session 'clrr-confirmation'...\n[colab] Session terminated.\n"
+}

@@ -1,0 +1,18 @@
+{
+  "repo_id": "facebook/mbart-large-50-many-to-many-mmt",
+  "revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+  "files": [
+    ".gitattributes",
+    "README.md",
+    "config.json",
+    "flax_model.msgpack",
+    "generation_config.json",
+    "model.safetensors",
+    "pytorch_model.bin",
+    "rust_model.ot",
+    "sentencepiece.bpe.model",
+    "special_tokens_map.json",
+    "tf_model.h5",
+    "tokenizer_config.json"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "archive_url": "https://huggingface.co/FiveC/amis-rewire-checkpoints/resolve/63b0dbc4fab41a669ccb36ed2f22894868634b8a/nllb-200/nllb_results.zip",
+  "archive_bytes": 41046143831,
+  "bytes_transferred": 815959,
+  "reports": [
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_dec/metrics.json",
+      "bytes": 649,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_dec\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_dec/test_predictions.csv",
+      "bytes": 60162,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_dec\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/trainer_state.json",
+      "bytes": 18707,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_dec\\checkpoint-684\\trainer_state.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/baseline/metrics.json",
+      "bytes": 547,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\baseline\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/baseline/test_predictions.csv",
+      "bytes": 59339,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\baseline\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/middle_align/metrics.json",
+      "bytes": 622,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\middle_align\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/middle_align/test_predictions.csv",
+      "bytes": 59059,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\middle_align\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/trainer_state.json",
+      "bytes": 18703,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\middle_align\\checkpoint-684\\trainer_state.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/bitfit/metrics.json",
+      "bytes": 1050,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\bitfit\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/bitfit/test_predictions.csv",
+      "bytes": 68509,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\bitfit\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_enc/metrics.json",
+      "bytes": 646,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_enc/test_predictions.csv",
+      "bytes": 58901,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/trainer_state.json",
+      "bytes": 17692,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\checkpoint-648\\trainer_state.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/lora/metrics.json",
+      "bytes": 782,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\lora\\metrics.json"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/lora/test_predictions.csv",
+      "bytes": 58998,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\lora\\test_predictions.csv"
+    },
+    {
+      "member": "content/CLRR/results/nllb-200/lora/checkpoint-720/trainer_state.json",
+      "bytes": 19688,
+      "local_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\lora\\checkpoint-720\\trainer_state.json"
+    }
+  ]
+}

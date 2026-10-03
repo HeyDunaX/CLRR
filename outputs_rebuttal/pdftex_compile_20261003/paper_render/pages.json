@@ -1,0 +1,110 @@
+[
+  {
+    "page": 1,
+    "tables": [],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 2,
+    "tables": [],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 3,
+    "tables": [
+      "Table 1: Fresh matched mBART Amis runs (C): mean"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 4,
+    "tables": [
+      "Table 2: Paired BLEU differences in C. FT is fine-",
+      "Table 3: Historical Amis checkpoints regenerated under",
+      "Table 4: Paired sentence bootstrap for B: 10,000 re-"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 5,
+    "tables": [
+      "Table 5: Inference routing sensitivity (B): identical",
+      "Table 6: Historical selected-checkpoint diagnostics:"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 6,
+    "tables": [],
+    "headings": [
+      "Conclusion",
+      "Limitations",
+      "References"
+    ],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 7,
+    "tables": [],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 8,
+    "tables": [],
+    "headings": [
+      "Complete Fresh Results",
+      "Reproducibility"
+    ],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 9,
+    "tables": [
+      "Table 7: All 12 fresh matched run results (C). Completed epochs and selected checkpoints are distinct. Baseline"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 10,
+    "tables": [
+      "Table 8: All per-seed corpus bootstrap tests in C. Holm family: four comparisons \u00d7 two metrics \u00d7 three seeds = 24."
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 11,
+    "tables": [
+      "Table 9: Remaining 18 historical Amis outputs verified from saved predictions (A). These share raw-reference"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  },
+  {
+    "page": 12,
+    "tables": [
+      "Table 10: Fresh Full trajectories (C). Gradient ratios are medians across eight identical validation batches. Endpoint"
+    ],
+    "headings": [],
+    "replacement_glyphs": 0,
+    "unknown_citations": 0
+  }
+]

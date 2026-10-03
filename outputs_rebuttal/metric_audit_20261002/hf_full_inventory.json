@@ -1,0 +1,2669 @@
+{
+  "revision": "63b0dbc4fab41a669ccb36ed2f22894868634b8a",
+  "items": [
+    {
+      "type": "directory",
+      "oid": "194ac999daa37d6d0ce9ad7cfc22db4e8bb4dd5e",
+      "size": 0,
+      "path": "analysis"
+    },
+    {
+      "type": "directory",
+      "oid": "ec64969da26e5cec932169f2563b0fc1244c9940",
+      "size": 0,
+      "path": "analysis/predictions"
+    },
+    {
+      "type": "directory",
+      "oid": "c084bd21c6edfc0303c002d42de3a93c2ac5784f",
+      "size": 0,
+      "path": "ashaninka-es"
+    },
+    {
+      "type": "directory",
+      "oid": "47e4b1b120caf06c6cd4ee68e69e0e1e118f0b32",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02"
+    },
+    {
+      "type": "directory",
+      "oid": "fd848199564804dcfc6851f5f0eaa46c3af31c0b",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline"
+    },
+    {
+      "type": "directory",
+      "oid": "a507b585abbbb936ca1d6b7fa37bee73e354ae67",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc"
+    },
+    {
+      "type": "directory",
+      "oid": "68ed99585925426b1136bce3c4f37465edea92bd",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10"
+    },
+    {
+      "type": "directory",
+      "oid": "e557d2d6c9fa33c4a780b58cee49cf18bfb817a1",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20"
+    },
+    {
+      "type": "directory",
+      "oid": "a80aacfd24f5ae134e4c50e415d4dbc0fe7a78e0",
+      "size": 0,
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline"
+    },
+    {
+      "type": "directory",
+      "oid": "26c56f0672949f11d5ef32b25a6abc4eb0fdd50f",
+      "size": 0,
+      "path": "checkpoints"
+    },
+    {
+      "type": "directory",
+      "oid": "ef211aa9bf9c5f4dd65ff02781763eb718476b14",
+      "size": 0,
+      "path": "checkpoints/byt5-small-ami-cmn-baseline"
+    },
+    {
+      "type": "directory",
+      "oid": "fe45f0ee4f8050dec2a96f0851ff9541222382b1",
+      "size": 0,
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc"
+    },
+    {
+      "type": "directory",
+      "oid": "573f2720da66925b91c94ecd05115c333c032e16",
+      "size": 0,
+      "path": "checkpoints/mbart-large-50-ami-cmn-baseline"
+    },
+    {
+      "type": "directory",
+      "oid": "4226f202f2c7a720471fdbd8134e175828734b7b",
+      "size": 0,
+      "path": "checkpoints/mbart-large-50-ami-cmn-jepa-clrr-enc"
+    },
+    {
+      "type": "directory",
+      "oid": "e01d836bb216429febf569b86ad19b252fd8bad4",
+      "size": 0,
+      "path": "checkpoints/mt5-small-ami-cmn-baseline"
+    },
+    {
+      "type": "directory",
+      "oid": "88046dfd6df3a8ded5118b0f5324ac6066f4a8d8",
+      "size": 0,
+      "path": "checkpoints/mt5-small-ami-cmn-clrr-enc"
+    },
+    {
+      "type": "directory",
+      "oid": "387a3d8b531ada6fb47afc384616955d188287bc",
+      "size": 0,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both"
+    },
+    {
+      "type": "directory",
+      "oid": "4515dada23b391c024b7afb50c1d391084f3c4f4",
+      "size": 0,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec"
+    },
+    {
+      "type": "directory",
+      "oid": "8a3d56ca391aad69be590881fb939571c374dd3f",
+      "size": 0,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-enc"
+    },
+    {
+      "type": "directory",
+      "oid": "4a028b079521050c583943fb81013bc11327aaf1",
+      "size": 0,
+      "path": "comparative_baselines"
+    },
+    {
+      "type": "directory",
+      "oid": "d62751571699f4cda647e9af091a8c1cb0edfe91",
+      "size": 0,
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec"
+    },
+    {
+      "type": "directory",
+      "oid": "1e4f54bf3d50958bd8a95f54be1f0b06d4a785a1",
+      "size": 0,
+      "path": "comparative_baselines/byt5-small-layerskip-acl2024"
+    },
+    {
+      "type": "directory",
+      "oid": "0cb4c79fd6fc417aae28c71a057f276d6a900c2d",
+      "size": 0,
+      "path": "comparative_baselines/byt5-small-middle-align-acl2025"
+    },
+    {
+      "type": "directory",
+      "oid": "df8c7ce1ae22f848dc24f4215b651fd3b0dd0b01",
+      "size": 0,
+      "path": "comparative_baselines/layerskip_acl2024"
+    },
+    {
+      "type": "directory",
+      "oid": "02365ed1532e89104815e4c96bcc77f37b492425",
+      "size": 0,
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec"
+    },
+    {
+      "type": "directory",
+      "oid": "d4ba25ae2327ff1db8f9739c5e532ca2fb79ea7e",
+      "size": 0,
+      "path": "comparative_baselines/mbart-large-50-layerskip-acl2024"
+    },
+    {
+      "type": "directory",
+      "oid": "a8558c0defea16a08e81d8f509f3bd01d814408e",
+      "size": 0,
+      "path": "comparative_baselines/mbart-large-50-middle-align-acl2025"
+    },
+    {
+      "type": "directory",
+      "oid": "043591f3847ec403c8badebc73b9c6cc9b2f5cc4",
+      "size": 0,
+      "path": "comparative_baselines/middle_align_acl2025"
+    },
+    {
+      "type": "directory",
+      "oid": "dc028dd131b4955f1a4e575d97abbb825cd37593",
+      "size": 0,
+      "path": "metrics"
+    },
+    {
+      "type": "directory",
+      "oid": "1071e39862e4ff9e50c10907c95c6ca143a1785a",
+      "size": 0,
+      "path": "nllb-200"
+    },
+    {
+      "type": "directory",
+      "oid": "0df4bbe7a0b4c500b19c6b355bc5d1c3a834c56a",
+      "size": 0,
+      "path": "peft_baselines"
+    },
+    {
+      "type": "directory",
+      "oid": "cba7186e4aab0921c51b7224d45acb386fc082fc",
+      "size": 0,
+      "path": "peft_baselines/mbart-large-50-bitfit"
+    },
+    {
+      "type": "directory",
+      "oid": "430f413534a9cfb08d4082f0e9411327c4b06e37",
+      "size": 0,
+      "path": "peft_baselines/mbart-large-50-lora"
+    },
+    {
+      "type": "directory",
+      "oid": "c352de00e3d266f30ade1179b69743ca9408b055",
+      "size": 0,
+      "path": "revalidation"
+    },
+    {
+      "type": "directory",
+      "oid": "4ab91784a4f54f190afd82e080afce9cd6e79756",
+      "size": 0,
+      "path": "revalidation_ablations"
+    },
+    {
+      "type": "directory",
+      "oid": "62e9e63bec9f5f32e9f1720d3090784e92d642b0",
+      "size": 0,
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only"
+    },
+    {
+      "type": "directory",
+      "oid": "8c5a0a7e2efa1b76a1c2b89fe3dd3ba445f80d4a",
+      "size": 0,
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-lsr-only"
+    },
+    {
+      "type": "file",
+      "oid": "a6344aac8c09253b3b630fb776ae94478aa0275b",
+      "size": 1519,
+      "path": ".gitattributes"
+    },
+    {
+      "type": "file",
+      "oid": "9097020db00ff0d8d8e988c976d8ba0c26add396",
+      "size": 624,
+      "path": "analysis/all_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "28c5644b6961cbb86f713e3427314646c19f4f73",
+      "size": 599,
+      "path": "analysis/analysis_notes.txt"
+    },
+    {
+      "type": "file",
+      "oid": "e19e67ff13e460f050393ef97f938f0e42ab58f0",
+      "size": 6233,
+      "path": "analysis/case_candidates.csv"
+    },
+    {
+      "type": "file",
+      "oid": "59ed9dd3aa93f4b0dfd67611388b750db9b4c918",
+      "size": 786,
+      "path": "analysis/cosine_by_layer.csv"
+    },
+    {
+      "type": "file",
+      "oid": "be1247df7ecde61f46222aff2d7181d9258ceba0",
+      "size": 476528,
+      "path": "analysis/cosine_by_sentence.csv"
+    },
+    {
+      "type": "file",
+      "oid": "a9d8636361601df2bf7150b229f07e981debdbb1",
+      "size": 65886,
+      "path": "analysis/encoder_cosine.png"
+    },
+    {
+      "type": "file",
+      "oid": "dd977f5c7de4916af02e40da564ddbdeb73cb294",
+      "size": 354,
+      "path": "analysis/old_model_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "74e336e507da6873a2058cf830070d8196aa84f4",
+      "size": 2537,
+      "path": "analysis/paired_bootstrap.csv"
+    },
+    {
+      "type": "file",
+      "oid": "54658eb0bcc77d2f5889bd3f9a75cb6a4d53cf05",
+      "size": 63932,
+      "path": "analysis/predictions/byt5-small-ami-cmn-baseline.csv"
+    },
+    {
+      "type": "file",
+      "oid": "177e3c3f828f4a8a43a57865c3e841b2f333180f",
+      "size": 63986,
+      "path": "analysis/predictions/byt5-small-ami-cmn-jepa-clrr-enc.csv"
+    },
+    {
+      "type": "file",
+      "oid": "9eaa4111ba35d8ef2369b568b96c957f46a75a2a",
+      "size": 61796,
+      "path": "analysis/predictions/mbart-large-50-ami-cmn-baseline.csv"
+    },
+    {
+      "type": "file",
+      "oid": "907445896d187b4c1484a5240a56015ff463be3b",
+      "size": 62007,
+      "path": "analysis/predictions/mbart-large-50-ami-cmn-jepa-clrr-enc.csv"
+    },
+    {
+      "type": "file",
+      "oid": "bcbe4907b2fdcde93a84d76ff659d86bb969fb27",
+      "size": 61162,
+      "path": "analysis/predictions/mt5-small-ami-cmn-baseline.csv"
+    },
+    {
+      "type": "file",
+      "oid": "52226544e943dbce919df4ef6bcf568cf6bfcc39",
+      "size": 61059,
+      "path": "analysis/predictions/mt5-small-ami-cmn-clrr-enc.csv"
+    },
+    {
+      "type": "file",
+      "oid": "4b122ac7c9fa48d693ca827e0c4aec10f7bc4e8e",
+      "size": 61814,
+      "path": "analysis/predictions/mt5-small-ami-cmn-jepa-clrr-both.csv"
+    },
+    {
+      "type": "file",
+      "oid": "6690caff2f2d1186810554bc0db957dd9475bbea",
+      "size": 60972,
+      "path": "analysis/predictions/mt5-small-ami-cmn-jepa-clrr-dec.csv"
+    },
+    {
+      "type": "file",
+      "oid": "3d3ccf1494733c78b1247da4759c3434e15b2d87",
+      "size": 60903,
+      "path": "analysis/predictions/mt5-small-ami-cmn-jepa-clrr-enc.csv"
+    },
+    {
+      "type": "file",
+      "oid": "bb6c9fd19f5f12a5c2acf9f0ef8f36ab73ff8ca8",
+      "size": 2914,
+      "path": "analysis/preflight.json"
+    },
+    {
+      "type": "file",
+      "oid": "50639b7f6adb2cb45b0dc078e4d8fbcb695e5cab",
+      "size": 3535,
+      "path": "ashaninka-es/2026-10-02/ASHANINKA_RUNBOOK.md"
+    },
+    {
+      "type": "file",
+      "oid": "eae612ebe172f21a98947afbbea9f8cf596fef09",
+      "size": 510,
+      "path": "ashaninka-es/2026-10-02/ashaninka_spanish_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "5b7f7e13254b6ee91180dcb0838bcfae0d2b02ea",
+      "size": 263,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/completed.json"
+    },
+    {
+      "type": "file",
+      "oid": "020b7f4cacfd246134903aa3cca6b063c38ce407",
+      "size": 2271575634,
+      "lfs": {
+        "oid": "a9bb61db92e5205d1dc0bdf39bc0e2187c756239cd830fa47fbabb70e6906d77",
+        "size": 2271575634,
+        "pointerSize": 135
+      },
+      "xetHash": "023d1bf4829c150304ddd23b7a87f62bca30ebe10a9036289440ae5929578ad7",
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/mbart-ashaninka-es-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0dc98b85f4ab42b508867edbf51abd8eeb2d4ccd",
+      "size": 2251,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "76b854856e6339aa4008567ea550093e7b35af15",
+      "size": 2230,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/run_manifest.json"
+    },
+    {
+      "type": "file",
+      "oid": "d67fdf16c006ac3aa63600ce55209df7731161d9",
+      "size": 190924,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "ab146fc3e28eb108a17d3ab24b18cee1707edf0a",
+      "size": 264,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/completed.json"
+    },
+    {
+      "type": "file",
+      "oid": "1bddd7d75363d519d8af2ef6ac273d0a41ecb1c4",
+      "size": 2271582542,
+      "lfs": {
+        "oid": "6a2f1fae90aa51a6b718a5e9e1cf264f0230514086458662de251ef90f55873f",
+        "size": 2271582542,
+        "pointerSize": 135
+      },
+      "xetHash": "b0b5917e1326c2034b659bce4d0cb566fd63b9e9e8ce822ad7a9acbc96cbf0f2",
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/mbart-ashaninka-es-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "fe8a667732682b3b7e19ccb5a5bbad54836b08c3",
+      "size": 2260,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "21233475f836a1735c2b9e11a43861d3c084d8a1",
+      "size": 2374,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/run_manifest.json"
+    },
+    {
+      "type": "file",
+      "oid": "b93636d0f26c8a9a734789efa8fac172e8bbe1d7",
+      "size": 190588,
+      "path": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "7946927364dc9a2e71333fc2ddec33cc22faef55",
+      "size": 2066,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ASHANINKA_PATIENCE10_RUNBOOK.md"
+    },
+    {
+      "type": "file",
+      "oid": "3f4144c1eac20739d080746e45a8eef1e57cc834",
+      "size": 243,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ashaninka_spanish_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "c65ccbef5ae72104c1a7c0d9f0a4ba4a0f06378f",
+      "size": 271,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/completed.json"
+    },
+    {
+      "type": "file",
+      "oid": "ef200223320a9e9d29e31a6281a0abb629f252cb",
+      "size": 323,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/best_vs_epoch20.csv"
+    },
+    {
+      "type": "file",
+      "oid": "6bfc952c545591f6bc563b36b74f1807144efcb6",
+      "size": 2271616983,
+      "lfs": {
+        "oid": "b244b873b1c286b0c80eb925d5fc34ee83ccb961337cb39c6292c9d59b040f13",
+        "size": 2271616983,
+        "pointerSize": 135
+      },
+      "xetHash": "5459668dd048dd3d4e54f56cdc8ae1c97cedce6b52f5c2872caa4ce413d8ca82",
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/mbart-ashaninka-es-clrr-enc-epoch20-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "311310ae73389fdacb0daa86815e17a0a629c8a9",
+      "size": 2622,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "de1bb2ebf2a928772b699cb82101efd9ddc259b7",
+      "size": 191829,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "61a907298b30b3b6caf976ba1f3f6349584dbeee",
+      "size": 2271604268,
+      "lfs": {
+        "oid": "caa7c8bc435cc3819552680aa61d4a4af53fd7e21858a64f5406cb85388032cb",
+        "size": 2271604268,
+        "pointerSize": 135
+      },
+      "xetHash": "45d72be31eeeea85f4c207ff41b234c09a039af4eae1ed059f2d80539e63694e",
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/mbart-ashaninka-es-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0283823ad5cdea02aa8f1baed17f4832e168aee9",
+      "size": 2286,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "d497e0c2ead07d435ec3341cc01e02c862179db4",
+      "size": 2391,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/run_manifest.json"
+    },
+    {
+      "type": "file",
+      "oid": "4c9cfa6930b0864b5094eaf62a86b50db394e73f",
+      "size": 191445,
+      "path": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "7ed817b7d7be71d8afedf661eb442ff0794aba15",
+      "size": 243,
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/completed.json"
+    },
+    {
+      "type": "file",
+      "oid": "f68650bd505fb6f83513ce89f788eaa214613f83",
+      "size": 1818,
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "366fff2f39eac1f635297657fce6e3cd5f85edf1",
+      "size": 2497846452,
+      "lfs": {
+        "oid": "f78153235232f7e792410e3de25064239844c2037a1ab85e5cd6f794b6debdf0",
+        "size": 2497846452,
+        "pointerSize": 135
+      },
+      "xetHash": "30a0418a62cb936819bd27ff6568744ff9294a5709c40b84d6876986d5f67e11",
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/nllb-200-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "f8afbb2d475d059f947aae4aaa286b7c7af77eb6",
+      "size": 1999,
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/run_manifest.json"
+    },
+    {
+      "type": "file",
+      "oid": "aff4c1dc595fa2abd71c0d09dc9a47c39248c3b5",
+      "size": 195986,
+      "path": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "90a8b6f263bfc4dc4d5499f51fcb42e2bbcb7b56",
+      "size": 1111028883,
+      "lfs": {
+        "oid": "ed9833c2543d5eb03351cbe22e853d07de33c825b587b499e9a0bca792bbc7e0",
+        "size": 1111028883,
+        "pointerSize": 135
+      },
+      "xetHash": "793d61eb48f5830100589d8824a74e4edced2afbc7281fd9eaf4cd4f9f87383a",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/byt5-small-ami-cmn-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "871054c469c1426d20f26f6d4001765e18bc8a6d",
+      "size": 3304926657,
+      "lfs": {
+        "oid": "d4f1e41ca98c56c38a25fc49daa033b50c0a764863bc6d80a04c5f64107f2e20",
+        "size": 3304926657,
+        "pointerSize": 135
+      },
+      "xetHash": "2adcd3ac5c811e9eadf61beafca139865705f160933a47a5e684fe9c05a544c0",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "1136b23b277e508c54f79a26ffe7e9ad2c46f637",
+      "size": 3304155084,
+      "lfs": {
+        "oid": "e61a94f4bf7c9feeddcbb1cf8c09458075a43367150308ea266c2383f2181735",
+        "size": 3304155084,
+        "pointerSize": 135
+      },
+      "xetHash": "8c633c374feb2bcf5dd9efbf0881fa9c1a38528e3360a44e8dfd85fffb9c16f1",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "40471d5b5996fd00ac716bf25c770893952383ef",
+      "size": 3303205198,
+      "lfs": {
+        "oid": "f51e4b90e93e202d3ffcf9cbbff35a48f301770fbf8f7b65b8900c187de0b556",
+        "size": 3303205198,
+        "pointerSize": 135
+      },
+      "xetHash": "483f0ac206a3862adc345072014ef0bcc92a3ba2eb0f1df1b3d1ae3244c8bacb",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "f039dc52780295b1ca1ed1f5944dca9695dc9f53",
+      "size": 3302579913,
+      "lfs": {
+        "oid": "6c33265608a45b496beeb5ceeb6067934ff801490041291f61a0a98cf648ff2f",
+        "size": 3302579913,
+        "pointerSize": 135
+      },
+      "xetHash": "13055e664a9c98513aba4632027e0948fb4966310f960758d328f53c9bf7a916",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "acd5446b953e1750ee95a2d6be27987669825a39",
+      "size": 3302093760,
+      "lfs": {
+        "oid": "0b5f8801fc0cfe9ec080805e1513d26a87f1656ce318e0bce9dafff7f6c0f31d",
+        "size": 3302093760,
+        "pointerSize": 135
+      },
+      "xetHash": "c53be3d3f1ebd5a78e0b8b3e2642aafd8fd94b0cf1c802a52996bc0490c52dc6",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "72e35a0e2851893f90ea040ffc4dca4d9c207500",
+      "size": 3301518006,
+      "lfs": {
+        "oid": "6a064a57134c2c9ea04b736b653a31bccee049a497cac83ca5c27bd74de5fee1",
+        "size": 3301518006,
+        "pointerSize": 135
+      },
+      "xetHash": "1545d87411c792e8bfd6ebc707fb2cb0df8d4de0b459c97f4980098500e0fb48",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7dbd16f3000ea16e08a611064efd4663ac008cc3",
+      "size": 3307523887,
+      "lfs": {
+        "oid": "3237cbb440095465330196d9448dc8952acbbafb093f4980f4a2885ba496dd5a",
+        "size": 3307523887,
+        "pointerSize": 135
+      },
+      "xetHash": "1f7fd255f2eb8c04c7bdd4593ef8fcf6ad2b6e23f6db7c5fa2d510dcb6d35c8a",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "37452a576cacdceb88df8b8f060b7a8db8d474a7",
+      "size": 3300839113,
+      "lfs": {
+        "oid": "794b55be45586bb561be46992dab966c8f1d884d00f50892ce59023e8fd45cd8",
+        "size": 3300839113,
+        "pointerSize": 135
+      },
+      "xetHash": "4a9a37e13486c028ce2ffc9694484dd044398f4a2949792214ad392c65d60c1d",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "20691265aa16b1b6c335d79f02099b15aa8e227c",
+      "size": 3300294154,
+      "lfs": {
+        "oid": "1ccafdb518631e907a0cc80a9fa139b901bcdafbe4bcd5dd3c91383231355fb4",
+        "size": 3300294154,
+        "pointerSize": 135
+      },
+      "xetHash": "0117f8b9d0b89b9c5ca3dab2b3a865710efc42b4308e501eff054b51f31aabfe",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "2bfc1f530df4c75ea8446f0e2a97519cc425db83",
+      "size": 3299929088,
+      "lfs": {
+        "oid": "9be5eae1fe4aee9d9e8bbc31504318dcadfb19157f12ae4a85c101dca8b2700d",
+        "size": 3299929088,
+        "pointerSize": 135
+      },
+      "xetHash": "a4afdf694f793d7a5750697e8d5182caada2f7c5c1e551f537c65e77f8224fc7",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c83e24cfaac0330e7debd2632972b0473d2a4829",
+      "size": 3299676038,
+      "lfs": {
+        "oid": "35d39d8a8700a10943e4c3f63f44d5ed70d6a1799b64716daeb916c81047fd05",
+        "size": 3299676038,
+        "pointerSize": 135
+      },
+      "xetHash": "fe5e39952354ce122d70c8b669a1448fdea8581af120312b523cecc044bd8c79",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "aadfa54615d548de81431db1900253258ab3da62",
+      "size": 3299399879,
+      "lfs": {
+        "oid": "3bc6dee64e619677048b94e63e9e21802709c23a404f973353d0fb53934d563d",
+        "size": 3299399879,
+        "pointerSize": 135
+      },
+      "xetHash": "dbbe8cd67825591a0f5ed5f0d4d9e3a8c587aaab71338c34b21e0ee8f3b246b7",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "25f463ec7df91a71a5714e0820d4b6936170bff3",
+      "size": 3299380157,
+      "lfs": {
+        "oid": "e6dd49ea3f7df08239d634680f211aa7c7fc5590d87ae8d41886ceb6368e7fe0",
+        "size": 3299380157,
+        "pointerSize": 135
+      },
+      "xetHash": "793a8ba367da5bfab1c8e72b0ddfed5f4bfd4e5210b76398c45553c950631486",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "d2173f5d6608d567649b6832c4f1b2c2cb25f375",
+      "size": 3299181523,
+      "lfs": {
+        "oid": "96deb35b3308cd493fd484c9d525cc2125851009d6eefeec2590578e65d9c368",
+        "size": 3299181523,
+        "pointerSize": 135
+      },
+      "xetHash": "fdcd35da4187ac8a9a7856d9d731ac6561e8ec480c0b06161b256250cf62fad0",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "ed7dfd74d790c3d1b2f00bbd06a19b8eb6eb6e86",
+      "size": 3299233745,
+      "lfs": {
+        "oid": "8b91e71921d135298b8c7e2a866faa9b51f8800485d43bf62001fff4546c751d",
+        "size": 3299233745,
+        "pointerSize": 135
+      },
+      "xetHash": "8c451747e24144be92e67122b4238f4454abce1f4c631f9876b14897f773f1d9",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7743ee52c9493b59bfde6abe30f63ae8d597e36a",
+      "size": 3298955975,
+      "lfs": {
+        "oid": "d18474889df7e74107a3f609fa72850c263a902bc4eed63a9f2427fcf2bd8557",
+        "size": 3298955975,
+        "pointerSize": 135
+      },
+      "xetHash": "520c7aac9a25dfac4e9cd084b343947ef1dc084db924f2501560fbd217c3e071",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "ea92c37e199d79b8b1dbb054b55468129641674e",
+      "size": 3298868772,
+      "lfs": {
+        "oid": "8eaac4bd6db16ccb220a7e40c99e33fca10ce7c80d1a6efbcebadb44f706af69",
+        "size": 3298868772,
+        "pointerSize": 135
+      },
+      "xetHash": "4bd9d09a949bb92ebd10952e100cb1629a75d1ba22c06c895b551bc9cdcf90fb",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "79f03b4ec9e5b67d829455e8221c1c5113e2a9d1",
+      "size": 3298722181,
+      "lfs": {
+        "oid": "794e9300817fe3d6a46bba89df4f6808d6bf3a3bb62c95d34f38f2fef5b63044",
+        "size": 3298722181,
+        "pointerSize": 135
+      },
+      "xetHash": "399afd8c95fcf76fc61bd2742d177f5f378b77668102b53be91d84899689fe84",
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "3eeac9b32455ae43005de3ffdb88d99ab5741cfc",
+      "size": 627,
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "54658eb0bcc77d2f5889bd3f9a75cb6a4d53cf05",
+      "size": 63932,
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "f55587385daaf7919b73be92ce0ed9588cd454ec",
+      "size": 1111024499,
+      "lfs": {
+        "oid": "d6fb9bccb9b2d0ef9f9f918748209bff44723880fe4c0ed9a9f78070d6003d92",
+        "size": 1111024499,
+        "pointerSize": 135
+      },
+      "xetHash": "3a8f24dc2944c53a73b2ff0e19ebff289204c1b1dce2e009aa79b955da674ae0",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/byt5-small-ami-cmn-jepa-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7d29fb4398104fe537e262a9217f68a60f94769b",
+      "size": 3306235067,
+      "lfs": {
+        "oid": "48a7fd8988cb3ebb49569a05f21bf7bdfbb44f577e8381026be6e618a45fcf46",
+        "size": 3306235067,
+        "pointerSize": 135
+      },
+      "xetHash": "6a535e8e005c110a8ef960d81aa50aaff71a649279e6e0708a2eeb35a892740a",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "f47a65973eff896d42040eaa777037ed7d7f6088",
+      "size": 3305275919,
+      "lfs": {
+        "oid": "fe9d9d50263ac6e670858e536d57fdcff54293e1c482d8307f7dcd64223ab65a",
+        "size": 3305275919,
+        "pointerSize": 135
+      },
+      "xetHash": "de04c127ca1f4f05257b2814d8d2c03ace7038b784b0cdf95955e40409e2da40",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "04cd7a2cbbfa494ad200f17365f7daf16ab7e907",
+      "size": 3304506375,
+      "lfs": {
+        "oid": "b9117c31c708f562c29da2f0a0838b9e49713d56375cd52705eaae84ef95fa98",
+        "size": 3304506375,
+        "pointerSize": 135
+      },
+      "xetHash": "15b0e0e79c0a831316c269e63d03fcd383270206f0e4d76e2d0f116714d0ec7b",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "96d85485c9d9141c72b8e8debf88782666515816",
+      "size": 3304041671,
+      "lfs": {
+        "oid": "76c9c132c189ae177d008619c83fe389c152924e8809b59a316f99fcb04b9038",
+        "size": 3304041671,
+        "pointerSize": 135
+      },
+      "xetHash": "8cf046b1b7b4874ebfaf6d3eb6faf321039df0ff973ab7fffafac0ddee9133e5",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "63ada76468832471f435385c0b8f559bdd4010c8",
+      "size": 3303559123,
+      "lfs": {
+        "oid": "5ea837b4d3c41c27664e89cbe7eb5182bd034e1ae8d44da71f4df73603d03098",
+        "size": 3303559123,
+        "pointerSize": 135
+      },
+      "xetHash": "daffb97943b4ad0784694fc0f25b4ece69d84b3363183ca9c81f8952b550b389",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a4431329affbe994c5965ab8935d1a90d74f6227",
+      "size": 3303420088,
+      "lfs": {
+        "oid": "63500594e1ff4ba095a10990e4f7333f3a39e4a98ef82ad829867561f8e45ce4",
+        "size": 3303420088,
+        "pointerSize": 135
+      },
+      "xetHash": "4f2eab326a839e793bf0825ef72ccf6ab6273d57628595836c0f6f0b3dd293ff",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "69d4fa051677de504da904649af90aeda9b3f228",
+      "size": 3302956919,
+      "lfs": {
+        "oid": "ca8bd754bafb66cda1b0651a9bf96a975deb314a3d635a2fc110ba96be6bc21a",
+        "size": 3302956919,
+        "pointerSize": 135
+      },
+      "xetHash": "ad451d3a26131b23430e8d319a2fc04ee1dfe7f48c39be229211cbf2fd91e84f",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b90f181dc09c18e0598c21b6b98f1df3c94bb700",
+      "size": 3311047226,
+      "lfs": {
+        "oid": "78315cea7133943bfa8a31b25c9aee2b1e68127051bb1126ce3aea76e01ac714",
+        "size": 3311047226,
+        "pointerSize": 135
+      },
+      "xetHash": "f794eabc215c99dd0faaef78d4e98cd0226ce145e297609ccfe7f65bbfbf1e0d",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "e3b41bbb10e7b5d5c064732a0280bdccf0ac604d",
+      "size": 3301911966,
+      "lfs": {
+        "oid": "6dd4d7985b4bf09e245c7b94cb9ddd0ec26d4d4b44d5b2ea6a91a52bc890b4da",
+        "size": 3301911966,
+        "pointerSize": 135
+      },
+      "xetHash": "b11ce81223db33cf2f9ea4bd56a5f0f0225b8fd579909da5a9ce0bd3d33e6cf5",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5117f8b7700a2bb2073c65dc41f7807fd484ef4b",
+      "size": 3301561388,
+      "lfs": {
+        "oid": "bcf57d793ac3eaf6d87b12b0d04e361c9c55a887d59df9b26549842da47c332c",
+        "size": 3301561388,
+        "pointerSize": 135
+      },
+      "xetHash": "35c8fa5cb0c565291da9aa7418f136312a8b9248dd4f625fd56259dfae4cfd66",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0bde3e855a31f3cdd6181559049717bb039e3d65",
+      "size": 3301124325,
+      "lfs": {
+        "oid": "9ba2e8ecf7b48c80c615e7dd160767ebb3af15c0cda409570fcb7e7294ad02d1",
+        "size": 3301124325,
+        "pointerSize": 135
+      },
+      "xetHash": "df61ed3980ff1c71aa9163d518bce4368b8d0312c0e7a4f6b26a80d0558b62b6",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a786afd59cfda579b176666ae36c92aa908a9959",
+      "size": 3301128328,
+      "lfs": {
+        "oid": "2f2ddd4f9b9ccb152f62b92b1c280200a6b6c2a37e5c1c2bee05d0bb43ad5f0e",
+        "size": 3301128328,
+        "pointerSize": 135
+      },
+      "xetHash": "32899d95d842d911c50d1cc83d2dea12f04a9294a8e43f336d6aec4591117fc8",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c8faeb0d2923bb26fa903ac782db8ca40560a818",
+      "size": 3300733005,
+      "lfs": {
+        "oid": "e553c37731adfff57ffc52be7bad48e214d5f0da8a5b750dd5f0e530eacb7cae",
+        "size": 3300733005,
+        "pointerSize": 135
+      },
+      "xetHash": "d99fca892640d937d323efcfc2282665772f799ef4dbd1a9cce21d257f9b6a6f",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a6e8d2ad5a3253971250adeb8ffca0c94a6fa2ca",
+      "size": 3300876381,
+      "lfs": {
+        "oid": "cbe896fd5d6ae9c2f22c9a3b92c2107e6ef15b766e94bb15534f6f32ea1c7ff5",
+        "size": 3300876381,
+        "pointerSize": 135
+      },
+      "xetHash": "8f23810f96a28acc8c02c29fcff9afd7e98b4d849c537f20d9213d4b3d372a8c",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "38e964a0f2687e94bfae653a430b989a4868db61",
+      "size": 3300664067,
+      "lfs": {
+        "oid": "928bfcd138fe97638d41a909a79d48ca14314246bfc21ce8e9bc744bc62d26fb",
+        "size": 3300664067,
+        "pointerSize": 135
+      },
+      "xetHash": "10a402cdf099962185aef73c533ec5b2da9f976ea07d59aa6ae430f5344c5dc4",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b5dcd5bca27d2e5cc54c0c4b53368cc0c4dd51fa",
+      "size": 3300514703,
+      "lfs": {
+        "oid": "3f960c2f5bd108e53d5e0937a40d340578247989e5be53a1c4706b454c9f5d9d",
+        "size": 3300514703,
+        "pointerSize": 135
+      },
+      "xetHash": "1e174ab7ed384c6a46852a516555bec76299d9352b657df753ec9ae451a53970",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "e363f4d6f1f65c006efcf26bd45d8ac5a68d0871",
+      "size": 3300480604,
+      "lfs": {
+        "oid": "6aac91ca1f4d27827d79fee783a5becf2b244e8b58eee40bf13fa1090416b9de",
+        "size": 3300480604,
+        "pointerSize": 135
+      },
+      "xetHash": "d55baf3db98627f9deb30feaea870b961b86f085046061c6187d9fb3fc19d0d3",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "2bc12f3778ecf4f29236b429b56bc08d7509eb5d",
+      "size": 3300421037,
+      "lfs": {
+        "oid": "52ff3dc4b16ad31fd783d6b5b02af9fd67ae1727a529ef48496e1a8fca4ce797",
+        "size": 3300421037,
+        "pointerSize": 135
+      },
+      "xetHash": "452b2dee1d5b8f0c673b49ce283973562387b753625acfe3033f6e06991c30ba",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b24e51ac4ea9d40f76a8ff41bdef8d9fa3431f67",
+      "size": 3307641505,
+      "lfs": {
+        "oid": "dc422736786ccc297d48d0ecdeaeff17a712d535c8a9c5e5ba0ee37f5e820db1",
+        "size": 3307641505,
+        "pointerSize": 135
+      },
+      "xetHash": "3efdd828f1dbe05343a03ad59c0491ba5ea50ee6941fdc9948d823af868293bf",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "915b49be4df1c824f973f9d200cd09a795daeaf2",
+      "size": 3300413668,
+      "lfs": {
+        "oid": "cf207df41f3159815dece16113eabc97470bc0503976b42743fb963bea2284d2",
+        "size": 3300413668,
+        "pointerSize": 135
+      },
+      "xetHash": "d96efaee564408ca7835501516709bbf9399cef6e7aa397e3c5aac82f3fc5ad2",
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "e9fac0ec7bb5097e9251ecf49d8230f87e8adb47",
+      "size": 631,
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "177e3c3f828f4a8a43a57865c3e841b2f333180f",
+      "size": 63986,
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "fa7ff7a51d0ccd1e21b8a7257c1860ac6a2f0419",
+      "size": 2270562428,
+      "lfs": {
+        "oid": "0ccef8481f5c20a50856a540632cc9f744fcd5f2ccad02412f6d68df5775f00b",
+        "size": 2270562428,
+        "pointerSize": 135
+      },
+      "xetHash": "8dc7eabc033cdc35203ecedb9ef8592c8de17f62001584200152796f0d1cd5da",
+      "path": "checkpoints/mbart-large-50-ami-cmn-baseline/mbart-large-50-ami-cmn-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "05c19d32d8970dba0d45d0b0ac35cde86591ad56",
+      "size": 2270622454,
+      "lfs": {
+        "oid": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18",
+        "size": 2270622454,
+        "pointerSize": 135
+      },
+      "xetHash": "a5c1ed0f49591da7aeabe3978a563a76b0c84086ce3ccdefd25c540b2b940c12",
+      "path": "checkpoints/mbart-large-50-ami-cmn-jepa-clrr-enc/mbart-large-50-ami-cmn-jepa-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "2107b94f78de429ad5129ec0fe607dd871f90492",
+      "size": 896459511,
+      "lfs": {
+        "oid": "bacccd29e20a4a2baf5688ea58d533f436e5feabe27c540213b43a6b6467cd5d",
+        "size": 896459511,
+        "pointerSize": 134
+      },
+      "xetHash": "01add6b505b9b07875bffa06a82ead526f00b9faeb97989cbf467617072981d2",
+      "path": "checkpoints/mt5-small-ami-cmn-baseline/mt5-small-ami-cmn-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4dd3d2e83ad4aa1fa4d6f6b39867c49ce608837a",
+      "size": 896470109,
+      "lfs": {
+        "oid": "7ed79385f0850987104b0aed0099260fbdb26a8145fe55b614eef57b1c70d556",
+        "size": 896470109,
+        "pointerSize": 134
+      },
+      "xetHash": "6ac5db08f1f2de2cd62af8405519ce43e89b89f11159344b27d9c50d19f36740",
+      "path": "checkpoints/mt5-small-ami-cmn-clrr-enc/mt5-small-ami-cmn-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8aca8cf492d42ea3b6309de12f7ebd68074b9f21",
+      "size": 2214438460,
+      "lfs": {
+        "oid": "d933cfaef0673c506cf599335d5ac273f752e4b43515e9d40d9f8c3e4cf4b08b",
+        "size": 2214438460,
+        "pointerSize": 135
+      },
+      "xetHash": "0be179a2e7b418226b7fd583f4335caef6fb4b149bf0bd741e63426ec35f353f",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "3a1b6bc77b4823681cbf4737cafa5696d601923f",
+      "size": 2213952580,
+      "lfs": {
+        "oid": "c3d4c1a14431279515523add00052238e3a09878d2e77a070b637c503f6b7ef7",
+        "size": 2213952580,
+        "pointerSize": 135
+      },
+      "xetHash": "f7471f6510fea44690e74d55f96352c403fad416dea7dd2036152e9d2e55fc04",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "01a2d4c0675282b04b4dad2655049c4c395b3795",
+      "size": 2212942902,
+      "lfs": {
+        "oid": "3b9d84988853ba79c2eab81d515b80f275c6ac83c895d1a2b6b497337e71873c",
+        "size": 2212942902,
+        "pointerSize": 135
+      },
+      "xetHash": "101b7bf1cb7b877ba30b2cbe959e4e72311cc990da01deb6c3ae84f5db3f49ad",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "eae7499929d65d53181fff291407f66d8deb7b17",
+      "size": 2212259827,
+      "lfs": {
+        "oid": "a03f993d05ef084054f41bb21ff29842cf697fff9c83a828a272f1748231667f",
+        "size": 2212259827,
+        "pointerSize": 135
+      },
+      "xetHash": "2265fd328fe29633480099576aef8565c6eb21a3cf0a676fa26ff8c742324d56",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5f9cebd9af2d1667a01b33e1e72096c9a8e35510",
+      "size": 2211926257,
+      "lfs": {
+        "oid": "45a250358ffec538aca7ad9cf6bf3d752fe7d61a2f4ea0b7032233a9f8c3e019",
+        "size": 2211926257,
+        "pointerSize": 135
+      },
+      "xetHash": "e4377c6bc527286299ad31eb87a1482669fae51378bc34eb86cac0fa389bf3e9",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "cc1fd0f452b871a1db193241b4641d4bd53bcba5",
+      "size": 2211279036,
+      "lfs": {
+        "oid": "00cee751435e6ef2e27b040199f710a175de258916e4d485674dc0fc31d719c6",
+        "size": 2211279036,
+        "pointerSize": 135
+      },
+      "xetHash": "32c5d07ce61b50c34688ea62ce8ad0755ee7b63bab4a13e24da8f9470a61a411",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "92c2f00336404e6f55de98842de83f00a3ae7543",
+      "size": 2210883961,
+      "lfs": {
+        "oid": "eb3f8d75c7f115e105e69ffdffc9c42c9c52ccd466ae80e6aadbc7e7fdca6113",
+        "size": 2210883961,
+        "pointerSize": 135
+      },
+      "xetHash": "e10058e449d8c65e823f9593333dee02fcf7f3c0a45d5396693219da2f07917e",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "994441855091e51767e93ddd1a039840034ef677",
+      "size": 2198570607,
+      "lfs": {
+        "oid": "801094a1bb2f9bbb1e5cfc6d15e3b2968e7b1b23765f6fd2e124797680b4a2c9",
+        "size": 2198570607,
+        "pointerSize": 135
+      },
+      "xetHash": "42b8813e6b4233c24ad2cb4c5bf0d69e5121e929edcb9e62f5093cd8af04b2da",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "355923b3f254dde87a693114f6d73f43fc188a36",
+      "size": 2210452944,
+      "lfs": {
+        "oid": "091a444a8577be79974d8333ee247d0aef510682348adec36cd9f1b7d2547f1f",
+        "size": 2210452944,
+        "pointerSize": 135
+      },
+      "xetHash": "9ed83cafd7718b67162f1ddc7c2b7671f50e050cc1fd8d0cc07c862c78c7eaef",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "397e445325a38fa8244bda15bca869335bb3b3c5",
+      "size": 2210256157,
+      "lfs": {
+        "oid": "5f7ec5a696f12959c96f52ac849ba6c9d062bdf57cd03f71bb3d31e130b3edcf",
+        "size": 2210256157,
+        "pointerSize": 135
+      },
+      "xetHash": "795a640075185d0cc92f6427e52920ed8ac385e00a46b8a8da503994bd05eb6b",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "1fbdaa9957cc030eaabc28b0351becaab63c30cd",
+      "size": 2209846246,
+      "lfs": {
+        "oid": "98ae8872b363f7cdf295ac7f6655050ae737a6367053446cc01c5beb97b81764",
+        "size": 2209846246,
+        "pointerSize": 135
+      },
+      "xetHash": "783a5bcfdc731127db7ff1114c3256a28a1e9c71ce4d6c8b4d3651db9e3581a3",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "332a55b16aeccf7ce3813de0e3885e2729ee4f06",
+      "size": 2209739945,
+      "lfs": {
+        "oid": "779edabf40b5aed7f308998018ccb45d799aa82c48ae54a0499ffb94680168f3",
+        "size": 2209739945,
+        "pointerSize": 135
+      },
+      "xetHash": "e03b994a8400a47e9cdddecde94e6599ee4631b1d60d1e40bf698b34efc37f8b",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "76a979734bbdac7a7e85adadbc779756d878b0fb",
+      "size": 2209566223,
+      "lfs": {
+        "oid": "85fabd1e1445fb55a5d8dd4c2a346bd11d16a8a1473dfa81ded5b72a5ffff737",
+        "size": 2209566223,
+        "pointerSize": 135
+      },
+      "xetHash": "78d0b6a111d4ad8fedeb4fb43f0fb80d353f7d1d4cc591a439ac284efdb7a271",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "959afd341145f4874118c066d1cc46678db01399",
+      "size": 2209456440,
+      "lfs": {
+        "oid": "dfa8a4e4d6d6369ba08fecaa7720e7acee3f9187b9ef3d08ad254a10754bb425",
+        "size": 2209456440,
+        "pointerSize": 135
+      },
+      "xetHash": "72c9c6a82a5c5c619737d7e779f7b40aab6be8fd3b35d28adbe90b48d67255c9",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "bfdf57d41fb8d0fe1db9424b445b6f6da2511de9",
+      "size": 2209270168,
+      "lfs": {
+        "oid": "3a8e9d7a25c74d63a5a0103c32cc4d3e6e2d00d7305515a98dbf50095907a4b8",
+        "size": 2209270168,
+        "pointerSize": 135
+      },
+      "xetHash": "3015c644e262d1d8c26ec9975277b63b6fde7b3e9619a194bdd66adc46ebb35c",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a7aa8a94fb23f9b32d0a51ce4dc375ec759a3191",
+      "size": 2209118382,
+      "lfs": {
+        "oid": "fde29324f5fcbe0955b32f1b5959964b4ae004fa9b085c592a1edf05b5bd2529",
+        "size": 2209118382,
+        "pointerSize": 135
+      },
+      "xetHash": "48b4a40ee49560f8401d663081bb4611dac2fe321676b75617fc133d2b676ae4",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "aef3063e3992f712fa754b781a84a48cfbc96388",
+      "size": 2209039160,
+      "lfs": {
+        "oid": "68cb1bf0d4c0d5856b60e206f1306ff2c0a366caa2169866fbd4ed753e533cce",
+        "size": 2209039160,
+        "pointerSize": 135
+      },
+      "xetHash": "333f5dad7c3fe401c27dddbcd883e11eec3355930832f16b9a3f35c8509d7a2f",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a22f1859dfdfc78a908c0ba192a13726d0f61166",
+      "size": 2208952727,
+      "lfs": {
+        "oid": "0618b68d67ba4485e6a314b3b3f81e1a69593416b2d293fae8ba8d85698df590",
+        "size": 2208952727,
+        "pointerSize": 135
+      },
+      "xetHash": "10dc4b0c32426bd04415e0a1baf4c12daad2cf5d62a84f225c549985e5e7b8fd",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7103c49614d31930ab1e0d6b531991cddbfcfb3b",
+      "size": 2214219626,
+      "lfs": {
+        "oid": "ab2e15e1bcb81f5303faf4a92380d7a72e2c0143a6f3d3ebc87a7677c69a33fa",
+        "size": 2214219626,
+        "pointerSize": 135
+      },
+      "xetHash": "299a4578f8854a7e4fc346443debdd00403017e42d2fe9b83e8c5310d17d7b51",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "da85f6fe865fbc1c7f37f0b9ba3bbfbcd553adf6",
+      "size": 2208906528,
+      "lfs": {
+        "oid": "3e5c7469d0e9d28b9a0fed278537b408585f63d2bf5558eb4ae59ea4ab34ac44",
+        "size": 2208906528,
+        "pointerSize": 135
+      },
+      "xetHash": "3f095debf7fb7be95a84a43513fb968943fe36249c47e62e3d2ad9024e86613b",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "734060f15e745589ff91dee158fbc255c912f002",
+      "size": 624,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "57d7bf79241b52bdb529e16c8146b96f0fe47811",
+      "size": 896468067,
+      "lfs": {
+        "oid": "cf180378103121549ac9c046217d6a6426078feb373c6a3b87354fcdd58fcb58",
+        "size": 896468067,
+        "pointerSize": 134
+      },
+      "xetHash": "8069d57b5699d0a1e0146aeedff2374de393f5bd23cf8e6f6162608353e8c713",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/mt5-small-ami-cmn-jepa-clrr-both-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4b122ac7c9fa48d693ca827e0c4aec10f7bc4e8e",
+      "size": 61814,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "49a7f12779c14b97568a69728065de606c41609b",
+      "size": 2214139674,
+      "lfs": {
+        "oid": "1e231f54f28629e48464d6f2b841c6d14c1d538a262fc2b993d3b4a5c624a182",
+        "size": 2214139674,
+        "pointerSize": 135
+      },
+      "xetHash": "b787a8381d5b2d12f9f56414e759a0249c989c4d1bbbd7ce495bca1ff8e30d7a",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "d4d4c38bd0292f62a39aaa57a7bbe5b31c5e556c",
+      "size": 2213340382,
+      "lfs": {
+        "oid": "be40bf4a67d101efc69e3922548c8550ef31a3e9ce8fc82029c6281780a653ff",
+        "size": 2213340382,
+        "pointerSize": 135
+      },
+      "xetHash": "7e2a304d442540d71a729fc98652a13c6f5d431c8d650112a4896cd8afae42f7",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "854310c36bbb12190ea98226b551d28e6141a555",
+      "size": 2212364951,
+      "lfs": {
+        "oid": "a7a3085439fe26d03040ce28d043c641172d6aa36bffa9f6a98782b56f2a1675",
+        "size": 2212364951,
+        "pointerSize": 135
+      },
+      "xetHash": "9ee5e2dfffadcefc5c056320169e240405a734488909b2f05430e7456ca85ff3",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8ad971933fee4712e329b49a12dfe9d57abe2497",
+      "size": 2211752329,
+      "lfs": {
+        "oid": "1abc80926e7ff575af1e45a54fcc6875b3bfd9d20aedb16404e4f2a4ef48e729",
+        "size": 2211752329,
+        "pointerSize": 135
+      },
+      "xetHash": "ace5864dca028030ba59d97cffec4f43c621c70487cfdac5661386cb600b07ab",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "00f48347e417addcb4fcd83bca84273a911464fb",
+      "size": 2211470021,
+      "lfs": {
+        "oid": "77bc3faf01f25da8cb7f78748d6ad644923a7cd01be4894fe010922da93282d3",
+        "size": 2211470021,
+        "pointerSize": 135
+      },
+      "xetHash": "3cd9e1387fc0bf6347beee2bc88896f19d74dd7ad1a7ea67686d34fe9f2bff64",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "3b2df970525f47a51f87d80f8c5bad40ea32bc0a",
+      "size": 2210940075,
+      "lfs": {
+        "oid": "da7f469454446730a891a531163dc34d8562796d7ce8d45619e5d923556e8269",
+        "size": 2210940075,
+        "pointerSize": 135
+      },
+      "xetHash": "d479cdc692a8d7a44881ca449af27f175fcafd8f0c41909da248ba2874a79cb4",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4b25c24185be2a21a2f37fc4a63d18394703707f",
+      "size": 2210706808,
+      "lfs": {
+        "oid": "737390a502ac1349353a03f3c943d44f70de5b843bc2aff9850a78765a0392b4",
+        "size": 2210706808,
+        "pointerSize": 135
+      },
+      "xetHash": "6a826824a619b1dd5c518262ceb83f420bd09d7eecec43fb496a85b7b7c6d781",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "6dba3e1c836e0537bb36e071dcc2fb1d95c5d579",
+      "size": 2197372202,
+      "lfs": {
+        "oid": "cf3384bdbab57e8d4dfe365991760639ace7209eb805b68acc0e7bf072ceacde",
+        "size": 2197372202,
+        "pointerSize": 135
+      },
+      "xetHash": "140262fd63e47351a7712fe30fc6c1d014223d140224b5ff442b68a1d423bd05",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5b2c66d0e4964efabb9d015736e0a271c034235c",
+      "size": 2210314787,
+      "lfs": {
+        "oid": "bc4f5acfa800afcab9c5d9f3ee5bc62d8ac91d95347981f653a512157e301d3e",
+        "size": 2210314787,
+        "pointerSize": 135
+      },
+      "xetHash": "0c020562e36ef6178809230b327c6f426ca97d458863b02d1d0ae71780c1a66b",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "2f5c05ed8453020b8baed27d7e7bf866c3229f84",
+      "size": 2210226753,
+      "lfs": {
+        "oid": "e15729adee5894036cc7322154ead40fc98fcb0e260cb67f03ec4b9f6d36093f",
+        "size": 2210226753,
+        "pointerSize": 135
+      },
+      "xetHash": "a564d30b9a3526443a53d95d069a942f663de7f0f554dc94139e2b47ea28f075",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "49fda4a75b05914d934aec41b904066e43fc7a78",
+      "size": 2209800909,
+      "lfs": {
+        "oid": "5454255999bb4d29eed242cbe417af5dbd563f59d0acc10011aa265ccedaea5e",
+        "size": 2209800909,
+        "pointerSize": 135
+      },
+      "xetHash": "a82f110d89da3f4aad41c3997e89f434123f51885e8024196fc8f9f4b3281f03",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4ff1d1093b524b35110afbcdf23eb8cbc337b554",
+      "size": 2209665235,
+      "lfs": {
+        "oid": "1fbcfa19fac3fd9fb18b9931385bec314fb0dce149bbb08f6917c4d94d55619e",
+        "size": 2209665235,
+        "pointerSize": 135
+      },
+      "xetHash": "56d9f5064530875a8fc9ef105ccfa5c13872cb2b7957582a0d1ab95fb59600f1",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5d517171ae8c86db359a08f25a8a9a7bfd7c2f13",
+      "size": 2209482093,
+      "lfs": {
+        "oid": "f76142309bbb84a125ed907a6ab6821e98fd40f18c751256067300ace2a54808",
+        "size": 2209482093,
+        "pointerSize": 135
+      },
+      "xetHash": "2c8fca89ca27289f30f2aa4633f1e6907ec49cb0c12cac20e33f817205773111",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "183b9b08b2a354d26238323ab8e62ccd71b61af8",
+      "size": 2209352013,
+      "lfs": {
+        "oid": "d08030e0e5aae8d0fc071cf6e9ad5287d502f0c14c51d6dcca9eed36a6ae8d69",
+        "size": 2209352013,
+        "pointerSize": 135
+      },
+      "xetHash": "cf533d359d089b005b02d574604ebc657c9456cc5303657f4493be1d13ef550a",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8b9b67a9ef48f59856e369d89d16d57788b46749",
+      "size": 2209210268,
+      "lfs": {
+        "oid": "1aba439101951fa4b4f5714db47ca991ca5af338e8c14cb54bb2c7ad932a88d0",
+        "size": 2209210268,
+        "pointerSize": 135
+      },
+      "xetHash": "f6b579af199acdb7629625be44231152431a5a0f4949d8179a97366233a65ed5",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c184ae201807b64da24771ca0ef46a50bc12e771",
+      "size": 2209031705,
+      "lfs": {
+        "oid": "aed675605a9e1263e8f356115ff2a53d2c99365921a70e63820b00da5f95511f",
+        "size": 2209031705,
+        "pointerSize": 135
+      },
+      "xetHash": "bf37b512bd79903d691d84da63cfeba286426ddb3d3485333ca7ed5bf7585947",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0f19d467cba80915c318924c4d86264c4dd7ccda",
+      "size": 2208980008,
+      "lfs": {
+        "oid": "5852ceda2e65c3b2715b8a84f273ab3b537988fa66deedc5ac686beab960abe1",
+        "size": 2208980008,
+        "pointerSize": 135
+      },
+      "xetHash": "089f6e8370c0705f2853ab46b5bd5a9b22dce809fbdc63f52e12b56ef3f35865",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "6657d7bae5c8088eaa17cadfe58f7efd5622ac45",
+      "size": 2208875411,
+      "lfs": {
+        "oid": "2715eea4e6f886212b8e0863b1006e56ee9867ec56c0cad0b1e93e48a438ae94",
+        "size": 2208875411,
+        "pointerSize": 135
+      },
+      "xetHash": "44ded7e73ca6ec464820b1d44e5903a7fff01dfea3c573a5e691251aff1b00bd",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "35ac50eb959744e2e57bdbee7f44378c11e13e66",
+      "size": 2214244972,
+      "lfs": {
+        "oid": "facbcf331e6f75192d405898544871f843d538d72a5e554be7ac1c7c90ada447",
+        "size": 2214244972,
+        "pointerSize": 135
+      },
+      "xetHash": "80a04bbf462efca1d0e9747cd42aa3a8f312c4332d4f2a1be0d1d76070df63c5",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "11524294d092a869903f7aa773b7eb8802ebbe9f",
+      "size": 2208834726,
+      "lfs": {
+        "oid": "a86a46ca2fe97ea1edc17e0dbfd2d20df40f29c38874e1a45dd0591644f70f42",
+        "size": 2208834726,
+        "pointerSize": 135
+      },
+      "xetHash": "190c5d58eeba03199c8f1b15dbaa011799f8fec9881a634f038a658a1f398041",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "ebf299c4a22d27366350504b461791f5473eadad",
+      "size": 627,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "951889bbb8f0b4395f6d3b445022235243f846db",
+      "size": 896474723,
+      "lfs": {
+        "oid": "05fb39ba770613f430f4006bdd4f8b7129f92a0e751e5cd443d2769b9a28d5e3",
+        "size": 896474723,
+        "pointerSize": 134
+      },
+      "xetHash": "ea24a9febb2cc23a08d6ae4539891cd21ea0294821eba05f687772b0d1ca53c9",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/mt5-small-ami-cmn-jepa-clrr-dec-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "6690caff2f2d1186810554bc0db957dd9475bbea",
+      "size": 60972,
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "66f95cea094dacb30812a4209b5a8bdfb48da0fd",
+      "size": 896461833,
+      "lfs": {
+        "oid": "2fb828eeb4659c97b10a5f3c7be3b08603a9502da02f594b2685ea982662af5d",
+        "size": 896461833,
+        "pointerSize": 134
+      },
+      "xetHash": "c9c54ac5340759efb6c18190743b7adc7e5b79e2f75bccde88cfeb927df0e8ef",
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-enc/mt5-small-ami-cmn-jepa-clrr-enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "e0cf259eb561c86db68df64156e079b20ccbd63f",
+      "size": 1111030145,
+      "lfs": {
+        "oid": "098d4311488b88a4c38aa912a4776a2a044aa0fbc1d3f55269d1269ecbf6446b",
+        "size": 1111030145,
+        "pointerSize": 135
+      },
+      "xetHash": "f704f4b9f3cb4e8421c2d6ed8e226c2c2535b925fbe8d2fe871117180745c090",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/byt5-small-ami-cmn-jepa-clrr-dec-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "51717f079601093d76f3eba1b1db79e3417aee03",
+      "size": 3305447905,
+      "lfs": {
+        "oid": "b03895af90b614a717182b5e0f715f193ae51b6dcc0d834a0fbb93463b26da52",
+        "size": 3305447905,
+        "pointerSize": 135
+      },
+      "xetHash": "c6cca2e4df78356d40f1f9290e8c792fbb9b616c23d8793882d28ab25aaf6eb0",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "16a1a7457d4863655b20fea539e439622443805a",
+      "size": 3304914722,
+      "lfs": {
+        "oid": "a3ceab1eb0afe9706e43c0baed6d47572fb3fd3f3ad7bb598cf2d9ed91d27c19",
+        "size": 3304914722,
+        "pointerSize": 135
+      },
+      "xetHash": "5aa5e8f43ad5e4bb5eb0bed88bbe986522cb67b42f9b66d19e13edf6d4c88b5f",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "642ea1245588af5dcee1973187afd8da8df663eb",
+      "size": 3305012182,
+      "lfs": {
+        "oid": "d1a0e7763b27d05958dc2742a144837f340a955a5b085c794ce8a56220a46cf0",
+        "size": 3305012182,
+        "pointerSize": 135
+      },
+      "xetHash": "1affdc6a115df7c8750d4ab1dcb7f6afedab100a7ecc455966fc537bb0cf7117",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8f75e2ebf8fecb1cbb480f4c5640e673014e688b",
+      "size": 3304814362,
+      "lfs": {
+        "oid": "fbcc3652e952b1cd1a16f484be5120c6411df27f2e1ca904d1738744ada2ac5f",
+        "size": 3304814362,
+        "pointerSize": 135
+      },
+      "xetHash": "2c718fe5e9026d9bcb7e9908396422ba7bb9b1e28a6e285904e0ccd2227f44bb",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "1630604147df73e2a38b5a306d8da318b83ba136",
+      "size": 3303886045,
+      "lfs": {
+        "oid": "a23fae0f49521ee2f692d5ad2b86b2c704494aa4e64c31bd403fda9275aea69d",
+        "size": 3303886045,
+        "pointerSize": 135
+      },
+      "xetHash": "b50e3b74c386a6ce7f9a893fd4c0613299d271b10ca051d5bc7659a859a3aff9",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0676f53288e697d67c0b0313bf68352a44e80adf",
+      "size": 3303056383,
+      "lfs": {
+        "oid": "c958efaeec288de4be23c2324f028033b85cc44d01a6514098570165c5fa0d6a",
+        "size": 3303056383,
+        "pointerSize": 135
+      },
+      "xetHash": "2e65d41eca621c6295a0bd134a0e482f284bf22b154e6ee386149809e66f775f",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "caf52e8e33fd66d96362fb9893c4d2802dae210d",
+      "size": 3302648603,
+      "lfs": {
+        "oid": "d79556f2b63c4e148adc0880253b65e1602cc0f249da449ec93e3fe247e877b5",
+        "size": 3302648603,
+        "pointerSize": 135
+      },
+      "xetHash": "67c475f9de1f7664a136ccbec35562a914977f7e349ff1ccc3c8118551366df7",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8ac4c710bd1f77105c327fe8eb531beb37b410c6",
+      "size": 3307726022,
+      "lfs": {
+        "oid": "0241951806fef2800e07e3529b3ff27fc7b6bb010bc4f80236b330d157892050",
+        "size": 3307726022,
+        "pointerSize": 135
+      },
+      "xetHash": "b6c46d72c4d5a2d4dfc069a3bdca48a4cc3e6773ab52bb53a87f16aea6005cb2",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "738a8b95c7e9c8f3d1636e9c11bd8eff0cbd5d50",
+      "size": 3302300789,
+      "lfs": {
+        "oid": "423e030dde04a35448adc2fd39a034ca7f626a5d1dc8b10d2c9a878658b6b3ee",
+        "size": 3302300789,
+        "pointerSize": 135
+      },
+      "xetHash": "f28d3b55f4bcdc2f5df25789b8f10e56ba12f1470efa49cb57e64f3eaac59ff2",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "09605562a0e080f47642ebf705094fd4f8767d40",
+      "size": 3301896665,
+      "lfs": {
+        "oid": "862851b241d6e20492604ec3258add582cc8f05efde8d354c5998ad83c44af64",
+        "size": 3301896665,
+        "pointerSize": 135
+      },
+      "xetHash": "29e431bd68036ee5dad81744a69b9de279940c4561e7fac67c41fb0fecd0b42f",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c05d076cb0ebed4ec435ed190aff1d8c29695fd8",
+      "size": 3301146567,
+      "lfs": {
+        "oid": "3cd45622dadeadca5f39dd03c2af56dfa0704f0142793515808d12a2bf940432",
+        "size": 3301146567,
+        "pointerSize": 135
+      },
+      "xetHash": "8376cc6ca813ffa182bb4d4fe1be2bfc45b201e394e74828ac9bb9f7dab2b8b7",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "80deb708428102d103e886e00753b1c4260af562",
+      "size": 3301083435,
+      "lfs": {
+        "oid": "f51f93eed0019b52e5968f4ff5d3c24908f197cba5cd81d1ab6c2f0c3ab373d0",
+        "size": 3301083435,
+        "pointerSize": 135
+      },
+      "xetHash": "77cc35832599953a7995b71200fedc3ff8f81f704eb5540e48d0e19b4cd99f27",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "6d2ec5a251e46b5bfc4d5be3532f1a25ac6fd076",
+      "size": 3300660859,
+      "lfs": {
+        "oid": "ded0f45b21fea491448cf51da15c0a872b9c5e23511a217300db02d8c44e14c6",
+        "size": 3300660859,
+        "pointerSize": 135
+      },
+      "xetHash": "94b7c220b9c7190f2fee893f16b759350279df0bd899cc0353dc50680898da9c",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "d8575b1651d278f73933abed2a71e8165f5c59a8",
+      "size": 3300393148,
+      "lfs": {
+        "oid": "3c96eeb7c42d6b695f9d2290bbaa3af2cf44bb3698bad3e43270ba9b8e56d28c",
+        "size": 3300393148,
+        "pointerSize": 135
+      },
+      "xetHash": "fa3ea3ff4cc40a3ea8bddba1d1d1dfebfbec07253d3a209d309a92222f5bc995",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "942ec48f1612cf7041984780c309c7ada0fbbc92",
+      "size": 3300460519,
+      "lfs": {
+        "oid": "c967b3e6c4c6d3357a6d976a46bea2722c320fd867a53fe0fdd4ad75c842c566",
+        "size": 3300460519,
+        "pointerSize": 135
+      },
+      "xetHash": "ee0f3f1286bb0374fb08152da7f466c7b74e9e749b9dafcdfc5faceb8b8854ff",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "ac8a1885c095087d9f474341d8ca47550ee333fb",
+      "size": 3300256025,
+      "lfs": {
+        "oid": "c27a30054003cb827728a4ea1a5af7c9623fce9b9bc265801d2b8aa13233a223",
+        "size": 3300256025,
+        "pointerSize": 135
+      },
+      "xetHash": "de6a0f80f3b4599182fd0f748204ab8dfa1dc90833c598cc2ffb830b2fe40cc5",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "117f72bdb5758fe8e09f7e93c1ccb1bd43e25cd9",
+      "size": 3299970223,
+      "lfs": {
+        "oid": "191e945d65eb8e48a9a679502dbae03a00511a4cc91c2002a702c79557a675fd",
+        "size": 3299970223,
+        "pointerSize": 135
+      },
+      "xetHash": "8f7c8acb5a62ee5338d0258853d1dabe147254e250cd307d1826a5d66479dc65",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "313d61aeacd69b6c974dccce94b83c74966afb18",
+      "size": 3299863161,
+      "lfs": {
+        "oid": "03d794324efba41be6c5217f64f5a78d789b29ecf190f8eb8e046bbab558e918",
+        "size": 3299863161,
+        "pointerSize": 135
+      },
+      "xetHash": "87880caa547dd565345ebd056f470d8567702c17e51c538e8f208ee8d602fca5",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4e5fd940a57cee690e50d9e8b2f907423b844d67",
+      "size": 3306519294,
+      "lfs": {
+        "oid": "0ce9053d29ca9a50ec06cd112422b5698a46017d6ccb15cd06e05180020d06be",
+        "size": 3306519294,
+        "pointerSize": 135
+      },
+      "xetHash": "b974f78a525439a167397974cab78dbb2e0d76c478915e8f114dda4b83e9358e",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "07247ddfc5d0b0acbdc9e7a97751d84d848cdf58",
+      "size": 3299837422,
+      "lfs": {
+        "oid": "8a577c505f2efeb1dacc28f489f7091faba7493a60c48b5a18d4e6e2f3179bf6",
+        "size": 3299837422,
+        "pointerSize": 135
+      },
+      "xetHash": "9cfa725352b8b83f2e949638a6c992a478768726f1751649f8d0d18097d3d662",
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "77772a81e2d772e0af4dd89a00c816fb8cf7f16d",
+      "size": 629,
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "bf35f02241dfef3144784bc7849d1c7aab7700f0",
+      "size": 63797,
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "c127e18f9820691e16e1ccc57bee89d566df5bc6",
+      "size": 1111021335,
+      "lfs": {
+        "oid": "334953f8f6f82a62a2a1dca6babcc0443cb5590cbf0f652a91b1da0ffa505580",
+        "size": 1111021335,
+        "pointerSize": 135
+      },
+      "xetHash": "cdcbbe708372b43a7e8a55d59cffefcb1b4311a90b2f8fe2ccf4b48d68e630de",
+      "path": "comparative_baselines/byt5-small-layerskip-acl2024/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "1b18106bc10127bdc3e4ba201aa58e48a70b133c",
+      "size": 307,
+      "path": "comparative_baselines/byt5-small-layerskip-acl2024/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "7c0447171a6fb755db8a291577aaac50d251e36d",
+      "size": 65662,
+      "path": "comparative_baselines/byt5-small-layerskip-acl2024/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "d6386a0828aa1b281aa83f19bc1a02ee13016e63",
+      "size": 1111030610,
+      "lfs": {
+        "oid": "f81153365c540e5e999c39603852ad02fb5a30c979dfe0de53a6d28a5ce3305f",
+        "size": 1111030610,
+        "pointerSize": 135
+      },
+      "xetHash": "5c52c45b860da5765d0b1da8aaa307f5587538fbbdba891245dc7afe55ff24fc",
+      "path": "comparative_baselines/byt5-small-middle-align-acl2025/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "13b76f4c144bd8c98b819cb14f12fa92709ec557",
+      "size": 310,
+      "path": "comparative_baselines/byt5-small-middle-align-acl2025/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "33f40a62e07bb9bb821a776fffa8993a127de109",
+      "size": 63766,
+      "path": "comparative_baselines/byt5-small-middle-align-acl2025/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "fc4d98d56bbcf1a260069a36e401b42374205aa2",
+      "size": 574,
+      "path": "comparative_baselines/comparative_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "b7e7564b187953250f843ace422455f1882856b7",
+      "size": 1737,
+      "path": "comparative_baselines/full_comparative_matrix_acl.csv"
+    },
+    {
+      "type": "file",
+      "oid": "0fe7e1ea6a8329003c15c40548dd55526c052cac",
+      "size": 896459546,
+      "lfs": {
+        "oid": "cdcaae82c5589f2ee1457117d1e5e9afc8d3c5936497353bfee3f12bf91d6239",
+        "size": 896459546,
+        "pointerSize": 134
+      },
+      "xetHash": "a74e598ea9c347f3dc95c206a35399bb64e35ff4025cb84aaf3a3cc15573ab0a",
+      "path": "comparative_baselines/layerskip_acl2024/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "68f3d01ca8206a21aa08d773ee9b18e049fa3490",
+      "size": 308,
+      "path": "comparative_baselines/layerskip_acl2024/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "09714a89636db2958d19c23d74596234bfd6b081",
+      "size": 60795,
+      "path": "comparative_baselines/layerskip_acl2024/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "bb8d6b41ca9e3da82e2c6fb9c4ccc292b46e6906",
+      "size": 6773551401,
+      "lfs": {
+        "oid": "044050779ba97ad332696ddd374a02cfdbffefe4cc452bf0cf537e45bc07b06e",
+        "size": 6773551401,
+        "pointerSize": 135
+      },
+      "xetHash": "b989574ea09327b1353211f5136a2cd548ea83172c8d88bda884653d5bb60e7a",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c17cd79a7fa670ae520b1c45e9006b5ca980f623",
+      "size": 6769761328,
+      "lfs": {
+        "oid": "ac2b1d31be81911760915ef902f81f97c5b78449998d5c9c2715279e127a31d0",
+        "size": 6769761328,
+        "pointerSize": 135
+      },
+      "xetHash": "ee1fce6f557e9915196bfa22fdaa7cc1a1ca2c04a96683f6596ca3c9f0885d0b",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "88d8ca13502636568d15abc2ce76759b97b9af00",
+      "size": 6766187618,
+      "lfs": {
+        "oid": "6221d45ba84da996ed9f849507b8ea7ad286d1f01789931728dc7f1828a4dbee",
+        "size": 6766187618,
+        "pointerSize": 135
+      },
+      "xetHash": "6ccdac3730a11278439378cb1d86b294fe94d79c54cea2396f634efe43545305",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "470120987ec5bc07d049721aa6ee8c33ce660e4b",
+      "size": 6763349949,
+      "lfs": {
+        "oid": "1ad38ca0191b2a517cf98dc2b8a0807ea05defce74f365d5295c9661d1ef2694",
+        "size": 6763349949,
+        "pointerSize": 135
+      },
+      "xetHash": "42866b859517f6160a160da71cbd22951818848261ef445b64babde5d4d59833",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "f497059ff813f6c2df406f6bd34b9ddbee782dfe",
+      "size": 6761058799,
+      "lfs": {
+        "oid": "e13522a3943a47bd717c3119aa86a1b22b2f9cf284f0a4c92f83333e9f4656fd",
+        "size": 6761058799,
+        "pointerSize": 135
+      },
+      "xetHash": "207b973eb8b3e91077d987f0f4461dd01da28cc1698f5c80986bf55ef0e8ded2",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "305bf69d4dc8b0acac2604d4ae58a0ccb3830359",
+      "size": 6759558564,
+      "lfs": {
+        "oid": "109aaf733844399d674241ff6898f77c0a26f5bfc65971885b472c4cf4f59851",
+        "size": 6759558564,
+        "pointerSize": 135
+      },
+      "xetHash": "fe660bad862db3b259c3abc6ac9946c5368bf419e9057c98fa556c89d1584899",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "92188d7511b2bdea5a30a8cc5f7ac5ac5ef0a0b6",
+      "size": 6758429775,
+      "lfs": {
+        "oid": "6f7d9329def2448d962c1cb32ece1d0ed88a25b84063fd33792c1eda25757714",
+        "size": 6758429775,
+        "pointerSize": 135
+      },
+      "xetHash": "175ca9a6c2e15c27ac657dd4e3cb28077ff61d40e0273a7fe01ab515d880c8bf",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5b8faa8e5f9ebe01c1760a6a29307f3d1d6ac8a0",
+      "size": 6791054062,
+      "lfs": {
+        "oid": "a76dbc9bdd6f547c58c8183408b59ebdb1d7523e3dcb7ad6d044b1154a4696c4",
+        "size": 6791054062,
+        "pointerSize": 135
+      },
+      "xetHash": "b03be33d383378c199d7cecf8e5e9090b3232443ef3b72e5cde15ba2c2694f03",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a06d066ff7637f789c29135fb225039f03c4986a",
+      "size": 6757538680,
+      "lfs": {
+        "oid": "cfafd0fb3311f3abf3fd9619e32e7049fbcff9d0596c366639d6183c87b56183",
+        "size": 6757538680,
+        "pointerSize": 135
+      },
+      "xetHash": "5f4ab77ce3be0c3f3413b23c1570568d4a76f53130f3380284c09c6091b7935f",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "00d443fa52068cd6589f31b2e6f3dc1635049511",
+      "size": 6756525727,
+      "lfs": {
+        "oid": "6df323a03c20723138e3de8fe64be9bbf77b1d45c2f84fbbdcac6c8efbc597aa",
+        "size": 6756525727,
+        "pointerSize": 135
+      },
+      "xetHash": "84b2e4f84e097fe6af484274aee07b954ac7a7509c415ffcaa18bf98798baff0",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5ff15916898f360e5328bbec39fd04f055e01515",
+      "size": 6756020787,
+      "lfs": {
+        "oid": "1810240d2959acc1f3a1604e3ae8679d13b0b53788cc3ecd1c441e6ab2eff29b",
+        "size": 6756020787,
+        "pointerSize": 135
+      },
+      "xetHash": "128bcbd6e98ccfab1a299410b18c7ff1b1a0564cee08b7b67da13e1eaa319633",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b26d92bd40421ef856b420b54b6b7efc844427cd",
+      "size": 6755198688,
+      "lfs": {
+        "oid": "7160062a1935716fe183c0a14e2c5fd41ba65e526339e38ea16ffea4a323061b",
+        "size": 6755198688,
+        "pointerSize": 135
+      },
+      "xetHash": "5cd6b05f37b661e980d33868b0c5655bb00fedfbcbd3b03de57420dad613041f",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-468.zip"
+    },
+    {
+      "type": "file",
+      "oid": "972d7aa9c25cf0a6c5c9c69e53ab3b4df9722fcd",
+      "size": 6754866547,
+      "lfs": {
+        "oid": "c1dbc56f91c424c5c0213b1ddc2f246e35d25460dd1216177258b524dbdaae58",
+        "size": 6754866547,
+        "pointerSize": 135
+      },
+      "xetHash": "4910d6172bacad9cb911cc7b7ee33698ce89dc6e401f346acedd0ccbbcf5ba2a",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-504.zip"
+    },
+    {
+      "type": "file",
+      "oid": "8ce3f9f73acbfcb26c0cec1975cc5709f81a2d02",
+      "size": 6754290729,
+      "lfs": {
+        "oid": "aa098bb397cc3deeb11b3bd017bd2295e184451acd37674ee3a04ff963b56073",
+        "size": 6754290729,
+        "pointerSize": 135
+      },
+      "xetHash": "5bb0b9e7d8af71068ae7ff19c9c5933f56db65088285b4f5b38ae291aa13b4ed",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-540.zip"
+    },
+    {
+      "type": "file",
+      "oid": "3fd07551a7b84fc3ebfff1707ab9c88497836352",
+      "size": 6753890581,
+      "lfs": {
+        "oid": "40b6c70a50a0de201abca26a493c20b4ca35c5c0443dac6770b1ba1f1b292ea4",
+        "size": 6753890581,
+        "pointerSize": 135
+      },
+      "xetHash": "567ba6b2de13a290b59b7ccd87e54db992233cf1237dd2ab4bd5b0b7ca22f9bf",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-576.zip"
+    },
+    {
+      "type": "file",
+      "oid": "598b9278e01d3ccc2f480c6a914b79670ad6ac5f",
+      "size": 6754284107,
+      "lfs": {
+        "oid": "61be1313089d36f39fcdb6a91f9e445fc66c21f33bdec984eb47ac6800976500",
+        "size": 6754284107,
+        "pointerSize": 135
+      },
+      "xetHash": "822ff873cf4ddb3799544446aa875eaa2ea1dcbcb6aa1b029d89fceb161c5a89",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-612.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0cb1f14e4e8856bd136f6e355417d2d7779ddffb",
+      "size": 6753648783,
+      "lfs": {
+        "oid": "0f457b06cf3e56b88cd44a68d4eab780d20beb1850f6ea11a5827cbb6bf15527",
+        "size": 6753648783,
+        "pointerSize": 135
+      },
+      "xetHash": "1fad3382d0cac8ed5b6e7a1b7af102f8535e42d6a990e5abc29c06f31c22dcab",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-648.zip"
+    },
+    {
+      "type": "file",
+      "oid": "28cac806df48fcf2d6a389122b180ac111fafb0e",
+      "size": 6753369214,
+      "lfs": {
+        "oid": "db36c04366c44dc5d51287dfb65afead9eb4ce2a54bd31fd97838ca95295e23b",
+        "size": 6753369214,
+        "pointerSize": 135
+      },
+      "xetHash": "21e154e5d2c92849d704dd600f308bfec6d2ee9972c8deb7cd3fb7f6a17a6bb7",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-684.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b173486258112e01d832827fb46664755b518906",
+      "size": 6780157451,
+      "lfs": {
+        "oid": "776543f2117124fc50e35211e8f2f7678ee7ad0163e25debcd9ab24dafb64bd9",
+        "size": 6780157451,
+        "pointerSize": 135
+      },
+      "xetHash": "6e90cfad84c5f20128c5e2de1eec3dc10077b637ca9c0ade2a3e9fdbcc2d4fee",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "9f2b42810b238fcbc404b4ab89bc3e5f8645a463",
+      "size": 6752838092,
+      "lfs": {
+        "oid": "4c8155d9f80d6be1cd37152ac1a8ce27b2a146c3e3ce2044afc6630a31277d2b",
+        "size": 6752838092,
+        "pointerSize": 135
+      },
+      "xetHash": "c50aa164e6e6f935311d9b841c3d0b1ca5adec72514c2e0295a80a723de319be",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-720.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4e357bc07f195c01f85658842982276eae7d26b0",
+      "size": 2271232697,
+      "lfs": {
+        "oid": "dee3e34642e87b0e109f39d59c5753efd6dec11d96d9d920d3faf87d157deb64",
+        "size": 2271232697,
+        "pointerSize": 135
+      },
+      "xetHash": "9f11dea5dc7e871f332650695c4450ef4e46df6dfbe3c051e33098b2ef7c29e4",
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/mbart-large-50-ami-cmn-jepa-clrr-dec-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "68b4aabdbd1d78d033055977792f0bdd96988836",
+      "size": 654,
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "ff57df39c35f3aabeb4af5edf7ce9c6c1d52f5fd",
+      "size": 61930,
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "7275439f9eb355617fb8bdc4f3147b12e7c93343",
+      "size": 2271230980,
+      "lfs": {
+        "oid": "085acd0a5ed839e2b2a3a3a83e014ce81ebd24779cb42a9e005ef92f76bc804d",
+        "size": 2271230980,
+        "pointerSize": 135
+      },
+      "xetHash": "b575dfe837921b8ea85dd1e25c87520dcc7e02720991ec174b56a613743c1da5",
+      "path": "comparative_baselines/mbart-large-50-layerskip-acl2024/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "b84f74c4c88c51786a8f00920f0dcf56d27ed5ac",
+      "size": 315,
+      "path": "comparative_baselines/mbart-large-50-layerskip-acl2024/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "9e51ad5173246c6c6ecc39341a5bd636727f2593",
+      "size": 61949,
+      "path": "comparative_baselines/mbart-large-50-layerskip-acl2024/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "4e82f58ccefa72212661ace5f4da301ce9517dc5",
+      "size": 2271264245,
+      "lfs": {
+        "oid": "4c632dbb9c79753fc68bdffd0e91c02d5b1a9204385b88ba25355dcde38459b2",
+        "size": 2271264245,
+        "pointerSize": 135
+      },
+      "xetHash": "9cd47d4a62aa4136ce14fd6d5bb9453b18e3eba123213c9eafdd8afcee4d295d",
+      "path": "comparative_baselines/mbart-large-50-middle-align-acl2025/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "53bab4ae318fd87364221d9418c688135a437179",
+      "size": 319,
+      "path": "comparative_baselines/mbart-large-50-middle-align-acl2025/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "3fdcc8e69d760999d15712266a102761dc5cf3b5",
+      "size": 62082,
+      "path": "comparative_baselines/mbart-large-50-middle-align-acl2025/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "53ad29f52e9aab2a7c9a03aba5a8af1fcb3836ba",
+      "size": 896476923,
+      "lfs": {
+        "oid": "1a5326a1d129f027138960d813e9280785382dba5f617c4bec3d7f2ab5773401",
+        "size": 896476923,
+        "pointerSize": 134
+      },
+      "xetHash": "0f9c3ca50a564100696b28128ec1656086c639ebc54a8b728068d92db6b83076",
+      "path": "comparative_baselines/middle_align_acl2025/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "58d1c83bd166304999faa9d516e602c57885fe19",
+      "size": 311,
+      "path": "comparative_baselines/middle_align_acl2025/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "1c4e2fbb4c6aa2c532fb5df571ce43efffcc26f5",
+      "size": 61113,
+      "path": "comparative_baselines/middle_align_acl2025/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "77977969efc99bc95227b8beb4d244b107e95505",
+      "size": 646,
+      "path": "metrics/mbart-large-50-ami-cmn-baseline_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "745f982636b4efd852818b1531b961d17becceda",
+      "size": 658,
+      "path": "metrics/mbart-large-50-ami-cmn-jepa-clrr-enc_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "3808fe3eb23865b2cc5d346d4c7ebdadf3dd1c01",
+      "size": 628,
+      "path": "metrics/mt5-small-ami-cmn-baseline_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "d003b2b72da89e84bfbd88e1ec5cdda74d80ff5b",
+      "size": 625,
+      "path": "metrics/mt5-small-ami-cmn-clrr-enc_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "a4f8803d5f8886b8a4a115498c7606534275987f",
+      "size": 630,
+      "path": "metrics/mt5-small-ami-cmn-jepa-clrr-enc_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "f8066275b0678865f6179b0f5df391d6ea0627b0",
+      "size": 624,
+      "path": "metrics/mt5-small-ami-cmn-jepa_metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "1bb7a4b489eafee6d51722ead2959a95f420ecdf",
+      "size": 6835299468,
+      "lfs": {
+        "oid": "a5a253399f92f4d2354fa35bd91ef4257b16b71f945d20245ae51b54b58390f8",
+        "size": 6835299468,
+        "pointerSize": 135
+      },
+      "xetHash": "081d7687c55cc86dfc32204680d3af57b1e9f3a8e563ceddbce187f7f707c8f7",
+      "path": "nllb-200/nllb-200-baseline-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "56d1d498d6ed1b29faa7f3aee6a17d11668f0535",
+      "size": 1456344836,
+      "lfs": {
+        "oid": "f9d80917f1db5bb93d4be88dac7a280009ff8392b037fc8229bc7be1aea4d85d",
+        "size": 1456344836,
+        "pointerSize": 135
+      },
+      "xetHash": "bcd6ae0d6f16109d50535e4e70f507470acc6e35c08e8ceb35e0f7ea1dd98cf0",
+      "path": "nllb-200/nllb-200-bitfit-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "1ba485f5fba86e1665556b556c07ebecc8b10d87",
+      "size": 6833266897,
+      "lfs": {
+        "oid": "b9005bf52e759f789e01db86dbb18854906a9586753afb020169796fffda9799",
+        "size": 6833266897,
+        "pointerSize": 135
+      },
+      "xetHash": "ac071bf21e84b80c6fc5143b9426f14dd8ff3dd0dc169b09224f66770a8ceca9",
+      "path": "nllb-200/nllb-200-clrr_dec-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7e6c8a599e456b6385e85647dbf0cb77307bf210",
+      "size": 6832528692,
+      "lfs": {
+        "oid": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6",
+        "size": 6832528692,
+        "pointerSize": 135
+      },
+      "xetHash": "4183db8baebb4b584ea16e545c8801cfe8f01e4ff1aabe63b018394c4db2b3c1",
+      "path": "nllb-200/nllb-200-clrr_enc-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "e3a68bfe68605667f28e0621e9d7fdfe0905ee65",
+      "size": 18972334,
+      "lfs": {
+        "oid": "66275283c7830919a8cc1623bd9efbe2f9cd508946c4eb9603751937a70ba2de",
+        "size": 18972334,
+        "pointerSize": 133
+      },
+      "xetHash": "561c201c342119f1d79728bb0491a5acfd94d936d637aaa25fc9fb1c292ef189",
+      "path": "nllb-200/nllb-200-lora-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "492c5b83b5362dee2450b987c08da57b7e3d0280",
+      "size": 6834879935,
+      "lfs": {
+        "oid": "ce6065c2a1443752d7dc522bddc6ce48b3364f80fcaf787d9bc82540c4975d28",
+        "size": 6834879935,
+        "pointerSize": 135
+      },
+      "xetHash": "91d68de835dd29827c18ee0c7904f1eec3a718570cc4545c66aadb3b7665f1cc",
+      "path": "nllb-200/nllb-200-middle_align-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4416ce17ce2ac0949392caf71637a2a9874efba9",
+      "size": 41046143831,
+      "lfs": {
+        "oid": "741784db8c2005a91a540babef47279155eceb1d05ab65681bf25867c141447a",
+        "size": 41046143831,
+        "pointerSize": 136
+      },
+      "xetHash": "6052a9c44677cdd5294269b129ab3cc95d1e024001d18a2284700b321c79b324",
+      "path": "nllb-200/nllb_results.zip"
+    },
+    {
+      "type": "file",
+      "oid": "2a583441913efb64791b88eeb1ea0ec78b1c2f63",
+      "size": 1444831144,
+      "lfs": {
+        "oid": "ec41cb77d32931940eef71cea26fc17365ea7a9b23367c5b842af61539cc76da",
+        "size": 1444831144,
+        "pointerSize": 135
+      },
+      "xetHash": "d6ccc1121f2e05bb07c391690dad63e9659bb769c24f679d47b4057301f4f827",
+      "path": "peft_baselines/mbart-large-50-bitfit/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "46c4120c2e0f36f7526ff7a6d2c5c0950ce45670",
+      "size": 413,
+      "path": "peft_baselines/mbart-large-50-bitfit/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "58ba22da67ccc4aae9bc33209dca73a4ce8cc5f4",
+      "size": 64196,
+      "path": "peft_baselines/mbart-large-50-bitfit/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "335f5690fcf41d19a1bb57e35ec6f27e881f1280",
+      "size": 11010589,
+      "lfs": {
+        "oid": "f2e0f217d3b030852e93657774bc2fc789ae1f657b728ab7efcd61e3db8f48d6",
+        "size": 11010589,
+        "pointerSize": 133
+      },
+      "xetHash": "10e6582c7521a9add900a7805e336454b55df1443ede1c4bab4056bceaae9eaa",
+      "path": "peft_baselines/mbart-large-50-lora/best_model.zip"
+    },
+    {
+      "type": "file",
+      "oid": "3760994ce4055715bb1945cd54e94173eed92e7f",
+      "size": 400,
+      "path": "peft_baselines/mbart-large-50-lora/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "cbc1acae0eab4e0ce25c3421c0cad5ee346b5b48",
+      "size": 60970,
+      "path": "peft_baselines/mbart-large-50-lora/test_predictions.csv"
+    },
+    {
+      "type": "file",
+      "oid": "7757e4b2b6a884cdab1b577fa5565cfa3fed10e3",
+      "size": 620,
+      "path": "peft_baselines/peft_scores.csv"
+    },
+    {
+      "type": "file",
+      "oid": "cf520a891a240f91d3cf8283a31e0cde85e6348a",
+      "size": 664,
+      "path": "results_summary.csv"
+    },
+    {
+      "type": "file",
+      "oid": "7ca95d0e75380513f3d41101a9ce42daede7f9ea",
+      "size": 2695,
+      "path": "revalidation/no_sg_gradient_trace.json"
+    },
+    {
+      "type": "file",
+      "oid": "14c117b34bd46ca40a612c523c67b6025513786c",
+      "size": 6774045594,
+      "lfs": {
+        "oid": "70b76a34a29372c6762dd4f01f564fde852d2db834c4351b510b154f076c177d",
+        "size": 6774045594,
+        "pointerSize": 135
+      },
+      "xetHash": "b1ba404d9f21b707281534b8a60962a7f44de35485fc1752573fc7556cd58c37",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-108.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7ece06d99452f39799a325072a603c25d0f84e58",
+      "size": 6769485691,
+      "lfs": {
+        "oid": "b78009166930db0406005d6660a73618186fff4afba2c590bc9436b35799ddaa",
+        "size": 6769485691,
+        "pointerSize": 135
+      },
+      "xetHash": "99ab8c93a66de1474ac49b22fbc17b40f924d29b4f15d64376f61ce837f5a3ac",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-144.zip"
+    },
+    {
+      "type": "file",
+      "oid": "22aa8ed473c1eff15ab346068d8c2de20512c3e6",
+      "size": 6764971831,
+      "lfs": {
+        "oid": "76c6619d7bdcd8d1fa73aadcfc630c7ca16981c1456a08620ba6ba302e3118b4",
+        "size": 6764971831,
+        "pointerSize": 135
+      },
+      "xetHash": "d4bd3204fb368af807eb7501b7c99dded9a265220585c2ee4f3efcdf6d4f1b75",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-180.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a5acd007617b7a061a24589f03e3b4b349628494",
+      "size": 6761738223,
+      "lfs": {
+        "oid": "018819f023c31ea3ebc4c891add11cf2622a2b2b6a34dff60e3ebfba76dedfd1",
+        "size": 6761738223,
+        "pointerSize": 135
+      },
+      "xetHash": "10e5346d517ec8367197bc843d826a08e6d8d2266e39ae2b86fc0295f3f496ed",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-216.zip"
+    },
+    {
+      "type": "file",
+      "oid": "4953720808e68dd3b8e9ca0abd462b13d89559ec",
+      "size": 6759471608,
+      "lfs": {
+        "oid": "cbc170eaaa06eae6a2baa0381c85f25a613a7b3105d7df16e55d7db81e4e72b1",
+        "size": 6759471608,
+        "pointerSize": 135
+      },
+      "xetHash": "b2d33ee7207b22402b15196c9c1b6874236ef80e5e55f7184d9d0800d531abca",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-252.zip"
+    },
+    {
+      "type": "file",
+      "oid": "a7bb4dc0f580f91964ab492b8a9a04f5ce0858d3",
+      "size": 6758146308,
+      "lfs": {
+        "oid": "24fd3f21ce4bacec8076a981633e29ca4c0a17d6cfda5e573e29e333788c8f00",
+        "size": 6758146308,
+        "pointerSize": 135
+      },
+      "xetHash": "2baf9655d719024c648f14d4f578a45d1fea081a3c16a0b2af1ffbed16bcd51a",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-288.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c3e347b00124f63a4d27055369d13cb6726657f2",
+      "size": 6756052892,
+      "lfs": {
+        "oid": "850efd4afc9a8a5785cfc6a181c3aec47258df07b9ce0988b8d4e9343232b74d",
+        "size": 6756052892,
+        "pointerSize": 135
+      },
+      "xetHash": "a680ce6e41ea14be0a30b1317d7ac115a7337227aeb53bd1f570e5ba9a511f8d",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-324.zip"
+    },
+    {
+      "type": "file",
+      "oid": "0514d30607e61948fa03b2d8130a54c7dae8d945",
+      "size": 6789353450,
+      "lfs": {
+        "oid": "f3098865a57318f803165e3b9114b4cba49da3c7c11140faa6164cfea9b71cc6",
+        "size": 6789353450,
+        "pointerSize": 135
+      },
+      "xetHash": "a87a429fc80ed47aa4611e7ae9486ac747bbcb5c6e3877e2c1b512ef91f14abe",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-36.zip"
+    },
+    {
+      "type": "file",
+      "oid": "c184747128636771581d19d633162d26b5e1968a",
+      "size": 6755071155,
+      "lfs": {
+        "oid": "a46b194032f91e0386a1f69de2652f0a133e751e82c1850def7d5073f4fa4512",
+        "size": 6755071155,
+        "pointerSize": 135
+      },
+      "xetHash": "76765844a78d27902ec1c728de4ce1e485f26e29d970898a979ce62e32748a0b",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-360.zip"
+    },
+    {
+      "type": "file",
+      "oid": "5955ec6bd96464cadfdea73b86b009eb992b854a",
+      "size": 6754264942,
+      "lfs": {
+        "oid": "1a0c9bdb739e5492bc83cc10e0067b2ca3d15dd79e4b60dcd3412bdb245e57d0",
+        "size": 6754264942,
+        "pointerSize": 135
+      },
+      "xetHash": "7dfdcdbea2d625108be88aee2262a6153bb79e2b1af18c6f82f38a37cc162534",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-396.zip"
+    },
+    {
+      "type": "file",
+      "oid": "566c21d0949eb74f3949f8aeec086c56f4e0a6c4",
+      "size": 6753151210,
+      "lfs": {
+        "oid": "aef81366b45913737eb846d03ce84048cbfff721a344e956c6a0bdcf15082bbd",
+        "size": 6753151210,
+        "pointerSize": 135
+      },
+      "xetHash": "f822ce64e40c27cf40de082f4d49815a2f3963a09123743f4ed887655d61d56c",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-432.zip"
+    },
+    {
+      "type": "file",
+      "oid": "7ffa41fc96e8c29e353d0510d6f45f36d8a7f5e1",
+      "size": 6780300267,
+      "lfs": {
+        "oid": "6dd949a5230cbab4686debdf22c4228f1a876c5515eaceae11f1677ecc5c5997",
+        "size": 6780300267,
+        "pointerSize": 135
+      },
+      "xetHash": "be5242958c93b8086b21477531bd55c434181ea9e48782a00476ee3f201173df",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-72.zip"
+    },
+    {
+      "type": "file",
+      "oid": "281a6a2fc48790f9ac7e5d2cbc7965406fa55cfd",
+      "size": 2270555926,
+      "lfs": {
+        "oid": "ac8b43c2aff683a7b3d5082d27c9f938f3cf74462c97b559311b4e1c4f4cdaf3",
+        "size": 2270555926,
+        "pointerSize": 135
+      },
+      "xetHash": "423d3d923795a068ef54e5f247730c3bb76613e346a3779d4a40ad0146eb6a11",
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/mbart-large-50-ami-cmn-lsr-only-best.zip"
+    },
+    {
+      "type": "file",
+      "oid": "cba7204fdb30d984b3516cea04cd8f027214b303",
+      "size": 664,
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/metrics.json"
+    },
+    {
+      "type": "file",
+      "oid": "42dcb81289e169bd41e7c0b4ea34013b30ed6e61",
+      "size": 61799,
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/test_predictions.csv"
+    }
+  ]
+}

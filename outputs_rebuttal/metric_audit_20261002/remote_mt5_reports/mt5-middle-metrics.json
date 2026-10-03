@@ -1,0 +1,10 @@
+{
+  "model": "mt5-small-middle-align-acl2025",
+  "method": "middle_align",
+  "reference_paper": "Liu & Niehues (ACL 2025)",
+  "training_time_seconds": 1413.9926671981812,
+  "eval_bleu": 4.463514448763751,
+  "eval_chrf++": 6.138190769454754,
+  "test_bleu": 4.749760140805978,
+  "test_chrf++": 5.937319949638067
+}

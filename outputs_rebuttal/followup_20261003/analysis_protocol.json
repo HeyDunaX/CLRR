@@ -1,0 +1,97 @@
+{
+  "samples": 10000,
+  "seed": 42,
+  "family": "36 exploratory comparisons: 12 pairs x BLEU/chrF++/char-only chrF, Holm correction",
+  "ci": "paired sentence bootstrap percentile CI of corpus-score difference",
+  "p": "SacreBLEU centered absolute-difference bootstrap; native BLEU p verified",
+  "scope": "fixed checkpoints, single training seeds; no causal training attribution or multi-seed confirmation",
+  "ashaninka_scope": "baseline and Full patience4; not epoch20/patience10",
+  "unchanged_historical_files": 19,
+  "inputs": [
+    {
+      "id": "mbart-baseline",
+      "prediction_sha256": "a4974e01a1a32d5795f4e760d5c2721a1d5a1223bc760a4175cad9364aac79ee",
+      "checkpoint_archive_sha256": "0ccef8481f5c20a50856a540632cc9f744fcd5f2ccad02412f6d68df5775f00b"
+    },
+    {
+      "id": "mbart-full",
+      "prediction_sha256": "fe6530b3442ae1feaab18a63bad1fa8641a572874b9e78a51e602f20456434e0",
+      "checkpoint_archive_sha256": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18"
+    },
+    {
+      "id": "mbart-full::route_off",
+      "prediction_sha256": "e846e0035290ee1d31ced5b63182afec1d173a054b87679a1b16b97e27fea6bf",
+      "checkpoint_archive_sha256": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18"
+    },
+    {
+      "id": "mbart-lsr",
+      "prediction_sha256": "db376c12ca502b88c33d9a79b8ffffb568896525d7d236eeb40b225ca2a04f30",
+      "checkpoint_archive_sha256": "ac8b43c2aff683a7b3d5082d27c9f938f3cf74462c97b559311b4e1c4f4cdaf3"
+    },
+    {
+      "id": "nllb-baseline",
+      "prediction_sha256": "38e6a22bab858f132c1083227c09ec1657f2bb9b4b6cb33947630ae290f29305",
+      "checkpoint_archive_sha256": "a5a253399f92f4d2354fa35bd91ef4257b16b71f945d20245ae51b54b58390f8"
+    },
+    {
+      "id": "nllb-full",
+      "prediction_sha256": "cf3833f5f994639a65fe1242fc2028b3718bb9f4e8eb61d1c9bf35234f96ef29",
+      "checkpoint_archive_sha256": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6"
+    },
+    {
+      "id": "nllb-full::route_off",
+      "prediction_sha256": "ea63af1736321d659c9d2bb1a2f2fd49931cd85f0ea94d2ddc63c51ab4df6f73",
+      "checkpoint_archive_sha256": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6"
+    },
+    {
+      "id": "mt5-baseline",
+      "prediction_sha256": "44857c1f8e4c24583948036e7c203d6da61bc45f3d4574db298c70fc977c1f92",
+      "checkpoint_archive_sha256": "bacccd29e20a4a2baf5688ea58d533f436e5feabe27c540213b43a6b6467cd5d"
+    },
+    {
+      "id": "mt5-full",
+      "prediction_sha256": "6638c57bf5844503769bde4f73ed9fa12a16256a3b5e835df40016d768ec4eb7",
+      "checkpoint_archive_sha256": "2fb828eeb4659c97b10a5f3c7be3b08603a9502da02f594b2685ea982662af5d"
+    },
+    {
+      "id": "mt5-full::route_off",
+      "prediction_sha256": "57b622d270957d686a99a82833e6be0ccc0d1baaeaddf4ac362d257717d57294",
+      "checkpoint_archive_sha256": "2fb828eeb4659c97b10a5f3c7be3b08603a9502da02f594b2685ea982662af5d"
+    },
+    {
+      "id": "mt5-clrr",
+      "prediction_sha256": "3e375a3b072e40ccd548eb21b96191d26062e84e34fc776116849e7f0a7a538b",
+      "checkpoint_archive_sha256": "7ed79385f0850987104b0aed0099260fbdb26a8145fe55b614eef57b1c70d556"
+    },
+    {
+      "id": "byt5-baseline",
+      "prediction_sha256": "45b488ed3956449085dc11781fede217059552f7d6d3b0c8d0f72873329e5da1",
+      "checkpoint_archive_sha256": "ed9833c2543d5eb03351cbe22e853d07de33c825b587b499e9a0bca792bbc7e0"
+    },
+    {
+      "id": "byt5-full",
+      "prediction_sha256": "03e1ea4cf87efe878d988180a11d008eb567892bd125aaae2fd6accf83cb6a21",
+      "checkpoint_archive_sha256": "d6fb9bccb9b2d0ef9f9f918748209bff44723880fe4c0ed9a9f78070d6003d92"
+    },
+    {
+      "id": "byt5-full::route_off",
+      "prediction_sha256": "1d22c7fec2e01944d3a806cf794c03fee873e22e8fc7c2b0b3540e0cc81dc2a4",
+      "checkpoint_archive_sha256": "d6fb9bccb9b2d0ef9f9f918748209bff44723880fe4c0ed9a9f78070d6003d92"
+    },
+    {
+      "id": "ash-mbart-baseline",
+      "prediction_sha256": "a9cd50570910a8856c6c9cfd9f52f9bf3b18eced65995ba4018767a8b4ae2079",
+      "checkpoint_archive_sha256": "a9bb61db92e5205d1dc0bdf39bc0e2187c756239cd830fa47fbabb70e6906d77"
+    },
+    {
+      "id": "ash-mbart-full",
+      "prediction_sha256": "de1f88358e6c359db5f0b1538b09b21fa9eb06b431197f140f635ff82999f96b",
+      "checkpoint_archive_sha256": "6a2f1fae90aa51a6b718a5e9e1cf264f0230514086458662de251ef90f55873f"
+    },
+    {
+      "id": "ash-mbart-full::route_off",
+      "prediction_sha256": "7c8add6d2342eb70a4357368c782c4300f615754fa5e3675bfb947b4e26e7323",
+      "checkpoint_archive_sha256": "6a2f1fae90aa51a6b718a5e9e1cf264f0230514086458662de251ef90f55873f"
+    }
+  ]
+}

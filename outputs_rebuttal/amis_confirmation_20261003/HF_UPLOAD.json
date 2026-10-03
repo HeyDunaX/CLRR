@@ -1,0 +1,88 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "prefix": "amis_confirmation_20261003",
+  "files": {
+    "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed42.zip": {
+      "bytes": 2270664334,
+      "sha256": "aaed1e8cf39b4f1ad6a5f4bef6fa04d44fbeb9fb2599e2649702e937822a10c8",
+      "commit": "ec80315d38b9e5dd9f3f3316e392ec233afd1b8d",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed43.zip": {
+      "bytes": 2270678573,
+      "sha256": "4524afeff8761db29b108feb4ff8c19fd54e84172135d9d6845b5d5a2551a26e",
+      "commit": "c76490b2a735d9fd38f1445dc4477c15e77ccb90",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed44.zip": {
+      "bytes": 2270716284,
+      "sha256": "ce2d3ac8a4e734bdcc8240e1180785f7314782ea13ebdf9bedeba6816d8f71ad",
+      "commit": "d0ff4006d6879f6c74e06ffdae4a9261aa3e1e82",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-clrr-seed42.zip": {
+      "bytes": 2270684687,
+      "sha256": "9916dae4217809f41cae3aff0aa974e14528860683091a1c67ff0f0396ac4c30",
+      "commit": "a45d7327915e937d5a85abe5883746105791d44b",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-clrr-seed43.zip": {
+      "bytes": 2270664838,
+      "sha256": "9dc354c383df3c0adf6bddb488c2d73c1ec4f0950e07f8756f2ef763f27f6e06",
+      "commit": "5eca08957eb4a76e6ae1937ba87166f1bb484c6d",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-clrr-seed44.zip": {
+      "bytes": 2270687639,
+      "sha256": "413e8ebde299bef49410df02bdd450fecbb10b991035a913d70bcd5ed812f131",
+      "commit": "1385b1147ea852cf857d7bc1b2ea2270f24e6421",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-full-seed43.zip": {
+      "bytes": 2270678254,
+      "sha256": "b7cb3cd50f610a8e8119aa4213d649a5acc4077270938cfe0aae148b399bc5d4",
+      "commit": "f6b2a7fbc07966854679c6d31bed0513230dca8e",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-full-seed44.zip": {
+      "bytes": 2270670074,
+      "sha256": "3de3cfc733d60f9070d15fd02aaef0391f6a1a8569f3759adebef3b81e4eb0ee",
+      "commit": "adad0c7c19b43241e7ed4a57e4d1126c6c471958",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-lsr-seed43.zip": {
+      "bytes": 2270688287,
+      "sha256": "6dc2d63c8fac7c78f95e207462c056a3d86b380c21b2d7ca81093d0a7e520749",
+      "commit": "9501653f37072f16fb911b819299f77035306fc5",
+      "verified": true,
+      "local_archive_removed": true
+    },
+    "amis_confirmation_20261003/checkpoints/mbart-amis-lsr-seed44.zip": {
+      "bytes": 2270670174,
+      "sha256": "2a720426aa5bf8b07493d765a93c20a94eef930c99f55d534059bae984b9548a",
+      "commit": "7a554cbed96a7221eb9cbcafd2f444cc3a1150bb",
+      "verified": true,
+      "local_archive_removed": true
+    }
+  },
+  "artifact_losses": [
+    {
+      "run_name": "mbart-amis-lsr-seed42",
+      "status": "weights_archive_lost_before_upload"
+    },
+    {
+      "run_name": "mbart-amis-full-seed42",
+      "status": "weights_archive_lost_before_upload"
+    }
+  ],
+  "status": "ALL_AVAILABLE_CHECKPOINTS_VERIFIED",
+  "local_weights_cleanup_complete": true
+}

@@ -1,0 +1,37 @@
+dataset,backbone,method,rows,bleu,chrfpp,source_stage,source_csv
+amis_mandarin,mBART,Baseline,575,19.614439864509187,14.054667992760303,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mBART,CLRR+LSR,575,20.389641979862738,19.0823839997464,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mBART,CLRR-only,575,18.4697194429371,13.24427443445707,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,LSR-only,575,19.7066865314493,18.616855318654153,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mBART,CLRR-Dec+LSR,575,19.918762186857276,18.699918251035317,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,BitFit,575,0.34628509290270376,2.255202807439759,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,Narrow LoRA,575,3.2364758513183802,4.4213398534216655,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,Strong LoRA A,575,10.22955252303285,8.63188045805791,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,Strong LoRA B,575,13.806636730562449,10.329273055770976,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,Strong LoRA A,575,11.462464041744377,9.500394006230112,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,Strong LoRA B,575,9.802402158928594,8.400950051737045,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,Middle-Layer Alignment,575,19.289283992197944,18.437820048961946,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,Baseline,575,13.618561067374053,10.499048698161454,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,NLLB,CLRR+LSR,575,14.283543312714782,10.917928026721063,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,NLLB,CLRR-Dec+LSR,575,13.419354415938905,10.455877495623549,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,Middle-Layer Alignment,575,13.964781812018156,10.659604323521558,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,BitFit,575,1.0750353847847507,2.964280533631622,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,NLLB,Narrow LoRA,575,3.5382949410953413,4.940692825613391,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mT5,Baseline,575,2.788710051742412,3.8129143092177027,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mT5,CLRR-only,575,4.439347882158104,5.176136865120548,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mT5,CLRR+LSR,575,4.59606843110309,5.042505307007543,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,mT5,CLRR-Dec+LSR,575,4.831461562911431,5.193257539288503,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mT5,CLRR-Both+LSR,575,3.445918973846962,4.575295009869316,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mT5,Middle-Layer Alignment,575,4.662529338022565,5.210324652897078,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+ashaninka_spanish,mBART,Baseline (patience 4),1003,3.9522437225218803,20.91903308206383,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+ashaninka_spanish,mBART,CLRR+LSR (patience 4),1003,3.9072043843556847,20.756020749397464,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+ashaninka_spanish,NLLB,Baseline (epoch 20),1003,3.85942915859025,20.417630968515734,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+ashaninka_spanish,mBART,"CLRR+LSR (patience 10, selected epoch 14)",1003,3.7969526121140733,20.975283238139824,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+ashaninka_spanish,mBART,"CLRR+LSR (patience 10, fixed epoch 20)",1003,4.0948832768456125,20.958774160834572,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,ByT5,Baseline,575,7.485624981896735,8.297734144912354,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,ByT5,CLRR+LSR,575,7.31602171342986,8.096632172639545,B,outputs_rebuttal/followup_20261003/matched_inference_scores.csv
+amis_mandarin,ByT5,CLRR-Dec+LSR,575,7.439418507223576,8.062955067252458,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,ByT5,LayerSkip,575,2.553348110458502,4.856777706986477,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,ByT5,Middle-Layer Alignment,575,7.5659742156337,8.341379844556513,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mT5,LayerSkip,575,3.929155385888967,4.584510989997513,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv
+amis_mandarin,mBART,LayerSkip,575,18.75058459799864,18.107867272763208,A,outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv

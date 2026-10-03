@@ -1,0 +1,34 @@
+{
+  "compiler": "pdfLaTeX + BibTeX",
+  "project": "docs\\paper_upload",
+  "steps": [
+    {
+      "step": "pdflatex_1",
+      "exit_code": 0
+    },
+    {
+      "step": "bibtex",
+      "exit_code": 0
+    },
+    {
+      "step": "pdflatex_2",
+      "exit_code": 0
+    },
+    {
+      "step": "pdflatex_3",
+      "exit_code": 0
+    }
+  ],
+  "pages": 12,
+  "tables": 10,
+  "unresolved_citations": 0,
+  "missing_inputs": 0,
+  "pdf_sha256": "5779f224cc15741a78ce8c78aedd5e1bc4528d7484f229bb80cd5256c4509377",
+  "source_files": {
+    "clrr_main.tex": "8af2fda2cbd672c261bd8958976fc943dd2755c0086fe75a77194dabe304c324",
+    "clrr_references.bib": "5c49d9ead6774ec495d6d509a37c3074bf4c61da58bf34f0d7eb0de90b56d7e3",
+    "acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+    "acl_natbib.bst": "e332fd51dcea48e2a8a89754892c3cb99674a1cd70b527b661e9aaffc235e83c",
+    "README.md": "94708332c67582f175841f1e57a9ca1047576407add1e2afea853c170c99033c"
+  }
+}

@@ -1,0 +1,2 @@
+Run,Status,Rank,Alpha,Target Modules,Unfreeze Embeddings,Learning Rate,Seed,Added Params,Trainable Params,Completed Epochs,Best Epoch,"BLEU (zh, trainer references)","chrF++ (w=2, trainer references)","BLEU (zh, original references)","chrF++ (w=2, original references)","chrF++ (Zh, original references)",Run B
+B,completed,16,32,"['q_proj', 'k_proj', 'v_proj', 'out_proj', 'fc1', 'fc2']",True,0.0001,42,8650752,264706048,20.0,19.0,14.043191415300335,11.490106965542608,13.806636730562444,10.329273055770976,17.6304236261319,completed

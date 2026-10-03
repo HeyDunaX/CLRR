@@ -1,0 +1,484 @@
+% !TeX program = pdflatex
+% Pass the original color option before acl.sty loads xcolor.
+\PassOptionsToPackage{dvipsnames}{xcolor}
+\documentclass[11pt]{article}
+\usepackage{amsmath,mathrsfs,amssymb}
+% Review mode for double-blind submission to ACL / ComputEL
+\usepackage[review]{acl}
+
+% Standard package includes
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{soul}
+\usepackage{CJKutf8}
+\usepackage{array}
+\usepackage[T1]{fontenc}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{inconsolata}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{tabularx}
+
+\title{Parameter-Neutral Cross-Layer Residual Routing and Latent Regularization for Low-Resource Polysynthetic Translation}
+
+\author{Anonymous ACL Submission}
+
+% Commands used by the verified revision; original ACL setup above is retained.
+\usepackage{xurl}
+\newcommand{\sg}{\operatorname{sg}}
+\newcommand{\Full}{\textsc{Full}}
+\newcommand{\FT}{\textsc{FT}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We introduce Cross-Layer Residual Rewiring (CLRR), a parameter-neutral intervention that reuses detached activations from earlier Transformer blocks, together with Latent Semantic Regularization (LSR), a shared-encoder source--target alignment objective. We evaluate their contributions to Amis--Mandarin translation through twelve matched mBART-50 runs: fine-tuning, CLRR-only, LSR-only, and their combination across three seeds. CLRR+LSR achieves the highest mean BLEU, 19.77, compared with 19.39 for fine-tuning and 19.53 for LSR-only. Its increment over LSR-only is positive in all three seeds, providing a promising, modest component-level signal, although corrected per-seed tests remain inconclusive. Complementary re-evaluation across four backbones finds a significant historical mT5 gain of 1.81 BLEU and a 3.93 BLEU routing effect in a fixed mBART checkpoint. Residual and gradient probes characterize how the intervention enters the computation, while representation spectra remain high dimensional. Raw-reference scoring and character-level controls make the translation comparisons reproducible. Together, these findings establish CLRR as a lightweight architectural intervention to investigate for low-resource adaptation, with measured benefits that depend on the backbone and evaluation setting.
+\end{abstract}
+
+\section{Introduction}
+Low-resource machine translation relies on transferring knowledge from pretrained multilingual models. For an Indigenous language absent from a model's language inventory, fine-tuning must adapt its representations from limited parallel supervision. The Amis--Mandarin corpus of \citet{zheng-etal-2022-parallel} provides 5,751 sentence pairs for studying this setting. Changes to internal computation may offer a useful inductive bias, but observed improvements must be distinguished from seed variation, evaluation choices, and auxiliary supervision.
+
+We investigate \textbf{Cross-Layer Residual Rewiring (CLRR)}: a fixed connection from the output of an earlier Transformer block to the output of a later one. The added activation is detached with stop-gradient. The intervention adds no parameter tensor and retains full backbone fine-tuning. We also investigate \textbf{Latent Semantic Regularization (LSR)}, which aligns pooled source and target representations using a shared encoder and a detached target branch, without an extra predictor or teacher network.
+
+Reusing earlier activations offers a direct way to preserve access to intermediate information as representations change across depth. We examine this hypothesis through three questions: how does CLRR affect translation under matched training; what does it contribute beyond LSR; and how do residual scale, auxiliary gradients, and representation geometry characterize its behavior?
+
+Our primary evidence is a four-way, three-seed study with common initialization, optimization, checkpoint selection, and generation precision. We complement it with an audit of historical predictions, uniform FP32 re-generation where selected weights survive, and selected-checkpoint and training-trajectory diagnostics. The evaluation reports every run within the Amis study. Our contributions are:
+\begin{itemize}
+\item A parameter-neutral intervention and shared-encoder latent objective, with implemented forward and gradient behavior specified.
+\item A matched component study showing the highest mean BLEU for CLRR+LSR and positive increments over LSR-only in all three seeds, with complete seed-level uncertainty.
+\item A complementary four-backbone Amis evaluation and mechanism analysis, documenting a historical mT5 gain, routing sensitivity, and residual, gradient, and character-level diagnostics.
+\end{itemize}
+
+\section{Related Work}
+\paragraph{Multilingual transfer.}
+mBART-50 extends multilingual pretraining and translation to 50 languages \citep{tang-etal-2020-multilingual}, and NLLB studies translation across 200 languages \citep{nllb-team-2022-no}. mT5 uses multilingual text-to-text pretraining \citep{xue-etal-2021-mt5}, whereas ByT5 operates on bytes \citep{xue-etal-2022-byt5}. We use these released backbones; differences among them do not isolate one architectural or tokenization cause.
+
+\paragraph{Adaptation and depth.}
+LoRA learns low-rank updates \citep{hu-etal-2022-lora}, while BitFit updates biases \citep{ben-zaken-etal-2022-bitfit}. CLRR changes activation routing while updating the full backbone. Zero added parameters therefore do not imply parameter-efficient training. Our shared-encoder middle-layer contrastive comparator is inspired by cross-lingual alignment \citep{liu-niehues-2025-middle}, rather than an exact reproduction of its complete LLM protocol.
+
+\paragraph{Latent objectives and scoring.}
+Joint-embedding predictive architectures learn in representation space \citep{assran-etal-2023-ijepa}. LSR shares the idea of a detached target but has no learned predictor or momentum teacher. We use the descriptive term LSR despite legacy \texttt{jepa} names in code. Evaluation follows reproducible corpus scoring \citep{post-2018-call,popovic-2017-chrf} and paired resampling \citep{koehn-2004-statistical}.
+
+\section{Methodology}
+\subsection{Cross-Layer Residual Rewiring}
+Let $F_l$ denote the original Transformer block, including its internal residuals, and $\widetilde h_l$ its post-intervention output. For distance $d$ and strength $\alpha$,
+\begin{align}
+u_l &= F_l(\widetilde h_{l-1}),\\
+\widetilde h_l &= \begin{cases}
+u_l, & l\leq d,\\
+u_l+\alpha\sg(\widetilde h_{l-d}), & l>d.
+\end{cases}
+\label{eq:clrr}
+\end{align}
+$h_0$ is the input to block 1; cached activations start at block 1. We use encoder-only routing, $d=2$, and $\alpha=0.1$. The source is an earlier \emph{post-rewiring} output, without a projection. Additions occur after the whole block; stack-level final normalization remains as in the backbone.
+
+Hooks cache detached tensors within each forward or generation call. Source and target encoder passes use isolated caches. Historical decoder and both-stack variants use the same rule on their respective blocks, but are separate exploratory comparisons.
+
+Detachment removes the derivative through the \emph{added} source branch, $\partial\sg(\widetilde h_{l-d})/\partial\widetilde h_{l-d}=0$. Original sequential gradients remain. The added branch supplies forward information without a direct gradient path into its cached source, while preserving the backbone's original sequential gradients. Its influence on later nonlinear computations is measured empirically.
+
+CLRR adds zero trainable parameters and uses elementwise additions with cached activations. The backbone retains its original parameterization and full fine-tuning optimizer state; parameter neutrality describes the architectural change.
+
+\subsection{Latent Semantic Regularization}
+For source $x$ and target $y$, the shared encoder yields $E_\theta(x)$ and $E_\theta(y)$. Let $P(H,m)$ be masked mean pooling. Define
+\begin{align}
+z_x &= \operatorname{normalize}(P(E_\theta(x),m_x)),\\
+z_y &= \sg\!\left(\operatorname{normalize}(P(E_\theta(y),m_y))\right),\\
+\mathcal L_{\rm LSR} &= B^{-1}\sum_{i=1}^B(1-z_{x,i}^{\mathsf T}z_{y,i}),\\
+\mathcal L &= \mathcal L_{\rm CE}+\lambda\mathcal L_{\rm LSR}.
+\label{eq:objective}
+\end{align}
+Target IDs come from translation labels: ignored IDs become padding, which is excluded from pooling. The target pass uses \texttt{no\_grad}, current shared weights, and the model's current train/eval mode. In Full it also uses encoder CLRR with a fresh cache. The default weight is $\lambda=0.1$.
+
+LSR introduces alignment supervision without contrastive negatives, a learned predictor, or additional parameters. Translation CE supplies the token-level learning signal alongside the latent objective. We monitor their relative gradients and centered representation spectra.
+
+\subsection{Components}
+\FT\ optimizes CE on the original backbone. CLRR-only adds Eq.~\ref{eq:clrr} and optimizes CE. LSR-only uses Eq.~\ref{eq:objective} without routing. \Full\ combines both. All four update the full backbone, with fixed definitions across the primary suite.
+
+\section{Experimental Setup}
+\subsection{Data and Models}
+Amis--Mandarin \citep{zheng-etal-2022-parallel} uses 4,600/576/575 train/validation/test pairs with preserved membership and order. All translation experiments in this manuscript concern this direction.
+
+The primary backbone is \path{facebook/mbart-large-50-many-to-many-mmt}, with 610,879,488 trainable parameters. Historical comparisons also use \path{facebook/nllb-200-distilled-600M}, \path{google/mt5-small}, and \path{google/byt5-small}. Amis uses mBART source proxy \texttt{tl\_XX} and target \texttt{zh\_CN}; historical NLLB uses \texttt{zho\_Hant} for both. Proxies are fixed within comparisons and do not identify the source language linguistically.
+
+\subsection{Three Evidence Sets}
+\label{sec:provenance}
+\textbf{A: saved-prediction audit.} We report 28 historical Amis outputs from the original audit against original CSV targets, checking row alignment and hashes. This corrects reference processing without changing hypotheses or retraining, but does not standardize historical training or generation.
+
+\textbf{B: matched inference.} We report ten available historical Amis selected checkpoints regenerated with FP32 weights/generation, TF32 off, evaluation mode, beam 4, batch 8, and padding to multiples of 8. Maximum generation length is 256 for mBART/mT5/ByT5 and 128 for NLLB. Four additional Amis outputs disable routing on the same Full weights. Common inference does not erase historical differences in optimization or validation selection. The correct historical mBART CLRR-only best weights (step 504) were not found in inspected remote archives; we retain their audited predictions in A and do not substitute step 432.
+
+\textbf{C: fresh matched training.} Every method starts from the same pinned mBART weights for seeds 42, 43, and 44, with four methods per seed. Shared settings are AdamW, LR $5\times10^{-5}$, weight decay 0, warmup ratio 0.06, batch $32\times4=128$, maximum lengths 256, up to 20 epochs, and patience 4. Raw-reference validation chrF++ under greedy generation selects checkpoints; test uses beam 4. Training uses BF16/TF32 and gradient checkpointing on a standard-memory A100. Validation/test generation explicitly uses FP32 with TF32 off for all methods. No test-driven checkpoint or hyperparameter selection occurs within C.
+
+The common generation policy makes inference precision explicit across all components. Historical configurations and outputs remain separately identified in the artifact record.
+
+\subsection{Metrics and Statistics}
+\label{sec:metrics}
+Targets are original strings, in complete row order. We retain empty predictions and strip only outer whitespace, without reconstructing references from model tokens. SacreBLEU 2.6.0 computes case-sensitive corpus BLEU with exponential smoothing, effective order disabled, and the \texttt{zh} tokenizer for Mandarin. Standard chrF++ uses character order 6, word order 2, $\beta=2$, lowercase/whitespace inclusion/epsilon smoothing disabled, and no external tokenization. Character-only chrF (word order 0) is diagnostic.
+
+Paired sentence bootstrap draws 10,000 shared index resamples with seed 42. We report percentile 95\% intervals of corpus-score differences and centered absolute-difference bootstrap $p$-values following SacreBLEU. Original correction families remain separate: A has 42 tests, B has 36, and C has 24 (four comparisons, two metrics, three seeds). A and B report the Amis subset while retaining the original Holm-adjusted values, without reducing the families after scope selection. A and B predictions are never mixed in a test.
+
+C reports every seed and sample standard deviation. Sentence bootstrap conditions on trained models and does not quantify training-seed uncertainty. Three seeds limit population-level claims about stability.
+
+\section{Results and Comparative Analysis}
+\subsection{Matched Component Study}
+% BEGIN embedded paper_tables/means.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Fresh matched mBART Amis runs (C): mean and sample standard deviation over seeds 42, 43, and 44. All four methods update all 610,879,488 backbone parameters and add zero parameters.}
+\label{tab:means}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrr}
+\toprule
+\textbf{Method} & \textbf{BLEU} & \textbf{chrF++} \\
+\midrule
+Fine-tuning & 19.39$\pm$1.12 & 16.92$\pm$3.26 \\
+CLRR-only & 19.58$\pm$0.61 & 18.52$\pm$0.41 \\
+LSR-only & 19.53$\pm$0.23 & 18.56$\pm$0.17 \\
+CLRR+LSR & 19.77$\pm$0.17 & 18.66$\pm$0.21 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/means.tex
+% BEGIN embedded paper_tables/seed_deltas.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Paired BLEU differences in C. FT is fine-tuning; Full is CLRR+LSR. Full exceeds LSR-only in all three seeds, with a mean increment of 0.2344 BLEU. Per-seed uncertainty is reported in the complete bootstrap table.}
+\label{tab:seed_deltas}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{BLEU difference} & \textbf{42} & \textbf{43} & \textbf{44} & \textbf{Mean} \\
+\midrule
+Full$-$FT & 0.23 & 1.47 & -0.56 & 0.38 \\
+Full$-$LSR & 0.17 & 0.12 & 0.41 & 0.23 \\
+CLRR$-$FT & -0.09 & 0.80 & -0.15 & 0.19 \\
+Full$-$CLRR & 0.32 & 0.67 & -0.41 & 0.19 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/seed_deltas.tex
+Full averages 19.77 BLEU versus 19.39 for \FT, 19.58 for CLRR-only, and 19.53 for LSR-only. Full--LSR-only is positive in every seed: 0.1701, 0.1243, and 0.4087. The mean increment is 0.2344 BLEU. These observed gains are modest: each interval includes zero and none of the 24 declared tests passes corrected $p<0.05$.
+
+The paired study distinguishes component effects from training variation (Table~\ref{tab:seed_deltas}). Full exceeds \FT\ in two seeds, with a mean gain of 0.3800 BLEU; seed 44 contributes a $-0.5629$ difference. CLRR-only has a positive mean difference of 0.1883, with one positive paired seed. Full has the lowest observed BLEU standard deviation across these three runs, a descriptive finding rather than an established variance-reduction effect.
+
+The mean chrF++ gap against \FT\ is 1.7316, largely due to seed 43: baseline 13.1592 versus Full 18.4753. Full's mean gap over LSR-only is only 0.0926. Character-level controls help interpret the combined-objective scores. Standard Mandarin chrF++ is sensitive to sparse word bigrams (Section~\ref{sec:influence}); influence auditing for all twelve new C outputs remains outstanding.
+
+\subsection{Historical Backbone Re-evaluation}
+% BEGIN embedded paper_tables/backbones.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Historical Amis checkpoints regenerated under common FP32 inference (B). These are single selected checkpoints, separate from C; their historical training and selection were not fully matched. chrF uses word order 0 and is diagnostic.}
+\label{tab:backbones}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{llrrr}
+\toprule
+\textbf{Backbone} & \textbf{Method} & \textbf{BLEU} & \textbf{chrF++} & \textbf{chrF} \\
+\midrule
+mBART & Fine-tuning & 19.61 & 14.05 & 18.23 \\
+mBART & LSR-only & 19.71 & 18.62 & 18.31 \\
+mBART & CLRR+LSR & 20.39 & 19.08 & 18.92 \\
+NLLB & Fine-tuning & 13.62 & 10.50 & 13.77 \\
+NLLB & CLRR+LSR & 14.28 & 10.92 & 14.33 \\
+mT5 & Fine-tuning & 2.79 & 3.81 & 5.06 \\
+mT5 & CLRR-only & 4.44 & 5.18 & 6.84 \\
+mT5 & CLRR+LSR & 4.60 & 5.04 & 6.67 \\
+ByT5 & Fine-tuning & 7.49 & 8.30 & 9.65 \\
+ByT5 & CLRR+LSR & 7.32 & 8.10 & 9.45 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/backbones.tex
+% BEGIN embedded paper_tables/historical_tests.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Paired sentence bootstrap for B: 10,000 resamples, percentile intervals, Original Holm correction across 36 tests, retained unchanged when reporting the Amis subset. FT denotes full fine-tuning and Full denotes CLRR+LSR. This does not measure uncertainty across training seeds.}
+\label{tab:historical_tests}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Comparison (B)} & \textbf{$\Delta$BLEU} & \textbf{95\% CI} & \textbf{$p_{\rm Holm}$} \\
+\midrule
+mBART Full$-$FT & 0.78 & [-0.44,2.04] & 1.0000 \\
+mBART Full$-$LSR & 0.68 & [-0.48,1.85] & 1.0000 \\
+NLLB Full$-$FT & 0.66 & [-0.33,1.72] & 1.0000 \\
+mT5 Full$-$FT & 1.81 & [1.18,2.47] & 0.0036 \\
+mT5 Full$-$CLRR & 0.16 & [-0.38,0.71] & 1.0000 \\
+ByT5 Full$-$FT & -0.17 & [-0.89,0.53] & 1.0000 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/historical_tests.tex
+With common inference, historical Full improves mBART and NLLB BLEU point estimates by 0.7752 and 0.6650. Both intervals include zero, with corrected $p=1$; we report these as favorable point estimates rather than significant gains.
+
+mT5 Full improves over \FT\ by 1.8074 BLEU, interval $[1.1826,2.4746]$, corrected $p=0.0036$. Its chrF++ and character-only chrF gains also survive correction in B. CLRR-only also improves the historical mT5 point estimate. The Full--CLRR-only BLEU difference is 0.1567 with uncertainty including zero, and its chrF++ difference is $-0.1336$. ByT5 has a $-0.1696$ Full--\FT\ BLEU difference without significance. This pattern motivates backbone-specific adaptation rather than a uniform performance claim.
+
+\subsection{PEFT and Depth Comparators}
+Remaining historical scores appear in Appendix~\ref{sec:historical}. Expanded LoRA A uses rank 16, scaling 32, and query/key/value, attention-output, and both feed-forward linear adapters, with frozen embeddings. LoRA B also updates tied input/output embeddings. Their audited Amis BLEU scores are 10.2296/13.8066 for mBART and 11.4625/9.8024 for NLLB. They improve substantially over narrow query/value LoRA, showing that adapter scope matters here.
+
+These configurations use different LRs (A: $2\times10^{-4}$; B: $10^{-4}$) from full fine-tuning ($5\times10^{-5}$), without matched tuning budgets. We therefore treat these as configuration-specific comparisons, not a controlled ranking of tuning methods. Middle-layer alignment, decoder routing, and both-stack routing provide additional contextual comparisons in the complete historical table.
+
+\subsection{Inference Dependence on Routing}
+% BEGIN embedded paper_tables/routing.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Inference routing sensitivity (B): identical CLRR+LSR weights with $\alpha=0.1$ or 0. Removing a route changes the trained computation and is not a separately trained LSR-only ablation.}
+\label{tab:routing}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Dataset/model} & \textbf{On} & \textbf{Off} & \textbf{$\Delta$BLEU} & \textbf{$p_{\rm Holm}$} \\
+\midrule
+Amis/mBART & 20.39 & 16.46 & 3.93 & 0.0036 \\
+Amis/NLLB & 14.28 & 12.92 & 1.37 & 0.4080 \\
+Amis/mT5 & 4.60 & 4.14 & 0.46 & 0.4140 \\
+Amis/ByT5 & 7.32 & 7.52 & -0.20 & 1.0000 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/routing.tex
+Disabling routing on identical Full weights reduces mBART Amis BLEU by 3.9287, significant after correction. NLLB has a positive point difference but not corrected BLEU significance; ByT5 slightly improves without routing. These results reveal dependence on the trained computation. An inference distribution change is not a separately trained LSR-only ablation.
+
+\subsection{Metric Influence and Morphology}
+\label{sec:influence}
+Mandarin targets usually lack spaces. Only three reference word bigrams contribute to standard chrF++'s word-bigram component on the 575-sentence test set, across three examples. Historical mBART Full and LSR-only match one at row index 170; the baseline matches none.
+
+The historical Full--baseline chrF++ difference of 5.0277 falls to approximately 0.3844 in an exploratory leave-one-out calculation omitting row 170. Character-only chrF gives a smaller full-test gap of 0.6907 and approximately 0.5673 without that example. Every primary score retains row 170. This is metric sensitivity, not evidence of an invalid example or a reason to choose a favorable metric. The B chrF++ interval also includes zero.
+
+Regex subsets with initial \textit{mi}, \textit{ma}, and \textit{pa} strings are orthographic proxies. Their counts 195/246/127 overlap: 414 unique sentences and 154 excess memberships. They are not disjoint morphological categories, expert annotations, or controlled voice-preservation tests. Human validation and targeted labels would be required for morphological claims. These subsets provide a starting point for a separately annotated morphological evaluation.
+
+\subsection{Residuals, Gradients, and Rank}
+% BEGIN embedded paper_tables/mechanisms.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table}[!ht]
+\centering
+\caption{Historical selected-checkpoint diagnostics: source effective rank from centered singular-value entropy; mean residual/current RMS ratio; mean weighted LSR/CE gradient norm ratio over eight fixed validation batches. FT auxiliary gradients are counterfactual and not its training objective.}
+\label{tab:mechanisms}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{lrrrr}
+\toprule
+\textbf{Dataset/model} & \textbf{$r_{FT}$} & \textbf{$r_{Full}$} & \textbf{Res.\%} & \textbf{Grad.\%} \\
+\midrule
+Amis/mBART & 390.7 & 387.8 & 5.91 & 0.167 \\
+Amis/NLLB & 383.6 & 387.7 & 6.63 & 0.487 \\
+Amis/mT5 & 197.4 & 222.7 & 6.21 & 0.794 \\
+Amis/ByT5 & 261.7 & 259.6 & 4.34 & 1.184 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+% END embedded paper_tables/mechanisms.tex
+We measure masked residual/current RMS ratios, centered pooled spectra, and native-graph CE--LSR gradients at ten historical Amis checkpoints. Eight fixed validation batches of four examples per checkpoint give 80 gradient probes without optimizer updates. Representation spectra use all sentences of the corresponding evaluated split. Mean Full residuals are approximately 4--7\% of current activation RMS; observed maxima are below 10\%.
+
+Mean weighted LSR/CE global gradient ratios are approximately 0.167\% (mBART Amis), 0.487\% (NLLB), 0.794\% (mT5), and 1.184\% (ByT5). Direction matters too: ByT5 global CE--LSR cosine is negative in five of eight batches. Baseline and CLRR-only auxiliary gradients are counterfactual, because LSR was inactive in their training.
+
+For centered pooled representations with singular values $\sigma_j$, effective rank is
+\begin{equation}
+r_\sigma=\exp(-\sum_j p_j\log p_j),\qquad p_j=\sigma_j/\sum_k\sigma_k.
+\end{equation}
+The maximum centered rank is $\min(N-1,D)$. Singular-value entropy rank differs from energy-based rank using $\sigma_j^2$. The measured pooled representations remain high dimensional. Full increases source effective rank for mT5 and NLLB; mBART and ByT5 show smaller decreases. Target rank changes are not consistently positive. These measurements characterize backbone-dependent geometry rather than establish a general collapse-prevention mechanism.
+
+\subsection{Training Trajectories}
+C has 35 probes: epoch 1, fixed epoch 5, and actual endpoint, with identical validation rows/batches and restored RNG, mode, cache, and checkpointing state. Baseline seed 42's endpoint was lost and is not imputed. Endpoints are not necessarily selected best checkpoints; CLRR-only seed 42 ends at epoch 18.
+
+Full's median weighted LSR/CE global gradient ratio is approximately 0.43--0.54\% early, 0.32--0.33\% at epoch 5, and 0.15\% late (Table~\ref{tab:trajectory}); late encoder ratios are 0.28--0.29\%. Residuals remain modest and ranks substantial across the measured trajectory. The declining auxiliary gradient identifies a concrete quantity for validation-based weight calibration; the observational probes do not by themselves establish the cause of the translation gains.
+
+\section{Discussion}
+The matched component study offers a promising result for the combined intervention: Full achieves the highest mean BLEU and exceeds LSR-only in all three seeds without changing the backbone parameter count. The historical mT5 comparison provides complementary evidence, with gains in BLEU, chrF++, and character-only chrF surviving correction. The fixed-weight routing test further shows that mBART uses the added computation at inference.
+
+The diagnostics make these findings actionable. Residual magnitudes quantify the strength of the architectural intervention; CE--LSR gradient ratios track the relative learning signals; centered spectra describe representation geometry. Character-level controls separate character agreement from sparse word-bigram effects in Mandarin scoring. Together, these measurements support targeted development of the method rather than attributing every score change to a single mechanism.
+
+The component increments and backbone-specific responses favor validation-based calibration of routing and latent alignment. A subsequent study should preserve the four component definitions, use equal tuning budgets, and confirm selected configurations on an independent language pair. Because the Amis test set has already informed analysis, later optimization should be treated as development and independently confirmed.
+
+\section{Conclusion}
+CLRR offers a parameter-neutral way to reuse intermediate Transformer activations, and LSR complements it with shared-encoder latent alignment. Twelve matched mBART runs yield the highest mean BLEU for their combination and positive Full--LSR-only increments in every tested seed, with modest gains and inconclusive corrected per-seed tests. Historical mT5 improvements and mBART routing sensitivity provide complementary evidence for this architectural direction. Reproducible scoring and residual, gradient, and spectrum diagnostics establish a concrete basis for further validation-driven improvement in low-resource translation.
+
+\section*{Limitations}
+The matched study uses one translation direction, one backbone configuration, and three seeds; corrected per-seed tests do not establish significant superiority. Historical comparisons are single-checkpoint evidence with different training and tuning budgets. Generalization and seed-population stability require additional independent evaluation. Morphological preservation and collapse prevention are not established by automatic scores or the current observational probes; expert annotation and human evaluation would be needed. Influence auditing of all twelve fresh outputs remains outstanding.
+
+Parameter neutrality does not establish a runtime or memory advantage during full fine-tuning. The artifact record distinguishes surviving predictions and probes from unavailable checkpoint weights or metadata, as detailed in Appendix~\ref{sec:reproducibility}.
+
+\section*{Ethics Statement}
+Automatic scores do not establish reliable translation for an Indigenous community. Errors may alter grammatical roles, meaning, and cultural context. Existing research datasets do not establish community endorsement or deployment readiness. Expert evaluation and deployment should involve language speakers and respect corpus permissions. This anonymous draft omits private checkpoint identifiers; artifact access and licensing require verification before public release.
+
+\bibliography{clrr_references}
+
+\newpage
+\appendix
+\section{Complete Fresh Results and Uncertainty}
+% BEGIN embedded paper_tables/individual_seeds.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table*}[!ht]
+\centering
+\caption{All 12 fresh matched run results (C). Completed epochs and selected checkpoints are distinct. Baseline seed 42 was recovered from its selected weights; the original selected step is unavailable.}
+\label{tab:individual_seeds}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rllrr}
+\toprule
+\textbf{Seed} & \textbf{Method} & \textbf{Completed epochs} & \textbf{BLEU} & \textbf{chrF++} \\
+\midrule
+42 & Fine-tuning & 20 & 19.7281 & 18.7138 \\
+42 & LSR-only & 20 & 19.7865 & 18.6797 \\
+42 & CLRR-only & 18 & 19.6403 & 18.5639 \\
+42 & CLRR+LSR & 20 & 19.9566 & 18.8878 \\
+43 & Fine-tuning & 20 & 18.1378 & 13.1592 \\
+43 & LSR-only & 20 & 19.4879 & 18.6488 \\
+43 & CLRR-only & 20 & 18.9420 & 18.0823 \\
+43 & CLRR+LSR & 20 & 19.6123 & 18.4753 \\
+44 & Fine-tuning & 20 & 20.3000 & 18.9017 \\
+44 & LSR-only & 20 & 19.3284 & 18.3633 \\
+44 & CLRR-only & 20 & 20.1485 & 18.9055 \\
+44 & CLRR+LSR & 20 & 19.7371 & 18.6065 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+% END embedded paper_tables/individual_seeds.tex
+% BEGIN embedded paper_tables/fresh_tests.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table*}[!ht]
+\centering
+\caption{All per-seed corpus bootstrap tests in C. Holm family: four comparisons $\times$ two metrics $\times$ three seeds = 24. None passes corrected $p<0.05$; these tests do not replace inference over training seeds.}
+\label{tab:fresh_tests}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{rllrrr}
+\toprule
+\textbf{Seed} & \textbf{Difference} & \textbf{Metric} & \textbf{$\Delta$} & \textbf{95\% CI} & \textbf{$p_{\rm Holm24}$} \\
+\midrule
+42 & CLRR+LSR$-$Fine-tuning & BLEU & 0.2285 & [-0.9068,1.4034] & 1.0000 \\
+42 & CLRR+LSR$-$Fine-tuning & chrF++ & 0.1740 & [-0.5179,0.9036] & 1.0000 \\
+42 & CLRR+LSR$-$LSR-only & BLEU & 0.1701 & [-0.8879,1.2021] & 1.0000 \\
+42 & CLRR+LSR$-$LSR-only & chrF++ & 0.2081 & [-0.4209,0.8301] & 1.0000 \\
+42 & CLRR-only$-$Fine-tuning & BLEU & -0.0878 & [-1.0545,0.8900] & 1.0000 \\
+42 & CLRR-only$-$Fine-tuning & chrF++ & -0.1499 & [-0.7656,0.4470] & 1.0000 \\
+42 & CLRR+LSR$-$CLRR-only & BLEU & 0.3163 & [-0.7828,1.4391] & 1.0000 \\
+42 & CLRR+LSR$-$CLRR-only & chrF++ & 0.3239 & [-0.3740,1.0664] & 1.0000 \\
+43 & CLRR+LSR$-$Fine-tuning & BLEU & 1.4744 & [0.2197,2.8326] & 0.3936 \\
+43 & CLRR+LSR$-$Fine-tuning & chrF++ & 5.3162 & [0.0901,13.6381] & 1.0000 \\
+43 & CLRR+LSR$-$LSR-only & BLEU & 0.1243 & [-0.9306,1.1711] & 1.0000 \\
+43 & CLRR+LSR$-$LSR-only & chrF++ & -0.1735 & [-0.8887,0.5135] & 1.0000 \\
+43 & CLRR-only$-$Fine-tuning & BLEU & 0.8042 & [-0.3801,2.0663] & 1.0000 \\
+43 & CLRR-only$-$Fine-tuning & chrF++ & 4.9231 & [-0.2968,13.2022] & 1.0000 \\
+43 & CLRR+LSR$-$CLRR-only & BLEU & 0.6702 & [-0.3001,1.6502] & 1.0000 \\
+43 & CLRR+LSR$-$CLRR-only & chrF++ & 0.3930 & [-0.1899,0.9954] & 1.0000 \\
+44 & CLRR+LSR$-$Fine-tuning & BLEU & -0.5629 & [-1.7445,0.6293] & 1.0000 \\
+44 & CLRR+LSR$-$Fine-tuning & chrF++ & -0.2952 & [-1.0349,0.4480] & 1.0000 \\
+44 & CLRR+LSR$-$LSR-only & BLEU & 0.4087 & [-0.6299,1.4883] & 1.0000 \\
+44 & CLRR+LSR$-$LSR-only & chrF++ & 0.2432 & [-0.4074,0.9060] & 1.0000 \\
+44 & CLRR-only$-$Fine-tuning & BLEU & -0.1516 & [-1.3730,1.0851] & 1.0000 \\
+44 & CLRR-only$-$Fine-tuning & chrF++ & 0.0038 & [-0.7434,0.7715] & 1.0000 \\
+44 & CLRR+LSR$-$CLRR-only & BLEU & -0.4113 & [-1.6181,0.7831] & 1.0000 \\
+44 & CLRR+LSR$-$CLRR-only & chrF++ & -0.2990 & [-1.0437,0.4224] & 1.0000 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+% END embedded paper_tables/fresh_tests.tex
+Primary comparisons are Full--fine-tuning and Full--LSR-only; secondary comparisons are CLRR-only--fine-tuning and Full--CLRR-only. Every run and test is retained. Bootstrap conditions on trained weights and test sentences; no aggregate training-seed significance is claimed.
+
+\section{Historical Output Audit}
+\label{sec:historical}
+% BEGIN embedded paper_tables/historical_a.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table*}[!ht]
+\centering
+\caption{Remaining 18 historical Amis outputs verified from saved predictions (A). These share raw-reference scoring; B standardizes inference on ten other Amis checkpoints. No A/B prediction mixing is used for significance tests.}
+\label{tab:historical_a}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllr r}
+\toprule
+\textbf{Data} & \textbf{Backbone} & \textbf{Method/checkpoint (A)} & \textbf{BLEU} & \textbf{chrF++} \\
+\midrule
+Amis & mBART & CLRR-only & 18.4697 & 13.2443 \\
+Amis & mBART & CLRR-Dec+LSR & 19.9188 & 18.6999 \\
+Amis & mBART & BitFit & 0.3463 & 2.2552 \\
+Amis & mBART & Narrow LoRA & 3.2365 & 4.4213 \\
+Amis & mBART & Strong LoRA A & 10.2296 & 8.6319 \\
+Amis & mBART & Strong LoRA B & 13.8066 & 10.3293 \\
+Amis & NLLB & Strong LoRA A & 11.4625 & 9.5004 \\
+Amis & NLLB & Strong LoRA B & 9.8024 & 8.4010 \\
+Amis & mBART & Middle-Layer Alignment & 19.2893 & 18.4378 \\
+Amis & NLLB & CLRR-Dec+LSR & 13.4194 & 10.4559 \\
+Amis & NLLB & Middle-Layer Alignment & 13.9648 & 10.6596 \\
+Amis & NLLB & BitFit & 1.0750 & 2.9643 \\
+Amis & NLLB & Narrow LoRA & 3.5383 & 4.9407 \\
+Amis & mT5 & CLRR-Dec+LSR & 4.8315 & 5.1933 \\
+Amis & mT5 & CLRR-Both+LSR & 3.4459 & 4.5753 \\
+Amis & mT5 & Middle-Layer Alignment & 4.6625 & 5.2103 \\
+Amis & ByT5 & CLRR-Dec+LSR & 7.4394 & 8.0630 \\
+Amis & ByT5 & Middle-Layer Alignment & 7.5660 & 8.3414 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+% END embedded paper_tables/historical_a.tex
+The ten selected-checkpoint outputs in Table~\ref{tab:backbones}, together with 18 A outputs in Table~\ref{tab:historical_a}, account for all 28 historical Amis systems retained in this study. Source identifiers are necessary: common references alone do not imply common inference or optimization. mT5 LSR-only is excluded because no aligned prediction file certifies its score; missing evidence is not zero performance.
+
+The middle-layer comparator uses normalized pooled source/target states at layer 4, temperature 0.1, symmetric in-batch contrastive cross-entropy weighted by 0.1, and gradients on both branches. This comparator is a shared-encoder adaptation of the cited alignment idea rather than a reproduction of its complete protocol.
+
+NLLB BitFit updates 333,824 biases out of 615,073,792 parameters. CLRR/LSR update the full backbone and add zero parameters. LoRA storage copies of saved embedding modules differ from active tied weights; checkpoint size is not adaptation parameter count.
+
+\section{Trajectory Measurement Details}
+% BEGIN embedded paper_tables/trajectory.tex
+% Generated by scripts/revalidation/build_paper_tables.py; do not hand-edit numbers.
+\begin{table*}[!ht]
+\centering
+\caption{Fresh Full trajectories (C). Gradient ratios are medians across eight identical validation batches. Endpoint is the actual training endpoint, not necessarily the validation-selected checkpoint. Singular effective ranks are from all validation sentences. Probes are observational.}
+\label{tab:trajectory}
+\renewcommand{\arraystretch}{1.15}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llrrrrrr}
+\toprule
+\textbf{Seed} & \textbf{Stage} & \textbf{Epoch} & \textbf{All grad.\%} & \textbf{Enc. grad.\%} & \textbf{Res.\%} & \textbf{$r_s$} & \textbf{$r_t$} \\
+\midrule
+42 & early & 1 & 0.426 & 1.681 & 5.79 & 353.7 & 372.5 \\
+42 & middle & 5 & 0.332 & 0.841 & 5.88 & 369.3 & 376.9 \\
+42 & endpoint & 20 & 0.146 & 0.290 & 5.91 & 384.9 & 380.6 \\
+43 & early & 1 & 0.537 & 1.741 & 5.16 & 354.5 & 373.0 \\
+43 & middle & 5 & 0.322 & 0.731 & 5.88 & 370.9 & 377.3 \\
+43 & endpoint & 20 & 0.147 & 0.284 & 5.91 & 385.3 & 379.7 \\
+44 & early & 1 & 0.425 & 1.767 & 5.79 & 353.3 & 372.0 \\
+44 & middle & 5 & 0.315 & 0.757 & 5.89 & 370.7 & 375.7 \\
+44 & endpoint & 20 & 0.150 & 0.279 & 5.92 & 385.6 & 379.2 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+% END embedded paper_tables/trajectory.tex
+Eight fixed batches contain 32 validation examples; spectra use the whole validation split. Residuals exclude padding. Global and encoder gradient ratios have different denominators. Trajectory tables use medians; selected-checkpoint tables use means. Interrupted-attempt probes remain separate from completed trajectories. One missing endpoint is retained as missing.
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+The primary initial mBART revision is \nolinkurl{e30b6cb8eb0d43a0b73cab73c7676b9863223a30}. Historical checkpoint inspection also uses a pinned revision. Data manifests record hashes, sizes, processing, and URLs.
+
+The record retains original-reference prediction CSVs, full-precision scores, bootstrap families, configurations, source hashes, checkpoint receipts, and probe matrices. Tables are generated from frozen A/B/C files by \path{scripts/revalidation/build_paper_tables.py}; the provenance manifest records source SHA-256. Table regeneration does not retrain or change source artifacts. Ten surviving fresh checkpoint archives were verified remotely before local cleanup. LSR-only and Full seed-42 weights were unavailable before upload, although aligned predictions, recomputed scores, and available probes survive. Recovered baseline seed 42 lacks its original selected step and timing. Unrecoverable historical probe and no-stop-gradient stability claims are not used as evidence.
+
+The measurement environment uses conda \texttt{clrr}, PyTorch 2.6.0+cu124, Transformers 4.57.6, Accelerate 1.15.0, and SacreBLEU 2.6.0. Offline tiny-model checks cover parameter neutrality, zero-intervention equivalence, detach behavior, cache isolation, and checkpointing consistency. They establish implementation behavior, not translation quality. Subsequent source fixes are recorded separately and do not retroactively change frozen configurations or scores.
+
+Mandarin BLEU signature: \path{nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0}. chrF++ signature: \path{nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0}. External Mandarin character segmentation is a separately named diagnostic, not primary chrF++.
+\end{document}

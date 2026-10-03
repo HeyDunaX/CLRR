@@ -1,0 +1,92 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "utc_started": "2026-10-02T06:41:32.632416+00:00",
+  "files": [
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/mbart-ashaninka-es-baseline-best.zip",
+      "bytes": 2271575634,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/mbart-ashaninka-es-baseline-best.zip"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/metrics.json",
+      "bytes": 2251,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/metrics.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/test_predictions.csv",
+      "bytes": 190924,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/test_predictions.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/run_manifest.json",
+      "bytes": 2230,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/run_manifest.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/completed.json",
+      "bytes": 263,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/completed.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/mbart-ashaninka-es-clrr-enc-best.zip",
+      "bytes": 2271582542,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/mbart-ashaninka-es-clrr-enc-best.zip"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/metrics.json",
+      "bytes": 2260,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/metrics.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/test_predictions.csv",
+      "bytes": 190588,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/test_predictions.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/run_manifest.json",
+      "bytes": 2374,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/run_manifest.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/completed.json",
+      "bytes": 264,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-ashaninka-es-clrr-enc/completed.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/nllb-200-baseline-best.zip",
+      "bytes": 2497846452,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/nllb-200-baseline-best.zip"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/metrics.json",
+      "bytes": 1818,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/metrics.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/test_predictions.csv",
+      "bytes": 195986,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/test_predictions.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/run_manifest.json",
+      "bytes": 1999,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/run_manifest.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/completed.json",
+      "bytes": 243,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/nllb-ashaninka-es-baseline/completed.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/ashaninka_spanish_scores.csv",
+      "bytes": 510,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/ashaninka_spanish_scores.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/ASHANINKA_RUNBOOK.md",
+      "bytes": 3535,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/ASHANINKA_RUNBOOK.md"
+    }
+  ],
+  "utc_completed": "2026-10-02T06:43:23.051981+00:00"
+}

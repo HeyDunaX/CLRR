@@ -1,0 +1,47 @@
+{
+  "id": "byt5-baseline",
+  "rows": 575,
+  "scores": {
+    "bleu": 7.485624981896735,
+    "chrf++": 8.297734144912354
+  },
+  "checkpoint": {
+    "id": "byt5-baseline",
+    "family": "ByT5",
+    "method": "baseline",
+    "dataset": "amis_mandarin",
+    "archive": "checkpoints/byt5-small-ami-cmn-baseline/byt5-small-ami-cmn-baseline-best.zip",
+    "bytes": 1111028883,
+    "sha256": "ed9833c2543d5eb03351cbe22e853d07de33c825b587b499e9a0bca792bbc7e0",
+    "max_length": 256,
+    "src_lang": null,
+    "tgt_lang": null,
+    "reference_prediction_path": "outputs_rebuttal/metric_audit_20261002/full/historical_predictions/ByT5-Baseline.csv",
+    "reference_prediction_sha256": "5b06e166d603d83669a4934ef2b5f87cf2f0e5e404ba6323f5ca41a6cae4abeb"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {},
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "zh",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 44.88911151885986,
+  "prediction_sha256": "45b488ed3956449085dc11781fede217059552f7d6d3b0c8d0f72873329e5da1",
+  "reference_sha256": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+}

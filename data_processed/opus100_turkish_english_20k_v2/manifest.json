@@ -1,0 +1,44 @@
+{
+  "dataset": "opus100_turkish_english_20k_v2",
+  "source_language": "tr",
+  "target_language": "en",
+  "upstream_repo": "Helsinki-NLP/opus-100",
+  "upstream_revision": "805090dc28bf78897da9641cdf08b61287580df9",
+  "upstream_parquet_sha256": {
+    "train": "a1a2979fe986891682913dba5da0888323a5d21b3b3249f69c373c9fb3a3b5ae",
+    "validation": "0c52bc5106b2e4f84ceffd79a15e913f8d4fdfb3eacc5377804c6e668f243a48",
+    "test": "a512f2d6fa5a215eeeda862fff9909b4d5b048219055f11bdef0892f76d8b143"
+  },
+  "sampling": "NumPy default_rng(42).permutation official train rows; first 20000 eligible unique stripped pairs",
+  "train_exclusions": "empty strings, duplicate pairs, source present in official validation or test",
+  "validation": "pair deduplicated; empty or test-source-overlapping rows removed; upstream order retained",
+  "test": "official 2000 rows and order retained, including duplicates",
+  "cross_split_source_overlap": {
+    "train/validation": 0,
+    "train/test": 0,
+    "validation/test": 0
+  },
+  "upstream_row_ids_sha256": "4f9c8defbc76323025d5be20257051f1ddcaf947dd0a0fa1a36cb6e40c6cfe0d",
+  "numpy_version": "2.4.6",
+  "splits": {
+    "train": {
+      "rows": 20000,
+      "unique_pairs": 20000,
+      "duplicate_pair_excess": 0,
+      "sha256": "4acbc4de9f8ee2c097f464bdeff155587b6cf41da5d6d01840f9bbfd2974dbe4"
+    },
+    "validation": {
+      "rows": 1946,
+      "unique_pairs": 1946,
+      "duplicate_pair_excess": 0,
+      "sha256": "7c10d64fa4bb760f2a127609c9829c744216a5261cb518534288d41effab0b14"
+    },
+    "test": {
+      "rows": 2000,
+      "unique_pairs": 1982,
+      "duplicate_pair_excess": 18,
+      "sha256": "283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd"
+    }
+  },
+  "scope": "simulated low-resource fine-tuning, 20000 pairs; no claim of pretraining disjointness"
+}

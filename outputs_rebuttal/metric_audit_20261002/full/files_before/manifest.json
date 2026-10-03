@@ -1,0 +1,78 @@
+{
+  "README.md": {
+    "sha256": "37bc8d7237ecb7baef944c8a09819a1ae3a067f668627d9b558bd1ba7eda244b",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/README.md"
+  },
+  "docs/CLRR-paper/latex/clrr_main.tex": {
+    "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/CLRR-paper/latex/clrr_main.tex"
+  },
+  "docs/EXPERIMENTS.md": {
+    "sha256": "53059061f523a0cde9ef6f842d7ea492cc50cfc76ceed84d2ade9ba713800cbc",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/EXPERIMENTS.md"
+  },
+  "docs/METRICS.md": {
+    "sha256": "7fd3537b9296975fde00f74cff413aa44c0e479c073c50102321b63f1f1b7df9",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/METRICS.md"
+  },
+  "docs/PEFT_PAPERS_REFERENCE.md": {
+    "sha256": "5ca81c4451a51fc28f8214a8883c7f570de7a3a5f1a427016c547ecd37941336",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/PEFT_PAPERS_REFERENCE.md"
+  },
+  "docs/RESEARCH_INSIGHTS.md": {
+    "sha256": "708fd5e11faa0c11de5e3a550d8a3320e7ae6db7d64cb5735e52f4c6208156b4",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/RESEARCH_INSIGHTS.md"
+  },
+  "docs/clrr_main.tex": {
+    "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/clrr_main.tex"
+  },
+  "docs/implementation_plan.md": {
+    "sha256": "451057322eb861ec0fdc14ec0411fe2ab2c2efc7754f7d8bf33196d4bc81cfb9",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/implementation_plan.md"
+  },
+  "outputs_comparative/comparative_scores.csv": {
+    "sha256": "1eec4c3b33619663d9dbcf3356b8253cf17c9d3c13d333f2b18fa1cf4843e3dd",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_comparative/comparative_scores.csv"
+  },
+  "outputs_comparative/full_comparative_matrix_acl.csv": {
+    "sha256": "9170e3bae851661c46f4330ec18533d0eb41b758e737441a37c9b76540f8600d",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_comparative/full_comparative_matrix_acl.csv"
+  },
+  "outputs_revalidation/mbart_ablation_results.csv": {
+    "sha256": "6e255e08e672e83cbb210916dd11861c5b4320bda444a3e1b5fffaddd095c99c",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_revalidation/mbart_ablation_results.csv"
+  },
+  "outputs_revalidation/morphological_breakdown.csv": {
+    "sha256": "3ca409e87462b81374d47c91d28e91649312a350fb789859dbd9c062875ddaae",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_revalidation/morphological_breakdown.csv"
+  },
+  "results/all_results.csv": {
+    "sha256": "d7c95b9cd41ff793d6cbbfc2398b9b521f680a806ca387454c7ef86cfb4c39af",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/all_results.csv"
+  },
+  "results/analysis/mbart_ablation_results.csv": {
+    "sha256": "74f05d6d342aff563aed44af62b6e2c18fe226f9bed5189c31098194f12b4b9a",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/analysis/mbart_ablation_results.csv"
+  },
+  "results/analysis/morphological_breakdown.csv": {
+    "sha256": "3ca409e87462b81374d47c91d28e91649312a350fb789859dbd9c062875ddaae",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/analysis/morphological_breakdown.csv"
+  },
+  "results/comparative_scores.csv": {
+    "sha256": "c32852f54d5bfe620d0d459ee5f7d67a9ef6318d9e7b50396935b49de1527936",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/comparative_scores.csv"
+  },
+  "results/full_comparative_matrix_acl.csv": {
+    "sha256": "d4648f9269a94d2ec8a94fe99a70681c70363be7073e042093d2505056b9abfa",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/full_comparative_matrix_acl.csv"
+  },
+  "results/metrics_standardized_scores.csv": {
+    "sha256": "e8a6270b07cd31c970c5b100868fb61b9f468de3adac2ae40faea9d7982d72f6",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/metrics_standardized_scores.csv"
+  },
+  "results/peft_scores.csv": {
+    "sha256": "d6926d48b5eb7bd75c010f80be63d20f279be4bf4b47a8922876b245f2b04ff8",
+    "backup": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/peft_scores.csv"
+  }
+}

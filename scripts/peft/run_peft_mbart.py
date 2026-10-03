@@ -36,6 +36,11 @@ def main() -> None:
     args = parser.parse_args()
 
     repo_root = Path(__file__).resolve().parents[2]
+    sys.path.insert(0, str(repo_root))
+    from src.amis_rewire.metrics import score_prediction_csv, verified_reference_metrics
+    reference_path = repo_root / args.data_dir / "test.csv"
+    reference_scores = {method: verified_reference_metrics("mBART", method, reference_path)
+                        for method in ("Baseline", "CLRR+LSR", "Middle-Layer Alignment", "BitFit", "Narrow LoRA")}
     out_dir = repo_root / args.output_dir
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -114,16 +119,16 @@ def main() -> None:
             "Method": "Standard Fine-Tuning",
             "Reference": "Official Baseline",
             "Trainable Params": "610,879,488 (100%)",
-            "BLEU (zh)": 19.6106,
-            "chrF++ (w=2)": 14.0538,
+            "BLEU (zh)": reference_scores["Baseline"]["bleu"],
+            "chrF++ (w=2)": reference_scores["Baseline"]["chrf++"],
         },
         {
             "Model": "facebook/mbart-large-50",
             "Method": "Middle-Layer Alignment",
             "Reference": "Liu & Niehues (ACL 2025)",
             "Trainable Params": "610,879,488 (100%)",
-            "BLEU (zh)": 19.7243,
-            "chrF++ (w=2)": 15.5253,
+            "BLEU (zh)": reference_scores["Middle-Layer Alignment"]["bleu"],
+            "chrF++ (w=2)": reference_scores["Middle-Layer Alignment"]["chrf++"],
         },
     ]
 
@@ -133,6 +138,7 @@ def main() -> None:
         if metrics_file.exists():
             with open(metrics_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
+            scores = score_prediction_csv(metrics_file.parent / "test_predictions.csv", reference_path)
             t_params = data.get("trainable_parameters", 0)
             all_params = data.get("total_parameters", 0)
             t_pct = data.get("trainable_percent", 0.0)
@@ -141,8 +147,8 @@ def main() -> None:
                 "Method": f"{exp['method'].upper()}",
                 "Reference": data.get("reference_paper", ""),
                 "Trainable Params": f"{t_params:,} ({t_pct:.4f}%)",
-                "BLEU (zh)": data.get("test_bleu", 0.0),
-                "chrF++ (w=2)": data.get("test_chrf++", 0.0),
+                "BLEU (zh)": scores["bleu"],
+                "chrF++ (w=2)": scores["chrf++"],
             })
 
     # Add CLRR reference
@@ -151,8 +157,8 @@ def main() -> None:
         "Method": "CLRR-Enc + LSR (Ours)",
         "Reference": "Proposed (Delta theta = 0)",
         "Trainable Params": "610,879,488 (Zero New Params)",
-        "BLEU (zh)": 20.3927,
-        "chrF++ (w=2)": 19.0839,
+        "BLEU (zh)": reference_scores["CLRR+LSR"]["bleu"],
+        "chrF++ (w=2)": reference_scores["CLRR+LSR"]["chrf++"],
     })
 
     df = pd.DataFrame(summary_rows)

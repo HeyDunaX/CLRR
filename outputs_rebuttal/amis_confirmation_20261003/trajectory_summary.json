@@ -1,0 +1,62 @@
+{
+  "points": 35,
+  "missing": [
+    {
+      "run_name": "mbart-amis-baseline-seed42",
+      "role": "late_actual_training_endpoint"
+    }
+  ],
+  "fixed_validation_indices": [
+    [
+      10,
+      30,
+      56,
+      60
+    ],
+    [
+      76,
+      86,
+      89,
+      115
+    ],
+    [
+      118,
+      144,
+      154,
+      185
+    ],
+    [
+      207,
+      231,
+      303,
+      307
+    ],
+    [
+      321,
+      330,
+      375,
+      380
+    ],
+    [
+      395,
+      397,
+      406,
+      428
+    ],
+    [
+      501,
+      505,
+      508,
+      509
+    ],
+    [
+      525,
+      528,
+      539,
+      556
+    ]
+  ],
+  "scope": "Observational probes; no causal attribution. Baseline/CLRR auxiliary gradients are counterfactual.",
+  "endpoint_caution": "Actual endpoints may have different epochs and are not selected best models; no missing probe imputation.",
+  "summary_sha256": "498661a26c6c34e31d175fd553549cebcfe0b88ce2d006e603d69f6327b5214b"
+}

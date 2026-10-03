@@ -1,0 +1,321 @@
+{
+  "verified_outputs": 36,
+  "paired_tests": 42,
+  "unchanged_prediction_reference_hashes": [
+    {
+      "backbone": "mBART",
+      "method": "Baseline",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR-only",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "LSR-only",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR-Dec+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "BitFit",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "Narrow LoRA",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "Strong LoRA A",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "Strong LoRA B",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Strong LoRA A",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Strong LoRA B",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "Middle-Layer Alignment",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Baseline",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "CLRR+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "CLRR-Dec+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Middle-Layer Alignment",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "BitFit",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Narrow LoRA",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "Baseline",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "CLRR-only",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "CLRR+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "CLRR-Dec+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "CLRR-Both+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "Middle-Layer Alignment",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "Baseline (patience 4)",
+      "dataset": "ashaninka_spanish",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR+LSR (patience 4)",
+      "dataset": "ashaninka_spanish",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "NLLB",
+      "method": "Baseline (epoch 20)",
+      "dataset": "ashaninka_spanish",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR+LSR (patience 10, selected epoch 14)",
+      "dataset": "ashaninka_spanish",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "CLRR+LSR (patience 10, fixed epoch 20)",
+      "dataset": "ashaninka_spanish",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "ByT5",
+      "method": "Baseline",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "ByT5",
+      "method": "CLRR+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "ByT5",
+      "method": "CLRR-Dec+LSR",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "ByT5",
+      "method": "LayerSkip",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "ByT5",
+      "method": "Middle-Layer Alignment",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mT5",
+      "method": "LayerSkip",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    },
+    {
+      "backbone": "mBART",
+      "method": "LayerSkip",
+      "dataset": "amis_mandarin",
+      "predictions_unchanged": true,
+      "references_unchanged": true,
+      "score_recomputed": true
+    }
+  ],
+  "canonical_csv_matches_audit": true,
+  "all_scores_recomputed": true,
+  "holm_recomputed": true,
+  "tex_copies_identical": true,
+  "tex_environment_brace_and_references_checked": true,
+  "tex_primary_and_bootstrap_values_checked": true,
+  "bootstrap_tex_rows_checked": 12,
+  "pdf_compilation": "NOT_RUN_NO_LOCAL_COMPILER",
+  "training_or_weight_loading": false,
+  "regression_tests_passed": 4,
+  "entrypoint_import_protocol_checks_passed": 5,
+  "syntax_checked_files": 13,
+  "git_diff_check": "PASS",
+  "derived_csv_tables_corrected": 11,
+  "corrected_report_sha256": {
+    ".gitignore": "6e927c55944de0cc993d2f01907bf7fe79ebdacec0777f796471fa952d486bc1",
+    "README.md": "01e91a0f01fdbc43f990a59e019dab965b239dca1129ddfbf4680f0ad08d6ba2",
+    "docs/METRICS.md": "b75679acfea94f6dff8487ecc0f5110659a7b18d7d7e0b49c633fc1381e9d83a",
+    "docs/RESULTS_VERIFICATION.md": "2f16448177e3eeed38261da823eaf3936fd59f18b0ad4346337b855bb084d249",
+    "docs/EXPERIMENTS.md": "c220f6c927910cd1e28a38799d24c679eb3e14777e2b741c7434deaeb3910f7a",
+    "docs/RESEARCH_INSIGHTS.md": "bbc1554f9ad46b726fc9f0191f6f32885a9ea5070cbe4720002cce5bdaedf9f5",
+    "docs/implementation_plan.md": "57d2b5de3f41c5a604241f641f80c61d3ff748051913309d39c16b077b868526",
+    "docs/PEFT_PAPERS_REFERENCE.md": "99d1b773d365b20387ea7bb7ce44eee244fa5fcedd785d8240960608893f70a7",
+    "docs/clrr_main.tex": "08e3a10ad81b4abfc26f6f1ce1e68a00ebbdf4d74103c643c6c8e2d7840b4cdc",
+    "docs/CLRR-paper/latex/clrr_main.tex": "08e3a10ad81b4abfc26f6f1ce1e68a00ebbdf4d74103c643c6c8e2d7840b4cdc",
+    "results/metrics_standardized_scores.csv": "38e27ea974742c00b5f37e5e541b708e193aeecd2eb0d34199f980773bcf2df0"
+  }
+}

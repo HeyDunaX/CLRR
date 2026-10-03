@@ -1,0 +1,41 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "files": [
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/mbart-ashaninka-es-clrr-enc-best.zip",
+      "bytes": 2271604268,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/mbart-ashaninka-es-clrr-enc-best.zip"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/metrics.json",
+      "bytes": 2286,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/metrics.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/test_predictions.csv",
+      "bytes": 191445,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/test_predictions.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/run_manifest.json",
+      "bytes": 2391,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/run_manifest.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/completed.json",
+      "bytes": 271,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/completed.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ashaninka_spanish_scores.csv",
+      "bytes": 243,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ashaninka_spanish_scores.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ASHANINKA_PATIENCE10_RUNBOOK.md",
+      "bytes": 2066,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/ASHANINKA_PATIENCE10_RUNBOOK.md"
+    }
+  ],
+  "utc_completed": "2026-10-02T08:38:21.733371+00:00"
+}

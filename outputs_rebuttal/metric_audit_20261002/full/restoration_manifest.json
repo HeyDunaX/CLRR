@@ -1,0 +1,103 @@
+{
+  "restored_files": [
+    {
+      "path": "README.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/docs_before/README.md",
+      "sha256": "d3a2cdb8fcc496cdbc40d0c6d7e2c57f21fe7fdbe4730f14780cde7d2a72dac4"
+    },
+    {
+      "path": "docs/CLRR-paper/latex/clrr_main.tex",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/CLRR-paper/latex/clrr_main.tex",
+      "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb"
+    },
+    {
+      "path": "docs/EXPERIMENTS.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/docs_before/docs__EXPERIMENTS.md",
+      "sha256": "e853240cdfd96f0b2fa94cd11274f92ac3fde31741843ef89e82a512893835c1"
+    },
+    {
+      "path": "docs/METRICS.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/METRICS.md",
+      "sha256": "7fd3537b9296975fde00f74cff413aa44c0e479c073c50102321b63f1f1b7df9"
+    },
+    {
+      "path": "docs/PEFT_PAPERS_REFERENCE.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/PEFT_PAPERS_REFERENCE.md",
+      "sha256": "5ca81c4451a51fc28f8214a8883c7f570de7a3a5f1a427016c547ecd37941336"
+    },
+    {
+      "path": "docs/RESEARCH_INSIGHTS.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/docs_before/docs__RESEARCH_INSIGHTS.md",
+      "sha256": "7e06212ced2cfb341b0dc4c3b72885c0dbe17c81e2caa2f2b3862cda85f304c7"
+    },
+    {
+      "path": "docs/clrr_main.tex",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/docs/clrr_main.tex",
+      "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb"
+    },
+    {
+      "path": "docs/implementation_plan.md",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/docs_before/docs__implementation_plan.md",
+      "sha256": "1d3d6b1f6a03ccda3e58724b4b145f48d0e0514d380e954bb755b5c338050035"
+    },
+    {
+      "path": "outputs_comparative/comparative_scores.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_comparative/comparative_scores.csv",
+      "sha256": "1eec4c3b33619663d9dbcf3356b8253cf17c9d3c13d333f2b18fa1cf4843e3dd"
+    },
+    {
+      "path": "outputs_comparative/full_comparative_matrix_acl.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_comparative/full_comparative_matrix_acl.csv",
+      "sha256": "9170e3bae851661c46f4330ec18533d0eb41b758e737441a37c9b76540f8600d"
+    },
+    {
+      "path": "outputs_revalidation/mbart_ablation_results.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_revalidation/mbart_ablation_results.csv",
+      "sha256": "6e255e08e672e83cbb210916dd11861c5b4320bda444a3e1b5fffaddd095c99c"
+    },
+    {
+      "path": "outputs_revalidation/morphological_breakdown.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/outputs_revalidation/morphological_breakdown.csv",
+      "sha256": "3ca409e87462b81374d47c91d28e91649312a350fb789859dbd9c062875ddaae"
+    },
+    {
+      "path": "results/all_results.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/all_results.csv",
+      "sha256": "d7c95b9cd41ff793d6cbbfc2398b9b521f680a806ca387454c7ef86cfb4c39af"
+    },
+    {
+      "path": "results/analysis/mbart_ablation_results.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/analysis/mbart_ablation_results.csv",
+      "sha256": "74f05d6d342aff563aed44af62b6e2c18fe226f9bed5189c31098194f12b4b9a"
+    },
+    {
+      "path": "results/analysis/morphological_breakdown.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/analysis/morphological_breakdown.csv",
+      "sha256": "3ca409e87462b81374d47c91d28e91649312a350fb789859dbd9c062875ddaae"
+    },
+    {
+      "path": "results/comparative_scores.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/comparative_scores.csv",
+      "sha256": "c32852f54d5bfe620d0d459ee5f7d67a9ef6318d9e7b50396935b49de1527936"
+    },
+    {
+      "path": "results/full_comparative_matrix_acl.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/full_comparative_matrix_acl.csv",
+      "sha256": "d4648f9269a94d2ec8a94fe99a70681c70363be7073e042093d2505056b9abfa"
+    },
+    {
+      "path": "results/metrics_standardized_scores.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/metrics_standardized_scores.csv",
+      "sha256": "e8a6270b07cd31c970c5b100868fb61b9f468de3adac2ae40faea9d7982d72f6"
+    },
+    {
+      "path": "results/peft_scores.csv",
+      "restored_from": "outputs_rebuttal/metric_audit_20261002/full/files_before/results/peft_scores.csv",
+      "sha256": "d6926d48b5eb7bd75c010f80be63d20f279be4bf4b47a8922876b245f2b04ff8"
+    }
+  ],
+  "new_numbers_report": "docs/RESULTS_VERIFICATION.md",
+  "new_scores": "outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv",
+  "old_files_byte_identical_to_snapshots": true,
+  "audit_values_not_applied_to_old_files": true
+}

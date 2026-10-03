@@ -1,0 +1,26 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "files": [
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/mbart-ashaninka-es-clrr-enc-epoch20-best.zip",
+      "bytes": 2271616983,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/mbart-ashaninka-es-clrr-enc-epoch20-best.zip"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/metrics.json",
+      "bytes": 2622,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/metrics.json"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/test_predictions.csv",
+      "bytes": 191829,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/test_predictions.csv"
+    },
+    {
+      "path_in_repo": "ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/best_vs_epoch20.csv",
+      "bytes": 323,
+      "commit": "https://huggingface.co/FiveC/amis-rewire-checkpoints/blob/main/ashaninka-es/2026-10-02/mbart-clrr-lsr-patience10/epoch20/best_vs_epoch20.csv"
+    }
+  ],
+  "utc_completed": "2026-10-02T08:44:18.508058+00:00"
+}

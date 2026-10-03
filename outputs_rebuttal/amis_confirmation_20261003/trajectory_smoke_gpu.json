@@ -1,0 +1,26 @@
+[
+  {
+    "method": "baseline",
+    "passed": true,
+    "rng_and_model_state_restored": true,
+    "backward_after_probe": true
+  },
+  {
+    "method": "clrr-enc",
+    "passed": true,
+    "rng_and_model_state_restored": true,
+    "backward_after_probe": true
+  },
+  {
+    "method": "jepa",
+    "passed": true,
+    "rng_and_model_state_restored": true,
+    "backward_after_probe": true
+  },
+  {
+    "method": "jepa-clrr-enc",
+    "passed": true,
+    "rng_and_model_state_restored": true,
+    "backward_after_probe": true
+  }
+]

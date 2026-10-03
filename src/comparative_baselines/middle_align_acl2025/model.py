@@ -1,4 +1,6 @@
-"""Middle-Layer Representation Alignment (Liu & Niehues, ACL 2025 Long Paper).
+"""Shared-encoder contrastive adaptation inspired by Liu & Niehues (2025).
+
+This is not an exact reproduction of their complete LLM training protocol.
 
 Implements Cross-Lingual Semantic Representation Alignment at the middle layer:
 - Eq. (1): L_align = - 1/|B| sum_{(s,t)} log( exp(sim(h_s^i, h_t^i) / tau) / sum_v exp(sim(h_s^i, h_v^i) / tau) )
@@ -29,7 +31,7 @@ def _masked_mean_pool(hidden_states: torch.Tensor, mask: Optional[torch.Tensor])
 
 
 class MiddleAlignMT5(nn.Module):
-    """Wraps an mT5 model with Middle-Layer Representation Alignment (ACL 2025).
+    """Wraps a Seq2Seq model with a middle-layer contrastive adaptation.
 
     Extracts representations at middle layer (layer 4) for both source (Amis)
     and target (Chinese) sequences and computes a Cosine Contrastive Alignment Loss.
@@ -155,6 +157,15 @@ class MiddleAlignMT5(nn.Module):
 
     def save_pretrained(self, save_directory: str, **kwargs: Any) -> None:
         return self.base_model.save_pretrained(save_directory, **kwargs)
+
+    def state_dict(self, *args: Any, **kwargs: Any) -> Any:
+        return self.base_model.state_dict(*args, **kwargs)
+
+    def load_state_dict(self, state_dict: Any, strict: bool = True, **kwargs: Any) -> Any:
+        # Older wrapper checkpoints stored base_model.* keys.
+        if state_dict and all(key.startswith("base_model.") for key in state_dict):
+            state_dict = {key.removeprefix("base_model."): value for key, value in state_dict.items()}
+        return self.base_model.load_state_dict(state_dict, strict=strict, **kwargs)
 
     def __getattr__(self, name: str) -> Any:
         try:

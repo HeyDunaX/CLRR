@@ -1,13 +1,12 @@
 """Runner script for Comprehensive Comparative Experiments on Amis-Chinese (ACL 2024, ACL 2025 & CLRR-Dec).
 
-Orchestrates sequential training and evaluation for the full 3x5 matrix:
+Orchestrates sequential training and evaluation for the retained multi-backbone matrix:
 Backbones:
   - google/mt5-small
   - facebook/mbart-large-50-many-to-many-mmt
   - google/byt5-small
 Methods:
   - Standard Fine-Tuning (Baseline)
-  - LayerSkip (Elhoushi et al., ACL 2024)
   - Middle-Layer Alignment (Liu & Niehues, ACL 2025)
   - CLRR-Enc (Ours Ablation)
   - JEPA + CLRR-Enc (Ours Main)
@@ -34,23 +33,27 @@ if str(PROJECT_ROOT) not in sys.path:
 import pandas as pd
 
 
-OFFICIAL_BASELINE_SCORES = [
-    # 1. google/mt5-small
-    {"backbone": "google/mt5-small", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "bleu": 2.788710, "chrf++": 3.812914, "status": "Official (Frozen)"},
-    {"backbone": "google/mt5-small", "method": "LayerSkip", "reference": "Elhoushi et al. (ACL 2024)", "extra_params": 0, "bleu": 3.972051, "chrf++": 5.288554, "status": "Measured (ACL 2024)"},
-    {"backbone": "google/mt5-small", "method": "Middle-Layer Alignment", "reference": "Liu & Niehues (ACL 2025)", "extra_params": 0, "bleu": 4.749767, "chrf++": 5.937303, "status": "Measured (ACL 2025)"},
-    {"backbone": "google/mt5-small", "method": "CLRR-Enc (Ours)", "reference": "Proposed (Ablation)", "extra_params": 0, "bleu": 4.439348, "chrf++": 5.176137, "status": "Official (Frozen)"},
-    {"backbone": "google/mt5-small", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "bleu": 4.596068, "chrf++": 5.042505, "status": "Official (Frozen)"},
-    {"backbone": "google/mt5-small", "method": "JEPA + CLRR-Dec (Ours)", "reference": "Proposed (Decoder-only)", "extra_params": 0, "bleu": 4.831513, "chrf++": 5.187342, "status": "Official (Frozen)"},
+def official_baseline_scores(reference_path: Path) -> list[dict]:
+    from src.amis_rewire.metrics import verified_reference_metrics
 
-    # 2. facebook/mbart-large-50
-    {"backbone": "facebook/mbart-large-50", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "bleu": 19.610600, "chrf++": 14.053800, "status": "Official (Frozen)"},
-    {"backbone": "facebook/mbart-large-50", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "bleu": 20.392700, "chrf++": 19.083900, "status": "Official (Frozen)"},
-
-    # 3. google/byt5-small
-    {"backbone": "google/byt5-small", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "bleu": 7.579430, "chrf++": 8.310188, "status": "Official (Frozen)"},
-    {"backbone": "google/byt5-small", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "bleu": 7.308960, "chrf++": 8.096336, "status": "Official (Frozen)"},
-]
+    rows = [
+        {"backbone": "google/mt5-small", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/mt5-small", "method": "Middle-Layer Alignment", "reference": "Liu & Niehues (ACL 2025)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/mt5-small", "method": "CLRR-Enc (Ours)", "reference": "Proposed (Ablation)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/mt5-small", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/mt5-small", "method": "JEPA + CLRR-Dec (Ours)", "reference": "Proposed (Decoder-only)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "facebook/mbart-large-50", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "facebook/mbart-large-50", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/byt5-small", "method": "Standard Fine-Tuning", "reference": "Baseline", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+        {"backbone": "google/byt5-small", "method": "JEPA + CLRR-Enc (Ours)", "reference": "Proposed (Main)", "extra_params": 0, "status": "Verified raw references (2026-10-02)"},
+    ]
+    backbones = {"google/mt5-small": "mT5", "facebook/mbart-large-50": "mBART", "google/byt5-small": "ByT5"}
+    methods = {"Standard Fine-Tuning": "Baseline", "CLRR-Enc (Ours)": "CLRR-only",
+               "JEPA + CLRR-Enc (Ours)": "CLRR+LSR", "JEPA + CLRR-Dec (Ours)": "CLRR-Dec+LSR"}
+    for row in rows:
+        row.update(verified_reference_metrics(backbones[row["backbone"]],
+                   methods.get(row["method"], row["method"]), reference_path))
+    return rows
 
 
 def parse_args() -> argparse.Namespace:
@@ -95,6 +98,9 @@ def run_command_streaming(cmd: list[str]) -> int:
 
 def main() -> None:
     args = parse_args()
+    reference_path = PROJECT_ROOT / args.data_dir / "test.csv"
+    baseline_rows = official_baseline_scores(reference_path)
+    from src.amis_rewire.metrics import score_prediction_csv
     output_dir = PROJECT_ROOT / args.output_dir
     backup_dir = PROJECT_ROOT / args.backup_dir
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -106,40 +112,9 @@ def main() -> None:
     print(f"Run group: {args.run_group}")
     print("=================================================================")
 
-    # Define the 6 target extension runs
+    # Define the 4 retained extension runs
     # (tag, backbone_name, method_name, command_func)
     tasks = []
-
-    # 1. mBART LayerSkip
-    if args.run_group in ("all_extensions", "mbart_only", "all"):
-        mbart_ls_dir = output_dir / "mbart-large-50-layerskip-acl2024"
-        cmd = [
-            py_exec, "-u", "-m", "src.comparative_baselines.layerskip_acl2024.train",
-            "--model-name", "facebook/mbart-large-50-many-to-many-mmt",
-            "--run-name", "mbart-large-50-layerskip-acl2024",
-            "--data-dir", args.data_dir,
-            "--output-dir", str(mbart_ls_dir),
-            "--hf-backup-repo", args.hf_backup_repo,
-            "--learning-rate", "5e-5",
-            "--num-train-epochs", str(args.num_train_epochs),
-            "--early-stopping-patience", str(args.early_stopping_patience),
-            "--warmup-ratio", str(args.warmup_ratio),
-            "--per-device-train-batch-size", str(args.per_device_train_batch_size),
-            "--gradient-accumulation-steps", str(args.gradient_accumulation_steps),
-            "--per-device-eval-batch-size", str(args.per_device_eval_batch_size),
-            "--p-max", "0.2",
-        ]
-        if args.bf16:
-            cmd.append("--bf16")
-        tasks.append({
-            "name": "mBART-50 + LayerSkip (ACL 2024)",
-            "run_name": "mbart-large-50-layerskip-acl2024",
-            "backbone": "facebook/mbart-large-50",
-            "method": "LayerSkip",
-            "reference": "Elhoushi et al. (ACL 2024)",
-            "output_dir": mbart_ls_dir,
-            "cmd": cmd,
-        })
 
     # 2. mBART Middle-Layer Alignment (L6)
     if args.run_group in ("all_extensions", "mbart_only", "all"):
@@ -214,37 +189,6 @@ def main() -> None:
             "method": "JEPA + CLRR-Dec (Ours)",
             "reference": "Proposed (Decoder-only)",
             "output_dir": mbart_dec_dir,
-            "cmd": cmd,
-        })
-
-    # 4. ByT5 LayerSkip
-    if args.run_group in ("all_extensions", "byt5_only", "all"):
-        byt5_ls_dir = output_dir / "byt5-small-layerskip-acl2024"
-        cmd = [
-            py_exec, "-u", "-m", "src.comparative_baselines.layerskip_acl2024.train",
-            "--model-name", "google/byt5-small",
-            "--run-name", "byt5-small-layerskip-acl2024",
-            "--data-dir", args.data_dir,
-            "--output-dir", str(byt5_ls_dir),
-            "--hf-backup-repo", args.hf_backup_repo,
-            "--learning-rate", "3e-4",
-            "--num-train-epochs", str(args.num_train_epochs),
-            "--early-stopping-patience", str(args.early_stopping_patience),
-            "--warmup-ratio", str(args.warmup_ratio),
-            "--per-device-train-batch-size", str(args.per_device_train_batch_size),
-            "--gradient-accumulation-steps", str(args.gradient_accumulation_steps),
-            "--per-device-eval-batch-size", str(args.per_device_eval_batch_size),
-            "--p-max", "0.2",
-        ]
-        if args.bf16:
-            cmd.append("--bf16")
-        tasks.append({
-            "name": "ByT5-small + LayerSkip (ACL 2024)",
-            "run_name": "byt5-small-layerskip-acl2024",
-            "backbone": "google/byt5-small",
-            "method": "LayerSkip",
-            "reference": "Elhoushi et al. (ACL 2024)",
-            "output_dir": byt5_ls_dir,
             "cmd": cmd,
         })
 
@@ -341,12 +285,12 @@ def main() -> None:
             sys.exit(ret)
 
 
-    # Compile Table 5 (Full 3x5 Comparative Matrix)
+    # Compile Table 5 (Full Retained Comparative Matrix)
     print("\n=================================================================", flush=True)
-    print(">>> STAGE: Compiling Final Comprehensive Table 5 (3x5 Matrix) <<<", flush=True)
+    print(">>> STAGE: Compiling Final Comprehensive Table 5 (Retained Matrix) <<<", flush=True)
     print("=================================================================", flush=True)
 
-    rows = list(OFFICIAL_BASELINE_SCORES)
+    rows = baseline_rows
 
     # Read all newly generated task metrics
     for task in tasks:
@@ -355,8 +299,8 @@ def main() -> None:
             with open(metrics_file, encoding="utf-8") as f:
                 data = json.load(f)
             # Find test bleu and chrf
-            bleu = data.get("test_bleu")
-            chrf = data.get("test_chrf++") or data.get("test_chrf")
+            scores = score_prediction_csv(task["output_dir"] / "test_predictions.csv", reference_path)
+            bleu, chrf = scores["bleu"], scores["chrf++"]
             rows.append({
                 "backbone": task["backbone"],
                 "method": task["method"],
@@ -364,7 +308,7 @@ def main() -> None:
                 "extra_params": 0,
                 "bleu": bleu,
                 "chrf++": chrf,
-                "status": "Measured (This Run)",
+                "status": "Verified from saved predictions / original CSV",
             })
 
     df = pd.DataFrame(rows)
@@ -379,7 +323,7 @@ def main() -> None:
     print("=" * 96)
     print(df.to_string(index=False))
     print("=" * 96)
-    print(f"\n[DONE] Saved complete 3x5 comparative matrix to {matrix_path}", flush=True)
+    print(f"\n[DONE] Saved retained comparative matrix to {matrix_path}", flush=True)
 
     # Upload full_comparative_matrix_acl.csv to Hugging Face Hub
     hf_token = os.environ.get("HF_TOKEN")

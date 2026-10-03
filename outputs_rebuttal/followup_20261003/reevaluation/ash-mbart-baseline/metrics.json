@@ -1,0 +1,47 @@
+{
+  "id": "ash-mbart-baseline",
+  "rows": 1003,
+  "scores": {
+    "bleu": 3.9522437225218803,
+    "chrf++": 20.91903308206383
+  },
+  "checkpoint": {
+    "id": "ash-mbart-baseline",
+    "family": "mBART",
+    "method": "baseline",
+    "dataset": "ashaninka_spanish",
+    "archive": "ashaninka-es/2026-10-02/mbart-ashaninka-es-baseline/mbart-ashaninka-es-baseline-best.zip",
+    "bytes": 2271575634,
+    "sha256": "a9bb61db92e5205d1dc0bdf39bc0e2187c756239cd830fa47fbabb70e6906d77",
+    "max_length": 256,
+    "src_lang": "es_XX",
+    "tgt_lang": "es_XX",
+    "reference_prediction_path": "results/ashaninka_spanish/mbart-ashaninka-es-baseline/test_predictions.csv",
+    "reference_prediction_sha256": "64119f5a81918eea7edaf3623f3cc20d182c90afd4543e5a55a550aa94a4c043"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {},
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "13a",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 75.93595552444458,
+  "prediction_sha256": "a9cd50570910a8856c6c9cfd9f52f9bf3b18eced65995ba4018767a8b4ae2079",
+  "reference_sha256": "02c25026a2dc0e59cefb2eb0852ae429e0cbe9fccbf8c878af92133fd3315234"
+}

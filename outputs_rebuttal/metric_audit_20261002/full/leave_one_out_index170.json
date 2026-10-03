@@ -1,0 +1,9 @@
+{
+  "removed_index": 170,
+  "purpose": "DIAGNOSTIC_ONLY_NOT_PRIMARY_TEST_SELECTION",
+  "primary_rows": 575,
+  "diagnostic_rows": 574,
+  "Baseline": 13.965511067306895,
+  "CLRR+LSR": 14.34992481066095,
+  "delta": 0.3844137433540542
+}

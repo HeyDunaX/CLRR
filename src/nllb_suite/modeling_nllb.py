@@ -7,11 +7,16 @@ import torch
 from torch import nn
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
-from src.amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
-from src.comparative_baselines.layerskip_acl2024.model import LayerSkipMT5
-from src.comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
-from src.peft_baselines.bitfit_adapter import apply_bitfit_to_model
-from src.peft_baselines.lora_adapter import apply_lora_to_model
+try:
+    from amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
+    from comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
+    from peft_baselines.bitfit_adapter import apply_bitfit_to_model
+    from peft_baselines.lora_adapter import apply_lora_to_model
+except ImportError:
+    from src.amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
+    from src.comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
+    from src.peft_baselines.bitfit_adapter import apply_bitfit_to_model
+    from src.peft_baselines.lora_adapter import apply_lora_to_model
 
 
 DEFAULT_NLLB_MODEL = "facebook/nllb-200-distilled-600M"
@@ -42,7 +47,6 @@ def load_nllb_model(
     lora_r: int = 8,
     lora_alpha: int = 16,
     lora_dropout: float = 0.05,
-    layerskip_p_max: float = 0.2,
     middle_layer_idx: int = 6,
     middle_align_weight: float = 0.1,
 ) -> tuple[nn.Module, dict[str, Any]]:
@@ -52,7 +56,6 @@ def load_nllb_model(
       - 'baseline': Standard full parameter fine-tuning
       - 'bitfit': BitFit bias-only parameter-efficient fine-tuning (ACL 2022)
       - 'lora': LoRA low-rank adaptation on attention q_proj/v_proj (ICLR 2022)
-      - 'layerskip': LayerSkip stochastic layer dropout on encoder (ACL 2024)
       - 'middle_align': Middle-Layer representation alignment at Layer 6 (ACL 2025)
       - 'clrr_enc': CLRR on encoder stack (d=2, alpha=0.1) + LSR (lambda=0.1)
       - 'clrr_dec': CLRR on decoder stack (d=2, alpha=0.1) + LSR (lambda=0.1)
@@ -108,11 +111,6 @@ def load_nllb_model(
         metadata.update(stats)
         metadata["description"] = "Strong LoRA B: All-Linear + Unfrozen Embeddings (r=16, alpha=32)"
 
-    elif method == "layerskip":
-        model = LayerSkipMT5(base_model, p_max=layerskip_p_max)
-        metadata["p_max"] = layerskip_p_max
-        metadata["description"] = f"LayerSkip Stochastic Depth (p_max={layerskip_p_max}, ACL 2024)"
-
     elif method == "middle_align":
         pad_id = getattr(base_model.config, "pad_token_id", 0) or 0
         model = MiddleAlignMT5(
@@ -156,7 +154,7 @@ def load_nllb_model(
     else:
         raise ValueError(
             f"Unknown method '{method}'. Supported methods: "
-            f"['baseline', 'bitfit', 'lora', 'layerskip', 'middle_align', 'clrr_enc', 'clrr_dec']"
+            f"['baseline', 'bitfit', 'lora', 'strong_lora_a', 'strong_lora_b', 'middle_align', 'clrr_enc', 'clrr_dec']"
         )
 
     return model, metadata

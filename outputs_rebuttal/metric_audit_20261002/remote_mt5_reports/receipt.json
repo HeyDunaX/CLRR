@@ -1,0 +1,51 @@
+{
+  "repository": "FiveC/amis-rewire-checkpoints",
+  "revision": "63b0dbc4fab41a669ccb36ed2f22894868634b8a",
+  "files": [
+    {
+      "remote": "analysis/predictions/mt5-small-ami-cmn-jepa-clrr-dec.csv",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-dec-predictions.csv",
+      "bytes": 60972
+    },
+    {
+      "remote": "analysis/predictions/mt5-small-ami-cmn-jepa-clrr-both.csv",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-both-predictions.csv",
+      "bytes": 61814
+    },
+    {
+      "remote": "comparative_baselines/middle_align_acl2025/test_predictions.csv",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-middle-predictions.csv",
+      "bytes": 61113
+    },
+    {
+      "remote": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-dec-metrics.json",
+      "bytes": 627
+    },
+    {
+      "remote": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-both-metrics.json",
+      "bytes": 624
+    },
+    {
+      "remote": "comparative_baselines/middle_align_acl2025/metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-middle-metrics.json",
+      "bytes": 311
+    },
+    {
+      "remote": "metrics/mt5-small-ami-cmn-jepa_metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mt5-lsr-metrics.json",
+      "bytes": 624
+    },
+    {
+      "remote": "metrics/mbart-large-50-ami-cmn-baseline_metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mbart-baseline-original-metrics.json",
+      "bytes": 646
+    },
+    {
+      "remote": "metrics/mbart-large-50-ami-cmn-jepa-clrr-enc_metrics.json",
+      "local": "outputs_rebuttal\\metric_audit_20261002\\remote_mt5_reports\\mbart-clrr-original-metrics.json",
+      "bytes": 658
+    }
+  ]
+}

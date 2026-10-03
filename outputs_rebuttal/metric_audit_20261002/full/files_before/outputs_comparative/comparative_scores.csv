@@ -1,0 +1,6 @@
+model,method,reference,extra_params,bleu,chrf++,status
+mt5-small-baseline,Standard Fine-Tuning,Baseline,0,2.788710,3.812914,Official (Frozen)
+mt5-small-clrr-enc,CLRR-Enc (Ours),Proposed (Ablation),0,4.439348,5.176137,Official (Frozen)
+mt5-small-jepa-clrr-enc,JEPA + CLRR-Enc (Ours),Proposed (Main),0,4.596068,5.042505,Official (Frozen)
+mt5-small-layerskip-acl2024,LayerSkip,Elhoushi et al. (ACL 2024),0,3.972095,5.288552,Measured
+mt5-small-middle-align-acl2025,Middle-Layer Alignment,Liu & Niehues (ACL 2025),0,4.749760,5.937320,Measured

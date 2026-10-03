@@ -212,7 +212,7 @@ def predict_like_main_run(model, tokenizer, frame: pd.DataFrame, best_dir: Path,
     trainer = Seq2SeqTrainer(**trainer_kwargs)
     result = trainer.predict(dataset, metric_key_prefix="test")
     generated = result.predictions[0] if isinstance(result.predictions, tuple) else result.predictions
-    predictions = tokenizer.batch_decode(safe_decode_inputs(generated), skip_special_tokens=True)
+    predictions = tokenizer.batch_decode(safe_decode_inputs(generated, tokenizer.pad_token_id), skip_special_tokens=True)
     return [prediction.strip() for prediction in predictions]
 
 

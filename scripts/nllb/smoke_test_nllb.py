@@ -1,7 +1,7 @@
 """Preflight Smoke Test for NLLB-200 Suite.
 
 Verifies model initialization, parameter counts, forward pass, backward gradient flow,
-and generation for all 7 experimental methods on NLLB-200 in < 15 seconds on CPU.
+and generation for all 6 retained experimental methods on NLLB-200 in < 15 seconds on CPU.
 """
 
 from __future__ import annotations
@@ -20,7 +20,6 @@ import torch
 from transformers import M2M100Config, M2M100ForConditionalGeneration
 
 from src.amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
-from src.comparative_baselines.layerskip_acl2024.model import LayerSkipMT5
 from src.comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
 from src.peft_baselines.bitfit_adapter import apply_bitfit_to_model
 from src.peft_baselines.lora_adapter import apply_lora_to_model
@@ -31,7 +30,6 @@ METHODS_TO_TEST = [
     "baseline",
     "bitfit",
     "lora",
-    "layerskip",
     "middle_align",
     "clrr_enc",
     "clrr_dec",
@@ -67,8 +65,6 @@ def apply_method_to_base(base_model: torch.nn.Module, method: str) -> torch.nn.M
     elif method == "lora":
         model, _ = apply_lora_to_model(base_model, r=8, lora_alpha=16, lora_dropout=0.05, target_modules=["q_proj", "v_proj"])
         return model
-    elif method == "layerskip":
-        return LayerSkipMT5(base_model, p_max=0.2)
     elif method == "middle_align":
         return MiddleAlignMT5(base_model, middle_layer_idx=1, align_weight=0.1, pad_token_id=1)
     elif method == "clrr_enc":
@@ -99,7 +95,7 @@ def run_smoke_test() -> bool:
     attention_mask = torch.ones((batch_size, seq_len), dtype=torch.long)
     labels = torch.randint(10, 500, (batch_size, seq_len), dtype=torch.long)
 
-    print(f"\n[2/2] Testing 7 Methods on NLLB Architecture (fast config)...")
+    print(f"\n[2/2] Testing 6 Methods on NLLB Architecture (fast config)...")
 
     all_passed = True
     for method in METHODS_TO_TEST:
@@ -148,7 +144,7 @@ def run_smoke_test() -> bool:
 
     print("\n" + "=" * 65)
     if all_passed:
-        print("ALL 7 NLLB-200 METHODS PASSED PREFLIGHT SMOKE TEST!")
+        print("ALL 6 RETAINED NLLB-200 METHODS PASSED PREFLIGHT SMOKE TEST!")
     else:
         print("SOME METHODS FAILED PREFLIGHT SMOKE TEST!")
     print("=" * 65)

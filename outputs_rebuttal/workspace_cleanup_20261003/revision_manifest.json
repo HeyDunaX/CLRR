@@ -1,0 +1,58 @@
+{
+  "status": "COMPLETE",
+  "bytes_freed": 11079053847,
+  "active_paper": "docs/clrr_main.tex",
+  "active_results": "docs/EXPERIMENTS_UPDATED.md",
+  "source_scores_unchanged": true,
+  "table_count": 11,
+  "pdf_pages": 11,
+  "unit_tests": 22,
+  "unit_returncode": 0,
+  "compile_status": "success; no overfull boxes or unresolved citations/references",
+  "checks": [
+    {
+      "check": "unit",
+      "returncode": 0,
+      "log": "outputs_rebuttal\\workspace_cleanup_20261003\\code_verification\\unit.log"
+    },
+    {
+      "check": "mbart_nllb_train_reload",
+      "returncode": 0,
+      "log": "outputs_rebuttal\\workspace_cleanup_20261003\\code_verification\\mbart_nllb_train_reload.log"
+    },
+    {
+      "check": "wrapper_correctness",
+      "returncode": 0,
+      "log": "outputs_rebuttal\\workspace_cleanup_20261003\\code_verification\\wrapper_correctness.log"
+    }
+  ],
+  "source_check": {
+    "parsed_python_files": 76,
+    "issues": []
+  },
+  "limitations": [
+    "No optimization or real training launched in this revision.",
+    "Historical no-stop-gradient, HPO and latency claims remain unverified.",
+    "LSR-only and Full seed42 weights were lost earlier; predictions survive.",
+    "Tiny offline tests do not guarantee absence of every possible code bug."
+  ],
+  "changed_source_sha256": {
+    "src/amis_rewire/metrics.py": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+    "src/amis_rewire/evaluation.py": "70e1d408307e93ad914b19361afa39ea7db16bd611b742305ab87ea89cf8c14f",
+    "src/amis_rewire/modeling.py": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551",
+    "src/amis_rewire/train.py": "7edaee4e0d89db3c655f2e343be583f917a194b30b81fc4a8f91730ecaf04f03",
+    "src/nllb_suite/modeling_nllb.py": "75595953232892e66cdf289bcf63ea9ca7bed2750a166bb8a32e6b0a6fda12cb",
+    "src/nllb_suite/train_nllb.py": "5a93d7369a1926e45d652295150a076cd0936353ca07055bd541c2e1940b14de",
+    "src/peft_baselines/train_peft.py": "02e4f1e51feb907c9a52b676eecc3d4ac48e69d58079a833fb60bb4ce5d74cd1",
+    "src/comparative_baselines/layerskip_acl2024/model.py": "be731c5e8182bec1a3c3cfc934fbeb2553304d37fae438e5095caab902a78647",
+    "src/comparative_baselines/layerskip_acl2024/train.py": "0d52632977d9513204f44845e81a257b1038e2f0691679b361def38f8087ccd3",
+    "src/comparative_baselines/middle_align_acl2025/model.py": "a93c4f82ffa186a5b4c3f51f83cc2b3a92c4391654e753956afb797e1195c340",
+    "src/comparative_baselines/middle_align_acl2025/train.py": "3fc5eb2311591d0171cc18d55cb673d0ea57045b6f8913e6e4f2fddeb8e6795f",
+    "scripts/followup_analysis.py": "bc3e5cbc97223b0eb9c0924633564fcd290dc417ba554976579e0f6fcb489341",
+    "scripts/revalidation/run_no_stop_gradient.py": "82e5a3837835b2a73cadd70ca704d252ce1bb14b02ad0e8366c248cf63926d3a",
+    "scripts/revalidation/build_paper_tables.py": "7323fa7ccbffecefc4fa80c82e7c7806e6a9598c0e66130cf0c748981ac8f3c7",
+    "tests/test_audit_repairs.py": "cc9139ea6a8c00ba1cf6761383c934980e9f986792d71e96e51dbdbb5a670aa7"
+  },
+  "paper_sha256": "c16ad73b7b429c49ed272e3b4e58b5931c06f1cc465c7f71708100af13ccee21",
+  "pdf_sha256": "9b41698593310be856339d5e1c6bf1ed519d56be696add0eaea016acc320880c"
+}

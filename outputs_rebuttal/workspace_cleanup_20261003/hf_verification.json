@@ -1,0 +1,17 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "files": [
+    {
+      "local": "results/mbart-large-50-lora-all-linear/best_model.zip",
+      "bytes": 38735797,
+      "sha256": "b50fea4e506d1ae803538e41543ea8dd9d90bc41709a46aabaef64d8261255ac",
+      "verified_remote": []
+    },
+    {
+      "local": "results/mbart-large-50-lora-all-linear-unfreeze-embed/best_model.zip",
+      "bytes": 989127895,
+      "sha256": "c256e55857632bd908ac016940f8e0debd57a4d1801f4583043d8b6aa02c45c7",
+      "verified_remote": []
+    }
+  ]
+}

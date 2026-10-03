@@ -1,0 +1,14 @@
+{
+  "outputs_rebuttal\\easy_diagnostics_20261002\\character_chrf_bootstrap.csv": "bd945a5e8d344889cf559110065de7a260c003c5c2514a50f5ee6afae9826099",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\correctness.json": "2d66890f20c9a0d1707211d8aa9394756aca7d2c8ff9ab325a28f760b7ca8ef4",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\influence_all_rows.csv": "969d06c73621713c87eba32f2b71fb71008a824f5471b435d2251dbd95b3ea62",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\influence_protocol.json": "468a43ef4854178d49c59c54feac50a4bbb41f2d374b4eb0db7143c27e4b6426",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\influence_summary.csv": "7e4cb2c11c5066f32c9fdcc3208affa84e9804133e900dabf745070c6c547882",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\output_summary.csv": "95fd47a311906136d48b97a0335702f7d3fbde4a16bbba257f40786aa5cda630",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\robustness_protocol.json": "91b1b64e410b73bb8b1184fe6e3e8d2903c422ccd4c426a01590f411c545b7b4",
+  "outputs_rebuttal\\easy_diagnostics_20261002\\verification_receipt.json": "f0a8a6f468ceae089f67f7c63cc8f70e5d3dc3d07e75100657e947d44252875c",
+  "docs\\EASY_DIAGNOSTICS_20261002.md": "260f43a237c746848158001a63419d1f0851e690050b661b383bcc4aea5bc88a",
+  "scripts\\revalidation\\measure_clrr_correctness.py": "6825efc0433bc61518bae175f778e57f6ab10ebdd74cdc1a3ce96099801fb177",
+  "scripts\\revalidation\\measure_saved_output_robustness.py": "4c0a0877dabdb453b6a638024a6b65e728a09e8de6aac1dd5de765e097c2ed60",
+  "scripts\\revalidation\\measure_prediction_influence.py": "46a7f943c1edaec741afd14ad712bcdb194db27910e01dc3de2daf22396b9b86"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "baseline": "Baseline",
+    "challenger": "CLRR+LSR",
+    "metric": "BLEU",
+    "p_value": 0.0953904609539046,
+    "matches_cached_implementation": true,
+    "signature": "nrefs:1|bs:10000|seed:42|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0"
+  },
+  {
+    "baseline": "Baseline",
+    "challenger": "CLRR+LSR",
+    "metric": "chrF++",
+    "p_value": 0.12138786121387861,
+    "matches_cached_implementation": true,
+    "signature": "nrefs:1|bs:10000|seed:42|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+  },
+  {
+    "baseline": "LSR-only",
+    "challenger": "CLRR+LSR",
+    "metric": "BLEU",
+    "p_value": 0.0887911208879112,
+    "matches_cached_implementation": true,
+    "signature": "nrefs:1|bs:10000|seed:42|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0"
+  },
+  {
+    "baseline": "LSR-only",
+    "challenger": "CLRR+LSR",
+    "metric": "chrF++",
+    "p_value": 0.07979202079792021,
+    "matches_cached_implementation": true,
+    "signature": "nrefs:1|bs:10000|seed:42|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+  }
+]

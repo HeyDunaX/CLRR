@@ -1,0 +1,47 @@
+{
+  "utc": "2026-10-02T05:34:28.535562+00:00",
+  "pid": 9293,
+  "alive": true,
+  "exit_code": null,
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 %, 21144 MiB, 40960 MiB",
+  "disk_free_gib": 124.49,
+  "completed": {
+    "mbart-ashaninka-es-clrr-enc": {
+      "verified_test_rows": 1003,
+      "test_bleu": 3.9670904856431672,
+      "test_chrf++": 20.699039452099623,
+      "archive": "/content/CLRR/results/ashaninka_spanish/backups/mbart-ashaninka-es-clrr-enc/mbart-ashaninka-es-clrr-enc-best.zip",
+      "archive_bytes": 2271582542
+    },
+    "mbart-ashaninka-es-baseline": {
+      "verified_test_rows": 1003,
+      "test_bleu": 4.008525491403604,
+      "test_chrf++": 20.853627641616395,
+      "archive": "/content/CLRR/results/ashaninka_spanish/backups/mbart-ashaninka-es-baseline/mbart-ashaninka-es-baseline-best.zip",
+      "archive_bytes": 2271575634
+    }
+  },
+  "progress": [
+    " 77%|███████▋  | 480/620 [45:29<02:46,  1.19s/it][step=480 | epoch=15.49] loss=1.8561",
+    " 79%|███████▉  | 490/620 [45:38<02:01,  1.07it/s][step=490 | epoch=15.82] loss=1.8500",
+    "100%|██████████| 56/56 [01:50<00:00,  1.79s/it]\u001b[A[step=496 | epoch=16.00] eval_loss=3.3187 | eval_bleu=2.6442 | eval_chrf++=17.8233",
+    "                                               \u001b[A[epoch 17/20] starting training...",
+    " 81%|████████  | 500/620 [47:59<28:59, 14.50s/it][step=500 | epoch=16.13] loss=1.7938",
+    " 82%|████████▏ | 510/620 [48:08<02:23,  1.31s/it][step=510 | epoch=16.46] loss=1.8219",
+    " 84%|████████▍ | 520/620 [48:18<01:33,  1.07it/s][step=520 | epoch=16.79] loss=1.8211",
+    "100%|██████████| 56/56 [01:58<00:00,  1.79s/it]\u001b[A[step=527 | epoch=17.00] eval_loss=3.3267 | eval_bleu=2.6676 | eval_chrf++=17.9568"
+  ],
+  "log_bytes": 450358,
+  "patience10": null,
+  "stop_after_baseline": {
+    "runner_pid": 9314,
+    "trainer_pid": 50623,
+    "exit_code": null,
+    "runs": [
+      "mbart-ashaninka-es-baseline",
+      "mbart-ashaninka-es-clrr-enc",
+      "nllb-ashaninka-es-baseline"
+    ],
+    "finalizer_pid": 55880
+  }
+}

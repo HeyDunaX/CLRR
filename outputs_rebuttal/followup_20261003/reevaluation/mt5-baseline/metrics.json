@@ -1,0 +1,47 @@
+{
+  "id": "mt5-baseline",
+  "rows": 575,
+  "scores": {
+    "bleu": 2.788710051742412,
+    "chrf++": 3.8129143092177027
+  },
+  "checkpoint": {
+    "id": "mt5-baseline",
+    "family": "mT5",
+    "method": "baseline",
+    "dataset": "amis_mandarin",
+    "archive": "checkpoints/mt5-small-ami-cmn-baseline/mt5-small-ami-cmn-baseline-best.zip",
+    "bytes": 896459511,
+    "sha256": "bacccd29e20a4a2baf5688ea58d533f436e5feabe27c540213b43a6b6467cd5d",
+    "max_length": 256,
+    "src_lang": null,
+    "tgt_lang": null,
+    "reference_prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-baseline.csv",
+    "reference_prediction_sha256": "7cd846736b27607828313c0407a5cfc8ea63db6049ee2295fe0271c31a4c2a6e"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {},
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "zh",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 18.97624659538269,
+  "prediction_sha256": "44857c1f8e4c24583948036e7c203d6da61bc45f3d4574db298c70fc977c1f92",
+  "reference_sha256": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+}

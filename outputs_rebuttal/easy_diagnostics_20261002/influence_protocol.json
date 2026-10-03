@@ -1,0 +1,66 @@
+{
+  "scope": "Post-hoc sentence influence, not a new primary test or significance test",
+  "rows": 575,
+  "rule": "Every original test row removed once; primary scores retain all rows",
+  "metrics": "chrF word_order=0 and chrF++ word_order=2, raw text, standard defaults",
+  "warning": "Leave-one-out robustness does not establish training-seed robustness or morphology",
+  "direct_api_checks": [
+    {
+      "backbone": "mBART",
+      "baseline": "Baseline",
+      "word_order": 0,
+      "removed_index": 170,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "mBART",
+      "baseline": "Baseline",
+      "word_order": 2,
+      "removed_index": 170,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "mBART",
+      "baseline": "LSR-only",
+      "word_order": 0,
+      "removed_index": 65,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "mBART",
+      "baseline": "LSR-only",
+      "word_order": 2,
+      "removed_index": 65,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "NLLB",
+      "baseline": "Baseline",
+      "word_order": 0,
+      "removed_index": 392,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "NLLB",
+      "baseline": "Baseline",
+      "word_order": 2,
+      "removed_index": 392,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "mT5",
+      "baseline": "Baseline",
+      "word_order": 0,
+      "removed_index": 208,
+      "direct_corpus_max_error": 0.0
+    },
+    {
+      "backbone": "mT5",
+      "baseline": "Baseline",
+      "word_order": 2,
+      "removed_index": 468,
+      "direct_corpus_max_error": 0.0
+    }
+  ],
+  "script_sha256": "46a7f943c1edaec741afd14ad712bcdb194db27910e01dc3de2daf22396b9b86"
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "job": "foreground",
+    "pid": 15740
+  },
+  {
+    "job": "docs",
+    "pid": 14796
+  },
+  {
+    "job": "finalize",
+    "pid": 20400
+  },
+  {
+    "job": "watch",
+    "pid": 32704
+  }
+]

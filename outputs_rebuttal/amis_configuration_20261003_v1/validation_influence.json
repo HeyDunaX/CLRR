@@ -1,0 +1,40 @@
+{
+  "scope": "Validation-only descriptive sensitivity; primary scores retained",
+  "sacrebleu_version": "2.6.0",
+  "systems": [
+    {
+      "run": "mbart-amis-full_a005_l010-seed42",
+      "prediction_sha256": "3fe0cf586cd71c27d82b4a2fa520451657d11b99f6c5fbbfc3653b3ca536390b",
+      "rows": 576,
+      "chrf0": {
+        "score": 16.499787190352215,
+        "without_row197": 16.53947705980661,
+        "leave_one_out_min": 16.32980769733276,
+        "min_removed_index": 13,
+        "leave_one_out_max": 16.58214094090395,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 14.409197257945689,
+        "without_row197": 14.44402846919431,
+        "leave_one_out_min": 14.239684699249647,
+        "min_removed_index": 13,
+        "leave_one_out_max": 14.48017994580778,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
+    }
+  ],
+  "ranking_chrfpp": [
+    "mbart-amis-full_a005_l010-seed42"
+  ],
+  "ranking_without_row197": [
+    "mbart-amis-full_a005_l010-seed42"
+  ],
+  "ranking_chrf0": [
+    "mbart-amis-full_a005_l010-seed42"
+  ]
+}

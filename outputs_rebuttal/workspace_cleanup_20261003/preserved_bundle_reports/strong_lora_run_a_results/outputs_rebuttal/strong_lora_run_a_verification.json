@@ -1,0 +1,33 @@
+{
+  "status": "run_a_complete_run_b_paused",
+  "rows": 575,
+  "row_order_and_references_match": true,
+  "checkpoint_matches_selected_best": true,
+  "completed_epochs": 20.0,
+  "best_epoch": 19.0,
+  "best_checkpoint": "/content/CLRR/results/mbart-large-50-lora-all-linear/checkpoint-684",
+  "recomputed_bleu_decoded_references": 10.419279265557499,
+  "recomputed_chrfpp_decoded_references": 9.800806870941505,
+  "bleu_original_references": 10.22955252303285,
+  "chrfpp_original_references": 8.63188045805791,
+  "chrfpp_zh_original_references": 15.211848190154454,
+  "references_changed_by_tokenizer": 62,
+  "metric_signatures": {
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0",
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.21.0",
+    "sacrebleu": "2.6.0",
+    "datasets": "3.6.0"
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "colab_requested_high_mem": false,
+  "files_sha256": {
+    "metrics.json": "bd7356f4b92d84f21f9dca3d0dbaa4868dd09bcaa5f10a4ac0daf268b5aec902",
+    "test_predictions.csv": "5b95bfc501d7669513b0bdc081ef7b2f79242c09eec0e98364f65b85469a13de",
+    "best_model.zip": "b50fea4e506d1ae803538e41543ea8dd9d90bc41709a46aabaef64d8261255ac"
+  }
+}

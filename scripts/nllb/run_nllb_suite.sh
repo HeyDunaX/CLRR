@@ -21,8 +21,8 @@ echo ""
 echo "[Step 1] Running Preflight Fast Smoke Test..."
 python -u scripts/nllb/smoke_test_nllb.py
 
-# 2. Run all 7 methods under strict fairness
-METHODS=("baseline" "bitfit" "lora" "layerskip" "middle_align" "clrr_enc" "clrr_dec")
+# 2. Run all 6 retained methods with the shared settings
+METHODS=("baseline" "bitfit" "lora" "middle_align" "clrr_enc" "clrr_dec")
 
 for method in "${METHODS[@]}"; do
     echo ""

@@ -1,0 +1,62 @@
+{
+  "train": {
+    "source": {
+      "mean_tokens": 11.58055,
+      "p50_p95_p99": [
+        10.0,
+        24.0,
+        39.0
+      ],
+      "rows_truncated_at_256": 1
+    },
+    "target": {
+      "mean_tokens": 12.2803,
+      "p50_p95_p99": [
+        10.0,
+        26.0,
+        41.0
+      ],
+      "rows_truncated_at_256": 1
+    }
+  },
+  "validation": {
+    "source": {
+      "mean_tokens": 12.843268242548818,
+      "p50_p95_p99": [
+        11.0,
+        25.0,
+        38.0
+      ],
+      "rows_truncated_at_256": 0
+    },
+    "target": {
+      "mean_tokens": 13.927029804727647,
+      "p50_p95_p99": [
+        12.0,
+        27.0,
+        40.549999999999955
+      ],
+      "rows_truncated_at_256": 0
+    }
+  },
+  "test": {
+    "source": {
+      "mean_tokens": 12.7955,
+      "p50_p95_p99": [
+        11.0,
+        25.0,
+        38.00999999999999
+      ],
+      "rows_truncated_at_256": 0
+    },
+    "target": {
+      "mean_tokens": 13.931,
+      "p50_p95_p99": [
+        12.0,
+        27.0,
+        41.0
+      ],
+      "rows_truncated_at_256": 0
+    }
+  }
+}

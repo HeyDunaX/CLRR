@@ -1,0 +1,14 @@
+{
+  "src/amis_rewire/__init__.py": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+  "src/amis_rewire/modeling.py": "bcee7fb7c5e1a9ea346cc7c72906e6126c38df903d9b63b067270ce5ba21a5fb",
+  "src/amis_rewire/metrics.py": "97c9d9d256609981ab7e43ad9374c433f3422593024205bbdb3844887448fd1b",
+  "src/amis_rewire/evaluation.py": "ba39d93c038df66fa20f52207359cb08b3ff5f11db546ffc08896df1c1bc093d",
+  "src/amis_rewire/train.py": "db73d0faba49e84b31bce169bd38c816bfd8f37feb417956b16f30e584da541d",
+  "scripts/run_amis_confirmation.py": "f1d0f71066ff8e4b2e5d2716ad57fc3d76f0327b3d127e7c7bec58d972a7a02e",
+  "scripts/revalidation/measure_training_trajectory.py": "49c557f3734492f5e9a44ccd83efd9496cdcef54c9480cd1aa3f4225873dbc3b",
+  "scripts/revalidation/measure_checkpoint_mechanisms.py": "5aabe428cede3947c7b5b75292ed2323f996e6254ba8d66defb1365f49a9bace",
+  "scripts/revalidation/probe_generation_precision.py": "24d166ec232240cd4ff321c116771ff67e22221171d3c4de60bf08236831f5cc",
+  "scripts/revalidation/calibrate_turkish_batch.py": "46acf3dd46fbad107e5286eb3e1d2e41225165051dbac526d297c02966f5d113",
+  "tests/smoke_precision_training.py": "d5f810a83ff57c71acc3c6c836112017668c8687c1b5b55149332500c5e01acf",
+  "tests/smoke_trajectory_probe.py": "cb0467d756d1561afd9df278630567be25fcfd1526342e46df952c49656f9ba2"
+}

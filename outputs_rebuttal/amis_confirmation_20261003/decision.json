@@ -1,0 +1,65 @@
+{
+  "status": "ANALYZED_ALL12",
+  "incremental_signal_in_tested_seeds": false,
+  "full_minus_lsr_bleu": {
+    "baseline": "lsr",
+    "challenger": "full",
+    "metric": "BLEU",
+    "seed42": 0.1700781611442359,
+    "seed43": 0.12431983115307688,
+    "seed44": 0.4087158708900773,
+    "mean_delta": 0.23437128772913005,
+    "std_paired_delta": 0.1527104497048853,
+    "positive_seeds": 3,
+    "seeds": 3
+  },
+  "full_minus_baseline_bleu": {
+    "baseline": "baseline",
+    "challenger": "full",
+    "metric": "BLEU",
+    "seed42": 0.22849237098278508,
+    "seed43": 1.4744285731177094,
+    "seed44": -0.5628811465012333,
+    "mean_delta": 0.38001326586642037,
+    "std_paired_delta": 1.027071886288008,
+    "positive_seeds": 2,
+    "seeds": 3
+  },
+  "judgment": "Insufficient stable incremental CLRR evidence under this prespecified protocol; investigate or narrow claims before Turkish.",
+  "limitations": [
+    "3training seeds do not establish universal superiority",
+    "per-seed sentence bootstrap is not a test over training-seed variability",
+    "no gold morphological preservation labels",
+    "observational gradient/rank probes are not causal mechanism identification",
+    "Selected-best weights archives listed in artifact_losses were lost; final predictions/metrics and corresponding trajectory probes were preserved and verified."
+  ],
+  "bootstrap_family": 24,
+  "bootstrap_samples": 10000,
+  "bootstrap_seed": 42,
+  "native_sacrebleu_p_verified": true,
+  "analysis_sha256": "5ab2d291bdee7aae2275a2fb6be381cbb12d0b87fc38fcebfa1653c3bd5af653",
+  "artifact_losses": [
+    {
+      "run_name": "mbart-amis-lsr-seed42",
+      "lost": "selected best weights archive incomplete",
+      "preserved": [
+        "final metrics",
+        "575 ordered test predictions",
+        "early/middle/late probes"
+      ],
+      "partial_bytes": 1950351360,
+      "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+    },
+    {
+      "run_name": "mbart-amis-full-seed42",
+      "lost": "selected best weights archive incomplete",
+      "preserved": [
+        "final metrics",
+        "575 ordered test predictions",
+        "early/middle/late probes"
+      ],
+      "partial_bytes": 40894464,
+      "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "method": "baseline",
+    "passed": true,
+    "cuda_bf16_training": true,
+    "generation_precision": "fp32"
+  },
+  {
+    "method": "clrr-enc",
+    "passed": true,
+    "cuda_bf16_training": true,
+    "generation_precision": "fp32"
+  },
+  {
+    "method": "jepa",
+    "passed": true,
+    "cuda_bf16_training": true,
+    "generation_precision": "fp32"
+  },
+  {
+    "method": "jepa-clrr-enc",
+    "passed": true,
+    "cuda_bf16_training": true,
+    "generation_precision": "fp32"
+  }
+]

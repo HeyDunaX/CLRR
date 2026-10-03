@@ -1,0 +1,16 @@
+{
+  "files": [
+    "results/metrics_standardized_scores.csv",
+    "results/all_results.csv",
+    "results/comparative_scores.csv",
+    "results/full_comparative_matrix_acl.csv",
+    "results/peft_scores.csv",
+    "outputs_comparative/comparative_scores.csv",
+    "outputs_comparative/full_comparative_matrix_acl.csv",
+    "results/analysis/mbart_ablation_results.csv",
+    "outputs_revalidation/mbart_ablation_results.csv",
+    "results/analysis/morphological_breakdown.csv",
+    "outputs_revalidation/morphological_breakdown.csv"
+  ],
+  "source": "all_verified_translation_scores.csv"
+}

@@ -20,11 +20,23 @@ from huggingface_hub import HfApi
 from sacrebleu.metrics import BLEU, CHRF
 from sacrebleu.tokenizers.tokenizer_zh import TokenizerZh
 try:
+    from amis_rewire.metrics import build_compute_metrics as original_reference_metrics, metric_protocol
+except ImportError:
+    from src.amis_rewire.metrics import build_compute_metrics as original_reference_metrics, metric_protocol
+
+try:
     from peft import PeftModel
     _HAS_PEFT = True
 except ImportError:
     PeftModel = None
     _HAS_PEFT = False
+
+try:
+    from amis_rewire.evaluation import PrecisionSeq2SeqTrainer
+    from amis_rewire.metrics import safe_decode_inputs
+except ImportError:
+    from src.amis_rewire.evaluation import PrecisionSeq2SeqTrainer
+    from src.amis_rewire.metrics import safe_decode_inputs
 
 from transformers import (
     DataCollatorForSeq2Seq,
@@ -46,14 +58,13 @@ DEFAULT_LR_BY_METHOD = {
     "lora": 2e-4,
     "strong_lora_a": 2e-4,
     "strong_lora_b": 1e-4,
-    "layerskip": 5e-5,
     "middle_align": 5e-5,
     "clrr_enc": 5e-5,
     "clrr_dec": 5e-5,
 }
 
 
-class SafeSeq2SeqTrainer(Seq2SeqTrainer):
+class SafeSeq2SeqTrainer(PrecisionSeq2SeqTrainer):
     """Seq2SeqTrainer that safely saves custom nn.Module wrappers with tied weights.
 
     In Transformers >= 4.40 / 5.x, Trainer._save unconditionally invokes safetensors
@@ -79,6 +90,9 @@ class SafeSeq2SeqTrainer(Seq2SeqTrainer):
 
         # Save weights as pytorch_model.bin using standard PyTorch serialization (handles tied embeddings)
         torch.save(state_dict, os.path.join(output_dir, "pytorch_model.bin"))
+
+        unwrapped.config.save_pretrained(output_dir)
+        unwrapped.generation_config.save_pretrained(output_dir)
 
         # Save processing class / tokenizer if available
         if self.processing_class is not None:
@@ -115,9 +129,6 @@ class ConsoleMetricsCallback(TrainerCallback):
             print(prefix + " | ".join(fields), flush=True)
 
 
-def safe_decode_inputs(predictions: np.ndarray) -> np.ndarray:
-    predictions = np.asarray(predictions)
-    return np.where(predictions != -100, predictions, 0)
 
 
 def safe_hf_upload(
@@ -149,7 +160,7 @@ def load_split(data_dir: Path, split: str) -> Dataset:
     path = data_dir / f"{split}.csv"
     if not path.is_file():
         raise FileNotFoundError(f"Missing split CSV at {path}")
-    dataframe = pd.read_csv(path)
+    dataframe = pd.read_csv(path, dtype=str, keep_default_na=False)
     return Dataset.from_pandas(dataframe, preserve_index=False)
 
 
@@ -173,7 +184,7 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
 
 def detect_nllb_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: str | None, cli_tok: str | None) -> tuple[str, str, str]:
     path_str = str(data_dir).lower()
-    is_spanish = "ashaninka" in path_str or "spanish" in path_str
+    is_spanish = "spanish" in path_str
     is_turkish = "turkish" in path_str or "tr_en" in path_str or "opus100" in path_str
     if is_turkish:
         tgt_lang = cli_tgt or "eng_Latn"
@@ -190,32 +201,17 @@ def detect_nllb_languages(data_dir: Path | str, cli_src: str | None, cli_tgt: st
     return src_lang, tgt_lang, bleu_tok
 
 
-def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh"):
-    bleu_metric = BLEU(tokenize=bleu_tokenizer)
-    chrfpp_metric = CHRF(word_order=2)
-
-    def compute_metrics(eval_prediction: Any) -> dict[str, float]:
-        predictions, labels = eval_prediction
-        if isinstance(predictions, tuple):
-            predictions = predictions[0]
-        decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(predictions), skip_special_tokens=True)
-        decoded_labels = tokenizer.batch_decode(safe_decode_inputs(labels), skip_special_tokens=True)
-        preds_clean = [p.strip() for p in decoded_predictions]
-        refs_clean = [[r.strip() for r in decoded_labels]]
-        return {
-            "bleu": float(bleu_metric.corpus_score(preds_clean, refs_clean).score),
-            "chrf++": float(chrfpp_metric.corpus_score(preds_clean, refs_clean).score),
-        }
-
-    return compute_metrics
-
+def build_compute_metrics(tokenizer: Any, bleu_tokenizer: str = "zh", references: list[str] | None = None):
+    if references is None:
+        raise ValueError("Original references for the evaluation split are required")
+    return original_reference_metrics(tokenizer, references, tokenize=bleu_tokenizer)
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--method",
         required=True,
-        choices=["baseline", "bitfit", "lora", "strong_lora_a", "strong_lora_b", "layerskip", "middle_align", "clrr_enc", "clrr_dec"],
+        choices=["baseline", "bitfit", "lora", "strong_lora_a", "strong_lora_b", "middle_align", "clrr_enc", "clrr_dec"],
         help="Experimental method to run on NLLB-200.",
     )
     parser.add_argument("--model-name", default=DEFAULT_NLLB_MODEL, help="NLLB-200 model checkpoint.")
@@ -234,7 +230,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--gradient-accumulation-steps", type=int, default=8)
     parser.add_argument("--warmup-ratio", type=float, default=0.06)
     parser.add_argument("--early-stopping-patience", type=int, default=4)
+    parser.add_argument("--generation-precision", choices=["fp32", "bf16"], default="fp32")
     parser.add_argument("--eval-beams", type=int, default=4)
+    parser.add_argument("--num-beams", type=int, default=4, help="Final test beam size.")
     parser.add_argument("--max-source-length", type=int, default=128)
     parser.add_argument("--max-target-length", type=int, default=128)
     parser.add_argument("--logging-steps", type=int, default=10)
@@ -342,12 +340,14 @@ def main() -> None:
     ]
 
     trainer = SafeSeq2SeqTrainer(
+        generation_dtype=args.generation_precision,
+        processing_class=tokenizer,
         model=model,
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=validation_dataset,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer),
+        compute_metrics=build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer, references=load_split(data_dir, "validation")["target"]),
         callbacks=callbacks,
     )
 
@@ -360,6 +360,8 @@ def main() -> None:
     val_metrics = trainer.evaluate(eval_dataset=validation_dataset, metric_key_prefix="eval")
 
     print("[eval] Evaluating best checkpoint on test set...", flush=True)
+    trainer.compute_metrics = build_compute_metrics(tokenizer, bleu_tokenizer=bleu_tokenizer, references=load_split(data_dir, "test")["target"])
+    trainer.args.generation_num_beams = args.num_beams
     test_predictions = trainer.predict(test_dataset=test_dataset, metric_key_prefix="test")
     test_metrics = test_predictions.metrics or {}
 
@@ -367,10 +369,10 @@ def main() -> None:
     raw_preds = test_predictions.predictions
     if isinstance(raw_preds, tuple):
         raw_preds = raw_preds[0]
-    decoded_preds = tokenizer.batch_decode(safe_decode_inputs(raw_preds), skip_special_tokens=True)
+    decoded_preds = tokenizer.batch_decode(safe_decode_inputs(raw_preds, tokenizer.pad_token_id), skip_special_tokens=True)
     clean_preds = [p.strip() for p in decoded_preds]
 
-    test_raw_df = pd.read_csv(data_dir / "test.csv")
+    test_raw_df = pd.read_csv(data_dir / "test.csv", dtype=str, keep_default_na=False)
     test_targets = [str(t).strip() for t in test_raw_df["target"].tolist()]
 
     # Save test predictions CSV
@@ -408,6 +410,7 @@ def main() -> None:
         "training_time_seconds": training_time_seconds,
         "eval_bleu": val_metrics.get("eval_bleu", 0.0),
         "eval_chrf++": val_metrics.get("eval_chrf++", 0.0),
+        "evaluation_protocol": metric_protocol(bleu_tokenizer),
         "test_bleu": bleu_score,
         "test_chrf++": chrf_score,
         "metadata": method_metadata,

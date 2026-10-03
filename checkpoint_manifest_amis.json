@@ -1,0 +1,168 @@
+{
+  "repo_id": "FiveC/amis-rewire-checkpoints",
+  "revision": "63b0dbc4fab41a669ccb36ed2f22894868634b8a",
+  "models": [
+    {
+      "id": "mbart-baseline",
+      "family": "mBART",
+      "method": "baseline",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/mbart-large-50-ami-cmn-baseline/mbart-large-50-ami-cmn-baseline-best.zip",
+      "bytes": 2270562428,
+      "sha256": "0ccef8481f5c20a50856a540632cc9f744fcd5f2ccad02412f6d68df5775f00b",
+      "max_length": 256,
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "reference_prediction_path": "results/analysis/predictions/mbart-large-50-ami-cmn-baseline.csv",
+      "reference_prediction_sha256": "e192e786d422649e8ee03dc7c1edbf0f47aa557d74546e9e0d1bc2a732828d9a"
+    },
+    {
+      "id": "mbart-full",
+      "family": "mBART",
+      "method": "full",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/mbart-large-50-ami-cmn-jepa-clrr-enc/mbart-large-50-ami-cmn-jepa-clrr-enc-best.zip",
+      "bytes": 2270622454,
+      "sha256": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18",
+      "max_length": 256,
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "reference_prediction_path": "results/analysis/predictions/mbart-large-50-ami-cmn-jepa-clrr-enc.csv",
+      "reference_prediction_sha256": "7a411144fdc70316307172985b6924ad521f9cb3b4d288e968afc7a5c0c414c6"
+    },
+    {
+      "id": "mbart-lsr",
+      "family": "mBART",
+      "method": "lsr",
+      "dataset": "amis_mandarin",
+      "archive": "revalidation_ablations/mbart-large-50-ami-cmn-lsr-only/mbart-large-50-ami-cmn-lsr-only-best.zip",
+      "bytes": 2270555926,
+      "sha256": "ac8b43c2aff683a7b3d5082d27c9f938f3cf74462c97b559311b4e1c4f4cdaf3",
+      "max_length": 256,
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "reference_prediction_path": "results/mbart-large-50/lsr-only/test_predictions.csv",
+      "reference_prediction_sha256": "9eb99189d8cd1b9ca37422a61abdf4d619ece0a42ee8e885a23f93055b0966c0"
+    },
+    {
+      "id": "nllb-baseline",
+      "family": "NLLB",
+      "method": "baseline",
+      "dataset": "amis_mandarin",
+      "archive": "nllb-200/nllb-200-baseline-best.zip",
+      "bytes": 6835299468,
+      "sha256": "a5a253399f92f4d2354fa35bd91ef4257b16b71f945d20245ae51b54b58390f8",
+      "max_length": 128,
+      "src_lang": "zho_Hant",
+      "tgt_lang": "zho_Hant",
+      "reference_prediction_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\baseline\\test_predictions.csv",
+      "reference_prediction_sha256": "63036b43d55c64085ca9135a053ba4cb323b57bc59444e0ec55cadf1d7b1ab68"
+    },
+    {
+      "id": "nllb-full",
+      "family": "NLLB",
+      "method": "full",
+      "dataset": "amis_mandarin",
+      "archive": "nllb-200/nllb-200-clrr_enc-best.zip",
+      "bytes": 6832528692,
+      "sha256": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6",
+      "max_length": 128,
+      "src_lang": "zho_Hant",
+      "tgt_lang": "zho_Hant",
+      "reference_prediction_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\test_predictions.csv",
+      "reference_prediction_sha256": "731a8b2e4a40a62ffb5d76166ddc3c4c2c8620df6a7cbe9a7306eed4d5424a1f"
+    },
+    {
+      "id": "mt5-baseline",
+      "family": "mT5",
+      "method": "baseline",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/mt5-small-ami-cmn-baseline/mt5-small-ami-cmn-baseline-best.zip",
+      "bytes": 896459511,
+      "sha256": "bacccd29e20a4a2baf5688ea58d533f436e5feabe27c540213b43a6b6467cd5d",
+      "max_length": 256,
+      "src_lang": null,
+      "tgt_lang": null,
+      "reference_prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-baseline.csv",
+      "reference_prediction_sha256": "7cd846736b27607828313c0407a5cfc8ea63db6049ee2295fe0271c31a4c2a6e"
+    },
+    {
+      "id": "mt5-full",
+      "family": "mT5",
+      "method": "full",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/mt5-small-ami-cmn-jepa-clrr-enc/mt5-small-ami-cmn-jepa-clrr-enc-best.zip",
+      "bytes": 896461833,
+      "sha256": "2fb828eeb4659c97b10a5f3c7be3b08603a9502da02f594b2685ea982662af5d",
+      "max_length": 256,
+      "src_lang": null,
+      "tgt_lang": null,
+      "reference_prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-jepa-clrr-enc.csv",
+      "reference_prediction_sha256": "5451b0c64671ba8bbfade0a74e7d78bfe327752f2caea94a6fcecb8adfb6441c"
+    },
+    {
+      "id": "mt5-clrr",
+      "family": "mT5",
+      "method": "clrr",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/mt5-small-ami-cmn-clrr-enc/mt5-small-ami-cmn-clrr-enc-best.zip",
+      "bytes": 896470109,
+      "sha256": "7ed79385f0850987104b0aed0099260fbdb26a8145fe55b614eef57b1c70d556",
+      "max_length": 256,
+      "src_lang": null,
+      "tgt_lang": null,
+      "reference_prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-clrr-enc.csv",
+      "reference_prediction_sha256": "4df1724596116a1e8608cfbe90c3f847ca6ed51c295677d1420ef00abc95d973"
+    },
+    {
+      "id": "byt5-baseline",
+      "family": "ByT5",
+      "method": "baseline",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/byt5-small-ami-cmn-baseline/byt5-small-ami-cmn-baseline-best.zip",
+      "bytes": 1111028883,
+      "sha256": "ed9833c2543d5eb03351cbe22e853d07de33c825b587b499e9a0bca792bbc7e0",
+      "max_length": 256,
+      "src_lang": null,
+      "tgt_lang": null,
+      "reference_prediction_path": "outputs_rebuttal/metric_audit_20261002/full/historical_predictions/ByT5-Baseline.csv",
+      "reference_prediction_sha256": "5b06e166d603d83669a4934ef2b5f87cf2f0e5e404ba6323f5ca41a6cae4abeb"
+    },
+    {
+      "id": "byt5-full",
+      "family": "ByT5",
+      "method": "full",
+      "dataset": "amis_mandarin",
+      "archive": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/byt5-small-ami-cmn-jepa-clrr-enc-best.zip",
+      "bytes": 1111024499,
+      "sha256": "d6fb9bccb9b2d0ef9f9f918748209bff44723880fe4c0ed9a9f78070d6003d92",
+      "max_length": 256,
+      "src_lang": null,
+      "tgt_lang": null,
+      "reference_prediction_path": "outputs_rebuttal/metric_audit_20261002/full/historical_predictions/ByT5-CLRR+LSR.csv",
+      "reference_prediction_sha256": "d721f99e0eac81167cdfe7b27785fe868191cd02028305f06cec5bf0cf30ae3c"
+    }
+  ],
+  "data_sha256": {
+    "data_processed/amis_mandarin/validation.csv": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "data_processed/amis_mandarin/test.csv": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+  },
+  "modeling_sha256": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551",
+  "public_data_urls": {
+    "data_processed/amis_mandarin/validation.csv": "https://raw.githubusercontent.com/HeyDunaX/CLRR/db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9/data_processed/amis_mandarin/validation.csv",
+    "data_processed/amis_mandarin/test.csv": "https://raw.githubusercontent.com/HeyDunaX/CLRR/db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9/data_processed/amis_mandarin/test.csv"
+  },
+  "public_data_sha256": {
+    "data_processed/amis_mandarin/validation.csv": "f5b8c3da3b1c975f41acb565c8e10a039ced78b777328c80b1f12eadd77632d4",
+    "data_processed/amis_mandarin/test.csv": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+  },
+  "semantic_data_sha256": {
+    "data_processed/amis_mandarin/validation.csv": "d372ca43a584662489b813e85313bba2d7ba74630c30e6d8e11544e5db5c9cf6",
+    "data_processed/amis_mandarin/test.csv": "398107435ea9abcd806c9eaea6e76c4486352d1730d94bbbc259151b1a63236c"
+  },
+  "public_data_revision": "db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9",
+  "historical_source_protocol": "outputs_rebuttal/checkpoint_diagnostics_20261002/protocol.json",
+  "historical_source_protocol_sha256": "b9ac6a3afbd94fcae7442a8e78c38c6ea2800c2a137d8e6cb7b4d8575e00cc8e",
+  "historical_modeling_sha256": "bcee7fb7c5e1a9ea346cc7c72906e6126c38df903d9b63b067270ce5ba21a5fb",
+  "scope_note": "Amis-only manifest for future probes with current source; no new inference or training was executed to create this manifest. Historical source artifacts remain unchanged."
+}

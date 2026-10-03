@@ -1,0 +1,63 @@
+{
+  "original_paper": "docs\\archive\\clrr_main_before_revision_20261003.tex",
+  "original_paper_sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+  "original_preamble_sha256": "1359410f685ee9b93f7da6a36894abf5311dc37785952a72f0b4e3d461f1f137",
+  "restored": [
+    "original preamble and title",
+    "ACL review mode",
+    "main section names",
+    "top table captions, bold headers, spacing and sizing",
+    "original appendix page break"
+  ],
+  "scientific_source_files": {
+    "audit_a": {
+      "path": "outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv",
+      "sha256": "38e27ea974742c00b5f37e5e541b708e193aeecd2eb0d34199f980773bcf2df0"
+    },
+    "scores_b": {
+      "path": "outputs_rebuttal/followup_20261003/matched_inference_scores.csv",
+      "sha256": "5e2a52d4a61e1521b236aa086621e728a8c147bd327179f25e4f6f3581767521"
+    },
+    "bootstrap_b": {
+      "path": "outputs_rebuttal/followup_20261003/matched_inference_bootstrap.csv",
+      "sha256": "032ce3fc2129ebf0cf3d3297fbcce0d102bc97bf61165b1e0feff180d46f95f6"
+    },
+    "mechanisms": {
+      "path": "outputs_rebuttal/checkpoint_diagnostics_20261002/mechanism_summary.csv",
+      "sha256": "b2ecde9968c02a10feeb66addd657343b4b89a279f9d81b8b672b0cc86418d1c"
+    },
+    "seeds": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/seed_scores.csv",
+      "sha256": "fa1bc6b3f707ef246f504b59c67620f95a29484964422bd816bc0ba8cc9beea2"
+    },
+    "summary": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/seed_summary.csv",
+      "sha256": "6d9a806af07d4ed60ed3a0bbc6383764a674785bc971566ca02ed17827888393"
+    },
+    "deltas": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/paired_seed_deltas.csv",
+      "sha256": "ff5bfe699663030461562886b1f4fa14d692be38b232af1f0c421cf6b72713fb"
+    },
+    "bootstrap_c": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/paired_bootstrap24.csv",
+      "sha256": "64e803210b35e80b5f6fceb6d93355d892f72e01c4d420a148a3ceaef1730207"
+    },
+    "trajectory": {
+      "path": "outputs_rebuttal/amis_confirmation_20261003/trajectory_summary.csv",
+      "sha256": "d09e0cfd5e37cd6d6bde9fac3763d116fe8872e9e01d2f44c99f7401df8b35e6"
+    }
+  },
+  "verification": {
+    "original_acl_style_identical": true,
+    "original_preamble_and_title_restored": true,
+    "body_changes_only_section_labels_and_page_break": true,
+    "all_10_table_rows_unchanged": true,
+    "all_9_scientific_sources_unchanged": true,
+    "pdf_pages": 12,
+    "pdf_tables": 10,
+    "overfull_boxes": 0,
+    "unresolved_references": 0,
+    "compatibility_note": "dvipsnames passed to xcolor before ACL loads it; original package list remains intact.",
+    "pdf_sha256": "cb9971cc4f54c717119c7f2f58ad4abd925c1d318709e30ab5878c631882d160"
+  }
+}

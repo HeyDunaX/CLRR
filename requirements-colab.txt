@@ -3,6 +3,7 @@
 transformers>=4.45,<5
 datasets>=2.20,<4
 sentencepiece>=0.2
+protobuf>=4.25,<7
 sacrebleu>=2.4,<3
 pandas>=2.0,<3
 numpy>=1.26,<3

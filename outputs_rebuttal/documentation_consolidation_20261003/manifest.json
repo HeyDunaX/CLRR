@@ -1,0 +1,61 @@
+{
+  "purpose": "User requested two experiment ledgers; documentation only, no new measurement.",
+  "paper_sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+  "paper_table_labels": [
+    "tab:dataset_stats",
+    "tab:main_comparative_matrix",
+    "tab:mbart_ablation",
+    "tab:morphology_breakdown",
+    "tab:layer_cosine",
+    "tab:qualitative_examples",
+    "tab:bootstrap_details",
+    "tab:sensitivity_sweep",
+    "tab:computational_benchmarks",
+    "tab:stack_ablation"
+  ],
+  "source_docs_before_sha256": {
+    "docs/EXPERIMENTS.md": "e853240cdfd96f0b2fa94cd11274f92ac3fde31741843ef89e82a512893835c1",
+    "docs/RESEARCH_INSIGHTS.md": "7e06212ced2cfb341b0dc4c3b72885c0dbe17c81e2caa2f2b3862cda85f304c7",
+    "docs/METRICS.md": "7fd3537b9296975fde00f74cff413aa44c0e479c073c50102321b63f1f1b7df9",
+    "docs/RESULTS_VERIFICATION.md": "def2ad2e0c18b679358299d349953ed8750f4636debd5305269e442cba7d08c4",
+    "docs/EASY_DIAGNOSTICS_20261002.md": "260f43a237c746848158001a63419d1f0851e690050b661b383bcc4aea5bc88a",
+    "docs/CHECKPOINT_DIAGNOSTICS_20261002.md": "b9c3455e658650f75e615f71342ee93e2a2b5afbeca57fb8b0b6c095d09f745a",
+    "docs/MATCHED_INFERENCE_RESULTS_20261003.md": "ec27d5d8c979f897ce3b403a9f6544ac3713eeedafe7359ed373305c1a85e8fa",
+    "docs/ASHANINKA_PATIENCE10_RESULTS.md": "4ecdf2fe7d741e24cbc86c0c6197da7295a105d76828b6bad523ff9acf804277",
+    "docs/ASHANINKA_RUNBOOK.md": "8061e624c589eec65d90fa02847532d840e1402b103afa8438ea4b3726ec7947",
+    "docs/ASHANINKA_PATIENCE10_RUNBOOK.md": "e69abb693a7cf0040a1cfae5ad3ff36f443385d253cba5a60c3e30a255211456",
+    "docs/FOLLOWUP_RUNBOOK_20261003.md": "4401554394b848c2ad9685604c582912b1c01e19f57ea98b3de3bfb31375aa3f",
+    "docs/NEXT_STEPS_AUDITED_20261002.md": "598ee34a4a84c457f349c19ae405029d77f308b999d0342a1d22f2faaaf8f791"
+  },
+  "source_csv_sha256": {
+    "outputs_rebuttal/metric_audit_20261002/full/all_verified_translation_scores.csv": "38e27ea974742c00b5f37e5e541b708e193aeecd2eb0d34199f980773bcf2df0",
+    "outputs_rebuttal/followup_20261003/matched_inference_scores.csv": "5e2a52d4a61e1521b236aa086621e728a8c147bd327179f25e4f6f3581767521",
+    "outputs_rebuttal/metric_audit_20261002/full/paired_bootstrap_standardized.csv": "5e84068c5eaac373f1810036a34b4aa29f8d26a1ad6759708c683f9c0251930c",
+    "outputs_rebuttal/followup_20261003/matched_inference_bootstrap.csv": "032ce3fc2129ebf0cf3d3297fbcce0d102bc97bf61165b1e0feff180d46f95f6"
+  },
+  "ledgers": {
+    "original": "docs/EXPERIMENTS.md",
+    "updated": "docs/EXPERIMENTS_UPDATED.md"
+  },
+  "coverage": {
+    "paper_tables": 10,
+    "current_score_rows": 36,
+    "stage_B_normal": 12,
+    "stage_B_routing_off": 5,
+    "stage_A_bootstrap": 42,
+    "stage_B_bootstrap": 36
+  },
+  "archived_reports": [
+    "RESEARCH_INSIGHTS.md",
+    "RESULTS_VERIFICATION.md",
+    "EASY_DIAGNOSTICS_20261002.md",
+    "CHECKPOINT_DIAGNOSTICS_20261002.md",
+    "MATCHED_INFERENCE_RESULTS_20261003.md",
+    "ASHANINKA_PATIENCE10_RESULTS.md",
+    "ASHANINKA_RUNBOOK.md",
+    "ASHANINKA_PATIENCE10_RUNBOOK.md",
+    "FOLLOWUP_RUNBOOK_20261003.md",
+    "NEXT_STEPS_AUDITED_20261002.md"
+  ],
+  "training_launched": false
+}

@@ -1,0 +1,13 @@
+{
+  "archive": "/content/clrr_diagnostics/turkish_paused_checkpoint.tar",
+  "archive_bytes": 7354408960,
+  "sha256": "33249f099d718559877ba55d059a6d2431bd730db011a704be0b88f2bc0998f2",
+  "checkpoint_epoch": 2,
+  "checkpoint_global_step": 314,
+  "scope": "last completed saved resumable baseline checkpoint; not interrupted in-memory step",
+  "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\followup_20261003\\turkish_baseline_epoch2_resumable.tar",
+  "local_sha256_verified": true,
+  "verified_members": 13,
+  "resume_state_verified": true,
+  "status": "paused by user; complete saved epoch2 checkpoint backed up locally, not a final trained result"
+}

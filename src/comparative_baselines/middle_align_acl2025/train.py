@@ -27,7 +27,18 @@ import pandas as pd
 import torch
 from datasets import Dataset
 from huggingface_hub import HfApi
-from sacrebleu.metrics import BLEU, CHRF
+try:
+    from amis_rewire.metrics import build_compute_metrics as original_reference_metrics, metric_protocol, generation_metrics
+except ImportError:
+    from src.amis_rewire.metrics import build_compute_metrics as original_reference_metrics, metric_protocol, generation_metrics
+
+try:
+    from amis_rewire.evaluation import PrecisionSeq2SeqTrainer
+    from amis_rewire.metrics import safe_decode_inputs
+except ImportError:
+    from src.amis_rewire.evaluation import PrecisionSeq2SeqTrainer
+    from src.amis_rewire.metrics import safe_decode_inputs
+
 from transformers import (
     AutoTokenizer,
     DataCollatorForSeq2Seq,
@@ -41,23 +52,6 @@ from transformers import (
 from .model import load_middle_align_model
 
 
-BLEU_METRIC = BLEU(tokenize="zh")
-CHRFPP_METRIC = CHRF(word_order=2)
-
-
-def generation_metrics(predictions: list[str], references: list[str]) -> dict[str, float]:
-    predictions = [p.strip() for p in predictions]
-    references = [[r.strip() for r in references]]
-    return {
-        "bleu": float(BLEU_METRIC.corpus_score(predictions, references).score),
-        "chrf++": float(CHRFPP_METRIC.corpus_score(predictions, references).score),
-    }
-
-
-def safe_decode_inputs(predictions: Any) -> Any:
-    import numpy as np
-    preds = np.asarray(predictions)
-    return np.where(preds != -100, preds, 0)
 
 
 class ConsoleMetricsCallback(TrainerCallback):
@@ -120,6 +114,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--per-device-eval-batch-size", type=int, default=64)
     parser.add_argument("--max-source-length", type=int, default=256)
     parser.add_argument("--max-target-length", type=int, default=256)
+    parser.add_argument("--generation-precision", choices=["fp32", "bf16"], default="fp32")
     parser.add_argument("--num-beams", type=int, default=4)
     parser.add_argument("--save-total-limit", type=int, default=3)
     parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
@@ -130,7 +125,7 @@ def load_split(data_dir: Path, split: str) -> Dataset:
     path = data_dir / f"{split}.csv"
     if not path.exists():
         raise FileNotFoundError(f"Missing {path}")
-    frame = pd.read_csv(path, encoding="utf-8").fillna("")
+    frame = pd.read_csv(path, encoding="utf-8", dtype=str, keep_default_na=False).fillna("")
     return Dataset.from_pandas(frame, preserve_index=False)
 
 
@@ -144,17 +139,10 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 
 
-def build_compute_metrics(tokenizer: Any):
-    def compute_metrics(eval_prediction: Any) -> dict[str, float]:
-        predictions, labels = eval_prediction
-        if isinstance(predictions, tuple):
-            predictions = predictions[0]
-        decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(predictions), skip_special_tokens=True)
-        decoded_labels = tokenizer.batch_decode(safe_decode_inputs(labels), skip_special_tokens=True)
-        return generation_metrics(decoded_predictions, decoded_labels)
-
-    return compute_metrics
-
+def build_compute_metrics(tokenizer: Any, references: list[str] | None = None):
+    if references is None:
+        raise ValueError("Original references for the evaluation split are required")
+    return original_reference_metrics(tokenizer, references, tokenize="zh")
 
 def main() -> None:
     args = parse_args()
@@ -231,14 +219,15 @@ def main() -> None:
         save_safetensors=False,
     )
 
-    trainer = Seq2SeqTrainer(
+    trainer = PrecisionSeq2SeqTrainer(
+        generation_dtype=args.generation_precision,
         model=model,
         args=training_args,
         train_dataset=train_dataset,
         eval_dataset=validation_dataset,
         tokenizer=tokenizer,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer),
+        compute_metrics=build_compute_metrics(tokenizer, references=load_split(data_dir, "validation")["target"]),
         callbacks=[
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
@@ -256,15 +245,16 @@ def main() -> None:
     # Final test evaluation with beam size 4
     print(f"[Middle-Align] Running final test evaluation with beam_size={args.num_beams}...", flush=True)
     trainer.args.generation_num_beams = args.num_beams
+    trainer.compute_metrics = build_compute_metrics(tokenizer, references=load_split(data_dir, "test")["target"])
     test_output = trainer.predict(test_dataset, metric_key_prefix="test")
     test_metrics = test_output.metrics
 
     test_predictions = test_output.predictions
     if isinstance(test_predictions, tuple):
         test_predictions = test_predictions[0]
-    decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(test_predictions), skip_special_tokens=True)
+    decoded_predictions = tokenizer.batch_decode(safe_decode_inputs(test_predictions, tokenizer.pad_token_id), skip_special_tokens=True)
 
-    raw_test = pd.read_csv(data_dir / "test.csv", encoding="utf-8").fillna("")
+    raw_test = pd.read_csv(data_dir / "test.csv", encoding="utf-8", dtype=str, keep_default_na=False).fillna("")
     pred_df = pd.DataFrame({
         "index": range(len(raw_test)),
         "source": raw_test["source"],
@@ -281,6 +271,7 @@ def main() -> None:
         "training_time_seconds": training_time,
         "eval_bleu": val_metrics.get("eval_bleu"),
         "eval_chrf++": val_metrics.get("eval_chrf++"),
+        "evaluation_protocol": metric_protocol("zh"),
         "test_bleu": test_metrics.get("test_bleu"),
         "test_chrf++": test_metrics.get("test_chrf++"),
     }
@@ -294,6 +285,8 @@ def main() -> None:
     best_model_dir = output_dir / "best_model"
     trainer.save_model(str(best_model_dir))
     tokenizer.save_pretrained(str(best_model_dir))
+    model.config.save_pretrained(best_model_dir)
+    model.generation_config.save_pretrained(best_model_dir)
 
     zip_path = output_dir / "best_model.zip"
     print(f"[Middle-Align] Archiving best model to {zip_path}...", flush=True)

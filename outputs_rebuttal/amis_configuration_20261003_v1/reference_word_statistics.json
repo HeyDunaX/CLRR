@@ -1,0 +1,24 @@
+{
+  "validation": {
+    "rows": 576,
+    "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "word_unigrams": 577,
+    "word_bigrams": 1,
+    "rows_with_word_bigrams": [
+      197
+    ],
+    "interpretation": "Word-ngram sparsity is a selection/metric sensitivity flag, not proof of invalid data or model errors."
+  },
+  "test": {
+    "rows": 575,
+    "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+    "word_unigrams": 578,
+    "word_bigrams": 3,
+    "rows_with_word_bigrams": [
+      126,
+      170,
+      468
+    ],
+    "interpretation": "Word-ngram sparsity is a selection/metric sensitivity flag, not proof of invalid data or model errors."
+  }
+}

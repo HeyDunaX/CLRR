@@ -1,0 +1,9 @@
+{
+  "inline_tables": 10,
+  "external_inputs": 0,
+  "unchanged_scientific_sources": 9,
+  "unchanged_prose_and_template": true,
+  "identical_pdf_pages": 12,
+  "idempotent_table_refresh": true,
+  "master_matches_compiled_upload": true
+}

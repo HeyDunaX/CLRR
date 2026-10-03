@@ -48,8 +48,8 @@ class CrossLayerResidualRewire(nn.Module):
 
     The module owns zero nn.Parameter. When applied to the context encoder,
     at layer i it adds a fixed, deterministic residual from layer i-distance
-    (using stop-gradient detach). This preserves low-level morphosyntactic
-    features against over-smoothing in deep layers for polysynthetic languages.
+    (using stop-gradient detach). Morphological preservation and reduced
+    over-smoothing are hypotheses to evaluate, not guarantees of this operation.
     """
 
     def __init__(
@@ -218,8 +218,9 @@ class JEPAGuidedSeq2SeqLM(nn.Module):
       L = L_NMT + lambda_jepa * L_JEPA
 
     Where L_JEPA aligns the Context Encoder source representation (Amis) with the
-    target representation (Chinese) with stop-gradient, preventing semantic collapse.
-    Adds zero extra parameters.
+    target representation (Chinese) with stop-gradient. This is shared-encoder
+    cosine regularization, without a predictor or EMA teacher; it adds zero
+    extra parameters and does not guarantee that representations avoid collapse.
     """
 
     def __init__(self, base_model: nn.Module, jepa_weight: float = 0.1):

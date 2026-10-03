@@ -1,0 +1,24 @@
+[
+  {
+    "run_name": "mbart-amis-lsr-seed42",
+    "lost": "selected best weights archive incomplete",
+    "preserved": [
+      "final metrics",
+      "575 ordered test predictions",
+      "early/middle/late probes"
+    ],
+    "partial_bytes": 1950351360,
+    "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+  },
+  {
+    "run_name": "mbart-amis-full-seed42",
+    "lost": "selected best weights archive incomplete",
+    "preserved": [
+      "final metrics",
+      "575 ordered test predictions",
+      "early/middle/late probes"
+    ],
+    "partial_bytes": 40894464,
+    "scope": "retain validated completed scientific result; do not claim model weights fully backed up"
+  }
+]

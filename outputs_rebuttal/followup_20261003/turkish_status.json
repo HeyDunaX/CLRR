@@ -1,0 +1,21 @@
+{
+  "status": "paused_by_user",
+  "scope": "Turkish baseline incomplete; no final test or trained-method comparison",
+  "saved_checkpoints": [
+    {
+      "folder": "/content/clrr_diagnostics/project/outputs_rebuttal/followup_20261003/turkish/mbart-turkish-baseline-seed42/checkpoint-157",
+      "epoch": 1.0,
+      "global_step": 157,
+      "best_metric": 39.289537952880224,
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/followup_20261003/turkish/mbart-turkish-baseline-seed42/checkpoint-157"
+    },
+    {
+      "folder": "/content/clrr_diagnostics/project/outputs_rebuttal/followup_20261003/turkish/mbart-turkish-baseline-seed42/checkpoint-314",
+      "epoch": 2.0,
+      "global_step": 314,
+      "best_metric": 39.85432709520647,
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/followup_20261003/turkish/mbart-turkish-baseline-seed42/checkpoint-314"
+    }
+  ],
+  "paused_utc": "2026-10-03T00:05:07Z"
+}

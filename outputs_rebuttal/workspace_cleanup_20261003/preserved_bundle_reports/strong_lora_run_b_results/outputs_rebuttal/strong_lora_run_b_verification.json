@@ -1,0 +1,33 @@
+{
+  "status": "run_b_complete",
+  "rows": 575,
+  "row_order_and_references_match": true,
+  "checkpoint_matches_selected_best": true,
+  "completed_epochs": 20.0,
+  "best_epoch": 19.0,
+  "best_checkpoint": "/content/CLRR/results/mbart-large-50-lora-all-linear-unfreeze-embed/checkpoint-684",
+  "recomputed_bleu_decoded_references": 14.043191415300335,
+  "recomputed_chrfpp_decoded_references": 11.490106965542608,
+  "bleu_original_references": 13.806636730562444,
+  "chrfpp_original_references": 10.329273055770976,
+  "chrfpp_zh_original_references": 17.6304236261319,
+  "references_changed_by_tokenizer": 62,
+  "metric_signatures": {
+    "bleu": "nrefs:1|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0",
+    "chrfpp": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+  },
+  "versions": {
+    "torch": "2.11.0+cu128",
+    "transformers": "4.57.6",
+    "peft": "0.21.0",
+    "sacrebleu": "2.6.0",
+    "datasets": "3.6.0"
+  },
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "colab_requested_high_mem": false,
+  "files_sha256": {
+    "metrics.json": "749610cc4995e4941c62202863bef93021449895d4f71db84361a1e9f44ce1fd",
+    "test_predictions.csv": "cba0f380c9dd987d8972b78350edd55a1798ed3f3f27e7748969d78920367952",
+    "best_model.zip": "c256e55857632bd908ac016940f8e0debd57a4d1801f4583043d8b6aa02c45c7"
+  }
+}

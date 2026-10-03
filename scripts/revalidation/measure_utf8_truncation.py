@@ -1,6 +1,6 @@
 """Quantitative analysis of ByT5 generation dynamics and degradation.
 
-Compares ByT5 Baseline, ByT5 LayerSkip, ByT5 Middle-Align, ByT5 CLRR-Enc, and ByT5 CLRR-Dec
+Compares ByT5 Baseline, ByT5 Middle-Align, ByT5 CLRR-Enc, and ByT5 CLRR-Dec
 to quantify degenerate repetition loops, length distortion, and character-level errors.
 """
 
@@ -36,7 +36,6 @@ def analyze_byt5() -> pd.DataFrame:
     repo_id = "FiveC/amis-rewire-checkpoints"
     model_files = {
         "ByT5 Baseline": "analysis/predictions/byt5-small-ami-cmn-baseline.csv",
-        "ByT5 LayerSkip (ACL 2024)": "comparative_baselines/byt5-small-layerskip-acl2024/test_predictions.csv",
         "ByT5 Middle-Align (ACL 2025)": "comparative_baselines/byt5-small-middle-align-acl2025/test_predictions.csv",
         "ByT5 CLRR-Enc (Ours)": "analysis/predictions/byt5-small-ami-cmn-jepa-clrr-enc.csv",
         "ByT5 CLRR-Dec (Ours)": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/test_predictions.csv",

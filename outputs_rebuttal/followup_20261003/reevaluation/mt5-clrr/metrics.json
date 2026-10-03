@@ -1,0 +1,60 @@
+{
+  "id": "mt5-clrr",
+  "rows": 575,
+  "scores": {
+    "bleu": 4.4393478821581045,
+    "chrf++": 5.176136865120548
+  },
+  "checkpoint": {
+    "id": "mt5-clrr",
+    "family": "mT5",
+    "method": "clrr",
+    "dataset": "amis_mandarin",
+    "archive": "checkpoints/mt5-small-ami-cmn-clrr-enc/mt5-small-ami-cmn-clrr-enc-best.zip",
+    "bytes": 896470109,
+    "sha256": "7ed79385f0850987104b0aed0099260fbdb26a8145fe55b614eef57b1c70d556",
+    "max_length": 256,
+    "src_lang": null,
+    "tgt_lang": null,
+    "reference_prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-clrr-enc.csv",
+    "reference_prediction_sha256": "4df1724596116a1e8608cfbe90c3f847ca6ed51c295677d1420ef00abc95d973"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {
+    "config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/checkpoints/mt5-small-ami-cmn-baseline/mt5-small-ami-cmn-baseline-best.zip",
+      "member": "config.json",
+      "sha256": "fc49c21fad639f38428a0e159433e51034eed4f8bdfd01df0b443f96c9acdefb"
+    },
+    "generation_config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/checkpoints/mt5-small-ami-cmn-baseline/mt5-small-ami-cmn-baseline-best.zip",
+      "member": "generation_config.json",
+      "sha256": "3cf0262c5f75039e8df361a067f31e77a1c65c7e4782e942f6ad9afff0614cdb"
+    }
+  },
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "zh",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 19.304462671279907,
+  "prediction_sha256": "3e375a3b072e40ccd548eb21b96191d26062e84e34fc776116849e7f0a7a538b",
+  "reference_sha256": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+}

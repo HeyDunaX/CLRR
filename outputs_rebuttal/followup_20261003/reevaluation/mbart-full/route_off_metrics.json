@@ -1,0 +1,8 @@
+{
+  "scores": {
+    "bleu": 16.460897921545044,
+    "chrf++": 16.474378224804095
+  },
+  "scope": "same trained weights; inference rewiring alpha=0; not a training ablation",
+  "prediction_sha256": "e846e0035290ee1d31ced5b63182afec1d173a054b87679a1b16b97e27fea6bf"
+}

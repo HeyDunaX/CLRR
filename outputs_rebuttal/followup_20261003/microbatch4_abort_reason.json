@@ -1,0 +1,9 @@
+{
+  "reason": "GPU underused at microbatch4; fixed global batch128; all four methods will restart at one larger microbatch",
+  "scope": "operational trial, not a valid complete comparison",
+  "no_completed_method": true,
+  "terminated_pids": [
+    9491,
+    11441
+  ]
+}

@@ -25,8 +25,7 @@ import torch
 from transformers import AutoTokenizer
 
 from src.amis_rewire.modeling import load_model as load_amis_model
-from src.comparative_baselines.layerskip_acl2024 import load_layerskip_model
-from src.comparative_baselines.layerskip_acl2024.train import configure_mbart
+from src.comparative_baselines.middle_align_acl2025.train import configure_mbart
 from src.comparative_baselines.middle_align_acl2025 import load_middle_align_model
 
 
@@ -52,31 +51,6 @@ def test_model_family(family: str, model_name: str, device: str) -> None:
     src_enc = tokenizer(src_texts, return_tensors="pt", padding=True).to(device)
     tgt_enc = tokenizer(text_target=tgt_texts, return_tensors="pt", padding=True).to(device)
     labels = tgt_enc["input_ids"]
-
-    # 1. LayerSkip
-    print(f"\n--- [{family}] Testing LayerSkip (ACL 2024) ---")
-    ls_model = load_layerskip_model(model_name, p_max=0.2).to(device)
-    configure_mbart(tokenizer, ls_model)
-    ls_model.train()
-    print(f"LayerSkip encoder layers: {ls_model.num_layers} | rates: {[round(p, 3) for p in ls_model.drop_probs[:4]]}...")
-
-    ls_out = ls_model(input_ids=src_enc["input_ids"], attention_mask=src_enc["attention_mask"], labels=labels)
-    assert ls_out.loss is not None and torch.isfinite(ls_out.loss), f"LayerSkip loss invalid: {ls_out.loss}"
-    print(f"LayerSkip Forward Pass: PASS (loss = {ls_out.loss.item():.4f})")
-
-    ls_out.loss.backward()
-    grad_count = sum(1 for p in ls_model.parameters() if p.grad is not None)
-    print(f"LayerSkip Backward Pass: PASS ({grad_count} tensors received gradients)")
-
-    ls_model.eval()
-    with torch.no_grad():
-        gen_tokens = ls_model.generate(input_ids=src_enc["input_ids"][:1], max_length=16, num_beams=2)
-        gen_text = tokenizer.decode(gen_tokens[0], skip_special_tokens=True)
-    print(f"LayerSkip Generate Pass: PASS (sample: '{gen_text}')")
-
-    del ls_model, ls_out
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
 
     # 2. Middle-Layer Alignment
     print(f"\n--- [{family}] Testing Middle-Layer Alignment (ACL 2025) ---")

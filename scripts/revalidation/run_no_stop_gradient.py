@@ -1,8 +1,8 @@
 """Empirical Stop-Gradient ablation on mT5-small.
 
 Compares CLRR with stop_gradient (standard) vs. without stop_gradient (no-sg).
-Records layer-wise gradient norms (||grad_W||_2) and training loss across 5 epochs
-to empirically prove gradient instability and representation collapse without sg(.).
+Records Trainer-logged pre-clipping global gradient norms and training loss across 5 epochs
+to compare the observed optimization behavior without assuming instability.
 """
 
 from __future__ import annotations
@@ -37,8 +37,8 @@ from amis_rewire.modeling import _find_stack_layers, _hidden_and_repack
 class CrossLayerResidualRewireNoStopGrad(nn.Module):
     """CLRR variant WITHOUT stop_gradient (removes .detach()).
 
-    Leads to backward gradients propagating backwards through cross-layer skip
-    connections, empirically demonstrating gradient accumulation and representation collapse.
+    Allows backward gradients through the added cross-layer connections.
+    Optimization and collapse effects require measurement on matched runs.
     """
 
     def __init__(
@@ -114,34 +114,20 @@ class CrossLayerResidualRewireNoStopGrad(nn.Module):
 
 
 class GradientNormTracker(TrainerCallback):
-    """Tracks L2 norm of gradients per layer during training."""
+    """Records global L2 norms captured by Trainer before clipping."""
 
-    def __init__(self, log_every_steps: int = 25):
-        self.log_every_steps = log_every_steps
+    def __init__(self):
         self.trace: list[dict[str, Any]] = []
 
-    def on_step_end(self, args: Any, state: Any, control: Any, model: nn.Module = None, **kwargs: Any):
-        if state.global_step % self.log_every_steps == 0 and model is not None:
-            total_norm = 0.0
-            layer_norms = {}
-            for name, param in model.named_parameters():
-                if param.requires_grad and param.grad is not None:
-                    param_norm = param.grad.data.norm(2).item()
-                    total_norm += param_norm ** 2
-                    if "block" in name and "layer" in name:
-                        parts = name.split(".")
-                        # e.g., encoder.block.0
-                        block_name = ".".join(parts[:3])
-                        layer_norms[block_name] = layer_norms.get(block_name, 0.0) + param_norm ** 2
-
-            total_norm = total_norm ** 0.5
-            layer_norms = {k: v ** 0.5 for k, v in layer_norms.items()}
-
+    def on_log(self, args: Any, state: Any, control: Any, logs=None, **kwargs: Any):
+        # Trainer logs the global norm returned by clipping, before clipping
+        # changes the gradients. on_step_end runs after zero_grad().
+        if logs and "grad_norm" in logs:
             self.trace.append({
                 "step": state.global_step,
-                "epoch": round(state.epoch, 2) if state.epoch else 0.0,
-                "total_grad_norm": round(total_norm, 4),
-                "layer_grad_norms": {k: round(v, 4) for k, v in layer_norms.items()},
+                "epoch": state.epoch,
+                "total_grad_norm": float(logs["grad_norm"]),
+                "measurement": "trainer_logged_pre_clip_global_norm",
             })
 
 
@@ -171,7 +157,7 @@ def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
     test_dataset = tokenize_dataset(load_split(data_dir, "test"), tokenizer, args)
     collator = DataCollatorForSeq2Seq(tokenizer=tokenizer, model=model, pad_to_multiple_of=8)
 
-    grad_tracker = GradientNormTracker(log_every_steps=10)
+    grad_tracker = GradientNormTracker()
 
     training_args = Seq2SeqTrainingArguments(
         output_dir=str(out_dir),
@@ -206,7 +192,7 @@ def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
         eval_dataset=val_dataset,
         tokenizer=tokenizer,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer),
+        compute_metrics=build_compute_metrics(tokenizer, references=load_split(data_dir, "validation")["target"]),
         callbacks=[grad_tracker],
     )
 
@@ -215,6 +201,7 @@ def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
 
     print("[eval] Evaluating on validation and test set...")
     val_metrics = trainer.evaluate(eval_dataset=val_dataset, metric_key_prefix="val")
+    trainer.compute_metrics = build_compute_metrics(tokenizer, references=load_split(data_dir, "test")["target"])
     test_metrics = trainer.evaluate(eval_dataset=test_dataset, metric_key_prefix="test")
 
     # Save gradient trace and summary
@@ -230,6 +217,7 @@ def train_no_stop_grad(epochs: float = 5.0, lr: float = 3e-4) -> None:
     }
 
     trace_file = repo_root / "results" / "analysis" / "no_sg_gradient_trace.json"
+    trace_file.parent.mkdir(parents=True, exist_ok=True)
     with open(trace_file, "w", encoding="utf-8") as f:
         json.dump(summary, f, indent=2)
 

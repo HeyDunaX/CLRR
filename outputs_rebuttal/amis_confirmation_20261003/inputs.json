@@ -1,0 +1,33 @@
+{
+  "data": {
+    "train": {
+      "rows": 4600,
+      "semantic_sha256": "97d6b80e0483ed635dd0b23f9a8c9b67276f2fc7c08c4edd639ee6668f0c78b5",
+      "public_url": "https://raw.githubusercontent.com/HeyDunaX/CLRR/db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9/data_processed/amis_mandarin/train.csv"
+    },
+    "validation": {
+      "rows": 576,
+      "semantic_sha256": "ba0d151b61aed25d04f935794a7f218667183b3d31748442ec6adac41319e8c5",
+      "public_url": "https://raw.githubusercontent.com/HeyDunaX/CLRR/db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9/data_processed/amis_mandarin/validation.csv"
+    },
+    "test": {
+      "rows": 575,
+      "semantic_sha256": "1fb3f3e20851a4e4667b4ad1eb662e713c04a89345fbb3017a51425d52c6c8ca",
+      "public_url": "https://raw.githubusercontent.com/HeyDunaX/CLRR/db4c2322e11725db3aa6bc8cf4c4c812e11bf8e9/data_processed/amis_mandarin/test.csv"
+    }
+  },
+  "source_files": [
+    "src/amis_rewire/__init__.py",
+    "src/amis_rewire/modeling.py",
+    "src/amis_rewire/metrics.py",
+    "src/amis_rewire/evaluation.py",
+    "src/amis_rewire/train.py",
+    "scripts/run_amis_confirmation.py",
+    "scripts/revalidation/measure_training_trajectory.py",
+    "scripts/revalidation/measure_checkpoint_mechanisms.py",
+    "scripts/revalidation/probe_generation_precision.py",
+    "scripts/revalidation/calibrate_turkish_batch.py",
+    "tests/smoke_precision_training.py",
+    "tests/smoke_trajectory_probe.py"
+  ]
+}

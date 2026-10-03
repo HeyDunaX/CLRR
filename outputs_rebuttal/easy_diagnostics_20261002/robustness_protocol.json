@@ -1,0 +1,119 @@
+{
+  "sacrebleu": "2.6.0",
+  "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0",
+  "samples": 10000,
+  "seed": 42,
+  "unit": "paired original test rows",
+  "references": "original CSV targets; strip outer whitespace only",
+  "ci": "95% percentile CI of signed corpus chrF difference",
+  "p": "SacreBLEU centered absolute-difference bootstrap",
+  "families": "8 new diagnostic tests; also 50 = previous 42 plus new 8, all post-hoc",
+  "status": "exploratory diagnostic; does not replace original BLEU/chrF++ results",
+  "limitations": "fixed checkpoints, one training seed; no inference about training-seed variance or morphology",
+  "native_api_check": {
+    "p_value": 0.0694930506949305,
+    "matches": true,
+    "signatures": {
+      "chrF2": "nrefs:1|bs:10000|seed:42|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+    }
+  },
+  "input_provenance": [
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mBART",
+      "method": "Baseline",
+      "prediction_path": "results/analysis/predictions/mbart-large-50-ami-cmn-baseline.csv",
+      "prediction_sha256": "e192e786d422649e8ee03dc7c1edbf0f47aa557d74546e9e0d1bc2a732828d9a",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mBART",
+      "method": "CLRR+LSR",
+      "prediction_path": "results/analysis/predictions/mbart-large-50-ami-cmn-jepa-clrr-enc.csv",
+      "prediction_sha256": "7a411144fdc70316307172985b6924ad521f9cb3b4d288e968afc7a5c0c414c6",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mBART",
+      "method": "CLRR-only",
+      "prediction_path": "results/mbart-large-50/clrr-only/test_predictions.csv",
+      "prediction_sha256": "9d30a2fdb07854147379a6fc784a93819675a8fe5058530b26c84e5af47576d7",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mBART",
+      "method": "LSR-only",
+      "prediction_path": "results/mbart-large-50/lsr-only/test_predictions.csv",
+      "prediction_sha256": "9eb99189d8cd1b9ca37422a61abdf4d619ece0a42ee8e885a23f93055b0966c0",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "NLLB",
+      "method": "Baseline",
+      "prediction_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\baseline\\test_predictions.csv",
+      "prediction_sha256": "63036b43d55c64085ca9135a053ba4cb323b57bc59444e0ec55cadf1d7b1ab68",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "NLLB",
+      "method": "CLRR+LSR",
+      "prediction_path": "outputs_rebuttal\\metric_audit_20261002\\remote_nllb_reports\\content\\CLRR\\results\\nllb-200\\clrr_enc\\test_predictions.csv",
+      "prediction_sha256": "731a8b2e4a40a62ffb5d76166ddc3c4c2c8620df6a7cbe9a7306eed4d5424a1f",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mT5",
+      "method": "Baseline",
+      "prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-baseline.csv",
+      "prediction_sha256": "7cd846736b27607828313c0407a5cfc8ea63db6049ee2295fe0271c31a4c2a6e",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mT5",
+      "method": "CLRR+LSR",
+      "prediction_path": "results/analysis/predictions/mt5-small-ami-cmn-jepa-clrr-enc.csv",
+      "prediction_sha256": "5451b0c64671ba8bbfade0a74e7d78bfe327752f2caea94a6fcecb8adfb6441c",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "ashaninka_spanish",
+      "backbone": "mBART",
+      "method": "Baseline (patience 4)",
+      "prediction_path": "results/ashaninka_spanish/mbart-ashaninka-es-baseline/test_predictions.csv",
+      "prediction_sha256": "64119f5a81918eea7edaf3623f3cc20d182c90afd4543e5a55a550aa94a4c043",
+      "reference_sha256": "e2232da892f0fed6c5f6572aff8dbeae11e0d1eff3757b7144ea303fb74cd36e"
+    },
+    {
+      "dataset": "ashaninka_spanish",
+      "backbone": "mBART",
+      "method": "CLRR+LSR (patience 10, selected epoch 14)",
+      "prediction_path": "results/ashaninka_patience10/runs/mbart-ashaninka-es-clrr-enc/test_predictions.csv",
+      "prediction_sha256": "a435cecb25a8d011c7cdbca1b258e5fdf54dfa948540a580ee98c90b94f17878",
+      "reference_sha256": "e2232da892f0fed6c5f6572aff8dbeae11e0d1eff3757b7144ea303fb74cd36e"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "ByT5",
+      "method": "Baseline",
+      "prediction_path": "outputs_rebuttal/metric_audit_20261002/full/historical_predictions/ByT5-Baseline.csv",
+      "prediction_sha256": "5b06e166d603d83669a4934ef2b5f87cf2f0e5e404ba6323f5ca41a6cae4abeb",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "ByT5",
+      "method": "CLRR+LSR",
+      "prediction_path": "outputs_rebuttal/metric_audit_20261002/full/historical_predictions/ByT5-CLRR+LSR.csv",
+      "prediction_sha256": "d721f99e0eac81167cdfe7b27785fe868191cd02028305f06cec5bf0cf30ae3c",
+      "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    }
+  ],
+  "script_sha256": "4c0a0877dabdb453b6a638024a6b65e728a09e8de6aac1dd5de765e097c2ed60"
+}

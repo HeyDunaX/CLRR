@@ -1,0 +1,10 @@
+{
+  "scores": {
+    "bleu": 20.57455808033854,
+    "chrf++": 39.901645678229364
+  },
+  "rows": 2000,
+  "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+  "generation_precision": "FP32/TF32 disabled",
+  "scope": "pretrained zero-shot reference; not a tuned method"
+}

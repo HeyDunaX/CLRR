@@ -1,0 +1,12 @@
+{
+  "status": "BASELINE_BEST_ARCHIVE_VERIFIED_LSR_PARTIAL_INTERRUPTED",
+  "cause": "Colab assignment lost; precise cause not established",
+  "completed_baseline_preserved": true,
+  "lsr_seed42_restart_from_pretrained": true,
+  "baseline_late_epoch20_probe_lost": true,
+  "baseline_original_selected_step_unavailable": true,
+  "baseline_epoch1_epoch5_probes_preserved": true,
+  "turkish_started": false,
+  "protocol_source_files_unchanged": true,
+  "foreground_kernel_execution": true
+}

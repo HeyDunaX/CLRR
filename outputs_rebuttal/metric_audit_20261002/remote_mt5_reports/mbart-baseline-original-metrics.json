@@ -1,0 +1,23 @@
+{
+  "model": "facebook/mbart-large-50-many-to-many-mmt",
+  "method": "baseline",
+  "stack": "encoder",
+  "jepa_weight": 0.1,
+  "seed": 42,
+  "parameters": 610879488,
+  "trainable_parameters": 610879488,
+  "extra_parameters": 0,
+  "eval_loss": 2.9579741954803467,
+  "eval_bleu": 17.21794002904433,
+  "eval_chrf++": 13.645671480045646,
+  "eval_runtime": 2.966,
+  "eval_samples_per_second": 194.2,
+  "eval_steps_per_second": 1.686,
+  "epoch": 20.0,
+  "test_loss": 2.835827112197876,
+  "test_bleu": 20.09289388507222,
+  "test_chrf++": 15.7201171310026,
+  "test_runtime": 5.275,
+  "test_samples_per_second": 109.004,
+  "test_steps_per_second": 0.948
+}

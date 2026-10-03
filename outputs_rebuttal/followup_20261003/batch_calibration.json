@@ -1,0 +1,15 @@
+{
+  "selected_microbatch": 32,
+  "gradient_accumulation": 4,
+  "global_batch": 128,
+  "scope": "throwaway pretrained Full-model optimizer smoke at worst length; no quality result or saved calibrated weights",
+  "trials": [
+    {
+      "microbatch": 32,
+      "passed": true,
+      "worst_length": 256,
+      "peak_gib": 26.62388038635254,
+      "elapsed_seconds": 0.8743987083435059
+    }
+  ]
+}

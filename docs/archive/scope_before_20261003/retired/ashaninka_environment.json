@@ -1,0 +1,19 @@
+{
+  "torch": "2.6.0+cu124",
+  "transformers": "4.57.6",
+  "peft": "0.21.0",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "bf16": true,
+  "languages": {
+    "facebook/mbart-large-50-many-to-many-mmt": {
+      "source_proxy": "es_XX",
+      "target": "es_XX",
+      "language_token_id": 250005
+    },
+    "facebook/nllb-200-distilled-600M": {
+      "source_proxy": "spa_Latn",
+      "target": "spa_Latn",
+      "language_token_id": 256161
+    }
+  }
+}

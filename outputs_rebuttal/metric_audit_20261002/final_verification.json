@@ -1,0 +1,11 @@
+{
+  "checked_predictions": 29,
+  "checked_datasets": 2,
+  "input_hashes_unchanged": true,
+  "canonical_csv_matches_json": true,
+  "markdown_score_coverage": "29/29",
+  "api_cli_verified": 3,
+  "cosine_aggregation_max_error": 1.1102230246251565e-16,
+  "no_training": true,
+  "no_model_weights_loaded": true
+}

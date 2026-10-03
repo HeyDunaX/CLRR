@@ -1,0 +1,558 @@
+{
+  "protocol": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.57.6",
+    "device": "cpu",
+    "dtype": "float32",
+    "seed": 42,
+    "dropout": 0,
+    "trained_weights": false,
+    "optimizer_steps": 0,
+    "source_sha256": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551"
+  },
+  "routing": {
+    "expected_layer_values": [
+      1.0,
+      2.0,
+      3.1,
+      4.2
+    ],
+    "actual_layer_values": [
+      1.0,
+      2.0,
+      3.0999999046325684,
+      4.199999809265137
+    ],
+    "distance_two_routing_pass": true,
+    "skip_source_gradient_is_none": true,
+    "destination_gradient": 1.0,
+    "cached_tensors_detached": true,
+    "cache_empty_after_forward": true
+  },
+  "backbones": {
+    "mBART": {
+      "zero_strength_zero_weight_vs_baseline": {
+        "loss_abs_difference": 0.0,
+        "logits_max_abs_difference": 0.0,
+        "gradient_max_abs_difference": 0.0,
+        "gradient_relative_l2_difference": 0.0,
+        "same_parameter_count": true
+      },
+      "cache_and_lsr": {
+        "intervening_batch_logits_max_abs_difference": 0.0,
+        "beam_generation_repeat_identical": true,
+        "cache_empty_after_calls": true,
+        "encoder_calls_source_and_target": 2,
+        "source_hidden_requires_grad": true,
+        "target_hidden_requires_grad": false,
+        "source_hidden_weighted_lsr_gradient_norm": 0.008386342786252499,
+        "ce": 3.880017042160034,
+        "weighted_lsr": 0.036607980728149414,
+        "encoder_ce_gradient_norm": 2.663508415222168,
+        "encoder_weighted_lsr_gradient_norm": 0.40674784779548645,
+        "encoder_lsr_to_ce_gradient_norm_ratio": 0.15271130204200745,
+        "encoder_gradient_cosine": 0.08939018845558167,
+        "scope": "Random tiny model only; these norms do not diagnose trained checkpoints."
+      },
+      "checkpointing": [
+        {
+          "method": "baseline",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 3.725290298461914e-09,
+          "gradient_relative_l2_difference": 1.3561003431306062e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "baseline",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 9.313225746154785e-10,
+          "gradient_relative_l2_difference": 6.044145739458884e-10,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 5.960464477539063e-08,
+          "gradient_relative_l2_difference": 2.5374280454570908e-08,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.4901161193847656e-08,
+          "gradient_relative_l2_difference": 1.1445954406497094e-08,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ],
+      "checkpointing_with_dropout": [
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 7.450580596923828e-09,
+          "gradient_relative_l2_difference": 1.018813478026459e-08,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ]
+    },
+    "NLLB_architecture_M2M100": {
+      "zero_strength_zero_weight_vs_baseline": {
+        "loss_abs_difference": 0.0,
+        "logits_max_abs_difference": 0.0,
+        "gradient_max_abs_difference": 0.0,
+        "gradient_relative_l2_difference": 0.0,
+        "same_parameter_count": true
+      },
+      "cache_and_lsr": {
+        "intervening_batch_logits_max_abs_difference": 0.0,
+        "beam_generation_repeat_identical": true,
+        "cache_empty_after_calls": true,
+        "encoder_calls_source_and_target": 2,
+        "source_hidden_requires_grad": true,
+        "target_hidden_requires_grad": false,
+        "source_hidden_weighted_lsr_gradient_norm": 0.0013922180514782667,
+        "ce": 3.9253273010253906,
+        "weighted_lsr": 0.0022950172424316406,
+        "encoder_ce_gradient_norm": 2.3475310802459717,
+        "encoder_weighted_lsr_gradient_norm": 0.022778162732720375,
+        "encoder_lsr_to_ce_gradient_norm_ratio": 0.009703028947114944,
+        "encoder_gradient_cosine": 0.0483713261783123,
+        "scope": "Random tiny model only; these norms do not diagnose trained checkpoints."
+      },
+      "checkpointing": [
+        {
+          "method": "baseline",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.862645149230957e-09,
+          "gradient_relative_l2_difference": 1.268817606536743e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "baseline",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.4901161193847656e-08,
+          "gradient_relative_l2_difference": 6.442859135091794e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.862645149230957e-09,
+          "gradient_relative_l2_difference": 1.3324592540442382e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.862645149230957e-09,
+          "gradient_relative_l2_difference": 1.4702584705261756e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ],
+      "checkpointing_with_dropout": [
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.862645149230957e-09,
+          "gradient_relative_l2_difference": 2.2394688325988454e-09,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ]
+    },
+    "mT5": {
+      "zero_strength_zero_weight_vs_baseline": {
+        "loss_abs_difference": 0.0,
+        "logits_max_abs_difference": 0.0,
+        "gradient_max_abs_difference": 0.0,
+        "gradient_relative_l2_difference": 0.0,
+        "same_parameter_count": true
+      },
+      "cache_and_lsr": {
+        "intervening_batch_logits_max_abs_difference": 0.0,
+        "beam_generation_repeat_identical": true,
+        "cache_empty_after_calls": true,
+        "encoder_calls_source_and_target": 2,
+        "source_hidden_requires_grad": true,
+        "target_hidden_requires_grad": false,
+        "source_hidden_weighted_lsr_gradient_norm": 0.007567892782390118,
+        "ce": 17.92972755432129,
+        "weighted_lsr": 0.08495903015136719,
+        "encoder_ce_gradient_norm": 17.354463577270508,
+        "encoder_weighted_lsr_gradient_norm": 0.19624368846416473,
+        "encoder_lsr_to_ce_gradient_norm_ratio": 0.011307965964078903,
+        "encoder_gradient_cosine": 0.09519709646701813,
+        "scope": "Random tiny model only; these norms do not diagnose trained checkpoints."
+      },
+      "checkpointing": [
+        {
+          "method": "baseline",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 3.8743019104003906e-07,
+          "gradient_relative_l2_difference": 1.255474870731632e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "baseline",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 4.172325134277344e-07,
+          "gradient_relative_l2_difference": 1.2068639421158878e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 4.917383193969727e-07,
+          "gradient_relative_l2_difference": 1.3600767090338195e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 2.8347130864858627e-07,
+          "gradient_relative_l2_difference": 1.1730067228654661e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ],
+      "checkpointing_with_dropout": [
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 6.033806130290031e-07,
+          "gradient_relative_l2_difference": 1.6100672439733898e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ]
+    },
+    "ByT5_architecture_T5": {
+      "zero_strength_zero_weight_vs_baseline": {
+        "loss_abs_difference": 0.0,
+        "logits_max_abs_difference": 0.0,
+        "gradient_max_abs_difference": 0.0,
+        "gradient_relative_l2_difference": 0.0,
+        "same_parameter_count": true
+      },
+      "cache_and_lsr": {
+        "intervening_batch_logits_max_abs_difference": 0.0,
+        "beam_generation_repeat_identical": true,
+        "cache_empty_after_calls": true,
+        "encoder_calls_source_and_target": 2,
+        "source_hidden_requires_grad": true,
+        "target_hidden_requires_grad": false,
+        "source_hidden_weighted_lsr_gradient_norm": 0.0068171205930411816,
+        "ce": 3.6862709522247314,
+        "weighted_lsr": 0.0566866397857666,
+        "encoder_ce_gradient_norm": 2.789719343185425,
+        "encoder_weighted_lsr_gradient_norm": 0.26812952756881714,
+        "encoder_lsr_to_ce_gradient_norm_ratio": 0.09611344337463379,
+        "encoder_gradient_cosine": 0.0023795412853360176,
+        "scope": "Random tiny model only; these norms do not diagnose trained checkpoints."
+      },
+      "checkpointing": [
+        {
+          "method": "baseline",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 4.470348358154297e-08,
+          "gradient_relative_l2_difference": 1.1513980524568979e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "baseline",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 4.470348358154297e-08,
+          "gradient_relative_l2_difference": 1.1122205023639253e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "clrr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 5.960464477539063e-08,
+          "gradient_relative_l2_difference": 1.0966371633003291e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "lsr",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 4.470348358154297e-08,
+          "gradient_relative_l2_difference": 1.156352169573438e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ],
+      "checkpointing_with_dropout": [
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": true,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 1.043081283569336e-07,
+          "gradient_relative_l2_difference": 1.323684415410753e-07,
+          "same_parameter_count": true,
+          "pass": true
+        },
+        {
+          "method": "full",
+          "dropout": 0.1,
+          "use_reentrant": false,
+          "loss_abs_difference": 0.0,
+          "logits_max_abs_difference": 0.0,
+          "gradient_max_abs_difference": 0.0,
+          "gradient_relative_l2_difference": 0.0,
+          "same_parameter_count": true,
+          "pass": true
+        }
+      ]
+    }
+  }
+}

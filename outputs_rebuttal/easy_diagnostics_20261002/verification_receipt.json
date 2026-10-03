@@ -1,0 +1,85 @@
+{
+  "checkpoint_comparisons": 40,
+  "all_checkpoint_checks_pass": true,
+  "max_gradient_relative_l2_difference": 1.6100672439733898e-07,
+  "zero_coefficient_cache_and_gradient_checks_pass": true,
+  "old_file_hash_checks": [
+    {
+      "path": "README.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/CLRR-paper/latex/clrr_main.tex",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/EXPERIMENTS.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/METRICS.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/PEFT_PAPERS_REFERENCE.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/RESEARCH_INSIGHTS.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/clrr_main.tex",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "docs/implementation_plan.md",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "outputs_comparative/comparative_scores.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "outputs_comparative/full_comparative_matrix_acl.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "outputs_revalidation/mbart_ablation_results.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "outputs_revalidation/morphological_breakdown.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/all_results.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/analysis/mbart_ablation_results.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/analysis/morphological_breakdown.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/comparative_scores.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/full_comparative_matrix_acl.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/metrics_standardized_scores.csv",
+      "matches_restored_sha256": true
+    },
+    {
+      "path": "results/peft_scores.csv",
+      "matches_restored_sha256": true
+    }
+  ],
+  "all_old_files_match": true
+}

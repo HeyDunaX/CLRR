@@ -1,0 +1,41 @@
+{
+  "parsed_python_files": 66,
+  "original_scientific_sources_unchanged": 9,
+  "generated_tables": 10,
+  "amis_mandarin": {
+    "rows": {
+      "train": 4600,
+      "validation": 576,
+      "test": 575
+    },
+    "hashes": {
+      "train": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6",
+      "validation": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "test": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    }
+  },
+  "opus100_turkish_english_20k_v2": {
+    "rows": {
+      "train": 20000,
+      "validation": 1946,
+      "test": 2000
+    },
+    "hashes": {
+      "train": "4acbc4de9f8ee2c097f464bdeff155587b6cf41da5d6d01840f9bbfd2974dbe4",
+      "validation": "7c10d64fa4bb760f2a127609c9829c744216a5261cb518534288d41effab0b14",
+      "test": "283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd"
+    }
+  },
+  "unit": {
+    "exit_code": 0,
+    "log": "unit.log"
+  },
+  "tiny_train_reload": {
+    "exit_code": 0,
+    "log": "tiny_train_reload.log"
+  },
+  "nllb_cli": {
+    "exit_code": 0,
+    "log": "nllb_cli.log"
+  }
+}

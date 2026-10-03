@@ -1,0 +1,60 @@
+{
+  "id": "mbart-full",
+  "rows": 575,
+  "scores": {
+    "bleu": 20.389641979862738,
+    "chrf++": 19.0823839997464
+  },
+  "checkpoint": {
+    "id": "mbart-full",
+    "family": "mBART",
+    "method": "full",
+    "dataset": "amis_mandarin",
+    "archive": "checkpoints/mbart-large-50-ami-cmn-jepa-clrr-enc/mbart-large-50-ami-cmn-jepa-clrr-enc-best.zip",
+    "bytes": 2270622454,
+    "sha256": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18",
+    "max_length": 256,
+    "src_lang": "tl_XX",
+    "tgt_lang": "zh_CN",
+    "reference_prediction_path": "results/analysis/predictions/mbart-large-50-ami-cmn-jepa-clrr-enc.csv",
+    "reference_prediction_sha256": "7a411144fdc70316307172985b6924ad521f9cb3b4d288e968afc7a5c0c414c6"
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "config_reconstruction": {
+    "config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/checkpoints/mbart-large-50-ami-cmn-baseline/mbart-large-50-ami-cmn-baseline-best.zip",
+      "member": "config.json",
+      "sha256": "b73b8bc4f70aaf61a6e91636942d7848891657e440ec686d7bb5233a7dad43ec"
+    },
+    "generation_config.json": {
+      "source": "paired trained baseline archive",
+      "archive": "/root/.cache/huggingface/hub/models--FiveC--amis-rewire-checkpoints/snapshots/63b0dbc4fab41a669ccb36ed2f22894868634b8a/checkpoints/mbart-large-50-ami-cmn-baseline/mbart-large-50-ami-cmn-baseline-best.zip",
+      "member": "generation_config.json",
+      "sha256": "1b165edd9af1cebb45d9b54c93a39afcb6e2ff38d1b901ea3eaeb73be91e816d"
+    }
+  },
+  "evaluation_protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "zh",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_external_tokenizer": null
+  },
+  "generation_precision": "FP32",
+  "elapsed_seconds": 17.98665761947632,
+  "prediction_sha256": "fe6530b3442ae1feaab18a63bad1fa8641a572874b9e78a51e602f20456434e0",
+  "reference_sha256": "afd68a27bbb81bd8938dbcc2a2858c017e8279b27d93281791c7a8b12637a770"
+}

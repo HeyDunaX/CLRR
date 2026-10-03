@@ -1,0 +1,36 @@
+{
+  "error_type": "ConnectionError",
+  "attempt": 1,
+  "frames": [
+    {
+      "file": "D:\\Code\\CLRR\\scratch\\watch_amis_confirmation_local.py",
+      "line": 111,
+      "function": "<module>"
+    },
+    {
+      "file": "C:\\Users\\Lenovo\\miniconda3\\envs\\clrr\\Lib\\concurrent\\futures\\_base.py",
+      "line": 449,
+      "function": "result"
+    },
+    {
+      "file": "C:\\Users\\Lenovo\\miniconda3\\envs\\clrr\\Lib\\concurrent\\futures\\_base.py",
+      "line": 401,
+      "function": "__get_result"
+    },
+    {
+      "file": "C:\\Users\\Lenovo\\miniconda3\\envs\\clrr\\Lib\\concurrent\\futures\\thread.py",
+      "line": 58,
+      "function": "run"
+    },
+    {
+      "file": "D:\\Code\\CLRR\\scratch\\watch_amis_confirmation_local.py",
+      "line": 75,
+      "function": "download"
+    },
+    {
+      "file": "C:\\Users\\Lenovo\\miniconda3\\envs\\clrr\\Lib\\site-packages\\requests\\models.py",
+      "line": 943,
+      "function": "generate"
+    }
+  ]
+}
