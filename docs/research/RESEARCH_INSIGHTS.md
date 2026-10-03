@@ -154,12 +154,21 @@ không là chuẩn acceptance hoặc bảo đảm phương pháp sẽ thắng.
 ## 9. Audit C đã xong và vòng D đã bắt đầu
 
 **Điểm dừng mới:** tác giả yêu cầu xong Full α0.20/λ0.10/seed42 thì tạm ngưng.
-Hướng dẫn và trạng thái cuối tại [CONFIGURATION_SEARCH_HANDOFF.md](CONFIGURATION_SEARCH_HANDOFF.md).
+Hướng dẫn và trạng thái cuối tại [CONFIGURATION_SEARCH_HANDOFF.md](../operations/CONFIGURATION_SEARCH_HANDOFF.md).
 Trial α0.05/λ0.10/seed42 đã xong: validation chrF++14.4092, thấp hơn Full gốc14.7317.
 Giảm routing chưa giúp ở trial này; chưa có kết luận từ cả screening hoặc test mới.
 Validation chỉ có1word-bigram reference (row197); trial α0.05 match0, nên câu này không
 tạo gain word-bigram cho trial đó. Bỏ row197 chỉ đổi chrF++ thành14.4440.
 No-detach CPU gradient/checkpoint gate đã đạt; GPU/control training vẫn chưa chạy.
+
+Trial α0.20/λ0.10/seed42 cũng đã xong20epochs, selected checkpoint720:
+validation BLEU17.4586, chrF++14.5738, chrF16.7469. Tốt hơn α0.05 nhưng chưa vượt
+α0.10 gốc (validation chrF++14.7317). Cả hai trial mới đều match0word-bigrams;
+thứ hạng giữa hai trial giữ nguyên trên chrF và khi bỏ row197. Chưa có test mới.
+**Insight tạm thời:** thay α theo hai hướng chưa giúp ở seed42; chưa đủ kết luận λ
+hay contribution CLRR vì sáu screening trials và confirmation chưa chạy.
+Đã tạm ngưng theo tác giả, backup cả hai checkpoints FiveC đã verify SHA/size,
+metrics/predictions lưu local; chưa nâng cấp phương pháp.
 
 Nguồn: `outputs_rebuttal/amis_confirmation_20261003/metric_influence/`.
 Đủ12systems/575rows, chrF++ khớp số cũ <1e-8; shortcut leave-one-out được kiểm tra

@@ -8,9 +8,11 @@ Tác giả yêu cầu **chạy xong model hiện tại rồi tạm ngưng**, vi�
 tiếp tục. Yêu cầu này thay thế việc tự động chạy hết suite trong phiên hiện tại.
 Không tự chạy tiếp khi đọc file này; đợi tác giả yêu cầu tiếp tục.
 
-- Model hiện tại: `mbart-amis-full_a020_l010-seed42`, Full CLRR+LSR, α=0.20, λ=0.10.
-- Điều phối đã bị chặn trước lượt tiếp theo; model hiện tại tiếp tục train và backup.
-- Trạng thái cuối, kết quả và xác nhận tắt Colab sẽ được cập nhật dưới đây khi hoàn tất.
+- Model cuối đã xong: `mbart-amis-full_a020_l010-seed42`, Full CLRR+LSR, α=0.20, λ=0.10.
+- Đã xong20epochs, selected checkpoint720; validation và HF backup đã hoàn tất.
+- Hai trial có COMPLETE receipts, metrics/predictions đã sync local; **không còn training**.
+- Suite tạm ngưng trước `mbart-amis-full_a010_l003-seed42`; còn6trial screening.
+- Colab đang được tắt sau kiểm tra bàn giao; trạng thái tắt cập nhật khi lệnh hoàn tất.
 - **Không chạy Turkish**, không chạy NLLB và chưa nâng cấp kiến trúc trong vòng này.
 
 ## 2. Mục tiêu khoa học
@@ -47,11 +49,15 @@ Character-only gap cùng seed còn +0.8602, nên gain chrF++ lớn không chứn
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Full gốc, reuse metadata C | 0.10 | 0.10 | 42 | 17.6437 | 14.7317 | Chưa có validation predictions |
 | `full_a005_l010` | 0.05 | 0.10 | 42 | 17.1225 | 14.4092 | 16.4998 |
-| `full_a020_l010` | 0.20 | 0.10 | 42 | Đang chờ kết thúc | Đang chờ kết thúc | Đang chờ kết thúc |
+| `full_a020_l010` | 0.20 | 0.10 | 42 | 17.4586 | 14.5738 | 16.7469 |
 
 α=0.05 chưa cải thiện so cấu hình gốc ở validation seed42. Chưa kết luận toàn bộ phương pháp.
+α=0.20 cũng thấp hơn cấu hình gốc14.7317, nhưng tốt hơn α0.05 trên cả ba metrics.
+Chỉ thay α chưa tạo cải thiện ở hai trial này; còn λ screening chưa chạy.
 Validation576rows chỉ có **1 word-bigram reference ở row197**; test575rows có3 word-bigrams.
 Trial α0.05 không match bigram đó; bỏ row197 chrF++=14.4440, chrF=16.5395.
+Trial α0.20 cũng match0; bỏ row197 chrF++=14.6108, chrF=16.7894.
+Thứ hạng hai trial mới không đổi trên chrF++/chrF hoặc khi bỏ row197.
 Phải kiểm tra thứ hạng candidate bằng character-only và leave-one-out trước confirmation;
 không tự đổi primary metric chỉ để lấy kết quả đẹp.
 
@@ -145,6 +151,7 @@ colab exec -s colab -f scratch/launch_configuration_search_remote.py --timeout 4
 
 Restore giải nén zip, đối chiếu protocol HF với bundle, tải small artifacts, xác minh
 archive metadata pinned revision và prediction hash. **Không tải weights và không truy cập test.**
+Helper restore đã chạy kiểm tra thực tế thành công: phục hồi đúng2 COMPLETE trials từ HF.
 Runner bỏ qua trial có COMPLETE; dừng nếu gặp run folder dở dang để kiểm tra thay vì overwrite.
 Lệnh launch giữ kernel hoạt động; cần theo dõi trong lúc chạy, không tắt máy trước backup.
 Trong Codex, lỗi truy cập profile Colab/SSH do sandbox cần chạy công cụ có quyền network/profile;
