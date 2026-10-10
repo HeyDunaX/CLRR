@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "id": "A05",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 65536
+    },
+    {
+      "id": "A06",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 68608
+    }
+  ],
+  "bundle_sha256": "4bbf5c5270460c0aaf4cb2b26177f68504afd248c7d03ec8611773bfc800cd1d"
+}

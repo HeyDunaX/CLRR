@@ -1,0 +1,54 @@
+{
+  "status": "VERIFIED",
+  "family": "lsr",
+  "seed": 43,
+  "selected_step": 612,
+  "selected_epoch": 17.0,
+  "completed_epochs": 20.0,
+  "scores": {
+    "validation": {
+      "bleu": 16.738096849526915,
+      "chrfpp": 14.274377140832009,
+      "rows": 576,
+      "prediction_sha256": "a58010cd998ef499232e774217aa38ae4d1a43f2170b90d847e9076592ed0899"
+    },
+    "test": {
+      "bleu": 19.81925092512863,
+      "chrfpp": 18.660999211770736,
+      "rows": 575,
+      "prediction_sha256": "539c57b0ecd7006bc1fdb7808f9d1f01dad0e09fc8f8c5d4fbd6551238e9247b"
+    }
+  },
+  "bundle_hashes_match": true,
+  "hf_archive": {
+    "status": "COMPLETE",
+    "family": "lsr",
+    "seed": 43,
+    "run": "mbart-amis-lsr_l010-seed43-accumfixed",
+    "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005/lsr/seed43/runs/mbart-amis-lsr_l010-seed43-accumfixed/checkpoint-612",
+    "best_metric": 14.274377140832009,
+    "completed_epochs": 20.0,
+    "hf_repo": "FiveC/amis-rewire-checkpoints",
+    "hf_prefix": "amis_accumulation_confirmation_20261005",
+    "selected_and_exported_weight_digest": "a10ed90243625527102fd44cd1ce6b2b1bab5c5dbf01a02dc9cbc29aabf3b699",
+    "post_selection_test_bleu": 19.81925092512863,
+    "post_selection_test_chrfpp": 18.660999211770736,
+    "old_scores_untouched": true,
+    "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only",
+    "archive_size": 2270711235,
+    "archive_sha256": "cdb0372a75e9be39cec4808d82f08d284438616a09bde8b7a28b58d228a18396",
+    "archive_path": "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/mbart-amis-lsr_l010-seed43-accumfixed-best.zip",
+    "hf_revision": "e1fc48e1ba72873efbdd2197553949cf92bf8ff1",
+    "remote_archive_verified": true,
+    "remote_metadata_verified": {
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/provenance/final_trainer_state.json": true,
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/provenance/COMPLETE.json": true,
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/selected_provenance/trainer_state.json": true,
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/metrics.json": true,
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/test_metrics.json": true,
+      "amis_accumulation_confirmation_20261005/mbart-amis-lsr_l010-seed43-accumfixed/test_predictions.csv": true
+    },
+    "source_hashes_match": true
+  },
+  "zip_sha256": "09e769ac67f8985e6af94b6ba040329fcc17e3ab4737969eb7977f75ce9ced27"
+}

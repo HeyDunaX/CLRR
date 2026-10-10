@@ -1,0 +1,30 @@
+{
+  "files": {
+    "scratch/amis_configuration_code.zip": "8f78d43e6c3271662ce29b3450ddf32ff230ce7b1e1b7b8eb7bea619523f7c52",
+    "scratch/start_configuration_setup.py": "8a3ce9c9be44165a1d0aa8dbb81a3e598eb70151f744355431069f84f2940c71",
+    "scratch/configuration_setup_status.py": "855092363f2e0452450ed321fcdb15e1945bac27a591c4bb1e632e1599c002a8",
+    "scratch/set_configuration_colab_auth.py": "6e04396406f3d773182c7879171df5e8438e4013d19584edaafde8008fcbd3af",
+    "scratch/restore_configuration_search_remote.py": "3f46870c250f11720b785aace56ec494ef6c34b9426721978a435d0947bebde2",
+    "scratch/monitor_configuration_remote.py": "a06421ebf6bb1e0433bb6e900670927435af1b8d52a0dd0a363f1b7ab140bc7d",
+    "scratch/launch_configuration_search_remote.py": "4cc9721e68c891b44b9ea6ec590b1a43ac375ebb1bf97f819c57d7ea9d4e43f3",
+    "scratch/snapshot_configuration_local.py": "96999736135d4d52aca24e5aed1db61bc6da42f9c9f425321d4d517e91cf0973",
+    "scratch/sync_configuration_predictions.py": "9c6152cd5deb6b8f1fa13d70787c2c8f46c67a17de1b3b398b806f87a0ad2c17",
+    "scratch/verify_configuration_handoff.py": "b96590d6242ec70e30f5c0f9ac97014cd1099c1e84ce6780ac76b5838cda6572",
+    "src/amis_rewire/ablation.py": "2dac024b77250e27c62db075e82a463685bbb6157a0a5cd8f53ee931e9d50cc8",
+    "tests/smoke_attached_routing.py": "2eafeae2228fcf9c59d6f49eb3693ebd1842467b6dfbff7cae98f656a9c95813",
+    "scripts/revalidation/train_amis_no_detach.py": "0f61182a3107d9ad0e15918929889719971c213dc4429f7d167ace19eb65753c",
+    "scripts/revalidation/audit_configuration_predictions.py": "dab11bb680cd16f1be62774a0c5aa658b1bb6f3423d3ad53eb1ed11f9fd4c598",
+    "docs/operations/CONFIGURATION_SEARCH_HANDOFF.md": "3fe373a4dcb1b79d29787e148d76fe1cfc43feccd590f6d22202a7f9fa971a7b",
+    "docs/research/CLRR_GO_NOGO_PLAN.md": "8b9c844f5dab36b797cc78bb423502b06a439d5697524ea6e3d63f5563f2336d",
+    "outputs_rebuttal/amis_configuration_20261003_v1/inputs.json": "9f21350ffa8df6e52d59d8a0272b189569260d09eeceedc9ab539e61016b804d",
+    "outputs_rebuttal/amis_configuration_20261003_v1/environment_freeze.txt": "f941299e83918fc3a389ebc199f831594af3b79135b924c50b0a50878a225b46",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a005_l010-seed42/COMPLETE.json": "e15325ccc814d042056944afd162c62ba70b41a0202ae0f8b4bd71e36aa79e31",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a005_l010-seed42/metrics.json": "e99f30cc6cf7710d854f8e233150fe69c63745ba37abf3a0f26b7d47b334ee35",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a005_l010-seed42/validation_predictions.csv": "3fe0cf586cd71c27d82b4a2fa520451657d11b99f6c5fbbfc3653b3ca536390b",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a020_l010-seed42/COMPLETE.json": "c7d61d943bc12258f7f75eb2c1ffc9273ab92ebfb1871a4ddd9b5b9b15d07cbc",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a020_l010-seed42/metrics.json": "06440000ba7184f0dfee5fd8bce98b34cf9574f21d559ed8e2d9112429ce9a9a",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a020_l010-seed42/validation_predictions.csv": "da6a005c3789baaa260e89c2568d0fe225e92ddfd31cba50e2f98eccad832e63"
+  },
+  "purpose": "Local handoff only; no credentials or model weights",
+  "bundle_sha256": "8b5d470a703f18c64338c008b52612838e9cbc1f01489c4eebd2f7e55a1a4daf"
+}

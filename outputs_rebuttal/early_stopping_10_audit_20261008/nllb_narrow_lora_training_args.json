@@ -1,0 +1,20 @@
+{
+  "path": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/best.zip",
+  "revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+  "member": "training_args.bin",
+  "inspection": "Static pickle opcode reading only; no torch.load or pickle execution.",
+  "fields": {
+    "per_device_train_batch_size": 16,
+    "num_train_epochs": 20.0,
+    "learning_rate": 0.0002,
+    "weight_decay": 0.0,
+    "gradient_accumulation_steps": 8,
+    "bf16": true,
+    "metric_for_best_model": "eval_chrf++",
+    "seed": 42,
+    "data_seed": 42,
+    "generation_max_length": 128,
+    "generation_num_beams": 4
+  },
+  "bytes_transferred": 360110
+}

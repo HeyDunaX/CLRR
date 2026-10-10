@@ -1,0 +1,80 @@
+[
+  {
+    "run": "mbart-amis-full_a010_l003-seed43",
+    "seed": 43,
+    "alpha": 0.1,
+    "lambda_": 0.03,
+    "best_checkpoint": "checkpoint-720",
+    "full_chrf++": 14.477538505667981,
+    "full_bleu": 17.216600049529834,
+    "full_chrf0": 16.607515156060217,
+    "no197_chrf++": 14.511837426782135,
+    "no197_bleu": 17.26381172217714,
+    "delta_no197_chrf++": 0.03429892111415356
+  },
+  {
+    "run": "mbart-amis-full_a010_l003-seed44",
+    "seed": 44,
+    "alpha": 0.1,
+    "lambda_": 0.03,
+    "best_checkpoint": "checkpoint-612",
+    "full_chrf++": 14.12970075354989,
+    "full_bleu": 16.790294172271736,
+    "full_chrf0": 16.285482459745214,
+    "no197_chrf++": 14.164323739327179,
+    "no197_bleu": 16.837192911379052,
+    "delta_no197_chrf++": 0.03462298577728795
+  },
+  {
+    "run": "mbart-amis-full_a010_l010-seed42-replica",
+    "seed": 42,
+    "alpha": 0.1,
+    "lambda_": 0.1,
+    "best_checkpoint": "checkpoint-720",
+    "full_chrf++": 14.731667659986464,
+    "full_bleu": 17.64365142895975,
+    "full_chrf0": 16.87520033372062,
+    "no197_chrf++": 14.767797437036847,
+    "no197_bleu": 17.69258596993463,
+    "delta_no197_chrf++": 0.03612977705038389
+  },
+  {
+    "run": "mbart-amis-lsr_l003-seed43",
+    "seed": 43,
+    "alpha": 0.0,
+    "lambda_": 0.03,
+    "best_checkpoint": "checkpoint-648",
+    "full_chrf++": 14.010880174033186,
+    "full_bleu": 16.362132373650912,
+    "full_chrf0": 16.118664366995898,
+    "no197_chrf++": 14.045571696833326,
+    "no197_bleu": 16.407905275140415,
+    "delta_no197_chrf++": 0.03469152280013965
+  },
+  {
+    "run": "mbart-amis-lsr_l003-seed44",
+    "seed": 44,
+    "alpha": 0.0,
+    "lambda_": 0.03,
+    "best_checkpoint": "checkpoint-648",
+    "full_chrf++": 14.081403953148813,
+    "full_bleu": 16.833193983741726,
+    "full_chrf0": 16.229853186440483,
+    "no197_chrf++": 14.116350554297652,
+    "no197_bleu": 16.880444226707485,
+    "delta_no197_chrf++": 0.03494660114883885
+  },
+  {
+    "run": "mbart-amis-lsr_l010-seed42",
+    "seed": 42,
+    "alpha": 0.0,
+    "lambda_": 0.1,
+    "best_checkpoint": "checkpoint-576",
+    "full_chrf++": 14.167405662566932,
+    "full_bleu": 16.568762896375635,
+    "full_chrf0": 16.273105886464958,
+    "no197_chrf++": 14.201112495980395,
+    "no197_bleu": 16.614195221873477,
+    "delta_no197_chrf++": 0.033706833413463144
+  }
+]

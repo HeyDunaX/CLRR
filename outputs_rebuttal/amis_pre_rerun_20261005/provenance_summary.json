@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-05",
+  "source_receipts": {
+    "src/amis_rewire/train.py": {
+      "sha256": "fce206f0e9114df4dca6d48f5f9a73c786e9e2db976303e5603f917a60dba15b",
+      "ast_parse": "PASS"
+    },
+    "src/amis_rewire/evaluation.py": {
+      "sha256": "e6a5da9de30315c2a0624888eb18d9811e7716966c5a8d730da5b32d5b90c6ef",
+      "ast_parse": "PASS"
+    },
+    "src/amis_rewire/scientific_records.py": {
+      "sha256": "caeb724bc15934dfd756fc77fffac74f43c2edf8b6cf80991185bb666fcf5648",
+      "ast_parse": "PASS"
+    },
+    "scripts/revalidation/run_amis_warmup_worker.py": {
+      "sha256": "804c85e5b2969b361c24511c651fea72194f0246cff48e3d9f481115c7e0a8c6",
+      "ast_parse": "PASS"
+    }
+  },
+  "historical_run_configuration_count": 32,
+  "scope": "Static code and artifact audit only; no GPU, no training, no source mutation.",
+  "baseline_reuse": "Not unconditional: metadata equality, runtime/gradient normalization, native selected-checkpoint protocol must all be supported.",
+  "confirmed_behaviors": [
+    "CheckpointBackupCallback.on_save is no-op; generic CLI has no per-epoch remote resumable backup.",
+    "archive_best_model warns and returns after safe_hf_upload exhaustion; generic CLI can finish despite missing model archive on HF.",
+    "auto_resume defaultTrue selects latest checkpoint from outputdir without config/source/runtime compatibility validation.",
+    "scientific_records selection receipt hardcodes beam1; incorrect if CLI eval_beams differs.",
+    "scientific_records snapshot epochs1/4/10 do not adapt to routing_warmup_ratio.",
+    "duplicate save_safetensors keyword takes TypeError fallback on supported current versions; redundant path, not a failed training setup.",
+    "warmupworker checks HF archive SHA256/size and best_reload/probes before COMPLETE and checkpoint cleanup."
+  ],
+  "no_claims": [
+    "No assertion old runtime is exactly current runtime.",
+    "No assertion normalized Adam step equivalent to multiplying LR by4.",
+    "No new model-quality comparison."
+  ],
+  "baseline_selection_metadata": [
+    {
+      "id": "mbart-amis-baseline-seed42",
+      "v5_best_step": null,
+      "historical_metrics_selected_checkpoint": "recovered selected best; original selected step unavailable",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "mbart-amis-baseline-seed43",
+      "v5_best_step": 252,
+      "historical_metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/checkpoint-720",
+      "status": "CONFLICT: metrics checkpoint suffix and V5 best_step differ; archive/trainer chronology needed."
+    },
+    {
+      "id": "mbart-amis-baseline-seed44",
+      "v5_best_step": 504,
+      "historical_metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/checkpoint-612",
+      "status": "CONFLICT: metrics checkpoint suffix and V5 best_step differ; archive/trainer chronology needed."
+    }
+  ]
+}

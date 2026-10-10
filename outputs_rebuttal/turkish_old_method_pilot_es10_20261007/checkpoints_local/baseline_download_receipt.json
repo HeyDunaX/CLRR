@@ -1,0 +1,12 @@
+{
+  "path": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/baseline/seed42/backups/mbart-tr-en-baseline-seed42-es10/mbart-tr-en-baseline-seed42-es10-best.zip",
+  "size": 2271315300,
+  "sha256": "bf10a39da87fde3b45a78a78bed168572d1a52def677d04d4e03d87134cb49d1",
+  "family": "baseline",
+  "seed": 42,
+  "account": "1",
+  "local_path": "D:\\Code\\CLRR\\outputs_rebuttal\\turkish_old_method_pilot_es10_20261007\\checkpoints_local\\mbart-tr-en-baseline-seed42-es10-best.zip",
+  "verified": true,
+  "verified_at_epoch": 1791426594.8296943,
+  "verification": "remote/local SHA256, size, ZIP checkpoint inventory"
+}

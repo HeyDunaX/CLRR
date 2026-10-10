@@ -38,6 +38,9 @@ class MiddleAlignMT5(nn.Module):
     Zero extra parameters (Delta theta = 0).
     """
 
+    # Both CE and contrastive alignment are microbatch means.
+    accepts_loss_kwargs = False
+
     def __init__(
         self,
         base_model: nn.Module,
@@ -179,9 +182,10 @@ def load_middle_align_model(
     middle_layer_idx: int = 4,
     temperature: float = 0.1,
     align_weight: float = 0.1,
+    revision: str | None = None,
 ) -> MiddleAlignMT5:
     """Loads any Seq2Seq model (mT5, ByT5, mBART) and wraps with Middle-Layer Alignment."""
-    base = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path)
+    base = AutoModelForSeq2SeqLM.from_pretrained(model_name_or_path, revision=revision)
     pad_id = getattr(base.config, "pad_token_id", 0) or 0
     return MiddleAlignMT5(
         base,

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "torch": "2.6.0+cu124",
+  "account": "2",
+  "completed_utc_epoch": 1791422451.6824062,
+  "bundle_manifest_sha256": "a6bdaab639a2824fc494ed7d0f37d1d957c04de55c8f91c7d0c716e2405b9dfa"
+}

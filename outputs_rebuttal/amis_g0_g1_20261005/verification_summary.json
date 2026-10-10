@@ -1,0 +1,39 @@
+{
+  "status": "VERIFIED_DIAGNOSTICS_TECHNICAL_HOLD_FOR_OLD_TRAINING",
+  "collection_hashes": "PASS",
+  "archive_hashes": "PASS",
+  "gpu_regression": "PASS",
+  "target_anchor": [
+    {
+      "seed": 43,
+      "anchor_cosine": 0.9724889099597931,
+      "anchor_l2": 0.23417899012565613,
+      "routed_lsr": 0.20200505293905735,
+      "raw_lsr": 0.20743823610246181,
+      "gradient_cosine_routed_raw": 0.9561702276811611,
+      "routed_ce_lsr_cosine": 0.058974435950691725,
+      "raw_ce_lsr_cosine": 0.041802606208062476
+    },
+    {
+      "seed": 44,
+      "anchor_cosine": 0.9728276655077934,
+      "anchor_l2": 0.23275205679237843,
+      "routed_lsr": 0.205422792583704,
+      "raw_lsr": 0.21105743013322353,
+      "gradient_cosine_routed_raw": 0.9597030772213215,
+      "routed_ce_lsr_cosine": 0.05845223069857661,
+      "raw_ce_lsr_cosine": 0.04239155771322006
+    },
+    {
+      "seed": 42,
+      "anchor_cosine": 0.9730662703514099,
+      "anchor_l2": 0.23172984272241592,
+      "routed_lsr": 0.19972317479550838,
+      "raw_lsr": 0.20425484329462051,
+      "gradient_cosine_routed_raw": 0.9592777850551445,
+      "routed_ce_lsr_cosine": 0.04717999898359756,
+      "raw_ce_lsr_cosine": 0.030435994181389914
+    }
+  ],
+  "optimizer_steps": 0
+}

@@ -1,0 +1,21 @@
+{
+  "status": "COMPLETE",
+  "run": "mbart-amis-baseline-seed42-corrected",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/checkpoint-720",
+  "best_metric": 13.901540564847089,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_corrected_baseline42_20261005",
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; epoch selection metadata uploaded. Full optimizer/RNG remains local.",
+  "archive_sha256": "e2d5c884c8c2da270aa1bbeaa4e36990021f1559b5fca2926d05cca3f5b0e53c",
+  "archive_size": 2270665528,
+  "remote_path": "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/mbart-amis-baseline-seed42-corrected-best.zip",
+  "remote_archive_verified": true,
+  "remote_metadata_verified": {
+    "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/provenance/final_trainer_state.json": true,
+    "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/selected_provenance/trainer_state.json": true,
+    "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/metrics.json": true,
+    "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/test_predictions.csv": true
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "scope": "local CPU recomputation and source inspection; no checkpoint load or GPU rerun",
+  "sacrebleu_version": "2.6.0",
+  "validation_rows": 576,
+  "inventory": {
+    "models": 21,
+    "archive_sha256_present": 21,
+    "archive_bytes_present": 21,
+    "revision_present": 21,
+    "eval_bleu_present": 21,
+    "eval_chrf++_present": 21,
+    "eval_loss_present": 21,
+    "validation_predictions_marked_present": 9
+  },
+  "route_checks": [
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "seed": 42,
+      "scores": {
+        "route_on": {
+          "bleu": 14.460362133207783,
+          "chrf++": 12.471060329656588,
+          "chrf0": 14.407082915802208
+        },
+        "route_off": {
+          "bleu": 14.51700331085922,
+          "chrf++": 12.36857618426594,
+          "chrf0": 14.31594229997985
+        }
+      },
+      "native_score_max_error": 0.0,
+      "on_off_changed": 515,
+      "v2_valid_on_scores": {
+        "bleu": 17.64365142895975,
+        "chrf++": 14.731667659986464,
+        "chrf0": 16.87520033372062
+      },
+      "v3_on_vs_v2_on_changed": 529,
+      "v3_on_minus_v2_on_bleu": -3.183289295751967,
+      "csv_sha256": "c73539d518ca2ce2d31722656d554fe7a3b19b458e3d048adc70d95c4e9125d8"
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "seed": 43,
+      "scores": {
+        "route_on": {
+          "bleu": 15.367453770388956,
+          "chrf++": 13.08366605985077,
+          "chrf0": 15.064582883329106
+        },
+        "route_off": {
+          "bleu": 14.558306481179224,
+          "chrf++": 12.510034862775704,
+          "chrf0": 14.42407470898625
+        }
+      },
+      "native_score_max_error": 7.105427357601002e-15,
+      "on_off_changed": 512,
+      "v2_valid_on_scores": {
+        "bleu": 17.06453509078412,
+        "chrf++": 14.41260859405018,
+        "chrf0": 16.587805503890078
+      },
+      "v3_on_vs_v2_on_changed": 517,
+      "v3_on_minus_v2_on_bleu": -1.6970813203951636,
+      "csv_sha256": "93609d51c3c31c76397a5dbc5646c2684690b0b92b461c813925ada23f6f86dd"
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "seed": 44,
+      "scores": {
+        "route_on": {
+          "bleu": 14.336374053478757,
+          "chrf++": 12.182276324637693,
+          "chrf0": 14.155675298794243
+        },
+        "route_off": {
+          "bleu": 14.6756975677253,
+          "chrf++": 12.525226970597906,
+          "chrf0": 14.441162648244537
+        }
+      },
+      "native_score_max_error": 5.329070518200751e-15,
+      "on_off_changed": 512,
+      "v2_valid_on_scores": {
+        "bleu": 16.932429309462734,
+        "chrf++": 14.348330285453207,
+        "chrf0": 16.512759705934826
+      },
+      "v3_on_vs_v2_on_changed": 529,
+      "v3_on_minus_v2_on_bleu": -2.596055255983977,
+      "csv_sha256": "db992a069187decca87e3649a19d29e9d9a54c73275f7e17a02dd4cfb4ffdcf1"
+    }
+  ],
+  "probes": {
+    "models": 21,
+    "gradient_batches": 168,
+    "decoder_ce_norm_zero_batches": 48,
+    "models_with_zero_decoder_ce": [
+      "mbart-amis-baseline-seed42",
+      "mbart-amis-baseline-seed43",
+      "mbart-amis-baseline-seed44",
+      "mbart-amis-clrr-seed42",
+      "mbart-amis-clrr-seed43",
+      "mbart-amis-clrr-seed44"
+    ],
+    "numpy_representation_files": 0
+  },
+  "rank_formula_check": {
+    "worker_covariance_effective_rank_field": 1.2195121951219514,
+    "actual_participation_ratio": 1.2195121951219512,
+    "entropy_effective_rank_covariance_energy": 1.384145488461686
+  },
+  "worker_sha256": "c04c190711db84a5cb6278d9ca99eaf6cb34bef53e3e79853e451ac6aee07619",
+  "bundled_worker_sha256": "28751e9d868c0ef91875bb5c1f92a792713410eb3dd0b687fac0d42fe3ecfa53",
+  "bundled_worker_language_configuration_present": false,
+  "local_tokenizer_reproduction": {
+    "class": "MBart50TokenizerFast",
+    "default_src_lang": "en_XX",
+    "default_tgt_lang": null,
+    "unconfigured_target_encoding": "TypeError: 'NoneType' object is not iterable",
+    "configured_source_prefix": 250047,
+    "configured_target_prefix": 250025
+  },
+  "conclusion": "V3 CSV scores reproduce, but route-on fails previous validation replay; actual remote tokenizer/runtime provenance is missing. Do not promote V3 route percentages or rank patterns as matched-protocol mechanism evidence. Gradient accumulator uses intersection of non-None CE/LSR gradients; baseline and CLRR-only controls exclude decoder CE (48 batches). Covariance rank field is participation ratio, not entropy effective rank. Previous verified test quality remains unchanged."
+}

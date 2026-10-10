@@ -1,0 +1,186 @@
+{
+  "controls": {
+    "passed": true,
+    "cases": [
+      {
+        "id": "A01",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 84480
+      },
+      {
+        "id": "A02",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 84480
+      },
+      {
+        "id": "A03",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 10240
+      },
+      {
+        "id": "A04",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 2752
+      },
+      {
+        "id": "B01",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 80128
+      },
+      {
+        "id": "B02",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 80128
+      },
+      {
+        "id": "B03",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 65536
+      },
+      {
+        "id": "B04",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 68608
+      },
+      {
+        "id": "B05",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 2688
+      },
+      {
+        "id": "C01",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 114688
+      },
+      {
+        "id": "D01",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 94208
+      },
+      {
+        "id": "D02",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 94208
+      },
+      {
+        "id": "A05",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 65536
+      },
+      {
+        "id": "A06",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 68608
+      },
+      {
+        "id": "ORIGINAL_clrr",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 84480
+      },
+      {
+        "id": "ORIGINAL_lsr",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 84480
+      },
+      {
+        "id": "ORIGINAL_full",
+        "passed": true,
+        "finite_gradients": true,
+        "save_reload_logits_match": true,
+        "accumulation_loss_contract": true,
+        "trainable_params": 84480
+      }
+    ],
+    "bundle_sha256": "9d666d13105ccf84016db2ebf58c65fbad787535b5eb0806633449b6a36b36e5"
+  },
+  "candidates": {
+    "passed": true,
+    "cases": [
+      {
+        "id": "U1C",
+        "checkpoint_gradient_match": true,
+        "accumulation4_match": true,
+        "save_reload_match": true,
+        "finite_gradients": true,
+        "extra_parameters": 0
+      },
+      {
+        "id": "U1F",
+        "checkpoint_gradient_match": true,
+        "accumulation4_match": true,
+        "save_reload_match": true,
+        "finite_gradients": true,
+        "extra_parameters": 0
+      },
+      {
+        "id": "U2L",
+        "checkpoint_gradient_match": true,
+        "accumulation4_match": true,
+        "save_reload_match": true,
+        "finite_gradients": true,
+        "extra_parameters": 0
+      },
+      {
+        "id": "U2F",
+        "checkpoint_gradient_match": true,
+        "accumulation4_match": true,
+        "save_reload_match": true,
+        "finite_gradients": true,
+        "extra_parameters": 0
+      }
+    ],
+    "bundle_sha256": "b48bc2a977b38362ebc88d2c9dabbe0504cc8e7e4e3d21914a88d91620b5a543",
+    "centered_formula_gradient_match": true,
+    "target_stop_gradient": true,
+    "precache_formula_detach_match": true,
+    "degenerate_batch_finite": true
+  }
+}

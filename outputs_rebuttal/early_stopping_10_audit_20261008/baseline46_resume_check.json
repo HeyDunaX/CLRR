@@ -1,0 +1,17 @@
+{
+  "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-46/best.zip",
+  "members": [
+    "training_receipt.json",
+    "special_tokens_map.json",
+    "tokenizer.json",
+    "training_args.bin",
+    "config.json",
+    "generation_config.json",
+    "sentencepiece.bpe.model",
+    "pytorch_model.bin",
+    "tokenizer_config.json"
+  ],
+  "bytes_transferred": 46049,
+  "resume_from_exact_stop_supported": false,
+  "reason": "Selected best archive; exact stopping-state weights, optimizer, scheduler, RNG and trainer state must all be present to resume."
+}

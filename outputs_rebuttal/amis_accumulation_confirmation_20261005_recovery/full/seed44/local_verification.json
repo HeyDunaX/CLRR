@@ -1,0 +1,54 @@
+{
+  "status": "VERIFIED",
+  "family": "full",
+  "seed": 44,
+  "selected_step": 684,
+  "selected_epoch": 19.0,
+  "completed_epochs": 20.0,
+  "scores": {
+    "validation": {
+      "bleu": 17.11534580723468,
+      "chrfpp": 14.216383723587075,
+      "rows": 576,
+      "prediction_sha256": "cf85f21cf80c5da8df0ecad7acc95657695733d7407e0a2cb15afa76fa2f5ee0"
+    },
+    "test": {
+      "bleu": 19.891624365979126,
+      "chrfpp": 18.699629087985407,
+      "rows": 575,
+      "prediction_sha256": "516253b5c611d1bb3a09a372bfdea3e56d1a7791f76592e55a3ec6d696c33303"
+    }
+  },
+  "bundle_hashes_match": true,
+  "hf_archive": {
+    "status": "COMPLETE",
+    "family": "full",
+    "seed": 44,
+    "run": "mbart-amis-full_a010_l010-seed44-accumfixed-recovery",
+    "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/full/seed44/runs/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/checkpoint-684",
+    "best_metric": 14.216383723587075,
+    "completed_epochs": 20.0,
+    "hf_repo": "FiveC/amis-accumulation-confirmation-20261005",
+    "hf_prefix": "amis_accumulation_confirmation_20261005_recovery",
+    "selected_and_exported_weight_digest": "948dd683a9d5d4c79095aa8d7cbe64c2fcac9cf3ba9fe080a813c53ba511bd34",
+    "post_selection_test_bleu": 19.891624365979126,
+    "post_selection_test_chrfpp": 18.699629087985407,
+    "old_scores_untouched": true,
+    "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only",
+    "archive_size": 2270673787,
+    "archive_sha256": "5feeff722861b370e2172f7f923e6b73fa914ff5dfeeeb154d0b3882177b89c3",
+    "archive_path": "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery-best.zip",
+    "hf_revision": "e8450aad44668befc906fb9453b590dea3012816",
+    "remote_archive_verified": true,
+    "remote_metadata_verified": {
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/provenance/final_trainer_state.json": true,
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/provenance/COMPLETE.json": true,
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/selected_provenance/trainer_state.json": true,
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/metrics.json": true,
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/test_metrics.json": true,
+      "amis_accumulation_confirmation_20261005_recovery/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/test_predictions.csv": true
+    },
+    "source_hashes_match": true
+  },
+  "zip_sha256": "35817828b14f2d4641b48e85268e77d0694b9d7fe83c6fa30fcee44d0afd3987"
+}

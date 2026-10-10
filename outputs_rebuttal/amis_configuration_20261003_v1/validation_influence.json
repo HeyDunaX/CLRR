@@ -53,6 +53,31 @@
       "word_bigram_match_count": 0
     },
     {
+      "run": "mbart-amis-full_a010_l030-seed42",
+      "prediction_sha256": "adbb2a567907e9799d8c4fab65d0e7240004bbdb310f85914ea904163cc55d06",
+      "rows": 576,
+      "chrf0": {
+        "score": 16.443151712077295,
+        "without_row197": 16.480661890591495,
+        "leave_one_out_min": 16.273670236026994,
+        "min_removed_index": 13,
+        "leave_one_out_max": 16.51980067327207,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 14.361400496746946,
+        "without_row197": 14.394370614436946,
+        "leave_one_out_min": 14.192248618192096,
+        "min_removed_index": 13,
+        "leave_one_out_max": 14.427506744542654,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
+    },
+    {
       "run": "mbart-amis-full_a020_l010-seed42",
       "prediction_sha256": "da6a005c3789baaa260e89c2568d0fe225e92ddfd31cba50e2f98eccad832e63",
       "rows": 576,
@@ -76,21 +101,136 @@
       },
       "word_bigram_reference_count": 1,
       "word_bigram_match_count": 0
+    },
+    {
+      "run": "mbart-amis-lsr_l001-seed42",
+      "prediction_sha256": "ba2daad41238972cbfea5123e3254c76a94e27e0fa537fb3cedca49dfd348c5a",
+      "rows": 576,
+      "chrf0": {
+        "score": 16.046936908637033,
+        "without_row197": 16.08495087826678,
+        "leave_one_out_min": 15.876175909840292,
+        "min_removed_index": 13,
+        "leave_one_out_max": 16.118593435375754,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 13.949105950590738,
+        "without_row197": 13.982282882621092,
+        "leave_one_out_min": 13.778707158767348,
+        "min_removed_index": 13,
+        "leave_one_out_max": 14.010818933284162,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
+    },
+    {
+      "run": "mbart-amis-lsr_l003-seed42",
+      "prediction_sha256": "ec7ac680474428a01111d144a6f5c42ae97ff48d453a6c79d1c8927e6533bf95",
+      "rows": 576,
+      "chrf0": {
+        "score": 17.13644903735976,
+        "without_row197": 17.177597164128635,
+        "leave_one_out_min": 16.968086138645504,
+        "min_removed_index": 13,
+        "leave_one_out_max": 17.214199376324583,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 14.85874740143626,
+        "without_row197": 14.89454333144744,
+        "leave_one_out_min": 14.690348773473923,
+        "min_removed_index": 13,
+        "leave_one_out_max": 14.925649516371278,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
+    },
+    {
+      "run": "mbart-amis-lsr_l030-seed42",
+      "prediction_sha256": "f987a264eb5a386976d5a631d931870db2dd7855a5fe89475605b97a57645bf5",
+      "rows": 576,
+      "chrf0": {
+        "score": 16.0409174219341,
+        "without_row197": 16.079345683733017,
+        "leave_one_out_min": 15.889947050594394,
+        "min_removed_index": 215,
+        "leave_one_out_max": 16.114181091748424,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 13.895059199288784,
+        "without_row197": 13.928442497472284,
+        "leave_one_out_min": 13.75416500399442,
+        "min_removed_index": 224,
+        "leave_one_out_max": 13.958078719259925,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
+    },
+    {
+      "run": "mbart-amis-lsr_l060-seed42",
+      "prediction_sha256": "b57c9ce6d2f2f474908fdded9f1498c97aae27ee4cdacbb15696d549ee42eabe",
+      "rows": 576,
+      "chrf0": {
+        "score": 16.507973226452453,
+        "without_row197": 16.548199430931536,
+        "leave_one_out_min": 16.35857782244124,
+        "min_removed_index": 215,
+        "leave_one_out_max": 16.590270620500473,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:0|space:no|version:2.6.0"
+      },
+      "chrfpp": {
+        "score": 14.368750232755739,
+        "without_row197": 14.403901875587216,
+        "leave_one_out_min": 14.228653998906601,
+        "min_removed_index": 224,
+        "leave_one_out_max": 14.439625009083882,
+        "max_removed_index": 473,
+        "signature": "nrefs:1|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+      },
+      "word_bigram_reference_count": 1,
+      "word_bigram_match_count": 0
     }
   ],
   "ranking_chrfpp": [
+    "mbart-amis-lsr_l003-seed42",
     "mbart-amis-full_a020_l010-seed42",
     "mbart-amis-full_a010_l003-seed42",
-    "mbart-amis-full_a005_l010-seed42"
+    "mbart-amis-full_a005_l010-seed42",
+    "mbart-amis-lsr_l060-seed42",
+    "mbart-amis-full_a010_l030-seed42",
+    "mbart-amis-lsr_l001-seed42",
+    "mbart-amis-lsr_l030-seed42"
   ],
   "ranking_without_row197": [
+    "mbart-amis-lsr_l003-seed42",
     "mbart-amis-full_a020_l010-seed42",
     "mbart-amis-full_a010_l003-seed42",
-    "mbart-amis-full_a005_l010-seed42"
+    "mbart-amis-full_a005_l010-seed42",
+    "mbart-amis-lsr_l060-seed42",
+    "mbart-amis-full_a010_l030-seed42",
+    "mbart-amis-lsr_l001-seed42",
+    "mbart-amis-lsr_l030-seed42"
   ],
   "ranking_chrf0": [
+    "mbart-amis-lsr_l003-seed42",
     "mbart-amis-full_a020_l010-seed42",
     "mbart-amis-full_a010_l003-seed42",
-    "mbart-amis-full_a005_l010-seed42"
+    "mbart-amis-lsr_l060-seed42",
+    "mbart-amis-full_a005_l010-seed42",
+    "mbart-amis-full_a010_l030-seed42",
+    "mbart-amis-lsr_l001-seed42",
+    "mbart-amis-lsr_l030-seed42"
   ]
 }

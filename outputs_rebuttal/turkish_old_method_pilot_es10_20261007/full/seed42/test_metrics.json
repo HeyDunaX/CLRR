@@ -1,0 +1,30 @@
+{
+  "selected_checkpoint_only": true,
+  "selection_split": "validation",
+  "test_used_for_selection": false,
+  "beams": 4,
+  "batch_size": 8,
+  "generation_precision": "fp32",
+  "tf32_generation": false,
+  "raw_test_sha256": "283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd",
+  "protocol": {
+    "reference": "original_csv",
+    "library": "sacrebleu",
+    "version": "2.6.0",
+    "aggregation": "corpus",
+    "bleu_tokenizer": "13a",
+    "bleu_lowercase": false,
+    "bleu_smooth_method": "exp",
+    "bleu_effective_order": false,
+    "chrf_char_order": 6,
+    "chrf_word_order": 2,
+    "chrf_beta": 2,
+    "chrf_lowercase": false,
+    "chrf_whitespace": false,
+    "chrf_eps_smoothing": false,
+    "chrf_external_tokenizer": null
+  },
+  "test_bleu": 22.570620186619088,
+  "test_chrf++": 41.5493040930389,
+  "test_chrf0": 42.61601085465619
+}

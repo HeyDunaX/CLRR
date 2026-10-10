@@ -1,0 +1,24 @@
+{
+  "status": "ALL_2_TEST_VERIFIED",
+  "phase": "test",
+  "runs": {
+    "A05": {
+      "scores": {
+        "bleu": 10.057063143671765,
+        "chrf++": 8.517845586032442,
+        "chrf0": 11.271214956501773
+      },
+      "revision": "d885dcb07ba1bb646969e12c373514606556a764"
+    },
+    "A06": {
+      "scores": {
+        "bleu": 13.885709794212575,
+        "chrf++": 10.397807148708718,
+        "chrf0": 13.579398349421737
+      },
+      "revision": "ad6e9ae38f313d764b4cf1134071a3d8e6e0412e"
+    }
+  },
+  "pending": [],
+  "public_revision": "f7a560c8faca4aa1c25d07bec537398b1a3b6fc7"
+}

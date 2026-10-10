@@ -1,0 +1,28 @@
+{
+  "source": "outputs_rebuttal\\followup_20261003\\source_final\\src\\amis_rewire\\modeling.py",
+  "sha256": "bcee7fb7c5e1a9ea346cc7c72906e6126c38df903d9b63b067270ce5ba21a5fb",
+  "forwards": [
+    {
+      "class": "CrossLayerResidualRewire",
+      "forward_lineno": 114,
+      "has_kwargs": true,
+      "pops_num_items_in_batch": true,
+      "pop_lines": [
+        123
+      ]
+    },
+    {
+      "class": "JEPAGuidedSeq2SeqLM",
+      "forward_lineno": 265,
+      "has_kwargs": true,
+      "pops_num_items_in_batch": true,
+      "pop_lines": [
+        275
+      ]
+    }
+  ],
+  "archived_evaluation_source": "outputs_rebuttal\\followup_20261003\\source_final\\src\\amis_rewire\\evaluation.py",
+  "archived_evaluation_sha256": "ba39d93c038df66fa20f52207359cb08b3ff5f11db546ffc08896df1c1bc093d",
+  "archived_accepts_loss_kwargs_occurrence": false,
+  "scope": "Historical 20261003 code archive corroborates wrapper pattern; not proof every training job used this exact runtime."
+}

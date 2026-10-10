@@ -1,0 +1,14 @@
+{
+  "account": 1,
+  "assigned": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "A05",
+    "A06",
+    "D01"
+  ],
+  "status": "SETUP_LAUNCHED",
+  "result": "TEST14_SETUP_LAUNCHED 3730\n\n"
+}

@@ -1,0 +1,1600 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "source_revision": "c7449683f434fe4da344a36a47d63a1f4cdf5f69",
+  "checkpoints": [
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "byt5-small",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/byt5-small/baseline/historical-baseline/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/best.zip",
+      "bytes": 1111028883,
+      "sha256": "ed9833c2543d5eb03351cbe22e853d07de33c825b587b499e9a0bca792bbc7e0",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "byt5-small",
+      "method": "full-decoder",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-dec",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/byt5-small/full-decoder/historical-jepa-clrr-dec/original-comparators/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/byt5-small/full-decoder/seed-42/best.zip",
+      "bytes": 1111030145,
+      "sha256": "098d4311488b88a4c38aa912a4776a2a044aa0fbc1d3f55269d1269ecbf6446b",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "byt5-small",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-enc",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/byt5-small/full/historical-jepa-clrr-enc/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/byt5-small/full/seed-42/best.zip",
+      "bytes": 1111024499,
+      "sha256": "d6fb9bccb9b2d0ef9f9f918748209bff44723880fe4c0ed9a9f78070d6003d92",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "byt5-small",
+      "method": "layerskip",
+      "seed": "seed-42",
+      "recipe": "historical-layerskip-acl2024",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/byt5-small/layerskip/historical-layerskip-acl2024/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/byt5-small/layerskip/seed-42/best.zip",
+      "bytes": 1111021335,
+      "sha256": "334953f8f6f82a62a2a1dca6babcc0443cb5590cbf0f652a91b1da0ffa505580",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 317207,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "byt5-small",
+      "method": "middle-alignment",
+      "seed": "seed-42",
+      "recipe": "historical-middle-align-acl2025",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/byt5-small/middle-alignment/historical-middle-align-acl2025/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/best.zip",
+      "bytes": 1111030610,
+      "sha256": "f81153365c540e5e999c39603852ad02fb5a30c979dfe0de53a6d28a5ce3305f",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 326482,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-45",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-45/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-45/best.zip",
+      "bytes": 2270741047,
+      "sha256": "c6598be901e8a359a9f4ffd9cc9057ef9d3f5c9b7f11c0dbe12d38474df85a80",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-46",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-46/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/best.zip",
+      "bytes": 2270737377,
+      "sha256": "14e4e50c49bfa3420d0528a20de1dbc06e0c714699b8b80c06e61d91591a6a83",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-47",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-47/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-47/best.zip",
+      "bytes": 2270714379,
+      "sha256": "68bbb2b170534f173f8ff4fdf85800c388c70f02f6d5d65fa178f51b5bb76606",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-48",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-48/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-48/best.zip",
+      "bytes": 2270698422,
+      "sha256": "47d5446ec5319d7ba8ab783097b76bb94533517ecd8af7cba84ab7f7a2d5a01f",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-49",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-49/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-49/best.zip",
+      "bytes": 2270651785,
+      "sha256": "eebac986531bf94e4c9405f59bc5f67b86b4ec71cde1116f9ea40e2295de9e23",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-50",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-50/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-50/best.zip",
+      "bytes": 2270676731,
+      "sha256": "cccd91a771a69e0d394698edac704d4bff2e3d5faf18590ee1654e044f0a41a6",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-51",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-51/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-51/best.zip",
+      "bytes": 2270713569,
+      "sha256": "ac6af5b9811d02dcf03f505725d6aac1036c465db10d93d7b65fdf6c2c597caa",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-52",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-52/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-52/best.zip",
+      "bytes": 2270692445,
+      "sha256": "8a24e02b9d90932f78b67413e80e23ffe9caaa2bd4b0692dd2b2d7c693087f70",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline-corrected",
+      "cohort": "corrected-controls-legacy",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/historical-baseline-corrected/corrected-controls-legacy/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-42/baseline-corrected/best.zip",
+      "bytes": 2270665528,
+      "sha256": "e2d5c884c8c2da270aa1bbeaa4e36990021f1559b5fca2926d05cca3f5b0e53c",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/historical-baseline/legacy-confirmation/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-42/baseline-legacy-confirmation/best.zip",
+      "bytes": 2270664334,
+      "sha256": "aaed1e8cf39b4f1ad6a5f4bef6fa04d44fbeb9fb2599e2649702e937822a10c8",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline",
+      "cohort": "original-training",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/historical-baseline/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-42/baseline-original-training/best.zip",
+      "bytes": 2270562428,
+      "sha256": "0ccef8481f5c20a50856a540632cc9f744fcd5f2ccad02412f6d68df5775f00b",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-43",
+      "recipe": "historical-baseline",
+      "cohort": "legacy-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/historical-baseline/legacy-confirmation/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-43/best.zip",
+      "bytes": 2270678573,
+      "sha256": "4524afeff8761db29b108feb4ff8c19fd54e84172135d9d6845b5d5a2551a26e",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-44",
+      "recipe": "historical-baseline",
+      "cohort": "legacy-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/baseline/historical-baseline/legacy-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-44/best.zip",
+      "bytes": 2270716284,
+      "sha256": "ce2d3ac8a4e734bdcc8240e1180785f7314782ea13ebdf9bedeba6816d8f71ad",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "bitfit",
+      "seed": "seed-42",
+      "recipe": "historical-bitfit",
+      "cohort": "original-peft",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/bitfit/historical-bitfit/original-peft/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/best.zip",
+      "bytes": 1444831144,
+      "sha256": "ec41cb77d32931940eef71cea26fc17365ea7a9b23367c5b842af61539cc76da",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 417704,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-42",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-42/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/best.zip",
+      "bytes": 2270675436,
+      "sha256": "c8f65e977492aa1242f106d62c6a5e60140fde1d854255c7dbe610ba7770d496",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-42",
+      "recipe": "historical-clrr",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/historical-clrr/legacy-confirmation/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-42/clrr/best.zip",
+      "bytes": 2270684687,
+      "sha256": "9916dae4217809f41cae3aff0aa974e14528860683091a1c67ff0f0396ac4c30",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-43",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-43/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/best.zip",
+      "bytes": 2270645518,
+      "sha256": "0df47bd8bcfb6f3df225881fca90b8901524cfac330743038b53b3424d5fe10c",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-43",
+      "recipe": "historical-clrr",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/historical-clrr/legacy-confirmation/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-43/clrr/best.zip",
+      "bytes": 2270664838,
+      "sha256": "9dc354c383df3c0adf6bddb488c2d73c1ec4f0950e07f8756f2ef763f27f6e06",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-44",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-44/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/best.zip",
+      "bytes": 2270653380,
+      "sha256": "814f0be16758d5a84e3e6c011989fa67b13f7debc3ccfe65a93aa5a0d15957cc",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-44",
+      "recipe": "historical-clrr",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/historical-clrr/legacy-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-44/clrr/best.zip",
+      "bytes": 2270687639,
+      "sha256": "413e8ebde299bef49410df02bdd450fecbb10b991035a913d70bcd5ed812f131",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-45",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-45/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-45/best.zip",
+      "bytes": 2270738516,
+      "sha256": "8b6304089af2bc000adbe8291ff13478e75ab54e3f4f10ae97c0769f429b10d0",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-46",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-46/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-46/best.zip",
+      "bytes": 2270683433,
+      "sha256": "3dbf0758b044975684223345d48abf259b2df92dee3586406c358c84da12ac66",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-47",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-47/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-47/best.zip",
+      "bytes": 2270679710,
+      "sha256": "5a01dc67dec34b3b2cda3af03cc9bffc1b6d3ee3870e46cd2f089ab7e076391a",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-48",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-48/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-48/best.zip",
+      "bytes": 2270658656,
+      "sha256": "8d03d2f1fc5de905dd6f5eb56d220ab2276824f90321e1dd3f798bb2448552e1",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-49",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-49/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-49/best.zip",
+      "bytes": 2270711560,
+      "sha256": "075db927538296248fef2e1a593d9b3c50cb64fabcc59a361d6d62904867796a",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-50",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-50/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-50/best.zip",
+      "bytes": 2270687229,
+      "sha256": "4e6e856b9afc3f6c9d52aaa4d699aba26ca7bbc742cbdc311cf5649c5a6c4220",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-51",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-51/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-51/best.zip",
+      "bytes": 2270700610,
+      "sha256": "3f524c48a441cb342c67fc835b7f788a7b1a684a7851ed98a87eba25ee4d4f80",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "clrr-encoder",
+      "seed": "seed-52",
+      "recipe": "alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/alpha0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-52/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/clrr-encoder/seed-52/best.zip",
+      "bytes": 2270684399,
+      "sha256": "434230f59ab65c960a04d38f8c3ff3861c5cdf935ee0fbcab252b074acc96205",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full-decoder",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-dec",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full-decoder/historical-jepa-clrr-dec/original-comparators/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full-decoder/seed-42/best.zip",
+      "bytes": 2271232697,
+      "sha256": "dee3e34642e87b0e109f39d59c5753efd6dec11d96d9d920d3faf87d157deb64",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-44",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "accumulation-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/accumulation-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-44/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/best.zip",
+      "bytes": 2270673787,
+      "sha256": "5feeff722861b370e2172f7f923e6b73fa914ff5dfeeeb154d0b3882177b89c3",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-44",
+      "recipe": "historical-full",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/historical-full/legacy-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-44/full/best.zip",
+      "bytes": 2270670074,
+      "sha256": "3de3cfc733d60f9070d15fd02aaef0391f6a1a8569f3759adebef3b81e4eb0ee",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-45",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-45/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-45/best.zip",
+      "bytes": 2270737787,
+      "sha256": "1dc8c8c833bcb4c3b91ad1469b7da9f6cd70a1ded4eb40adfb2a7a1aad09b4b8",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-46",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-46/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-46/best.zip",
+      "bytes": 2270678716,
+      "sha256": "68410903a9ba1343f4e75c1946a1a02bf9ca5f516fcd197252e64cba78d6c3a7",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-47",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-47/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-47/best.zip",
+      "bytes": 2270712625,
+      "sha256": "dc8271f952e0cb2b96c94c83fd31abf59c27ccc428270fbde48a25301de46b5d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-48",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-48/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-48/best.zip",
+      "bytes": 2270725278,
+      "sha256": "e86347713166d7981de0b6f81114f6c15b131e6f608d33d8b621d5d3fb54668d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-49",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-49/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-49/best.zip",
+      "bytes": 2270675897,
+      "sha256": "576a1da895ca5b73cc62235271a86aa12f1c1e610d8576ca691f431fc12b6e05",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-50",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-50/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-50/best.zip",
+      "bytes": 2270706504,
+      "sha256": "f8e7cfe0b87bce4adaaee303ab05c512ef3c278d87ff004b49d72f923daad099",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-51",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-51/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-51/best.zip",
+      "bytes": 2270660505,
+      "sha256": "0d94518c5704d62b59ef4627c175a87b04ef5c5e801678dc3324fcd5d2d20c22",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-52",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-52/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-52/best.zip",
+      "bytes": 2270707732,
+      "sha256": "e4cff779799c2184ce066702de8a0c5565ad2a4ec3ff6e05886a1c39792f6e97",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-43",
+      "recipe": "historical-full_a010_l010-accumfixed",
+      "cohort": "accumulation-confirmation-legacy",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/historical-full_a010_l010-accumfixed/accumulation-confirmation-legacy/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-43/full_a010_l010-accumfixed/best.zip",
+      "bytes": 2270715825,
+      "sha256": "bdf8ebb8c217695bc8c11a023bbe45cc6f9f7ad0e4fe2025e731508af5509599",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-43",
+      "recipe": "historical-full",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/historical-full/legacy-confirmation/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-43/full/best.zip",
+      "bytes": 2270678254,
+      "sha256": "b7cb3cd50f610a8e8119aa4213d649a5acc4077270938cfe0aae148b399bc5d4",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "historical-full_a010_l010-accumfixed",
+      "cohort": "accumulation-pilot",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/historical-full_a010_l010-accumfixed/accumulation-pilot/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-42/full_a010_l010-accumfixed/best.zip",
+      "bytes": 2270713935,
+      "sha256": "7497cc3b5ccc11df3057fe300307ab13d1d54f5a68c2f5b7e08e108679826135",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-enc",
+      "cohort": "original-training",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/full/historical-jepa-clrr-enc/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/full/seed-42/jepa-clrr-enc/best.zip",
+      "bytes": 2270622454,
+      "sha256": "7c742e87fdc8929d596cc100911caf97072a35fa5efe89b5df7237740377fa18",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "layerskip",
+      "seed": "seed-42",
+      "recipe": "historical-layerskip-acl2024",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/layerskip/historical-layerskip-acl2024/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/layerskip/seed-42/best.zip",
+      "bytes": 2271230980,
+      "sha256": "085acd0a5ed839e2b2a3a3a83e014ce81ebd24779cb42a9e005ef92f76bc804d",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 277508,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "narrow-lora",
+      "seed": "seed-42",
+      "recipe": "historical-lora",
+      "cohort": "original-peft",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lora/historical-lora/original-peft/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/best.zip",
+      "bytes": 11010589,
+      "sha256": "f2e0f217d3b030852e93657774bc2fc789ae1f657b728ab7efcd61e3db8f48d6",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 262685,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-42",
+      "recipe": "historical-lsr_l010-accumfixed",
+      "cohort": "accumulation-pilot",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr_l010-accumfixed/accumulation-pilot/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-42/lsr_l010-accumfixed/best.zip",
+      "bytes": 2270715737,
+      "sha256": "5dca641abe96fc3c4a353e6c6df4fda5a09ce9bc02277a2fc93711e2fd1724cc",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-42",
+      "recipe": "historical-lsr-only",
+      "cohort": "original-ablation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr-only/original-ablation/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-42/lsr-only/best.zip",
+      "bytes": 2270555926,
+      "sha256": "ac8b43c2aff683a7b3d5082d27c9f938f3cf74462c97b559311b4e1c4f4cdaf3",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-43",
+      "recipe": "historical-lsr_l010-accumfixed",
+      "cohort": "accumulation-confirmation-legacy",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr_l010-accumfixed/accumulation-confirmation-legacy/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-43/lsr_l010-accumfixed/best.zip",
+      "bytes": 2270711235,
+      "sha256": "cdb0372a75e9be39cec4808d82f08d284438616a09bde8b7a28b58d228a18396",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-43",
+      "recipe": "historical-lsr",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr/legacy-confirmation/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-43/lsr/best.zip",
+      "bytes": 2270688287,
+      "sha256": "6dc2d63c8fac7c78f95e207462c056a3d86b380c21b2d7ca81093d0a7e520749",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-44",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "accumulation-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/accumulation-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-44/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/best.zip",
+      "bytes": 2270686673,
+      "sha256": "ea637d25e1ae2692ffa93a003f92ab01462d039bbef0da60f85d6b63f427060d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-44",
+      "recipe": "historical-lsr",
+      "cohort": "legacy-confirmation",
+      "primary": false,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr/legacy-confirmation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-44/lsr/best.zip",
+      "bytes": 2270670174,
+      "sha256": "2a720426aa5bf8b07493d765a93c20a94eef930c99f55d534059bae984b9548a",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p30",
+      "seed": "seed-42",
+      "recipe": "historical-lsr_l030-corrected-validation",
+      "cohort": "lsr-validation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr_l030-corrected-validation/lsr-validation/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p30/seed-42/best.zip",
+      "bytes": 2270666220,
+      "sha256": "70d632fdc4d94c7ebfa3be4c403b7b09c3f8ab88799e5cf110ef012cc2c8fb97",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p30",
+      "seed": "seed-43",
+      "recipe": "historical-lsr_l030-corrected-validation",
+      "cohort": "lsr-validation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr_l030-corrected-validation/lsr-validation/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p30/seed-43/best.zip",
+      "bytes": 2270720139,
+      "sha256": "1ee6b4f0bc38c221a4db3e98096329207ed3ceec40f1d0d927bc7ffce73366b9",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p30",
+      "seed": "seed-44",
+      "recipe": "historical-lsr_l030-corrected-validation",
+      "cohort": "lsr-validation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/historical-lsr_l030-corrected-validation/lsr-validation/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p30/seed-44/best.zip",
+      "bytes": 2270700657,
+      "sha256": "6e7b345a2907afeaf1187c06abac17115d0334668780014b6cd463e6c8ac79a5",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p03",
+      "seed": "seed-42",
+      "recipe": "lambda0p03-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p03-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p03/seed-42/best.zip",
+      "bytes": 2270670769,
+      "sha256": "d66017c4d98db4723eebc6544749f62e5abf20deb01e9e76a9f2a4dd9f7857a3",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p03",
+      "seed": "seed-43",
+      "recipe": "lambda0p03-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p03-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-43/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p03/seed-43/best.zip",
+      "bytes": 2270686155,
+      "sha256": "e14df5886b43736ab0f08e8ae744af08e6ed778ddb7955909c7e7cc3ea82c880",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr-lambda0p03",
+      "seed": "seed-44",
+      "recipe": "lambda0p03-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "corrected-controls",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p03-lr5e-5-bs32-ga4-bf16-es4/corrected-controls/seed-44/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr-lambda0p03/seed-44/best.zip",
+      "bytes": 2270672076,
+      "sha256": "0415e3d8a9926122b385c1121f84535951826b365fe8da7c9d8242bea90d94a0",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-45",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-45/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-45/best.zip",
+      "bytes": 2270685709,
+      "sha256": "92bab9ae84d6a34aa09e205188649583fb14693d27276aad1af379c683699670",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-46",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-46/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-46/best.zip",
+      "bytes": 2270684014,
+      "sha256": "45dcf1457e4dfa77db976ad57fe28b33a9136b7b92ee8779279b7246c183f851",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-47",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-47/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-47/best.zip",
+      "bytes": 2270726198,
+      "sha256": "ae53faa5f216a6ef4fbdd24a52315d906b82efe0a755453a268a843ab4b50f43",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-48",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-48/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-48/best.zip",
+      "bytes": 2270723045,
+      "sha256": "1bc686d575ced331108a90e4bc8d61744abebd9cd576ed8f7cd71fdf8db4582d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-49",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-49/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-49/best.zip",
+      "bytes": 2270704345,
+      "sha256": "ea230cce8802d9dd69f727fa9ea407b9eff3cb6707857ff43a30716a6c05de22",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-50",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-50/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-50/best.zip",
+      "bytes": 2270678119,
+      "sha256": "dbd7ddbff8832b4456ebb03072a834211a79f8ec775b82967494d6622d978482",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-51",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-51/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-51/best.zip",
+      "bytes": 2270678464,
+      "sha256": "972346c82f886eb5ba699bac3346be93a94c97a4c778253d49ba87cb064bbe45",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-52",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es4",
+      "cohort": "fresh-confirmation",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es4/fresh-confirmation/seed-52/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/lsr/seed-52/best.zip",
+      "bytes": 2270677607,
+      "sha256": "ccf83e1d28013058eef2da71274fddec7908caede4970f4280b1520f97e2b60a",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "middle-alignment",
+      "seed": "seed-42",
+      "recipe": "historical-middle-align-acl2025",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/historical-middle-align-acl2025/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/best.zip",
+      "bytes": 2271264245,
+      "sha256": "4c632dbb9c79753fc68bdffd0e91c02d5b1a9204385b88ba25355dcde38459b2",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 310773,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "strong-lora-b",
+      "seed": "seed-42",
+      "recipe": "historical-lora-all-linear-unfreeze-embed",
+      "cohort": "strong-lora-comparison",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora/historical-lora-all-linear-unfreeze-embed/strong-lora-comparison/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/best.zip",
+      "bytes": 989127895,
+      "sha256": "c256e55857632bd908ac016940f8e0debd57a4d1801f4583043d8b6aa02c45c7",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 320727,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mbart-large-50",
+      "method": "strong-lora-a",
+      "seed": "seed-42",
+      "recipe": "historical-lora-all-linear",
+      "cohort": "strong-lora-comparison",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora/historical-lora-all-linear/strong-lora-comparison/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-a/seed-42/best.zip",
+      "bytes": 38735797,
+      "sha256": "b50fea4e506d1ae803538e41543ea8dd9d90bc41709a46aabaef64d8261255ac",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 462773,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/baseline/historical-baseline/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/baseline/seed-42/best.zip",
+      "bytes": 896459511,
+      "sha256": "bacccd29e20a4a2baf5688ea58d533f436e5feabe27c540213b43a6b6467cd5d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "clrr-encoder",
+      "seed": "seed-42",
+      "recipe": "historical-clrr-enc",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/clrr-encoder/historical-clrr-enc/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/clrr-encoder/seed-42/best.zip",
+      "bytes": 896470109,
+      "sha256": "7ed79385f0850987104b0aed0099260fbdb26a8145fe55b614eef57b1c70d556",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "full-both",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-both",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/full-both/historical-jepa-clrr-both/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/full-both/seed-42/best.zip",
+      "bytes": 896468067,
+      "sha256": "cf180378103121549ac9c046217d6a6426078feb373c6a3b87354fcdd58fcb58",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "full-decoder",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-dec",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/full-decoder/historical-jepa-clrr-dec/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/full-decoder/seed-42/best.zip",
+      "bytes": 896474723,
+      "sha256": "05fb39ba770613f430f4006bdd4f8b7129f92a0e751e5cd443d2769b9a28d5e3",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "historical-jepa-clrr-enc",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/full/historical-jepa-clrr-enc/original-training/seed-42/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/full/seed-42/best.zip",
+      "bytes": 896461833,
+      "sha256": "2fb828eeb4659c97b10a5f3c7be3b08603a9502da02f594b2685ea982662af5d",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "layerskip",
+      "seed": "seed-42",
+      "recipe": "historical-layerskip_acl2024",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/layerskip/historical-layerskip_acl2024/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/layerskip/seed-42/best.zip",
+      "bytes": 896459546,
+      "sha256": "cdcaae82c5589f2ee1457117d1e5e9afc8d3c5936497353bfee3f12bf91d6239",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 451354,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "mt5-small",
+      "method": "middle-alignment",
+      "seed": "seed-42",
+      "recipe": "historical-middle_align_acl2025",
+      "cohort": "original-comparators",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/mt5-small/middle-alignment/historical-middle_align_acl2025/original-comparators/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/mt5-small/middle-alignment/seed-42/best.zip",
+      "bytes": 896476923,
+      "sha256": "1a5326a1d129f027138960d813e9280785382dba5f617c4bec3d7f2ab5773401",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 468731,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "historical-baseline",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/baseline/historical-baseline/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/best.zip",
+      "bytes": 6835299468,
+      "sha256": "a5a253399f92f4d2354fa35bd91ef4257b16b71f945d20245ae51b54b58390f8",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 418956,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "bitfit",
+      "seed": "seed-42",
+      "recipe": "historical-bitfit",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/bitfit/historical-bitfit/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/best.zip",
+      "bytes": 1456344836,
+      "sha256": "f9d80917f1db5bb93d4be88dac7a280009ff8392b037fc8229bc7be1aea4d85d",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 397060,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "full-decoder",
+      "seed": "seed-42",
+      "recipe": "historical-clrr_dec",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/full-decoder/seed-42/best.zip",
+      "bytes": 6833266897,
+      "sha256": "b9005bf52e759f789e01db86dbb18854906a9586753afb020169796fffda9799",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 483537,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "historical-clrr_enc",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/full/seed-42/best.zip",
+      "bytes": 6832528692,
+      "sha256": "bfdfc126045d65b516dca001c8da76f32cdd2f9f2657625d3c1f4f2a0d8ee1b6",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 269620,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "narrow-lora",
+      "seed": "seed-42",
+      "recipe": "historical-lora",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/narrow-lora/seed-42/best.zip",
+      "bytes": 18972334,
+      "sha256": "66275283c7830919a8cc1623bd9efbe2f9cd508946c4eb9603751937a70ba2de",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 360110,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "amis_mandarin",
+      "backbone": "nllb-200",
+      "method": "middle-alignment",
+      "seed": "seed-42",
+      "recipe": "historical-middle_align",
+      "cohort": "original-training",
+      "primary": true,
+      "source_path": "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/best.zip",
+      "path": "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/best.zip",
+      "bytes": 6834879935,
+      "sha256": "ce6065c2a1443752d7dc522bddc6ce48b3364f80fcaf787d9bc82540c4975d28",
+      "seed_evidence": {
+        "seed": 42,
+        "member": "training_args.bin",
+        "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+        "bytes_transferred": 523711,
+        "inspection": "Static primitive pickle opcodes; no pickle execution"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "opus100_turkish_english_20k",
+      "backbone": "mbart-large-50",
+      "method": "baseline",
+      "seed": "seed-42",
+      "recipe": "ce-lr5e-5-bs32-ga4-bf16-es10",
+      "cohort": "pilot",
+      "primary": true,
+      "source_path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip",
+      "path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/seed-42/best.zip",
+      "bytes": 2271315300,
+      "sha256": "bf10a39da87fde3b45a78a78bed168572d1a52def677d04d4e03d87134cb49d1",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "opus100_turkish_english_20k",
+      "backbone": "mbart-large-50",
+      "method": "full",
+      "seed": "seed-42",
+      "recipe": "alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10",
+      "cohort": "pilot",
+      "primary": true,
+      "source_path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip",
+      "path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/seed-42/best.zip",
+      "bytes": 2271332471,
+      "sha256": "77a2121fb0b44989ce5e4648a72cd2b973f98dbb9db8ffce7e5d7d3ac9a44e54",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "opus100_turkish_english_20k",
+      "backbone": "mbart-large-50",
+      "method": "lsr",
+      "seed": "seed-42",
+      "recipe": "lambda0p10-lr5e-5-bs32-ga4-bf16-es10",
+      "cohort": "pilot",
+      "primary": true,
+      "source_path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip",
+      "path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/seed-42/best.zip",
+      "bytes": 2271312908,
+      "sha256": "3a7379acaa4a7c91e2b96ff933c5f135812515048c929a904fbe02c768bbf750",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    },
+    {
+      "dataset": "opus100_turkish_english_20k",
+      "backbone": "mbart-large-50",
+      "method": "middle-alignment",
+      "seed": "seed-42",
+      "recipe": "layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10",
+      "cohort": "pilot",
+      "primary": true,
+      "source_path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip",
+      "path": "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/seed-42/best.zip",
+      "bytes": 2271357889,
+      "sha256": "06916fdc4b774b77ca097acbd6cd02bb54d9b2804b0d494ef345c382546172d5",
+      "seed_evidence": {
+        "source": "existing explicit seed path/registry"
+      },
+      "metadata_complete": null
+    }
+  ]
+}

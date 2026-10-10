@@ -1,0 +1,14 @@
+{
+  "account": "1",
+  "authorized_scope": "four families, seed42 only",
+  "current": {
+    "family": "full",
+    "seed": 42,
+    "run_name": "mbart-tr-en-full-seed42-es10"
+  },
+  "preserved_worker_pid": 3464,
+  "terminated_queue_pid": 3073,
+  "next_family": "baseline",
+  "changed_at_epoch": 1791379744.183729,
+  "new_supervisor_pid": 11487
+}

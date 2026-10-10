@@ -1,0 +1,32 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "method": "bitfit",
+  "trainable_parameters": 333824,
+  "total_parameters": 615073792,
+  "trainable_percent": 0.05427381305168665,
+  "training_time_seconds": 2125.845890045166,
+  "eval_bleu": 1.1640807624918923,
+  "eval_chrf++": 3.896188323553082,
+  "test_bleu": 1.075035384784751,
+  "test_chrf++": 2.964280533631622,
+  "test_chrf++_zh": 5.708075448577537,
+  "metadata": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "method": "BitFit",
+    "bias_components": [
+      "bias"
+    ],
+    "num_bias_tensors": 254,
+    "trainable_params": 333824,
+    "all_params": 615073792,
+    "trainable_percent": 0.05427381305168665,
+    "sample_bias_tensors": [
+      "model.encoder.layers.0.self_attn.k_proj.bias",
+      "model.encoder.layers.0.self_attn.v_proj.bias",
+      "model.encoder.layers.0.self_attn.q_proj.bias",
+      "model.encoder.layers.0.self_attn.out_proj.bias",
+      "model.encoder.layers.0.self_attn_layer_norm.bias"
+    ],
+    "description": "BitFit Bias-Only Tuning (ACL 2022)"
+  }
+}

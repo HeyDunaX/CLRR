@@ -1,0 +1,24 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+  "verified": true,
+  "files": {
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip": {
+      "sha256": "77a2121fb0b44989ce5e4648a72cd2b973f98dbb9db8ffce7e5d7d3ac9a44e54",
+      "size": 2271332471
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+      "sha256": "11b18c3fcc1e441ad623f57bff514b7b6b89ee991e615c31b56027aecae8a574",
+      "size": 5355
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+      "sha256": "e872a221ce97ddaedd662ec3ac5ae10bee80be8ad644a6d75934600245f7ea21",
+      "size": 859
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+      "sha256": "1b659d91bf6641ca950f6b958bef6397e747694face5469737bfdcd0c3f51a8b",
+      "size": 252925
+    }
+  },
+  "verification": "Public LFS archive SHA256/size; downloaded test files Git/LFS hashes; recomputed all three metrics from original 2000 ordered test rows"
+}

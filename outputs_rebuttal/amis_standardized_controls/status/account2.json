@@ -1,0 +1,731 @@
+{
+  "checked_unix": 1791477595.9812984,
+  "process_alive": false,
+  "queue": {
+    "account": 2,
+    "status": "VALIDATION_QUEUE_COMPLETE",
+    "completed": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "D01",
+      "D02"
+    ],
+    "updated_unix": 1791477594.8005397,
+    "current": "D02"
+  },
+  "gates": {
+    "A03": {
+      "passed": true,
+      "id": "A03",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 4,
+      "accumulation": 32,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 17.259791135787964,
+      "parameters": {
+        "method": "LoRA",
+        "rank": 8,
+        "lora_alpha": 16,
+        "lora_dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "v_proj"
+        ],
+        "modules_to_save": null,
+        "base_params": 610879488,
+        "added_params": 1179648,
+        "trainable_params": 1179648,
+        "all_params": 612059136,
+        "trainable_percent": 0.1927343177506299,
+        "allocated_params": 612059136,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 4.667847633361816,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "A02": {
+      "passed": true,
+      "id": "A02",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 49.538119077682495,
+      "parameters": {
+        "symmetric_InfoNCE": true,
+        "source_target_gradients": true,
+        "layer_hidden_state_index": 6,
+        "includes_embedding_index_zero": true,
+        "temperature": 0.1,
+        "weight": 0.1,
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 12.823851108551025,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "D02": {
+      "passed": true,
+      "id": "D02",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 24.657607555389404,
+      "parameters": {
+        "symmetric_InfoNCE": true,
+        "source_target_gradients": true,
+        "layer_hidden_state_index": 6,
+        "includes_embedding_index_zero": true,
+        "temperature": 0.1,
+        "weight": 0.1,
+        "trainable_params": 299637760,
+        "allocated_params": 299637760,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 5.422516822814941,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "A01": {
+      "passed": true,
+      "id": "A01",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 49.309711933135986,
+      "parameters": {
+        "loss": "CE only",
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 12.591038227081299,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "A04": {
+      "passed": true,
+      "id": "A04",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 4,
+      "accumulation": 32,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 30.827831983566284,
+      "parameters": {
+        "method": "BitFit",
+        "bias_components": [
+          "bias"
+        ],
+        "num_bias_tensors": 256,
+        "trainable_params": 335872,
+        "all_params": 610879488,
+        "trainable_percent": 0.05498171187571451,
+        "sample_bias_tensors": [
+          "model.encoder.layers.0.self_attn.k_proj.bias",
+          "model.encoder.layers.0.self_attn.v_proj.bias",
+          "model.encoder.layers.0.self_attn.q_proj.bias",
+          "model.encoder.layers.0.self_attn.out_proj.bias",
+          "model.encoder.layers.0.self_attn_layer_norm.bias"
+        ],
+        "allocated_params": 610879488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 4.659058570861816,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "D01": {
+      "passed": true,
+      "id": "D01",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 23.52661657333374,
+      "parameters": {
+        "loss": "CE only",
+        "trainable_params": 299637760,
+        "allocated_params": 299637760,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 5.300799369812012,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    }
+  },
+  "progress": {
+    "A03": {
+      "id": "A03",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 3.2625036642767395,
+        "chrf++": 5.300244757505749,
+        "chrf0": 6.183618883756708
+      },
+      "updated_unix": 1791469374.56332
+    },
+    "A02": {
+      "id": "A02",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 16.4643316410988,
+        "chrf++": 14.02659815556987,
+        "chrf0": 16.165402663516776
+      },
+      "updated_unix": 1791463896.414263
+    },
+    "D02": {
+      "id": "D02",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 6.254708068539598,
+        "chrf++": 7.7646770901133575,
+        "chrf0": 9.058789938465582
+      },
+      "updated_unix": 1791477593.346211
+    },
+    "A01": {
+      "id": "A01",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 16.68918322997943,
+        "chrf++": 14.064925855805747,
+        "chrf0": 16.125156459274308
+      },
+      "updated_unix": 1791462419.3973804
+    },
+    "A04": {
+      "id": "A04",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 0.5791167040312979,
+        "chrf++": 2.862149812690749,
+        "chrf0": 3.339174781472541
+      },
+      "updated_unix": 1791473139.0014513
+    },
+    "D01": {
+      "id": "D01",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 1.395412995553629,
+        "chrf++": 3.5611062714911346,
+        "chrf0": 4.154623983406324
+      },
+      "updated_unix": 1791475247.4388402
+    }
+  },
+  "validation_complete": {
+    "A03": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "A03",
+      "spec": {
+        "id": "A03",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "narrow-lora",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0002,
+        "microbatch": 4,
+        "accumulation": 32,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 3.2625036642767395,
+        "chrf++": 5.300244757505749,
+        "chrf0": 6.183618883756708
+      },
+      "archive_sha256": "a89e7d63351b396f638ea7482610023b107509f8228e598fef87cfa8a65d68c9",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "707074cf9143d50f7959951c1231b5c961444f16",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/best.zip": {
+            "size": 26978567,
+            "sha256": "a89e7d63351b396f638ea7482610023b107509f8228e598fef87cfa8a65d68c9"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/run_metadata.json": {
+            "size": 3475,
+            "sha256": "fe0d821375886f80709fcaebb2ca2f148e479d582aeb32ea695e3ac15b8dec6e"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/training_receipt.json": {
+            "size": 2714,
+            "sha256": "bbc9c6da59b2401c2fa9e6bfc45812259cc46784b9bed977777917eb3cf57d0e"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "58a866bd8859bf3369eeb3337a18a69c6c2bfe73cc8b066243416746d631c23d"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "766812fd5d60de5db39ae6e3d98fd574a05415b5cbf1bc6e40423200a881bc3b"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/validation_predictions.csv": {
+            "size": 62423,
+            "sha256": "d1f9bd376102e14f68a189fe80476b2a20ce6e4ba4dc3f9404f3a33e8987aa76"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/final_trainer_state.json": {
+            "size": 19274,
+            "sha256": "04079645f185cfdd5a00d610c0198c14b92a9a45846b8fda24bb1936fa03637e"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/selected_trainer_state.json": {
+            "size": 16306,
+            "sha256": "270fa8544dbabaacfd32ef45406773bf35a7303f12e6e1376063cb131b350588"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/narrow-lora/seed-42/es10/stop_state.json": {
+            "size": 318,
+            "sha256": "8bdf85c6d16e082dc87b66f5a6cbe33e80080483e928500268b0a1502b643213"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "fe0d821375886f80709fcaebb2ca2f148e479d582aeb32ea695e3ac15b8dec6e"
+    },
+    "A02": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "A02",
+      "spec": {
+        "id": "A02",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "middle-alignment",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 5e-05,
+        "microbatch": 32,
+        "accumulation": 4,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 16.4643316410988,
+        "chrf++": 14.02659815556987,
+        "chrf0": 16.165402663516776
+      },
+      "archive_sha256": "76fc008436fa49dc0b47548960b0e2004d5b3ba9b22ac6b99afdf0aaf2a96251",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "b661e77626e70094affeb55ead798d15aa892aba",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/best.zip": {
+            "size": 2466896605,
+            "sha256": "76fc008436fa49dc0b47548960b0e2004d5b3ba9b22ac6b99afdf0aaf2a96251"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/run_metadata.json": {
+            "size": 3365,
+            "sha256": "f8a26f7d8bf4704c2b499c4dfcf38adea8fcd8509fa2a605de1423ae260c420a"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/training_receipt.json": {
+            "size": 2605,
+            "sha256": "e52156a910292d3c702bd54a3118a7f11395c3f97005b5a87e0dfb209932bfa8"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4421,
+            "sha256": "5490cea43c650d630863713ae027878169c47d47dd4db4421a84dd233e5bffa9"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/validation_metrics.json": {
+            "size": 746,
+            "sha256": "6b68c7cc60385be8f61c112357b01e5d13ce881ebf5a98dbdd0049c88cfa95e7"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/validation_predictions.csv": {
+            "size": 62280,
+            "sha256": "7d48a98b77361ae83a416732bd1d88e43ecadd3fee0d893db49bb4de4db1dabb"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/final_trainer_state.json": {
+            "size": 19194,
+            "sha256": "be90e6e757d33eba919684d97224d8795c4a49ae8abe42bdc160bd8148a929c7"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/selected_trainer_state.json": {
+            "size": 15271,
+            "sha256": "c49803f6988403f21bf18359592574380fc108ecca8a914d4a19a134bb48a0ee"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/seed-42/es10/stop_state.json": {
+            "size": 318,
+            "sha256": "4f14cdcb6991d75505b79f10df4a2196e76d864aa08647626220a614ddd4e85a"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "f8a26f7d8bf4704c2b499c4dfcf38adea8fcd8509fa2a605de1423ae260c420a"
+    },
+    "D02": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "D02",
+      "spec": {
+        "id": "D02",
+        "backbone": "byt5-small",
+        "model_id": "google/byt5-small",
+        "model_revision": "68377bdc18a2ffec8a0533fef03b1c513a4dd49d",
+        "method": "middle-alignment",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0003,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": null,
+        "tgt_lang": null,
+        "remote_prefix": "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 6.254708068539598,
+        "chrf++": 7.7646770901133575,
+        "chrf0": 9.058789938465582
+      },
+      "archive_sha256": "a5a0cedabb4947c46f167bd7f51a92b36b7cab882b2ab0a3920d45b323a8a364",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "a6e69b8f125bab4505839ad31aeb25e22f3b3dd8",
+        "files": {
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/best.zip": {
+            "size": 1198651907,
+            "sha256": "a5a0cedabb4947c46f167bd7f51a92b36b7cab882b2ab0a3920d45b323a8a364"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/run_metadata.json": {
+            "size": 3331,
+            "sha256": "4e909beda17c212ce3ace600a47f46eaea0a7db3aa46a2b655cbe734d234897a"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/training_receipt.json": {
+            "size": 2569,
+            "sha256": "c6dea1b19ce92b1c0b41fb836be6715461654f505a7103b11097f67fdacbbd47"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "cf3c1e1b4d558086939b44a5fd1bdcf3cc29ab2100a6f8ce5a501cc37de8c440"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "d0ad17efcc8ffe20f618e83ce521e224ff666e5131e17dff7bcf678620a47320"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/validation_predictions.csv": {
+            "size": 63699,
+            "sha256": "119d26fc4c2ec322060ac9809a0fc4011916b073a406ca730910d0b004cd75bf"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/final_trainer_state.json": {
+            "size": 19245,
+            "sha256": "a1e5041eab8ddc805e42a48b9168b8a11ac3c17360b1344e47fb0953dc1d1ef2"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/selected_trainer_state.json": {
+            "size": 18994,
+            "sha256": "bafa249497aee85bc6ea56b68455e8ded5fcbcc1679b8913cb263bb0f6465901"
+          },
+          "checkpoints/amis_mandarin/byt5-small/middle-alignment/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "9071041d77fa94d7af76ffdd5f149eae688441fbe01f1c0b7c31da2fdf6e741c"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "4e909beda17c212ce3ace600a47f46eaea0a7db3aa46a2b655cbe734d234897a"
+    },
+    "A01": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "A01",
+      "spec": {
+        "id": "A01",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "baseline",
+        "seed": 46,
+        "data_seed": 46,
+        "learning_rate": 5e-05,
+        "microbatch": 32,
+        "accumulation": 4,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10"
+      },
+      "scores": {
+        "bleu": 16.68918322997943,
+        "chrf++": 14.064925855805747,
+        "chrf0": 16.125156459274308
+      },
+      "archive_sha256": "c165cc324692082f7613712918625f82485a8757b80dff33c7a4b955834230a2",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "4916bc8117d33b160972986f1127e5f8b654deb4",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/best.zip": {
+            "size": 2466896422,
+            "sha256": "c165cc324692082f7613712918625f82485a8757b80dff33c7a4b955834230a2"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/run_metadata.json": {
+            "size": 3185,
+            "sha256": "e25e3dba68208dac4277cdee065ca676712ea7700d49a3ac37a3748291250db7"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/training_receipt.json": {
+            "size": 2422,
+            "sha256": "ed6e70ba6abb1d43f3a6c58fe33f6893a6e9a7395198ccd649a893268facd6aa"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/resolved_training_arguments.json": {
+            "size": 4421,
+            "sha256": "6d30b318361bc3c7db7ed41552351678e29ef9d19514c5cb2a8cb178906c222b"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/validation_metrics.json": {
+            "size": 748,
+            "sha256": "15d9d5871bda6c2bc985f835ac97653a23578c057e8ca9864f1b18f8c01b503a"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/validation_predictions.csv": {
+            "size": 62367,
+            "sha256": "1777304a19d7a0b3f47c7bef7e5c0555775d14c60b22e7a15b60cdb5adb3cb40"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/final_trainer_state.json": {
+            "size": 19197,
+            "sha256": "b15218931e2d3c289c8e0aba1e53b664910078a0f4d5a03628459ba866a69704"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/selected_trainer_state.json": {
+            "size": 13512,
+            "sha256": "69e1a72e8e7ae9764a09c769b607ab61ccb5f397bed5244bd7670c9e1066aca1"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-46/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "7267668b48cb14f71927dfc7d41e8524c20f39d0a0297c2bfd30c9d43547c1ef"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "e25e3dba68208dac4277cdee065ca676712ea7700d49a3ac37a3748291250db7"
+    },
+    "A04": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "A04",
+      "spec": {
+        "id": "A04",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "bitfit",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0001,
+        "microbatch": 4,
+        "accumulation": 32,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 0.5791167040312979,
+        "chrf++": 2.862149812690749,
+        "chrf0": 3.339174781472541
+      },
+      "archive_sha256": "1e6b7d14cc137dcefe84488328c33ff4c2368a08f588030ad28069108943677c",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "f32611359481a4ac439f2c01a3cfe3af21f557f8",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/best.zip": {
+            "size": 2466896878,
+            "sha256": "1e6b7d14cc137dcefe84488328c33ff4c2368a08f588030ad28069108943677c"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/run_metadata.json": {
+            "size": 3639,
+            "sha256": "2a7ddc275855a3470d7a5cf6013eb7024b0edb68d92fcb62a3dae0b8fa64b343"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/training_receipt.json": {
+            "size": 2878,
+            "sha256": "7fd497bd770958983e40b402db33de8688fb401efe2e4b3d1b4b1f93e049cf6b"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "8f29e025873d186898e77d192c318a47f3ce3f256e97956fc0ec787ffb9ee5a7"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "80787b83e1b99d176cafe4de412265d09fd7790548f749b017581ae200db011e"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/validation_predictions.csv": {
+            "size": 60444,
+            "sha256": "e694d0a2833044876729c04f2bf8918dba460066a536e876e2587f7b8f2a798e"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/final_trainer_state.json": {
+            "size": 19286,
+            "sha256": "b33ce11ae19b30792c1299c227ea17eff77906d6379ef1e8650ff737ce9df997"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/selected_trainer_state.json": {
+            "size": 16315,
+            "sha256": "89aec2212320001e01bf54c501f0788e13314bedf10a99fba46d22c67e859577"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/bitfit/seed-42/es10/stop_state.json": {
+            "size": 318,
+            "sha256": "6afab761c9d8ec82977f878c7cb8a691e09a1b35ec39b4820392f4848c1e88a3"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "2a7ddc275855a3470d7a5cf6013eb7024b0edb68d92fcb62a3dae0b8fa64b343"
+    },
+    "D01": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "D01",
+      "spec": {
+        "id": "D01",
+        "backbone": "byt5-small",
+        "model_id": "google/byt5-small",
+        "model_revision": "68377bdc18a2ffec8a0533fef03b1c513a4dd49d",
+        "method": "baseline",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 5e-05,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": null,
+        "tgt_lang": null,
+        "remote_prefix": "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 1.395412995553629,
+        "chrf++": 3.5611062714911346,
+        "chrf0": 4.154623983406324
+      },
+      "archive_sha256": "e7a36ad4ae26603a91f00cb071b0fa23b7e57a0cf7b1c4ac37da3d6d76b59087",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "b23e44e853655e726613e30a48c98c07fb741fc8",
+        "files": {
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/best.zip": {
+            "size": 1198651723,
+            "sha256": "e7a36ad4ae26603a91f00cb071b0fa23b7e57a0cf7b1c4ac37da3d6d76b59087"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/run_metadata.json": {
+            "size": 3147,
+            "sha256": "87fd00d479ccfe252b838efc4251fc7d27271373159532f671dc55b0d43324d1"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/training_receipt.json": {
+            "size": 2385,
+            "sha256": "676169e04c008bc5a3af726d7459ad70134a5499fa2cff11236dceecfaaf5b41"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4421,
+            "sha256": "ae3cd27a83631a99ef87a6913607b8a48f217ee3603b4e18e5ddfad4fe1a9979"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "99e949891546b5df4db6c500f19d97d9eeac2d703c83d626d76bb63ef34b2091"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/validation_predictions.csv": {
+            "size": 64247,
+            "sha256": "60bf0e52090c50c56c6b4817b7423f59c0ef8ae5d0cc250407b6de0665265306"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/final_trainer_state.json": {
+            "size": 19204,
+            "sha256": "7de44cdbb90de68c4cdb6628ade3e0faa5b5840a26a2d42fe2f31db86fcb07e3"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/selected_trainer_state.json": {
+            "size": 17025,
+            "sha256": "37e812a4eec577544e9c0340d364c2974d5370d61c994c302aba942c680f5c0d"
+          },
+          "checkpoints/amis_mandarin/byt5-small/baseline/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "38d6949a4df07c39eaf92f2ebe658902a8afbf0dbdf1dae3d96761e053d98072"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "87fd00d479ccfe252b838efc4251fc7d27271373159532f671dc55b0d43324d1"
+    }
+  },
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB, 0 %",
+  "log_tail": [
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 1.20GB / 1.20GB, 32.3MB/s  \u001b[A",
+    "",
+    "",
+    "  ...ontrols/runs/D02/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB            \u001b[A\u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB, 30.1MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB, 30.1MB/s  \u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB, 30.1MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB, 30.1MB/s  ",
+    "",
+    "  ...ontrols/runs/D02/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.20GB / 1.20GB            ",
+    "VAL_COMPLETE_VERIFIED D02 {\"bleu\": 6.254708068539598, \"chrf++\": 7.7646770901133575, \"chrf0\": 9.058789938465582}"
+  ]
+}

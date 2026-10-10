@@ -1,0 +1,114 @@
+{
+  "checkpoints/amis_mandarin/byt5-small/layerskip/historical-layerskip-acl2024/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 317207,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/byt5-small/middle-alignment/historical-middle-align-acl2025/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 326482,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/bitfit/historical-bitfit/original-peft/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 417704,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/layerskip/historical-layerskip-acl2024/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 277508,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/lora/historical-lora/original-peft/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 262685,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/middle-alignment/historical-middle-align-acl2025/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 310773,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/strong-lora/historical-lora-all-linear-unfreeze-embed/strong-lora-comparison/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 320727,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mbart-large-50/strong-lora/historical-lora-all-linear/strong-lora-comparison/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 462773,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mt5-small/layerskip/historical-layerskip_acl2024/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 451354,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/mt5-small/middle-alignment/historical-middle_align_acl2025/original-comparators/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 468731,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/baseline/historical-baseline/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 418956,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/bitfit/historical-bitfit/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 397060,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 483537,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 269620,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 360110,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  },
+  "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/best.zip": {
+    "seed": 42,
+    "member": "training_args.bin",
+    "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+    "bytes_transferred": 523711,
+    "inspection": "Static primitive pickle opcodes; no pickle execution"
+  }
+}

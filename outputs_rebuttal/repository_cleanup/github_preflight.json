@@ -1,0 +1,21 @@
+{
+  "unit_tests": {
+    "count": 40,
+    "status": "PASS"
+  },
+  "previous_refactor_cpu_gate_cases": 21,
+  "previous_exact_comparator_parity_cases": 14,
+  "secret_scan": "No credential literals detected in Git candidate files",
+  "gpu_training_started": false,
+  "dataset_git_byte_preservation": "Enforced by .gitattributes; final staged blob hashes must match recipes",
+  "staged_dataset_hash_checks": {
+    "count": 9,
+    "status": "PASS"
+  },
+  "staged_python_syntax": {
+    "files": 127,
+    "status": "PASS"
+  },
+  "forbidden_tracked_weights_or_credentials": [],
+  "shared_cli_whitespace": "PASS"
+}

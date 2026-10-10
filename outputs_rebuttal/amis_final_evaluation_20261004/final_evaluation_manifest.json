@@ -1,0 +1,149 @@
+{
+  "protocol": {
+    "suite": "amis_final_evaluation_20261004",
+    "description": "Final test checkpoint evaluation across 15 checkpoints + controls",
+    "model_base": "facebook/mbart-large-50-many-to-many-mmt",
+    "base_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+    "test_dataset": "data_processed/amis_mandarin/test.csv",
+    "test_rows": 575,
+    "test_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+    "modeling_sha256": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551",
+    "inference_precision": "FP32",
+    "allow_tf32": false,
+    "beam_size": 4,
+    "max_length": 256,
+    "generation_batch_size": 8,
+    "pad_to_multiple_of": 8,
+    "src_lang": "tl_XX",
+    "tgt_lang": "zh_CN",
+    "bleu_tokenizer": "zh",
+    "sacrebleu_version": "2.6.0"
+  },
+  "reused_predictions_from_c": {
+    "mbart-amis-baseline-seed42": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/test_predictions.csv",
+      "bleu": 19.7281,
+      "chrf++": 18.7138
+    },
+    "mbart-amis-baseline-seed43": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/test_predictions.csv",
+      "bleu": 18.1378,
+      "chrf++": 13.1592
+    },
+    "mbart-amis-baseline-seed44": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/test_predictions.csv",
+      "bleu": 20.3,
+      "chrf++": 18.9017
+    },
+    "mbart-amis-full-seed43": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed43/test_predictions.csv",
+      "bleu": 19.6123,
+      "chrf++": 18.4753
+    },
+    "mbart-amis-full-seed44": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed44/test_predictions.csv",
+      "bleu": 19.7371,
+      "chrf++": 18.6065
+    },
+    "mbart-amis-lsr-seed43": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed43/test_predictions.csv",
+      "bleu": 19.4879,
+      "chrf++": 18.6488
+    },
+    "mbart-amis-lsr-seed44": {
+      "source": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed44/test_predictions.csv",
+      "bleu": 19.3284,
+      "chrf++": 18.3633
+    }
+  },
+  "models_to_evaluate": [
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "family": "original_full_detached",
+      "seed": 42,
+      "alpha": 0.1,
+      "lambda": 0.1,
+      "detach": true,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-full_a010_l010-seed42-replica/mbart-amis-full_a010_l010-seed42-replica-best.zip",
+      "sha256": "a9d910c83b55b9b54b1789b2bb2b12142e9da8653a489a8de75e2290071446f2"
+    },
+    {
+      "id": "mbart-amis-lsr_l010-seed42",
+      "family": "matched_lsr",
+      "seed": 42,
+      "alpha": 0.0,
+      "lambda": 0.1,
+      "detach": true,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l010-seed42/mbart-amis-lsr_l010-seed42-best.zip",
+      "sha256": "f6ab4ed7175eeb83b81b6027884db9f0b8f514731d9e490af16e8bc448601c8a"
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "family": "tuned_lsr",
+      "seed": 42,
+      "alpha": 0.0,
+      "lambda": 0.03,
+      "detach": true,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_20261003_v1/mbart-amis-lsr_l003-seed42/mbart-amis-lsr_l003-seed42-best.zip",
+      "sha256": "ef41f86b3a7c6e88db59541a9f1d0216bbc789d16dbc0227d32eba13bb7d6208"
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "family": "tuned_lsr",
+      "seed": 43,
+      "alpha": 0.0,
+      "lambda": 0.03,
+      "detach": true,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l003-seed43/mbart-amis-lsr_l003-seed43-best.zip",
+      "sha256": "f9e81950f0fcb931562b6701d7072923a9a7d0419c553da9e0eb1925c9733385"
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "family": "tuned_lsr",
+      "seed": 44,
+      "alpha": 0.0,
+      "lambda": 0.03,
+      "detach": true,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l003-seed44/mbart-amis-lsr_l003-seed44-best.zip",
+      "sha256": "c17de7b6495f2daea45a63342e7a76c1849aa4cd454dee7a5fd8cb53be67f1df"
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed42",
+      "family": "full_source_attached",
+      "seed": 42,
+      "alpha": 0.1,
+      "lambda": 0.1,
+      "detach": false,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed42/mbart-amis-full-attached-a010-l010-seed42-best.zip",
+      "sha256": "96e06541dd277f6bf22f6c4ae795491cf737ae9adfdddd56f5387f519343ff46"
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed43",
+      "family": "full_source_attached",
+      "seed": 43,
+      "alpha": 0.1,
+      "lambda": 0.1,
+      "detach": false,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed43/mbart-amis-full-attached-a010-l010-seed43-best.zip",
+      "sha256": "d475958742a17ab57ec8a3046da39a18323a8ff1bd37b09f75983a5d6a0f2b3b"
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed44",
+      "family": "full_source_attached",
+      "seed": 44,
+      "alpha": 0.1,
+      "lambda": 0.1,
+      "detach": false,
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed44/mbart-amis-full-attached-a010-l010-seed44-best.zip",
+      "sha256": "266028b67157d8f69b9dfa8c64f0edd719c97ccdf887a892f06a20edfac44406"
+    }
+  ]
+}

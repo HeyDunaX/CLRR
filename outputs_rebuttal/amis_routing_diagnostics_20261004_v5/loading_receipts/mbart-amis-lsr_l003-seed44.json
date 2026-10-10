@@ -1,0 +1,33 @@
+{
+  "id": "mbart-amis-lsr_l003-seed44",
+  "family": "tuned_lsr",
+  "seed": 44,
+  "alpha": 0.0,
+  "lambda": 0.03,
+  "detach": true,
+  "best_step": 684,
+  "archive_repo": "FiveC/amis-rewire-checkpoints",
+  "archive_path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l003-seed44/mbart-amis-lsr_l003-seed44-best.zip",
+  "receipt_dir_exists": true,
+  "archive_sha256": "c17de7b6495f2daea45a63342e7a76c1849aa4cd454dee7a5fd8cb53be67f1df",
+  "archive_bytes": 2270689231,
+  "revision": "b3a80ea54b693927647f346e67024e82f50f5a85",
+  "eval_bleu": 16.833193983741737,
+  "eval_chrf++": 14.081403953148813,
+  "eval_chrf0": 16.229853186440483,
+  "eval_loss": 2.9597978591918945,
+  "validation_predictions_exists": true,
+  "validation_prediction_sha256": "72593cb35f2d0edf6aa933311abc6fe396db43e2ef87650d3f90df07c8e9d104",
+  "recomputed_val_bleu": 16.833193983741726,
+  "recomputed_val_chrf++": 14.081403953148813,
+  "recomputed_val_chrf0": 16.229853186440483,
+  "row197_stat": [
+    0,
+    1,
+    0
+  ],
+  "download_revision": "b3a80ea54b693927647f346e67024e82f50f5a85",
+  "verified_sha256": "c17de7b6495f2daea45a63342e7a76c1849aa4cd454dee7a5fd8cb53be67f1df",
+  "verified_bytes": 2270689231,
+  "checkpoint_relative_path": "."
+}

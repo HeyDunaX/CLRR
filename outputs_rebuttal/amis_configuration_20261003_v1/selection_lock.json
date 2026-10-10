@@ -1,0 +1,197 @@
+{
+  "lock_date_utc": "2026-10-04T00:45:00Z",
+  "status": "LOCKED_BEFORE_CONFIRMATION_TRAINING",
+  "protocol": {
+    "backbone": "facebook/mbart-large-50-many-to-many-mmt",
+    "pretrained_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+    "dataset": "amis_mandarin",
+    "source_lang": "tl_XX",
+    "target_lang": "zh_CN",
+    "validation_selection_metric": "corpus_chrfpp",
+    "validation_selection_beam": 1,
+    "validation_references": "original_csv_raw",
+    "test_access": "FORBIDDEN_UNTIL_CONFIRMATION_COMPLETE",
+    "max_source_length": 256,
+    "max_target_length": 256,
+    "train_batch_size": 32,
+    "gradient_accumulation_steps": 4,
+    "eval_batch_size": 8,
+    "learning_rate": 5e-5,
+    "warmup_ratio": 0.06,
+    "max_epochs": 20,
+    "early_stopping_patience": 4
+  },
+  "selected_configurations": {
+    "selected_full_candidate": {
+      "name": "Full CLRR (Original specification)",
+      "method": "jepa-clrr-enc",
+      "rewire_stack": "encoder",
+      "rewire_distance": 2,
+      "rewire_strength_alpha": 0.1,
+      "jepa_weight_lambda": 0.1,
+      "routing_detach": true,
+      "selection_rationale": "Highest validation chrF++ among all Full CLRR configurations (14.7317 vs 14.5738 for alpha=0.20, 14.4355 for lambda=0.03, 14.4092 for alpha=0.05). Selected strictly on validation."
+    },
+    "matched_control": {
+      "name": "LSR Matched Control",
+      "method": "jepa",
+      "rewire_strength_alpha": 0.0,
+      "jepa_weight_lambda": 0.1,
+      "role": "Exact regularizer-matched ablation for Full CLRR alpha=0.10, lambda=0.10"
+    },
+    "best_tuned_control": {
+      "name": "LSR Best-Tuned Control",
+      "method": "jepa",
+      "rewire_strength_alpha": 0.0,
+      "jepa_weight_lambda": 0.03,
+      "role": "Highest scoring model from 8-model screening suite (chrF++ 14.8587, BLEU 17.7873). Tests whether Full CLRR outperforms a properly tuned LSR."
+    }
+  },
+  "screening_validation_matrix_seed42": [
+    {
+      "run": "mbart-amis-lsr_l003-seed42",
+      "alpha": 0.0,
+      "lambda_": 0.03,
+      "val_chrfpp": 14.8587474,
+      "val_bleu": 17.7872853,
+      "val_chrf0": 17.136449,
+      "rank_chrfpp": 1
+    },
+    {
+      "run": "mbart-amis-full_original-seed42",
+      "alpha": 0.1,
+      "lambda_": 0.1,
+      "val_chrfpp": 14.7316677,
+      "val_bleu": 17.6437145,
+      "val_chrf0": null,
+      "rank_chrfpp": 2
+    },
+    {
+      "run": "mbart-amis-full_a020_l010-seed42",
+      "alpha": 0.2,
+      "lambda_": 0.1,
+      "val_chrfpp": 14.5737574,
+      "val_bleu": 17.4585802,
+      "val_chrf0": 16.7469491,
+      "rank_chrfpp": 3
+    },
+    {
+      "run": "mbart-amis-full_a010_l003-seed42",
+      "alpha": 0.1,
+      "lambda_": 0.03,
+      "val_chrfpp": 14.4354908,
+      "val_bleu": 17.1141186,
+      "val_chrf0": 16.5587225,
+      "rank_chrfpp": 4
+    },
+    {
+      "run": "mbart-amis-full_a005_l010-seed42",
+      "alpha": 0.05,
+      "lambda_": 0.1,
+      "val_chrfpp": 14.4091973,
+      "val_bleu": 17.1224519,
+      "val_chrf0": 16.4997872,
+      "rank_chrfpp": 5
+    },
+    {
+      "run": "mbart-amis-lsr_l060-seed42",
+      "alpha": 0.0,
+      "lambda_": 0.6,
+      "val_chrfpp": 14.3687502,
+      "val_bleu": 17.0299684,
+      "val_chrf0": 16.5079732,
+      "rank_chrfpp": 6
+    },
+    {
+      "run": "mbart-amis-full_a010_l030-seed42",
+      "alpha": 0.1,
+      "lambda_": 0.3,
+      "val_chrfpp": 14.3614005,
+      "val_bleu": 17.1999081,
+      "val_chrf0": 16.4431517,
+      "rank_chrfpp": 7
+    },
+    {
+      "run": "mbart-amis-lsr_original-seed42",
+      "alpha": 0.0,
+      "lambda_": 0.1,
+      "val_chrfpp": 14.1673894,
+      "val_bleu": 16.5687728,
+      "val_chrf0": null,
+      "rank_chrfpp": 8
+    },
+    {
+      "run": "mbart-amis-lsr_l001-seed42",
+      "alpha": 0.0,
+      "lambda_": 0.01,
+      "val_chrfpp": 13.949106,
+      "val_bleu": 16.3028128,
+      "val_chrf0": 16.0469369,
+      "rank_chrfpp": 9
+    },
+    {
+      "run": "mbart-amis-lsr_l030-seed42",
+      "alpha": 0.0,
+      "lambda_": 0.3,
+      "val_chrfpp": 13.8950592,
+      "val_bleu": 16.382585,
+      "val_chrf0": 16.0409174,
+      "rank_chrfpp": 10
+    }
+  ],
+  "confirmation_plan_b2": [
+    {
+      "run_name": "mbart-amis-full_a010_l010-seed42-replica",
+      "method": "jepa-clrr-enc",
+      "alpha": 0.1,
+      "lambda_": 0.1,
+      "seed": 42,
+      "assigned_machine": "Machine 1 (Account 1, session colab)",
+      "objective": "Restore full replica of selected Full CLRR with verifiable weights and validation predictions at seed 42"
+    },
+    {
+      "run_name": "mbart-amis-lsr_l010-seed42",
+      "method": "jepa",
+      "alpha": 0.0,
+      "lambda_": 0.1,
+      "seed": 42,
+      "assigned_machine": "Machine 1 (Account 1, session colab)",
+      "objective": "Restore matched LSR control with verifiable weights and validation predictions at seed 42"
+    },
+    {
+      "run_name": "mbart-amis-lsr_l003-seed43",
+      "method": "jepa",
+      "alpha": 0.0,
+      "lambda_": 0.03,
+      "seed": 43,
+      "assigned_machine": "Machine 2 (Account 2, session colab2)",
+      "objective": "Evaluate best-tuned LSR control on seed 43"
+    },
+    {
+      "run_name": "mbart-amis-lsr_l003-seed44",
+      "method": "jepa",
+      "alpha": 0.0,
+      "lambda_": 0.03,
+      "seed": 44,
+      "assigned_machine": "Machine 2 (Account 2, session colab2)",
+      "objective": "Evaluate best-tuned LSR control on seed 44"
+    }
+  ],
+  "comparison_families_pre_declaration": {
+    "primary_family_holm18": [
+      "Full_vs_Baseline",
+      "Full_vs_matched_LSR_l010",
+      "Full_vs_best_LSR_l003"
+    ],
+    "metrics": [
+      "BLEU",
+      "chrF++"
+    ],
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "total_hypothesis_slots": 18
+  }
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "family": "lsr",
+    "file": "outputs_rebuttal/amis_accumulation_confirmation_20261005/failed_seed44_metadata/failed_seed44_lsr_metadata.zip",
+    "sha256": "4b615b37a2fd018cdb2ab531b8d7ebdb2fdbf2dc951623feba11a098ce1aca55",
+    "bytes": 8083707,
+    "used_as_final_score": false
+  },
+  {
+    "family": "full",
+    "file": "outputs_rebuttal/amis_accumulation_confirmation_20261005/failed_seed44_metadata/failed_seed44_full_metadata.zip",
+    "sha256": "5c117e9b4778191718bfc3fce71bda89ffa5d0e0a15909637fccf0b525ccaa9a",
+    "bytes": 8084002,
+    "used_as_final_score": false
+  }
+]

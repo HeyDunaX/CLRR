@@ -1,0 +1,48 @@
+{
+  "status": "VALIDATION_VERIFIED",
+  "family": "lsr003",
+  "seed": 42,
+  "selected_step": 720,
+  "selected_epoch": 20.0,
+  "completed_epochs": 20.0,
+  "scores": {
+    "validation": {
+      "bleu": 16.516374886250833,
+      "chrfpp": 13.90608116417584,
+      "rows": 576,
+      "prediction_sha256": "0a39943a5d7fe8cf250282fb72fd92f11e873e1a7b8585425cfff50f7ed3e80b"
+    }
+  },
+  "bundle_hashes_match": true,
+  "hf_archive": {
+    "status": "VALIDATION_COMPLETE",
+    "family": "lsr003",
+    "seed": 42,
+    "run": "mbart-amis-lsr_l003-seed42-corrected-control",
+    "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed42/runs/mbart-amis-lsr_l003-seed42-corrected-control/checkpoint-720",
+    "best_metric": 13.90608116417584,
+    "completed_epochs": 20.0,
+    "hf_repo": "FiveC/amis-corrected-lsr-l003-20261005",
+    "hf_prefix": "amis_corrected_controls_20261005",
+    "selected_and_exported_weight_digest": "54f779d67ceeef097d64426548de27afabc3077b3ec2d64449c2a15250dc61c4",
+    "post_selection_test_bleu": null,
+    "post_selection_test_chrfpp": null,
+    "old_scores_untouched": true,
+    "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only",
+    "archive_size": 2270670769,
+    "archive_sha256": "d66017c4d98db4723eebc6544749f62e5abf20deb01e9e76a9f2a4dd9f7857a3",
+    "archive_path": "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/mbart-amis-lsr_l003-seed42-corrected-control-best.zip",
+    "hf_revision": "e2421a10a2169b85087f221fccf8fd20661f4f14",
+    "remote_archive_verified": true,
+    "remote_metadata_verified": {
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/provenance/final_trainer_state.json": true,
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/provenance/VAL_COMPLETE.json": true,
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/selected_provenance/trainer_state.json": true,
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/metrics.json": true,
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/validation_predictions.csv": true,
+      "amis_corrected_controls_20261005/mbart-amis-lsr_l003-seed42-corrected-control/provenance/training_receipt.json": true
+    },
+    "source_hashes_match": true
+  },
+  "zip_sha256": "aa217965358075f585d38e38d42a3a5718388603a01df2a712f72a4e8e876b96"
+}

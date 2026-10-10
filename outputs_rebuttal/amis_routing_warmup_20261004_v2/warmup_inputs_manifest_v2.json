@@ -1,0 +1,42 @@
+{
+  "suite": "amis_routing_warmup_20261004_v2",
+  "backbone_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+  "selection": "validation raw-reference chrF++ beam1; no test selection",
+  "snapshot_epochs": [
+    1,
+    4,
+    10,
+    "actual_last"
+  ],
+  "control_inventory_sha256": "22a48be698d55716fe20dba653fcc6118c1303abeeb7af4c7a7656230e5e8f2f",
+  "files": {
+    "src/amis_rewire/__init__.py": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+    "src/amis_rewire/ablation.py": "2dac024b77250e27c62db075e82a463685bbb6157a0a5cd8f53ee931e9d50cc8",
+    "src/amis_rewire/evaluation.py": "e6a5da9de30315c2a0624888eb18d9811e7716966c5a8d730da5b32d5b90c6ef",
+    "src/amis_rewire/metrics.py": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+    "src/amis_rewire/modeling.py": "e68e8cda2d4ced9d520de8d0a01f53b188cff85c9757d3b851dd44a0d7fa9b46",
+    "src/amis_rewire/prepare_data.py": "82a5db8863221e657c698bbd913fff05d65f0ec0403b7bba03328ffa66b84fad",
+    "src/amis_rewire/scientific_records.py": "caeb724bc15934dfd756fc77fffac74f43c2edf8b6cf80991185bb666fcf5648",
+    "src/amis_rewire/train.py": "fce206f0e9114df4dca6d48f5f9a73c786e9e2db976303e5603f917a60dba15b",
+    "scripts/revalidation/run_amis_warmup_worker.py": "804c85e5b2969b361c24511c651fea72194f0246cff48e3d9f481115c7e0a8c6",
+    "scripts/revalidation/amis_warmup_protocol.py": "9f4f0610e46cff35bb9354b51b51182dfa6e0ceda06e5a7e527af1103d0548c5",
+    "scripts/revalidation/replay_amis_warmup_controls.py": "fc93d8e9b4187d702ca50a192b574ce903c775b11cd3fb38746aa62efe1befbf",
+    "scripts/revalidation/probe_amis_warmup_trajectory.py": "027590c7270c75db78eae20634c3f40f73b25c1fd42ac33e22e2575d135d89bf",
+    "scripts/revalidation/amis_v4_measurements.py": "d7f2b12709b577a86cfc7c84a7e775bc5052b8c46f488f1f66911e315dfb7bd2",
+    "scripts/revalidation/run_amis_followup_v4_worker.py": "f57db330a7db762a135a58a3568a4f3ef9a6d6e37fc67e6e389deb9749857dd2",
+    "data_processed/amis_mandarin/train.csv": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6",
+    "data_processed/amis_mandarin/validation.csv": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "data_processed/amis_mandarin/test.csv": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+    "tests/smoke_precision_training.py": "10a59dd3a0ac0a9d7494fe17fc1a63350cc87f8c7d0d88c2440b1da5ce0d0f8c",
+    "tests/smoke_warmup_records.py": "4b45bcfeeac1e2cdfff4be6fd89008f70a5e9d24ad968bc3f247d68c6413ddca",
+    "warmup_reference_v2/mbart-amis-lsr_l003-seed42.csv": "5c057330a13333267ce0fe647b687a44366fba164d23fc03ea2e31886ada247c",
+    "warmup_reference_v2/mbart-amis-lsr_l003-seed43.csv": "1ec71afbcc4f13d476abf7e493742129d5b3451f65abaac1e2b27e44d753964e",
+    "warmup_reference_v2/mbart-amis-lsr_l003-seed44.csv": "30c60d6f8e49aa1f7943e958931f43d70a07813301b0da7fcd816c2da0864ed3",
+    "warmup_reference_v2/mbart-amis-full_a010_l010-seed42-replica.csv": "5978990cac96a39750d44d108806841c03f8ad055746bf20142fad3894b9a94f",
+    "warmup_reference_v2/mbart-amis-full-seed43.csv": "0431d1320a653f505a107bed808f57c43f6b054900e4f5c7006e369881cbc334",
+    "warmup_reference_v2/mbart-amis-full-seed44.csv": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6",
+    "warmup_controls_v2.json": "038922e63568e415425d83633d6d490203fd4c846b2569d3947ab39556ad8e13",
+    "warmup_control_training_configuration_v2.json": "d5dc9fc8af57ceff8b6496696e597de38aacfd86294ada12b8f364fcf49124d9",
+    "warmup_fixed_batches_v2.json": "09f93e2f22e1a583feae3b0fddeb8fee84751c3bff2e4e052624d9e3f6810c5f"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "mbart-amis-full-attached-a010-l010-seed44",
+  "family": "full_source_attached",
+  "seed": 44,
+  "alpha": 0.1,
+  "lambda": 0.1,
+  "detach": false,
+  "best_step": 612,
+  "archive_repo": "FiveC/amis-rewire-checkpoints",
+  "archive_path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed44/mbart-amis-full-attached-a010-l010-seed44-best.zip",
+  "receipt_dir_exists": true,
+  "archive_sha256": "266028b67157d8f69b9dfa8c64f0edd719c97ccdf887a892f06a20edfac44406",
+  "archive_bytes": 2270677173,
+  "revision": "2dc4c29e9ae70f0dd5459e5939c6eccce6b505b4",
+  "eval_bleu": 17.637649280659932,
+  "eval_chrf++": 14.696181225637487,
+  "eval_chrf0": 16.861761015930025,
+  "eval_loss": 2.8910393714904785,
+  "validation_predictions_exists": true,
+  "validation_prediction_sha256": "2da2e67f2ced085fd80e4690e62069569d1c3967fb0669ea39c96a10035b694c",
+  "recomputed_val_bleu": 17.637649280659932,
+  "recomputed_val_chrf++": 14.696181225637487,
+  "recomputed_val_chrf0": 16.861761015930025,
+  "row197_stat": [
+    0,
+    1,
+    0
+  ],
+  "download_revision": "2dc4c29e9ae70f0dd5459e5939c6eccce6b505b4",
+  "verified_sha256": "266028b67157d8f69b9dfa8c64f0edd719c97ccdf887a892f06a20edfac44406",
+  "verified_bytes": 2270677173,
+  "checkpoint_relative_path": "."
+}

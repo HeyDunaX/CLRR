@@ -1,0 +1,290 @@
+[
+  {
+    "batch_id": 0,
+    "ce_loss": 3.184833288192749,
+    "lsr_loss": 0.7176080942153931,
+    "weighted_lsr_loss": 0.07176081091165543,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 33.74952480819815,
+        "weighted_lsr_gradient_norm": 0.08778071756595003,
+        "lsr_to_ce_norm_ratio": 0.002600946770800964,
+        "gradient_cosine": 0.018155648372186695,
+        "combined_gradient_norm": 33.751232637316406
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 21.632629911535144,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 21.632629911535144
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 17.01095039540548,
+        "weighted_lsr_gradient_norm": 0.08349567016292528,
+        "lsr_to_ce_norm_ratio": 0.004908348341635091,
+        "gradient_cosine": 0.03089326280641847,
+        "combined_gradient_norm": 17.013734534167675
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 19.536819458007812,
+        "weighted_lsr_gradient_norm": 0.027091095224022865,
+        "lsr_to_ce_norm_ratio": 0.0013866686582353958,
+        "gradient_cosine": 0.018720354271464804,
+        "combined_gradient_norm": 19.53734538901531
+      }
+    }
+  },
+  {
+    "batch_id": 1,
+    "ce_loss": 3.7373604774475098,
+    "lsr_loss": 0.7077724933624268,
+    "weighted_lsr_loss": 0.07077725231647491,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 39.52057926437279,
+        "weighted_lsr_gradient_norm": 0.08640619849455596,
+        "lsr_to_ce_norm_ratio": 0.0021863596157470763,
+        "gradient_cosine": 0.056121522475997325,
+        "combined_gradient_norm": 39.525522660125056
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 28.990466070182546,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 28.990466070182546
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 17.763484732182246,
+        "weighted_lsr_gradient_norm": 0.08164061252405645,
+        "lsr_to_ce_norm_ratio": 0.0045959795476474006,
+        "gradient_cosine": 0.12239350591459018,
+        "combined_gradient_norm": 17.77366170699375
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 20.14665412902832,
+        "weighted_lsr_gradient_norm": 0.02829914353787899,
+        "lsr_to_ce_norm_ratio": 0.0014046572377050019,
+        "gradient_cosine": 0.02481410122583853,
+        "combined_gradient_norm": 20.14737620919896
+      }
+    }
+  },
+  {
+    "batch_id": 2,
+    "ce_loss": 2.415699005126953,
+    "lsr_loss": 0.6481794118881226,
+    "weighted_lsr_loss": 0.06481794267892838,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 25.21437505459292,
+        "weighted_lsr_gradient_norm": 0.0906910782938749,
+        "lsr_to_ce_norm_ratio": 0.0035968005591062663,
+        "gradient_cosine": 0.060611561057083325,
+        "combined_gradient_norm": 25.220034446154788
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 15.46419062112665,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 15.46419062112665
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 14.560960291022885,
+        "weighted_lsr_gradient_norm": 0.08685689338481979,
+        "lsr_to_ce_norm_ratio": 0.005965052554835188,
+        "gradient_cosine": 0.09827947922014706,
+        "combined_gradient_norm": 14.569752939514116
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 13.586830139160156,
+        "weighted_lsr_gradient_norm": 0.02609121985733509,
+        "lsr_to_ce_norm_ratio": 0.0019203316439597344,
+        "gradient_cosine": 0.04035464376466799,
+        "combined_gradient_norm": 13.587908050182415
+      }
+    }
+  },
+  {
+    "batch_id": 3,
+    "ce_loss": 3.7890071868896484,
+    "lsr_loss": 0.6840245723724365,
+    "weighted_lsr_loss": 0.06840246170759201,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 38.94276024327537,
+        "weighted_lsr_gradient_norm": 0.09286963157992054,
+        "lsr_to_ce_norm_ratio": 0.0023847727022882834,
+        "gradient_cosine": 0.01855122316996726,
+        "combined_gradient_norm": 38.944593781853484
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 27.788747873819855,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 27.788747873819855
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 17.66038456642558,
+        "weighted_lsr_gradient_norm": 0.08918838155764282,
+        "lsr_to_ce_norm_ratio": 0.005050194757774424,
+        "gradient_cosine": 0.040699946181094945,
+        "combined_gradient_norm": 17.66423931741315
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 20.795068740844727,
+        "weighted_lsr_gradient_norm": 0.025888241827487946,
+        "lsr_to_ce_norm_ratio": 0.001244922156791886,
+        "gradient_cosine": 0.00554626473490782,
+        "combined_gradient_norm": 20.795228437697148
+      }
+    }
+  },
+  {
+    "batch_id": 4,
+    "ce_loss": 2.2091290950775146,
+    "lsr_loss": 0.6731545925140381,
+    "weighted_lsr_loss": 0.06731545925140381,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 29.010769984635143,
+        "weighted_lsr_gradient_norm": 0.09115892114078698,
+        "lsr_to_ce_norm_ratio": 0.003142244111034182,
+        "gradient_cosine": 0.05580285879217203,
+        "combined_gradient_norm": 29.015999663462022
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 20.478430049329635,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 20.478430049329635
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 13.454565182393727,
+        "weighted_lsr_gradient_norm": 0.08771198558328926,
+        "lsr_to_ce_norm_ratio": 0.006519124504897917,
+        "gradient_cosine": 0.11482602108272404,
+        "combined_gradient_norm": 13.464918719757334
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 15.531688690185547,
+        "weighted_lsr_gradient_norm": 0.02483055554330349,
+        "lsr_to_ce_norm_ratio": 0.0015987028866342064,
+        "gradient_cosine": 0.03128779370265218,
+        "combined_gradient_norm": 15.532485411390816
+      }
+    }
+  },
+  {
+    "batch_id": 5,
+    "ce_loss": 3.0581014156341553,
+    "lsr_loss": 0.6848977208137512,
+    "weighted_lsr_loss": 0.06848977506160736,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 39.068418628128754,
+        "weighted_lsr_gradient_norm": 0.08774487929500917,
+        "lsr_to_ce_norm_ratio": 0.002245928613855745,
+        "gradient_cosine": 0.008215079863230222,
+        "combined_gradient_norm": 39.06923798509539
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 27.6959837410845,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 27.6959837410845
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 18.356277611381802,
+        "weighted_lsr_gradient_norm": 0.08403242546593657,
+        "lsr_to_ce_norm_ratio": 0.00457785762696421,
+        "gradient_cosine": 0.016678405988007967,
+        "combined_gradient_norm": 18.35787141333808
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 20.550447463989258,
+        "weighted_lsr_gradient_norm": 0.02525302581489086,
+        "lsr_to_ce_norm_ratio": 0.001228830946826923,
+        "gradient_cosine": 0.004691909060564661,
+        "combined_gradient_norm": 20.55058146430282
+      }
+    }
+  },
+  {
+    "batch_id": 6,
+    "ce_loss": 2.891462564468384,
+    "lsr_loss": 0.69200599193573,
+    "weighted_lsr_loss": 0.06920059770345688,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 32.08988281667885,
+        "weighted_lsr_gradient_norm": 0.08425585898132662,
+        "lsr_to_ce_norm_ratio": 0.0026256206500552964,
+        "gradient_cosine": 0.0872434574533344,
+        "combined_gradient_norm": 32.09734333384782
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 20.168406073982517,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 20.168406073982517
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 17.645562824954244,
+        "weighted_lsr_gradient_norm": 0.07732442618603397,
+        "lsr_to_ce_norm_ratio": 0.004382088967810211,
+        "gradient_cosine": 0.13636675591019543,
+        "combined_gradient_norm": 17.65627347674267
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 17.653047561645508,
+        "weighted_lsr_gradient_norm": 0.033466145396232605,
+        "lsr_to_ce_norm_ratio": 0.001895771553289414,
+        "gradient_cosine": 0.08433286113821666,
+        "combined_gradient_norm": 17.65590134885
+      }
+    }
+  },
+  {
+    "batch_id": 7,
+    "ce_loss": 2.3456530570983887,
+    "lsr_loss": 0.6521064043045044,
+    "weighted_lsr_loss": 0.06521064043045044,
+    "groups": {
+      "all_parameters": {
+        "ce_gradient_norm": 29.916860954410836,
+        "weighted_lsr_gradient_norm": 0.095264250044193,
+        "lsr_to_ce_norm_ratio": 0.003184299655948616,
+        "gradient_cosine": 0.07088596485791857,
+        "combined_gradient_norm": 29.92376473107458
+      },
+      "decoder_without_shared_embeddings": {
+        "ce_gradient_norm": 20.500847696114718,
+        "weighted_lsr_gradient_norm": 0.0,
+        "lsr_to_ce_norm_ratio": 0.0,
+        "gradient_cosine": null,
+        "combined_gradient_norm": 20.500847696114718
+      },
+      "encoder_without_shared_embeddings": {
+        "ce_gradient_norm": 14.749392154936842,
+        "weighted_lsr_gradient_norm": 0.09178064276907075,
+        "lsr_to_ce_norm_ratio": 0.006222672894241977,
+        "gradient_cosine": 0.1402270979329901,
+        "combined_gradient_norm": 14.762541986706514
+      },
+      "shared_input_embeddings": {
+        "ce_gradient_norm": 16.037120819091797,
+        "weighted_lsr_gradient_norm": 0.02552627958357334,
+        "lsr_to_ce_norm_ratio": 0.0015916996493026937,
+        "gradient_cosine": 0.029799292163819775,
+        "combined_gradient_norm": 16.037901780224825
+      }
+    }
+  }
+]

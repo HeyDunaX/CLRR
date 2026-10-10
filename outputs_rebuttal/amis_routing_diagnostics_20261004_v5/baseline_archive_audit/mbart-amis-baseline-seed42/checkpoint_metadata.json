@@ -1,0 +1,83 @@
+{
+  "checkpoint_relative_path": ".",
+  "file_hashes": {
+    "config.json": "00d7ca5cfb685376fcca1079d674797e8e0a37b0bda55948dd8674d979323901",
+    "special_tokens_map.json": "1daf98a95c01a96007f2ab65fed7b31641e363f2de94f82e06d948b7855ed21d",
+    "generation_config.json": "1b165edd9af1cebb45d9b54c93a39afcb6e2ff38d1b901ea3eaeb73be91e816d",
+    "tokenizer.json": "9a401c402f0c43bd473810c637ae54b1037facc7bf4ed676de4be8876e1fd747",
+    "tokenizer_config.json": "834e2c03fd75b450a84bfd5f63ec248b19c132116d20f5b34377509c9c20c844"
+  },
+  "metadata": {
+    "config.json": {
+      "_num_labels": 3,
+      "activation_dropout": 0.0,
+      "activation_function": "relu",
+      "add_bias_logits": false,
+      "add_final_layer_norm": true,
+      "architectures": [
+        "MBartForConditionalGeneration"
+      ],
+      "attention_dropout": 0.0,
+      "bos_token_id": 0,
+      "classif_dropout": 0.0,
+      "classifier_dropout": 0.0,
+      "d_model": 1024,
+      "decoder_attention_heads": 16,
+      "decoder_ffn_dim": 4096,
+      "decoder_layerdrop": 0.0,
+      "decoder_layers": 12,
+      "decoder_start_token_id": 2,
+      "dropout": 0.1,
+      "dtype": "float32",
+      "early_stopping": null,
+      "encoder_attention_heads": 16,
+      "encoder_ffn_dim": 4096,
+      "encoder_layerdrop": 0.0,
+      "encoder_layers": 12,
+      "eos_token_id": 2,
+      "forced_eos_token_id": 2,
+      "gradient_checkpointing": false,
+      "id2label": {
+        "0": "LABEL_0",
+        "1": "LABEL_1",
+        "2": "LABEL_2"
+      },
+      "init_std": 0.02,
+      "is_encoder_decoder": true,
+      "label2id": {
+        "LABEL_0": 0,
+        "LABEL_1": 1,
+        "LABEL_2": 2
+      },
+      "max_length": null,
+      "max_position_embeddings": 1024,
+      "model_type": "mbart",
+      "normalize_before": true,
+      "normalize_embedding": true,
+      "num_beams": null,
+      "num_hidden_layers": 12,
+      "output_past": true,
+      "pad_token_id": 1,
+      "scale_embedding": true,
+      "static_position_embeddings": false,
+      "tokenizer_class": "MBart50Tokenizer",
+      "transformers_version": "4.57.6",
+      "use_cache": false,
+      "vocab_size": 250054
+    },
+    "generation_config.json": {
+      "bos_token_id": 0,
+      "decoder_start_token_id": 2,
+      "early_stopping": true,
+      "eos_token_id": [
+        2
+      ],
+      "forced_bos_token_id": 250025,
+      "forced_eos_token_id": 2,
+      "max_length": 200,
+      "num_beams": 5,
+      "pad_token_id": 1,
+      "transformers_version": "4.57.6"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+[
+  {
+    "id": "mbart-amis-baseline-seed42",
+    "seed": 42,
+    "conditions": {
+      "validation": {
+        "scores": {
+          "bleu": 16.265888292515125,
+          "chrf++": 13.901540564847089,
+          "chrf0": 15.962821804214725
+        },
+        "rows": 576,
+        "beams": 1,
+        "repeat16_exact": true,
+        "inventory_delta": {
+          "bleu": -1.6075888263091649,
+          "chrf++": -0.9993355534036059
+        },
+        "prediction_sha256": "82cd7a0f9b87686c402b87ec6feb6cef830450369aad29a038b7a4e1175ea30c"
+      },
+      "test": {
+        "scores": {
+          "bleu": 19.728081433402032,
+          "chrf++": 18.713838023321145,
+          "chrf0": 18.397282102498366
+        },
+        "rows": 575,
+        "beams": 4,
+        "gold_sha256": "4a53fc044641487438750047f37fc63689cf4ad12d28d4ad02fffe882bde9d75",
+        "different_predictions": [],
+        "old_test_metric_delta": {
+          "bleu": 7.105427357601002e-15,
+          "chrf++": 0.0,
+          "chrf0": 0.0
+        },
+        "prediction_sha256": "02f4d65b1687123d6f9f602733335a2c6cf57acae263b720c8bab0e2fce42b87"
+      }
+    }
+  },
+  {
+    "id": "mbart-amis-baseline-seed43",
+    "seed": 43,
+    "conditions": {
+      "validation": {
+        "scores": {
+          "bleu": 17.151270123753932,
+          "chrf++": 14.200731980464068,
+          "chrf0": 16.368745536133453
+        },
+        "rows": 576,
+        "beams": 1,
+        "repeat16_exact": true,
+        "inventory_delta": {
+          "bleu": 0.0,
+          "chrf++": 0.0
+        },
+        "prediction_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f"
+      },
+      "test": {
+        "scores": {
+          "bleu": 18.13783175840788,
+          "chrf++": 13.159189083183897,
+          "chrf0": 17.09042990233338
+        },
+        "rows": 575,
+        "beams": 4,
+        "gold_sha256": "7a2f66e8e84ca9845371ce993a1206bf1f03ee2678e25eed56111b06d1a8a227",
+        "different_predictions": [],
+        "old_test_metric_delta": {
+          "bleu": -7.105427357601002e-15,
+          "chrf++": 0.0,
+          "chrf0": 0.0
+        },
+        "prediction_sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe"
+      }
+    }
+  },
+  {
+    "id": "mbart-amis-baseline-seed44",
+    "seed": 44,
+    "conditions": {
+      "validation": {
+        "scores": {
+          "bleu": 17.9652726512606,
+          "chrf++": 14.79871492994047,
+          "chrf0": 17.12316850373172
+        },
+        "rows": 576,
+        "beams": 1,
+        "repeat16_exact": true,
+        "inventory_delta": {
+          "bleu": 0.0,
+          "chrf++": 0.0
+        },
+        "prediction_sha256": "49f5456caeef79b07a761546bceda9a46e58ab991350c455d6bda25b1eea116a"
+      },
+      "test": {
+        "scores": {
+          "bleu": 20.30001625394848,
+          "chrf++": 18.901672572421678,
+          "chrf0": 18.647751691603844
+        },
+        "rows": 575,
+        "beams": 4,
+        "gold_sha256": "974e3de9456f2303cd573a96257490330abc8e2584d7fce7ef168c9753e4266c",
+        "different_predictions": [],
+        "old_test_metric_delta": {
+          "bleu": 0.0,
+          "chrf++": 0.0,
+          "chrf0": 0.0
+        },
+        "prediction_sha256": "83e6c9701165d12dc432cb27457f8a5b345e89cc8c184569a39931d4646bac72"
+      }
+    }
+  }
+]

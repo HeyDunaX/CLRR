@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "id": "U1C",
+      "checkpoint_gradient_match": true,
+      "accumulation4_match": true,
+      "save_reload_match": true,
+      "finite_gradients": true,
+      "extra_parameters": 0
+    },
+    {
+      "id": "U1F",
+      "checkpoint_gradient_match": true,
+      "accumulation4_match": true,
+      "save_reload_match": true,
+      "finite_gradients": true,
+      "extra_parameters": 0
+    },
+    {
+      "id": "U2L",
+      "checkpoint_gradient_match": true,
+      "accumulation4_match": true,
+      "save_reload_match": true,
+      "finite_gradients": true,
+      "extra_parameters": 0
+    },
+    {
+      "id": "U2F",
+      "checkpoint_gradient_match": true,
+      "accumulation4_match": true,
+      "save_reload_match": true,
+      "finite_gradients": true,
+      "extra_parameters": 0
+    }
+  ],
+  "bundle_sha256": "6c4fcc32508e75f074d6ed0914566be9018609f79173722ccdca749c96a32f3b",
+  "centered_formula_gradient_match": true,
+  "target_stop_gradient": true,
+  "precache_formula_detach_match": true,
+  "degenerate_batch_finite": true
+}

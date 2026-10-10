@@ -1,0 +1,58 @@
+[
+  {
+    "family": "lsr",
+    "group": "all_parameters",
+    "ratioMean": 0.0024547644574512994,
+    "negativeCosineCount": 1,
+    "batches": 64
+  },
+  {
+    "family": "lsr",
+    "group": "decoder_without_shared_embeddings",
+    "ratioMean": 0,
+    "negativeCosineCount": 0,
+    "batches": 64
+  },
+  {
+    "family": "lsr",
+    "group": "encoder_without_shared_embeddings",
+    "ratioMean": 0.004117913073201579,
+    "negativeCosineCount": 1,
+    "batches": 64
+  },
+  {
+    "family": "lsr",
+    "group": "shared_input_embeddings",
+    "ratioMean": 0.0015448515604909298,
+    "negativeCosineCount": 4,
+    "batches": 64
+  },
+  {
+    "family": "full",
+    "group": "all_parameters",
+    "ratioMean": 0.001829153096845453,
+    "negativeCosineCount": 2,
+    "batches": 64
+  },
+  {
+    "family": "full",
+    "group": "decoder_without_shared_embeddings",
+    "ratioMean": 0,
+    "negativeCosineCount": 0,
+    "batches": 64
+  },
+  {
+    "family": "full",
+    "group": "encoder_without_shared_embeddings",
+    "ratioMean": 0.0035416208958620994,
+    "negativeCosineCount": 1,
+    "batches": 64
+  },
+  {
+    "family": "full",
+    "group": "shared_input_embeddings",
+    "ratioMean": 0.000976037882876577,
+    "negativeCosineCount": 2,
+    "batches": 64
+  }
+]

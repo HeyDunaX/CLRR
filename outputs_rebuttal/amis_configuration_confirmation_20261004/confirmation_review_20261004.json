@@ -1,0 +1,234 @@
+{
+  "date_local": "2026-10-04",
+  "scope": "Validation-only interpretation; six new runs reproduced via native SacreBLEU, no test generation/training/GPU/HF archive check",
+  "source_sha256": {
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/metrics.json": "c7e41526a468a5fd826ea71cd84f84aaed5412a5a5530928b7a4e8ec74d5cbd2",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/metrics.json": "f1ce95535d3e46dd12a5fbf5717e562938a72f18a22b7b8eec17d630a5e0d328",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/metrics.json": "95e051574d5990acfd6bb6d56ff88af79592f7577546d64e9de539d8bc8254bb",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-full_a010_l010-seed42-replica/metrics.json": "9cb1fff026690696e801c96cfff19e789fdc2fd69d811a76959270bce0a1e2a0",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed43/metrics.json": "9cade136420f73adb93f085f63635ccdaafcfc10f2195654ee633860e6459c1f",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed44/metrics.json": "a2294d8952446f5e5ad1ba9303b8f6e1cc3a399836ba2cab1b4b9d582ad95b96",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-lsr_l010-seed42/metrics.json": "a43fa31bb603919debcfbf4dd9111cb4d562b6ec560799e497fed67c8896d506",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed43/metrics.json": "68385b960bc42f76e4e4793df98f628858bed2f20dd903e282d5297f6a41d67d",
+    "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed44/metrics.json": "67c8909f44b69ffafb94b660cfc41cffa776936b9ede2f12d34893d05b47c910",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-full_a010_l003-seed42/metrics.json": "8a0b4fe74823fc01bba925c0fa663ad3aecdbf944f0b959a45f1a811449b4a79",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-full_a010_l003-seed43/metrics.json": "a8bbb2686ee25fd0c67cce079ccf4401730a71ad95fb39fcdf12da9991dfa0ef",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-full_a010_l003-seed44/metrics.json": "89ba8c1c84dcd0dd26f6c92a5a6f3cfdf09d569c7dbb4f9be9e711bd2856a8a3",
+    "outputs_rebuttal/amis_configuration_20261003_v1/runs/mbart-amis-lsr_l003-seed42/metrics.json": "f4e37401372379628489a3ad7c43544ef17c0a10c2784fccb6a4c7de7d512b25",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-lsr_l003-seed43/metrics.json": "02a4c5d99af6483b99b04cef45b1fe8d1fa932a3ca7dd10290292a7d6c1b9beb",
+    "outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-lsr_l003-seed44/metrics.json": "471bcc99ac0e9df8985807cc2ce438fed73bdf00437f9e513ec7ef155834d4a3"
+  },
+  "systems": {
+    "baseline": {
+      "42": {
+        "BLEU": 17.87347711882429,
+        "chrF++": 14.900876118250695
+      },
+      "43": {
+        "BLEU": 17.151270123753932,
+        "chrF++": 14.200731980464068
+      },
+      "44": {
+        "BLEU": 17.9652726512606,
+        "chrF++": 14.79871492994047
+      }
+    },
+    "full010": {
+      "42": {
+        "BLEU": 17.643651428959757,
+        "chrF++": 14.731667659986464,
+        "chrF": 16.87520033372062
+      },
+      "43": {
+        "BLEU": 17.06453509078412,
+        "chrF++": 14.41260859405018
+      },
+      "44": {
+        "BLEU": 16.932429309462727,
+        "chrF++": 14.348330285453207
+      }
+    },
+    "lsr010": {
+      "42": {
+        "BLEU": 16.568762896375645,
+        "chrF++": 14.167405662566932,
+        "chrF": 16.273105886464958
+      },
+      "43": {
+        "BLEU": 16.465320409451706,
+        "chrF++": 13.945165498648135
+      },
+      "44": {
+        "BLEU": 16.59496986225757,
+        "chrF++": 14.069770895728148
+      }
+    },
+    "full003": {
+      "42": {
+        "BLEU": 17.114118589647102,
+        "chrF++": 14.43549083729356,
+        "chrF": 16.558722512314862
+      },
+      "43": {
+        "BLEU": 17.216600049529834,
+        "chrF++": 14.477538505667981,
+        "chrF": 16.607515156060217
+      },
+      "44": {
+        "BLEU": 16.790294172271746,
+        "chrF++": 14.12970075354989,
+        "chrF": 16.285482459745214
+      }
+    },
+    "lsr003": {
+      "42": {
+        "BLEU": 17.787285341686463,
+        "chrF++": 14.85874740143626,
+        "chrF": 17.13644903735976
+      },
+      "43": {
+        "BLEU": 16.362132373650912,
+        "chrF++": 14.010880174033186,
+        "chrF": 16.118664366995898
+      },
+      "44": {
+        "BLEU": 16.833193983741737,
+        "chrF++": 14.081403953148813,
+        "chrF": 16.229853186440483
+      }
+    }
+  },
+  "summary": {
+    "baseline": {
+      "BLEU": {
+        "mean": 17.66333996461294,
+        "sample_std": 0.44583432615921903
+      },
+      "chrF++": {
+        "mean": 14.633441009551746,
+        "sample_std": 0.37820239950288354
+      }
+    },
+    "full010": {
+      "BLEU": {
+        "mean": 17.213538609735533,
+        "sample_std": 0.3782998312323051
+      },
+      "chrF++": {
+        "mean": 14.497535513163283,
+        "sample_std": 0.2052956937469593
+      }
+    },
+    "lsr010": {
+      "BLEU": {
+        "mean": 16.543017722694973,
+        "sample_std": 0.0685518462851363
+      },
+      "chrF++": {
+        "mean": 14.060780685647737,
+        "sample_std": 0.1113925065820442
+      }
+    },
+    "full003": {
+      "BLEU": {
+        "mean": 17.040337603816226,
+        "sample_std": 0.2225239327551729
+      },
+      "chrF++": {
+        "mean": 14.347576698837145,
+        "sample_std": 0.18985375228064896
+      }
+    },
+    "lsr003": {
+      "BLEU": {
+        "mean": 16.994203899693037,
+        "sample_std": 0.7260911722029946
+      },
+      "chrF++": {
+        "mean": 14.31701050953942,
+        "sample_std": 0.47048118547581014
+      }
+    }
+  },
+  "paired_deltas": {
+    "full010-baseline": {
+      "BLEU": {
+        "by_seed": {
+          "42": -0.22982568986453344,
+          "43": -0.08673503296981266,
+          "44": -1.032843341797875
+        },
+        "mean": -0.4498013548774071
+      },
+      "chrF++": {
+        "by_seed": {
+          "42": -0.16920845826423125,
+          "43": 0.21187661358611187,
+          "44": -0.45038464448726323
+        },
+        "mean": -0.13590549638846086
+      }
+    },
+    "full010-lsr010": {
+      "BLEU": {
+        "by_seed": {
+          "42": 1.0748885325841115,
+          "43": 0.5992146813324126,
+          "44": 0.3374594472051555
+        },
+        "mean": 0.6705208870405599
+      },
+      "chrF++": {
+        "by_seed": {
+          "42": 0.564261997419532,
+          "43": 0.46744309540204476,
+          "44": 0.2785593897250589
+        },
+        "mean": 0.43675482751554523
+      }
+    },
+    "full010-lsr003": {
+      "BLEU": {
+        "by_seed": {
+          "42": -0.14363391272670611,
+          "43": 0.7024027171332072,
+          "44": 0.09923532572098992
+        },
+        "mean": 0.21933471004249702
+      },
+      "chrF++": {
+        "by_seed": {
+          "42": -0.12707974144979595,
+          "43": 0.40172842001699394,
+          "44": 0.26692633230439355
+        },
+        "mean": 0.18052500362386384
+      }
+    },
+    "full003-lsr003": {
+      "BLEU": {
+        "by_seed": {
+          "42": -0.6731667520393607,
+          "43": 0.8544676758789223,
+          "44": -0.04289981146999011
+        },
+        "mean": 0.046133704123190476
+      },
+      "chrF++": {
+        "by_seed": {
+          "42": -0.4232565641426991,
+          "43": 0.466658331634795,
+          "44": 0.04829680040107753
+        },
+        "mean": 0.030566189297724478
+      }
+    }
+  },
+  "full003_minus_lsr003_chrf_mean": -0.011082154225282656,
+  "six_new_predictions_hash_reference_scores_verified": true,
+  "source_manifest_matches": true,
+  "configuration_matches": true,
+  "no_detach_results_found": false,
+  "no_new_p_values": true,
+  "primary_scores_modified": false
+}

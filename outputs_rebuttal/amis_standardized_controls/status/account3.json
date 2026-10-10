@@ -1,0 +1,77 @@
+{
+  "checked_unix": 1791462201.3578804,
+  "process_alive": true,
+  "queue": {
+    "account": 3,
+    "status": "TRAIN",
+    "completed": [],
+    "updated_unix": 1791460873.370066,
+    "current": "C01"
+  },
+  "gates": {
+    "C01": {
+      "passed": true,
+      "id": "C01",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 27.5208683013916,
+      "parameters": {
+        "symmetric_InfoNCE": true,
+        "source_target_gradients": true,
+        "layer_hidden_state_index": 4,
+        "includes_embedding_index_zero": true,
+        "temperature": 0.1,
+        "weight": 0.1,
+        "trainable_params": 300176768,
+        "allocated_params": 300176768,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 6.424732208251953,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    }
+  },
+  "progress": {
+    "C01": {
+      "id": "C01",
+      "status": "TRAINING",
+      "epoch": 12.777777777777779,
+      "step": 460,
+      "max_steps": 720,
+      "best_metric": 4.777093940601394,
+      "updated_unix": 1791462172.960865,
+      "logs": {
+        "loss": 3.7825,
+        "grad_norm": 1.2532035112380981,
+        "learning_rate": 0.00011582840236686388,
+        "epoch": 12.777777777777779
+      },
+      "patience_counter": 0
+    }
+  },
+  "validation_complete": {},
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 7654 MiB, 40960 MiB, 21 %",
+  "log_tail": [
+    "",
+    " 92%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258f| 66/72 [00:15<00:01,  4.38it/s]\u001b[A",
+    "",
+    " 93%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258e| 67/72 [00:15<00:01,  4.23it/s]\u001b[A",
+    "",
+    " 94%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258d| 68/72 [00:15<00:00,  4.29it/s]\u001b[A",
+    "",
+    " 96%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258c| 69/72 [00:15<00:00,  4.18it/s]\u001b[A",
+    "",
+    " 97%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258b| 70/72 [00:16<00:00,  3.67it/s]\u001b[A",
+    "",
+    " 99%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u258a| 71/72 [00:16<00:00,  3.86it/s]\u001b[A",
+    "",
+    "100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 72/72 [00:16<00:00,  3.86it/s]\u001b[A"
+  ]
+}

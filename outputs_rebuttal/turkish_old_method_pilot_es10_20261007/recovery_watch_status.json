@@ -1,0 +1,50 @@
+{
+  "checked_at_epoch": 1791428650.928239,
+  "poll_interval_seconds": 600,
+  "accounts": {
+    "1": {
+      "status": "TEST_QUEUE_COMPLETE",
+      "alive": false,
+      "current": {
+        "family": "full",
+        "seed": 42
+      },
+      "last_logged_epoch": null,
+      "validation_done": [
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "full/seed42",
+        "baseline/seed42",
+        "middle/seed42",
+        "lsr/seed42"
+      ],
+      "runtime_stopped_after_verified_collection": true
+    },
+    "2": {
+      "status": "TEST_QUEUE_COMPLETE",
+      "alive": false,
+      "current": {
+        "family": "lsr",
+        "seed": 42
+      },
+      "last_logged_epoch": null,
+      "validation_done": [
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+        "full/seed42",
+        "baseline/seed42",
+        "middle/seed42",
+        "lsr/seed42"
+      ],
+      "runtime_stopped_after_verified_collection": true
+    }
+  },
+  "stopped_accounts": [
+    1,
+    2
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "status": "COMPLETE_VERIFIED",
+  "target": "FiveC/amis-rewire-checkpoints",
+  "public": true,
+  "target_revision": "8ddafa860fbd64587a118800b6457a1e9b9af1a5",
+  "migrated_files": 2242,
+  "consolidated_archives": 44,
+  "deleted_sources": [
+    "FiveC/turkish-old-method-pilot-full-20261007",
+    "FiveC/turkish-old-method-pilot-lsr-20261007",
+    "FiveC/turkish-old-method-pilot-baseline-20261007",
+    "FiveC/turkish-old-method-pilot-middle-20261007",
+    "FiveC/amis-accumulation-confirmation-20261005",
+    "FiveC/amis-corrected-lsr-l003-20261005",
+    "FiveC/amis-corrected-clrr-only-20261005",
+    "FiveC/amis-fresh-confirmation-baseline-20261005",
+    "FiveC/amis-fresh-confirmation-clrr-20261005",
+    "FiveC/amis-fresh-confirmation-full-20261005",
+    "FiveC/amis-fresh-confirmation-lsr-20261005"
+  ],
+  "verification": "All mapped sizes/Git blob IDs/LFS hashes after deletion; two representative anonymous archive HEAD checks; new paths contain no dates"
+}

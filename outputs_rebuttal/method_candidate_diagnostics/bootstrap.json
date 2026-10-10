@@ -1,0 +1,65 @@
+{
+  "rows": 576,
+  "draws": 10000,
+  "rng": 42,
+  "family": "2 candidates x 2 metrics",
+  "signatures": {
+    "BLEU": "nrefs:1|bs:10000|seed:42|case:mixed|eff:no|tok:zh|smooth:exp|version:2.6.0",
+    "chrF2++": "nrefs:1|bs:10000|seed:42|case:mixed|eff:yes|nc:6|nw:2|space:no|version:2.6.0"
+  },
+  "records": [
+    {
+      "candidate": "U1F",
+      "metric": "BLEU",
+      "old": 17.35568892362328,
+      "candidate_score": 17.329596078492184,
+      "delta": -0.026092845131096,
+      "ci95_delta": [
+        -1.0096869539551787,
+        0.992813451556784
+      ],
+      "native_sacrebleu_p": 0.3952604739526047,
+      "holm4_p": 0.9224077592240776
+    },
+    {
+      "candidate": "U2F",
+      "metric": "BLEU",
+      "old": 17.35568892362328,
+      "candidate_score": 17.02266061171663,
+      "delta": -0.3330283119066486,
+      "ci95_delta": [
+        -1.4046722109655743,
+        0.7630924311259432
+      ],
+      "native_sacrebleu_p": 0.19358064193580643,
+      "holm4_p": 0.7743225677432257
+    },
+    {
+      "candidate": "U1F",
+      "metric": "chrF++",
+      "old": 14.477980489784093,
+      "candidate_score": 14.551874706437468,
+      "delta": 0.07389421665337537,
+      "ci95_delta": [
+        -0.5615837053869223,
+        0.7437227360437912
+      ],
+      "native_sacrebleu_p": 0.30746925307469253,
+      "holm4_p": 0.9224077592240776
+    },
+    {
+      "candidate": "U2F",
+      "metric": "chrF++",
+      "old": 14.477980489784093,
+      "candidate_score": 14.508005494907971,
+      "delta": 0.0300250051238784,
+      "ci95_delta": [
+        -0.7024978920395846,
+        0.7925523734204732
+      ],
+      "native_sacrebleu_p": 0.3808619138086191,
+      "holm4_p": 0.9224077592240776
+    }
+  ],
+  "limits": "Post-hoc validation diagnostics of selected frozen checkpoints; no selection-adjusted significance or training-time causal claim."
+}

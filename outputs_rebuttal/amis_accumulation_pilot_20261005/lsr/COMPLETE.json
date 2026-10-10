@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE",
+  "family": "lsr",
+  "run": "mbart-amis-lsr_l010-seed42-accumfixed",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_pilot_20261005/lsr/runs/mbart-amis-lsr_l010-seed42-accumfixed/checkpoint-504",
+  "best_metric": 14.190173628560752,
+  "completed_epochs": 18.0,
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_accumulation_pilot_20261005",
+  "selected_and_exported_weight_digest": "29e02da7f36965f435b9a77938b86e7341e2e57a956b92954cbc7a17d49da3ba",
+  "post_selection_test_bleu": 19.0954399557415,
+  "post_selection_test_chrfpp": 18.434505472123693,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

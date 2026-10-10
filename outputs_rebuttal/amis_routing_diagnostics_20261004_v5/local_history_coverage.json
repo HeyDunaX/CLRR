@@ -1,0 +1,441 @@
+{
+  "scope": "Existing local trainer states only; missing histories do not imply absent evaluations during training.",
+  "models_with_states": [
+    "mbart-amis-baseline-seed42"
+  ],
+  "states": [
+    {
+      "path": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-216\\trainer_state.json",
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-216",
+      "global_step": 216,
+      "evaluation_count": 6,
+      "history": [
+        {
+          "epoch": 1.0,
+          "eval_bleu": 1.4605731862934104,
+          "eval_chrf++": 3.6820941837699657,
+          "eval_loss": 3.6451432704925537,
+          "eval_runtime": 21.1574,
+          "eval_samples_per_second": 27.224,
+          "eval_steps_per_second": 3.403,
+          "step": 36
+        },
+        {
+          "epoch": 2.0,
+          "eval_bleu": 6.144329750045642,
+          "eval_chrf++": 7.503517070465522,
+          "eval_loss": 3.0504066944122314,
+          "eval_runtime": 30.8605,
+          "eval_samples_per_second": 18.665,
+          "eval_steps_per_second": 2.333,
+          "step": 72
+        },
+        {
+          "epoch": 3.0,
+          "eval_bleu": 8.355604402937566,
+          "eval_chrf++": 8.990290604654975,
+          "eval_loss": 2.776106119155884,
+          "eval_runtime": 31.8198,
+          "eval_samples_per_second": 18.102,
+          "eval_steps_per_second": 2.263,
+          "step": 108
+        },
+        {
+          "epoch": 4.0,
+          "eval_bleu": 11.700985362701173,
+          "eval_chrf++": 10.969379947109365,
+          "eval_loss": 2.6905534267425537,
+          "eval_runtime": 22.1535,
+          "eval_samples_per_second": 26.0,
+          "eval_steps_per_second": 3.25,
+          "step": 144
+        },
+        {
+          "epoch": 5.0,
+          "eval_bleu": 12.142004421765225,
+          "eval_chrf++": 11.21769894540823,
+          "eval_loss": 2.649088144302368,
+          "eval_runtime": 18.6304,
+          "eval_samples_per_second": 30.917,
+          "eval_steps_per_second": 3.865,
+          "step": 180
+        },
+        {
+          "epoch": 6.0,
+          "eval_bleu": 12.813595715933937,
+          "eval_chrf++": 11.776576836729637,
+          "eval_loss": 2.627347707748413,
+          "eval_runtime": 18.6602,
+          "eval_samples_per_second": 30.868,
+          "eval_steps_per_second": 3.858,
+          "step": 216
+        }
+      ]
+    },
+    {
+      "path": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-252\\trainer_state.json",
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-252",
+      "global_step": 252,
+      "evaluation_count": 7,
+      "history": [
+        {
+          "epoch": 1.0,
+          "eval_bleu": 1.4605731862934104,
+          "eval_chrf++": 3.6820941837699657,
+          "eval_loss": 3.6451432704925537,
+          "eval_runtime": 21.1574,
+          "eval_samples_per_second": 27.224,
+          "eval_steps_per_second": 3.403,
+          "step": 36
+        },
+        {
+          "epoch": 2.0,
+          "eval_bleu": 6.144329750045642,
+          "eval_chrf++": 7.503517070465522,
+          "eval_loss": 3.0504066944122314,
+          "eval_runtime": 30.8605,
+          "eval_samples_per_second": 18.665,
+          "eval_steps_per_second": 2.333,
+          "step": 72
+        },
+        {
+          "epoch": 3.0,
+          "eval_bleu": 8.355604402937566,
+          "eval_chrf++": 8.990290604654975,
+          "eval_loss": 2.776106119155884,
+          "eval_runtime": 31.8198,
+          "eval_samples_per_second": 18.102,
+          "eval_steps_per_second": 2.263,
+          "step": 108
+        },
+        {
+          "epoch": 4.0,
+          "eval_bleu": 11.700985362701173,
+          "eval_chrf++": 10.969379947109365,
+          "eval_loss": 2.6905534267425537,
+          "eval_runtime": 22.1535,
+          "eval_samples_per_second": 26.0,
+          "eval_steps_per_second": 3.25,
+          "step": 144
+        },
+        {
+          "epoch": 5.0,
+          "eval_bleu": 12.142004421765225,
+          "eval_chrf++": 11.21769894540823,
+          "eval_loss": 2.649088144302368,
+          "eval_runtime": 18.6304,
+          "eval_samples_per_second": 30.917,
+          "eval_steps_per_second": 3.865,
+          "step": 180
+        },
+        {
+          "epoch": 6.0,
+          "eval_bleu": 12.813595715933937,
+          "eval_chrf++": 11.776576836729637,
+          "eval_loss": 2.627347707748413,
+          "eval_runtime": 18.6602,
+          "eval_samples_per_second": 30.868,
+          "eval_steps_per_second": 3.858,
+          "step": 216
+        },
+        {
+          "epoch": 7.0,
+          "eval_bleu": 13.375274144041605,
+          "eval_chrf++": 11.796499687133771,
+          "eval_loss": 2.6693382263183594,
+          "eval_runtime": 18.8334,
+          "eval_samples_per_second": 30.584,
+          "eval_steps_per_second": 3.823,
+          "step": 252
+        }
+      ]
+    },
+    {
+      "path": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-468\\trainer_state.json",
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-396",
+      "global_step": 468,
+      "evaluation_count": 13,
+      "history": [
+        {
+          "epoch": 1.0,
+          "eval_bleu": 1.4605731862934104,
+          "eval_chrf++": 3.6820941837699657,
+          "eval_loss": 3.6451432704925537,
+          "eval_runtime": 21.1574,
+          "eval_samples_per_second": 27.224,
+          "eval_steps_per_second": 3.403,
+          "step": 36
+        },
+        {
+          "epoch": 2.0,
+          "eval_bleu": 6.144329750045642,
+          "eval_chrf++": 7.503517070465522,
+          "eval_loss": 3.0504066944122314,
+          "eval_runtime": 30.8605,
+          "eval_samples_per_second": 18.665,
+          "eval_steps_per_second": 2.333,
+          "step": 72
+        },
+        {
+          "epoch": 3.0,
+          "eval_bleu": 8.355604402937566,
+          "eval_chrf++": 8.990290604654975,
+          "eval_loss": 2.776106119155884,
+          "eval_runtime": 31.8198,
+          "eval_samples_per_second": 18.102,
+          "eval_steps_per_second": 2.263,
+          "step": 108
+        },
+        {
+          "epoch": 4.0,
+          "eval_bleu": 11.700985362701173,
+          "eval_chrf++": 10.969379947109365,
+          "eval_loss": 2.6905534267425537,
+          "eval_runtime": 22.1535,
+          "eval_samples_per_second": 26.0,
+          "eval_steps_per_second": 3.25,
+          "step": 144
+        },
+        {
+          "epoch": 5.0,
+          "eval_bleu": 12.142004421765225,
+          "eval_chrf++": 11.21769894540823,
+          "eval_loss": 2.649088144302368,
+          "eval_runtime": 18.6304,
+          "eval_samples_per_second": 30.917,
+          "eval_steps_per_second": 3.865,
+          "step": 180
+        },
+        {
+          "epoch": 6.0,
+          "eval_bleu": 12.813595715933937,
+          "eval_chrf++": 11.776576836729637,
+          "eval_loss": 2.627347707748413,
+          "eval_runtime": 18.6602,
+          "eval_samples_per_second": 30.868,
+          "eval_steps_per_second": 3.858,
+          "step": 216
+        },
+        {
+          "epoch": 7.0,
+          "eval_bleu": 13.375274144041605,
+          "eval_chrf++": 11.796499687133771,
+          "eval_loss": 2.6693382263183594,
+          "eval_runtime": 18.8334,
+          "eval_samples_per_second": 30.584,
+          "eval_steps_per_second": 3.823,
+          "step": 252
+        },
+        {
+          "epoch": 8.0,
+          "eval_bleu": 13.760752487887167,
+          "eval_chrf++": 12.227209242069662,
+          "eval_loss": 2.7003414630889893,
+          "eval_runtime": 22.6254,
+          "eval_samples_per_second": 25.458,
+          "eval_steps_per_second": 3.182,
+          "step": 288
+        },
+        {
+          "epoch": 9.0,
+          "eval_bleu": 14.472305755907119,
+          "eval_chrf++": 12.805555326614293,
+          "eval_loss": 2.7281792163848877,
+          "eval_runtime": 18.6573,
+          "eval_samples_per_second": 30.873,
+          "eval_steps_per_second": 3.859,
+          "step": 324
+        },
+        {
+          "epoch": 10.0,
+          "eval_bleu": 14.549290070915445,
+          "eval_chrf++": 12.700891995984321,
+          "eval_loss": 2.753889322280884,
+          "eval_runtime": 19.6967,
+          "eval_samples_per_second": 29.244,
+          "eval_steps_per_second": 3.655,
+          "step": 360
+        },
+        {
+          "epoch": 11.0,
+          "eval_bleu": 15.3202379794162,
+          "eval_chrf++": 13.180558840891903,
+          "eval_loss": 2.8067660331726074,
+          "eval_runtime": 23.0363,
+          "eval_samples_per_second": 25.004,
+          "eval_steps_per_second": 3.126,
+          "step": 396
+        },
+        {
+          "epoch": 12.0,
+          "eval_bleu": 14.947176592649011,
+          "eval_chrf++": 12.832919487731203,
+          "eval_loss": 2.8270087242126465,
+          "eval_runtime": 19.3817,
+          "eval_samples_per_second": 29.719,
+          "eval_steps_per_second": 3.715,
+          "step": 432
+        },
+        {
+          "epoch": 13.0,
+          "eval_bleu": 15.240309401260758,
+          "eval_chrf++": 13.03780638360422,
+          "eval_loss": 2.8458917140960693,
+          "eval_runtime": 18.985,
+          "eval_samples_per_second": 30.34,
+          "eval_steps_per_second": 3.792,
+          "step": 468
+        }
+      ]
+    },
+    {
+      "path": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-504\\trainer_state.json",
+      "best_model_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-504",
+      "global_step": 504,
+      "evaluation_count": 14,
+      "history": [
+        {
+          "epoch": 1.0,
+          "eval_bleu": 1.4605731862934104,
+          "eval_chrf++": 3.6820941837699657,
+          "eval_loss": 3.6451432704925537,
+          "eval_runtime": 21.1574,
+          "eval_samples_per_second": 27.224,
+          "eval_steps_per_second": 3.403,
+          "step": 36
+        },
+        {
+          "epoch": 2.0,
+          "eval_bleu": 6.144329750045642,
+          "eval_chrf++": 7.503517070465522,
+          "eval_loss": 3.0504066944122314,
+          "eval_runtime": 30.8605,
+          "eval_samples_per_second": 18.665,
+          "eval_steps_per_second": 2.333,
+          "step": 72
+        },
+        {
+          "epoch": 3.0,
+          "eval_bleu": 8.355604402937566,
+          "eval_chrf++": 8.990290604654975,
+          "eval_loss": 2.776106119155884,
+          "eval_runtime": 31.8198,
+          "eval_samples_per_second": 18.102,
+          "eval_steps_per_second": 2.263,
+          "step": 108
+        },
+        {
+          "epoch": 4.0,
+          "eval_bleu": 11.700985362701173,
+          "eval_chrf++": 10.969379947109365,
+          "eval_loss": 2.6905534267425537,
+          "eval_runtime": 22.1535,
+          "eval_samples_per_second": 26.0,
+          "eval_steps_per_second": 3.25,
+          "step": 144
+        },
+        {
+          "epoch": 5.0,
+          "eval_bleu": 12.142004421765225,
+          "eval_chrf++": 11.21769894540823,
+          "eval_loss": 2.649088144302368,
+          "eval_runtime": 18.6304,
+          "eval_samples_per_second": 30.917,
+          "eval_steps_per_second": 3.865,
+          "step": 180
+        },
+        {
+          "epoch": 6.0,
+          "eval_bleu": 12.813595715933937,
+          "eval_chrf++": 11.776576836729637,
+          "eval_loss": 2.627347707748413,
+          "eval_runtime": 18.6602,
+          "eval_samples_per_second": 30.868,
+          "eval_steps_per_second": 3.858,
+          "step": 216
+        },
+        {
+          "epoch": 7.0,
+          "eval_bleu": 13.375274144041605,
+          "eval_chrf++": 11.796499687133771,
+          "eval_loss": 2.6693382263183594,
+          "eval_runtime": 18.8334,
+          "eval_samples_per_second": 30.584,
+          "eval_steps_per_second": 3.823,
+          "step": 252
+        },
+        {
+          "epoch": 8.0,
+          "eval_bleu": 13.760752487887167,
+          "eval_chrf++": 12.227209242069662,
+          "eval_loss": 2.7003414630889893,
+          "eval_runtime": 22.6254,
+          "eval_samples_per_second": 25.458,
+          "eval_steps_per_second": 3.182,
+          "step": 288
+        },
+        {
+          "epoch": 9.0,
+          "eval_bleu": 14.472305755907119,
+          "eval_chrf++": 12.805555326614293,
+          "eval_loss": 2.7281792163848877,
+          "eval_runtime": 18.6573,
+          "eval_samples_per_second": 30.873,
+          "eval_steps_per_second": 3.859,
+          "step": 324
+        },
+        {
+          "epoch": 10.0,
+          "eval_bleu": 14.549290070915445,
+          "eval_chrf++": 12.700891995984321,
+          "eval_loss": 2.753889322280884,
+          "eval_runtime": 19.6967,
+          "eval_samples_per_second": 29.244,
+          "eval_steps_per_second": 3.655,
+          "step": 360
+        },
+        {
+          "epoch": 11.0,
+          "eval_bleu": 15.3202379794162,
+          "eval_chrf++": 13.180558840891903,
+          "eval_loss": 2.8067660331726074,
+          "eval_runtime": 23.0363,
+          "eval_samples_per_second": 25.004,
+          "eval_steps_per_second": 3.126,
+          "step": 396
+        },
+        {
+          "epoch": 12.0,
+          "eval_bleu": 14.947176592649011,
+          "eval_chrf++": 12.832919487731203,
+          "eval_loss": 2.8270087242126465,
+          "eval_runtime": 19.3817,
+          "eval_samples_per_second": 29.719,
+          "eval_steps_per_second": 3.715,
+          "step": 432
+        },
+        {
+          "epoch": 13.0,
+          "eval_bleu": 15.240309401260758,
+          "eval_chrf++": 13.03780638360422,
+          "eval_loss": 2.8458917140960693,
+          "eval_runtime": 18.985,
+          "eval_samples_per_second": 30.34,
+          "eval_steps_per_second": 3.792,
+          "step": 468
+        },
+        {
+          "epoch": 14.0,
+          "eval_bleu": 15.443467863817055,
+          "eval_chrf++": 13.34501047226921,
+          "eval_loss": 2.880160093307495,
+          "eval_runtime": 19.3456,
+          "eval_samples_per_second": 29.774,
+          "eval_steps_per_second": 3.722,
+          "step": 504
+        }
+      ]
+    }
+  ],
+  "interpretation": "Only baseline seed42 local trainer states remain. Their historical evaluation metadata does not establish same decode/language/runtime settings as the current pinned archive inventory; do not infer Full overfitting or compare their eval_loss against fixed32 CE."
+}

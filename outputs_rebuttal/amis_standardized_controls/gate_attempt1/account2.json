@@ -1,0 +1,84 @@
+{
+  "checked_unix": 1791460499.4284449,
+  "process_alive": false,
+  "queue": {
+    "account": 2,
+    "status": "FAILED",
+    "completed": [],
+    "updated_unix": 1791460384.876732,
+    "current": "A03",
+    "error_type": "CalledProcessError",
+    "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', '/content/CLRR_controls/scripts/revalidation/run_standardized_controls.py', '--id', 'A03', '--stage', 'gate']' returned non-zero exit status 1."
+  },
+  "gates": {
+    "A02": {
+      "passed": true,
+      "id": "A02",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 49.253607749938965,
+      "parameters": {
+        "symmetric_InfoNCE": true,
+        "source_target_gradients": true,
+        "layer_hidden_state_index": 6,
+        "includes_embedding_index_zero": true,
+        "temperature": 0.1,
+        "weight": 0.1,
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 12.823851108551025,
+      "bundle_sha256": "9858485fac05b876ff7a6ff43bf062ef61d7c9d32e8797c56d1b9a8fd8031620"
+    },
+    "A01": {
+      "passed": true,
+      "id": "A01",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 47.7145881652832,
+      "parameters": {
+        "loss": "CE only",
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 12.591038227081299,
+      "bundle_sha256": "9858485fac05b876ff7a6ff43bf062ef61d7c9d32e8797c56d1b9a8fd8031620"
+    }
+  },
+  "progress": {},
+  "validation_complete": {},
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB, 0 %",
+  "log_tail": [
+    "RuntimeError: element 0 of tensors does not require grad and does not have a grad_fn",
+    "",
+    "  0%|          | 0/2 [00:00<?, ?it/s]",
+    "Traceback (most recent call last):",
+    "  File \"/content/CLRR_controls/scripts/revalidation/run_standardized_controls.py\", line 432, in <module>",
+    "    main()",
+    "    ~~~~^^",
+    "  File \"/content/CLRR_controls/scripts/revalidation/run_standardized_controls.py\", line 416, in main",
+    "    subprocess.run([sys.executable, '-u', __file__, '--id', spec['id'], '--stage', stage], check=True, cwd=ROOT)",
+    "    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/content/miniforge3/envs/clrr/lib/python3.13/subprocess.py\", line 578, in run",
+    "    raise CalledProcessError(retcode, process.args,",
+    "                             output=stdout, stderr=stderr)",
+    "subprocess.CalledProcessError: Command '['/content/miniforge3/envs/clrr/bin/python', '-u', '/content/CLRR_controls/scripts/revalidation/run_standardized_controls.py', '--id', 'A03', '--stage', 'gate']' returned non-zero exit status 1."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "method": "lora",
+  "trainable_parameters": 1179648,
+  "total_parameters": 616253440,
+  "trainable_percent": 0.1914225419983051,
+  "training_time_seconds": 1539.12610912323,
+  "eval_bleu": 4.213177102959524,
+  "eval_chrf++": 6.435451643329143,
+  "test_bleu": 3.5382949410953413,
+  "test_chrf++": 4.940692825613391,
+  "test_chrf++_zh": 9.165071317120631,
+  "metadata": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "method": "LoRA",
+    "rank": 8,
+    "lora_alpha": 16,
+    "lora_dropout": 0.05,
+    "target_modules": [
+      "q_proj",
+      "v_proj"
+    ],
+    "trainable_params": 1179648,
+    "all_params": 616253440,
+    "trainable_percent": 0.1914225419983051,
+    "description": "LoRA (r=8, alpha=16, ICLR 2022)"
+  }
+}

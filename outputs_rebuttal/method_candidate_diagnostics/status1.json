@@ -1,0 +1,18 @@
+{
+  "alive": false,
+  "queue_complete": true,
+  "tail": [
+    "U1F gradient 0",
+    "U1F gradient 1",
+    "U1F gradient 2",
+    "U1F gradient 3",
+    "DIAGNOSTIC_COMPLETE U1F",
+    "`torch_dtype` is deprecated! Use `dtype` instead!",
+    "The following generation flags are not valid and may be ignored: ['early_stopping']. Set `TRANSFORMERS_VERBOSITY=info` for more details.",
+    "U1C on {\"bleu\": 16.418072583782344, \"chrfpp\": 13.93814100020652}",
+    "U1C early_off {\"bleu\": 16.265919671505326, \"chrfpp\": 13.701599430265674}",
+    "U1C middle_off {\"bleu\": 16.144249448673662, \"chrfpp\": 13.529603156207113}",
+    "U1C late_off {\"bleu\": 15.816394397125851, \"chrfpp\": 13.412048019619213}",
+    "DIAGNOSTIC_COMPLETE U1C"
+  ]
+}

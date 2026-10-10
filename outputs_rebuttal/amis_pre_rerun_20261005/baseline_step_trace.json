@@ -1,0 +1,306 @@
+{
+  "date": "2026-10-05",
+  "records": [
+    {
+      "id": "mbart-amis-baseline-seed43",
+      "log_file": "outputs_rebuttal\\amis_confirmation_20261003\\mbart-amis-baseline-seed43.log",
+      "log_sha256": "c2674178ebc8930cf5c1ca6cd241eb8d83be9c25dfc749876bb296146892ff8a",
+      "snapshot_recorded_log_sha256": "c2674178ebc8930cf5c1ca6cd241eb8d83be9c25dfc749876bb296146892ff8a",
+      "snapshot_hash_pass": true,
+      "metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/checkpoint-720",
+      "all_metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/checkpoint-720",
+      "log_selected_checkpoint_strings": [
+        "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/checkpoint-720"
+      ],
+      "training_eval_records_rounded": [
+        {
+          "step": 36,
+          "eval_loss": 3.6905,
+          "bleu": 1.388,
+          "chrfpp": 3.7875
+        },
+        {
+          "step": 72,
+          "eval_loss": 3.0711,
+          "bleu": 5.2521,
+          "chrfpp": 6.7713
+        },
+        {
+          "step": 108,
+          "eval_loss": 2.8262,
+          "bleu": 8.556,
+          "chrfpp": 9.1705
+        },
+        {
+          "step": 144,
+          "eval_loss": 2.703,
+          "bleu": 10.7301,
+          "chrfpp": 10.2731
+        },
+        {
+          "step": 180,
+          "eval_loss": 2.6493,
+          "bleu": 11.7549,
+          "chrfpp": 10.9258
+        },
+        {
+          "step": 216,
+          "eval_loss": 2.6614,
+          "bleu": 12.6787,
+          "chrfpp": 11.3242
+        },
+        {
+          "step": 252,
+          "eval_loss": 2.6697,
+          "bleu": 13.7415,
+          "chrfpp": 12.0552
+        },
+        {
+          "step": 288,
+          "eval_loss": 2.6829,
+          "bleu": 14.4398,
+          "chrfpp": 12.631
+        },
+        {
+          "step": 324,
+          "eval_loss": 2.7119,
+          "bleu": 14.3549,
+          "chrfpp": 12.6869
+        },
+        {
+          "step": 360,
+          "eval_loss": 2.7537,
+          "bleu": 14.7477,
+          "chrfpp": 12.7711
+        },
+        {
+          "step": 396,
+          "eval_loss": 2.7832,
+          "bleu": 14.9326,
+          "chrfpp": 12.8091
+        },
+        {
+          "step": 432,
+          "eval_loss": 2.8238,
+          "bleu": 15.6203,
+          "chrfpp": 13.2243
+        },
+        {
+          "step": 468,
+          "eval_loss": 2.8398,
+          "bleu": 16.1336,
+          "chrfpp": 13.4663
+        },
+        {
+          "step": 504,
+          "eval_loss": 2.8634,
+          "bleu": 15.7995,
+          "chrfpp": 13.2973
+        },
+        {
+          "step": 540,
+          "eval_loss": 2.8992,
+          "bleu": 16.2224,
+          "chrfpp": 13.7157
+        },
+        {
+          "step": 576,
+          "eval_loss": 2.9088,
+          "bleu": 16.0387,
+          "chrfpp": 13.6067
+        },
+        {
+          "step": 612,
+          "eval_loss": 2.9204,
+          "bleu": 16.3157,
+          "chrfpp": 13.7365
+        },
+        {
+          "step": 648,
+          "eval_loss": 2.9313,
+          "bleu": 16.2399,
+          "chrfpp": 13.7248
+        },
+        {
+          "step": 684,
+          "eval_loss": 2.9393,
+          "bleu": 16.726,
+          "chrfpp": 13.9903
+        },
+        {
+          "step": 720,
+          "eval_loss": 2.9455,
+          "bleu": 17.1513,
+          "chrfpp": 14.2007
+        }
+      ],
+      "rounded_chrfpp_max_training_steps": [
+        720
+      ],
+      "v5_inventory_best_step": 252,
+      "v5_best_step_source": "scripts/revalidation/audit_amis_followup_f0.py hardcoded model list; carried through build_corrected_amis_inventory_v5.py without verification except baseline42",
+      "selection_conclusion": "Historical log and metrics agree on selected step; V5 best_step is unsupported hardcoded metadata.",
+      "replayed_validation_scores": {
+        "eval_bleu": 17.151270123753932,
+        "eval_chrf++": 14.200731980464068,
+        "eval_chrf0": 16.368745536133453
+      },
+      "limits": [
+        "Rounded log metrics cannot prove exact tie-breaking.",
+        "No original optimizer/Trainer state or pinned training dependency receipt reconstructed by this trace.",
+        "Replay score validity does not prove compatibility with corrected optimization."
+      ]
+    },
+    {
+      "id": "mbart-amis-baseline-seed44",
+      "log_file": "outputs_rebuttal\\amis_confirmation_20261003\\mbart-amis-baseline-seed44.log",
+      "log_sha256": "3a04e61a761a48975ca744e13370be9ec2c558af59406ad112a3fc025e36d8fa",
+      "snapshot_recorded_log_sha256": "3a04e61a761a48975ca744e13370be9ec2c558af59406ad112a3fc025e36d8fa",
+      "snapshot_hash_pass": true,
+      "metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/checkpoint-612",
+      "all_metrics_selected_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/checkpoint-612",
+      "log_selected_checkpoint_strings": [
+        "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/checkpoint-612"
+      ],
+      "training_eval_records_rounded": [
+        {
+          "step": 36,
+          "eval_loss": 3.6582,
+          "bleu": 1.1016,
+          "chrfpp": 3.4035
+        },
+        {
+          "step": 72,
+          "eval_loss": 3.028,
+          "bleu": 6.5694,
+          "chrfpp": 7.7747
+        },
+        {
+          "step": 108,
+          "eval_loss": 2.7386,
+          "bleu": 9.917,
+          "chrfpp": 9.7633
+        },
+        {
+          "step": 144,
+          "eval_loss": 2.6222,
+          "bleu": 11.9488,
+          "chrfpp": 11.2541
+        },
+        {
+          "step": 180,
+          "eval_loss": 2.586,
+          "bleu": 12.3268,
+          "chrfpp": 11.2212
+        },
+        {
+          "step": 216,
+          "eval_loss": 2.5732,
+          "bleu": 14.2395,
+          "chrfpp": 12.4753
+        },
+        {
+          "step": 252,
+          "eval_loss": 2.601,
+          "bleu": 14.0128,
+          "chrfpp": 12.4576
+        },
+        {
+          "step": 288,
+          "eval_loss": 2.6133,
+          "bleu": 15.1693,
+          "chrfpp": 13.037
+        },
+        {
+          "step": 324,
+          "eval_loss": 2.662,
+          "bleu": 15.5812,
+          "chrfpp": 13.2132
+        },
+        {
+          "step": 360,
+          "eval_loss": 2.6943,
+          "bleu": 16.0965,
+          "chrfpp": 13.474
+        },
+        {
+          "step": 396,
+          "eval_loss": 2.7209,
+          "bleu": 15.625,
+          "chrfpp": 13.2612
+        },
+        {
+          "step": 432,
+          "eval_loss": 2.7508,
+          "bleu": 16.1527,
+          "chrfpp": 13.6841
+        },
+        {
+          "step": 468,
+          "eval_loss": 2.77,
+          "bleu": 16.1237,
+          "chrfpp": 13.6511
+        },
+        {
+          "step": 504,
+          "eval_loss": 2.7805,
+          "bleu": 16.6076,
+          "chrfpp": 13.9332
+        },
+        {
+          "step": 540,
+          "eval_loss": 2.8021,
+          "bleu": 17.3346,
+          "chrfpp": 14.3462
+        },
+        {
+          "step": 576,
+          "eval_loss": 2.8365,
+          "bleu": 17.7136,
+          "chrfpp": 14.5494
+        },
+        {
+          "step": 612,
+          "eval_loss": 2.8405,
+          "bleu": 17.9653,
+          "chrfpp": 14.7987
+        },
+        {
+          "step": 648,
+          "eval_loss": 2.8543,
+          "bleu": 17.4459,
+          "chrfpp": 14.5348
+        },
+        {
+          "step": 684,
+          "eval_loss": 2.8601,
+          "bleu": 17.4609,
+          "chrfpp": 14.4484
+        },
+        {
+          "step": 720,
+          "eval_loss": 2.8613,
+          "bleu": 17.3746,
+          "chrfpp": 14.3836
+        }
+      ],
+      "rounded_chrfpp_max_training_steps": [
+        612
+      ],
+      "v5_inventory_best_step": 504,
+      "v5_best_step_source": "scripts/revalidation/audit_amis_followup_f0.py hardcoded model list; carried through build_corrected_amis_inventory_v5.py without verification except baseline42",
+      "selection_conclusion": "Historical log and metrics agree on selected step; V5 best_step is unsupported hardcoded metadata.",
+      "replayed_validation_scores": {
+        "eval_bleu": 17.9652726512606,
+        "eval_chrf++": 14.79871492994047,
+        "eval_chrf0": 17.12316850373172
+      },
+      "limits": [
+        "Rounded log metrics cannot prove exact tie-breaking.",
+        "No original optimizer/Trainer state or pinned training dependency receipt reconstructed by this trace.",
+        "Replay score validity does not prove compatibility with corrected optimization."
+      ]
+    }
+  ],
+  "decision": "Use logged selected steps720/612 for descriptive chronology of43/44, label V5 metadata252/504unsupported. No historical edits. Baseline reuse remains conditional on effective loss/runtime/selection protocol compatibility."
+}

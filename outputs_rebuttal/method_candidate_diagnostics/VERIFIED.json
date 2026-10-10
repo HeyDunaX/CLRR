@@ -1,0 +1,14 @@
+{
+  "models": [
+    "OLD",
+    "BASE",
+    "U1C",
+    "U1F",
+    "U2L",
+    "U2F"
+  ],
+  "metric_replay": "PASS",
+  "saved_predictions_match_after_original_strip": "PASS",
+  "optimizer_steps": 0,
+  "status": "VERIFIED"
+}

@@ -23,6 +23,8 @@ class MBartTinyTokenizer(PreTrainedTokenizerFast):
 def main():
     torch.set_num_threads(2)
     cuda='--cuda' in sys.argv
+    rerun_audit='--audit-rerun' in sys.argv
+    turkish='--turkish-pilot' in sys.argv
     if cuda: assert torch.cuda.is_available()
     config=MBartConfig(vocab_size=32,d_model=16,encoder_layers=3,decoder_layers=1,
                        encoder_attention_heads=2,decoder_attention_heads=2,
@@ -39,19 +41,33 @@ def main():
     with tempfile.TemporaryDirectory() as temporary:
         temporary=Path(temporary);data=temporary/'turkish';data.mkdir()
         frame=pd.DataFrame({'source':['merhaba dunya','dunya merhaba'],'target':['hello world','world hello']})
+        if rerun_audit:
+            frame=pd.DataFrame({'source':['merhaba','merhaba dunya','dunya merhaba','dunya','merhaba dunya'],
+                                'target':['hello','hello world','world hello','world','hello world']})
+        if turkish:frame=pd.concat([frame,frame],ignore_index=True)
         for split in ['train','validation','test']:frame.to_csv(data/(split+'.csv'),index=False)
-        for method in ['baseline','clrr-enc','jepa','jepa-clrr-enc']:
+        for method in (['baseline','middle-align','jepa','jepa-clrr-enc'] if turkish else ['baseline','clrr-enc','jepa','jepa-clrr-enc']):
             argv=['train','--model','mbart-large-50','--model-name','tiny-offline','--method',method,
                   '--jepa-weight','0' if method in ['baseline','clrr-enc'] else '.1',
                   '--data-dir',str(data),'--output-dir',str(temporary/'results'),'--backup-dir',str(temporary/'backups'),
-                  '--run-name',method,'--num-train-epochs','1','--per-device-train-batch-size','2',
-                  '--per-device-eval-batch-size','2','--gradient-accumulation-steps','1',
+                  '--run-name',method,'--num-train-epochs','2' if rerun_audit else '1',
+                  '--per-device-train-batch-size','2' if turkish or not rerun_audit else '1',
+                  '--per-device-eval-batch-size','2','--gradient-accumulation-steps','4' if rerun_audit else '1',
                   '--max-source-length','8','--max-target-length','8','--num-beams','1',
                   '--generation-precision','fp32','--no-auto-resume','--src-lang','tr_TR','--tgt-lang','en_XX',
                   '--dataloader-num-workers','0','--logging-steps','1','--no-fp16',
-                  '--bf16' if cuda else '--no-bf16','--gradient-checkpointing' if cuda else '--no-gradient-checkpointing']
+                  '--bf16' if cuda else '--no-bf16','--gradient-checkpointing' if cuda or rerun_audit else '--no-gradient-checkpointing']
+            if turkish:argv+=['--middle-layer-idx','2','--bleu-tokenizer','13a','--early-stopping-patience','10']
+            if rerun_audit:argv+=['--scientific-records','--validation-only']
+            trainers=[]
+            actual_trainer=train.PrecisionSeq2SeqTrainer
+            def factory(*a,**kw):
+                result=actual_trainer(*a,**kw)
+                trainers.append(result)
+                return result
             with patch.object(sys,'argv',argv),patch.object(train.AutoTokenizer,'from_pretrained',return_value=tokenizer),\
-                 patch('amis_rewire.modeling.AutoModelForSeq2SeqLM.from_pretrained',side_effect=lambda *a,**kw:copy.deepcopy(initial)):
+                 patch('amis_rewire.modeling.AutoModelForSeq2SeqLM.from_pretrained',side_effect=lambda *a,**kw:copy.deepcopy(initial)),\
+                 patch.object(train,'PrecisionSeq2SeqTrainer',side_effect=factory):
                 train.main()
             folder=temporary/'results'/method
             metadata=json.loads((folder/'metrics.json').read_text())
@@ -60,11 +76,21 @@ def main():
             restored,info=AutoModelForSeq2SeqLM.from_pretrained(folder/'best_model',output_loading_info=True)
             assert not any(info.get(key) for key in ['missing_keys','unexpected_keys','mismatched_keys','error_msgs'])
             assert restored.generation_config.forced_bos_token_id==5
-            rows=pd.read_csv(folder/'test_predictions.csv',keep_default_na=False)
+            rows=pd.read_csv(folder/('validation_predictions.csv' if rerun_audit else 'test_predictions.csv'),keep_default_na=False)
             assert rows[['source','target']].equals(frame)
-            results.append({'method':method,'passed':True,'cuda_bf16_training':cuda,'generation_precision':'fp32'})
-    out=ROOT/'outputs_rebuttal/followup_20261003';out.mkdir(parents=True,exist_ok=True)
-    (out/('precision_training_smoke_gpu.json' if cuda else 'precision_training_smoke_cpu.json')).write_text(json.dumps(results,indent=2))
+            trainer=trainers[0]
+            assert trainer.model_accepts_loss_kwargs is False
+            assert all(torch.equal(v.cpu(),restored.state_dict()[k]) for k,v in trainer.model.state_dict().items())
+            if rerun_audit:
+                assert not (folder/'test_predictions.csv').exists()
+                assert (Path(trainer.state.best_model_checkpoint)/'training_receipt.json').exists()
+                assert metadata['completed_epochs']==2. and trainer.state.global_step==4
+            results.append({'method':method,'passed':True,'cuda_bf16_training':cuda,'generation_precision':'fp32',
+                            'audit_rerun_accumulation4_checkpointing':rerun_audit,'best_weights_exact':True})
+    out=Path(sys.argv[sys.argv.index('--result-dir')+1]) if '--result-dir' in sys.argv else ROOT/'outputs_rebuttal/followup_20261003'
+    out.mkdir(parents=True,exist_ok=True)
+    filename='rerun_lifecycle_smoke.json' if rerun_audit else ('precision_training_smoke_gpu.json' if cuda else 'precision_training_smoke_cpu.json')
+    (out/filename).write_text(json.dumps(results,indent=2))
     print('ALL_FOUR_TRAINING_BRANCHES_PASS',flush=True)
 
 

@@ -1,0 +1,55 @@
+{
+  "account": "1",
+  "family": "lsr",
+  "session": "colab",
+  "started_at_utc": "2026-10-05T06:35:51.783554+00:00",
+  "verified_seeds": [
+    44
+  ],
+  "status": "COMPLETE_RUNTIME_STOPPED",
+  "updated_at_utc": "2026-10-05T07:05:30.260028+00:00",
+  "remote_status": {
+    "environment_ready": true,
+    "started": true,
+    "job_done": true,
+    "process_alive": false,
+    "family": "lsr",
+    "seeds": {
+      "44": {
+        "complete": true,
+        "hf_verified": true,
+        "cleaned": true,
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.201442588355809,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/lsr/seed44/runs/mbart-amis-lsr_l010-seed44-accumfixed-recovery/checkpoint-612"
+        },
+        "result": {
+          "status": "COMPLETE",
+          "family": "lsr",
+          "seed": 44,
+          "run": "mbart-amis-lsr_l010-seed44-accumfixed-recovery",
+          "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/lsr/seed44/runs/mbart-amis-lsr_l010-seed44-accumfixed-recovery/checkpoint-612",
+          "best_metric": 14.201442588355809,
+          "completed_epochs": 20.0,
+          "hf_repo": "FiveC/amis-accumulation-confirmation-20261005",
+          "hf_prefix": "amis_accumulation_confirmation_20261005_recovery",
+          "selected_and_exported_weight_digest": "312f4313482f31371985bb8ddee2cec7ce3d5fb4e89edb52f935f878eb20c9e9",
+          "post_selection_test_bleu": 19.264373929771594,
+          "post_selection_test_chrfpp": 18.292200796440717,
+          "old_scores_untouched": true,
+          "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+        }
+      }
+    },
+    "process_state": "Zs",
+    "crashed": false
+  },
+  "stop_receipt": {
+    "confirmed_at_utc": "2026-10-05T07:05:30.260028+00:00",
+    "returncode": 0,
+    "stdout": "[colab] Stopping session 'colab'...\n[colab] Session terminated.\n\n",
+    "stderr": "\n"
+  }
+}

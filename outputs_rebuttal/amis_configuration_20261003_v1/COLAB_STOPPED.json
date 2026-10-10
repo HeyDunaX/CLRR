@@ -1,0 +1,8 @@
+{
+  "session": "colab",
+  "state": "TERMINATED",
+  "stop_response": "Session terminated",
+  "verification_response": "Session 'colab' not found",
+  "date_local": "2026-10-03",
+  "reason": "Author requested pause after current model; two checkpoints verified"
+}

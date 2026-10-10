@@ -1,0 +1,119 @@
+{
+  "status": "VERIFIED",
+  "selected_step": 720,
+  "selected_epoch": 20.0,
+  "completed_epochs": 20.0,
+  "best_val_chrfpp": 13.901540564847089,
+  "new_test_bleu": 19.728081433402032,
+  "new_test_chrfpp": 18.713838023321145,
+  "old_test_bleu": 19.728081433402032,
+  "old_test_chrfpp": 18.713838023321145,
+  "old_new_partial_trajectory_comparison": [
+    {
+      "step": 216,
+      "fields": {
+        "eval_bleu": {
+          "old": 12.813595715933937,
+          "new": 12.813595715933937,
+          "abs_difference": 0.0
+        },
+        "eval_chrf++": {
+          "old": 11.776576836729637,
+          "new": 11.776576836729637,
+          "abs_difference": 0.0
+        },
+        "eval_loss": {
+          "old": 2.627347707748413,
+          "new": 2.627347707748413,
+          "abs_difference": 0.0
+        }
+      }
+    },
+    {
+      "step": 252,
+      "fields": {
+        "eval_bleu": {
+          "old": 13.375274144041605,
+          "new": 13.375274144041605,
+          "abs_difference": 0.0
+        },
+        "eval_chrf++": {
+          "old": 11.796499687133771,
+          "new": 11.796499687133771,
+          "abs_difference": 0.0
+        },
+        "eval_loss": {
+          "old": 2.6693382263183594,
+          "new": 2.6693382263183594,
+          "abs_difference": 0.0
+        }
+      }
+    },
+    {
+      "step": 468,
+      "fields": {
+        "eval_bleu": {
+          "old": 15.240309401260758,
+          "new": 15.240309401260758,
+          "abs_difference": 0.0
+        },
+        "eval_chrf++": {
+          "old": 13.03780638360422,
+          "new": 13.03780638360422,
+          "abs_difference": 0.0
+        },
+        "eval_loss": {
+          "old": 2.8458917140960693,
+          "new": 2.8458917140960693,
+          "abs_difference": 0.0
+        }
+      }
+    },
+    {
+      "step": 504,
+      "fields": {
+        "eval_bleu": {
+          "old": 15.443467863817055,
+          "new": 15.443467863817055,
+          "abs_difference": 0.0
+        },
+        "eval_chrf++": {
+          "old": 13.34501047226921,
+          "new": 13.34501047226921,
+          "abs_difference": 0.0
+        },
+        "eval_loss": {
+          "old": 2.880160093307495,
+          "new": 2.880160093307495,
+          "abs_difference": 0.0
+        }
+      }
+    }
+  ],
+  "hf_archive": {
+    "status": "COMPLETE",
+    "run": "mbart-amis-baseline-seed42-corrected",
+    "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/checkpoint-720",
+    "best_metric": 13.901540564847089,
+    "completed_epochs": 20.0,
+    "hf_repo": "FiveC/amis-rewire-checkpoints",
+    "hf_prefix": "amis_corrected_baseline42_20261005",
+    "old_scores_untouched": true,
+    "backup_policy": "Final best archive checksum verified; epoch selection metadata uploaded. Full optimizer/RNG remains local.",
+    "archive_sha256": "e2d5c884c8c2da270aa1bbeaa4e36990021f1559b5fca2926d05cca3f5b0e53c",
+    "archive_size": 2270665528,
+    "remote_path": "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/mbart-amis-baseline-seed42-corrected-best.zip",
+    "remote_archive_verified": true,
+    "remote_metadata_verified": {
+      "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/provenance/final_trainer_state.json": true,
+      "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/selected_provenance/trainer_state.json": true,
+      "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/metrics.json": true,
+      "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/test_predictions.csv": true
+    }
+  },
+  "collection_zip_sha256": "d9da7cb018700dcf81470ede91f94bd31fb76b087a2c664ce00dd7ba3c106386",
+  "collection_method": "colab_zip",
+  "source_and_data_sha256_match": true,
+  "test_reference_alignment_and_metric_recompute": "PASS",
+  "scope": "Fresh baseline42 has complete selection provenance; original selected step remains unknown"
+}

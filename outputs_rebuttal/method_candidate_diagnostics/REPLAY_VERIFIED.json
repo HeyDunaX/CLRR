@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "models": [
+    "OLD",
+    "BASE",
+    "U1C",
+    "U1F",
+    "U2L",
+    "U2F"
+  ],
+  "worker_hash_match": true,
+  "metric_replay": true,
+  "saved_predictions_match_after_original_strip": true,
+  "optimizer_steps": 0
+}

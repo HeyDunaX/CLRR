@@ -1,0 +1,15 @@
+{
+  "revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+  "device": "NVIDIA A100-SXM4-40GB",
+  "python": "3.13.16",
+  "torch": "2.6.0+cu124",
+  "batch": 32,
+  "accumulation": 4,
+  "length_limit": 256,
+  "data_sha256": {
+    "train": "b20c042e7d096f1cd61e7235dd4ded8477ae79afd6c7c9b2da86e75352916068",
+    "validation": "bc7542eadd1dc1327b2c4085a7171082241b1e52071ae2114f128ecae3fbf090"
+  },
+  "scope": "smoke only; stress padding to256; no benchmark quality claim",
+  "status": "FULLSIZE_GPU_PASS"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "VALIDATION_COMPLETE",
+  "family": "lsr003",
+  "seed": 43,
+  "run": "mbart-amis-lsr_l003-seed43-corrected-control",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed43/runs/mbart-amis-lsr_l003-seed43-corrected-control/checkpoint-684",
+  "best_metric": 14.066060576748269,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-corrected-lsr-l003-20261005",
+  "hf_prefix": "amis_corrected_controls_20261005",
+  "selected_and_exported_weight_digest": "928cab516309173b3d5de0b20f23f5b1195c308d9a114ac3fc46ffd9bb32efdd",
+  "post_selection_test_bleu": null,
+  "post_selection_test_chrfpp": null,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

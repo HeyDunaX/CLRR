@@ -2,11 +2,13 @@
 
 ## Paper và kết quả hiện hành
 
-- [clrr_main.tex](docs/paper/clrr_main.tex): paper đã revision theo kết quả xác minh, với suite matched 12run/3seed làm bằng chứng chính ([PDF xem trước](docs/paper/clrr_main.pdf)).
+- [CLI dùng chung và lệnh bash](docs/operations/EXPERIMENT_WORKFLOW.md): tạo recipe bằng args; build, correctness gates, train, test và theo dõi qua cùng một pipeline.
+
+- [clrr_main.tex](docs/paper/clrr_main.tex): bản thảo hiện có; cần đồng bộ với các cohort mới trong sổ thực nghiệm trước khi dùng để nộp bài. Bước gộp docs không sửa hay compile paper.
 - [EXPERIMENTS_UPDATED.md](docs/experiments/EXPERIMENTS_UPDATED.md): sổ kết quả hiện hành duy nhất; A/B/C, số âm tính và provenance.
 - [RESEARCH_INSIGHTS.md](docs/research/RESEARCH_INSIGHTS.md): diễn giải kết quả đã xác minh và bước chẩn đoán tiếp theo; insight cũ được giữ trong archive.
-- [METRICS.md](docs/experiments/METRICS.md): protocol metrics; [Go/No-Go](docs/research/CLRR_GO_NOGO_PLAN.md): quy trình tối ưu tiếp theo.
-- [CONFIGURATION_SEARCH_HANDOFF.md](docs/operations/CONFIGURATION_SEARCH_HANDOFF.md): hướng dẫn bàn giao tối ưu cấu hình mBART Amis.
+- [METRICS.md](docs/experiments/METRICS.md): protocol metrics; [Go/No-Go](docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md): quy trình tối ưu tiếp theo.
+- [Bàn giao hiện hành](docs/operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md): trạng thái, scripts và thực thi; các runbook cũ được gộp trong phụ lục lịch sử.
 - [docs/README.md](docs/README.md): trung tâm tra cứu và sơ đồ toàn bộ tài liệu dự án.
 - [Experiments gốc đã archive](docs/archive/EXPERIMENTS_ORIGINAL_20261003.md): gắn với bản paper trước revision, không dùng làm nguồn số hiện hành.
 - Bản paper cũ và các báo cáo cũ nằm trong docs/archive/; không có training đang chạy.
@@ -48,12 +50,15 @@ In Joint-Embedding Predictive Architectures (JEPA), learning occurs in represent
 
 ## Models and current evaluation
 
-The primary study is **12 matched mBART runs**: fine-tuning, CLRR-only,
-LSR-only, and CLRR+LSR with seeds 42, 43, and 44 on Amis→Mandarin.
+The corrected development study has **12 matched mBART runs**: Baseline,
+CLRR-only, LSR-only, and CLRR+LSR with seeds 42, 43, and 44 on Amis→Mandarin.
+The **32 fresh confirmation runs** with seeds45–52 are also complete and did
+not pass the locked quality gates. A four-family Turkish pilot at seed42 is
+complete. See the current ledger and insights for results and their scope.
 Historical Amis checkpoints additionally cover mT5, NLLB, and ByT5.
 The paper uses 28 retained historical outputs, ten FP32 checkpoint evaluations,
 and four routing-off evaluations; their distinct protocols are documented in
-[the current ledger](docs/EXPERIMENTS_UPDATED.md).
+[the current ledger](docs/archive/README.md).
 
 For mBART, the source proxy is `tl_XX` and the target tag is `zh_CN`.
 The shared protocol uses LR `5e-5`, weight decay `0`, effective batch 128,
@@ -65,8 +70,8 @@ update the same backbone parameter set and add zero parameters.
 
 Processed datasets live under `data_processed/<dataset_name>/`, with
 `train.csv`, `validation.csv`, and `test.csv` containing `source,target`.
-`amis_mandarin` is the current manuscript dataset; Turkish OPUS-100 v2 is prepared
-for a future experiment and remains stopped. See [dataset notes](data_processed/README.md).
+`amis_mandarin` is the primary dataset. The original Turkish OPUS100 benchmark
+was evaluated with 20k training pairs and four mBART families at seed42; the filtered v2 is retired. Both datasets have completed studies recorded in EXPERIMENTS_UPDATED.md. See [dataset notes](data_processed/README.md).
 Run Python commands in the existing conda environment `clrr`.
 
 The parallel corpus used in this study is the 5,751-sentence Amis–Mandarin dataset introduced by [Zheng et al. (2022)](https://aclanthology.org/2022.nlp4dh-1.11/). The data archive can be downloaded from Google Drive:
@@ -313,14 +318,14 @@ docs/
 ├── COLAB_SSH_GUIDE.md       # Google Colab SSH workflows, autonomous bash scripts, templates
 └── archive/                 # Historical phase documentation (backed up)
 src/amis_rewire/
-├── modeling.py              # CLRR hooks, stop-gradient routing, model loading
+├── modeling.py              # Compatibility imports; implementations in src/methods/
 ├── train.py                 # CLI, fixed fairness protocol, training, validation, test
 ├── metrics.py               # Standardized SacreBLEU (tokenize='zh') and chrF++ (word_order=2)
 └── prepare_data.py          # CSV validation and split export
 src/comparative_baselines/   # Shared-encoder Middle-Align adaptation (ACL 2025)
 data_processed/
 ├── amis_mandarin/            # train.csv (4600), validation.csv (576), test.csv (575)
-└── opus100_turkish_english_20k_v2/ # Prepared 20k sample; training stopped
+└── opus100_turkish_english_20k/ # 20k train; official validation/test; training paused
 scripts/
 ├── run_all_models.sh        # Batch execution matrix
 └── revalidation/            # Targeted defense & ablation scripts
@@ -349,3 +354,8 @@ The method adds no parameters but changes hidden-state values, so it still needs
   note = "Under review"
 }
 ```
+
+## Method implementations
+
+Original CLRR/LSR and tried variants are organized under [`src/methods/`](src/methods/README.md).
+Each variant has its own folder; old modeling imports remain compatible.

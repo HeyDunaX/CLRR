@@ -1,0 +1,4 @@
+run,method,seed,alpha,lambda,eval_chrf++,eval_bleu,eval_chrf0,eval_loss,best_step,training_seconds,hf_path
+mbart-amis-full-attached-a010-l010-seed42,jepa-clrr-enc-attached,42,0.10,0.10,14.1845,16.8827,16.2653,2.8562,576,1270.24,amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed42
+mbart-amis-full-attached-a010-l010-seed43,jepa-clrr-enc-attached,43,0.10,0.10,14.4706,17.4909,16.6557,2.9111,684,1248.50,amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed43
+mbart-amis-full-attached-a010-l010-seed44,jepa-clrr-enc-attached,44,0.10,0.10,14.6962,17.6376,16.8618,2.8910,612,1373.58,amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed44

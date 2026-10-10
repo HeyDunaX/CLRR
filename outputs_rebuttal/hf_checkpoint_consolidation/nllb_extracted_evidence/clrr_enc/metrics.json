@@ -1,0 +1,22 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "method": "clrr_enc",
+  "trainable_parameters": 615073792,
+  "total_parameters": 615073792,
+  "trainable_percent": 100.0,
+  "training_time_seconds": 1518.1580789089203,
+  "eval_bleu": 16.099486226131056,
+  "eval_chrf++": 12.63776109866252,
+  "test_bleu": 14.281958262550013,
+  "test_chrf++": 10.915194380192956,
+  "test_chrf++_zh": 18.748166836466247,
+  "metadata": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "method": "clrr_enc",
+    "rewire_stack": "encoder",
+    "distance": 2,
+    "strength": 0.1,
+    "jepa_weight": 0.1,
+    "description": "CLRR-Enc + LSR (Proposed Main)"
+  }
+}

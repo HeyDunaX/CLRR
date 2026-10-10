@@ -1,0 +1,15 @@
+{
+  "account": "2",
+  "status": "TEST_QUEUE_COMPLETE",
+  "completed": [],
+  "started_utc_epoch": 1791422386.8616312,
+  "current": {
+    "family": "lsr",
+    "seed": 42
+  },
+  "run_started_utc_epoch": 1791422451.6827788,
+  "error_type": "CalledProcessError",
+  "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', 'scripts/revalidation/run_turkish_old_method_pilot.py', '--family', 'middle', '--seed', '42', '--stage', 'train']' returned non-zero exit status 1.",
+  "alive": true,
+  "completed_utc_epoch": 1791428208.7459629
+}

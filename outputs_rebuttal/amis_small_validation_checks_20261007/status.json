@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-07",
+  "stage": "COMPLETE_LOCAL_REPLAY_VERIFIED",
+  "accounts": {
+    "1": "16/16 complete; artifacts SHA verified; stopped",
+    "2": "16/16 complete; artifacts SHA verified; stopped",
+    "3": "not used"
+  },
+  "checks": [
+    "source hashes equal training source",
+    "pinned HF revision/archive SHA/weight digest",
+    "FP32 TF32off validation geometry and fixed shuffles",
+    "exact all-on prediction replay",
+    "Full drop10/drop11/drop10+11 and CLRR drop10+11"
+  ],
+  "old_probe_local_audit": {
+    "models": 32,
+    "batches": 256,
+    "archive_and_weight_digests_match": true,
+    "gradient_partition_norms_match": true,
+    "missing_per_model_runtime_source_receipts": 32
+  },
+  "interpretation_limits": [
+    "Baseline/CLRR LSR gradients are counterfactual",
+    "Small raw LSR gradient norm does not quantify Adam updates",
+    "Positive low skip/current cosine does not establish harmful conflict",
+    "Residual/current ratio decrease can reflect increased current norm"
+  ],
+  "no_training": true,
+  "no_test_generation": true,
+  "independent_verification": {
+    "status": "LOCAL_REPLAY_VERIFIED",
+    "models": 32,
+    "prediction_conditions": 48,
+    "all_on_exact_replays": 16,
+    "rank_replay_scope": "saved singular spectra",
+    "geometry_rows": 576,
+    "interventions": [
+      {
+        "family": "clrr",
+        "condition": "drop_10_11",
+        "n": 8,
+        "mean_bleu": -0.07383881894834521,
+        "ci95": [
+          -0.40404705111632244,
+          0.256369413219632
+        ],
+        "wins": 4,
+        "mean_chrfpp": -0.10161329592512836,
+        "mean_chrf0": -0.10093373972059516
+      },
+      {
+        "family": "full",
+        "condition": "drop_10",
+        "n": 8,
+        "mean_bleu": -0.08098514010288094,
+        "ci95": [
+          -0.33163907797349934,
+          0.16966879776773747
+        ],
+        "wins": 2,
+        "mean_chrfpp": -0.07357081865806037,
+        "mean_chrf0": -0.07491621266969029
+      },
+      {
+        "family": "full",
+        "condition": "drop_10_11",
+        "n": 8,
+        "mean_bleu": -0.04977966477857754,
+        "ci95": [
+          -0.3749572269499871,
+          0.27539789739283205
+        ],
+        "wins": 4,
+        "mean_chrfpp": -0.11819888780936316,
+        "mean_chrf0": -0.11971078461869067
+      },
+      {
+        "family": "full",
+        "condition": "drop_11",
+        "n": 8,
+        "mean_bleu": -0.0839602990749615,
+        "ci95": [
+          -0.2177981345801052,
+          0.049877536430182196
+        ],
+        "wins": 3,
+        "mean_chrfpp": -0.10470777709782442,
+        "mean_chrf0": -0.1041581986950717
+      }
+    ]
+  },
+  "updated_at_utc": "2026-10-07T12:11:18.325Z"
+}

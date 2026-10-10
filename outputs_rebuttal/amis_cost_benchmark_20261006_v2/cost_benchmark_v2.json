@@ -1,0 +1,231 @@
+{
+  "benchmark_version": "v2",
+  "device": "cuda",
+  "gpu_name": "NVIDIA A100-SXM4-40GB",
+  "families": {
+    "baseline": {
+      "target_provenance": {
+        "repo_id": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/mbart-amis-baseline-seed42-corrected-best.zip",
+        "sha256": "e2d5c884c8c2da270aa1bbeaa4e36990021f1559b5fca2926d05cca3f5b0e53c",
+        "revision": "f416c7ba4479fa4f87b49ef8fd507c02927482a2",
+        "method": "baseline",
+        "alpha": 0.0,
+        "lambda": 0.0,
+        "stack": "encoder",
+        "distance": 2
+      },
+      "parameters": {
+        "total": 610879488,
+        "trainable": 610879488,
+        "non_trainable": 0,
+        "extra_vs_baseline": 0
+      },
+      "train_macro_step": {
+        "times_ms": [
+          604.2606329997398,
+          569.5711490002395,
+          562.7765439999166,
+          549.3297769999117,
+          545.1939869999478
+        ],
+        "mean_ms": 566.2264179999511,
+        "std_ms": 23.439016604716294,
+        "min_ms": 545.1939869999478,
+        "max_ms": 604.2606329997398,
+        "peak_allocated_mib": 12872.9638671875,
+        "peak_reserved_mib": 15036.0,
+        "overhead_pct_vs_baseline": 0.0,
+        "overhead_pct_vs_lsr": -9.75432178637956
+      },
+      "inference_beam4_primary": {
+        "mode": "beam4",
+        "latency_ms_per_sentence_mean": 32.27379898437448,
+        "latency_ms_per_sentence_std": 0.49729830913659967,
+        "throughput_valid_tokens_per_sec_mean": 282.79063883305076,
+        "throughput_valid_tokens_per_sec_std": 4.344128360164574,
+        "peak_allocated_mib": 2659.6748046875,
+        "peak_reserved_mib": 2750.0,
+        "overhead_pct_vs_baseline": 0.0,
+        "overhead_pct_vs_lsr": 10.659092487797425
+      },
+      "inference_beam1_supplementary": {
+        "mode": "beam1",
+        "latency_ms_per_sentence_mean": 26.42248175937425,
+        "latency_ms_per_sentence_std": 0.39668134354202295,
+        "throughput_valid_tokens_per_sec_mean": 344.820267903587,
+        "throughput_valid_tokens_per_sec_std": 5.143925221445138,
+        "peak_allocated_mib": 2412.9326171875,
+        "peak_reserved_mib": 2454.0
+      }
+    },
+    "clrr": {
+      "target_provenance": {
+        "repo_id": "FiveC/amis-corrected-clrr-only-20261005",
+        "archive_path": "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/mbart-amis-clrr_a010-seed42-corrected-control-best.zip",
+        "sha256": "c8f65e977492aa1242f106d62c6a5e60140fde1d854255c7dbe610ba7770d496",
+        "revision": "e63da9e6eeadcd8b60aa320ddf2be32a4052e396",
+        "method": "clrr-enc",
+        "alpha": 0.1,
+        "lambda": 0.0,
+        "stack": "encoder",
+        "distance": 2
+      },
+      "parameters": {
+        "total": 610879488,
+        "trainable": 610879488,
+        "non_trainable": 0,
+        "extra_vs_baseline": 0
+      },
+      "train_macro_step": {
+        "times_ms": [
+          552.986927999882,
+          561.4149620000717,
+          575.5102759999318,
+          598.3203890000368,
+          590.0633980004386
+        ],
+        "mean_ms": 575.6591906000722,
+        "std_ms": 18.960240103533227,
+        "min_ms": 552.986927999882,
+        "max_ms": 598.3203890000368,
+        "peak_allocated_mib": 12872.9638671875,
+        "peak_reserved_mib": 15056.0,
+        "overhead_pct_vs_baseline": 1.665901183741998,
+        "overhead_pct_vs_lsr": -8.250917964742865
+      },
+      "inference_beam4_primary": {
+        "mode": "beam4",
+        "latency_ms_per_sentence_mean": 29.311793993748836,
+        "latency_ms_per_sentence_std": 0.7291552836652695,
+        "throughput_valid_tokens_per_sec_mean": 305.5920133861936,
+        "throughput_valid_tokens_per_sec_std": 7.415747194200922,
+        "peak_allocated_mib": 2645.9248046875,
+        "peak_reserved_mib": 2732.0,
+        "overhead_pct_vs_baseline": -9.177738858879655,
+        "overhead_pct_vs_lsr": 0.5030899556612635
+      },
+      "inference_beam1_supplementary": {
+        "mode": "beam1",
+        "latency_ms_per_sentence_mean": 25.862282053122954,
+        "latency_ms_per_sentence_std": 0.097205475421662,
+        "throughput_valid_tokens_per_sec_mean": 353.4385765839623,
+        "throughput_valid_tokens_per_sec_std": 1.3265261985932333,
+        "peak_allocated_mib": 2423.4326171875,
+        "peak_reserved_mib": 2460.0
+      }
+    },
+    "lsr": {
+      "target_provenance": {
+        "repo_id": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_accumulation_pilot_20261005/mbart-amis-lsr_l010-seed42-accumfixed/mbart-amis-lsr_l010-seed42-accumfixed-best.zip",
+        "sha256": "5dca641abe96fc3c4a353e6c6df4fda5a09ce9bc02277a2fc93711e2fd1724cc",
+        "revision": "2c4c5be0f57531a44e38cbc5378df9eaeefc83bb",
+        "method": "jepa",
+        "alpha": 0.0,
+        "lambda": 0.1,
+        "stack": "encoder",
+        "distance": 2
+      },
+      "parameters": {
+        "total": 610879488,
+        "trainable": 610879488,
+        "non_trainable": 0,
+        "extra_vs_baseline": 0
+      },
+      "train_macro_step": {
+        "times_ms": [
+          629.2176359997939,
+          627.8282030002629,
+          625.2636650001477,
+          626.8503639998926,
+          627.9788249999001
+        ],
+        "mean_ms": 627.4277385999994,
+        "std_ms": 1.4734633209082852,
+        "min_ms": 625.2636650001477,
+        "max_ms": 629.2176359997939,
+        "peak_allocated_mib": 12989.38671875,
+        "peak_reserved_mib": 15056.0,
+        "overhead_pct_vs_baseline": 10.808630373733928,
+        "overhead_pct_vs_lsr": 0.0
+      },
+      "inference_beam4_primary": {
+        "mode": "beam4",
+        "latency_ms_per_sentence_mean": 29.165067468751715,
+        "latency_ms_per_sentence_std": 0.21807703011485094,
+        "throughput_valid_tokens_per_sec_mean": 305.38744946566493,
+        "throughput_valid_tokens_per_sec_std": 2.267388293503024,
+        "peak_allocated_mib": 2629.1748046875,
+        "peak_reserved_mib": 2718.0,
+        "overhead_pct_vs_baseline": -9.632369331939733,
+        "overhead_pct_vs_lsr": 0.0
+      },
+      "inference_beam1_supplementary": {
+        "mode": "beam1",
+        "latency_ms_per_sentence_mean": 26.07766588124889,
+        "latency_ms_per_sentence_std": 0.08470040301776736,
+        "throughput_valid_tokens_per_sec_mean": 344.5266484604579,
+        "throughput_valid_tokens_per_sec_std": 1.119032735485504,
+        "peak_allocated_mib": 2409.18310546875,
+        "peak_reserved_mib": 2452.0
+      }
+    },
+    "full": {
+      "target_provenance": {
+        "repo_id": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/mbart-amis-full_a010_l010-seed42-accumfixed-best.zip",
+        "sha256": "7497cc3b5ccc11df3057fe300307ab13d1d54f5a68c2f5b7e08e108679826135",
+        "revision": "4a3ac5f05ca633b131a773ce9733e353aa7707d8",
+        "method": "jepa-clrr-enc",
+        "alpha": 0.1,
+        "lambda": 0.1,
+        "stack": "encoder",
+        "distance": 2
+      },
+      "parameters": {
+        "total": 610879488,
+        "trainable": 610879488,
+        "non_trainable": 0,
+        "extra_vs_baseline": 0
+      },
+      "train_macro_step": {
+        "times_ms": [
+          635.1947759999348,
+          632.7924850002091,
+          632.335950000197,
+          635.1008189999447,
+          626.9343140002093
+        ],
+        "mean_ms": 632.471668800099,
+        "std_ms": 3.3582504523154695,
+        "min_ms": 626.9343140002093,
+        "max_ms": 635.1947759999348,
+        "peak_allocated_mib": 13007.49609375,
+        "peak_reserved_mib": 15056.0,
+        "overhead_pct_vs_baseline": 11.699427772046064,
+        "overhead_pct_vs_lsr": 0.8039061536160734
+      },
+      "inference_beam4_primary": {
+        "mode": "beam4",
+        "latency_ms_per_sentence_mean": 31.715238165625692,
+        "latency_ms_per_sentence_std": 0.2500900019345067,
+        "throughput_valid_tokens_per_sec_mean": 294.13586912690715,
+        "throughput_valid_tokens_per_sec_std": 2.3199318535547255,
+        "peak_allocated_mib": 2663.1669921875,
+        "peak_reserved_mib": 2764.0,
+        "overhead_pct_vs_baseline": -1.73069435990234,
+        "overhead_pct_vs_lsr": 8.743921815392
+      },
+      "inference_beam1_supplementary": {
+        "mode": "beam1",
+        "latency_ms_per_sentence_mean": 27.637101428125277,
+        "latency_ms_per_sentence_std": 0.3493160755058016,
+        "throughput_valid_tokens_per_sec_mean": 336.99889761602174,
+        "throughput_valid_tokens_per_sec_std": 4.196525432357153,
+        "peak_allocated_mib": 2427.18359375,
+        "peak_reserved_mib": 2468.0
+      }
+    }
+  }
+}

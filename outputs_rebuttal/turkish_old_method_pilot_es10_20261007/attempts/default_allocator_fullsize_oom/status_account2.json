@@ -1,0 +1,17 @@
+{
+  "account": "2",
+  "status": "FAILED",
+  "completed": [],
+  "started_utc_epoch": 1791377501.3585622,
+  "error_type": "CalledProcessError",
+  "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', 'scripts/revalidation/smoke_fullsize_turkish.py']' returned non-zero exit status 1.",
+  "alive": false,
+  "checked_at_epoch": 1791377608.2363322,
+  "gpu_gate_complete": false,
+  "fullsize_completed": [
+    "baseline_FAILED"
+  ],
+  "validation_done": [],
+  "log_tail": "~~~~~~~~~~~~~~~~~~~~^\n        self, gradient, retain_graph, create_graph, inputs=inputs\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/content/miniforge3/envs/clrr/lib/python3.13/site-packages/torch/autograd/__init__.py\", line 347, in backward\n    _engine_run_backward(\n    ~~~~~~~~~~~~~~~~~~~~^\n        tensors,\n        ^^^^^^^^\n    ...<5 lines>...\n        accumulate_grad=True,\n        ^^^^^^^^^^^^^^^^^^^^^\n    )\n    ^\n  File \"/content/miniforge3/envs/clrr/lib/python3.13/site-packages/torch/autograd/graph.py\", line 823, in _engine_run_backward\n    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n        t_outputs, *args, **kwargs\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^\n    )  # Calls into the C++ engine to run the backward pass\n    ^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 7.63 GiB. GPU 0 has a total capacity of 39.49 GiB of which 6.88 GiB is free. Including non-PyTorch memory, this process has 32.60 GiB memory in use. Of the allocated memory 25.82 GiB is allocated by PyTorch, and 6.28 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\nTraceback (most recent call last):\n  File \"/content/CLRR_turkish/scripts/revalidation/run_turkish_pilot_queue.py\", line 56, in <module>\n    if __name__=='__main__':main()\n                            ~~~~^^\n  File \"/content/CLRR_turkish/scripts/revalidation/run_turkish_pilot_queue.py\", line 38, in main\n    subprocess.run([sys.executable,'-u','scripts/revalidation/smoke_fullsize_turkish.py'],cwd=ROOT,check=True)\n    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/content/miniforge3/envs/clrr/lib/python3.13/subprocess.py\", line 578, in run\n    raise CalledProcessError(retcode, process.args,\n                             output=stdout, stderr=stderr)\nsubprocess.CalledProcessError: Command '['/content/miniforge3/envs/clrr/bin/python', '-u', 'scripts/revalidation/smoke_fullsize_turkish.py']' returned non-zero exit status 1.\n",
+  "last_logged_epoch": 0.5
+}

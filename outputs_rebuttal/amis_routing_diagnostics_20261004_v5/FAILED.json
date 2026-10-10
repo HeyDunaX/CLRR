@@ -1,0 +1,4 @@
+{
+  "type": "AssertionError",
+  "message": "{'id': 'mbart-amis-baseline-seed42', 'family': 'baseline', 'seed': 42, 'condition': 'val_main_b1', 'split': 'validation', 'beams': 1, 'train_alpha': 0.0, 'inference_alpha': 0, 'active_routing_layers': [], 'scores': {'bleu': 16.265888292515125, 'chrf++': 13.901540564847089, 'chrf0': 15.962821804214725}, 'rows': 576, 'validation_replay': False, 'seconds': 16.165744066238403, 'teacher_ce_fixed32': 2.910469054498456, 'inventory_metric_delta': {'bleu': -1.6075888263091649, 'chrf++': -0.9993355534036059}}"
+}

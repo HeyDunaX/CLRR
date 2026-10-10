@@ -1,0 +1,101 @@
+[
+  {
+    "source_repo": "FiveC/turkish-old-method-pilot-full-20261007",
+    "source_revision": "991f1c997bc7312df739a238127365f382fbca3d",
+    "target_revision": "4e5bb46d52ed7edd0d6b86dfe92a86c92491e8be",
+    "verified": true,
+    "files": 35,
+    "bytes": 2271943966,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/turkish-old-method-pilot-lsr-20261007",
+    "source_revision": "28c39b56aa39fbdc22732d5c146ea9a1f50e6a23",
+    "target_revision": "012146927c643990f481ab62f8a178be4d2efe9c",
+    "verified": true,
+    "files": 35,
+    "bytes": 2271925147,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/turkish-old-method-pilot-baseline-20261007",
+    "source_revision": "ea7c5fc693892f3e9881302617500432ade09b87",
+    "target_revision": "7374bcb30a4acd4daa168329b9a4c36ed2159154",
+    "verified": true,
+    "files": 28,
+    "bytes": 274335,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/turkish-old-method-pilot-middle-20261007",
+    "source_revision": "95d1edc31936af9a819890fabe9438ea29559d84",
+    "target_revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+    "verified": true,
+    "files": 26,
+    "bytes": 268171,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-accumulation-confirmation-20261005",
+    "source_revision": "e8450aad44668befc906fb9453b590dea3012816",
+    "target_revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+    "verified": true,
+    "files": 111,
+    "bytes": 4542276867,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-corrected-lsr-l003-20261005",
+    "source_revision": "82706c4ec42e0640c0e866ce7ba84d6524ee6891",
+    "target_revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+    "verified": true,
+    "files": 161,
+    "bytes": 6813231856,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-corrected-clrr-only-20261005",
+    "source_revision": "f482d5e31c001cb45bd4918217d78a1fbb93edf4",
+    "target_revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+    "verified": true,
+    "files": 164,
+    "bytes": 6813330878,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-fresh-confirmation-baseline-20261005",
+    "source_revision": "392cb18f024cf2033d6ce52e3f33e26a83b5e598",
+    "target_revision": "e26e011b79e3760677a02790ecc55c478f79c4a8",
+    "verified": true,
+    "files": 428,
+    "bytes": 18169197550,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-fresh-confirmation-clrr-20261005",
+    "source_revision": "841c8394f73c29969995e912feef09e3042e7ca6",
+    "target_revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+    "verified": true,
+    "files": 422,
+    "bytes": 18169047112,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-fresh-confirmation-full-20261005",
+    "source_revision": "ac9bf3616bda7d17bb8ac2c414e0f7ba6d97bb96",
+    "target_revision": "71bb38494fde2cf1d5f0b7696dab3b42c991b2ff",
+    "verified": true,
+    "files": 410,
+    "bytes": 18168974955,
+    "source_deleted": true
+  },
+  {
+    "source_repo": "FiveC/amis-fresh-confirmation-lsr-20261005",
+    "source_revision": "56f16d183c3f1cbd2b872f2b6199e63b6002cc30",
+    "target_revision": "204b54364c68606a47ff45d12519d105510cafb2",
+    "verified": true,
+    "files": 422,
+    "bytes": 18169050359,
+    "source_deleted": true
+  }
+]

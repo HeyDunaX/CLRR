@@ -1,0 +1,3116 @@
+{
+  "scope": "Descriptive only; test is not used for hyperparameter selection.",
+  "source_word_bins_defined_before_analysis": [
+    "<=5",
+    "6-10",
+    ">10"
+  ],
+  "source_word_definition": "whitespace split of raw source",
+  "metric_implementation": "native SacreBLEU corpus BLEU tokenize=zh, CHRF word_order=2 and 0",
+  "sacrebleu_version": "2.6.0",
+  "test_decode": "existing goldtest beam4",
+  "test_gold_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+  "test": {
+    "baseline_seed42": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/test_predictions.csv",
+      "verified_sha256": "4a53fc044641487438750047f37fc63689cf4ad12d28d4ad02fffe882bde9d75",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.728081433402025,
+        "chrF++": 18.713838023321145,
+        "chrF0": 18.397282102498366,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9642800695432274,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 19.74711232850103,
+          "chrF++": 16.11358098838078,
+          "chrF0": 18.157279658724175,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9894459102902374,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.33547730108691,
+          "chrF++": 19.150209067309593,
+          "chrF0": 19.00048405793996,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9650301065308013,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 14.342855819891586,
+          "chrF++": 12.21999971429628,
+          "chrF0": 14.256666333345661,
+          "prediction_reference_nonwhitespace_character_ratio": 0.8803245436105477,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "baseline_seed43": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed43/test_predictions.csv",
+      "verified_sha256": "7a2f66e8e84ca9845371ce993a1206bf1f03ee2678e25eed56111b06d1a8a227",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 18.137831758407888,
+        "chrF++": 13.159189083183897,
+        "chrF0": 17.09042990233338,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9620673304883831,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 19.082064177028585,
+          "chrF++": 15.60594259129417,
+          "chrF0": 17.566213564440446,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9742744063324539,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 18.68605361532281,
+          "chrF++": 13.465582601654273,
+          "chrF0": 17.553738958202818,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9629458082445577,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 10.300226160767444,
+          "chrF++": 10.660071454954611,
+          "chrF0": 12.43675003078038,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9168356997971603,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "baseline_seed44": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed44/test_predictions.csv",
+      "verified_sha256": "974e3de9456f2303cd573a96257490330abc8e2584d7fce7ef168c9753e4266c",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 20.30001625394848,
+        "chrF++": 18.901672572421678,
+        "chrF0": 18.647751691603844,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9658605974395448,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 19.31195912237761,
+          "chrF++": 15.886721028934497,
+          "chrF0": 17.984641354467335,
+          "prediction_reference_nonwhitespace_character_ratio": 1.0032981530343008,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 21.136147128395187,
+          "chrF++": 19.399123716813133,
+          "chrF0": 19.294410888271518,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9571560907827698,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 15.736668079737179,
+          "chrF++": 13.106035506027089,
+          "chrF0": 15.290374757031602,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9269776876267748,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "original_full_detached_seed42": {
+      "prediction_file": "outputs_rebuttal/amis_final_evaluation_20261004/runs/mbart-amis-full_a010_l010-seed42-replica/test_predictions.csv",
+      "verified_sha256": "e1a3620c109d2b38e011ebb4ae874bee6cc977717d56176584321b3d0830f6da",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.956573804384817,
+        "chrF++": 18.88781117201183,
+        "chrF0": 18.662644750604965,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9560613244823771,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.887695237583046,
+          "chrF++": 15.403299376917623,
+          "chrF0": 17.42094483377819,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9769129287598944,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 21.04672790881524,
+          "chrF++": 19.67325826990577,
+          "chrF0": 19.699801431121173,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9601667438628995,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 13.374696818499048,
+          "chrF++": 11.591785106698497,
+          "chrF0": 13.523749291148244,
+          "prediction_reference_nonwhitespace_character_ratio": 0.8559837728194726,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "original_full_detached_seed43": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed43/test_predictions.csv",
+      "verified_sha256": "a5c3fb6f16c4f28ec138292449ebf519f5ee67e24dd5e79f39bfe8220a3f2d05",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.61226033152559,
+        "chrF++": 18.475345958179492,
+        "chrF0": 18.190511941282644,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9715504978662873,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.15213851262244,
+          "chrF++": 14.798798429682183,
+          "chrF0": 16.805867748533654,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9683377308707124,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.93829210553346,
+          "chrF++": 19.338234651193982,
+          "chrF0": 19.33311552265785,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9791570171375636,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 12.291570532794182,
+          "chrF++": 10.763556854143246,
+          "chrF0": 12.557482996500454,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9148073022312373,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "original_full_detached_seed44": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed44/test_predictions.csv",
+      "verified_sha256": "56841452d1ff220ad545b484e1ab33e7d8b6e56c59b7406b04ef8fb1ec90cb9a",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.737135107447248,
+        "chrF++": 18.60648253148173,
+        "chrF0": 18.26125775269904,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9529002686897424,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 19.27809586498796,
+          "chrF++": 15.525416924982464,
+          "chrF0": 17.471071306546747,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9716358839050132,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.53769548093351,
+          "chrF++": 19.202944564848615,
+          "chrF0": 19.078577576779082,
+          "prediction_reference_nonwhitespace_character_ratio": 0.952292728114868,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 14.195795094828327,
+          "chrF++": 11.887749564071083,
+          "chrF0": 13.86904115808293,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9006085192697769,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "matched_lsr_seed42": {
+      "prediction_file": "outputs_rebuttal/amis_final_evaluation_20261004/runs/mbart-amis-lsr_l010-seed42/test_predictions.csv",
+      "verified_sha256": "af8f712397ccfb1ef8716b2e51cdb870ca319add935a4d857045d28f6703cae9",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.78649564324058,
+        "chrF++": 18.679744901053734,
+        "chrF0": 18.35809340687812,
+        "prediction_reference_nonwhitespace_character_ratio": 0.953690532637901,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 16.960274683068217,
+          "chrF++": 14.115801435111491,
+          "chrF0": 15.919380759772123,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9637203166226913,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 21.120671521220682,
+          "chrF++": 19.562848047442298,
+          "chrF0": 19.510491999210196,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9550717924965262,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 16.024201783285005,
+          "chrF++": 13.184519320677248,
+          "chrF0": 15.381939207456789,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9107505070993914,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "matched_lsr_seed43": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed43/test_predictions.csv",
+      "verified_sha256": "db38f1c4c7c1821ab869a4ec609386ba4371fe9e356c63d77dd8d076bb25d002",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.487940500372513,
+        "chrF++": 18.64879720574962,
+        "chrF0": 18.25813718777413,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9601706970128022,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.20655863315984,
+          "chrF++": 14.957457562102183,
+          "chrF0": 16.809464914856033,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9841688654353562,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.511674030968482,
+          "chrF++": 19.33721697756289,
+          "chrF0": 19.166922798436488,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9590088003705419,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 14.15084032339247,
+          "chrF++": 12.589783288442803,
+          "chrF0": 14.68808050318327,
+          "prediction_reference_nonwhitespace_character_ratio": 0.896551724137931,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "matched_lsr_seed44": {
+      "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed44/test_predictions.csv",
+      "verified_sha256": "a79b67d48d49f9a9084d9c5fc9978ca189f65cf9cbc1338540d1246b8e948201",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.32841923655717,
+        "chrF++": 18.36327034476351,
+        "chrF0": 17.99574949906902,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9508455824245298,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.94298184334614,
+          "chrF++": 15.390248070320075,
+          "chrF0": 17.313101650813675,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9643799472295514,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.094601917725175,
+          "chrF++": 18.904477098167654,
+          "chrF0": 18.774767460016996,
+          "prediction_reference_nonwhitespace_character_ratio": 0.944187123668365,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 13.979456198981618,
+          "chrF++": 11.674081496161689,
+          "chrF0": 13.619761745521972,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9675456389452333,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "tuned_lsr_seed42": {
+      "prediction_file": "outputs_rebuttal/amis_final_evaluation_20261004/runs/mbart-amis-lsr_l003-seed42/test_predictions.csv",
+      "verified_sha256": "911fc0660759fad1374731a1c128ad808e9672f366eb0c9c9ba117230b1303b8",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 20.625679120852553,
+        "chrF++": 19.188905163530883,
+        "chrF0": 19.028835465486083,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9658605974395448,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 19.814934076429434,
+          "chrF++": 16.17518759392506,
+          "chrF0": 18.137360022211922,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9861477572559367,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 21.5172647966466,
+          "chrF++": 19.658879428605967,
+          "chrF0": 19.722258655934613,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9652616952292729,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 15.297282764765992,
+          "chrF++": 13.467940169156483,
+          "chrF0": 15.712596864015898,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9087221095334685,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "tuned_lsr_seed43": {
+      "prediction_file": "outputs_rebuttal/amis_final_evaluation_20261004/runs/mbart-amis-lsr_l003-seed43/test_predictions.csv",
+      "verified_sha256": "b4a719015d4a058c2e38bf157089ec9d2f22665be71c94775b98868214fe3e22",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.67466209150134,
+        "chrF++": 14.155648087415376,
+        "chrF0": 18.41883979495942,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9532163742690059,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.532592709647357,
+          "chrF++": 15.303365515644854,
+          "chrF0": 17.211524293127205,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9736147757255936,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.622141901006213,
+          "chrF++": 14.77310753099747,
+          "chrF0": 19.297622225516527,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9511347846225104,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 14.677168646432628,
+          "chrF++": 12.543035458157098,
+          "chrF0": 14.633541367849947,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9087221095334685,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "tuned_lsr_seed44": {
+      "prediction_file": "outputs_rebuttal/amis_final_evaluation_20261004/runs/mbart-amis-lsr_l003-seed44/test_predictions.csv",
+      "verified_sha256": "d95fff81bfdb7c76a71abe480a8efa25166b97ce51806775576214e922f527ae",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.38582088622823,
+        "chrF++": 18.5323869298727,
+        "chrF0": 18.15733016234366,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9622253832780149,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.798329975845192,
+          "chrF++": 15.296742604712119,
+          "chrF0": 17.295964924843375,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9703166226912929,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.313810452498263,
+          "chrF++": 19.231022205606024,
+          "chrF0": 19.064386939137627,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9650301065308013,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 12.964729631316645,
+          "chrF++": 11.191564782953616,
+          "chrF0": 13.056825580112555,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9127789046653144,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed42_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\test_main_b1\\predictions.csv",
+      "observed_sha256": "c7c177d040df76bb38045a55491879cf308643317af6e516c0ed181539c152b2",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.238578765870763,
+        "chrF++": 18.45967593899025,
+        "chrF0": 18.107090018707247,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9786628733997155,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.36698881311267,
+          "chrF++": 15.47683849727279,
+          "chrF0": 17.322628535112035,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9861477572559367,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 19.928565710342205,
+          "chrF++": 18.768257492249234,
+          "chrF0": 18.617594236714684,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9775358962482631,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 15.833368005757773,
+          "chrF++": 13.691992802356424,
+          "chrF0": 15.97399160274916,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9655172413793104,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed43_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\test_main_b1\\predictions.csv",
+      "observed_sha256": "0675a1dfb141b4da112d50d3d6dbdc277f32f5f92ff00197f2e0dd5cc9a91b11",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 18.635028142353764,
+        "chrF++": 18.118229031490028,
+        "chrF0": 17.684687751277554,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9726568673937095,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.034765959009807,
+          "chrF++": 14.862817816583885,
+          "chrF0": 16.789777786992385,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9901055408970977,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 19.41373841164787,
+          "chrF++": 18.675705392920495,
+          "chrF0": 18.453520890940627,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9719777674849467,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 13.589488804641798,
+          "chrF++": 11.94406885528168,
+          "chrF0": 13.934746997828626,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9249492900608519,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed44_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\test_main_b1\\predictions.csv",
+      "observed_sha256": "86fc9f21d7edf2cc3c48f7da514f1b3ffdacc885e54bd7de69fb633231e59bac",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 18.38565512713757,
+        "chrF++": 17.851235188354725,
+        "chrF0": 17.323732387469928,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9822980875612455,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 17.543840485680747,
+          "chrF++": 14.363152103166374,
+          "chrF0": 16.298242270765865,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9769129287598944,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 19.293511977704707,
+          "chrF++": 18.512872943478296,
+          "chrF0": 18.180677042707526,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9916628068550255,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 12.776414700027695,
+          "chrF++": 11.192880321199942,
+          "chrF0": 13.058360374733263,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9168356997971603,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed42_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\test_main_b1\\predictions.csv",
+      "observed_sha256": "725ee865de3aa259c5875d821a9c28703fd609a069813c200950d7a38be96e6d",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 18.42380963941553,
+        "chrF++": 17.935520245145298,
+        "chrF0": 17.43752524459477,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9797692429271376,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 17.33852951407949,
+          "chrF++": 14.250157590226161,
+          "chrF0": 16.170353624882765,
+          "prediction_reference_nonwhitespace_character_ratio": 1.007915567282322,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 19.301291609081943,
+          "chrF++": 18.611377834931446,
+          "chrF0": 18.322390750280803,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9729041222788328,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 13.829226491516128,
+          "chrF++": 11.762715644921368,
+          "chrF0": 13.72316825240826,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9533468559837728,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed43_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\test_main_b1\\predictions.csv",
+      "observed_sha256": "d4527b10eaf22e07755e020827617268205aa130677e51c4674c426408a70190",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 19.126407335955513,
+        "chrF++": 18.327564775826456,
+        "chrF0": 17.986631453695964,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9816658764027185,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 18.553157051342595,
+          "chrF++": 15.058809016053413,
+          "chrF0": 17.109805054296483,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9755936675461742,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 20.13280027771991,
+          "chrF++": 19.05333443170151,
+          "chrF0": 18.9451217818237,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9905048633626679,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 12.088212982159119,
+          "chrF++": 10.737245583566871,
+          "chrF0": 12.526786514161351,
+          "prediction_reference_nonwhitespace_character_ratio": 0.922920892494929,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed44_test_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\test_main_b1\\predictions.csv",
+      "observed_sha256": "3c66eadc9754f644378f1eafa6e45ea742355ae1170161fd99b54e5ee603b8a3",
+      "all": {
+        "rows": 575,
+        "BLEUzh": 18.05853748668184,
+        "chrF++": 17.635104518637487,
+        "chrF0": 17.093103776491507,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9822980875612455,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 3,
+        "reference_rows_with_word_bigrams": 3
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 178,
+          "BLEUzh": 17.949969888996705,
+          "chrF++": 14.689972953899039,
+          "chrF0": 16.680159992373852,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9868073878627969,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        "6-10": {
+          "rows": 368,
+          "BLEUzh": 18.661460840099007,
+          "chrF++": 18.066896487305407,
+          "chrF0": 17.681414519221256,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9830940250115794,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 3,
+          "reference_rows_with_word_bigrams": 3
+        },
+        ">10": {
+          "rows": 29,
+          "BLEUzh": 13.22908586828957,
+          "chrF++": 11.599169424866528,
+          "chrF0": 13.53236432901095,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9614604462474645,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    }
+  },
+  "test_comparisons": {
+    "full_minus_baseline_seed42": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.22849237098279218,
+          "chrF++": 0.1739731486906848,
+          "chrF0": 0.26536264810659915
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 235,
+          "loss": 209,
+          "tie": 131
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.859417090917983,
+          "chrF++": -0.7102816114631558,
+          "chrF0": -0.7363348249459847
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 64,
+          "loss": 58,
+          "tie": 56
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.7112506077283278,
+          "chrF++": 0.5230492025961766,
+          "chrF0": 0.6993173731812128
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 161,
+          "loss": 134,
+          "tie": 73
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.9681590013925376,
+          "chrF++": -0.6282146075977835,
+          "chrF0": -0.7329170421974176
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 10,
+          "loss": 17,
+          "tie": 2
+        }
+      }
+    },
+    "full_minus_matched_lsr_seed42": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.1700781611442359,
+          "chrF++": 0.2080662709580956,
+          "chrF0": 0.3045513437268461
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 224,
+          "loss": 204,
+          "tie": 147
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.9274205545148284,
+          "chrF++": 1.2874979418061319,
+          "chrF0": 1.5015640740060672
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 68,
+          "loss": 52,
+          "tie": 58
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.07394361240544356,
+          "chrF++": 0.11041022246347154,
+          "chrF0": 0.18930943191097782
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 147,
+          "loss": 134,
+          "tie": 87
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -2.6495049647859563,
+          "chrF++": -1.5927342139787513,
+          "chrF0": -1.858189916308545
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 9,
+          "loss": 18,
+          "tie": 2
+        }
+      }
+    },
+    "full_minus_tuned_lsr_seed42": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.6691053164677356,
+          "chrF++": -0.30109399151905336,
+          "chrF0": -0.36619071488111743
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 209,
+          "loss": 243,
+          "tie": 123
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.9272388388463888,
+          "chrF++": -0.7718882170074366,
+          "chrF0": -0.7164151884337322
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 58,
+          "loss": 69,
+          "tie": 51
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.4705368878313614,
+          "chrF++": 0.014378841299802048,
+          "chrF0": -0.022457224813440035
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 137,
+          "loss": 159,
+          "tie": 72
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.9225859462669437,
+          "chrF++": -1.8761550624579861,
+          "chrF0": -2.1888475728676546
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 14,
+          "loss": 15,
+          "tie": 0
+        }
+      }
+    },
+    "full_minus_baseline_seed43": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.4744285731177023,
+          "chrF++": 5.316156874995595,
+          "chrF0": 1.1000820389492638
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 232,
+          "loss": 204,
+          "tie": 139
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.9299256644061451,
+          "chrF++": -0.807144161611987,
+          "chrF0": -0.760345815906792
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 58,
+          "loss": 58,
+          "tie": 62
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.252238490210651,
+          "chrF++": 5.87265204953971,
+          "chrF0": 1.7793765644550312
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 163,
+          "loss": 131,
+          "tie": 74
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.991344372026738,
+          "chrF++": 0.10348539918863509,
+          "chrF0": 0.12073296572007308
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 11,
+          "loss": 15,
+          "tie": 3
+        }
+      }
+    },
+    "full_minus_matched_lsr_seed43": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.12431983115307688,
+          "chrF++": -0.17345124757012798,
+          "chrF0": -0.0676252464914846
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 199,
+          "loss": 220,
+          "tie": 156
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.05442012053740086,
+          "chrF++": -0.1586591324200004,
+          "chrF0": -0.003597166322379053
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 59,
+          "loss": 56,
+          "tie": 63
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.4266180745649777,
+          "chrF++": 0.0010176736310931744,
+          "chrF0": 0.16619272422136078
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 132,
+          "loss": 148,
+          "tie": 88
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.8592697905982885,
+          "chrF++": -1.8262264342995564,
+          "chrF0": -2.1305975066828164
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 8,
+          "loss": 16,
+          "tie": 5
+        }
+      }
+    },
+    "full_minus_tuned_lsr_seed43": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.06240175997574937,
+          "chrF++": 4.3196978707641165,
+          "chrF0": -0.22832785367677744
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 206,
+          "loss": 203,
+          "tie": 166
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.38045419702491756,
+          "chrF++": -0.5045670859626714,
+          "chrF0": -0.40565654459355116
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 58,
+          "loss": 55,
+          "tie": 65
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.31615020452724707,
+          "chrF++": 4.565127120196513,
+          "chrF0": 0.03549329714132199
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 137,
+          "loss": 134,
+          "tie": 97
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -2.385598113638446,
+          "chrF++": -1.7794786040138515,
+          "chrF0": -2.076058371349493
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 11,
+          "loss": 14,
+          "tie": 4
+        }
+      }
+    },
+    "full_minus_baseline_seed44": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.5628811465012333,
+          "chrF++": -0.2951900409399464,
+          "chrF0": -0.38649393890480255
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 222,
+          "loss": 249,
+          "tie": 104
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.03386325738964757,
+          "chrF++": -0.3613041039520333,
+          "chrF0": -0.513570047920588
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 58,
+          "loss": 79,
+          "tie": 41
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.5984516474616761,
+          "chrF++": -0.19617915196451818,
+          "chrF0": -0.21583331149243534
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 153,
+          "loss": 153,
+          "tie": 62
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.5408729849088516,
+          "chrF++": -1.2182859419560064,
+          "chrF0": -1.4213335989486726
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 11,
+          "loss": 17,
+          "tie": 1
+        }
+      }
+    },
+    "full_minus_matched_lsr_seed44": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.4087158708900773,
+          "chrF++": 0.2432121867182211,
+          "chrF0": 0.2655082536300206
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 203,
+          "loss": 195,
+          "tie": 177
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.3351140216418216,
+          "chrF++": 0.13516885466238904,
+          "chrF0": 0.15796965573307276
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 48,
+          "loss": 62,
+          "tie": 68
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.44309356320833615,
+          "chrF++": 0.298467466680961,
+          "chrF0": 0.3038101167620866
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 139,
+          "loss": 122,
+          "tie": 107
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.21633889584670918,
+          "chrF++": 0.21366806790939386,
+          "chrF0": 0.24927941256095743
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 16,
+          "loss": 11,
+          "tie": 2
+        }
+      }
+    },
+    "full_minus_tuned_lsr_seed44": {
+      "all": {
+        "rows": 575,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.3513142212190168,
+          "chrF++": 0.07409560160903084,
+          "chrF0": 0.1039275903553829
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 218,
+          "loss": 213,
+          "tie": 144
+        }
+      },
+      "<=5": {
+        "rows": 178,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.47976588914276874,
+          "chrF++": 0.22867432027034518,
+          "chrF0": 0.17510638170337245
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 55,
+          "loss": 68,
+          "tie": 55
+        }
+      },
+      "6-10": {
+        "rows": 368,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.22388502843524805,
+          "chrF++": -0.028077640757409483,
+          "chrF0": 0.01419063764145534
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 149,
+          "loss": 131,
+          "tie": 88
+        }
+      },
+      ">10": {
+        "rows": 29,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.2310654635116816,
+          "chrF++": 0.6961847811174664,
+          "chrF0": 0.8122155779703739
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 14,
+          "loss": 14,
+          "tie": 1
+        }
+      }
+    }
+  },
+  "validation": {
+    "v5_baseline_seed42_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed42\\validation_predictions.csv",
+      "observed_sha256": "82cd7a0f9b87686c402b87ec6feb6cef830450369aad29a038b7a4e1175ea30c",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.265888292515132,
+        "chrF++": 13.901540564847089,
+        "chrF0": 15.962821804214725,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9538140643623361,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.773444742333304,
+          "chrF++": 15.01068707456529,
+          "chrF0": 17.139863154978098,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9271814187068425,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 15.608576573020882,
+          "chrF++": 13.529634589313453,
+          "chrF0": 15.55862417870876,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9615989220750056,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.095661420051552,
+          "chrF++": 13.83739273876921,
+          "chrF0": 16.143624861897415,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9654654654654654,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_baseline_seed43_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed43\\validation_predictions.csv",
+      "observed_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.151270123753932,
+        "chrF++": 14.200731980464068,
+        "chrF0": 16.368745536133453,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9545589988081049,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 17.884176075392386,
+          "chrF++": 14.549925031128502,
+          "chrF0": 16.694743934992808,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9234149403640929,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.316025168824755,
+          "chrF++": 14.204328930437876,
+          "chrF0": 16.391647046625323,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9685605209970806,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 14.384819330164254,
+          "chrF++": 13.384763687350532,
+          "chrF0": 15.615557635242286,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9354354354354354,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_baseline_seed44_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed44\\validation_predictions.csv",
+      "observed_sha256": "49f5456caeef79b07a761546bceda9a46e58ab991350c455d6bda25b1eea116a",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.9652726512606,
+        "chrF++": 14.79871492994047,
+        "chrF0": 17.12316850373172,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9754171632896305,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 20.121329716357902,
+          "chrF++": 15.314456772197541,
+          "chrF0": 17.773422453462704,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9378531073446328,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.536777105277586,
+          "chrF++": 14.626397809494929,
+          "chrF0": 16.884070427621715,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9928138333707612,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.884121157411588,
+          "chrF++": 14.868481697003741,
+          "chrF0": 17.346561979837695,
+          "prediction_reference_nonwhitespace_character_ratio": 0.948948948948949,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_matched_lsr_seed42_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l010-seed42\\val_main_b1\\predictions.csv",
+      "observed_sha256": "6cbef1c9e1e117761448a4d623899aa0cb4bcfab43f22ea59a18425b25e25abb",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.568762896375635,
+        "chrF++": 14.167405662566932,
+        "chrF0": 16.273105886464958,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9621573301549463,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.053621605386724,
+          "chrF++": 14.63794421017485,
+          "chrF0": 16.70499532458112,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9265536723163842,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.22433032028392,
+          "chrF++": 13.924581890345747,
+          "chrF0": 16.0198146227959,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9743992813833371,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.670712175578105,
+          "chrF++": 14.629960939044235,
+          "chrF0": 17.068287762218272,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9654654654654654,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_matched_lsr_seed43_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr-seed43\\val_main_b1\\predictions.csv",
+      "observed_sha256": "d4c83b0008fa9e20c7998a10725fd2d964a1d72330395e7703c41aba3e47714b",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.465320409451696,
+        "chrF++": 13.945165498648135,
+        "chrF0": 16.04190454282057,
+        "prediction_reference_nonwhitespace_character_ratio": 0.950834326579261,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.53174685951275,
+          "chrF++": 14.991791089360614,
+          "chrF0": 17.209702564606335,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9190207156308852,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 15.711505818590721,
+          "chrF++": 13.521893116336306,
+          "chrF0": 15.550184753259948,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9609252189535145,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 16.922225254719596,
+          "chrF++": 14.385049278905711,
+          "chrF0": 16.78255749205666,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9594594594594594,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_matched_lsr_seed44_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr-seed44\\val_main_b1\\predictions.csv",
+      "observed_sha256": "22929327690b4a8dca206404a11bef0369b4cba275fbe8f0791159491b842179",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.59496986225757,
+        "chrF++": 14.069770895728148,
+        "chrF0": 16.188010053235004,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9567938021454112,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 17.54846229540504,
+          "chrF++": 14.089000951942332,
+          "chrF0": 16.343484544655094,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9139987445072191,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.62885353033081,
+          "chrF++": 14.149124640009738,
+          "chrF0": 16.19306280575338,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9717044688973726,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 14.334132980803197,
+          "chrF++": 13.560187175885972,
+          "chrF0": 15.820218371866964,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9594594594594594,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed42_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\val_main_b1\\predictions.csv",
+      "observed_sha256": "5c057330a13333267ce0fe647b687a44366fba164d23fc03ea2e31886ada247c",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.787285341686463,
+        "chrF++": 14.85874740143626,
+        "chrF0": 17.13644903735976,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9675208581644815,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 19.47034573849987,
+          "chrF++": 15.25910014365994,
+          "chrF0": 17.708876995495284,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9315756434400502,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 18.016652140724787,
+          "chrF++": 15.106860839367725,
+          "chrF0": 17.354592767822403,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9813608803054121,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 12.200863798845564,
+          "chrF++": 12.48009110824053,
+          "chrF0": 14.560106292947287,
+          "prediction_reference_nonwhitespace_character_ratio": 0.960960960960961,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed42_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\val_main_b4\\predictions.csv",
+      "observed_sha256": "0c4025bf8a686ac960312703bc3240f9d9c9f7e27b2f8d4ffd8103441b93798a",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 18.343871050474604,
+        "chrF++": 15.144115755475788,
+        "chrF0": 17.4691526754742,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9365315852205006,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 19.220339497876402,
+          "chrF++": 15.160365075117138,
+          "chrF0": 17.593667888270325,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9020715630885122,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 18.674237870241903,
+          "chrF++": 15.446772863215791,
+          "chrF0": 17.75050809748793,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9479002919380193,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 14.1743878340391,
+          "chrF++": 13.182151755698367,
+          "chrF0": 15.379177048314762,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9429429429429429,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed43_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\val_main_b1\\predictions.csv",
+      "observed_sha256": "1ec71afbcc4f13d476abf7e493742129d5b3451f65abaac1e2b27e44d753964e",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.362132373650912,
+        "chrF++": 14.010880174033186,
+        "chrF0": 16.118664366995898,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9648390941597139,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 17.88569465546019,
+          "chrF++": 14.705630176606732,
+          "chrF0": 16.969456612863574,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9315756434400502,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.333383591242427,
+          "chrF++": 14.001846860636388,
+          "chrF0": 16.06524514568983,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9770940938693016,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 13.105999025480724,
+          "chrF++": 12.614535521553961,
+          "chrF0": 14.71695810847962,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9624624624624625,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed43_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\val_main_b4\\predictions.csv",
+      "observed_sha256": "ea7a994957857a990456f5a7da557151caf2483783f5d2f54b480b15b81f1d6a",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.422312228752045,
+        "chrF++": 14.50798506660088,
+        "chrF0": 16.727276055381935,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9465137067938022,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 19.361611369955316,
+          "chrF++": 15.475001652036754,
+          "chrF0": 17.866988495266583,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9171374764595104,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.10117595004385,
+          "chrF++": 14.342269250881923,
+          "chrF0": 16.506953776274194,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9573321356388951,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.20905685774933,
+          "chrF++": 13.553342502166135,
+          "chrF0": 15.812232919193821,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9444444444444444,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed44_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\val_main_b1\\predictions.csv",
+      "observed_sha256": "30c60d6f8e49aa1f7943e958931f43d70a07813301b0da7fcd816c2da0864ed3",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.833193983741726,
+        "chrF++": 14.081403953148813,
+        "chrF0": 16.229853186440483,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9602205005959475,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 17.606773525226277,
+          "chrF++": 14.20925380350667,
+          "chrF0": 16.390283343507907,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9165097300690521,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.991176106385605,
+          "chrF++": 14.209971030721835,
+          "chrF0": 16.353985862725263,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9770940938693016,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 14.098385832923379,
+          "chrF++": 13.012468247067865,
+          "chrF0": 15.18121295491251,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9519519519519519,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_tuned_lsr_seed44_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\val_main_b4\\predictions.csv",
+      "observed_sha256": "68dae6259e1e5497ee57cca5cd688a16124d30dbdd564c2042a7938fe77099a8",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.142654679284067,
+        "chrF++": 14.335939354627945,
+        "chrF0": 16.52579008349401,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9341477949940405,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.679784943518264,
+          "chrF++": 14.911750784203004,
+          "chrF0": 17.210085674344523,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9127432517263026,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.337342804428047,
+          "chrF++": 14.511793778218191,
+          "chrF0": 16.70412359808251,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9375701774084887,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 12.285555865403927,
+          "chrF++": 12.045368158960489,
+          "chrF0": 14.052929518787236,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9624624624624625,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed42_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\val_main_b1\\predictions.csv",
+      "observed_sha256": "5978990cac96a39750d44d108806841c03f8ad055746bf20142fad3894b9a94f",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.64365142895975,
+        "chrF++": 14.731667659986464,
+        "chrF0": 16.87520033372062,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9721394517282479,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.90604494696801,
+          "chrF++": 15.263250989918205,
+          "chrF0": 17.341282467507593,
+          "prediction_reference_nonwhitespace_character_ratio": 0.943502824858757,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.563482858923205,
+          "chrF++": 14.631647644119866,
+          "chrF0": 16.800691000640416,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9840556927913766,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.427362852536696,
+          "chrF++": 14.114987714909303,
+          "chrF0": 16.46748566739419,
+          "prediction_reference_nonwhitespace_character_ratio": 0.960960960960961,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed42_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\val_main_b4\\predictions.csv",
+      "observed_sha256": "3f886558415c25b5d43d6bdf83bf71f2734c8b6a4cc9939b71f9ccd16e713faa",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 18.48721295962333,
+        "chrF++": 15.218553918989086,
+        "chrF0": 17.387970441076504,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9648390941597139,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 20.05960273606245,
+          "chrF++": 16.18356880075849,
+          "chrF0": 18.319266170119842,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9077212806026366,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 18.291357383973907,
+          "chrF++": 15.050452852144296,
+          "chrF0": 17.246530262653106,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9842802604985403,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 16.444383825670975,
+          "chrF++": 14.14527278870156,
+          "chrF0": 16.502818253485156,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9714714714714715,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v4_full_seed42": {
+      "prediction_file": "outputs_rebuttal\\amis_followup_20261004_v4\\route_control\\mbart-amis-full_a010_l010-seed42-replica\\route_predictions_comparison.csv",
+      "observed_sha256": "a1e266c22bac0de9c567f9d548fe784c1d43d285b58191f01e1806bfa775a8f4",
+      "route_on": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 17.64365142895975,
+          "chrF++": 14.731667659986464,
+          "chrF0": 16.87520033372062,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9721394517282479,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 18.90604494696801,
+            "chrF++": 15.263250989918205,
+            "chrF0": 17.341282467507593,
+            "prediction_reference_nonwhitespace_character_ratio": 0.943502824858757,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 17.563482858923205,
+            "chrF++": 14.631647644119866,
+            "chrF0": 16.800691000640416,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9840556927913766,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 15.427362852536696,
+            "chrF++": 14.114987714909303,
+            "chrF0": 16.46748566739419,
+            "prediction_reference_nonwhitespace_character_ratio": 0.960960960960961,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      },
+      "route_off": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 14.537696013247068,
+          "chrF++": 12.293827980968368,
+          "chrF0": 14.201494799875203,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9368295589988082,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 16.492958174347713,
+            "chrF++": 13.427300091183636,
+            "chrF0": 15.384877936566385,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9165097300690521,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 14.493519193883174,
+            "chrF++": 12.189773822387382,
+            "chrF0": 14.132097327348122,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9523916460812936,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 10.242479858861335,
+            "chrF++": 10.447958549478994,
+            "chrF0": 12.189284974392159,
+            "prediction_reference_nonwhitespace_character_ratio": 0.8813813813813813,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      }
+    },
+    "v5_original_full_detached_seed43_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\val_main_b1\\predictions.csv",
+      "observed_sha256": "0431d1320a653f505a107bed808f57c43f6b054900e4f5c7006e369881cbc334",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.06453509078412,
+        "chrF++": 14.41260859405018,
+        "chrF0": 16.587805503890078,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9670738974970202,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.77769542533122,
+          "chrF++": 15.073787970168832,
+          "chrF0": 17.30674754948153,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9522912743251726,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.781865637977138,
+          "chrF++": 14.282755396332632,
+          "chrF0": 16.437737124723633,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9692342241185717,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.195772168161454,
+          "chrF++": 13.711984986940836,
+          "chrF0": 15.99731581809764,
+          "prediction_reference_nonwhitespace_character_ratio": 0.987987987987988,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed43_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\val_main_b4\\predictions.csv",
+      "observed_sha256": "36f73436625731105ba3efda901fff9cac4ecd5ea5f29ac109b2ca731695197f",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.40056428671241,
+        "chrF++": 14.592754723139556,
+        "chrF0": 16.796905257004045,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9432359952324195,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.122558804366697,
+          "chrF++": 14.832123116050324,
+          "chrF0": 17.023761014000147,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9234149403640929,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.518600964840672,
+          "chrF++": 14.638991484685457,
+          "chrF0": 16.852440723156306,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9483494273523467,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.074271356462061,
+          "chrF++": 13.687750950605594,
+          "chrF0": 15.969042775706527,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9564564564564565,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v4_full_seed43": {
+      "prediction_file": "outputs_rebuttal\\amis_followup_20261004_v4\\route_control\\mbart-amis-full-seed43\\route_predictions_comparison.csv",
+      "observed_sha256": "dd6cc7ee05c3649df890b04b26ade25aeb7356db01714f8985bb17b0b913f23a",
+      "route_on": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 17.06453509078412,
+          "chrF++": 14.41260859405018,
+          "chrF0": 16.587805503890078,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9670738974970202,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 18.77769542533122,
+            "chrF++": 15.073787970168832,
+            "chrF0": 17.30674754948153,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9522912743251726,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 16.781865637977138,
+            "chrF++": 14.282755396332632,
+            "chrF0": 16.437737124723633,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9692342241185717,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 15.195772168161454,
+            "chrF++": 13.711984986940836,
+            "chrF0": 15.99731581809764,
+            "prediction_reference_nonwhitespace_character_ratio": 0.987987987987988,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      },
+      "route_off": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 13.986275374875206,
+          "chrF++": 12.006259552551827,
+          "chrF0": 13.951475992479592,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9649880810488677,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 16.405278085237022,
+            "chrF++": 13.19645545789865,
+            "chrF0": 15.302901862917452,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9409918392969241,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 13.312908059940325,
+            "chrF++": 11.599528565351836,
+            "chrF0": 13.488627961603164,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9735010105546822,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 12.991241051424993,
+            "chrF++": 11.989063666319549,
+            "chrF0": 13.987240944039476,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9654654654654654,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      }
+    },
+    "v5_original_full_detached_seed44_val_main_b1": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\val_main_b1\\predictions.csv",
+      "observed_sha256": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 16.932429309462734,
+        "chrF++": 14.348330285453207,
+        "chrF0": 16.512759705934826,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9623063170441001,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 18.452364579199667,
+          "chrF++": 14.963444162623041,
+          "chrF0": 17.176379529419805,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9290646578782172,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 16.77421341478049,
+          "chrF++": 14.258298190184354,
+          "chrF0": 16.41008299818098,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9777677969907927,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 14.645804051852988,
+          "chrF++": 13.628736396471364,
+          "chrF0": 15.900192462549922,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9384384384384384,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v5_original_full_detached_seed44_val_main_b4": {
+      "prediction_file": "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\val_main_b4\\predictions.csv",
+      "observed_sha256": "61d2179bd6b90db211c7b1130e3f56a0569f95a8673cd560d47a2c83eee96cff",
+      "all": {
+        "rows": 576,
+        "BLEUzh": 17.637647397373726,
+        "chrF++": 14.760536970085191,
+        "chrF0": 16.993323114242376,
+        "prediction_reference_nonwhitespace_character_ratio": 0.9396603098927294,
+        "empty_prediction_rate": 0.0,
+        "reference_word_bigram_count": 1,
+        "reference_rows_with_word_bigrams": 1
+      },
+      "source_word_bins": {
+        "<=5": {
+          "rows": 174,
+          "BLEUzh": 19.417504923513334,
+          "chrF++": 15.488373338383973,
+          "chrF0": 17.78896749529604,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9070935342121783,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "6-10": {
+          "rows": 364,
+          "BLEUzh": 17.431185003721342,
+          "chrF++": 14.697231103959274,
+          "chrF0": 16.921528061890104,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9541881877386031,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        },
+        ">10": {
+          "rows": 38,
+          "BLEUzh": 15.16660556091707,
+          "chrF++": 13.596175659487193,
+          "chrF0": 15.862204936068391,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9204204204204204,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 0,
+          "reference_rows_with_word_bigrams": 0
+        }
+      }
+    },
+    "v4_full_seed44": {
+      "prediction_file": "outputs_rebuttal\\amis_followup_20261004_v4\\route_control\\mbart-amis-full-seed44\\route_predictions_comparison.csv",
+      "observed_sha256": "f2d3dd2fa24451de23e90d6f73cf36eeca8dd25aeb11af5ad54cadb61fa10042",
+      "route_on": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 16.932429309462734,
+          "chrF++": 14.348330285453207,
+          "chrF0": 16.512759705934826,
+          "prediction_reference_nonwhitespace_character_ratio": 0.9623063170441001,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 18.452364579199667,
+            "chrF++": 14.963444162623041,
+            "chrF0": 17.176379529419805,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9290646578782172,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 16.77421341478049,
+            "chrF++": 14.258298190184354,
+            "chrF0": 16.41008299818098,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9777677969907927,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 14.645804051852988,
+            "chrF++": 13.628736396471364,
+            "chrF0": 15.900192462549922,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9384384384384384,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      },
+      "route_off": {
+        "all": {
+          "rows": 576,
+          "BLEUzh": 14.213720573937378,
+          "chrF++": 11.845346715820286,
+          "chrF0": 13.655352793085477,
+          "prediction_reference_nonwhitespace_character_ratio": 1.0913289630512515,
+          "empty_prediction_rate": 0.0,
+          "reference_word_bigram_count": 1,
+          "reference_rows_with_word_bigrams": 1
+        },
+        "source_word_bins": {
+          "<=5": {
+            "rows": 174,
+            "BLEUzh": 16.67875517087481,
+            "chrF++": 12.172271958112695,
+            "chrF0": 14.015005463256172,
+            "prediction_reference_nonwhitespace_character_ratio": 1.4067796610169492,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 1,
+            "reference_rows_with_word_bigrams": 1
+          },
+          "6-10": {
+            "rows": 364,
+            "BLEUzh": 13.820906487172259,
+            "chrF++": 11.992633149886473,
+            "chrF0": 13.816425857364493,
+            "prediction_reference_nonwhitespace_character_ratio": 0.9811363125982484,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          },
+          ">10": {
+            "rows": 38,
+            "BLEUzh": 11.326571682577791,
+            "chrF++": 10.165090833376723,
+            "chrF0": 11.859272638939508,
+            "prediction_reference_nonwhitespace_character_ratio": 1.0735735735735736,
+            "empty_prediction_rate": 0.0,
+            "reference_word_bigram_count": 0,
+            "reference_rows_with_word_bigrams": 0
+          }
+        }
+      }
+    }
+  },
+  "validation_comparisons": {
+    "v4_route_on_minus_off_seed42": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.105955415712682,
+          "chrF++": 2.4378396790180954,
+          "chrF0": 2.6737055338454176
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 287,
+          "loss": 205,
+          "tie": 84
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.4130867726202965,
+          "chrF++": 1.8359508987345698,
+          "chrF0": 1.9564045309412084
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 77,
+          "loss": 61,
+          "tie": 36
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.0699636650400315,
+          "chrF++": 2.441873821732484,
+          "chrF0": 2.6685936732922944
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 187,
+          "loss": 131,
+          "tie": 46
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 5.184882993675361,
+          "chrF++": 3.667029165430309,
+          "chrF0": 4.278200693002031
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 23,
+          "loss": 13,
+          "tie": 2
+        }
+      }
+    },
+    "v4_route_on_minus_off_seed43": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.0782597159089136,
+          "chrF++": 2.4063490414983537,
+          "chrF0": 2.6363295114104854
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 294,
+          "loss": 178,
+          "tie": 104
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.3724173400941986,
+          "chrF++": 1.877332512270181,
+          "chrF0": 2.003845686564077
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 79,
+          "loss": 46,
+          "tie": 49
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.4689575780368127,
+          "chrF++": 2.6832268309807965,
+          "chrF0": 2.9491091631204682
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 193,
+          "loss": 118,
+          "tie": 53
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.2045311167364616,
+          "chrF++": 1.7229213206212872,
+          "chrF0": 2.010074874058164
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 22,
+          "loss": 14,
+          "tie": 2
+        }
+      }
+    },
+    "v4_route_on_minus_off_seed44": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.7187087355253556,
+          "chrF++": 2.502983569632921,
+          "chrF0": 2.857406912849349
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 312,
+          "loss": 186,
+          "tie": 78
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.7736094083248588,
+          "chrF++": 2.791172204510346,
+          "chrF0": 3.161374066163633
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 74,
+          "loss": 58,
+          "tie": 42
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.9533069276082315,
+          "chrF++": 2.265665040297881,
+          "chrF0": 2.593657140816486
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 212,
+          "loss": 118,
+          "tie": 34
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.3192323692751966,
+          "chrF++": 3.463645563094641,
+          "chrF0": 4.040919823610414
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 26,
+          "loss": 10,
+          "tie": 2
+        }
+      }
+    },
+    "v5_full_minus_baseline_seed42": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.3777631364446172,
+          "chrF++": 0.8301270951393747,
+          "chrF0": 0.9123785295058955
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 244,
+          "loss": 231,
+          "tie": 101
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.13260020463470568,
+          "chrF++": 0.25256391535291556,
+          "chrF0": 0.2014193125294952
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 60,
+          "loss": 62,
+          "tie": 52
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.9549062859023234,
+          "chrF++": 1.102013054806413,
+          "chrF0": 1.2420668219316564
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 162,
+          "loss": 153,
+          "tie": 49
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.3317014324851435,
+          "chrF++": 0.277594976140092,
+          "chrF0": 0.3238608054967749
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 22,
+          "loss": 16,
+          "tie": 0
+        }
+      }
+    },
+    "v5_full_minus_matched_lsr_seed42": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.074888532584115,
+          "chrF++": 0.564261997419532,
+          "chrF0": 0.6020944472556629
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 234,
+          "loss": 220,
+          "tie": 122
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.8524233415812859,
+          "chrF++": 0.6253067797433562,
+          "chrF0": 0.6362871429264736
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 58,
+          "loss": 58,
+          "tie": 58
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.3391525386392864,
+          "chrF++": 0.7070657537741187,
+          "chrF0": 0.7808763778445176
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 158,
+          "loss": 144,
+          "tie": 62
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.243349323041409,
+          "chrF++": -0.5149732241349323,
+          "chrF0": -0.6008020948240826
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 18,
+          "loss": 18,
+          "tie": 2
+        }
+      }
+    },
+    "v5_full_minus_tuned_lsr_seed42": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.14363391272671322,
+          "chrF++": -0.12707974144979595,
+          "chrF0": -0.26124870363914
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 232,
+          "loss": 247,
+          "tie": 97
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.5643007915318599,
+          "chrF++": 0.0041508462582662276,
+          "chrF0": -0.3675945279876913
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 59,
+          "loss": 73,
+          "tie": 42
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.453169281801582,
+          "chrF++": -0.4752131952478589,
+          "chrF0": -0.553901767181987
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 151,
+          "loss": 159,
+          "tie": 54
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 3.226499053691132,
+          "chrF++": 1.6348966066687733,
+          "chrF0": 1.9073793744469025
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 22,
+          "loss": 15,
+          "tie": 1
+        }
+      }
+    },
+    "v5_full_minus_baseline_seed43": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.08673503296981266,
+          "chrF++": 0.21187661358611187,
+          "chrF0": 0.21905996775662473
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 236,
+          "loss": 234,
+          "tie": 106
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.8935193499388348,
+          "chrF++": 0.5238629390403293,
+          "chrF0": 0.6120036144887209
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 66,
+          "loss": 57,
+          "tie": 51
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.5341595308476172,
+          "chrF++": 0.07842646589475599,
+          "chrF0": 0.04609007809830956
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 152,
+          "loss": 158,
+          "tie": 54
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.8109528379972009,
+          "chrF++": 0.3272212995903043,
+          "chrF0": 0.38175818285535357
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 18,
+          "loss": 19,
+          "tie": 1
+        }
+      }
+    },
+    "v5_full_minus_matched_lsr_seed43": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.5992146813324233,
+          "chrF++": 0.46744309540204476,
+          "chrF0": 0.5459009610695063
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 238,
+          "loss": 206,
+          "tie": 132
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.2459485658184697,
+          "chrF++": 0.08199688080821765,
+          "chrF0": 0.09704498487519331
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 62,
+          "loss": 55,
+          "tie": 57
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 1.0703598193864163,
+          "chrF++": 0.760862279996326,
+          "chrF0": 0.8875523714636842
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 160,
+          "loss": 131,
+          "tie": 73
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.7264530865581413,
+          "chrF++": -0.6730642919648755,
+          "chrF0": -0.7852416739590211
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 16,
+          "loss": 20,
+          "tie": 2
+        }
+      }
+    },
+    "v5_full_minus_tuned_lsr_seed43": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.7024027171332072,
+          "chrF++": 0.40172842001699394,
+          "chrF0": 0.46914113689418
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 234,
+          "loss": 224,
+          "tie": 118
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.8920007698710322,
+          "chrF++": 0.36815779356209966,
+          "chrF0": 0.3372909366179542
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 65,
+          "loss": 56,
+          "tie": 53
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.4484820467347106,
+          "chrF++": 0.28090853569624485,
+          "chrF0": 0.3724919790338035
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 148,
+          "loss": 155,
+          "tie": 61
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 2.0897731426807304,
+          "chrF++": 1.097449465386875,
+          "chrF0": 1.2803577096180199
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 21,
+          "loss": 13,
+          "tie": 4
+        }
+      }
+    },
+    "v5_full_minus_baseline_seed44": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.032843341797868,
+          "chrF++": -0.45038464448726323,
+          "chrF0": -0.610408797796893
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 228,
+          "loss": 268,
+          "tie": 80
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.668965137158235,
+          "chrF++": -0.3510126095745001,
+          "chrF0": -0.5970429240428992
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 62,
+          "loss": 71,
+          "tie": 41
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.762563690497096,
+          "chrF++": -0.3680996193105752,
+          "chrF0": -0.47398742944073646
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 153,
+          "loss": 173,
+          "tie": 38
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -1.2383171055586004,
+          "chrF++": -1.2397453005323769,
+          "chrF0": -1.4463695172877724
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 13,
+          "loss": 24,
+          "tie": 1
+        }
+      }
+    },
+    "v5_full_minus_matched_lsr_seed44": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.33745944720516263,
+          "chrF++": 0.2785593897250589,
+          "chrF0": 0.3247496526998219
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 231,
+          "loss": 215,
+          "tie": 130
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.9039022837946256,
+          "chrF++": 0.8744432106807096,
+          "chrF0": 0.8328949847647102
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 51,
+          "loss": 57,
+          "tie": 66
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.14535988444967884,
+          "chrF++": 0.10917355017461539,
+          "chrF0": 0.21702019242759718
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 162,
+          "loss": 140,
+          "tie": 62
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.3116710710497905,
+          "chrF++": 0.06854922058539259,
+          "chrF0": 0.07997409068295802
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 18,
+          "loss": 18,
+          "tie": 2
+        }
+      }
+    },
+    "v5_full_minus_tuned_lsr_seed44": {
+      "all": {
+        "rows": 576,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.09923532572100768,
+          "chrF++": 0.26692633230439355,
+          "chrF0": 0.2829065194943432
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 238,
+          "loss": 216,
+          "tie": 122
+        }
+      },
+      "<=5": {
+        "rows": 174,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.84559105397339,
+          "chrF++": 0.7541903591163717,
+          "chrF0": 0.786096185911898
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 56,
+          "loss": 55,
+          "tie": 63
+        }
+      },
+      "6-10": {
+        "rows": 364,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": -0.21696269160511505,
+          "chrF++": 0.04832715946251831,
+          "chrF0": 0.056097135455715375
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 159,
+          "loss": 146,
+          "tie": 59
+        }
+      },
+      ">10": {
+        "rows": 38,
+        "corpus_delta_full_minus_comparator": {
+          "BLEUzh": 0.5474182189296091,
+          "chrF++": 0.6162681494034992,
+          "chrF0": 0.7189795076374121
+        },
+        "sentence_chrF0_descriptive_only": {
+          "win": 23,
+          "loss": 15,
+          "tie": 0
+        }
+      }
+    }
+  },
+  "v5_prediction_coverage": {
+    "available": [
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed42\\validation_predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed43\\validation_predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\baseline_archive_audit_v3\\mbart-amis-baseline-seed44\\validation_predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l010-seed42\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr-seed43\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr-seed44\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed42\\test_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed43\\test_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-lsr_l003-seed44\\test_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full_a010_l010-seed42-replica\\test_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed43\\test_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\val_main_b1\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\val_main_b4\\predictions.csv",
+      "outputs_rebuttal\\amis_routing_diagnostics_20261004_v5\\runs\\mbart-amis-full-seed44\\test_main_b1\\predictions.csv"
+    ],
+    "missing": []
+  }
+}

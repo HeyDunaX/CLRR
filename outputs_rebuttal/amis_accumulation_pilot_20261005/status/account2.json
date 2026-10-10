@@ -1,0 +1,17 @@
+{
+  "environment_ready": true,
+  "started": true,
+  "job_done": true,
+  "family": "full",
+  "selection": {
+    "epoch": 20.0,
+    "global_step": 720,
+    "best_metric": 14.477980489784093,
+    "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_pilot_20261005/full/runs/mbart-amis-full_a010_l010-seed42-accumfixed/checkpoint-720"
+  },
+  "model_complete": true,
+  "archives_gib": {
+    "mbart-amis-full_a010_l010-seed42-accumfixed-best.zip": 2.115
+  },
+  "checked_at_utc": "2026-10-05T03:25:16.941940+00:00"
+}

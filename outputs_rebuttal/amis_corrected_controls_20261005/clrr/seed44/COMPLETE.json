@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "family": "clrr",
+  "seed": 44,
+  "run": "mbart-amis-clrr_a010-seed44-corrected-control",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed44/runs/mbart-amis-clrr_a010-seed44-corrected-control/checkpoint-684",
+  "best_metric": 14.653283648617094,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-corrected-clrr-only-20261005",
+  "hf_prefix": "amis_corrected_controls_20261005",
+  "selected_and_exported_weight_digest": "58c5ff10853a477ca7a3d090cc4c375315baf4c6dfb7d93e69a5de9d66831c1b",
+  "post_selection_test_bleu": 19.34549779546226,
+  "post_selection_test_chrfpp": 18.374130004944195,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

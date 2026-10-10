@@ -1,0 +1,164 @@
+{
+  "checked_unix": 1791518463.4070475,
+  "process_alive": false,
+  "queue": {
+    "account": 1,
+    "status": "VALIDATION_QUEUE_COMPLETE",
+    "current": "A06",
+    "updated_unix": 1791518446.4326322,
+    "restart_from_scratch": true
+  },
+  "gates": {
+    "A06": {
+      "passed": true,
+      "id": "A06",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 4,
+      "accumulation": 32,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 45.19894790649414,
+      "parameters": {
+        "method": "LoRA",
+        "rank": 16,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "out_proj",
+          "fc1",
+          "fc2"
+        ],
+        "modules_to_save": [
+          "shared",
+          "embed_tokens",
+          "lm_head"
+        ],
+        "base_params": 610879488,
+        "added_params": 8650752,
+        "trainable_params": 264706048,
+        "all_params": 619530240,
+        "trainable_percent": 42.726897076081386,
+        "allocated_params": 875585536,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 8.15471076965332,
+      "bundle_sha256": "4bbf5c5270460c0aaf4cb2b26177f68504afd248c7d03ec8611773bfc800cd1d"
+    }
+  },
+  "progress": {
+    "A06": {
+      "id": "A06",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 10.985001982576682,
+        "chrf++": 10.382518202338122,
+        "chrf0": 12.0560421743657
+      },
+      "updated_unix": 1791518443.773216
+    }
+  },
+  "validation_complete": {
+    "A06": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "A06",
+      "spec": {
+        "id": "A06",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "strong-lora-b",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0001,
+        "microbatch": 4,
+        "accumulation": 32,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 3,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 10.985001982576682,
+        "chrf++": 10.382518202338122,
+        "chrf0": 12.0560421743657
+      },
+      "archive_sha256": "4cf6ccac866db298b93134a69b015545271a9ef18793dcda483e42cf718a5a94",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "23954b834f164db11e8ce4713ddd7dfdfefbe51c",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/best.zip": {
+            "size": 1081172781,
+            "sha256": "4cf6ccac866db298b93134a69b015545271a9ef18793dcda483e42cf718a5a94"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/run_metadata.json": {
+            "size": 3604,
+            "sha256": "811bc9217ec21da5c7c4c6d17e870086da74d5c705617d164c98b7409f15a22c"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/training_receipt.json": {
+            "size": 2838,
+            "sha256": "31afa6272b2b49108198b39591f79576a3be90256f733443a6b965bc5bf03028"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4430,
+            "sha256": "9c647503b4cf9d41ac0a50ef97569332862576eb07dbd5758a1d96ee0b1e2029"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "593329b66751d850058445d5781347cb17d0ea5993d7357b889f0cc1839a8097"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/validation_predictions.csv": {
+            "size": 62043,
+            "sha256": "ff0b29c14fab0a727803e6d8ed46e4f05e88f6dfb38779c7e4cb2aed8158faf6"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/final_trainer_state.json": {
+            "size": 19232,
+            "sha256": "feaa950cc88a40c9590ca3c505140f925096cc697554d2f2833e2d88646b55f8"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/selected_trainer_state.json": {
+            "size": 18030,
+            "sha256": "5ec274baf436c24f66b66a679ee559da8308c5deb85a33802f5936700b9bd437"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/stop_state.json": {
+            "size": 323,
+            "sha256": "68ed8d9d276c1a043b966849528326d7b28df51c184b68489ee0a3fa83d688c1"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "811bc9217ec21da5c7c4c6d17e870086da74d5c705617d164c98b7409f15a22c"
+    }
+  },
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB, 0 %",
+  "log_tail": [
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589| 1.07GB / 1.07GB, 63.4MB/s  \u001b[A",
+    "",
+    "",
+    "  ...g_mbart/runs/A06/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.08GB / 1.08GB            \u001b[A\u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.08GB / 1.08GB, 62.5MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.07GB / 1.07GB, 62.1MB/s  \u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.08GB / 1.08GB, 62.5MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.07GB / 1.07GB, 62.1MB/s  ",
+    "",
+    "  ...g_mbart/runs/A06/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 1.08GB / 1.08GB            ",
+    "VAL_COMPLETE_VERIFIED A06 {\"bleu\": 10.985001982576682, \"chrf++\": 10.382518202338122, \"chrf0\": 12.0560421743657}"
+  ]
+}

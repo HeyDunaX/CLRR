@@ -1,0 +1,802 @@
+{
+  "status": "VERIFIED_COUNTERFACTUAL_ONLY",
+  "model": {
+    "id": "mbart-amis-full-seed44",
+    "family": "original_full_detached",
+    "seed": 44,
+    "alpha": 0.1,
+    "lambda": 0.1,
+    "detach": true,
+    "best_step": 720,
+    "archive_repo": "FiveC/amis-rewire-checkpoints",
+    "archive_path": "amis_confirmation_20261003/checkpoints/mbart-amis-full-seed44.zip",
+    "receipt_dir_exists": true,
+    "archive_sha256": "3de3cfc733d60f9070d15fd02aaef0391f6a1a8569f3759adebef3b81e4eb0ee",
+    "archive_bytes": 2270670074,
+    "revision": "adad0c7c19b43241e7ed4a57e4d1126c6c471958",
+    "eval_bleu": 16.932429309462727,
+    "eval_chrf++": 14.348330285453207,
+    "eval_chrf0": 16.512759705934826,
+    "eval_loss": 2.9252607822418213,
+    "validation_predictions_exists": true,
+    "historical_validation_metadata": {
+      "eval_bleu": 16.932429309462727,
+      "eval_chrf++": 14.348330285453207,
+      "eval_chrf0": null,
+      "eval_loss": 2.9252607822418213,
+      "best_step": 720
+    },
+    "validation_prediction_sha256": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6",
+    "validation_prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/runs/mbart-amis-full-seed44/val_main_b1/predictions.csv",
+    "v5_validation_status": "VERIFIED_NATIVE_GENERATION_METRICS",
+    "validation_protocol": {
+      "beams": 1,
+      "max_length": 256,
+      "batch_size": 8,
+      "precision": "fp32",
+      "tf32": false,
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN"
+    },
+    "eval_loss_provenance": "Historical full-validation eval loss retained; not recomputed by this generation audit. Fixed32 CE is a separate diagnostic."
+  },
+  "batches": [
+    {
+      "batch_id": 0,
+      "indices": [
+        10,
+        30,
+        56,
+        60
+      ],
+      "ce": 3.3829398155212402,
+      "label_tokens": 52,
+      "routed_raw_anchor_cosine": 0.9707696437835693,
+      "anchor_l2_mean": 0.24137663841247559,
+      "conditions": {
+        "routed": {
+          "lsr": 0.23960071802139282,
+          "weighted_lsr": 0.023960072547197342,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.775203926514557,
+              "lsr_gradient_norm": 0.05540059571190613,
+              "gradient_cosine": 0.042398739622896024,
+              "lsr_to_ce_ratio": 0.0018606285904417396,
+              "ce_norm_squared": 886.5627688655278,
+              "lsr_norm_squared": 0.0030692260052340714,
+              "dot_product": 0.06993943601008823,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 22.24651238611597,
+              "lsr_gradient_norm": 0.05540059571190613,
+              "gradient_cosine": 0.056747372198745365,
+              "lsr_to_ce_ratio": 0.002490304761050168,
+              "ce_norm_squared": 494.9073133456113,
+              "lsr_norm_squared": 0.0030692260052340714,
+              "dot_product": 0.06993943601008823,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.79028689837306,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 391.6554555199165,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.24090299010276794,
+          "weighted_lsr": 0.024090299382805824,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.775203926514557,
+              "lsr_gradient_norm": 0.06377114545444362,
+              "gradient_cosine": 0.024620530040145427,
+              "lsr_to_ce_ratio": 0.002141753440608881,
+              "ce_norm_squared": 886.5627688655278,
+              "lsr_norm_squared": 0.004066758992571806,
+              "dot_product": 0.046749434385958466,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 22.24651238611597,
+              "lsr_gradient_norm": 0.06377114545444362,
+              "gradient_cosine": 0.03295263949695428,
+              "lsr_to_ce_ratio": 0.0028665682219134333,
+              "ce_norm_squared": 494.9073133456113,
+              "lsr_norm_squared": 0.004066758992571806,
+              "dot_product": 0.046749434385958466,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.79028689837306,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 391.6554555199165,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9575740330823316
+    },
+    {
+      "batch_id": 1,
+      "indices": [
+        76,
+        86,
+        89,
+        115
+      ],
+      "ce": 3.5442347526550293,
+      "label_tokens": 37,
+      "routed_raw_anchor_cosine": 0.9716885089874268,
+      "anchor_l2_mean": 0.23719656467437744,
+      "conditions": {
+        "routed": {
+          "lsr": 0.21730729937553406,
+          "weighted_lsr": 0.021730730310082436,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 33.009827564894266,
+              "lsr_gradient_norm": 0.052747900217947986,
+              "gradient_cosine": 0.08669326524148788,
+              "lsr_to_ce_ratio": 0.0015979453426180582,
+              "ce_norm_squared": 1089.6487158640532,
+              "lsr_norm_squared": 0.0027823409774025976,
+              "dot_product": 0.15095023460003176,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 24.01449711362317,
+              "lsr_gradient_norm": 0.052747900217947986,
+              "gradient_cosine": 0.11916675677691903,
+              "lsr_to_ce_ratio": 0.002196502386386624,
+              "ce_norm_squared": 576.6960716202157,
+              "lsr_norm_squared": 0.0027823409774025976,
+              "dot_product": 0.15095023460003176,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 22.64845787782995,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 512.9526442438375,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.2265220284461975,
+          "weighted_lsr": 0.02265220321714878,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 33.009827564894266,
+              "lsr_gradient_norm": 0.06147548412130536,
+              "gradient_cosine": 0.06793784233259507,
+              "lsr_to_ce_ratio": 0.0018623388444077827,
+              "ce_norm_squared": 1089.6487158640532,
+              "lsr_norm_squared": 0.0037792351479488673,
+              "dot_product": 0.1378659326094862,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 24.01449711362317,
+              "lsr_gradient_norm": 0.06147548412130536,
+              "gradient_cosine": 0.09338594307926294,
+              "lsr_to_ce_ratio": 0.002559932187229978,
+              "ce_norm_squared": 576.6960716202157,
+              "lsr_norm_squared": 0.0037792351479488673,
+              "dot_product": 0.1378659326094862,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 22.64845787782995,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 512.9526442438375,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9687985135473643
+    },
+    {
+      "batch_id": 2,
+      "indices": [
+        118,
+        144,
+        154,
+        185
+      ],
+      "ce": 2.582662343978882,
+      "label_tokens": 45,
+      "routed_raw_anchor_cosine": 0.9722201824188232,
+      "anchor_l2_mean": 0.23537670075893402,
+      "conditions": {
+        "routed": {
+          "lsr": 0.1997634619474411,
+          "weighted_lsr": 0.01997634582221508,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.310700509795257,
+              "lsr_gradient_norm": 0.050879110521926785,
+              "gradient_cosine": 0.06699398534988993,
+              "lsr_to_ce_ratio": 0.001735854470790408,
+              "ce_norm_squared": 859.117164374912,
+              "lsr_norm_squared": 0.002588683887502441,
+              "dot_product": 0.09990828917580075,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 23.361625319966222,
+              "lsr_gradient_norm": 0.050879110521926785,
+              "gradient_cosine": 0.08405411069023488,
+              "lsr_to_ce_ratio": 0.0021778925834600427,
+              "ce_norm_squared": 545.7655375904869,
+              "lsr_norm_squared": 0.002588683887502441,
+              "dot_product": 0.09990828917580075,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 17.701740784014014,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 313.35162678442504,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.2032889574766159,
+          "weighted_lsr": 0.02032889612019062,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.310700509795257,
+              "lsr_gradient_norm": 0.05735874648888556,
+              "gradient_cosine": 0.04883854322364652,
+              "lsr_to_ce_ratio": 0.0019569217211208244,
+              "ce_norm_squared": 859.117164374912,
+              "lsr_norm_squared": 0.0032900257987762416,
+              "dot_product": 0.0821085817824212,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 23.361625319966222,
+              "lsr_gradient_norm": 0.05735874648888556,
+              "gradient_cosine": 0.061275356237288706,
+              "lsr_to_ce_ratio": 0.002455254962070785,
+              "ce_norm_squared": 545.7655375904869,
+              "lsr_norm_squared": 0.0032900257987762416,
+              "dot_product": 0.0821085817824212,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 17.701740784014014,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 313.35162678442504,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9590461849299194
+    },
+    {
+      "batch_id": 3,
+      "indices": [
+        207,
+        231,
+        303,
+        307
+      ],
+      "ce": 3.797139883041382,
+      "label_tokens": 50,
+      "routed_raw_anchor_cosine": 0.9746204614639282,
+      "anchor_l2_mean": 0.22500573098659515,
+      "conditions": {
+        "routed": {
+          "lsr": 0.19111981987953186,
+          "weighted_lsr": 0.019111981615424156,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 34.42657104263289,
+              "lsr_gradient_norm": 0.05621452902744576,
+              "gradient_cosine": 0.020648736825450525,
+              "lsr_to_ce_ratio": 0.0016328820246963105,
+              "ce_norm_squared": 1185.1887937534493,
+              "lsr_norm_squared": 0.0031600732737775417,
+              "dot_product": 0.03996095271580202,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 26.244682552534584,
+              "lsr_gradient_norm": 0.05621452902744576,
+              "gradient_cosine": 0.027086066056964002,
+              "lsr_to_ce_ratio": 0.0021419397592224577,
+              "ce_norm_squared": 688.7833622833132,
+              "lsr_norm_squared": 0.0031600732737775417,
+              "dot_product": 0.03996095271580202,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 22.280157797244975,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 496.405431470136,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.19977307319641113,
+          "weighted_lsr": 0.019977306947112083,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 34.42657104263289,
+              "lsr_gradient_norm": 0.06408403669297132,
+              "gradient_cosine": 0.004301746122640215,
+              "lsr_to_ce_ratio": 0.0018614702176877119,
+              "ce_norm_squared": 1185.1887937534493,
+              "lsr_norm_squared": 0.004106763758866094,
+              "dot_product": 0.009490484944876696,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 26.244682552534584,
+              "lsr_gradient_norm": 0.06408403669297132,
+              "gradient_cosine": 0.005642833294020609,
+              "lsr_to_ce_ratio": 0.002441791268181386,
+              "ce_norm_squared": 688.7833622833132,
+              "lsr_norm_squared": 0.004106763758866094,
+              "dot_product": 0.009490484944876696,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 22.280157797244975,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 496.405431470136,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9650641895082349
+    },
+    {
+      "batch_id": 4,
+      "indices": [
+        321,
+        330,
+        375,
+        380
+      ],
+      "ce": 2.4162442684173584,
+      "label_tokens": 45,
+      "routed_raw_anchor_cosine": 0.9732426404953003,
+      "anchor_l2_mean": 0.2311657965183258,
+      "conditions": {
+        "routed": {
+          "lsr": 0.19675375521183014,
+          "weighted_lsr": 0.019675375893712044,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 27.22713027315888,
+              "lsr_gradient_norm": 0.054634694844620565,
+              "gradient_cosine": 0.062233784280956585,
+              "lsr_to_ce_ratio": 0.002006627003892536,
+              "ce_norm_squared": 741.3166229115648,
+              "lsr_norm_squared": 0.002984949880764809,
+              "dot_product": 0.09257561400730197,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 19.872841394070434,
+              "lsr_gradient_norm": 0.054634694844620565,
+              "gradient_cosine": 0.08526447317769334,
+              "lsr_to_ce_ratio": 0.0027492140535536206,
+              "ce_norm_squared": 394.92982507387933,
+              "lsr_norm_squared": 0.002984949880764809,
+              "dot_product": 0.09257561400730197,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 18.611469523863114,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 346.3867978376855,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.201417937874794,
+          "weighted_lsr": 0.02014179341495037,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 27.22713027315888,
+              "lsr_gradient_norm": 0.06101236711183241,
+              "gradient_cosine": 0.04627986743169787,
+              "lsr_to_ce_ratio": 0.0022408666098747755,
+              "ce_norm_squared": 741.3166229115648,
+              "lsr_norm_squared": 0.003722508940589009,
+              "dot_product": 0.076879730156449,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 19.872841394070434,
+              "lsr_gradient_norm": 0.06101236711183241,
+              "gradient_cosine": 0.06340653329842072,
+              "lsr_to_ce_ratio": 0.0030701380795016557,
+              "ce_norm_squared": 394.92982507387933,
+              "lsr_norm_squared": 0.003722508940589009,
+              "dot_product": 0.076879730156449,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 18.611469523863114,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 346.3867978376855,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9601474704852057
+    },
+    {
+      "batch_id": 5,
+      "indices": [
+        395,
+        397,
+        406,
+        428
+      ],
+      "ce": 2.8925273418426514,
+      "label_tokens": 42,
+      "routed_raw_anchor_cosine": 0.9726479053497314,
+      "anchor_l2_mean": 0.2337847650051117,
+      "conditions": {
+        "routed": {
+          "lsr": 0.20196330547332764,
+          "weighted_lsr": 0.020196331664919853,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.78361666940468,
+              "lsr_gradient_norm": 0.0492627279552024,
+              "gradient_cosine": 0.030062628490274624,
+              "lsr_to_ce_ratio": 0.001654021017729781,
+              "ce_norm_squared": 887.0638219100402,
+              "lsr_norm_squared": 0.00242681636558828,
+              "dot_product": 0.044108556076835725,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 22.63217656476363,
+              "lsr_gradient_norm": 0.0492627279552024,
+              "gradient_cosine": 0.03956198381834313,
+              "lsr_to_ce_ratio": 0.0021766677108687933,
+              "ce_norm_squared": 512.215416058636,
+              "lsr_norm_squared": 0.00242681636558828,
+              "dot_product": 0.044108556076835725,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.361002191296922,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 374.84840585140427,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.20653779804706573,
+          "weighted_lsr": 0.020653780549764633,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 29.78361666940468,
+              "lsr_gradient_norm": 0.056582151853016696,
+              "gradient_cosine": 0.006990192222702001,
+              "lsr_to_ce_ratio": 0.001899774378681851,
+              "ce_norm_squared": 887.0638219100402,
+              "lsr_norm_squared": 0.003201539908317841,
+              "dot_product": 0.011780019574388232,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 22.63217656476363,
+              "lsr_gradient_norm": 0.056582151853016696,
+              "gradient_cosine": 0.009198991754533646,
+              "lsr_to_ce_ratio": 0.00250007557563466,
+              "ce_norm_squared": 512.215416058636,
+              "lsr_norm_squared": 0.003201539908317841,
+              "dot_product": 0.011780019574388232,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.361002191296922,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 374.84840585140427,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9558769779398026
+    },
+    {
+      "batch_id": 6,
+      "indices": [
+        501,
+        505,
+        508,
+        509
+      ],
+      "ce": 3.10896635055542,
+      "label_tokens": 39,
+      "routed_raw_anchor_cosine": 0.9746655225753784,
+      "anchor_l2_mean": 0.2248271107673645,
+      "conditions": {
+        "routed": {
+          "lsr": 0.2066275179386139,
+          "weighted_lsr": 0.02066275291144848,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 32.43645560010247,
+              "lsr_gradient_norm": 0.048843809454922206,
+              "gradient_cosine": 0.12278539392031126,
+              "lsr_to_ce_ratio": 0.001505830663408486,
+              "ce_norm_squared": 1052.1236518974188,
+              "lsr_norm_squared": 0.0023857177220687475,
+              "dot_product": 0.1945313622607614,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 25.61510526207673,
+              "lsr_gradient_norm": 0.048843809454922206,
+              "gradient_cosine": 0.1554833734817286,
+              "lsr_to_ce_ratio": 0.001906836179480225,
+              "ce_norm_squared": 656.1336175872711,
+              "lsr_norm_squared": 0.0023857177220687475,
+              "dot_product": 0.1945313622607614,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.89949834317809,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 395.9900343101477,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.21163208782672882,
+          "weighted_lsr": 0.021163208410143852,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 32.43645560010247,
+              "lsr_gradient_norm": 0.05720095356378789,
+              "gradient_cosine": 0.10309377909812045,
+              "lsr_to_ce_ratio": 0.0017634773129653286,
+              "ce_norm_squared": 1052.1236518974188,
+              "lsr_norm_squared": 0.0032719490886066183,
+              "dot_product": 0.1912798050086053,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 25.61510526207673,
+              "lsr_gradient_norm": 0.05720095356378789,
+              "gradient_cosine": 0.13054784488095614,
+              "lsr_to_ce_ratio": 0.0022330946126727083,
+              "ce_norm_squared": 656.1336175872711,
+              "lsr_norm_squared": 0.0032719490886066183,
+              "dot_product": 0.1912798050086053,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 19.89949834317809,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 395.9900343101477,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.961305284095824
+    },
+    {
+      "batch_id": 7,
+      "indices": [
+        525,
+        528,
+        539,
+        556
+      ],
+      "ce": 2.2183642387390137,
+      "label_tokens": 42,
+      "routed_raw_anchor_cosine": 0.9727664589881897,
+      "anchor_l2_mean": 0.2332831472158432,
+      "conditions": {
+        "routed": {
+          "lsr": 0.19024646282196045,
+          "weighted_lsr": 0.019024645909667015,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 26.494132924314492,
+              "lsr_gradient_norm": 0.05007822791222207,
+              "gradient_cosine": 0.03580131185734605,
+              "lsr_to_ce_ratio": 0.0018901629298562067,
+              "ce_norm_squared": 701.9390794112452,
+              "lsr_norm_squared": 0.002507828910828458,
+              "dot_product": 0.04750043686883032,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 20.30400547690404,
+              "lsr_gradient_norm": 0.05007822791222207,
+              "gradient_cosine": 0.046716137675017706,
+              "lsr_to_ce_ratio": 0.002466421119181948,
+              "ce_norm_squared": 412.25263840614934,
+              "lsr_norm_squared": 0.002507828910828458,
+              "dot_product": 0.04750043686883032,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 17.02017746690956,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 289.6864410050959,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        },
+        "raw": {
+          "lsr": 0.19838456809520721,
+          "weighted_lsr": 0.01983845792710781,
+          "gradient_groups": {
+            "all_parameters": {
+              "ce_gradient_norm": 26.494132924314492,
+              "lsr_gradient_norm": 0.05742781077762121,
+              "gradient_cosine": 0.03706996123421293,
+              "lsr_to_ce_ratio": 0.002167567096521884,
+              "ce_norm_squared": 701.9390794112452,
+              "lsr_norm_squared": 0.003297953450710267,
+              "dot_product": 0.05640194795641662,
+              "ce_present_parameters": 515,
+              "lsr_present_parameters": 198
+            },
+            "encoder": {
+              "ce_gradient_norm": 20.30400547690404,
+              "lsr_gradient_norm": 0.05742781077762121,
+              "gradient_cosine": 0.04837156301773117,
+              "lsr_to_ce_ratio": 0.0028283981130199053,
+              "ce_norm_squared": 412.25263840614934,
+              "lsr_norm_squared": 0.003297953450710267,
+              "dot_product": 0.05640194795641662,
+              "ce_present_parameters": 318,
+              "lsr_present_parameters": 198
+            },
+            "decoder": {
+              "ce_gradient_norm": 17.02017746690956,
+              "lsr_gradient_norm": 0.0,
+              "gradient_cosine": null,
+              "lsr_to_ce_ratio": 0.0,
+              "ce_norm_squared": 289.6864410050959,
+              "lsr_norm_squared": 0.0,
+              "dot_product": 0.0,
+              "ce_present_parameters": 197,
+              "lsr_present_parameters": 0
+            }
+          }
+        }
+      },
+      "routed_raw_lsr_gradient_cosine": 0.9498119641818893
+    }
+  ],
+  "protocol": "FP32 eval dropout off, TF32 off, checkpointing disabled, source route fixed .10, same source graph/CE",
+  "optimizer_steps": 0,
+  "target_detached": true,
+  "cache_isolation": "PASS",
+  "limits": "Not training gradients with dropout; not evidence of translation gain or corrected-training mechanism."
+}

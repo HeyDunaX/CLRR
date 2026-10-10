@@ -1,0 +1,18 @@
+[
+  {
+    "family": "baseline",
+    "seed": 42,
+    "completed_epochs": 12.0,
+    "best_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/baseline/seed42/runs/mbart-tr-en-baseline-seed42-es10/checkpoint-314",
+    "validation_bleu": 21.28267339023085,
+    "validation_chrfpp": 39.62480106854284
+  },
+  {
+    "family": "middle",
+    "seed": 42,
+    "completed_epochs": 12.0,
+    "best_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/middle/seed42/runs/mbart-tr-en-middle-seed42-es10/checkpoint-314",
+    "validation_bleu": 20.720164314958048,
+    "validation_chrfpp": 39.34377017084439
+  }
+]

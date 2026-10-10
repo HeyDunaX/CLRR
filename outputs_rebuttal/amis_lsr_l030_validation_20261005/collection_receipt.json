@@ -1,0 +1,93 @@
+{
+  "suite": "amis_lsr_l030_validation_20261005",
+  "status": "VERIFIED_ON_HF",
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_revision": "02533798a9deaf5c22df701430a64a5ec9f8276e",
+  "total_files": 21,
+  "files": [
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/mbart-amis-lsr_l030-seed42-corrected-validation-best.zip",
+      "size": 2270666220
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/metrics.json",
+      "size": 2763
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898457
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901156
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906567
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-20-step-720.zip",
+      "size": 2466915531
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/validation_predictions.csv",
+      "size": 64875
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/mbart-amis-lsr_l030-seed43-corrected-validation-best.zip",
+      "size": 2270720139
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/metrics.json",
+      "size": 2765
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898462
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901167
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906587
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-20-step-720.zip",
+      "size": 2466915550
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/validation_predictions.csv",
+      "size": 64911
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/mbart-amis-lsr_l030-seed44-corrected-validation-best.zip",
+      "size": 2270700657
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/metrics.json",
+      "size": 2766
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898466
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901171
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906580
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-16-step-576.zip",
+      "size": 2466911873
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/validation_predictions.csv",
+      "size": 64744
+    }
+  ]
+}

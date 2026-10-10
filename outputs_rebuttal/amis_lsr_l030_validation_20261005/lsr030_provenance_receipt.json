@@ -1,0 +1,39 @@
+{
+  "suite": "amis_lsr_l030_validation_20261005",
+  "status": "VERIFIED",
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_lsr_l030_validation_20261005",
+  "seeds": {
+    "42": {
+      "validation_bleu": 17.398040552850066,
+      "validation_chrfpp": 14.529688557479004,
+      "validation_chrf0": 16.725191953465753,
+      "best_step": 720,
+      "hf_archive": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/mbart-amis-lsr_l030-seed42-corrected-validation-best.zip",
+      "replay_verified": true
+    },
+    "43": {
+      "validation_bleu": 16.887741896065485,
+      "validation_chrfpp": 14.21606352611656,
+      "validation_chrf0": 16.30179166163383,
+      "best_step": 648,
+      "hf_archive": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/mbart-amis-lsr_l030-seed43-corrected-validation-best.zip",
+      "replay_verified": true
+    },
+    "44": {
+      "validation_bleu": 15.855267141952156,
+      "validation_chrfpp": 13.705969015288117,
+      "validation_chrf0": 15.791632017447979,
+      "best_step": 432,
+      "hf_archive": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/mbart-amis-lsr_l030-seed44-corrected-validation-best.zip",
+      "replay_verified": true
+    }
+  },
+  "grid_summary": {
+    "lambda_0.03_mean_chrfpp": 14.050307473361284,
+    "lambda_0.10_mean_chrfpp": 14.221997785916189,
+    "lambda_0.30_mean_chrfpp": 14.150573699627893,
+    "best_observed_lambda": 0.1,
+    "confirmation_budget_locked": 32
+  }
+}

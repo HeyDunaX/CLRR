@@ -1,0 +1,50 @@
+{
+  "status": "GRID_SELECTION_COMPLETE",
+  "grid": {
+    "0.03": {
+      "mean_chrfpp": 14.050307473361284,
+      "per_seed": [
+        13.90608116417584,
+        14.066060576748269,
+        14.178780679159745
+      ]
+    },
+    "0.10": {
+      "mean_chrfpp": 14.221997785916189,
+      "per_seed": [
+        14.190173628560752,
+        14.274377140832009,
+        14.201442588355809
+      ]
+    },
+    "0.30": {
+      "mean_chrfpp": 14.150573699627893,
+      "mean_bleu": 16.713683196955902,
+      "per_seed": {
+        "42": {
+          "bleu": 17.398040552850066,
+          "chrfpp": 14.529688557479004,
+          "chrf0": 16.725191953465753,
+          "best_step": 720
+        },
+        "43": {
+          "bleu": 16.887741896065485,
+          "chrfpp": 14.21606352611656,
+          "chrf0": 16.30179166163383,
+          "best_step": 648
+        },
+        "44": {
+          "bleu": 15.855267141952156,
+          "chrfpp": 13.705969015288117,
+          "chrf0": 15.791632017447979,
+          "best_step": 432
+        }
+      }
+    }
+  },
+  "selected_best_lambda": 0.1,
+  "best_mean_validation_chrfpp": 14.221997785916189,
+  "requires_distinct_tuned_lsr_family": false,
+  "confirmation_budget_recommendation": 32,
+  "policy": "Locked on validation raw chrF++ before opening any test predictions"
+}

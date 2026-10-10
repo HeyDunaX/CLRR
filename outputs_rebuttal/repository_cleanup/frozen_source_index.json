@@ -1,0 +1,80 @@
+[
+    {
+        "old_path":  "scratch/amis_configuration_code.zip",
+        "cache_path":  ".cache/frozen_sources/amis_configuration_code.zip",
+        "sha256":  "8f78d43e6c3271662ce29b3450ddf32ff230ce7b1e1b7b8eb7bea619523f7c52",
+        "bytes":  209512
+    },
+    {
+        "old_path":  "scratch/amis_followup_v3_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/amis_followup_v3_bundle.zip",
+        "sha256":  "664b4c4e624a7588300928494eda00fd8e5a8908b80e684f66badc796e5f2371",
+        "bytes":  163355
+    },
+    {
+        "old_path":  "scratch/amis_routing_warmup_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/amis_routing_warmup_bundle.zip",
+        "sha256":  "2f4215251f37ac2a0ade8d802d8060e332847699d548e55e1a957b5c5ebb93f8",
+        "bytes":  212494
+    },
+    {
+        "old_path":  "scratch/amis_routing_warmup_v2_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/amis_routing_warmup_v2_bundle.zip",
+        "sha256":  "ca94a9ab4dd44f036adde0ced189ea8b2d76ef6ebd4c860598b6449885d202eb",
+        "bytes":  430419
+    },
+    {
+        "old_path":  "scratch/amis_v4_payload.zip",
+        "cache_path":  ".cache/frozen_sources/amis_v4_payload.zip",
+        "sha256":  "00a6e3cd71eeeea5b1cedcc576fc982f1526947217b20cfbe009f22a5f77911c",
+        "bytes":  171619
+    },
+    {
+        "old_path":  "scratch/fresh_confirmation_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/fresh_confirmation_bundle.zip",
+        "sha256":  "5b7918d5356333518cc4b3fbf737996c2554a3050c392fd0d1be2756302d7bd3",
+        "bytes":  270752
+    },
+    {
+        "old_path":  "scratch/fresh_confirmation_manifest.json",
+        "cache_path":  ".cache/frozen_sources/fresh_confirmation_manifest.json",
+        "sha256":  "4bee4fea736c6d66e42f1ae1ee16f3784f03665975aa0595266345851738ae5b",
+        "bytes":  4161
+    },
+    {
+        "old_path":  "scratch/fresh_confirmation_metadata.zip",
+        "cache_path":  ".cache/frozen_sources/fresh_confirmation_metadata.zip",
+        "sha256":  "b100955ce6edfb236d4b6093f009bbffe084195a7d839f03635b0ee3fc0a538c",
+        "bytes":  3889132
+    },
+    {
+        "old_path":  "scratch/method_candidates_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/method_candidates_bundle.zip",
+        "sha256":  "e11558319532c33929e0eef6607f73295c05c7e93f08cb85fc32d111c21ead1c",
+        "bytes":  256662
+    },
+    {
+        "old_path":  "scratch/small_validation_checks_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/small_validation_checks_bundle.zip",
+        "sha256":  "66be4798b58fe9c20c051935f4a1e472a9539c93703cd94886d31c3315d7c23d",
+        "bytes":  1201854
+    },
+    {
+        "old_path":  "scratch/standardized_controls_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/standardized_controls_bundle.zip",
+        "sha256":  "d4cedbbe71139a7276ac63d801f0fac95834ad529a69275785cad8a273bab166",
+        "bytes":  253305
+    },
+    {
+        "old_path":  "scratch/strong_mbart_supplement_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/strong_mbart_supplement_bundle.zip",
+        "sha256":  "8027a6e1baf80fed8bb8ec988d61c1e959d509b52d04f004801cf6a3a6d92b3a",
+        "bytes":  4576
+    },
+    {
+        "old_path":  "scratch/turkish_pilot_bundle.zip",
+        "cache_path":  ".cache/frozen_sources/turkish_pilot_bundle.zip",
+        "sha256":  "4e7502515351cf62eb35f0aaaf5ad38cd6343c79e60324ceead98c71209a345a",
+        "bytes":  974838
+    }
+]

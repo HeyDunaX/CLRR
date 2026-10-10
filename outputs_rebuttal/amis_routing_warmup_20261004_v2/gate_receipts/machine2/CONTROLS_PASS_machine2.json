@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "id": "mbart-amis-clrr-seed42",
+      "family": "clrr_only_detached",
+      "seed": 42,
+      "archive_sha256": "9916dae4217809f41cae3aff0aa974e14528860683091a1c67ff0f0396ac4c30",
+      "exact_v5_replay": null,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 16.26553923307503,
+        "chrf++": 13.754569256419085,
+        "chrf0": 15.848414012265167
+      }
+    },
+    {
+      "id": "mbart-amis-clrr-seed43",
+      "family": "clrr_only_detached",
+      "seed": 43,
+      "archive_sha256": "9dc354c383df3c0adf6bddb488c2d73c1ec4f0950e07f8756f2ef763f27f6e06",
+      "exact_v5_replay": null,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 16.909894738046265,
+        "chrf++": 14.1205334672451,
+        "chrf0": 16.247084487293982
+      }
+    },
+    {
+      "id": "mbart-amis-clrr-seed44",
+      "family": "clrr_only_detached",
+      "seed": 44,
+      "archive_sha256": "413e8ebde299bef49410df02bdd450fecbb10b991035a913d70bcd5ed812f131",
+      "exact_v5_replay": null,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 17.273827215569927,
+        "chrf++": 14.354402755473537,
+        "chrf0": 16.519471711996957
+      }
+    }
+  ],
+  "limit": "Exact decoding replay validates inference reuse; original training provenance is checked separately."
+}

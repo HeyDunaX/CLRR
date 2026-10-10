@@ -1,0 +1,10 @@
+{
+  "1": {
+    "stdout": "[colab] Stopping session 'colab'...\n[colab] Session terminated.\n\n",
+    "confirmed_at_utc": "2026-10-07T11:03:39Z"
+  },
+  "2": {
+    "stdout": "[colab] Stopping session 'colab2'...\n[colab] Session terminated.\n\n",
+    "confirmed_at_utc": "2026-10-07T11:03:42Z"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "SCHEDULED_AFTER_C01",
+  "account": 3,
+  "runs": [
+    "A05",
+    "A06"
+  ],
+  "bundle_sha256": "8027a6e1baf80fed8bb8ec988d61c1e959d509b52d04f004801cf6a3a6d92b3a"
+}

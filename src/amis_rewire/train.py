@@ -3,10 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import inspect
 import json
 import logging
 import os
+import platform
 import shutil
 import time
 import zipfile
@@ -94,6 +96,63 @@ class CheckpointBackupCallback(TrainerCallback):
         return
 
 
+class RoutingWarmupCallback(TrainerCallback):
+    """Linearly warms up routing strength alpha from 0 to target_strength over warmup_ratio of planned steps."""
+
+    def __init__(self, target_strength: float = 0.10, warmup_ratio: float = 0.20):
+        self.target_strength = target_strength
+        self.warmup_ratio = warmup_ratio
+        self.warmup_steps = 0
+        self.current_alpha = 0.0
+        self.history = []
+
+    def _find_rewire(self, model: Any):
+        from .modeling import CrossLayerResidualRewire
+        m = model
+        visited = set()
+        while m is not None and id(m) not in visited:
+            visited.add(id(m))
+            if isinstance(m, CrossLayerResidualRewire):
+                return m
+            if hasattr(m, "base_model"):
+                m = m.base_model
+            else:
+                break
+        return None
+
+    def on_train_begin(self, args: Any, state: Any, control: Any, model: Any = None, **kwargs: Any):
+        rewire = self._find_rewire(model)
+        if rewire is None:
+            return
+        total_steps = state.max_steps
+        if total_steps <= 0:
+            total_steps = int(args.num_train_epochs * 34)
+        self.warmup_steps = max(1, int(total_steps * self.warmup_ratio))
+        self.current_alpha = 0.0
+        rewire.strength = 0.0
+        print(f"[RoutingWarmupCallback] Initialized: target_alpha={self.target_strength}, warmup_ratio={self.warmup_ratio}, warmup_steps={self.warmup_steps}/{total_steps}", flush=True)
+
+    def on_step_begin(self, args: Any, state: Any, control: Any, model: Any = None, **kwargs: Any):
+        rewire = self._find_rewire(model)
+        if rewire is None:
+            return
+        if self.warmup_steps <= 0 and state.max_steps > 0:
+            self.warmup_steps = max(1, int(state.max_steps * self.warmup_ratio))
+
+        step = state.global_step
+        if step < self.warmup_steps:
+            alpha = (step / self.warmup_steps) * self.target_strength
+        else:
+            alpha = self.target_strength
+        self.current_alpha = alpha
+        rewire.strength = alpha
+
+    def on_log(self, args: Any, state: Any, control: Any, logs: dict[str, float] | None = None, model: Any = None, **kwargs: Any):
+        if logs is not None and self.target_strength > 0:
+            logs["routing_alpha"] = round(self.current_alpha, 6)
+            self.history.append({"step": state.global_step, "routing_alpha": round(self.current_alpha, 6)})
+
+
 def safe_hf_upload(
     api: Any,
     path: Path,
@@ -146,21 +205,66 @@ def archive_best_model(
         if not token:
             raise RuntimeError("HF_TOKEN is required when --hf-backup-repo is set.")
         target = remote_path(hf_backup_prefix, run_name, archive_path.name)
+        api = HfApi(token=token)
         uploaded = safe_hf_upload(
-            HfApi(token=token),
+            api,
             archive_path,
             hf_backup_repo,
             target,
             max_retries=5,
             initial_delay=5.0,
         )
-        if uploaded:
-            print(f"[backup] best model uploaded to {hf_backup_repo}/{target}", flush=True)
-        else:
-            print(
-                f"[backup] warning: best model upload will be finalized by post-training upload check",
-                flush=True,
-            )
+        if not uploaded:
+            raise RuntimeError(f"Best checkpoint upload failed; local archive retained: {archive_path}")
+        remote = api.get_paths_info(hf_backup_repo, [target], repo_type="model")
+        if len(remote) != 1 or remote[0].size != archive_path.stat().st_size:
+            raise RuntimeError("Uploaded best checkpoint size verification failed; local archive retained")
+        with archive_path.open("rb") as handle:
+            checksum = hashlib.file_digest(handle, "sha256").hexdigest()
+        if not remote[0].lfs or remote[0].lfs.sha256 != checksum:
+            raise RuntimeError("Uploaded best checkpoint SHA256 verification failed; local archive retained")
+        print(f"[backup] best model uploaded and verified: {hf_backup_repo}/{target}", flush=True)
+
+
+def check_training_run(args: argparse.Namespace, output_dir: Path, data_dir: Path) -> str | None:
+    """Reject accidental overwrite or resume with incompatible code/data/recipe."""
+    import accelerate
+    import transformers
+    excluded = {"output_dir", "backup_dir", "hf_backup_repo", "hf_backup_prefix", "run_name",
+                "data_dir", "resume_from_checkpoint", "auto_resume"}
+    receipt = {
+        "configuration": {k: v for k, v in vars(args).items() if k not in excluded},
+        "versions": {"python": platform.python_version(), "torch": torch.__version__,
+                     "transformers": transformers.__version__, "accelerate": accelerate.__version__},
+        "source_sha256": {
+            **{p.name: hashlib.sha256(p.read_bytes()).hexdigest()
+               for p in Path(__file__).parent.glob("*.py")},
+            **{f"methods/{p.relative_to(Path(__file__).parent.parent / 'methods').as_posix()}":
+               hashlib.sha256(p.read_bytes()).hexdigest()
+               for p in (Path(__file__).parent.parent / "methods").rglob("*.py")},
+        },
+        "data_sha256": {split: hashlib.sha256((data_dir / f"{split}.csv").read_bytes()).hexdigest()
+                        for split in (("train", "validation") if args.validation_only
+                                      else ("train", "validation", "test"))},
+    }
+    resume = args.resume_from_checkpoint
+    if resume is None and args.auto_resume and output_dir.exists():
+        resume = get_last_checkpoint(str(output_dir))
+    if resume:
+        checkpoint = Path(resume)
+        saved = checkpoint / "training_receipt.json"
+        if not saved.exists() or json.loads(saved.read_text(encoding="utf-8")) != receipt:
+            raise ValueError("Resume rejected: missing or mismatched training receipt; use a new run directory")
+        if not all((checkpoint / name).exists() for name in
+                   ("optimizer.pt", "scheduler.pt", "trainer_state.json", "rng_state.pth", "config.json")):
+            raise ValueError("Resume rejected: checkpoint lacks optimizer/scheduler/trainer/RNG/config state")
+        if not any((checkpoint / name).exists() for name in ("pytorch_model.bin", "model.safetensors")):
+            raise ValueError("Resume rejected: checkpoint lacks model weights")
+    elif output_dir.exists() and any(output_dir.iterdir()):
+        raise FileExistsError("Training output is nonempty; use a new run name/directory to preserve old results")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    (output_dir / "training_receipt.json").write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+    return resume
 
 
 def parse_args() -> argparse.Namespace:
@@ -169,7 +273,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--model-name", default=None, help="Optional Hugging Face checkpoint override.")
     parser.add_argument(
         "--method",
-        choices=("baseline", "rewire", "clrr", "clrr-enc", "jepa", "jepa-clrr", "jepa-clrr-enc"),
+        choices=("baseline", "rewire", "clrr", "clrr-enc", "jepa", "jepa-clrr", "jepa-clrr-enc", "middle-align"),
         default="baseline",
     )
     parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
@@ -177,6 +281,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--backup-dir", default="backups")
     parser.add_argument("--hf-backup-repo", default=None, help="Private HF repo, e.g. user/amis-rewire-checkpoints.")
     parser.add_argument("--hf-backup-prefix", default="", help="Optional folder inside the HF backup repo.")
+    parser.add_argument("--model-revision", default=None)
+    parser.add_argument("--middle-layer-idx", type=int, default=6)
+    parser.add_argument("--alignment-temperature", type=float, default=0.1)
+    parser.add_argument("--scientific-records", action="store_true", help="Persist step schedules, histories and trajectory weight archives.")
     parser.add_argument("--run-name", default=None)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--num-train-epochs", type=float, default=5.0)
@@ -226,12 +334,14 @@ def parse_args() -> argparse.Namespace:
                         help="Score predictions against the original ordered CSV references.")
     parser.add_argument("--validation-only", action="store_true",
                         help="Select and save using validation only; do not load or evaluate test during tuning.")
-    parser.add_argument("--auto-resume", action=argparse.BooleanOptionalAction, default=True)
+    parser.add_argument("--auto-resume", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--fp16", action=argparse.BooleanOptionalAction, default=False)
     parser.add_argument("--bf16", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--gradient-checkpointing", action=argparse.BooleanOptionalAction, default=True)
     parser.add_argument("--generation-precision", choices=["fp32", "bf16"], default="fp32",
                         help="Declared generation precision shared by all methods.")
+    parser.add_argument("--routing-warmup-ratio", type=float, default=0.0,
+                        help="Linear warmup fraction of planned training steps for rewire strength (alpha).")
     parser.add_argument("--dataloader-num-workers", type=int, default=4)
     parser.add_argument("--dataloader-pin-memory", action=argparse.BooleanOptionalAction, default=True)
     return parser.parse_args()
@@ -275,8 +385,10 @@ def configure_mbart(tokenizer: Any, model: Any, src_lang: str = "tl_XX", tgt_lan
         src_lang = "en_XX"
     tokenizer.src_lang = src_lang
     tokenizer.tgt_lang = tgt_lang
-    model.config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
-    model.generation_config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
+    if hasattr(model, "config") and hasattr(model.config, "forced_bos_token_id"):
+        model.config.forced_bos_token_id = None
+    if hasattr(model, "generation_config") and model.generation_config is not None:
+        model.generation_config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
 
 
 def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace) -> Dataset:
@@ -315,12 +427,13 @@ def main() -> None:
     run_name = args.run_name or f"{args.model}-{args.method}-seed{args.seed}"
     output_dir = Path(args.output_dir) / run_name
     data_dir = Path(args.data_dir)
+    resume_checkpoint = check_training_run(args, output_dir, data_dir)
 
     src_lang, tgt_lang, bleu_tokenizer = detect_mbart_languages(data_dir, args.src_lang, args.tgt_lang, args.bleu_tokenizer)
     print(f"[init] language configuration: src={src_lang}, tgt={tgt_lang}, bleu_tok={bleu_tokenizer}", flush=True)
 
     print(f"[init] loading tokenizer and base model for {model_name}...", flush=True)
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True, revision=args.model_revision)
     model = load_model(
         model_name,
         args.method,
@@ -328,6 +441,9 @@ def main() -> None:
         strength=args.rewire_strength,
         stack=args.rewire_stack,
         jepa_weight=args.jepa_weight,
+        revision=args.model_revision,
+        middle_layer_idx=args.middle_layer_idx,
+        alignment_temperature=args.alignment_temperature,
     )
     configure_mbart(tokenizer, model, src_lang=src_lang, tgt_lang=tgt_lang)
     if args.gradient_checkpointing:
@@ -368,9 +484,10 @@ def main() -> None:
         "optim": "adamw_torch_fused" if torch.cuda.is_available() else "adamw_torch",
         "report_to": [],
         "remove_unused_columns": False,
-        "save_safetensors": False,
     }
     sig = inspect.signature(Seq2SeqTrainingArguments.__init__)
+    if "save_safetensors" in sig.parameters:
+        training_kwargs["save_safetensors"] = False
     if "eval_strategy" in sig.parameters:
         training_kwargs["eval_strategy"] = "epoch"
     else:
@@ -383,6 +500,7 @@ def main() -> None:
         training_kwargs["warmup_steps"] = max(1, int(steps_per_epoch * args.num_train_epochs * args.warmup_ratio))
 
     training_args = Seq2SeqTrainingArguments(**training_kwargs)
+    training_args.save_safetensors = False
     trainer_kwargs = {
         "model": model,
         "args": training_args,
@@ -398,24 +516,35 @@ def main() -> None:
             ),
         ],
     }
+    if getattr(args, "routing_warmup_ratio", 0.0) > 0.0:
+        trainer_kwargs["callbacks"].append(
+            RoutingWarmupCallback(target_strength=args.rewire_strength, warmup_ratio=args.routing_warmup_ratio)
+        )
+    if args.scientific_records:
+        from .scientific_records import ScientificRecordsCallback
+        trainer_kwargs["callbacks"].append(ScientificRecordsCallback(
+            output_dir, args.rewire_strength, args.jepa_weight, args.routing_warmup_ratio,
+            args.hf_backup_repo, args.hf_backup_prefix, run_name,
+        ))
     trainer_sig = inspect.signature(Seq2SeqTrainer.__init__)
     if "processing_class" in trainer_sig.parameters:
         trainer_kwargs["processing_class"] = tokenizer
     elif "tokenizer" in trainer_sig.parameters:
         trainer_kwargs["tokenizer"] = tokenizer
     if args.generation_precision:
-        trainer = PrecisionSeq2SeqTrainer(**trainer_kwargs, generation_dtype=args.generation_precision)
+        trainer = PrecisionSeq2SeqTrainer(
+            **trainer_kwargs,
+            generation_dtype=args.generation_precision,
+            eval_rewire_strength=args.rewire_strength,
+        )
     else:
         trainer = Seq2SeqTrainer(**trainer_kwargs)
     parameter_count = sum(parameter.numel() for parameter in model.parameters())
     trainable_count = sum(parameter.numel() for parameter in model.parameters() if parameter.requires_grad)
     print(f"[run] model={model_name} method={args.method} parameters={parameter_count:,} trainable={trainable_count:,}", flush=True)
     print(f"[run] rewiring stack={args.rewire_stack} extra_parameters=0 distance={args.rewire_distance} strength={args.rewire_strength} jepa_weight={args.jepa_weight}", flush=True)
-    resume_checkpoint = args.resume_from_checkpoint
-    if resume_checkpoint is None and args.auto_resume:
-        resume_checkpoint = get_last_checkpoint(str(output_dir))
-        if resume_checkpoint:
-            print(f"[resume] continuing from {resume_checkpoint}", flush=True)
+    if resume_checkpoint:
+        print(f"[resume] continuing from verified checkpoint {resume_checkpoint}", flush=True)
     start_time = time.time()
     trainer.train(resume_from_checkpoint=resume_checkpoint)
     training_time_seconds = time.time() - start_time

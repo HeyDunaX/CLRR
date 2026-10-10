@@ -1,0 +1,876 @@
+{
+  "status": "DESCRIPTIVE_THREE_SEED_COMPARISON",
+  "rows": [
+    {
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "seed": 42,
+      "selected_step": 720,
+      "scores": {
+        "validation": {
+          "bleu": 16.265888292515132,
+          "chrfpp": 13.901540564847089,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed42/validation_predictions.csv",
+          "prediction_sha256": "82cd7a0f9b87686c402b87ec6feb6cef830450369aad29a038b7a4e1175ea30c",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        },
+        "test": {
+          "bleu": 19.728081433402025,
+          "chrfpp": 18.713838023321145,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/test_predictions.csv",
+          "prediction_sha256": "4a53fc044641487438750047f37fc63689cf4ad12d28d4ad02fffe882bde9d75",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        }
+      },
+      "provenance": {
+        "id": "mbart-amis-baseline-seed42-corrected",
+        "family": "baseline",
+        "seed": 42,
+        "alpha": 0.0,
+        "lambda": 0.0,
+        "best_step": 720,
+        "selected_epoch": 20,
+        "archive_repo": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_corrected_baseline42_20261005/mbart-amis-baseline-seed42-corrected/mbart-amis-baseline-seed42-corrected-best.zip",
+        "archive_sha256": "e2d5c884c8c2da270aa1bbeaa4e36990021f1559b5fca2926d05cca3f5b0e53c",
+        "archive_bytes": 2270665528,
+        "revision": "f416c7ba4479fa4f87b49ef8fd507c02927482a2",
+        "eval_bleu": 16.265888292515125,
+        "eval_chrf++": 13.901540564847089,
+        "test_bleu": 19.728081433402032,
+        "test_chrf++": 18.713838023321145,
+        "decision": "USE_FRESH_VERIFIED_SEED42",
+        "verification_file": "outputs_rebuttal/amis_corrected_baseline42_20261005/local_verification.json"
+      }
+    },
+    {
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "seed": 43,
+      "selected_step": 720,
+      "scores": {
+        "validation": {
+          "bleu": 17.151270123753932,
+          "chrfpp": 14.200731980464068,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed43/validation_predictions.csv",
+          "prediction_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        },
+        "test": {
+          "bleu": 18.137831758407888,
+          "chrfpp": 13.159189083183897,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed43/test_predictions.csv",
+          "prediction_sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        }
+      },
+      "provenance": {
+        "id": "mbart-amis-baseline-seed43",
+        "family": "baseline",
+        "seed": 43,
+        "alpha": 0.0,
+        "lambda": 0.0,
+        "detach": true,
+        "best_step": 720,
+        "archive_repo": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed43.zip",
+        "receipt_dir_exists": true,
+        "archive_sha256": "4524afeff8761db29b108feb4ff8c19fd54e84172135d9d6845b5d5a2551a26e",
+        "archive_bytes": 2270678573,
+        "revision": "c76490b2a735d9fd38f1445dc4477c15e77ccb90",
+        "eval_bleu": 17.151270123753932,
+        "eval_chrf++": 14.200731980464068,
+        "eval_chrf0": 16.368745536133453,
+        "eval_loss": 2.945521831512451,
+        "validation_predictions_exists": true,
+        "historical_validation_metadata": {
+          "eval_bleu": 17.151270123753932,
+          "eval_chrf++": 14.200731980464068,
+          "eval_chrf0": null,
+          "eval_loss": 2.945521831512451,
+          "best_step": 252
+        },
+        "validation_prediction_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f",
+        "validation_prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed43/validation_predictions.csv",
+        "v5_validation_status": "VERIFIED_NATIVE_GENERATION_METRICS",
+        "validation_protocol": {
+          "beams": 1,
+          "max_length": 256,
+          "batch_size": 8,
+          "precision": "fp32",
+          "tf32": false,
+          "src_lang": "tl_XX",
+          "tgt_lang": "zh_CN"
+        },
+        "eval_loss_provenance": "Historical full-validation eval loss retained; not recomputed by this generation audit. Fixed32 CE is a separate diagnostic.",
+        "superseded_inventory_best_step": 252,
+        "best_step_provenance": "Hash-verified original log, metrics.json and all_metrics.json agree; baseline_step_trace.json",
+        "decision": "REUSE_UNDER_LOCKED_RECIPE",
+        "selected_epoch": 20.0,
+        "selection_trace": "outputs_rebuttal/amis_pre_rerun_20261005/baseline_step_trace.json"
+      }
+    },
+    {
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "seed": 44,
+      "selected_step": 612,
+      "scores": {
+        "validation": {
+          "bleu": 17.9652726512606,
+          "chrfpp": 14.79871492994047,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed44/validation_predictions.csv",
+          "prediction_sha256": "49f5456caeef79b07a761546bceda9a46e58ab991350c455d6bda25b1eea116a",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        },
+        "test": {
+          "bleu": 20.30001625394848,
+          "chrfpp": 18.901672572421678,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed44/test_predictions.csv",
+          "prediction_sha256": "83e6c9701165d12dc432cb27457f8a5b345e89cc8c184569a39931d4646bac72",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        }
+      },
+      "provenance": {
+        "id": "mbart-amis-baseline-seed44",
+        "family": "baseline",
+        "seed": 44,
+        "alpha": 0.0,
+        "lambda": 0.0,
+        "detach": true,
+        "best_step": 612,
+        "archive_repo": "FiveC/amis-rewire-checkpoints",
+        "archive_path": "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed44.zip",
+        "receipt_dir_exists": true,
+        "archive_sha256": "ce2d3ac8a4e734bdcc8240e1180785f7314782ea13ebdf9bedeba6816d8f71ad",
+        "archive_bytes": 2270716284,
+        "revision": "d0ff4006d6879f6c74e06ffdae4a9261aa3e1e82",
+        "eval_bleu": 17.9652726512606,
+        "eval_chrf++": 14.79871492994047,
+        "eval_chrf0": 17.12316850373172,
+        "eval_loss": 2.84051251411438,
+        "validation_predictions_exists": true,
+        "historical_validation_metadata": {
+          "eval_bleu": 17.9652726512606,
+          "eval_chrf++": 14.79871492994047,
+          "eval_chrf0": null,
+          "eval_loss": 2.84051251411438,
+          "best_step": 504
+        },
+        "validation_prediction_sha256": "49f5456caeef79b07a761546bceda9a46e58ab991350c455d6bda25b1eea116a",
+        "validation_prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed44/validation_predictions.csv",
+        "v5_validation_status": "VERIFIED_NATIVE_GENERATION_METRICS",
+        "validation_protocol": {
+          "beams": 1,
+          "max_length": 256,
+          "batch_size": 8,
+          "precision": "fp32",
+          "tf32": false,
+          "src_lang": "tl_XX",
+          "tgt_lang": "zh_CN"
+        },
+        "eval_loss_provenance": "Historical full-validation eval loss retained; not recomputed by this generation audit. Fixed32 CE is a separate diagnostic.",
+        "superseded_inventory_best_step": 504,
+        "best_step_provenance": "Hash-verified original log, metrics.json and all_metrics.json agree; baseline_step_trace.json",
+        "decision": "REUSE_UNDER_LOCKED_RECIPE",
+        "selected_epoch": 17.0,
+        "selection_trace": "outputs_rebuttal/amis_pre_rerun_20261005/baseline_step_trace.json"
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "lsr",
+      "seed": 42,
+      "selected_step": 504,
+      "scores": {
+        "validation": {
+          "bleu": 16.4208411508001,
+          "chrfpp": 14.190173628560752
+        },
+        "test": {
+          "bleu": 19.09543995574151,
+          "chrfpp": 18.434505472123693
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_pilot_20261005/lsr/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "lsr",
+      "seed": 42,
+      "scores": {
+        "validation": {
+          "bleu": 16.568762896375635,
+          "chrfpp": 14.167405662566932
+        },
+        "test": {
+          "bleu": 19.78649564324058,
+          "chrfpp": 18.679744901053734
+        }
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "lsr",
+      "seed": 43,
+      "selected_step": 612,
+      "scores": {
+        "validation": {
+          "bleu": 16.738096849526915,
+          "chrfpp": 14.274377140832009,
+          "rows": 576,
+          "prediction_sha256": "a58010cd998ef499232e774217aa38ae4d1a43f2170b90d847e9076592ed0899"
+        },
+        "test": {
+          "bleu": 19.81925092512863,
+          "chrfpp": 18.660999211770736,
+          "rows": 575,
+          "prediction_sha256": "539c57b0ecd7006bc1fdb7808f9d1f01dad0e09fc8f8c5d4fbd6551238e9247b"
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_confirmation_20261005/lsr/seed43/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "lsr",
+      "seed": 43,
+      "scores": {
+        "test": {
+          "bleu": 19.487940500372513,
+          "chrfpp": 18.64879720574962,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed43/test_predictions.csv",
+          "prediction_sha256": "db38f1c4c7c1821ab869a4ec609386ba4371fe9e356c63d77dd8d076bb25d002",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        },
+        "validation": {
+          "bleu": 16.465320409451696,
+          "chrfpp": 13.945165498648135,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/runs/mbart-amis-lsr-seed43/val_main_b1/predictions.csv",
+          "prediction_sha256": "d4c83b0008fa9e20c7998a10725fd2d964a1d72330395e7703c41aba3e47714b",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        }
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "lsr",
+      "seed": 44,
+      "selected_step": 612,
+      "scores": {
+        "validation": {
+          "bleu": 16.73911280897996,
+          "chrfpp": 14.201442588355809,
+          "rows": 576,
+          "prediction_sha256": "aa7425ed94db20d8249fb56e3c4924e3b1fd61a66b90d50916916393c30d1d7f"
+        },
+        "test": {
+          "bleu": 19.264373929771594,
+          "chrfpp": 18.292200796440717,
+          "rows": 575,
+          "prediction_sha256": "cf7d200f5494c646338e7b29f8046bbd42fcfcf0a4a41e72d674c29df29ae01d"
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/lsr/seed44/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "lsr",
+      "seed": 44,
+      "scores": {
+        "test": {
+          "bleu": 19.32841923655717,
+          "chrfpp": 18.36327034476351,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-lsr-seed44/test_predictions.csv",
+          "prediction_sha256": "a79b67d48d49f9a9084d9c5fc9978ca189f65cf9cbc1338540d1246b8e948201",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        },
+        "validation": {
+          "bleu": 16.59496986225757,
+          "chrfpp": 14.069770895728148,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/runs/mbart-amis-lsr-seed44/val_main_b1/predictions.csv",
+          "prediction_sha256": "22929327690b4a8dca206404a11bef0369b4cba275fbe8f0791159491b842179",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        }
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "full",
+      "seed": 42,
+      "selected_step": 720,
+      "scores": {
+        "validation": {
+          "bleu": 17.35568892362328,
+          "chrfpp": 14.477980489784093
+        },
+        "test": {
+          "bleu": 20.321294974643692,
+          "chrfpp": 19.014706982068734
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_pilot_20261005/full/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "full",
+      "seed": 42,
+      "scores": {
+        "validation": {
+          "bleu": 17.64365142895975,
+          "chrfpp": 14.731667659986464
+        },
+        "test": {
+          "bleu": 19.956573804384817,
+          "chrfpp": 18.88781117201183
+        }
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "full",
+      "seed": 43,
+      "selected_step": 684,
+      "scores": {
+        "validation": {
+          "bleu": 17.264820807964863,
+          "chrfpp": 14.327070291168992,
+          "rows": 576,
+          "prediction_sha256": "7fb332aba9b078379790b761d2962996ff651d88cbcafefb60ea4ec61a798785"
+        },
+        "test": {
+          "bleu": 20.177995172130306,
+          "chrfpp": 18.856774144274585,
+          "rows": 575,
+          "prediction_sha256": "72df959056fcf5bbebc4f0aba9af6d57784b986ba389adcd3c3c0134a67a4613"
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "full",
+      "seed": 43,
+      "scores": {
+        "test": {
+          "bleu": 19.61226033152559,
+          "chrfpp": 18.475345958179492,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed43/test_predictions.csv",
+          "prediction_sha256": "a5c3fb6f16c4f28ec138292449ebf519f5ee67e24dd5e79f39bfe8220a3f2d05",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        },
+        "validation": {
+          "bleu": 17.06453509078412,
+          "chrfpp": 14.41260859405018,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/runs/mbart-amis-full-seed43/val_main_b1/predictions.csv",
+          "prediction_sha256": "0431d1320a653f505a107bed808f57c43f6b054900e4f5c7006e369881cbc334",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        }
+      }
+    },
+    {
+      "regime": "corrected",
+      "family": "full",
+      "seed": 44,
+      "selected_step": 684,
+      "scores": {
+        "validation": {
+          "bleu": 17.11534580723468,
+          "chrfpp": 14.216383723587075,
+          "rows": 576,
+          "prediction_sha256": "cf85f21cf80c5da8df0ecad7acc95657695733d7407e0a2cb15afa76fa2f5ee0"
+        },
+        "test": {
+          "bleu": 19.891624365979126,
+          "chrfpp": 18.699629087985407,
+          "rows": 575,
+          "prediction_sha256": "516253b5c611d1bb3a09a372bfdea3e56d1a7791f76592e55a3ec6d696c33303"
+        }
+      },
+      "verification_file": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/full/seed44/local_verification.json"
+    },
+    {
+      "regime": "historical",
+      "family": "full",
+      "seed": 44,
+      "scores": {
+        "test": {
+          "bleu": 19.737135107447248,
+          "chrfpp": 18.60648253148173,
+          "rows": 575,
+          "prediction_file": "outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-full-seed44/test_predictions.csv",
+          "prediction_sha256": "56841452d1ff220ad545b484e1ab33e7d8b6e56c59b7406b04ef8fb1ec90cb9a",
+          "reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+        },
+        "validation": {
+          "bleu": 16.932429309462734,
+          "chrfpp": 14.348330285453207,
+          "rows": 576,
+          "prediction_file": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/runs/mbart-amis-full-seed44/val_main_b1/predictions.csv",
+          "prediction_sha256": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6",
+          "reference_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+        }
+      }
+    }
+  ],
+  "mean_sample_sd": [
+    {
+      "split": "validation",
+      "metric": "bleu",
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "n": 3,
+      "mean": 17.12747702250989,
+      "sample_sd": 0.8499419882776085
+    },
+    {
+      "split": "validation",
+      "metric": "bleu",
+      "regime": "historical",
+      "family": "lsr",
+      "n": 3,
+      "mean": 16.543017722694966,
+      "sample_sd": 0.06855184628514036
+    },
+    {
+      "split": "validation",
+      "metric": "bleu",
+      "regime": "historical",
+      "family": "full",
+      "n": 3,
+      "mean": 17.213538609735533,
+      "sample_sd": 0.37829983123229843
+    },
+    {
+      "split": "validation",
+      "metric": "bleu",
+      "regime": "corrected",
+      "family": "lsr",
+      "n": 3,
+      "mean": 16.632683603102326,
+      "sample_sd": 0.18346164855758784
+    },
+    {
+      "split": "validation",
+      "metric": "bleu",
+      "regime": "corrected",
+      "family": "full",
+      "n": 3,
+      "mean": 17.245285179607606,
+      "sample_sd": 0.12135663962194566
+    },
+    {
+      "split": "validation",
+      "metric": "chrfpp",
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "n": 3,
+      "mean": 14.30032915841721,
+      "sample_sd": 0.4568042893158404
+    },
+    {
+      "split": "validation",
+      "metric": "chrfpp",
+      "regime": "historical",
+      "family": "lsr",
+      "n": 3,
+      "mean": 14.060780685647739,
+      "sample_sd": 0.1113925065820442
+    },
+    {
+      "split": "validation",
+      "metric": "chrfpp",
+      "regime": "historical",
+      "family": "full",
+      "n": 3,
+      "mean": 14.497535513163283,
+      "sample_sd": 0.2052956937469593
+    },
+    {
+      "split": "validation",
+      "metric": "chrfpp",
+      "regime": "corrected",
+      "family": "lsr",
+      "n": 3,
+      "mean": 14.221997785916189,
+      "sample_sd": 0.045710447162149385
+    },
+    {
+      "split": "validation",
+      "metric": "chrfpp",
+      "regime": "corrected",
+      "family": "full",
+      "n": 3,
+      "mean": 14.340478168180054,
+      "sample_sd": 0.13131277697026328
+    },
+    {
+      "split": "test",
+      "metric": "bleu",
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "n": 3,
+      "mean": 19.38864314858613,
+      "sample_sd": 1.1203455761898198
+    },
+    {
+      "split": "test",
+      "metric": "bleu",
+      "regime": "historical",
+      "family": "lsr",
+      "n": 3,
+      "mean": 19.53428512672342,
+      "sample_sd": 0.23252820664104462
+    },
+    {
+      "split": "test",
+      "metric": "bleu",
+      "regime": "historical",
+      "family": "full",
+      "n": 3,
+      "mean": 19.76865641445255,
+      "sample_sd": 0.17430759161490175
+    },
+    {
+      "split": "test",
+      "metric": "bleu",
+      "regime": "corrected",
+      "family": "lsr",
+      "n": 3,
+      "mean": 19.393021603547247,
+      "sample_sd": 0.37866640704873145
+    },
+    {
+      "split": "test",
+      "metric": "bleu",
+      "regime": "corrected",
+      "family": "full",
+      "n": 3,
+      "mean": 20.130304837584376,
+      "sample_sd": 0.2187692482831435
+    },
+    {
+      "split": "test",
+      "metric": "chrfpp",
+      "regime": "baseline_audited",
+      "family": "baseline",
+      "n": 3,
+      "mean": 16.924899892975574,
+      "sample_sd": 3.2625532764531773
+    },
+    {
+      "split": "test",
+      "metric": "chrfpp",
+      "regime": "historical",
+      "family": "lsr",
+      "n": 3,
+      "mean": 18.56393748385562,
+      "sample_sd": 0.17447038572410686
+    },
+    {
+      "split": "test",
+      "metric": "chrfpp",
+      "regime": "historical",
+      "family": "full",
+      "n": 3,
+      "mean": 18.65654655389102,
+      "sample_sd": 0.21074081927876992
+    },
+    {
+      "split": "test",
+      "metric": "chrfpp",
+      "regime": "corrected",
+      "family": "lsr",
+      "n": 3,
+      "mean": 18.462568493445048,
+      "sample_sd": 0.1859938645809197
+    },
+    {
+      "split": "test",
+      "metric": "chrfpp",
+      "regime": "corrected",
+      "family": "full",
+      "n": 3,
+      "mean": 18.857036738109574,
+      "sample_sd": 0.15753911118080388
+    }
+  ],
+  "paired_seed_differences": [
+    {
+      "label": "corrected_full_minus_lsr",
+      "split": "validation",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 0.9348477728231792,
+        "43": 0.5267239584379482,
+        "44": 0.3762329982547179
+      },
+      "mean_delta": 0.6126015765052818,
+      "sample_sd_delta": 0.2890395138302587,
+      "positive_seeds": 3
+    },
+    {
+      "label": "corrected_full_minus_baseline",
+      "split": "validation",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 1.0898006311081474,
+        "43": 0.11355068421093151,
+        "44": -0.8499268440259229
+      },
+      "mean_delta": 0.11780815709771868,
+      "sample_sd_delta": 0.9698707460296114,
+      "positive_seeds": 2
+    },
+    {
+      "label": "corrected_lsr_minus_baseline",
+      "split": "validation",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 0.1549528582849682,
+        "43": -0.41317327422701666,
+        "44": -1.2261598422806408
+      },
+      "mean_delta": -0.4947934194075631,
+      "sample_sd_delta": 0.6941645763004458,
+      "positive_seeds": 1
+    },
+    {
+      "label": "lsr_corrected_minus_historical",
+      "split": "validation",
+      "metric": "bleu",
+      "per_seed": {
+        "42": -0.14792174557553395,
+        "43": 0.2727764400752193,
+        "44": 0.1441429467223898
+      },
+      "mean_delta": 0.08966588040735839,
+      "sample_sd_delta": 0.2155749380567652,
+      "positive_seeds": 2
+    },
+    {
+      "label": "full_corrected_minus_historical",
+      "split": "validation",
+      "metric": "bleu",
+      "per_seed": {
+        "42": -0.28796250533646983,
+        "43": 0.20028571718074417,
+        "44": 0.18291649777194507
+      },
+      "mean_delta": 0.03174656987207314,
+      "sample_sd_delta": 0.27701234994805574,
+      "positive_seeds": 2
+    },
+    {
+      "label": "corrected_full_minus_lsr",
+      "split": "validation",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.2878068612233413,
+        "43": 0.05269315033698341,
+        "44": 0.0149411352312665
+      },
+      "mean_delta": 0.11848038226386375,
+      "sample_sd_delta": 0.1478509249844125,
+      "positive_seeds": 3
+    },
+    {
+      "label": "corrected_full_minus_baseline",
+      "split": "validation",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.576439924937004,
+        "43": 0.12633831070492363,
+        "44": -0.5823312063533947
+      },
+      "mean_delta": 0.0401490097628443,
+      "sample_sd_delta": 0.5841738443097833,
+      "positive_seeds": 2
+    },
+    {
+      "label": "corrected_lsr_minus_baseline",
+      "split": "validation",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.2886330637136627,
+        "43": 0.07364516036794022,
+        "44": -0.5972723415846612
+      },
+      "mean_delta": -0.07833137250101944,
+      "sample_sd_delta": 0.4620927901313213,
+      "positive_seeds": 2
+    },
+    {
+      "label": "lsr_corrected_minus_historical",
+      "split": "validation",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.022767965993820027,
+        "43": 0.3292116421838731,
+        "44": 0.13167169262766087
+      },
+      "mean_delta": 0.16121710026845135,
+      "sample_sd_delta": 0.1553435869410575,
+      "positive_seeds": 3
+    },
+    {
+      "label": "full_corrected_minus_historical",
+      "split": "validation",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": -0.25368717020237064,
+        "43": -0.08553830288118824,
+        "44": -0.13194656186613152
+      },
+      "mean_delta": -0.15705734498323012,
+      "sample_sd_delta": 0.08684137243799538,
+      "positive_seeds": 0
+    },
+    {
+      "label": "corrected_full_minus_lsr",
+      "split": "test",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 1.2258550189021804,
+        "43": 0.35874424700167395,
+        "44": 0.6272504362075324
+      },
+      "mean_delta": 0.7372832340371289,
+      "sample_sd_delta": 0.44390391430480725,
+      "positive_seeds": 3
+    },
+    {
+      "label": "corrected_full_minus_baseline",
+      "split": "test",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 0.593213541241667,
+        "43": 2.040163413722418,
+        "44": -0.4083918879693549
+      },
+      "mean_delta": 0.7416616889982434,
+      "sample_sd_delta": 1.2310091006121728,
+      "positive_seeds": 2
+    },
+    {
+      "label": "corrected_lsr_minus_baseline",
+      "split": "test",
+      "metric": "bleu",
+      "per_seed": {
+        "42": -0.6326414776605134,
+        "43": 1.6814191667207439,
+        "44": -1.0356423241768873
+      },
+      "mean_delta": 0.004378454961114405,
+      "sample_sd_delta": 1.4662713194520522,
+      "positive_seeds": 1
+    },
+    {
+      "label": "lsr_corrected_minus_historical",
+      "split": "test",
+      "metric": "bleu",
+      "per_seed": {
+        "42": -0.6910556874990696,
+        "43": 0.3313104247561185,
+        "44": -0.06404530678557663
+      },
+      "mean_delta": -0.14126352317617594,
+      "sample_sd_delta": 0.5155386567260074,
+      "positive_seeds": 1
+    },
+    {
+      "label": "full_corrected_minus_historical",
+      "split": "test",
+      "metric": "bleu",
+      "per_seed": {
+        "42": 0.36472117025887485,
+        "43": 0.5657348406047156,
+        "44": 0.15448925853187845
+      },
+      "mean_delta": 0.36164842313182294,
+      "sample_sd_delta": 0.20564000954285808,
+      "positive_seeds": 3
+    },
+    {
+      "label": "corrected_full_minus_lsr",
+      "split": "test",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.5802015099450415,
+        "43": 0.19577493250384848,
+        "44": 0.40742829154469007
+      },
+      "mean_delta": 0.3944682446645267,
+      "sample_sd_delta": 0.19254069822284176,
+      "positive_seeds": 3
+    },
+    {
+      "label": "corrected_full_minus_baseline",
+      "split": "test",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.30086895874758923,
+        "43": 5.697585061090688,
+        "44": -0.2020434844362704
+      },
+      "mean_delta": 1.9321368451340024,
+      "sample_sd_delta": 3.2706544347677315,
+      "positive_seeds": 2
+    },
+    {
+      "label": "corrected_lsr_minus_baseline",
+      "split": "test",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": -0.27933255119745226,
+        "43": 5.50181012858684,
+        "44": -0.6094717759809605
+      },
+      "mean_delta": 1.5376686004694757,
+      "sample_sd_delta": 3.437013459115874,
+      "positive_seeds": 1
+    },
+    {
+      "label": "lsr_corrected_minus_historical",
+      "split": "test",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": -0.24523942893004147,
+        "43": 0.012202006021116318,
+        "44": -0.071069548322793
+      },
+      "mean_delta": -0.10136899041057272,
+      "sample_sd_delta": 0.13136805262525147,
+      "positive_seeds": 1
+    },
+    {
+      "label": "full_corrected_minus_historical",
+      "split": "test",
+      "metric": "chrfpp",
+      "per_seed": {
+        "42": 0.12689581005690442,
+        "43": 0.38142818609509277,
+        "44": 0.09314655650367598
+      },
+      "mean_delta": 0.20049018421855772,
+      "sample_sd_delta": 0.15760289788311246,
+      "positive_seeds": 3
+    }
+  ],
+  "limitations": [
+    "No significance or equivalence claim from these descriptive summaries.",
+    "No hyperparameter selection using these test results.",
+    "Historical exact runtime and full trajectories incomplete."
+  ]
+}

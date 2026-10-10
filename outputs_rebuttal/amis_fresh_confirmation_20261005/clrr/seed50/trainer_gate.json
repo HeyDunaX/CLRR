@@ -1,0 +1,10 @@
+{
+  "family": "clrr",
+  "seed": 50,
+  "accepts_loss_kwargs": false,
+  "gradient_accumulation_steps": 4,
+  "bf16": true,
+  "gradient_checkpointing": true,
+  "selection_metric": "eval_chrf++",
+  "eval_beams": 1
+}

@@ -1,0 +1,102 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "family": "tuned_lsr",
+      "seed": 42,
+      "archive_sha256": "ef41f86b3a7c6e88db59541a9f1d0216bbc789d16dbc0227d32eba13bb7d6208",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 17.787285341686463,
+        "chrf++": 14.85874740143626,
+        "chrf0": 17.13644903735976
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "family": "tuned_lsr",
+      "seed": 43,
+      "archive_sha256": "f9e81950f0fcb931562b6701d7072923a9a7d0419c553da9e0eb1925c9733385",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 16.362132373650912,
+        "chrf++": 14.010880174033186,
+        "chrf0": 16.118664366995898
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "family": "tuned_lsr",
+      "seed": 44,
+      "archive_sha256": "c17de7b6495f2daea45a63342e7a76c1849aa4cd454dee7a5fd8cb53be67f1df",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 16.833193983741737,
+        "chrf++": 14.081403953148813,
+        "chrf0": 16.229853186440483
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "family": "original_full_detached",
+      "seed": 42,
+      "archive_sha256": "a9d910c83b55b9b54b1789b2bb2b12142e9da8653a489a8de75e2290071446f2",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 17.643651428959757,
+        "chrf++": 14.731667659986464,
+        "chrf0": 16.87520033372062
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "family": "original_full_detached",
+      "seed": 43,
+      "archive_sha256": "b7cb3cd50f610a8e8119aa4213d649a5acc4077270938cfe0aae148b399bc5d4",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 17.06453509078412,
+        "chrf++": 14.41260859405018,
+        "chrf0": 16.587805503890078
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "family": "original_full_detached",
+      "seed": 44,
+      "archive_sha256": "3de3cfc733d60f9070d15fd02aaef0391f6a1a8569f3759adebef3b81e4eb0ee",
+      "exact_v5_replay": true,
+      "validation_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+      "beams": 1,
+      "precision": "fp32",
+      "tf32": false,
+      "scores": {
+        "bleu": 16.932429309462727,
+        "chrf++": 14.348330285453207,
+        "chrf0": 16.512759705934826
+      }
+    }
+  ],
+  "limit": "Exact decoding replay validates inference reuse; original training provenance is checked separately."
+}

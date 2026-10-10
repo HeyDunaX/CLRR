@@ -1,0 +1,356 @@
+{
+  "sacrebleu_version": "2.6.0",
+  "prediction_sets_verified": 18,
+  "raw_test_sha256_verified": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+  "alignment_and_prediction_hashes_verified": true,
+  "score_audit": [
+    {
+      "family": "baseline",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.728081433402025,
+        "chrF++": 18.713838023321145,
+        "chrF0": 18.397282102498366
+      }
+    },
+    {
+      "family": "baseline",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 18.137831758407888,
+        "chrF++": 13.159189083183897,
+        "chrF0": 17.09042990233338
+      }
+    },
+    {
+      "family": "baseline",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 20.30001625394848,
+        "chrF++": 18.901672572421678,
+        "chrF0": 18.647751691603844
+      }
+    },
+    {
+      "family": "original_full_detached",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.956573804384817,
+        "chrF++": 18.88781117201183,
+        "chrF0": 18.662644750604965
+      }
+    },
+    {
+      "family": "original_full_detached",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.61226033152559,
+        "chrF++": 18.475345958179492,
+        "chrF0": 18.190511941282644
+      }
+    },
+    {
+      "family": "original_full_detached",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.737135107447248,
+        "chrF++": 18.60648253148173,
+        "chrF0": 18.26125775269904
+      }
+    },
+    {
+      "family": "matched_lsr",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.78649564324058,
+        "chrF++": 18.679744901053734,
+        "chrF0": 18.35809340687812
+      }
+    },
+    {
+      "family": "matched_lsr",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.487940500372513,
+        "chrF++": 18.64879720574962,
+        "chrF0": 18.25813718777413
+      }
+    },
+    {
+      "family": "matched_lsr",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.32841923655717,
+        "chrF++": 18.36327034476351,
+        "chrF0": 17.99574949906902
+      }
+    },
+    {
+      "family": "tuned_lsr",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 20.625679120852553,
+        "chrF++": 19.188905163530883,
+        "chrF0": 19.028835465486083
+      }
+    },
+    {
+      "family": "tuned_lsr",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.67466209150134,
+        "chrF++": 14.155648087415376,
+        "chrF0": 18.41883979495942
+      }
+    },
+    {
+      "family": "tuned_lsr",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.38582088622823,
+        "chrF++": 18.5323869298727,
+        "chrF0": 18.15733016234366
+      }
+    },
+    {
+      "family": "full_source_attached",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.353090942481927,
+        "chrF++": 18.541195626492364,
+        "chrF0": 18.223969067963385
+      }
+    },
+    {
+      "family": "full_source_attached",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.777445319161043,
+        "chrF++": 18.513106809100208,
+        "chrF0": 18.21041363822758
+      }
+    },
+    {
+      "family": "full_source_attached",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.56672983525002,
+        "chrF++": 18.635473686391492,
+        "chrF0": 18.357129076533493
+      }
+    },
+    {
+      "family": "clrr_only_detached",
+      "seed": 42,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 19.64029281917294,
+        "chrF++": 18.56389741233193,
+        "chrF0": 18.25037734052841
+      }
+    },
+    {
+      "family": "clrr_only_detached",
+      "seed": 43,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 18.942021213646687,
+        "chrF++": 18.082320139202448,
+        "chrF0": 17.70168024461168
+      }
+    },
+    {
+      "family": "clrr_only_detached",
+      "seed": 44,
+      "max_score_error": 0.0,
+      "scores": {
+        "BLEU": 20.148450210653326,
+        "chrF++": 18.905467479791184,
+        "chrF0": 18.658406168986865
+      }
+    }
+  ],
+  "reference_word_bigram_rows": [
+    126,
+    170,
+    468
+  ],
+  "word_bigram_stats_hyp_ref_match": {
+    "original_full_detached:42": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        1
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    },
+    "tuned_lsr:42": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        1
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    },
+    "original_full_detached:43": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        1
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    },
+    "tuned_lsr:43": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        0
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    },
+    "original_full_detached:44": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        1
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    },
+    "tuned_lsr:44": {
+      "126": [
+        0,
+        1,
+        0
+      ],
+      "170": [
+        1,
+        1,
+        1
+      ],
+      "468": [
+        1,
+        1,
+        0
+      ]
+    }
+  },
+  "full_minus_tuned_chrfpp_leave_one_out": {
+    "42:excluded=None": -0.30109399151905336,
+    "42:excluded=170": -0.297239126099468,
+    "43:excluded=None": 4.3196978707641165,
+    "43:excluded=170": -0.3304318164861044,
+    "44:excluded=None": 0.07409560160903084,
+    "44:excluded=170": 0.07812526380343421
+  },
+  "bootstrap_file_review": {
+    "18": {
+      "pairs": [
+        [
+          "original_full_detached",
+          "baseline"
+        ],
+        [
+          "original_full_detached",
+          "matched_lsr"
+        ],
+        [
+          "original_full_detached",
+          "tuned_lsr"
+        ]
+      ],
+      "significant_holm_05": 0,
+      "unadjusted_ci_excludes_zero": 2
+    },
+    "30": {
+      "pairs": [
+        [
+          "original_full_detached",
+          "baseline"
+        ],
+        [
+          "original_full_detached",
+          "clrr_only_detached"
+        ],
+        [
+          "original_full_detached",
+          "full_source_attached"
+        ],
+        [
+          "original_full_detached",
+          "matched_lsr"
+        ],
+        [
+          "original_full_detached",
+          "tuned_lsr"
+        ]
+      ],
+      "significant_holm_05": 0,
+      "unadjusted_ci_excludes_zero": 2
+    }
+  },
+  "notes": [
+    "Leave-one-out is a diagnostic; primary test scores remain unchanged.",
+    "Current secondary30 pairs differ from handoff section D declared secondary30; diagnostic Full lambda .03 is absent from final matrix.",
+    "No training, generation, HF access or original artifact modifications in this audit."
+  ]
+}

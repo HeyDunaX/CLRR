@@ -1,0 +1,11 @@
+{
+  "training_arguments_match_reference_runs": 18,
+  "exact_loss_logits_and_gradients_match_comparator_cases": 14,
+  "new_cpu_gate_cases": 21,
+  "cli_unit_tests": 8,
+  "historical_numbers_modified": false,
+  "gpu_training_started": false,
+  "gpu_gate_required_on_next_new_bundle": true,
+  "historical_backup_statistics_checks": 8,
+  "syntax_and_removed_import_checks": "PASS"
+}

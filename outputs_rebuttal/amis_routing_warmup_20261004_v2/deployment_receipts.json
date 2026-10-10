@@ -1,0 +1,12 @@
+{
+  "colab": {
+    "cli_status": "[colab] gpu-a100-s-kkb-usc1f2-3i0mouaj1j77p | Hardware: A100 | Shape: Standard | Variant: GPU | Status: IDLE\n  Last Execution: stdin at 2026-10-04 19:59:18\n",
+    "launch": "{\"worker\": \"machine1\", \"driver_pid\": 32950, \"phase\": \"GPU_SMOKE_AND_REPLAY_NO_TRAIN_YET\"}\n",
+    "bundle_sha256": "25b2d13c6b0b1da48fed6514b96497cd509a6d314aec8049f961ec2629772a2b"
+  },
+  "colab2": {
+    "cli_status": "[colab2] gpu-a100-s-kkb-usc1f0-2d12sxlblb6oo | Hardware: A100 | Shape: Standard | Variant: GPU | Status: IDLE\n  Last Execution: stdin at 2026-10-04 19:59:39\n",
+    "launch": "{\"worker\": \"machine2\", \"driver_pid\": 32011, \"phase\": \"GPU_SMOKE_AND_REPLAY_NO_TRAIN_YET\"}\n",
+    "bundle_sha256": "25b2d13c6b0b1da48fed6514b96497cd509a6d314aec8049f961ec2629772a2b"
+  }
+}

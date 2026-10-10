@@ -1,0 +1,251 @@
+{
+  "source_path": "nllb-200/nllb_results.zip",
+  "source_revision": "7a58bb09177cb4adcf8a663739346dd6dd24b8a8",
+  "entries": [
+    {
+      "path": "content/CLRR/results/nllb-200/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/metrics.json",
+      "size": 649
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/test_predictions.csv",
+      "size": 60162
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/nllb-200-clrr_dec-best.zip",
+      "size": 6833266897
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/training_args.bin",
+      "size": 5393
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/optimizer.pt",
+      "size": 4921037530
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/scheduler.pt",
+      "size": 1465
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/trainer_state.json",
+      "size": 18707
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/tokenizer_config.json",
+      "size": 3680
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/pytorch_model.bin",
+      "size": 2460490519
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/tokenizer.json",
+      "size": 32240234
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_dec/checkpoint-684/rng_state.pth",
+      "size": 14645
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/baseline/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/baseline/metrics.json",
+      "size": 547
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/baseline/test_predictions.csv",
+      "size": 59339
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/metrics.json",
+      "size": 622
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/nllb-200-middle_align-best.zip",
+      "size": 6834879935
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/test_predictions.csv",
+      "size": 59059
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/training_args.bin",
+      "size": 5393
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/optimizer.pt",
+      "size": 4921037530
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/scheduler.pt",
+      "size": 1465
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/trainer_state.json",
+      "size": 18703
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/tokenizer_config.json",
+      "size": 3680
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/pytorch_model.bin",
+      "size": 2460500055
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/tokenizer.json",
+      "size": 32240234
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/middle_align/checkpoint-684/rng_state.pth",
+      "size": 14645
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/bitfit/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/bitfit/metrics.json",
+      "size": 1050
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/bitfit/test_predictions.csv",
+      "size": 68509
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/metrics.json",
+      "size": 646
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/test_predictions.csv",
+      "size": 58901
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/nllb-200-clrr_enc-best.zip",
+      "size": 6832528692
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/training_args.bin",
+      "size": 5393
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/optimizer.pt",
+      "size": 4921037530
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/scheduler.pt",
+      "size": 1465
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/trainer_state.json",
+      "size": 17692
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/tokenizer_config.json",
+      "size": 3680
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/pytorch_model.bin",
+      "size": 2460490519
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/tokenizer.json",
+      "size": 32240234
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/clrr_enc/checkpoint-648/rng_state.pth",
+      "size": 14645
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/metrics.json",
+      "size": 782
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/test_predictions.csv",
+      "size": 58998
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/",
+      "size": 0
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/training_args.bin",
+      "size": 5393
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/adapter_config.json",
+      "size": 1090
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/README.md",
+      "size": 5188
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/adapter_model.safetensors",
+      "size": 4738744
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/optimizer.pt",
+      "size": 9560651
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/scheduler.pt",
+      "size": 1465
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/trainer_state.json",
+      "size": 19688
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/tokenizer_config.json",
+      "size": 3680
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/tokenizer.json",
+      "size": 32240234
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/checkpoint-720/rng_state.pth",
+      "size": 14645
+    },
+    {
+      "path": "content/CLRR/results/nllb-200/lora/nllb-200-lora-best.zip",
+      "size": 18972334
+    }
+  ],
+  "range_bytes_fetched": 8894
+}

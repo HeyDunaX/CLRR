@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "cases": [
+    {
+      "id": "A01",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 84480
+    },
+    {
+      "id": "A02",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 84480
+    },
+    {
+      "id": "A03",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 10240
+    },
+    {
+      "id": "A04",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 2752
+    },
+    {
+      "id": "B01",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 80128
+    },
+    {
+      "id": "B02",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 80128
+    },
+    {
+      "id": "B03",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 65536
+    },
+    {
+      "id": "B04",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 68608
+    },
+    {
+      "id": "B05",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 2688
+    },
+    {
+      "id": "C01",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 114688
+    },
+    {
+      "id": "D01",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 94208
+    },
+    {
+      "id": "D02",
+      "passed": true,
+      "finite_gradients": true,
+      "save_reload_logits_match": true,
+      "accumulation_loss_contract": true,
+      "trainable_params": 94208
+    }
+  ],
+  "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+}

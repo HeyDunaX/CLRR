@@ -1,0 +1,68 @@
+{
+  "mbart-amis-full_a010_l010-seed42-replica": {
+    "id": "mbart-amis-full_a010_l010-seed42-replica",
+    "seed": 42,
+    "validation_rows": 576,
+    "sentences_changed": 0,
+    "pct_changed": 0.0,
+    "route_on": {
+      "bleu": 17.643651428959757,
+      "chrf++": 14.731667659986464,
+      "chrf0": 16.87520033372062
+    },
+    "route_off": {
+      "bleu": 17.643651428959757,
+      "chrf++": 14.731667659986464,
+      "chrf0": 16.87520033372062
+    },
+    "delta_on_minus_off": {
+      "bleu": 0.0,
+      "chrf++": 0.0,
+      "chrf0": 0.0
+    }
+  },
+  "mbart-amis-full-seed43": {
+    "id": "mbart-amis-full-seed43",
+    "seed": 43,
+    "validation_rows": 576,
+    "sentences_changed": 0,
+    "pct_changed": 0.0,
+    "route_on": {
+      "bleu": 17.06453509078412,
+      "chrf++": 14.41260859405018,
+      "chrf0": 16.587805503890078
+    },
+    "route_off": {
+      "bleu": 17.06453509078412,
+      "chrf++": 14.41260859405018,
+      "chrf0": 16.587805503890078
+    },
+    "delta_on_minus_off": {
+      "bleu": 0.0,
+      "chrf++": 0.0,
+      "chrf0": 0.0
+    }
+  },
+  "mbart-amis-full-seed44": {
+    "id": "mbart-amis-full-seed44",
+    "seed": 44,
+    "validation_rows": 576,
+    "sentences_changed": 0,
+    "pct_changed": 0.0,
+    "route_on": {
+      "bleu": 16.932429309462727,
+      "chrf++": 14.348330285453207,
+      "chrf0": 16.512759705934826
+    },
+    "route_off": {
+      "bleu": 16.932429309462727,
+      "chrf++": 14.348330285453207,
+      "chrf0": 16.512759705934826
+    },
+    "delta_on_minus_off": {
+      "bleu": 0.0,
+      "chrf++": 0.0,
+      "chrf0": 0.0
+    }
+  }
+}

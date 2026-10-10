@@ -1,0 +1,15 @@
+{
+  "status": "COMPLETE",
+  "family": "full",
+  "run": "mbart-amis-full_a010_l010-seed42-accumfixed",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_pilot_20261005/full/runs/mbart-amis-full_a010_l010-seed42-accumfixed/checkpoint-720",
+  "best_metric": 14.477980489784093,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_accumulation_pilot_20261005",
+  "selected_and_exported_weight_digest": "d41eccb9df29e0ab86dfaa664918cc14b8f3065dc4b93a21da15dc5ae358004e",
+  "post_selection_test_bleu": 20.321294974643692,
+  "post_selection_test_chrfpp": 19.014706982068734,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

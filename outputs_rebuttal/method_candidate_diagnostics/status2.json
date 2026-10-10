@@ -1,0 +1,18 @@
+{
+  "alive": false,
+  "queue_complete": true,
+  "tail": [
+    "`torch_dtype` is deprecated! Use `dtype` instead!",
+    "The following generation flags are not valid and may be ignored: ['early_stopping']. Set `TRANSFORMERS_VERBOSITY=info` for more details.",
+    "U2L on {\"bleu\": 16.420293693276797, \"chrfpp\": 13.904487624117486}",
+    "U2L gradient 0",
+    "U2L gradient 1",
+    "U2L gradient 2",
+    "U2L gradient 3",
+    "DIAGNOSTIC_COMPLETE U2L",
+    "`torch_dtype` is deprecated! Use `dtype` instead!",
+    "The following generation flags are not valid and may be ignored: ['early_stopping']. Set `TRANSFORMERS_VERBOSITY=info` for more details.",
+    "BASE on {\"bleu\": 16.265888292515125, \"chrfpp\": 13.901540564847089}",
+    "DIAGNOSTIC_COMPLETE BASE"
+  ]
+}

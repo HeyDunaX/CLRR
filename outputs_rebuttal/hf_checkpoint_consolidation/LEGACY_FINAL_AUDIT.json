@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE_VERIFIED",
+  "public": true,
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "verified_data_revision": "31309b28418dcc16928c87c08c695443b1794820",
+  "published_revision": "c258c2a23ebc644b59bdd44aa95c7b7ebeb01319",
+  "final_checkpoints": 90,
+  "legacy_files_hash_verified": 823,
+  "previous_consolidation_files_hash_verified": 2242,
+  "nllb_extracted_files_hash_verified": 22,
+  "removed_trial_intermediate_archives": 190,
+  "logical_removed_bytes": 678418237845,
+  "final_weight_bytes": 197536299696,
+  "metadata_incomplete_checkpoints": 46,
+  "verification": "All retained mapped files checked against source size and LFS SHA256/Git blob ID; all removed legacy paths absent; original consolidated files unchanged; only final ZIPs; anonymous archive access for four backbones; root layout verified."
+}

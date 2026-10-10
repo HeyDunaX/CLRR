@@ -1,0 +1,11 @@
+{
+  "date_asia_saigon": "2026-10-05",
+  "session": "colab",
+  "requested_gpu": "A100",
+  "high_mem_requested": false,
+  "status": "TERMINATED",
+  "cli_confirmation": "[colab] Session terminated.",
+  "results_downloaded_and_sha256_verified": true,
+  "new_research_models_trained": 0,
+  "note": "First stop failed due to DNS; second stop succeeded."
+}

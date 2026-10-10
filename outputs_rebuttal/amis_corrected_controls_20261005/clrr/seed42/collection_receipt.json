@@ -1,0 +1,30 @@
+{
+  "status": "COMPLETE",
+  "family": "clrr",
+  "seed": 42,
+  "run": "mbart-amis-clrr_a010-seed42-corrected-control",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42/runs/mbart-amis-clrr_a010-seed42-corrected-control/checkpoint-540",
+  "best_metric": 13.563791179947074,
+  "completed_epochs": 19.0,
+  "hf_repo": "FiveC/amis-corrected-clrr-only-20261005",
+  "hf_prefix": "amis_corrected_controls_20261005",
+  "selected_and_exported_weight_digest": "d0dd56a4ddb0e952898a5dc87690a801aaae8f86fc0d00edfbc34b9f0d9b90a2",
+  "post_selection_test_bleu": 19.223095123529678,
+  "post_selection_test_chrfpp": 18.362492132997836,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only",
+  "archive_size": 2270675436,
+  "archive_sha256": "c8f65e977492aa1242f106d62c6a5e60140fde1d854255c7dbe610ba7770d496",
+  "archive_path": "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/mbart-amis-clrr_a010-seed42-corrected-control-best.zip",
+  "hf_revision": "e63da9e6eeadcd8b60aa320ddf2be32a4052e396",
+  "remote_archive_verified": true,
+  "remote_metadata_verified": {
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/provenance/final_trainer_state.json": true,
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/provenance/COMPLETE.json": true,
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/selected_provenance/trainer_state.json": true,
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/metrics.json": true,
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/test_metrics.json": true,
+    "amis_corrected_controls_20261005/mbart-amis-clrr_a010-seed42-corrected-control/test_predictions.csv": true
+  },
+  "source_hashes_match": true
+}

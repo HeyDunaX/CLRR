@@ -1,0 +1,24 @@
+{
+  "accepts_loss_kwargs": false,
+  "accumulation4": true,
+  "bf16": true,
+  "checkpointing": true,
+  "source_bundle_sha256": {
+    "src/amis_rewire/ablation.py": "2dac024b77250e27c62db075e82a463685bbb6157a0a5cd8f53ee931e9d50cc8",
+    "src/amis_rewire/evaluation.py": "7fa94849efaf943c6045edc221669c9feb599678ae2320527993d378efec35fe",
+    "src/amis_rewire/metrics.py": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+    "src/amis_rewire/modeling.py": "092ef3809e742448849a7737691e9fabe4919688385f006eb4be7ca4e9db49e4",
+    "src/amis_rewire/prepare_data.py": "82a5db8863221e657c698bbd913fff05d65f0ec0403b7bba03328ffa66b84fad",
+    "src/amis_rewire/scientific_records.py": "dcae9a4d5931d289b52e549c74917f39697df09fcb7046f61a2b01f5f6d0ceb5",
+    "src/amis_rewire/train.py": "039e78c85dc5fe569aeedacc54fed6a91f5d1cec724d21daea4614dd05efaa66",
+    "src/amis_rewire/__init__.py": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+    "scripts/revalidation/run_accumulation_recovery.py": "93f8d28ff87d144b20a76ccb7ec040603ee0b2c5d971e572216eaffad0d25e22",
+    "scratch/collect_accumulation_recovery_remote.py": "a0ae7a3dde944867be813a864022fd8956514514d49b930b323c796a950c11bb",
+    "scratch/cleanup_accumulation_recovery_remote.py": "903fbea26cef29979d3b6cc6fb93043037fc1d647a02198737304b109ca6b4e5",
+    "tests/smoke_rerun_optimization.py": "61f7ff3f73f69193ddf308dd93d21695c06456a1799e207790c6cc87432a6805",
+    "tests/smoke_precision_training.py": "d8334337cac6e7f68dbb4f2970a685499e6450ed045a3445412ab82e1a07e957",
+    "data_processed/amis_mandarin/train.csv": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6",
+    "data_processed/amis_mandarin/validation.csv": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "data_processed/amis_mandarin/test.csv": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+  }
+}

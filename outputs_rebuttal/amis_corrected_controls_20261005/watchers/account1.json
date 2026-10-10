@@ -1,0 +1,97 @@
+{
+  "account": "1",
+  "family": "lsr003",
+  "session": "colab",
+  "started_at_utc": "2026-10-05T07:50:12.669560+00:00",
+  "verified_validation_seeds": [
+    42,
+    43,
+    44
+  ],
+  "verified_test_seeds": [],
+  "status": "COMPLETE_RUNTIME_STOPPED",
+  "updated_at_utc": "2026-10-05T09:10:08.010402+00:00",
+  "remote_status": {
+    "environment_ready": true,
+    "started": true,
+    "job_done": true,
+    "process_alive": false,
+    "family": "lsr003",
+    "seeds": {
+      "42": {
+        "complete": false,
+        "validation_complete": true,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "VALIDATION_COMPLETE",
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 13.90608116417584,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed42/runs/mbart-amis-lsr_l003-seed42-corrected-control/checkpoint-720"
+        }
+      },
+      "43": {
+        "complete": false,
+        "validation_complete": true,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "VALIDATION_COMPLETE",
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.066060576748269,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed43/runs/mbart-amis-lsr_l003-seed43-corrected-control/checkpoint-684"
+        }
+      },
+      "44": {
+        "complete": false,
+        "validation_complete": true,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "VALIDATION_COMPLETE",
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.178780679159745,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed44/runs/mbart-amis-lsr_l003-seed44-corrected-control/checkpoint-684"
+        }
+      }
+    },
+    "selection_decision": {
+      "selection_split": "validation",
+      "metric": "mean chrF++",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "lambda010_scores": [
+        14.190173628560752,
+        14.274377140832009,
+        14.201442588355809
+      ],
+      "lambda003_scores": [
+        13.90608116417584,
+        14.066060576748269,
+        14.178780679159745
+      ],
+      "lambda010_mean": 14.221997785916189,
+      "lambda003_mean": 14.050307473361284,
+      "selected_lambda": 0.1,
+      "tie_rule": "lambda=.1",
+      "test_used_for_selection": false,
+      "lambda003_metric_sha256": {
+        "42": "2ca8464e13991f5ce1ec68e712ae72b008b4b09880f456dc8b8cc28da24d998a",
+        "43": "c033862132e19ccf099c7e1e1cdc7f592297199ea40510d2af2e1d4350d27a98",
+        "44": "f147e5d8d24acc6ba5c9c39f5e19b4733c58593bdce5cad7738f718c361e5bd1"
+      }
+    },
+    "process_state": "Zs",
+    "crashed": false
+  },
+  "stop_receipt": {
+    "confirmed_at_utc": "2026-10-05T09:10:08.010402+00:00",
+    "stdout": "[colab] Stopping session 'colab'...\n[colab] Session terminated.\n\n"
+  }
+}

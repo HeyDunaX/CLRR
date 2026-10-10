@@ -1,0 +1,68 @@
+[
+  {
+    "local": "scratch/audit_amis_v4_outputs.py",
+    "destination": "scripts/revalidation/audit_amis_v4_outputs.py",
+    "sha256": "a61cd3e0aebc0b1c46507a97756fd268c02bf6903d69b11f1fc7f3e86945d041",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/compute_test_statistics.py",
+    "destination": "scripts/revalidation/compute_test_statistics.py",
+    "sha256": "da2a32aaec6266e7e8c2031167acf65bd4c6c7c51d84028d00d68fc768d5cd14",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/review_final_results_20261004.py",
+    "destination": "scripts/revalidation/review_final_results_20261004.py",
+    "sha256": "d09bf9126dd34c6a7d3d21e9c83bd3ad528fe13e661e54186ee7a51c8a36a81c",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/review_followup_results_20261004.py",
+    "destination": "scripts/revalidation/review_followup_results_20261004.py",
+    "sha256": "7eca55f653d3585bf463e30912d53d1fd21837002f926a8d31b435e44847ae41",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/review_v3_results_20261004.py",
+    "destination": "scripts/revalidation/review_v3_results_20261004.py",
+    "sha256": "07f20363cf507484c02844dfead312c308cd1e3a18e117dc40f592af9e9eeda4",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/run_post_confirmation_audit.py",
+    "destination": "scripts/revalidation/run_post_confirmation_audit.py",
+    "sha256": "b98d28370956b3aeb3d7b6a67bde0c21cd81dcf06bb617e46bca24bd92de6580",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/summarize_amis_v4.py",
+    "destination": "scripts/revalidation/summarize_amis_v4.py",
+    "sha256": "a0608acd2dd0628eb0ee299a2f02d824aec85882d71a973f77f40b54926059b5",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/review_lsr030_results.py",
+    "destination": "scripts/revalidation/review_lsr030_results.py",
+    "sha256": "1356f733de04b3e902b52e3299a620ccd904ad209562f8ee8060c99427a3ecc9",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/verify_corrected_controls_local.py",
+    "destination": "scripts/revalidation/verify_corrected_controls_local.py",
+    "sha256": "08a8e6447a72f2ed3746a71abde18b7c46438ab7da29eb7954110845d4451dbf",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/verify_fresh_confirmation_local.py",
+    "destination": "scripts/revalidation/verify_fresh_confirmation_local.py",
+    "sha256": "8d1018030aaacd4d9f8d63206e068a3b2bc1afeaee11ba43f1d3283d512ed2d5",
+    "reason": "Retained scientific analysis; only workspace root/path adjusted"
+  },
+  {
+    "local": "scratch/launch_fresh_confirmation_remote.py",
+    "destination": "src/experiment_runner/legacy.py",
+    "sha256": "e7f765955daecc36a0cb5849d3adb7a9a20f20db876aafe58cde5b6a417dc266",
+    "reason": "Only pure legacy runner-generation functions retained; duplicated transport removed"
+  }
+]

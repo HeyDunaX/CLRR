@@ -1,0 +1,54 @@
+{
+  "purpose": "G0 synthetic one-step normalization check",
+  "transformers": "4.57.6",
+  "records": [
+    {
+      "family": "baseline",
+      "accepts_loss_kwargs": [
+        false,
+        false
+      ],
+      "accum4_to_batch4_update_norm_ratio": 1.0,
+      "relative_update_difference": 2.718075222674088e-07,
+      "equal_label_tokens": true,
+      "dropout": 0,
+      "status": "PASS"
+    },
+    {
+      "family": "clrr",
+      "accepts_loss_kwargs": [
+        false,
+        false
+      ],
+      "accum4_to_batch4_update_norm_ratio": 1.0,
+      "relative_update_difference": 1.520756569561854e-07,
+      "equal_label_tokens": true,
+      "dropout": 0,
+      "status": "PASS"
+    },
+    {
+      "family": "lsr",
+      "accepts_loss_kwargs": [
+        false,
+        false
+      ],
+      "accum4_to_batch4_update_norm_ratio": 1.0,
+      "relative_update_difference": 2.3867605136729253e-07,
+      "equal_label_tokens": true,
+      "dropout": 0,
+      "status": "PASS"
+    },
+    {
+      "family": "full",
+      "accepts_loss_kwargs": [
+        false,
+        false
+      ],
+      "accum4_to_batch4_update_norm_ratio": 1.0,
+      "relative_update_difference": 1.4821340243997838e-07,
+      "equal_label_tokens": true,
+      "dropout": 0,
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "mbart-amis-full_a010_l003-seed42": {
+    "id": "mbart-amis-full_a010_l003-seed42",
+    "family": "full_detached_l003",
+    "seed": 42,
+    "alpha": 0.1,
+    "lambda": 0.03,
+    "detach": true,
+    "test_rows": 575,
+    "test_bleu": 19.21271047654623,
+    "test_chrf++": 18.392360127177163,
+    "test_chrf0": 18.085904185819647,
+    "prediction_sha256": "54152171879064c3e9ce8be65b23931626f997494366fe71f82c9c3ce07fe0e3"
+  },
+  "mbart-amis-full_a010_l003-seed43": {
+    "id": "mbart-amis-full_a010_l003-seed43",
+    "family": "full_detached_l003",
+    "seed": 43,
+    "alpha": 0.1,
+    "lambda": 0.03,
+    "detach": true,
+    "test_rows": 575,
+    "test_bleu": 19.118934162699553,
+    "test_chrf++": 18.21791409892143,
+    "test_chrf0": 17.850520073216416,
+    "prediction_sha256": "b22c1be6e65195a2dc500782ff00af87335a7c44f4f2f9091b3eb902a147a137"
+  },
+  "mbart-amis-full_a010_l003-seed44": {
+    "id": "mbart-amis-full_a010_l003-seed44",
+    "family": "full_detached_l003",
+    "seed": 44,
+    "alpha": 0.1,
+    "lambda": 0.03,
+    "detach": true,
+    "test_rows": 575,
+    "test_bleu": 18.924518168527797,
+    "test_chrf++": 18.086834765220992,
+    "test_chrf0": 17.657877450643984,
+    "prediction_sha256": "44b78370af983f3ea5c8487ee1b95783f8341f683fbda70c78d164d8bf2deb07"
+  }
+}

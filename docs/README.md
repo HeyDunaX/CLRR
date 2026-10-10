@@ -1,55 +1,43 @@
-# CLRR Documentation Hub
+# CLRR — tài liệu hiện hành
 
-> **Trung tâm tra cứu và điều hướng toàn bộ tài liệu nghiên cứu, bản thảo bài báo, thực nghiệm và vận hành của dự án Cross-Layer Residual Rewiring (CLRR).**
+**Tài liệu hiện hành.** Dùng các tài liệu chính dưới đây. Archive và source paper giữ nguyên trong đợt gom code.
 
----
+| Cần xem | File chính |
+|---|---|
+| Mục lục | `docs/README.md` |
+| Toàn bộ bảng số, cohort và provenance | [EXPERIMENTS_UPDATED.md](experiments/EXPERIMENTS_UPDATED.md) |
+| Protocol metrics, selection và thống kê | [METRICS.md](experiments/METRICS.md) |
+| Diễn giải kết quả, novelty và hypothesis | [RESEARCH_INSIGHTS.md](research/RESEARCH_INSIGHTS.md) |
+| Chiến lược, budget và GO/NO-GO | [ACL_LONG_TERM_EXPERIMENT_PLAN.md](research/ACL_LONG_TERM_EXPERIMENT_PLAN.md) |
+| Trạng thái thực thi, scripts và lệnh | [NEXT_EXPERIMENTS_HANDOFF_20261005.md](operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md) |
+| CLI args, lệnh bash và workflow train dùng chung | [EXPERIMENT_WORKFLOW.md](operations/EXPERIMENT_WORKFLOW.md) |
+| Điều khiển ba Colab | [COLAB_SSH_GUIDE.md](operations/COLAB_SSH_GUIDE.md) |
+| Tìm/lưu/push checkpoint public | [HUGGINGFACE_CHECKPOINT_STORAGE.md](operations/HUGGINGFACE_CHECKPOINT_STORAGE.md) |
+| Máy RTX6000 qua Tailscale | [RTX6000_TAILSCALE_RUNBOOK.md](operations/RTX6000_TAILSCALE_RUNBOOK.md) |
 
-## 🗺️ Bản đồ cấu trúc thư mục `docs/`
+## Trạng thái nghiên cứu
 
-```text
-docs/
-├── paper/                      # Bản thảo bài báo, mã nguồn LaTeX, styles ACL & file nộp bài
-│   ├── clrr_main.tex           # Bản thảo LaTeX chính thức hiện hành
-│   ├── clrr_main.pdf           # Bản PDF biên dịch mới nhất
-│   ├── clrr_references.bib     # Danh mục tài liệu trích dẫn BibTeX
-│   ├── acl.sty                 # Style chính thức ACL
-│   ├── acl_natbib.bst          # Style bibliography ACL
-│   ├── clrr_pdflatex_upload.zip# Bundle nộp bài / compile Overleaf/ArXiv
-│   ├── baseline-paper/         # Tài liệu bài báo baseline tham chiếu (TADA)
-│   ├── proposal.pdf            # Đề cương nghiên cứu ban đầu
-│   └── proposal_extracted.txt  # Văn bản trích xuất từ proposal
-│
-├── experiments/                # Kết quả thực nghiệm, số liệu kiểm toán & đối chuẩn
-│   ├── EXPERIMENTS_UPDATED.md  # Sổ kết quả thực nghiệm hiện hành duy nhất (A/B/C)
-│   ├── METRICS.md              # Chuẩn hóa quy chuẩn đo đạc (SacreBLEU, chrF++, Bootstrap)
-│   └── PEFT_PAPERS_REFERENCE.md# Tổng hợp đối chứng các tài liệu về LoRA / BitFit
-│
-├── research/                   # Cơ sở lý thuyết, phân tích ngôn ngữ học & kế hoạch
-│   ├── RESEARCH_INSIGHTS.md    # Lý thuyết dừng gradient, phân tích hình thái Amis & insights
-│   └── CLRR_GO_NOGO_PLAN.md    # Kế hoạch đánh giá ngưỡng Go/No-Go khoa học
-│
-├── operations/                 # Hướng dẫn vận hành, runbooks & kế hoạch kỹ thuật
-│   ├── CONFIGURATION_SEARCH_HANDOFF.md # Runbook bàn giao tối ưu cấu hình mBART Amis
-│   ├── COLAB_SSH_GUIDE.md      # Hướng dẫn kết nối SSH và quản trị GPU Colab
-│   └── implementation_plan.md  # Kế hoạch triển khai kỹ thuật tổng thể
-│
-└── archive/                    # Bản lưu trữ lịch sử các phiên bản cũ trước revision
-```
+Amis fresh confirmation32runs đã xong và không đạt gates của Full cũ. Kiểm chứng cơ chế đã xong. Turkish OPUS100 gốc seed42, bốn nhánh Baseline/Middle/LSR/Full đã train/test xong. GPU đã tắt sau backup. Bước tiếp theo là candidate card có controls; chưa launch nâng cấp. Đọc trạng thái ở đầu Insight/Long-term/Handoff thay vì lệnh cũ trong phụ lục lịch sử.
 
----
+## Nội dung đã gộp và cách đọc tham chiếu cũ
 
-## 🔍 Bảng tra cứu nhanh theo mục đích sử dụng
+| File riêng đã bỏ | Nội dung nằm tại |
+|---|---|
+| `TURKISH_MBART_SEED42_RESULTS.md` | [EXPERIMENTS_UPDATED.md](experiments/EXPERIMENTS_UPDATED.md#turkish-seed42) |
+| `CONFIRMATION_DESIGN_AND_GATES.md` | [ACL_LONG_TERM_EXPERIMENT_PLAN.md](research/ACL_LONG_TERM_EXPERIMENT_PLAN.md#locked-confirmation-protocol) |
+| `NOVELTY_AND_COMPARATOR_CARD.md` | [RESEARCH_INSIGHTS.md](research/RESEARCH_INSIGHTS.md#novelty-card-history) |
+| `PEFT_PAPERS_REFERENCE.md` | [RESEARCH_INSIGHTS.md](research/RESEARCH_INSIGHTS.md#peft-reference-history) |
+| `CONFIGURATION_SEARCH_HANDOFF.md` | [NEXT_EXPERIMENTS_HANDOFF_20261005.md](operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md#configuration-handoff-history) |
+| `AMIS_WARMUP_2_COLAB_RUNBOOK.md` | [NEXT_EXPERIMENTS_HANDOFF_20261005.md](operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md#warmup-runbook-history) |
+| `BAN_GIAO_CHAY_2_COLAB.md` | [NEXT_EXPERIMENTS_HANDOFF_20261005.md](operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md#warmup-handoff-history) |
+| `implementation_plan.md` | [NEXT_EXPERIMENTS_HANDOFF_20261005.md](operations/NEXT_EXPERIMENTS_HANDOFF_20261005.md#implementation-history) |
 
-| Nhu cầu của bạn | Thư mục trỏ tới | Tài liệu khuyến nghị đọc |
-| :--- | :---: | :--- |
-| **Xem bản thảo bài báo / Nộp bài** | [`paper/`](paper/) | • [`clrr_main.tex`](paper/clrr_main.tex): Bản thảo LaTeX mới nhất.<br>• [`clrr_main.pdf`](paper/clrr_main.pdf): Bản xem trước PDF hoàn chỉnh.<br>• [`clrr_references.bib`](paper/clrr_references.bib): Danh mục trích dẫn. |
-| **Tra cứu bảng số liệu & kết quả** | [`experiments/`](experiments/) | • [`EXPERIMENTS_UPDATED.md`](experiments/EXPERIMENTS_UPDATED.md): Bảng số liệu chuẩn hóa 36 runs & 42 paired bootstrap.<br>• [`METRICS.md`](experiments/METRICS.md): Phân tích chi tiết độ nhạy metric chrF++ và protocol. |
-| **Đọc cơ sở lý thuyết & insight** | [`research/`](research/) | • [`RESEARCH_INSIGHTS.md`](research/RESEARCH_INSIGHTS.md): Đạo hàm stop-gradient, phân tích hình thái Amis, hiện tượng vocab dispersion.<br>• [`CLRR_GO_NOGO_PLAN.md`](research/CLRR_GO_NOGO_PLAN.md): Tiêu chuẩn định lượng quyết định hướng đi. |
-| **Vận hành Colab, Train & Handoff** | [`operations/`](operations/) | • [`CONFIGURATION_SEARCH_HANDOFF.md`](operations/CONFIGURATION_SEARCH_HANDOFF.md): Runbook bàn giao các trial mBART.<br>• [`COLAB_SSH_GUIDE.md`](operations/COLAB_SSH_GUIDE.md): Thiết lập SSH ngrok/cloudflared với Colab A100.<br>• [`implementation_plan.md`](operations/implementation_plan.md): Lộ trình kỹ thuật tổng thể. |
-| **Xem lại tài liệu & số liệu cũ** | [`archive/`](archive/) | • Chứa các phiên bản báo cáo, bản nháp lịch sử đã được lưu trữ bảo toàn. |
+## Paper và lịch sử
 
----
+- [Source paper](paper/clrr_main.tex), [bibliography](paper/clrr_references.bib), style ACL và assets paper được giữ nguyên. Source paper không tự được viết lại hay compile trong bước gộp docs.
+- [Archive](archive/README.md) chỉ dùng để truy vết. Không sửa/xóa bất kỳ file nào trong `docs/archive/` hoặc `docs/research/archive/`.
+- Trên filesystem vẫn có `experiments/EXPERIMENTS_PAPER_MASTER_20261006.md` ngoài archive. Giữ nguyên snapshot này để tránh tác động nhầm bản của tác giả; **không dùng làm sổ số hiện hành** và không nhập bảng snapshot cũ để thay số trong `EXPERIMENTS_UPDATED.md`.
+- Tham chiếu cũ trong archive/report immutable có thể còn dùng tên file đã gộp: tra bảng phía trên và manifest, không chỉnh lại lịch sử.
+- Manifest gộp và kiểm tra bảo toàn nội dung: `outputs_rebuttal/docs_consolidation_20261008/manifest.json`.
 
-## 📌 Ghi chú quan trọng
-* Toàn bộ các script biên dịch bài báo (`compile_paper_pdftex.py`, `package_paper_pdftex.py`, `build_paper_tables.py`) đều tự động nhận diện bản thảo tại [`docs/paper/clrr_main.tex`](paper/clrr_main.tex).
-* Tất cả dữ liệu thử nghiệm thô và checkpoints lớn đã được loại trừ khỏi git để đảm bảo kho lưu trữ gọn nhẹ và sạch sẽ.
+Số liệu gốc trong CSV/JSON, checkpoint và archive không đổi. Các bảng đã gộp giữ nguyên số; chỉ bổ sung phạm vi và kết luận review hiện hành. Python local chạy conda `clrr`; dữ liệu ở `data_processed/<dataset>/`.

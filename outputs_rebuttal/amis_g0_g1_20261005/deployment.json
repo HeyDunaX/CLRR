@@ -1,0 +1,5 @@
+{
+  "cli_status": "[colab] gpu-a100-s-kkb-usc1f1-30ry7jrdui4u4 | Hardware: A100 | Shape: Standard | Variant: GPU | Status: IDLE\n",
+  "bundle_sha256": "a6f1f078609dd19fef34ffcc861f7b13f4b1e789feed5dfad8ec467b075769b7",
+  "high_mem_requested": false
+}

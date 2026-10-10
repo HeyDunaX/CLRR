@@ -1,0 +1,41 @@
+{
+  "status": "LOCAL_IMPLEMENTATION_PASS_GPU_BUNDLE_GATE_PENDING",
+  "runtime": {
+    "python": "3.11.15",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.57.6",
+    "accelerate": "1.15.0"
+  },
+  "source_sha256": {
+    "src/amis_rewire/ablation.py": "2dac024b77250e27c62db075e82a463685bbb6157a0a5cd8f53ee931e9d50cc8",
+    "src/amis_rewire/evaluation.py": "7fa94849efaf943c6045edc221669c9feb599678ae2320527993d378efec35fe",
+    "src/amis_rewire/metrics.py": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+    "src/amis_rewire/modeling.py": "092ef3809e742448849a7737691e9fabe4919688385f006eb4be7ca4e9db49e4",
+    "src/amis_rewire/prepare_data.py": "82a5db8863221e657c698bbd913fff05d65f0ec0403b7bba03328ffa66b84fad",
+    "src/amis_rewire/scientific_records.py": "dcae9a4d5931d289b52e549c74917f39697df09fcb7046f61a2b01f5f6d0ceb5",
+    "src/amis_rewire/train.py": "039e78c85dc5fe569aeedacc54fed6a91f5d1cec724d21daea4614dd05efaa66",
+    "src/amis_rewire/__init__.py": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+    "tests/smoke_rerun_optimization.py": "5b50aad53d5a1f573f01989bfc2582f30646f168e9362b31ade356c9ef12c354",
+    "tests/test_rerun_safety.py": "9396ff0b5b0d9f49eb1d8018a835c23752b109f437896e48b9acc48362caf47f",
+    "tests/smoke_precision_training.py": "d8334337cac6e7f68dbb4f2970a685499e6450ed045a3445412ab82e1a07e957",
+    "tests/smoke_attached_routing.py": "2eafeae2228fcf9c59d6f49eb3693ebd1842467b6dfbff7cae98f656a9c95813",
+    "tests/smoke_warmup_records.py": "c1eaaf2015552fe3883d815767fff67b4c88ce314b7dd9fcce93b01389901dea"
+  },
+  "data_sha256": {
+    "train": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6",
+    "validation": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "test": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+  },
+  "verified_receipts": {
+    "optimization_cases": 16,
+    "real_cli_lifecycle_cases": 4,
+    "warmup_restore_cases": 2
+  },
+  "no_new_colab_units_used": true,
+  "new_research_models_trained": 0,
+  "limits": [
+    "CPU fixtures; not full GPU training guarantee",
+    "baseline reuse provenance conditional",
+    "HF safety tests use mocks"
+  ]
+}

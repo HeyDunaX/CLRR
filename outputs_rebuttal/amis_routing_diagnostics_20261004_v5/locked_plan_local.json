@@ -1,0 +1,52 @@
+{
+  "experiment": "V5",
+  "training_runs": 0,
+  "models": 12,
+  "full_generations": 45,
+  "families": [
+    "original_full_detached",
+    "tuned_lsr",
+    "matched_lsr",
+    "baseline"
+  ],
+  "alpha_values": [
+    0.05,
+    0.075,
+    0.1,
+    0.125,
+    0.15
+  ],
+  "disabled_groups": {
+    "early": [
+      3,
+      4,
+      5
+    ],
+    "middle": [
+      6,
+      7,
+      8
+    ],
+    "late": [
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "selection": "One common inference alpha across 3 Full seeds; validation beam1 native chrF++, BLEU and chrF0 no-harm guard against alpha=.1. Test never selects alpha or layers.",
+  "scope": "Frozen checkpoint interventions; test beam1 only predeclared Full/tuned controls. Not a train-time alpha search. Groups have unequal sizes and recursively alter downstream cache.",
+  "gold_validation_sha256": {
+    "mbart-amis-full_a010_l010-seed42-replica": "5978990cac96a39750d44d108806841c03f8ad055746bf20142fad3894b9a94f",
+    "mbart-amis-full-seed43": "0431d1320a653f505a107bed808f57c43f6b054900e4f5c7006e369881cbc334",
+    "mbart-amis-full-seed44": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6"
+  },
+  "gold_test_sha256": {
+    "mbart-amis-lsr_l003-seed42": "911fc0660759fad1374731a1c128ad808e9672f366eb0c9c9ba117230b1303b8",
+    "mbart-amis-lsr_l003-seed43": "b4a719015d4a058c2e38bf157089ec9d2f22665be71c94775b98868214fe3e22",
+    "mbart-amis-lsr_l003-seed44": "d95fff81bfdb7c76a71abe480a8efa25166b97ce51806775576214e922f527ae",
+    "mbart-amis-full_a010_l010-seed42-replica": "e1a3620c109d2b38e011ebb4ae874bee6cc977717d56176584321b3d0830f6da",
+    "mbart-amis-full-seed43": "a5c3fb6f16c4f28ec138292449ebf519f5ee67e24dd5e79f39bfe8220a3f2d05",
+    "mbart-amis-full-seed44": "56841452d1ff220ad545b484e1ab33e7d8b6e56c59b7406b04ef8fb1ec90cb9a"
+  }
+}

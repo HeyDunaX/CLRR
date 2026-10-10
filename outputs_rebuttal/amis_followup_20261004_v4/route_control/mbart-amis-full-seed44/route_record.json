@@ -1,0 +1,189 @@
+{
+  "id": "mbart-amis-full-seed44",
+  "seed": 44,
+  "validation_rows": 576,
+  "route_on_replay": "EXACT_PREDICTION_MATCH_V2",
+  "fixed_validation_indices": [
+    [
+      10,
+      30,
+      56,
+      60
+    ],
+    [
+      76,
+      86,
+      89,
+      115
+    ],
+    [
+      118,
+      144,
+      154,
+      185
+    ],
+    [
+      207,
+      231,
+      303,
+      307
+    ],
+    [
+      321,
+      330,
+      375,
+      380
+    ],
+    [
+      395,
+      397,
+      406,
+      428
+    ],
+    [
+      501,
+      505,
+      508,
+      509
+    ],
+    [
+      525,
+      528,
+      539,
+      556
+    ]
+  ],
+  "sentences_changed": 536,
+  "pct_changed": 93.05555555555556,
+  "fixed_32_diagnostics": {
+    "teacher_forced_ce_on": 3.005012733015147,
+    "teacher_forced_ce_off": 3.241121134297414,
+    "ce_delta_on_minus_off": -0.23610840128226715,
+    "logit_diff_mean": 1.832123140686181,
+    "logit_diff_max": 22.256195068359375,
+    "alpha0_vs_clean_raw_max": 0.0,
+    "batches": [
+      {
+        "indices": [
+          10,
+          30,
+          56,
+          60
+        ],
+        "ce_on": 3.3829398155212402,
+        "ce_off": 3.7160704135894775,
+        "label_tokens": 52,
+        "logit_diff_mean": 1.8643184900283813,
+        "logit_diff_max": 16.92568588256836
+      },
+      {
+        "indices": [
+          76,
+          86,
+          89,
+          115
+        ],
+        "ce_on": 3.5442347526550293,
+        "ce_off": 3.6818490028381348,
+        "label_tokens": 37,
+        "logit_diff_mean": 1.6500006914138794,
+        "logit_diff_max": 19.39748764038086
+      },
+      {
+        "indices": [
+          118,
+          144,
+          154,
+          185
+        ],
+        "ce_on": 2.582662343978882,
+        "ce_off": 2.9177005290985107,
+        "label_tokens": 45,
+        "logit_diff_mean": 1.4594234228134155,
+        "logit_diff_max": 15.321930885314941
+      },
+      {
+        "indices": [
+          207,
+          231,
+          303,
+          307
+        ],
+        "ce_on": 3.797139883041382,
+        "ce_off": 3.6096858978271484,
+        "label_tokens": 50,
+        "logit_diff_mean": 1.6207540035247803,
+        "logit_diff_max": 18.4512939453125
+      },
+      {
+        "indices": [
+          321,
+          330,
+          375,
+          380
+        ],
+        "ce_on": 2.4162442684173584,
+        "ce_off": 2.765681505203247,
+        "label_tokens": 45,
+        "logit_diff_mean": 2.2729461193084717,
+        "logit_diff_max": 20.232500076293945
+      },
+      {
+        "indices": [
+          395,
+          397,
+          406,
+          428
+        ],
+        "ce_on": 2.8925273418426514,
+        "ce_off": 3.3214657306671143,
+        "label_tokens": 42,
+        "logit_diff_mean": 1.9500248432159424,
+        "logit_diff_max": 18.046627044677734
+      },
+      {
+        "indices": [
+          501,
+          505,
+          508,
+          509
+        ],
+        "ce_on": 3.10896635055542,
+        "ce_off": 3.502579927444458,
+        "label_tokens": 39,
+        "logit_diff_mean": 1.774196743965149,
+        "logit_diff_max": 20.699460983276367
+      },
+      {
+        "indices": [
+          525,
+          528,
+          539,
+          556
+        ],
+        "ce_on": 2.2183642387390137,
+        "ce_off": 2.3588547706604004,
+        "label_tokens": 42,
+        "logit_diff_mean": 1.9850223064422607,
+        "logit_diff_max": 22.256195068359375
+      }
+    ],
+    "ce_aggregation": "nonignored_label_token_weighted",
+    "logit_scope": "all logits including label padding"
+  },
+  "route_on": {
+    "bleu": 16.932429309462727,
+    "chrf++": 14.348330285453207,
+    "chrf0": 16.512759705934826
+  },
+  "route_off": {
+    "bleu": 14.21372057393737,
+    "chrf++": 11.845346715820286,
+    "chrf0": 13.655352793085477
+  },
+  "delta_on_minus_off": {
+    "bleu": 2.7187087355253556,
+    "chrf++": 2.502983569632921,
+    "chrf0": 2.857406912849349
+  }
+}

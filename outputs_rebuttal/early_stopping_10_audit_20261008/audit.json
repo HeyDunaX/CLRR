@@ -1,0 +1,228 @@
+{
+  "date": "2026-10-08",
+  "public_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+  "scope": "Read-only audit of baseline/comparators. No training or source/config changes. CLRR/LSR/Full and their historical ablations excluded by user. Historical cohorts stay separate.",
+  "records": [
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Baseline corrected development",
+      "seeds": "42,43,44",
+      "count": 3,
+      "epochs": "20 / 20 / 20",
+      "decision": "KEEP",
+      "evidence": "Corrected seed42 final state; original seed43/44 final train summaries show epoch20."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Baseline fresh confirmation",
+      "seeds": "45,47,48,49,50,51,52",
+      "count": 7,
+      "epochs": "20 each",
+      "decision": "KEEP",
+      "evidence": "training_selection_audit.csv and final_trainer_state.json"
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Baseline fresh confirmation",
+      "seeds": "46",
+      "count": 1,
+      "epochs": "18",
+      "decision": "RERUN",
+      "evidence": "Stopped before20; public best.zip lacks optimizer, scheduler, RNG and stopping-state weights."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Baseline original historical",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "20",
+      "decision": "KEEP_HISTORICAL",
+      "evidence": "Original metrics epoch20; separate cohort, not pooled with corrected baseline."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Middle Alignment",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected weights archive has no trainer state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Strong LoRA A",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "20",
+      "decision": "KEEP",
+      "evidence": "Preserved run_a_verification.json completed_epochs20 and final train log."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Strong LoRA B",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "20",
+      "decision": "KEEP",
+      "evidence": "Preserved run_b_verification.json completed_epochs20 and final train log."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "Narrow LoRA",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected adapter archive has no trainer state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mBART",
+      "method": "BitFit",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected archive has no trainer state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "Baseline",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "best19; endpoint unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Selected trainer state epoch19/684, cap720, early-stop counter0. Not final state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "Middle Alignment",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "best19; endpoint unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Selected trainer state epoch19/684, cap720, early-stop counter0. Not final state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "Strong LoRA A",
+      "seeds": "42 (docs)",
+      "count": 1,
+      "epochs": "best18; endpoint unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Docs show best18/648; no matching final archive/metadata identified in public main inventory."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "Strong LoRA B",
+      "seeds": "42 (docs)",
+      "count": 1,
+      "epochs": "best19; endpoint unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Docs show best19/684; no matching final archive/metadata identified in public main inventory."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "Narrow LoRA",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "20",
+      "decision": "KEEP",
+      "evidence": "Archived trainer state epoch20, global_step=max_steps=720."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "NLLB",
+      "method": "BitFit",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "best18; endpoint unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Selected trainer state epoch18/648, cap720, early-stop counter0. Not final state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mT5",
+      "method": "Baseline",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "20",
+      "decision": "KEEP",
+      "evidence": "Original training metrics epoch20."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "mT5",
+      "method": "Middle Alignment",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected weights archive has no trainer state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "ByT5",
+      "method": "Baseline",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected weights archive has no trainer state."
+    },
+    {
+      "dataset": "Amis",
+      "backbone": "ByT5",
+      "method": "Middle Alignment",
+      "seeds": "unrecorded",
+      "count": 1,
+      "epochs": "unknown",
+      "decision": "UNRESOLVED",
+      "evidence": "Metrics omit completion epoch; selected weights archive has no trainer state."
+    },
+    {
+      "dataset": "Turkish",
+      "backbone": "mBART",
+      "method": "Baseline",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "12, already ES10",
+      "decision": "KEEP_ES10",
+      "evidence": "Existing final receipt/config: patience10, endpoint12, selected epoch2."
+    },
+    {
+      "dataset": "Turkish",
+      "backbone": "mBART",
+      "method": "Middle Alignment",
+      "seeds": "42",
+      "count": 1,
+      "epochs": "12, already ES10",
+      "decision": "KEEP_ES10",
+      "evidence": "Existing final receipt/config: patience10, endpoint12, selected epoch2."
+    }
+  ],
+  "counts": {
+    "keep": 17,
+    "rerun": 1,
+    "unresolved": 11
+  },
+  "rerun_bounds": {
+    "confirmed": 1,
+    "maximum_if_all_unresolved_recreated": 12
+  },
+  "reuse_rule": "Patience4 run completed at20 can be reused for cap20/patience10 decision if all other recipe and selection settings are unchanged. Actual historical patience remains4 in metadata.",
+  "unresolved_rule": "Missing endpoint metadata is not evidence of early stopping. Best epoch is not completion epoch."
+}

@@ -1,0 +1,8 @@
+{
+  "account": "2",
+  "status": "FAILED",
+  "completed": [],
+  "started_utc_epoch": 1791377501.3585622,
+  "error_type": "CalledProcessError",
+  "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', 'scripts/revalidation/smoke_fullsize_turkish.py']' returned non-zero exit status 1."
+}

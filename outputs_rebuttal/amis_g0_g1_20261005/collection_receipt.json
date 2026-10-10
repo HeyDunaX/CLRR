@@ -1,0 +1,12 @@
+{
+  "target_anchor/COMPLETE.json": "8c0749857e10755d95d695f4d4f5238ff8200a1887a88cc3b71303461162a43a",
+  "target_anchor/mbart-amis-full_a010_l010-seed42-replica.json": "b152f0d18fe9d3a430c8c5eb2eaec682095cb7b0eaa37df2e02a7ac90a82af37",
+  "target_anchor/runtime.json": "5ad9ef9826f9ad10fd54e5c774c1600dd3ed28b23c4430fb4acf61e9c6e9ef14",
+  "target_anchor/mbart-amis-full-seed44.json": "865bf041d5e6f19cf48d08b03c4d0cf8d7560809ef0f438e38f9de6b2070bc06",
+  "target_anchor/mbart-amis-full-seed43.json": "1939ded2148c42605338ca4c7c1ca81e87056c3356977590b6409a8ca3c55218",
+  "target_anchor/loading_receipts/mbart-amis-full_a010_l010-seed42-replica.json": "874fd4e848cee0640c0849bdaec801687dde1bf656e40d032d437f7a3c07162a",
+  "target_anchor/loading_receipts/mbart-amis-full-seed44.json": "ccd64f9a7ee633ce99ab87cb3b744672a9fe86e634dc2786403f7f74fda4522e",
+  "target_anchor/loading_receipts/mbart-amis-full-seed43.json": "a4fcd2e17459bd5d4c3332c1a2325aea6f9690c5f9ec9a0290f7c1e71bb9ec5d",
+  "accumulation_gpu_fixed/receipt.json": "72ef07bc943bd56954e80bd7c00a535bd979d5f5dad5a3f0e5d3afcdc08e2ae7",
+  "gpu_regression_stdout.txt": "03bc295dd4a7863de4437b59b82eee79f76b80b8b6d6fc4c332227c74f556e24"
+}

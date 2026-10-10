@@ -8,12 +8,12 @@ from torch import nn
 from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 
 try:
-    from amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
+    from methods.original import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
     from comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
     from peft_baselines.bitfit_adapter import apply_bitfit_to_model
     from peft_baselines.lora_adapter import apply_lora_to_model
 except ImportError:
-    from src.amis_rewire.modeling import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
+    from src.methods.original import CrossLayerResidualRewire, JEPAGuidedSeq2SeqLM
     from src.comparative_baselines.middle_align_acl2025.model import MiddleAlignMT5
     from src.peft_baselines.bitfit_adapter import apply_bitfit_to_model
     from src.peft_baselines.lora_adapter import apply_lora_to_model

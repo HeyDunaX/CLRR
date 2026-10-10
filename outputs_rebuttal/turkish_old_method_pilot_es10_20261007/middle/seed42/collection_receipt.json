@@ -1,0 +1,24 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+  "verified": true,
+  "files": {
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/best.zip": {
+      "sha256": "06916fdc4b774b77ca097acbd6cd02bb54d9b2804b0d494ef345c382546172d5",
+      "size": 2271357889
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+      "sha256": "060a4c91f665b7fcda85d0ae80f509c00f67f9622a71587ab38acbb7cb130fb2",
+      "size": 5380
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+      "sha256": "acc77f36d0e9887e48ca281cefa5d1461f0cf90cce95a520c1914995a1d28f17",
+      "size": 860
+    },
+    "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+      "sha256": "49e5618433c051ed8193e1304ad1bab04d4a19a4c23391f71d238a0db5e93030",
+      "size": 253159
+    }
+  },
+  "verification": "Public LFS archive SHA256/size; downloaded test files Git/LFS hashes; recomputed all three metrics from original 2000 ordered test rows"
+}

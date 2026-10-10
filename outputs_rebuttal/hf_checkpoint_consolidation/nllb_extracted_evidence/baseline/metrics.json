@@ -1,0 +1,18 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "method": "baseline",
+  "trainable_parameters": 615073792,
+  "total_parameters": 615073792,
+  "trainable_percent": 100.0,
+  "training_time_seconds": 1585.3495638370514,
+  "eval_bleu": 14.934748645361434,
+  "eval_chrf++": 12.072971449334442,
+  "test_bleu": 13.500146229253977,
+  "test_chrf++": 10.438854361979685,
+  "test_chrf++_zh": 18.088532605347186,
+  "metadata": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "method": "baseline",
+    "description": "Standard Full Fine-Tuning"
+  }
+}

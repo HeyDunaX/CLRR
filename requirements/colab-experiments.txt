@@ -1,0 +1,16 @@
+# Runtime already used by the standardized A100 experiments.
+# Install torch separately from the CUDA 12.4 index; Python is 3.13 in conda clrr.
+torch==2.6.0
+transformers==4.57.6
+tokenizers==0.22.2
+huggingface_hub==0.36.2
+accelerate==1.15.0
+peft==0.21.0
+sentencepiece==0.2.2
+datasets==3.6.0
+sacrebleu==2.6.0
+pandas==3.0.6
+numpy==2.5.3
+scipy==1.17.1
+protobuf==7.36.2
+safetensors==0.8.0

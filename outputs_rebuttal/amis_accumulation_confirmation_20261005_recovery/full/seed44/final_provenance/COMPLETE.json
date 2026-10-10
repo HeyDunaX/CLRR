@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "family": "full",
+  "seed": 44,
+  "run": "mbart-amis-full_a010_l010-seed44-accumfixed-recovery",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/full/seed44/runs/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/checkpoint-684",
+  "best_metric": 14.216383723587075,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-accumulation-confirmation-20261005",
+  "hf_prefix": "amis_accumulation_confirmation_20261005_recovery",
+  "selected_and_exported_weight_digest": "948dd683a9d5d4c79095aa8d7cbe64c2fcac9cf3ba9fe080a813c53ba511bd34",
+  "post_selection_test_bleu": 19.891624365979126,
+  "post_selection_test_chrfpp": 18.699629087985407,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

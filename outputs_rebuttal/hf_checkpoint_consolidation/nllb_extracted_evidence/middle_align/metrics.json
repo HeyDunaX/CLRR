@@ -1,0 +1,20 @@
+{
+  "model": "facebook/nllb-200-distilled-600M",
+  "method": "middle_align",
+  "trainable_parameters": 615073792,
+  "total_parameters": 615073792,
+  "trainable_percent": 100.0,
+  "training_time_seconds": 1664.3204374313354,
+  "eval_bleu": 14.800030393575584,
+  "eval_chrf++": 11.83512209914912,
+  "test_bleu": 13.964781812018156,
+  "test_chrf++": 10.659604323521558,
+  "test_chrf++_zh": 18.44476369249674,
+  "metadata": {
+    "model": "facebook/nllb-200-distilled-600M",
+    "method": "middle_align",
+    "middle_layer_idx": 6,
+    "align_weight": 0.1,
+    "description": "Middle-Layer Alignment (Layer 6, ACL 2025)"
+  }
+}

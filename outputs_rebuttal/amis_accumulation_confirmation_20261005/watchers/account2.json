@@ -1,0 +1,58 @@
+{
+  "account": "2",
+  "family": "full",
+  "session": "colab2",
+  "started_at_utc": "2026-10-05T06:03:24.526666+00:00",
+  "verified_seeds": [
+    43
+  ],
+  "status": "STOPPED_FOR_SEED44_BACKUP_RECOVERY",
+  "updated_at_utc": "2026-10-05T06:28:20.316054+00:00",
+  "remote_status": {
+    "environment_ready": true,
+    "started": true,
+    "job_done": false,
+    "process_alive": true,
+    "family": "full",
+    "seeds": {
+      "43": {
+        "complete": true,
+        "hf_verified": true,
+        "cleaned": true,
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.327070291168992,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/runs/mbart-amis-full_a010_l010-seed43-accumfixed/checkpoint-684"
+        },
+        "result": {
+          "status": "COMPLETE",
+          "family": "full",
+          "seed": 43,
+          "run": "mbart-amis-full_a010_l010-seed43-accumfixed",
+          "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/runs/mbart-amis-full_a010_l010-seed43-accumfixed/checkpoint-684",
+          "best_metric": 14.327070291168992,
+          "completed_epochs": 20.0,
+          "hf_repo": "FiveC/amis-rewire-checkpoints",
+          "hf_prefix": "amis_accumulation_confirmation_20261005",
+          "selected_and_exported_weight_digest": "8371991485108199aae765eadc28d45dd92bc1c6b3563b78de73c1140bddcbd5",
+          "post_selection_test_bleu": 20.177995172130316,
+          "post_selection_test_chrfpp": 18.856774144274585,
+          "old_scores_untouched": true,
+          "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+        }
+      },
+      "44": {
+        "complete": false,
+        "hf_verified": false,
+        "cleaned": false,
+        "selection": {
+          "epoch": 4.0,
+          "global_step": 144,
+          "best_metric": 10.620800590355604,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed44/runs/mbart-amis-full_a010_l010-seed44-accumfixed/checkpoint-144"
+        }
+      }
+    }
+  }
+}

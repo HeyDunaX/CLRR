@@ -1,0 +1,74 @@
+{
+  "status": "VERIFIED",
+  "family": "full",
+  "seed": 42,
+  "selected_step": 720,
+  "selected_epoch": 20.0,
+  "old_selected_checkpoint": "/content/clrr_confirmation/project/outputs_rebuttal/amis_configuration_confirmation_20261004/runs/mbart-amis-full_a010_l010-seed42-replica/checkpoint-720",
+  "completed_epochs": 20.0,
+  "metric_and_reference_checks": "PASS",
+  "bundle_hashes_match": true,
+  "comparisons": [
+    {
+      "split": "validation",
+      "old_bleu": 17.64365142895975,
+      "new_bleu": 17.35568892362328,
+      "delta_bleu": -0.28796250533646983,
+      "old_chrfpp": 14.731667659986464,
+      "new_chrfpp": 14.477980489784093,
+      "delta_chrfpp": -0.25368717020237064,
+      "changed_hypotheses": 437,
+      "rows": 576,
+      "prediction_sha256": "afd4599440487c327ce04f5b18284b5873e64485675f2fa55819176c982d51cb"
+    },
+    {
+      "split": "test",
+      "old_bleu": 19.956573804384817,
+      "new_bleu": 20.321294974643692,
+      "delta_bleu": 0.36472117025887485,
+      "old_chrfpp": 18.88781117201183,
+      "new_chrfpp": 19.014706982068734,
+      "delta_chrfpp": 0.12689581005690442,
+      "changed_hypotheses": 400,
+      "rows": 575,
+      "prediction_sha256": "8ee4797be532e4e098762b58ba7e0d92a1bbd311135b912346ac4117a662791b"
+    }
+  ],
+  "logged_gradient_norms": {
+    "count": 72,
+    "minimum": 0.66323322057724,
+    "maximum": 4.831656455993652,
+    "sampled_norms_above_clip1": 57
+  },
+  "zip_sha256": "5bbc17527a442613deb8d4502eb36163b9647ec6f2d30e1cf30a2025bff2779e",
+  "hf_archive": {
+    "status": "COMPLETE",
+    "family": "full",
+    "run": "mbart-amis-full_a010_l010-seed42-accumfixed",
+    "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_pilot_20261005/full/runs/mbart-amis-full_a010_l010-seed42-accumfixed/checkpoint-720",
+    "best_metric": 14.477980489784093,
+    "completed_epochs": 20.0,
+    "hf_repo": "FiveC/amis-rewire-checkpoints",
+    "hf_prefix": "amis_accumulation_pilot_20261005",
+    "selected_and_exported_weight_digest": "d41eccb9df29e0ab86dfaa664918cc14b8f3065dc4b93a21da15dc5ae358004e",
+    "post_selection_test_bleu": 20.321294974643692,
+    "post_selection_test_chrfpp": 19.014706982068734,
+    "old_scores_untouched": true,
+    "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only",
+    "archive_size": 2270713935,
+    "archive_sha256": "7497cc3b5ccc11df3057fe300307ab13d1d54f5a68c2f5b7e08e108679826135",
+    "archive_path": "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/mbart-amis-full_a010_l010-seed42-accumfixed-best.zip",
+    "hf_revision": "4a3ac5f05ca633b131a773ce9733e353aa7707d8",
+    "remote_archive_verified": true,
+    "remote_metadata_verified": {
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/provenance/final_trainer_state.json": true,
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/provenance/COMPLETE.json": true,
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/selected_provenance/trainer_state.json": true,
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/metrics.json": true,
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/test_metrics.json": true,
+      "amis_accumulation_pilot_20261005/mbart-amis-full_a010_l010-seed42-accumfixed/test_predictions.csv": true
+    },
+    "source_hashes_match": true
+  },
+  "limit": "One seed; sampled gradient norms are not every optimizer step. Historical exact runtime/full trajectory incomplete."
+}

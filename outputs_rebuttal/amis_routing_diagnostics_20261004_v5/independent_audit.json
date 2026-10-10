@@ -1,0 +1,593 @@
+{
+  "status": "INVENTORY_PROTOCOL_DISAGREEMENT",
+  "conditions_checked": [
+    {
+      "id": "mbart-amis-lsr_l010-seed42",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "6cbef1c9e1e117761448a4d623899aa0cb4bcfab43f22ea59a18425b25e25abb",
+      "recomputed_scores": {
+        "bleu": 16.568762896375635,
+        "chrf++": 14.167405662566932,
+        "chrf0": 16.273105886464958
+      }
+    },
+    {
+      "id": "mbart-amis-lsr-seed43",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "d4c83b0008fa9e20c7998a10725fd2d964a1d72330395e7703c41aba3e47714b",
+      "recomputed_scores": {
+        "bleu": 16.465320409451696,
+        "chrf++": 13.945165498648135,
+        "chrf0": 16.04190454282057
+      }
+    },
+    {
+      "id": "mbart-amis-lsr-seed44",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "22929327690b4a8dca206404a11bef0369b4cba275fbe8f0791159491b842179",
+      "recomputed_scores": {
+        "bleu": 16.59496986225757,
+        "chrf++": 14.069770895728148,
+        "chrf0": 16.188010053235004
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "5c057330a13333267ce0fe647b687a44366fba164d23fc03ea2e31886ada247c",
+      "recomputed_scores": {
+        "bleu": 17.787285341686463,
+        "chrf++": 14.85874740143626,
+        "chrf0": 17.13644903735976
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "0c4025bf8a686ac960312703bc3240f9d9c9f7e27b2f8d4ffd8103441b93798a",
+      "recomputed_scores": {
+        "bleu": 18.343871050474604,
+        "chrf++": 15.144115755475788,
+        "chrf0": 17.4691526754742
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "c7c177d040df76bb38045a55491879cf308643317af6e516c0ed181539c152b2",
+      "recomputed_scores": {
+        "bleu": 19.238578765870763,
+        "chrf++": 18.45967593899025,
+        "chrf0": 18.107090018707247
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "1ec71afbcc4f13d476abf7e493742129d5b3451f65abaac1e2b27e44d753964e",
+      "recomputed_scores": {
+        "bleu": 16.362132373650912,
+        "chrf++": 14.010880174033186,
+        "chrf0": 16.118664366995898
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "ea7a994957857a990456f5a7da557151caf2483783f5d2f54b480b15b81f1d6a",
+      "recomputed_scores": {
+        "bleu": 17.422312228752045,
+        "chrf++": 14.50798506660088,
+        "chrf0": 16.727276055381935
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "0675a1dfb141b4da112d50d3d6dbdc277f32f5f92ff00197f2e0dd5cc9a91b11",
+      "recomputed_scores": {
+        "bleu": 18.635028142353764,
+        "chrf++": 18.118229031490028,
+        "chrf0": 17.684687751277554
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "30c60d6f8e49aa1f7943e958931f43d70a07813301b0da7fcd816c2da0864ed3",
+      "recomputed_scores": {
+        "bleu": 16.833193983741726,
+        "chrf++": 14.081403953148813,
+        "chrf0": 16.229853186440483
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "68dae6259e1e5497ee57cca5cd688a16124d30dbdd564c2042a7938fe77099a8",
+      "recomputed_scores": {
+        "bleu": 17.142654679284067,
+        "chrf++": 14.335939354627945,
+        "chrf0": 16.52579008349401
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "86fc9f21d7edf2cc3c48f7da514f1b3ffdacc885e54bd7de69fb633231e59bac",
+      "recomputed_scores": {
+        "bleu": 18.38565512713757,
+        "chrf++": 17.851235188354725,
+        "chrf0": 17.323732387469928
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "5978990cac96a39750d44d108806841c03f8ad055746bf20142fad3894b9a94f",
+      "recomputed_scores": {
+        "bleu": 17.64365142895975,
+        "chrf++": 14.731667659986464,
+        "chrf0": 16.87520033372062
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_alpha_0050_b1",
+      "rows": 576,
+      "prediction_sha256": "203aeff01958d0f83874ff00f300f7cb4ff2396d564415082b40c2dfbfecc633",
+      "recomputed_scores": {
+        "bleu": 16.91655383120743,
+        "chrf++": 14.213412824641154,
+        "chrf0": 16.32613502243641
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_alpha_0075_b1",
+      "rows": 576,
+      "prediction_sha256": "ad17690a51bd427d67b234afbb52071f792a550f263882e5ae4c169d573e5e1e",
+      "recomputed_scores": {
+        "bleu": 17.584327490423693,
+        "chrf++": 14.701599460473949,
+        "chrf0": 16.86795535085615
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_alpha_0125_b1",
+      "rows": 576,
+      "prediction_sha256": "778a0b75d3338f6b38eaee039ada58d11f95661349c255c6b1f0e00dfd647a7c",
+      "recomputed_scores": {
+        "bleu": 16.972775936711923,
+        "chrf++": 14.305818109983113,
+        "chrf0": 16.435202187570837
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_alpha_0150_b1",
+      "rows": 576,
+      "prediction_sha256": "fd2651ae1744262966c496377d7d42652f6308710ac41109b40e896aaf49aeb2",
+      "recomputed_scores": {
+        "bleu": 16.617619639329664,
+        "chrf++": 14.081323040041442,
+        "chrf0": 16.20219122503855
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_no_early_b1",
+      "rows": 576,
+      "prediction_sha256": "c6a04407c486a15332eb30aacba22a6fcd89b38b6f3ea5eca5e23c603dfa48d3",
+      "recomputed_scores": {
+        "bleu": 17.535938315551846,
+        "chrf++": 14.656333627005914,
+        "chrf0": 16.871216964340483
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_no_middle_b1",
+      "rows": 576,
+      "prediction_sha256": "715f94dd6603621b13fd85a090d56be8569b3e05cf23583709b35300cecb5803",
+      "recomputed_scores": {
+        "bleu": 17.48154209960681,
+        "chrf++": 14.448025665637482,
+        "chrf0": 16.60004350138179
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_no_late_b1",
+      "rows": 576,
+      "prediction_sha256": "d0e3e69c1ea64c1b47b7098460d3290221ea7acf99bc9d07f302f6eafb61e153",
+      "recomputed_scores": {
+        "bleu": 17.137767410268605,
+        "chrf++": 14.38247464382633,
+        "chrf0": 16.467552898239155
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "3f886558415c25b5d43d6bdf83bf71f2734c8b6a4cc9939b71f9ccd16e713faa",
+      "recomputed_scores": {
+        "bleu": 18.48721295962333,
+        "chrf++": 15.218553918989086,
+        "chrf0": 17.387970441076504
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "725ee865de3aa259c5875d821a9c28703fd609a069813c200950d7a38be96e6d",
+      "recomputed_scores": {
+        "bleu": 18.42380963941553,
+        "chrf++": 17.935520245145298,
+        "chrf0": 17.43752524459477
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "0431d1320a653f505a107bed808f57c43f6b054900e4f5c7006e369881cbc334",
+      "recomputed_scores": {
+        "bleu": 17.06453509078412,
+        "chrf++": 14.41260859405018,
+        "chrf0": 16.587805503890078
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_alpha_0050_b1",
+      "rows": 576,
+      "prediction_sha256": "00a563261da3c4f142bd458c37215c0acaeb64e65f43e347f1c5be1c283bca96",
+      "recomputed_scores": {
+        "bleu": 16.304212424017194,
+        "chrf++": 11.89648500689911,
+        "chrf0": 15.634746134870014
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_alpha_0075_b1",
+      "rows": 576,
+      "prediction_sha256": "2f732d8d9d1eaa9c073c3a55e4152bb52a16b0f76235dfa27c74d0bcd878c5ed",
+      "recomputed_scores": {
+        "bleu": 16.79353098498448,
+        "chrf++": 13.995630858160856,
+        "chrf0": 16.12990178242279
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_alpha_0125_b1",
+      "rows": 576,
+      "prediction_sha256": "b996191838493adaee7a5436677bc7afe76c3ed7c836dd5a315f2342fb5f883b",
+      "recomputed_scores": {
+        "bleu": 16.43672939574043,
+        "chrf++": 14.075630851679488,
+        "chrf0": 16.194873914074908
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_alpha_0150_b1",
+      "rows": 576,
+      "prediction_sha256": "35915393a6062f2492c5663b08a490558d77233ec5c135fe4b8d830d6c9b740f",
+      "recomputed_scores": {
+        "bleu": 16.05991796675093,
+        "chrf++": 13.81681768265531,
+        "chrf0": 15.892781132884615
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_no_early_b1",
+      "rows": 576,
+      "prediction_sha256": "7b61c32f8b6ea80d7f5ef906e919f0cd15d66f5e6b226ef6f71737af832be645",
+      "recomputed_scores": {
+        "bleu": 16.63799225920111,
+        "chrf++": 13.865679735512835,
+        "chrf0": 15.977731748056248
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_no_middle_b1",
+      "rows": 576,
+      "prediction_sha256": "6f55bed35a2c0a226c94424d31d96e7356e3d4d87974185aef18539d5b1fcb85",
+      "recomputed_scores": {
+        "bleu": 16.62508426297061,
+        "chrf++": 12.145411759158211,
+        "chrf0": 15.966561035871548
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_no_late_b1",
+      "rows": 576,
+      "prediction_sha256": "8bf79ea5f2c7e6b09756cae8367ca176ae455edfc4ab908508d77703d842dbff",
+      "recomputed_scores": {
+        "bleu": 16.1823920753682,
+        "chrf++": 13.676586715554418,
+        "chrf0": 15.729325327908796
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "36f73436625731105ba3efda901fff9cac4ecd5ea5f29ac109b2ca731695197f",
+      "recomputed_scores": {
+        "bleu": 17.40056428671241,
+        "chrf++": 14.592754723139556,
+        "chrf0": 16.796905257004045
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "d4527b10eaf22e07755e020827617268205aa130677e51c4674c426408a70190",
+      "recomputed_scores": {
+        "bleu": 19.126407335955513,
+        "chrf++": 18.327564775826456,
+        "chrf0": 17.986631453695964
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_main_b1",
+      "rows": 576,
+      "prediction_sha256": "9cc148a7e19f61f2a0f724f1a127db7343c55bb168fa7864699890422a67baa6",
+      "recomputed_scores": {
+        "bleu": 16.932429309462734,
+        "chrf++": 14.348330285453207,
+        "chrf0": 16.512759705934826
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_alpha_0050_b1",
+      "rows": 576,
+      "prediction_sha256": "703f6c079aca057cbfcbfb705b45c5a84cdab5319dce98892a856467ae108fe0",
+      "recomputed_scores": {
+        "bleu": 16.970763411883734,
+        "chrf++": 14.184630433665598,
+        "chrf0": 16.294534080400904
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_alpha_0075_b1",
+      "rows": 576,
+      "prediction_sha256": "3e3b97145dde72d1fd83387b91b6a09087c92509b1f6349985cb22c3cb0f5c22",
+      "recomputed_scores": {
+        "bleu": 16.771901220517666,
+        "chrf++": 13.750398463178687,
+        "chrf0": 15.816218093592862
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_alpha_0125_b1",
+      "rows": 576,
+      "prediction_sha256": "5e6c98ce6d60a8668b0efe8f6c8099d0b1349cab796a128d5a7befea0b23a569",
+      "recomputed_scores": {
+        "bleu": 16.79929133512382,
+        "chrf++": 14.270218787944822,
+        "chrf0": 16.393092632495073
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_alpha_0150_b1",
+      "rows": 576,
+      "prediction_sha256": "63d610502ed00f5ec5f6dba784bbd1aed1958e3f8356b401d024b3152bd2777a",
+      "recomputed_scores": {
+        "bleu": 16.426250022700327,
+        "chrf++": 13.909217089120588,
+        "chrf0": 16.000374690205664
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_no_early_b1",
+      "rows": 576,
+      "prediction_sha256": "4587d483463ffda61644ba31341d21cb030734ce0c6066ac986cb9caccd3ef38",
+      "recomputed_scores": {
+        "bleu": 16.485159218136232,
+        "chrf++": 13.8943664288498,
+        "chrf0": 15.983560789557954
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_no_middle_b1",
+      "rows": 576,
+      "prediction_sha256": "def8f68c5ad2b9b1cc7eae9343230a7dc2183de89549cd9c080b4caddf071c34",
+      "recomputed_scores": {
+        "bleu": 16.95546508505037,
+        "chrf++": 14.144722502628909,
+        "chrf0": 16.275995666424972
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_no_late_b1",
+      "rows": 576,
+      "prediction_sha256": "c105b1813650dd09baa32e0024f4c40b383e65ef9251c064f85b8111d4c9d9a8",
+      "recomputed_scores": {
+        "bleu": 16.608663623675447,
+        "chrf++": 14.053256417903693,
+        "chrf0": 16.168050149180257
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "val_main_b4",
+      "rows": 576,
+      "prediction_sha256": "61d2179bd6b90db211c7b1130e3f56a0569f95a8673cd560d47a2c83eee96cff",
+      "recomputed_scores": {
+        "bleu": 17.637647397373726,
+        "chrf++": 14.760536970085191,
+        "chrf0": 16.993323114242376
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "condition": "test_main_b1",
+      "rows": 575,
+      "prediction_sha256": "3c66eadc9754f644378f1eafa6e45ea742355ae1170161fd99b54e5ee603b8a3",
+      "recomputed_scores": {
+        "bleu": 18.05853748668184,
+        "chrf++": 17.635104518637487,
+        "chrf0": 17.093103776491507
+      }
+    }
+  ],
+  "audit_source_sha256": "72e03bbf319f7d10d5ca10398b734cf952673d3320ea60d92f07436a7edb032f",
+  "errors": [],
+  "core_status": "VERIFIED42",
+  "models": 9,
+  "conditions": 42,
+  "sentinels": 6,
+  "full_validation_replays": 3,
+  "inventory_validation_agreements": 9,
+  "original_worker_failure": {
+    "type": "AssertionError",
+    "message": "{'id': 'mbart-amis-baseline-seed42', 'family': 'baseline', 'seed': 42, 'condition': 'val_main_b1', 'split': 'validation', 'beams': 1, 'train_alpha': 0.0, 'inference_alpha': 0, 'active_routing_layers': [], 'scores': {'bleu': 16.265888292515125, 'chrf++': 13.901540564847089, 'chrf0': 15.962821804214725}, 'rows': 576, 'validation_replay': False, 'seconds': 16.165744066238403, 'teacher_ce_fixed32': 2.910469054498456, 'inventory_metric_delta': {'bleu': -1.6075888263091649, 'chrf++': -0.9993355534036059}}"
+  },
+  "original_baseline42_best_step": "UNSUPPORTED: inventory hardcodes216; recovered metrics explicitly state original selected step unavailable.",
+  "test_settings": "frozen predeclared main only",
+  "sentinel_evidence": "Worker PASS receipts and original gold SHA/alignment; sentinel predictions are not separately stored.",
+  "baseline_archive_audit": {
+    "status": "VERIFIED",
+    "models": 3,
+    "conditions": 6,
+    "all575_test_replay_each_seed": true,
+    "artifact_directory": "baseline_archive_audit_v3",
+    "initial_lookup_failure_retained": {
+      "type": "ValueError",
+      "message": "too many values to unpack (expected 1)"
+    },
+    "v2_stale_extraction_failure_retained": {
+      "type": "FileExistsError",
+      "message": "[Errno 17] File exists: '/content/clrr_verify_v5/scratch/baseline_recovery_extract/mbart-amis-baseline-seed42'"
+    },
+    "conditions_checked": [
+      {
+        "id": "mbart-amis-baseline-seed42",
+        "split": "validation",
+        "beams": 1,
+        "rows": 576,
+        "recomputed_scores": {
+          "bleu": 16.265888292515132,
+          "chrf++": 13.901540564847089,
+          "chrf0": 15.962821804214725
+        },
+        "prediction_sha256": "82cd7a0f9b87686c402b87ec6feb6cef830450369aad29a038b7a4e1175ea30c",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      },
+      {
+        "id": "mbart-amis-baseline-seed42",
+        "split": "test",
+        "beams": 4,
+        "rows": 575,
+        "recomputed_scores": {
+          "bleu": 19.728081433402025,
+          "chrf++": 18.713838023321145,
+          "chrf0": 18.397282102498366
+        },
+        "prediction_sha256": "02f4d65b1687123d6f9f602733335a2c6cf57acae263b720c8bab0e2fce42b87",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      },
+      {
+        "id": "mbart-amis-baseline-seed43",
+        "split": "validation",
+        "beams": 1,
+        "rows": 576,
+        "recomputed_scores": {
+          "bleu": 17.151270123753932,
+          "chrf++": 14.200731980464068,
+          "chrf0": 16.368745536133453
+        },
+        "prediction_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      },
+      {
+        "id": "mbart-amis-baseline-seed43",
+        "split": "test",
+        "beams": 4,
+        "rows": 575,
+        "recomputed_scores": {
+          "bleu": 18.137831758407888,
+          "chrf++": 13.159189083183897,
+          "chrf0": 17.09042990233338
+        },
+        "prediction_sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      },
+      {
+        "id": "mbart-amis-baseline-seed44",
+        "split": "validation",
+        "beams": 1,
+        "rows": 576,
+        "recomputed_scores": {
+          "bleu": 17.9652726512606,
+          "chrf++": 14.79871492994047,
+          "chrf0": 17.12316850373172
+        },
+        "prediction_sha256": "49f5456caeef79b07a761546bceda9a46e58ab991350c455d6bda25b1eea116a",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      },
+      {
+        "id": "mbart-amis-baseline-seed44",
+        "split": "test",
+        "beams": 4,
+        "rows": 575,
+        "recomputed_scores": {
+          "bleu": 20.30001625394848,
+          "chrf++": 18.901672572421678,
+          "chrf0": 18.647751691603844
+        },
+        "prediction_sha256": "83e6c9701165d12dc432cb27457f8a5b345e89cc8c184569a39931d4646bac72",
+        "inventory_protocol": "New explicit valbeam1 measurement; historical inventory untouched."
+      }
+    ],
+    "optional_baseline42_valbeam4": {
+      "status": "VERIFIED_BEAM_PROTOCOL_MISMATCH",
+      "rows": 576,
+      "recomputed_scores": {
+        "bleu": 17.87347711882428,
+        "chrf++": 14.900876118250695,
+        "chrf0": 17.09988389415773
+      },
+      "saved_training_args_selected_fields": {
+        "generation_num_beams": 4,
+        "generation_max_length": 256
+      },
+      "historical_inventory_validation_protocol": "beam4, established by metric reproduction and saved arguments",
+      "new_validation_control_protocol": "beam1 from separate archive audit v3",
+      "best_step": "unknown;216 unsupported"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "A06_SCHEDULED_AFTER_NLLB_QUEUE",
+  "id": "A06",
+  "actual_account": 1,
+  "original_planned_account": 3,
+  "method_and_hyperparameters_unchanged": true,
+  "reason": "Colab3 insufficient projected budget; user approved A1001/2 fallback"
+}

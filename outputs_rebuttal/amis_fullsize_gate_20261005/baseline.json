@@ -1,0 +1,76 @@
+{
+  "family": "baseline",
+  "status": "PASS",
+  "optimizer_steps": 2,
+  "microbatches": [
+    {
+      "optimizer_step": 0,
+      "source_length": 32,
+      "target_length": 24,
+      "loss_scaled": 1.4559836387634277,
+      "peak_allocated_gib": 5.530463695526123,
+      "peak_reserved_gib": 7.9921875
+    },
+    {
+      "optimizer_step": 0,
+      "source_length": 32,
+      "target_length": 24,
+      "loss_scaled": 1.533971905708313,
+      "peak_allocated_gib": 7.299765110015869,
+      "peak_reserved_gib": 9.6640625
+    },
+    {
+      "optimizer_step": 0,
+      "source_length": 24,
+      "target_length": 24,
+      "loss_scaled": 1.5225390195846558,
+      "peak_allocated_gib": 7.299765110015869,
+      "peak_reserved_gib": 9.6640625
+    },
+    {
+      "optimizer_step": 0,
+      "source_length": 32,
+      "target_length": 24,
+      "loss_scaled": 1.442296028137207,
+      "peak_allocated_gib": 7.299765110015869,
+      "peak_reserved_gib": 9.6640625
+    },
+    {
+      "optimizer_step": 1,
+      "source_length": 256,
+      "target_length": 256,
+      "loss_scaled": 1.4382129907608032,
+      "peak_allocated_gib": 31.16863775253296,
+      "peak_reserved_gib": 36.380859375
+    },
+    {
+      "optimizer_step": 1,
+      "source_length": 256,
+      "target_length": 256,
+      "loss_scaled": 1.5323046445846558,
+      "peak_allocated_gib": 33.44617223739624,
+      "peak_reserved_gib": 36.380859375
+    },
+    {
+      "optimizer_step": 1,
+      "source_length": 256,
+      "target_length": 256,
+      "loss_scaled": 1.4979974031448364,
+      "peak_allocated_gib": 33.44617223739624,
+      "peak_reserved_gib": 36.380859375
+    },
+    {
+      "optimizer_step": 1,
+      "source_length": 256,
+      "target_length": 256,
+      "loss_scaled": 1.4345958232879639,
+      "peak_allocated_gib": 33.44617223739624,
+      "peak_reserved_gib": 36.380859375
+    }
+  ],
+  "parameters": 610879488,
+  "seconds": 3.2101669311523438,
+  "eval_fp32_beams1_batch8": true,
+  "eval_peak_allocated_gib": 8.219389915466309,
+  "eval_peak_reserved_gib": 36.408203125
+}

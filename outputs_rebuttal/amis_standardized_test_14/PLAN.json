@@ -1,0 +1,34 @@
+{
+  "status": "APPROVED_TEST_14_COLAB1_2_ONLY",
+  "partitions": {
+    "1": [
+      "A01",
+      "A02",
+      "A03",
+      "A04",
+      "A05",
+      "A06",
+      "D01"
+    ],
+    "2": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05",
+      "C01",
+      "D02"
+    ]
+  },
+  "selection_lock_sha256": "58af09b3663aa81cbfd09bdaa685dfdf5faacd44d1b5915d8c017d165f41b229",
+  "test_worker_sha256": "5689b8fdcc110263a7aa78dafb287029bace6a6aaaae67bf59499792f8445dc1",
+  "bundle_sha256": "b834d30fd8a27ce236e3649026cbf41f7bf059f5590b5e74d3f713953068d109",
+  "protocol": {
+    "beams": 4,
+    "generation_precision": "fp32",
+    "tf32_generation": false,
+    "raw_references": true,
+    "eval_batch": 8,
+    "training": false
+  }
+}

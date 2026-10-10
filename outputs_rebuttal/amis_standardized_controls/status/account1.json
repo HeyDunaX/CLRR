@@ -1,0 +1,640 @@
+{
+  "checked_unix": 1791474901.7680414,
+  "process_alive": false,
+  "queue": {
+    "account": 1,
+    "status": "VALIDATION_QUEUE_COMPLETE",
+    "completed": [
+      "B01",
+      "B02",
+      "B03",
+      "B04",
+      "B05"
+    ],
+    "updated_unix": 1791474768.9706104,
+    "current": "B05"
+  },
+  "gates": {
+    "B01": {
+      "passed": true,
+      "id": "B01",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 51.55862998962402,
+      "parameters": {
+        "loss": "CE only",
+        "trainable_params": 615073792,
+        "allocated_params": 615073792,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 11.375902652740479,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "B05": {
+      "passed": true,
+      "id": "B05",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 28.286593437194824,
+      "parameters": {
+        "method": "BitFit",
+        "bias_components": [
+          "bias"
+        ],
+        "num_bias_tensors": 254,
+        "trainable_params": 333824,
+        "all_params": 615073792,
+        "trainable_percent": 0.05427381305168665,
+        "sample_bias_tensors": [
+          "model.encoder.layers.0.self_attn.k_proj.bias",
+          "model.encoder.layers.0.self_attn.v_proj.bias",
+          "model.encoder.layers.0.self_attn.q_proj.bias",
+          "model.encoder.layers.0.self_attn.out_proj.bias",
+          "model.encoder.layers.0.self_attn_layer_norm.bias"
+        ],
+        "allocated_params": 615073792,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 4.736903190612793,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "B04": {
+      "passed": true,
+      "id": "B04",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 34.36013865470886,
+      "parameters": {
+        "method": "LoRA",
+        "rank": 16,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "out_proj",
+          "fc1",
+          "fc2"
+        ],
+        "modules_to_save": [
+          "shared",
+          "embed_tokens",
+          "lm_head"
+        ],
+        "base_params": 615073792,
+        "added_params": 8650752,
+        "trainable_params": 271005696,
+        "all_params": 623724544,
+        "trainable_percent": 43.44958020443075,
+        "allocated_params": 886079488,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 8.37012529373169,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "B02": {
+      "passed": true,
+      "id": "B02",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 51.133774280548096,
+      "parameters": {
+        "symmetric_InfoNCE": true,
+        "source_target_gradients": true,
+        "layer_hidden_state_index": 6,
+        "includes_embedding_index_zero": true,
+        "temperature": 0.1,
+        "weight": 0.1,
+        "trainable_params": 615073792,
+        "allocated_params": 615073792,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 11.941324234008789,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    },
+    "B03": {
+      "passed": true,
+      "id": "B03",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 16,
+      "accumulation": 8,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 14.866949558258057,
+      "parameters": {
+        "method": "LoRA",
+        "rank": 16,
+        "lora_alpha": 32,
+        "lora_dropout": 0.05,
+        "target_modules": [
+          "q_proj",
+          "k_proj",
+          "v_proj",
+          "out_proj",
+          "fc1",
+          "fc2"
+        ],
+        "modules_to_save": null,
+        "base_params": 615073792,
+        "added_params": 8650752,
+        "trainable_params": 8650752,
+        "all_params": 623724544,
+        "trainable_percent": 1.3869507113704347,
+        "allocated_params": 623724544,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 4.801356315612793,
+      "bundle_sha256": "7d94d5c831618073e6d7e5344e5a5706375e098f85ec384ed2979c0ffb79ee1d"
+    }
+  },
+  "progress": {
+    "B01": {
+      "id": "B01",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 13.296643625658891,
+        "chrf++": 12.021246898575285,
+        "chrf0": 13.91040011353771
+      },
+      "updated_unix": 1791463099.8454897
+    },
+    "B05": {
+      "id": "B05",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 0.9360750861882727,
+        "chrf++": 3.4250164487780594,
+        "chrf0": 3.995852523574403
+      },
+      "updated_unix": 1791474767.5712116
+    },
+    "B04": {
+      "id": "B04",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 9.509078606233572,
+        "chrf++": 9.646767762906656,
+        "chrf0": 11.225748181024626
+      },
+      "updated_unix": 1791472086.372319
+    },
+    "B02": {
+      "id": "B02",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 13.36776513617149,
+        "chrf++": 12.147939173811073,
+        "chrf0": 14.115246897076034
+      },
+      "updated_unix": 1791465402.4504824
+    },
+    "B03": {
+      "id": "B03",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 11.87654165572623,
+        "chrf++": 11.044068823598534,
+        "chrf0": 12.856071977105666
+      },
+      "updated_unix": 1791468696.7925494
+    }
+  },
+  "validation_complete": {
+    "B01": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "B01",
+      "spec": {
+        "id": "B01",
+        "backbone": "nllb-200",
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+        "method": "baseline",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 5e-05,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 128,
+        "max_target_length": 128,
+        "validation_beams": 4,
+        "account": 1,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "zho_Hant",
+        "tgt_lang": "zho_Hant",
+        "remote_prefix": "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 13.296643625658891,
+        "chrf++": 12.021246898575285,
+        "chrf0": 13.91040011353771
+      },
+      "archive_sha256": "4e179d8d9aebc824421f8605046bb306ad4e6a8c575c39fc75d49fc8f2f60f7f",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "19ae2989e3643ea5e3f0e0ea7a06d86d3fdf43d7",
+        "files": {
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/best.zip": {
+            "size": 2497615901,
+            "sha256": "4e179d8d9aebc824421f8605046bb306ad4e6a8c575c39fc75d49fc8f2f60f7f"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/run_metadata.json": {
+            "size": 3170,
+            "sha256": "cad6aa4f2ee8afb8c5bb9f5794305190496b96adeaca188083e138640f121489"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/training_receipt.json": {
+            "size": 2408,
+            "sha256": "d64776d9f1ba865ee5e02f0c12efab80e69796e8fc434c89a1574dc7d8e49c93"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4421,
+            "sha256": "5c46ee393303479d220015ff7ec213eae2dba676e9a28634b728bd61755bf6f1"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/validation_metrics.json": {
+            "size": 748,
+            "sha256": "2fde1e34d522be6ab3b029b4f5a6321e6753169903a6034928538a2b92c42b01"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/validation_predictions.csv": {
+            "size": 62275,
+            "sha256": "063f5a166143e53543a974bb2d42a697652b2e0c8b054197685b3d607793aa38"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/final_trainer_state.json": {
+            "size": 19205,
+            "sha256": "a787bae036140b4043193da4af5a6148f2f6233891ff9bb36eee4f680ff7ee6e"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/selected_trainer_state.json": {
+            "size": 18003,
+            "sha256": "58c79e6e3c860432288aa2fdb557da11187bd1212ec81a417c8ad1f797653e0a"
+          },
+          "checkpoints/amis_mandarin/nllb-200/baseline/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "d5ce75db99df569b83cc1b9d457e05f62e81001129285508fbad50598b49fdad"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "cad6aa4f2ee8afb8c5bb9f5794305190496b96adeaca188083e138640f121489"
+    },
+    "B05": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "B05",
+      "spec": {
+        "id": "B05",
+        "backbone": "nllb-200",
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+        "method": "bitfit",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0001,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 128,
+        "max_target_length": 128,
+        "validation_beams": 4,
+        "account": 1,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "zho_Hant",
+        "tgt_lang": "zho_Hant",
+        "remote_prefix": "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 0.9360750861882727,
+        "chrf++": 3.4250164487780594,
+        "chrf0": 3.995852523574403
+      },
+      "archive_sha256": "b8c25f640e19868cde0c096a994619c707904d324b04c55712a79861d29d42db",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "778d249a9aacbbaa7900f371ea6daa87fe1d3053",
+        "files": {
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/best.zip": {
+            "size": 2497616357,
+            "sha256": "b8c25f640e19868cde0c096a994619c707904d324b04c55712a79861d29d42db"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/run_metadata.json": {
+            "size": 3627,
+            "sha256": "7a47c6a05c7f104db9759b9f3f1cccb9b3b98264e897360c827bbaf541aa0a4d"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/training_receipt.json": {
+            "size": 2864,
+            "sha256": "4402d5cdcf75ad6e0764eeda16eb66bcbacb12835a65c2fda5056a98acbfcfa0"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "1f1755e31e76de50c7f2a788689935de880a8a3bc0f24d32efbffbb31e03e1da"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/validation_metrics.json": {
+            "size": 748,
+            "sha256": "7c87848e47e0eb6a5f6f8939f8e54f9dd7a166ce1b3df6fdfa5e0c25130dfb97"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/validation_predictions.csv": {
+            "size": 71941,
+            "sha256": "e78ced5225fd07c9149a1571b10de931ab5d28878dc973f88cffa64e4e2da2ed"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/final_trainer_state.json": {
+            "size": 19189,
+            "sha256": "d44841d70342b579f6758b70097db0f7cb468761b2bc9dd5f4b40b8a64798d23"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/selected_trainer_state.json": {
+            "size": 18943,
+            "sha256": "1d36a7f799ea3e360f4683f60c64e579b3636f216109f190319c5330b0b948d1"
+          },
+          "checkpoints/amis_mandarin/nllb-200/bitfit/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "e9edaf79ee39a563c0927e3617e49a37fd734fcfc869a3015037bae7ba4d1379"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "7a47c6a05c7f104db9759b9f3f1cccb9b3b98264e897360c827bbaf541aa0a4d"
+    },
+    "B04": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "B04",
+      "spec": {
+        "id": "B04",
+        "backbone": "nllb-200",
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+        "method": "strong-lora-b",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0001,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 128,
+        "max_target_length": 128,
+        "validation_beams": 4,
+        "account": 1,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "zho_Hant",
+        "tgt_lang": "zho_Hant",
+        "remote_prefix": "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 9.509078606233572,
+        "chrf++": 9.646767762906656,
+        "chrf0": 11.225748181024626
+      },
+      "archive_sha256": "b1d7d0367930c45981e363e74f4bc57b639ad254f11fb14e5a868b907f4aadf2",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "8232721d1426a42cfce953ac2bc549449bdb3fc7",
+        "files": {
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/best.zip": {
+            "size": 1121316731,
+            "sha256": "b1d7d0367930c45981e363e74f4bc57b639ad254f11fb14e5a868b907f4aadf2"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/run_metadata.json": {
+            "size": 3584,
+            "sha256": "20aac4d2713ddb9cb51ef48921ed5bcda57fc1ee328985e5fe4e0c392414d645"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/training_receipt.json": {
+            "size": 2823,
+            "sha256": "e7c43fd7ba64838db90db13727a05767a0c810e727987966c719b23405dde0d2"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "b459952ef3d8d0f5d8c243ddc92a89bb680471c919186e9cec735b63df03b7aa"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "62942123867fd3c3da6938dd328be9987630503e118e3cbcf175c0e047c6b00b"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/validation_predictions.csv": {
+            "size": 59911,
+            "sha256": "3a70b2b7d9ba70772adb8b12de13ef84930bebf13da348c11d54a03b4c8d89a4"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/final_trainer_state.json": {
+            "size": 19172,
+            "sha256": "21b2cbaa19d15897a7dd92231a7b73f4f16a60196f63db8e2d02bb6fef154eaf"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/selected_trainer_state.json": {
+            "size": 17003,
+            "sha256": "57ea701ce8dd415bccf0c0447820ac67b481d0a4fbff516290fb2ec559dcb2a1"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-b/seed-42/es10/stop_state.json": {
+            "size": 318,
+            "sha256": "341441b5f064d987a714a8fef8d632f086ad462abf84becbec9e78a6ac90e81f"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "20aac4d2713ddb9cb51ef48921ed5bcda57fc1ee328985e5fe4e0c392414d645"
+    },
+    "B02": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "B02",
+      "spec": {
+        "id": "B02",
+        "backbone": "nllb-200",
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+        "method": "middle-alignment",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 5e-05,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 128,
+        "max_target_length": 128,
+        "validation_beams": 4,
+        "account": 1,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "zho_Hant",
+        "tgt_lang": "zho_Hant",
+        "remote_prefix": "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 13.36776513617149,
+        "chrf++": 12.147939173811073,
+        "chrf0": 14.115246897076034
+      },
+      "archive_sha256": "f92786c7e978aa7a33e352ba456b63129387ad5c3a6ab81b4dd83861f7e52a16",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "0481fac01f57b794468b0db89ff2981c9bea51b5",
+        "files": {
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/best.zip": {
+            "size": 2497616084,
+            "sha256": "f92786c7e978aa7a33e352ba456b63129387ad5c3a6ab81b4dd83861f7e52a16"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/run_metadata.json": {
+            "size": 3354,
+            "sha256": "e5b99b735dfff6e123d7e25dffbcc454ad465a2352223b97ab4fa44a95633fa1"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/training_receipt.json": {
+            "size": 2591,
+            "sha256": "f77be54632b91d7d98b0e8b77836970529a4d8cb9a65d82721d5e262ed3cc6f6"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4421,
+            "sha256": "34f656bcc646279afb204752eaa1a92406c816e588a2c3ae814a8043cec8c21c"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/validation_metrics.json": {
+            "size": 748,
+            "sha256": "c46b7a4f0fe32a6f52ba776a8c607677b802a0cc2ec1815c49b32050c0a2c6aa"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/validation_predictions.csv": {
+            "size": 61478,
+            "sha256": "6a6cec6c2e8e120905fe2e21de08aaea179f3ed99049debb6d6f9359fec3df47"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/final_trainer_state.json": {
+            "size": 19208,
+            "sha256": "3df9235eb5f69f126551a5f4c072f01017ac7a7bc743d8cabdcbc9bd045907e8"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/selected_trainer_state.json": {
+            "size": 18962,
+            "sha256": "729bc73700d8768edda211126a466a023408e1e21a2e713e964168ef48e381d4"
+          },
+          "checkpoints/amis_mandarin/nllb-200/middle-alignment/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "8a6baf640d740c66c4f7e4bc4b2dd64b97f359d3a3f08192ab93e313698cdd02"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "e5b99b735dfff6e123d7e25dffbcc454ad465a2352223b97ab4fa44a95633fa1"
+    },
+    "B03": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "B03",
+      "spec": {
+        "id": "B03",
+        "backbone": "nllb-200",
+        "model_id": "facebook/nllb-200-distilled-600M",
+        "model_revision": "f8d333a098d19b4fd9a8b18f94170487ad3f821d",
+        "method": "strong-lora-a",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 0.0002,
+        "microbatch": 16,
+        "accumulation": 8,
+        "max_source_length": 128,
+        "max_target_length": 128,
+        "validation_beams": 4,
+        "account": 1,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "zho_Hant",
+        "tgt_lang": "zho_Hant",
+        "remote_prefix": "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10"
+      },
+      "scores": {
+        "bleu": 11.87654165572623,
+        "chrf++": 11.044068823598534,
+        "chrf0": 12.856071977105666
+      },
+      "archive_sha256": "aa63ec2966df075f1bf13c8f5b3d721ccb1aefba7bc0128c2c7cc97ebd8fed03",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "330bc23656896d7acbd8fa9586cf6f109ca6158a",
+        "files": {
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/best.zip": {
+            "size": 71896075,
+            "sha256": "aa63ec2966df075f1bf13c8f5b3d721ccb1aefba7bc0128c2c7cc97ebd8fed03"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/run_metadata.json": {
+            "size": 3527,
+            "sha256": "f80f1746e772c8d1fb102b79405d2dda26672029b150cb28d79996cfcc5dfed9"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/training_receipt.json": {
+            "size": 2764,
+            "sha256": "4e72a96ba9efd0c38757820732ff3d2bbd216b136fb815fb473d9770c2b3d63a"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4422,
+            "sha256": "eceecd6007621476feb6b9b3df930ca7379c50244e6bb91ea8f61afdf82d3bd6"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/validation_metrics.json": {
+            "size": 748,
+            "sha256": "fc16af7282104a9937824d4a80be446de979e217eb02779778dcb59778b4b5fa"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/validation_predictions.csv": {
+            "size": 61236,
+            "sha256": "c34ee4c5f755cfbf28bfc8b4d9b7df6ac75cb698e7e6e4ea143676e98724420d"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/final_trainer_state.json": {
+            "size": 19212,
+            "sha256": "d72f4bff7ab541dbd3e65ea354f34a6e50c54df061702847f2d065ef220214e4"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/selected_trainer_state.json": {
+            "size": 18010,
+            "sha256": "8d636ae030c89eb2a78737cb0766543a4a2e933d9cbe615a337a3b1eb930b827"
+          },
+          "checkpoints/amis_mandarin/nllb-200/strong-lora-a/seed-42/es10/stop_state.json": {
+            "size": 319,
+            "sha256": "3e61a71f3b0b843f8be80d1b3dca2662af283195f5a8957863fba6408fb10d80"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "f80f1746e772c8d1fb102b79405d2dda26672029b150cb28d79996cfcc5dfed9"
+    }
+  },
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 9000 MiB, 40960 MiB, 20 %",
+  "log_tail": [
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2589|  224MB /  224MB, 8.67MB/s  \u001b[A",
+    "",
+    "",
+    "  ...ontrols/runs/B05/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2.50GB / 2.50GB            \u001b[A\u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2.50GB / 2.50GB,  111MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588|  224MB /  224MB, 8.50MB/s  \u001b[A",
+    "Processing Files (1 / 1)      : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2.50GB / 2.50GB,  111MB/s  ",
+    "",
+    "New Data Upload               : 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588|  224MB /  224MB, 8.50MB/s  ",
+    "",
+    "  ...ontrols/runs/B05/best.zip: 100%|\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588\u2588| 2.50GB / 2.50GB            ",
+    "VAL_COMPLETE_VERIFIED B05 {\"bleu\": 0.9360750861882727, \"chrf++\": 3.4250164487780594, \"chrf0\": 3.995852523574403}"
+  ]
+}

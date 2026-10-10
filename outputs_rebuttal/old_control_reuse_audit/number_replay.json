@@ -1,0 +1,833 @@
+{
+  "corrected": [
+    {
+      "seed": 42,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.728081433402025,
+        "chrfpp": 18.713838023321145,
+        "chrf0": 18.397282102498366
+      },
+      "sha256": "4a53fc044641487438750047f37fc63689cf4ad12d28d4ad02fffe882bde9d75"
+    },
+    {
+      "seed": 42,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42/runs/mbart-amis-clrr_a010-seed42-corrected-control/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.223095123529678,
+        "chrfpp": 18.362492132997836,
+        "chrf0": 17.904266373424175
+      },
+      "sha256": "798a1cb842d82b996b4cd8309eb452c09efa7eb10ba3081d70d83957746e8921"
+    },
+    {
+      "seed": 42,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_pilot_20261005/lsr/runs/mbart-amis-lsr_l010-seed42-accumfixed/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.09543995574151,
+        "chrfpp": 18.434505472123693,
+        "chrf0": 17.998476679879968
+      },
+      "sha256": "5dd5181b41f491650fb6f3f5deaffccc51151d9f0c5b9a896bf7e2f2d2b68571"
+    },
+    {
+      "seed": 42,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_pilot_20261005/full/runs/mbart-amis-full_a010_l010-seed42-accumfixed/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.321294974643692,
+        "chrfpp": 19.014706982068734,
+        "chrf0": 18.913663242249815
+      },
+      "sha256": "8ee4797be532e4e098762b58ba7e0d92a1bbd311135b912346ac4117a662791b"
+    },
+    {
+      "seed": 43,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed43/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.137831758407888,
+        "chrfpp": 13.159189083183897,
+        "chrf0": 17.09042990233338
+      },
+      "sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe"
+    },
+    {
+      "seed": 43,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed43/runs/mbart-amis-clrr_a010-seed43-corrected-control/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.49299739398403,
+        "chrfpp": 18.531955876538554,
+        "chrf0": 18.217028102724324
+      },
+      "sha256": "03509f85e002e97cf9701d73e308e82a3a02edaeb9b2809eed515666ee9b45a4"
+    },
+    {
+      "seed": 43,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005/lsr/seed43/runs/mbart-amis-lsr_l010-seed43-accumfixed/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.81925092512863,
+        "chrfpp": 18.660999211770736,
+        "chrf0": 18.41897103858678
+      },
+      "sha256": "539c57b0ecd7006bc1fdb7808f9d1f01dad0e09fc8f8c5d4fbd6551238e9247b"
+    },
+    {
+      "seed": 43,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/runs/mbart-amis-full_a010_l010-seed43-accumfixed/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.177995172130306,
+        "chrfpp": 18.856774144274585,
+        "chrf0": 18.652018829055216
+      },
+      "sha256": "72df959056fcf5bbebc4f0aba9af6d57784b986ba389adcd3c3c0134a67a4613"
+    },
+    {
+      "seed": 44,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed44/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.30001625394848,
+        "chrfpp": 18.901672572421678,
+        "chrf0": 18.647751691603844
+      },
+      "sha256": "83e6c9701165d12dc432cb27457f8a5b345e89cc8c184569a39931d4646bac72"
+    },
+    {
+      "seed": 44,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed44/runs/mbart-amis-clrr_a010-seed44-corrected-control/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.345497795462272,
+        "chrfpp": 18.374130004944195,
+        "chrf0": 17.97239745399369
+      },
+      "sha256": "ce00766391e290a240d9f47122b4d6be33740954b95f72c139b89015b3aaa4e4"
+    },
+    {
+      "seed": 44,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/lsr/seed44/runs/mbart-amis-lsr_l010-seed44-accumfixed-recovery/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.264373929771594,
+        "chrfpp": 18.292200796440717,
+        "chrf0": 17.911946649822603
+      },
+      "sha256": "cf7d200f5494c646338e7b29f8046bbd42fcfcf0a4a41e72d674c29df29ae01d"
+    },
+    {
+      "seed": 44,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/full/seed44/runs/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.891624365979126,
+        "chrfpp": 18.699629087985407,
+        "chrf0": 18.446629340616383
+      },
+      "sha256": "516253b5c611d1bb3a09a372bfdea3e56d1a7791f76592e55a3ec6d696c33303"
+    }
+  ],
+  "fresh": [
+    {
+      "seed": 45,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed45/runs/mbart-amis-baseline-seed45-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.582278629029013,
+        "chrfpp": 18.629327603937902,
+        "chrf0": 18.25904028377249
+      },
+      "sha256": "0f98898c910c9b49643eccf8334818310f6cdb6bc8927ce540d1dcb9497e0a17"
+    },
+    {
+      "seed": 46,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed46/runs/mbart-amis-baseline-seed46-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.90804459020092,
+        "chrfpp": 18.275872448438022,
+        "chrf0": 17.842390097058743
+      },
+      "sha256": "ab8df4d359096af10ab5aa5a72192340fcba2220a9dfbdb3c3321930dc6beb82"
+    },
+    {
+      "seed": 47,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed47/runs/mbart-amis-baseline-seed47-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.346465873552603,
+        "chrfpp": 19.05197229952944,
+        "chrf0": 18.849166953704135
+      },
+      "sha256": "58d81bbc8aca15e0101d3b88c83cd9513d5809a4b73adc7a6d3ace8cf2707785"
+    },
+    {
+      "seed": 48,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed48/runs/mbart-amis-baseline-seed48-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.49423872108732,
+        "chrfpp": 18.48793962911261,
+        "chrf0": 18.15355861323107
+      },
+      "sha256": "279887ed704dd1f04c1a0b6fb5f6e933d2c6c9fec748ef5248a0e4068e7f3f83"
+    },
+    {
+      "seed": 49,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed49/runs/mbart-amis-baseline-seed49-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.394689811059234,
+        "chrfpp": 18.504254057711584,
+        "chrf0": 18.14913190122793
+      },
+      "sha256": "c24d77a22840cc16d62d188b1393f66db8a9fb7cd0c3af1a30c238f1b7a557f0"
+    },
+    {
+      "seed": 50,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed50/runs/mbart-amis-baseline-seed50-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.776005204548532,
+        "chrfpp": 18.73492100340137,
+        "chrf0": 18.403242040012376
+      },
+      "sha256": "e2215165dfa93f51a09982cee2d336e5db600fe6c6450faad6b7ae73b501d599"
+    },
+    {
+      "seed": 51,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed51/runs/mbart-amis-baseline-seed51-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.778533963921607,
+        "chrfpp": 18.674082177017702,
+        "chrf0": 18.28308486446629
+      },
+      "sha256": "9592dcce0bb2702eaca2ee18376b65e8091536bcfa311fd115111306f249f2e8"
+    },
+    {
+      "seed": 52,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/baseline/seed52/runs/mbart-amis-baseline-seed52-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.263461050499288,
+        "chrfpp": 18.385960249226727,
+        "chrf0": 17.928995106068953
+      },
+      "sha256": "35a429b8e545df7783d6abcac8b6d8a889d04e9e01371f30ad0aabff0eba7fc1"
+    },
+    {
+      "seed": 45,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed45/runs/mbart-amis-clrr-seed45-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.292258261257963,
+        "chrfpp": 18.250599660126863,
+        "chrf0": 17.78391421051418
+      },
+      "sha256": "1c4ba3f477594d380ff0852e73ea23850a0a6bda8b92cad206454c92dd56e2d5"
+    },
+    {
+      "seed": 46,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed46/runs/mbart-amis-clrr-seed46-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.259237131058857,
+        "chrfpp": 18.335847422644633,
+        "chrf0": 17.920211893959927
+      },
+      "sha256": "577096ac68e5970dbfb176344384b527a781730df89c9b7592b0b852f035a693"
+    },
+    {
+      "seed": 47,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed47/runs/mbart-amis-clrr-seed47-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.06663479254947,
+        "chrfpp": 18.14092258739817,
+        "chrf0": 17.752809444850147
+      },
+      "sha256": "3fc46f7e97c42d87d91c79fba884aeb569b50aca8512e58ad46a46b09fc9ca84"
+    },
+    {
+      "seed": 48,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed48/runs/mbart-amis-clrr-seed48-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.762286999301214,
+        "chrfpp": 14.592934219389415,
+        "chrf0": 18.945007679394696
+      },
+      "sha256": "bac6f5c054708f158d962bd01e10ee30a8cbc0a493ff46ee18e87c65b155369d"
+    },
+    {
+      "seed": 49,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed49/runs/mbart-amis-clrr-seed49-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.844947442416238,
+        "chrfpp": 18.896752768503188,
+        "chrf0": 18.559832618161586
+      },
+      "sha256": "0d07f8fb8a215bcf7b17219ba4a7eb8432f346bbd992dc4016fe83b1ae4c6f89"
+    },
+    {
+      "seed": 50,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed50/runs/mbart-amis-clrr-seed50-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.4429178607929,
+        "chrfpp": 18.50891602587271,
+        "chrf0": 18.124827741475723
+      },
+      "sha256": "72d12c9d5126361065f1b29dbfb6cc9fbb44716be306f233c125a1a8c83444d3"
+    },
+    {
+      "seed": 51,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed51/runs/mbart-amis-clrr-seed51-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.771814026254738,
+        "chrfpp": 18.49520074093244,
+        "chrf0": 18.217447441993322
+      },
+      "sha256": "0797311d2392339c11f387dfa07c097c934c8dbe2324fb11200965104e75876e"
+    },
+    {
+      "seed": 52,
+      "family": "clrr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/clrr/seed52/runs/mbart-amis-clrr-seed52-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.55187959933684,
+        "chrfpp": 18.60391604865175,
+        "chrf0": 18.25931077998795
+      },
+      "sha256": "1b5648a7da319db737c2b08f84e825720005d5262aa95f13c39aa829c77b175c"
+    },
+    {
+      "seed": 45,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed45/runs/mbart-amis-lsr-seed45-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.468290918892322,
+        "chrfpp": 18.477360728550902,
+        "chrf0": 18.08446140340979
+      },
+      "sha256": "e0fbbc2ed93af54a79a530fdb71f4e9e92e65cb9653007a102bf04452c6e7507"
+    },
+    {
+      "seed": 46,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed46/runs/mbart-amis-lsr-seed46-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.165233595213255,
+        "chrfpp": 18.90159581381291,
+        "chrf0": 18.64363402735974
+      },
+      "sha256": "54bf63fee9365276e3fb5142965e6703a5f32bab51706543cf55668ba5287fab"
+    },
+    {
+      "seed": 47,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed47/runs/mbart-amis-lsr-seed47-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.798735974433335,
+        "chrfpp": 18.665385780332386,
+        "chrf0": 18.36112351762675
+      },
+      "sha256": "cff85eef0a86bb4fe9468ad5621b9a81bd847a27209f5f3f1ee3b2210d6acc3d"
+    },
+    {
+      "seed": 48,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed48/runs/mbart-amis-lsr-seed48-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.58121625386164,
+        "chrfpp": 18.04094617748554,
+        "chrf0": 17.602432035461273
+      },
+      "sha256": "a3c4fed3017217b5736b5f943bb20e1597675fbe54f7dec0c1f552bf1e51ed63"
+    },
+    {
+      "seed": 49,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed49/runs/mbart-amis-lsr-seed49-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.94530177635869,
+        "chrfpp": 18.78008219449293,
+        "chrf0": 18.458084500454966
+      },
+      "sha256": "29729c0706206ed0746cf782eaa6a7fe948fa3a165a4cfb5d20872bcb5577ab8"
+    },
+    {
+      "seed": 50,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed50/runs/mbart-amis-lsr-seed50-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.307220776228068,
+        "chrfpp": 18.49586473398835,
+        "chrf0": 18.120746485647985
+      },
+      "sha256": "fec3164c99a2e1c76d3d7004e01c3dfc846cd109f6fa1d697420680a226b4807"
+    },
+    {
+      "seed": 51,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed51/runs/mbart-amis-lsr-seed51-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.85002876408794,
+        "chrfpp": 18.401410995410703,
+        "chrf0": 17.92689661815027
+      },
+      "sha256": "047379414e8660a83e034d424c6533609a8e7fd5ec7e85954b43c07e61d1d7b1"
+    },
+    {
+      "seed": 52,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/lsr/seed52/runs/mbart-amis-lsr-seed52-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.25441762756216,
+        "chrfpp": 18.377216305633084,
+        "chrf0": 17.95628294918548
+      },
+      "sha256": "7d2f3e51c229e3d970a5c36b0a8820b710f87849d81f18853ce6a5413ee895fa"
+    },
+    {
+      "seed": 45,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed45/runs/mbart-amis-full-seed45-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.403569710764316,
+        "chrfpp": 17.97417781833367,
+        "chrf0": 17.50592305965627
+      },
+      "sha256": "425f8c7248aaeb407eb2976dfea56626abf0884246705c36f1c8390c6774142b"
+    },
+    {
+      "seed": 46,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed46/runs/mbart-amis-full-seed46-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.592375093501623,
+        "chrfpp": 19.17723166957307,
+        "chrf0": 18.991861483775175
+      },
+      "sha256": "ecb6779fe2f1a649dd56acf2e508b83ba4093bb14d01168b6cf69d3059b8b62f"
+    },
+    {
+      "seed": 47,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed47/runs/mbart-amis-full-seed47-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.46435319426117,
+        "chrfpp": 18.422694014153222,
+        "chrf0": 18.157145091603038
+      },
+      "sha256": "3a48cc5d593e1ce88025bb0c402271a8bb3452ef94942b302fb49a0c92af55ce"
+    },
+    {
+      "seed": 48,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed48/runs/mbart-amis-full-seed48-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.345490630692666,
+        "chrfpp": 17.94388456034325,
+        "chrf0": 17.472891017916268
+      },
+      "sha256": "24c29248763902e5f7a83492b21e1cfafa27a553c5a72477fd1c4322ac41749c"
+    },
+    {
+      "seed": 49,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed49/runs/mbart-amis-full-seed49-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.890337077620128,
+        "chrfpp": 18.696761400318135,
+        "chrf0": 18.411634012592113
+      },
+      "sha256": "9a942f228c6fd9fcef3ac4b25e48633a4bb630d74ec7499a6d5c658e13e8b8e5"
+    },
+    {
+      "seed": 50,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed50/runs/mbart-amis-full-seed50-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.136578570486424,
+        "chrfpp": 18.9112753589082,
+        "chrf0": 18.632231342750433
+      },
+      "sha256": "f2f9454b1f4d434a48c63ff7c01c91d002b2b42bc56e9d96f404e0ecb7735031"
+    },
+    {
+      "seed": 51,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed51/runs/mbart-amis-full-seed51-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 20.215082094305583,
+        "chrfpp": 18.90078407619036,
+        "chrf0": 18.652828948411802
+      },
+      "sha256": "d23c0d3bbfae97ab392b02c663d29e7071300f00f6cb0ff8ed3c2ae42200bb48"
+    },
+    {
+      "seed": 52,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_fresh_confirmation_20261005/full/seed52/runs/mbart-amis-full-seed52-fresh-confirmation/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 19.16418595785508,
+        "chrfpp": 18.36521738588203,
+        "chrf0": 17.927629176502826
+      },
+      "sha256": "a56b334b167ffe8bf0e86e24394d044c75c08556938cb37606d12de446401bbd"
+    }
+  ],
+  "es10": [
+    {
+      "id": "A01",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/A01/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.90804459020092,
+        "chrfpp": 18.275872448438022,
+        "chrf0": 17.842390097058743
+      },
+      "sha256": "ab8df4d359096af10ab5aa5a72192340fcba2220a9dfbdb3c3321930dc6beb82"
+    },
+    {
+      "id": "A02",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/A02/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 18.99855960535219,
+        "chrfpp": 18.262577629894835,
+        "chrf0": 17.779004895435488
+      },
+      "sha256": "eea1c813b9a83651e6f33fe5a7b59a27a4010db543e53b39f28d95391c0b9f75"
+    },
+    {
+      "id": "A03",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/A03/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 2.989796478470667,
+        "chrfpp": 4.403580896872765,
+        "chrf0": 5.814175984324964
+      },
+      "sha256": "b843858641178b3a8e64c345ddd7ae0adc4f13214d82205925824628008c3f91"
+    },
+    {
+      "id": "A04",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/A04/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 0.28203347349587105,
+        "chrfpp": 2.3567009128779532,
+        "chrf0": 3.1136945377945002
+      },
+      "sha256": "2640adee68967ecfe66183ea8e456fd1e83755fdbe80620ccd642b0364daf6ee"
+    },
+    {
+      "id": "B01",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/B01/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 13.089528221948834,
+        "chrfpp": 10.247061137973057,
+        "chrf0": 13.519526249696492
+      },
+      "sha256": "71a46a898b997b945c3db3e991903735b45dde26bd9d84bb2ea55f6271d91419"
+    },
+    {
+      "id": "B02",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/B02/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 13.303293094731847,
+        "chrfpp": 10.494525008754268,
+        "chrf0": 13.763608061409686
+      },
+      "sha256": "4c0c8e1300b5457c66dedceee84857ac23357e437ed648c26f182dea2dd858c1"
+    },
+    {
+      "id": "B03",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/B03/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 11.864968495403819,
+        "chrfpp": 9.656280647314684,
+        "chrf0": 12.760453857885967
+      },
+      "sha256": "aefb6b9f8d1aa0514b8b440c1f2c6cca7109d898424b50d7d78ccfc41573954e"
+    },
+    {
+      "id": "B04",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/B04/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 10.25209261856252,
+        "chrfpp": 8.547040995834578,
+        "chrf0": 11.281473694221765
+      },
+      "sha256": "231bee07010329b2ec8ad7c69dba4a366e0ae987e2639a4e8f6fd35babc100aa"
+    },
+    {
+      "id": "B05",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/B05/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 0.7912315007780392,
+        "chrfpp": 2.877103434694389,
+        "chrf0": 3.807364245148025
+      },
+      "sha256": "3eae6c8648df33961cb60e187ffb90cfbe0a5c0e04ab4107f62f16d00e096667"
+    },
+    {
+      "id": "C01",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/C01/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 4.660041103775306,
+        "chrfpp": 5.0266509774645725,
+        "chrf0": 6.644893880255507
+      },
+      "sha256": "dca63103c2bbdcb29cc865553848978ecd63c5af01f85a83e44037407b7eeb7e"
+    },
+    {
+      "id": "D01",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/D01/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 1.3119639885811505,
+        "chrfpp": 3.666662384987486,
+        "chrf0": 4.277772782485401
+      },
+      "sha256": "39ad43a54ad301629665f52515779ce4971e3ff4edc65caef809518ce6d8c9b6"
+    },
+    {
+      "id": "D02",
+      "path": "outputs_rebuttal/amis_standardized_controls/runs/D02/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 7.0156048534787505,
+        "chrfpp": 8.074816003841006,
+        "chrf0": 9.391743670097052
+      },
+      "sha256": "0b7476114673daf1820e18cfe28ebae1f5dda4528f18e87a5248413d6b3f7bb0"
+    },
+    {
+      "id": "A05",
+      "path": "outputs_rebuttal/amis_standardized_strong_mbart/runs/A05/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 10.057063143671765,
+        "chrfpp": 8.517845586032442,
+        "chrf0": 11.271214956501773
+      },
+      "sha256": "13f20e3f00b849274bd5ef2f7ff2f2413a7f79b21f6cf4c7bca3cf32904c3556"
+    },
+    {
+      "id": "A06",
+      "path": "outputs_rebuttal/amis_standardized_strong_mbart/runs/A06/test_predictions.csv",
+      "rows": 575,
+      "scores": {
+        "bleu": 13.885709794212575,
+        "chrfpp": 10.397807148708718,
+        "chrf0": 13.579398349421737
+      },
+      "sha256": "daa7528a7502802237e5798f664cf94396c5818ddbe28bba841b9d0c1ca06ac4"
+    }
+  ],
+  "turkish": [
+    {
+      "family": "baseline",
+      "path": "outputs_rebuttal/turkish_old_method_pilot_es10_20261007/baseline/seed42/test_predictions.csv",
+      "rows": 2000,
+      "scores": {
+        "bleu": 22.634203392110155,
+        "chrfpp": 41.549537525731154,
+        "chrf0": 42.595474500103705
+      },
+      "sha256": "a7e76d625c9bfa94887365f2626dd692b0739a4b91d578dbde086152a3bbffad"
+    },
+    {
+      "family": "middle",
+      "path": "outputs_rebuttal/turkish_old_method_pilot_es10_20261007/middle/seed42/test_predictions.csv",
+      "rows": 2000,
+      "scores": {
+        "bleu": 22.519995695374803,
+        "chrfpp": 41.389459540160445,
+        "chrf0": 42.4272571121108
+      },
+      "sha256": "49e5618433c051ed8193e1304ad1bab04d4a19a4c23391f71d238a0db5e93030"
+    },
+    {
+      "family": "lsr",
+      "path": "outputs_rebuttal/turkish_old_method_pilot_es10_20261007/lsr/seed42/test_predictions.csv",
+      "rows": 2000,
+      "scores": {
+        "bleu": 22.200583986449296,
+        "chrfpp": 41.27131109045175,
+        "chrf0": 42.30502752153848
+      },
+      "sha256": "10156a1311a08d99dfb8a9d518a2448fb49cb90105b73e030491f7c29d641200"
+    },
+    {
+      "family": "full",
+      "path": "outputs_rebuttal/turkish_old_method_pilot_es10_20261007/full/seed42/test_predictions.csv",
+      "rows": 2000,
+      "scores": {
+        "bleu": 22.570620186619088,
+        "chrfpp": 41.5493040930389,
+        "chrf0": 42.61601085465619
+      },
+      "sha256": "1b659d91bf6641ca950f6b958bef6397e747694face5469737bfdcd0c3f51a8b"
+    }
+  ],
+  "lsr003_validation": [
+    {
+      "seed": 42,
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed42/runs/mbart-amis-lsr_l003-seed42-corrected-control/validation_predictions.csv",
+      "rows": 576,
+      "scores": {
+        "bleu": 16.516374886250833,
+        "chrfpp": 13.90608116417584,
+        "chrf0": 15.96941135647063
+      },
+      "sha256": "0a39943a5d7fe8cf250282fb72fd92f11e873e1a7b8585425cfff50f7ed3e80b"
+    },
+    {
+      "seed": 43,
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed43/runs/mbart-amis-lsr_l003-seed43-corrected-control/validation_predictions.csv",
+      "rows": 576,
+      "scores": {
+        "bleu": 16.415989014841518,
+        "chrfpp": 14.066060576748269,
+        "chrf0": 16.126819023865533
+      },
+      "sha256": "8311d11146929da107d2aa9d8c3aa52ec21b33aa78eab2d4dcbe77011d07fd93"
+    },
+    {
+      "seed": 44,
+      "path": "outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed44/runs/mbart-amis-lsr_l003-seed44-corrected-control/validation_predictions.csv",
+      "rows": 576,
+      "scores": {
+        "bleu": 16.762511759795363,
+        "chrfpp": 14.178780679159745,
+        "chrf0": 16.28638497470875
+      },
+      "sha256": "1fd0aa287d0023ba5ea63dc882057e398021a3eb5903b25296ec0ccaadb1c18e"
+    }
+  ],
+  "seed42_controls": [
+    {
+      "family": "baseline",
+      "verification": "outputs_rebuttal/amis_corrected_baseline42_20261005/local_verification.json",
+      "status": "VERIFIED",
+      "completed_epochs": 20.0,
+      "selected_epoch": 20.0,
+      "selected_step": 720,
+      "validation": null,
+      "metadata_folder": "outputs_rebuttal/amis_corrected_baseline42_20261005"
+    },
+    {
+      "family": "clrr",
+      "verification": "outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42/local_verification.json",
+      "status": "VERIFIED",
+      "completed_epochs": 19.0,
+      "selected_epoch": 15.0,
+      "selected_step": 540,
+      "validation": {
+        "bleu": 15.769882639717023,
+        "chrfpp": 13.563791179947074,
+        "rows": 576,
+        "prediction_sha256": "78d22136bafde74ebc028c06c1c3cdc62adcc8655b7b141cdb868b943f0768aa"
+      },
+      "metadata_folder": "outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42"
+    },
+    {
+      "family": "lsr",
+      "verification": "outputs_rebuttal/amis_accumulation_pilot_20261005/lsr/local_verification.json",
+      "status": "VERIFIED",
+      "completed_epochs": 18.0,
+      "selected_epoch": 14.0,
+      "selected_step": 504,
+      "validation": null,
+      "metadata_folder": "outputs_rebuttal/amis_accumulation_pilot_20261005/lsr"
+    },
+    {
+      "family": "full",
+      "verification": "outputs_rebuttal/amis_accumulation_pilot_20261005/full/local_verification.json",
+      "status": "VERIFIED",
+      "completed_epochs": 20.0,
+      "selected_epoch": 20.0,
+      "selected_step": 720,
+      "validation": null,
+      "metadata_folder": "outputs_rebuttal/amis_accumulation_pilot_20261005/full"
+    },
+    {
+      "family": "lsr003",
+      "status": "VALIDATION_VERIFIED",
+      "completed_epochs": 20.0,
+      "selected_epoch": 20.0,
+      "selected_step": 720,
+      "validation": {
+        "bleu": 16.516374886250833,
+        "chrfpp": 13.90608116417584,
+        "rows": 576,
+        "prediction_sha256": "0a39943a5d7fe8cf250282fb72fd92f11e873e1a7b8585425cfff50f7ed3e80b"
+      },
+      "metadata_folder": "outputs_rebuttal/amis_corrected_controls_20261005/lsr003/seed42"
+    }
+  ],
+  "status": "ALL_65_PREDICTION_SETS_REPLAY_PASS"
+}

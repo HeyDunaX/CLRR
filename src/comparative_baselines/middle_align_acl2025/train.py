@@ -79,24 +79,31 @@ class ConsoleMetricsCallback(TrainerCallback):
                 print(f"[Middle-Align Eval @ step {state.global_step}] " + " | ".join(eval_fields), flush=True)
 
 
-def configure_mbart(tokenizer: Any, model: Any = None) -> None:
+def configure_mbart(tokenizer: Any, model: Any = None, src_lang: str | None = None, tgt_lang: str = "zh_CN") -> None:
     """Configures language codes and forced_bos_token_id for mBART models."""
     if not tokenizer.__class__.__name__.lower().startswith("mbart"):
         return
-    if "zh_CN" not in tokenizer.lang_code_to_id:
-        raise ValueError("The selected mBART tokenizer does not expose zh_CN.")
-    src_lang = "tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX")
+    if tgt_lang not in tokenizer.lang_code_to_id:
+        raise ValueError(f"The selected mBART tokenizer does not expose {tgt_lang}.")
+    src_lang = src_lang or ("tl_XX" if "tl_XX" in tokenizer.lang_code_to_id else ("id_XX" if "id_XX" in tokenizer.lang_code_to_id else "en_XX"))
+    if src_lang not in tokenizer.lang_code_to_id:
+        raise ValueError(f"The selected mBART tokenizer does not expose {src_lang}.")
     tokenizer.src_lang = src_lang
-    tokenizer.tgt_lang = "zh_CN"
+    tokenizer.tgt_lang = tgt_lang
     if model is not None:
         base_model = getattr(model, "base_model", model)
         if hasattr(base_model, "config"):
-            base_model.config.forced_bos_token_id = tokenizer.lang_code_to_id["zh_CN"]
+            base_model.config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
+            base_model.generation_config.forced_bos_token_id = tokenizer.lang_code_to_id[tgt_lang]
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Train Middle-Layer Alignment Baseline on Amis-Chinese")
     parser.add_argument("--model-name", default="google/mt5-small")
+    parser.add_argument("--model-revision", default=None)
+    parser.add_argument("--src-lang", default=None)
+    parser.add_argument("--tgt-lang", default="zh_CN")
+    parser.add_argument("--bleu-tokenizer", default="zh")
     parser.add_argument("--run-name", default=None)
     parser.add_argument("--data-dir", default="data_processed/amis_mandarin")
     parser.add_argument("--output-dir", default="results")
@@ -139,10 +146,10 @@ def tokenize_dataset(dataset: Dataset, tokenizer: Any, args: argparse.Namespace)
     return dataset.map(tokenize, batched=True, remove_columns=dataset.column_names)
 
 
-def build_compute_metrics(tokenizer: Any, references: list[str] | None = None):
+def build_compute_metrics(tokenizer: Any, references: list[str] | None = None, bleu_tokenizer: str = "zh"):
     if references is None:
         raise ValueError("Original references for the evaluation split are required")
-    return original_reference_metrics(tokenizer, references, tokenize="zh")
+    return original_reference_metrics(tokenizer, references, tokenize=bleu_tokenizer)
 
 def main() -> None:
     args = parse_args()
@@ -173,14 +180,15 @@ def main() -> None:
         f"[Middle-Align] Loading tokenizer & model for {args.model_name} (run_name={run_name}, lr={learning_rate}, layer={middle_layer_idx}, tau={args.temperature}, weight={args.align_weight})...",
         flush=True,
     )
-    tokenizer = AutoTokenizer.from_pretrained(args.model_name, use_fast=True)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name, use_fast=True, revision=args.model_revision)
     model = load_middle_align_model(
         args.model_name,
         middle_layer_idx=middle_layer_idx,
         temperature=args.temperature,
         align_weight=args.align_weight,
+        revision=args.model_revision,
     )
-    configure_mbart(tokenizer, model)
+    configure_mbart(tokenizer, model, src_lang=args.src_lang, tgt_lang=args.tgt_lang)
 
     print(f"[Middle-Align] Tokenizing dataset splits from {data_dir}...", flush=True)
     train_dataset = tokenize_dataset(load_split(data_dir, "train"), tokenizer, args)
@@ -227,7 +235,7 @@ def main() -> None:
         eval_dataset=validation_dataset,
         tokenizer=tokenizer,
         data_collator=collator,
-        compute_metrics=build_compute_metrics(tokenizer, references=load_split(data_dir, "validation")["target"]),
+        compute_metrics=build_compute_metrics(tokenizer, references=load_split(data_dir, "validation")["target"], bleu_tokenizer=args.bleu_tokenizer),
         callbacks=[
             ConsoleMetricsCallback(),
             EarlyStoppingCallback(early_stopping_patience=args.early_stopping_patience),
@@ -245,7 +253,7 @@ def main() -> None:
     # Final test evaluation with beam size 4
     print(f"[Middle-Align] Running final test evaluation with beam_size={args.num_beams}...", flush=True)
     trainer.args.generation_num_beams = args.num_beams
-    trainer.compute_metrics = build_compute_metrics(tokenizer, references=load_split(data_dir, "test")["target"])
+    trainer.compute_metrics = build_compute_metrics(tokenizer, references=load_split(data_dir, "test")["target"], bleu_tokenizer=args.bleu_tokenizer)
     test_output = trainer.predict(test_dataset, metric_key_prefix="test")
     test_metrics = test_output.metrics
 
@@ -271,7 +279,7 @@ def main() -> None:
         "training_time_seconds": training_time,
         "eval_bleu": val_metrics.get("eval_bleu"),
         "eval_chrf++": val_metrics.get("eval_chrf++"),
-        "evaluation_protocol": metric_protocol("zh"),
+        "evaluation_protocol": metric_protocol(args.bleu_tokenizer),
         "test_bleu": test_metrics.get("test_bleu"),
         "test_chrf++": test_metrics.get("test_chrf++"),
     }

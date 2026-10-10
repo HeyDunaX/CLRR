@@ -1,0 +1,51 @@
+{
+  "repo": "FiveC/amis-fresh-confirmation-baseline-20261005",
+  "revision": "a4cf5912e8d58af90abc4ac16dddea5bfbf982c3",
+  "files": {
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/mbart-amis-baseline-seed51-fresh-confirmation-best.zip": {
+      "size": 2270713569,
+      "sha256": "ac6af5b9811d02dcf03f505725d6aac1036c465db10d93d7b65fdf6c2c597caa"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/latest_trainer_state.json": {
+      "size": 19002,
+      "sha256": "1d291c663a0dd783a145c1ab50cfcd57c0c3860160bb52752586a335ebd06587"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/training_receipt.json": {
+      "size": 2214,
+      "sha256": "d5d22aeea1b8b4d5e9f673b53677be8b64cb867b0b80ce0a55def0bbbf3ac38d"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/command.json": {
+      "size": 1604,
+      "sha256": "ab166cecd17e7b6a539ead2210e7583e9b40241831b62c19abfb20e5295ef7b9"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/VAL_COMPLETE.json": {
+      "size": 4789,
+      "sha256": "8d9d2bc5961449c36d1bc0c4c74fa583cbe7c53830272832e3566d3e7a5eb9ef"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/final_trainer_state.json": {
+      "size": 19248,
+      "sha256": "fd600e3c39dce339900074030dbfaa363f81150be8df4ab2de2f1e1e2c0893bd"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/provenance/trainer_gate.json": {
+      "size": 214,
+      "sha256": "7fb287799314548d0dec86e2630e0d801f8936e1d1c92f517eacc3e2e36d842d"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/metrics.json": {
+      "size": 2833,
+      "sha256": "0c32bf481d97a547988998d800ff25a03146921859d23a73076dfa144a3a8f5e"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/validation_predictions.csv": {
+      "size": 64755,
+      "sha256": "727e6f56a8743d5a1fe684befda94c0a60e6619d98b0e853be6a74e72a4fabe8"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/selected_provenance/trainer_state.json": {
+      "size": 15327,
+      "sha256": "9652d0d51f7aa7991201bbe374285fca6e04d39996bb4d361dab3afde87f2c87"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-baseline-seed51-fresh-confirmation/selected_provenance/training_receipt.json": {
+      "size": 2214,
+      "sha256": "d5d22aeea1b8b4d5e9f673b53677be8b64cb867b0b80ce0a55def0bbbf3ac38d"
+    }
+  },
+  "verified": true
+}

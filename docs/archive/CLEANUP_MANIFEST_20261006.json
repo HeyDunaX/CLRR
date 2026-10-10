@@ -1,0 +1,864 @@
+{
+  "date": "2026-10-06",
+  "scope": "docs/archive and docs/research/archive only; raw results untouched",
+  "source_files": 105,
+  "merged_reports": 17,
+  "delete_files": [
+    "docs/archive/BASELINE_METHODS_ANALYSIS_AND_VERIFICATION.md",
+    "docs/archive/CLRR-paper/anthology.bib.txt",
+    "docs/archive/CLRR-paper/formatting.md",
+    "docs/archive/CLRR-paper/latex/acl.sty",
+    "docs/archive/CLRR-paper/latex/acl_natbib.bst",
+    "docs/archive/CLRR-paper/latex/clrr_main.tex",
+    "docs/archive/CLRR-paper/latex/clrr_references.bib",
+    "docs/archive/CLRR-paper/latex/custom.bib",
+    "docs/archive/CLRR-paper/latex/figures/appendix_entropy_sink.pdf",
+    "docs/archive/CLRR-paper/latex/figures/appendix_length_scaling.pdf",
+    "docs/archive/CLRR-paper/latex/figures/clrr_architecture.pdf",
+    "docs/archive/CLRR-paper/latex/figures/huggingface_logo.png",
+    "docs/archive/CLRR-paper/latex/figures/openai-logo.png",
+    "docs/archive/CLRR-paper/latex/figures/training_dynamics.pdf",
+    "docs/archive/CLRR-paper/latex/figures/tssa_architecture.pdf",
+    "docs/archive/CLRR-paper/latex/figures/tssa_architecture.png",
+    "docs/archive/CLRR-paper/latex/figures/wc_csconda.png",
+    "docs/archive/CLRR-paper/latex/figures/wc_educoqa.png",
+    "docs/archive/CLRR-paper/latex/main.tex",
+    "docs/archive/CLRR-paper/latex/main_tada_backup.tex",
+    "docs/archive/CLRR-paper/latex/TADA.pdf",
+    "docs/archive/CLRR-paper/latex/TADA_v1.pdf",
+    "docs/archive/CLRR-paper/README",
+    "docs/archive/CLRR-paper/README.md",
+    "docs/archive/CLRR_GO_NOGO_PLAN_before_followup_20261003.md",
+    "docs/archive/experiment_reports_20261003/ASHANINKA_PATIENCE10_RESULTS.md",
+    "docs/archive/experiment_reports_20261003/ASHANINKA_PATIENCE10_RUNBOOK.md",
+    "docs/archive/experiment_reports_20261003/ASHANINKA_RUNBOOK.md",
+    "docs/archive/experiment_reports_20261003/CHECKPOINT_DIAGNOSTICS_20261002.md",
+    "docs/archive/experiment_reports_20261003/EASY_DIAGNOSTICS_20261002.md",
+    "docs/archive/experiment_reports_20261003/EXPERIMENTS_BEFORE_CONSOLIDATION.md",
+    "docs/archive/experiment_reports_20261003/FOLLOWUP_RUNBOOK_20261003.md",
+    "docs/archive/experiment_reports_20261003/MATCHED_INFERENCE_RESULTS_20261003.md",
+    "docs/archive/experiment_reports_20261003/METRICS.md",
+    "docs/archive/experiment_reports_20261003/NEXT_STEPS_AUDITED_20261002.md",
+    "docs/archive/experiment_reports_20261003/README.md",
+    "docs/archive/experiment_reports_20261003/RESEARCH_INSIGHTS.md",
+    "docs/archive/experiment_reports_20261003/RESULTS_VERIFICATION.md",
+    "docs/archive/EXPERIMENTAL_EXTENSION_PLAN.md",
+    "docs/archive/EXPERIMENTAL_REVALIDATION_PLAN.md",
+    "docs/archive/EXPERIMENTS_v1_with_layerskip_byt5.md",
+    "docs/archive/FOLLOWUP_CONTEXT.md",
+    "docs/archive/GOOGLE_COLAB_SSH_GUIDE.md",
+    "docs/archive/implementation_plan_original_20261003.md",
+    "docs/archive/PAPER_EXPERIMENT_INSIGHTS.md",
+    "docs/archive/PROJECT_CONTEXT.md",
+    "docs/archive/RESEARCH_INSIGHTS_v1_with_layerskip_byt5.md",
+    "docs/archive/scope_before_20261003/data_processed/README.md",
+    "docs/archive/scope_before_20261003/docs/CLRR_GO_NOGO_PLAN.md",
+    "docs/archive/scope_before_20261003/docs/clrr_main.tex",
+    "docs/archive/scope_before_20261003/docs/clrr_references.bib",
+    "docs/archive/scope_before_20261003/docs/EXPERIMENTS_UPDATED.md",
+    "docs/archive/scope_before_20261003/docs/implementation_plan.md",
+    "docs/archive/scope_before_20261003/docs/METRICS.md",
+    "docs/archive/scope_before_20261003/docs/paper_tables/ashaninka.tex",
+    "docs/archive/scope_before_20261003/README.md",
+    "docs/archive/scope_before_20261003/retired/ashaninka_environment.json",
+    "docs/archive/scope_before_20261003/retired/ashaninka_requirements_frozen.txt",
+    "docs/archive/scope_before_20261003/retired/ashaninka_source_manifest.json",
+    "docs/archive/scope_before_20261003/retired/scripts/prepare_ashaninka_spanish.py",
+    "docs/archive/scope_before_20261003/retired/scripts/revalidation/analyze_followup.py",
+    "docs/archive/scope_before_20261003/retired/scripts/revalidation/measure_saved_output_robustness.py",
+    "docs/archive/scope_before_20261003/retired/scripts/revalidation/sync_verified_result_tables.py",
+    "docs/archive/scope_before_20261003/retired/scripts/revalidation/verify_all_reported_numbers.py",
+    "docs/archive/scope_before_20261003/retired/scripts/run_all_rebuttal_suite.py",
+    "docs/archive/scope_before_20261003/retired/scripts/run_ashaninka_experiments.py",
+    "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__init__.py",
+    "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__pycache__/__init__.cpython-311.pyc",
+    "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__pycache__/model.cpython-311.pyc",
+    "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/model.py",
+    "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/train.py",
+    "docs/archive/scope_before_20261003/scripts/nllb/run_nllb_suite.sh",
+    "docs/archive/scope_before_20261003/scripts/nllb/smoke_test_nllb.py",
+    "docs/archive/scope_before_20261003/scripts/revalidation/build_paper_tables.py",
+    "docs/archive/scope_before_20261003/scripts/revalidation/measure_checkpoint_mechanisms.py",
+    "docs/archive/scope_before_20261003/scripts/revalidation/measure_utf8_truncation.py",
+    "docs/archive/scope_before_20261003/scripts/revalidation/reevaluate_checkpoints.py",
+    "docs/archive/scope_before_20261003/scripts/run_comparative_models.py",
+    "docs/archive/scope_before_20261003/scripts/smoke_test_comparative.py",
+    "docs/archive/scope_before_20261003/src/amis_rewire/train.py",
+    "docs/archive/scope_before_20261003/src/nllb_suite/modeling_nllb.py",
+    "docs/archive/scope_before_20261003/src/nllb_suite/train_nllb.py",
+    "docs/archive/scope_before_20261003/tests/smoke_ashaninka_training.py",
+    "docs/archive/scope_before_20261003/tests/test_audit_repairs.py",
+    "docs/archive/TEMPLATE_PLAN.md",
+    "docs/research/archive/20261005_before_consolidation/ACCUMULATION_CONFIRMATION_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/ACCUMULATION_CONFIRMATION_INSIGHTS_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/ACCUMULATION_PILOT_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+    "docs/research/archive/20261005_before_consolidation/AMIS_WARMUP_V2_RESULTS.md",
+    "docs/research/archive/20261005_before_consolidation/CLRR_GO_NOGO_PLAN.md",
+    "docs/research/archive/20261005_before_consolidation/CORRECTED_ACCUMULATION_SIGNIFICANCE_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/CORRECTED_CONTROLS_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md",
+    "docs/research/archive/20261005_before_consolidation/FULLSIZE_GATE_AND_BASELINE42_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/G0_G1_LOCAL_AUDIT_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/G0_G1_VERIFICATION_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/GPU_PREFLIGHT_AND_BASELINE_GATE_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/PRE_RERUN_PROVENANCE_AUDIT_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/PRE_RERUN_VERIFICATION_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/relocation_manifest.json",
+    "docs/research/archive/20261005_before_consolidation/RESEARCH_INSIGHTS.md"
+  ],
+  "changed_reference_files": [
+    "README.md",
+    "docs/archive/CORRECTED_RESULTS_20261005.md",
+    "docs/archive/EXPERIMENTS_ORIGINAL_20261003.md",
+    "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md",
+    "docs/archive/TECHNICAL_AUDITS_20261005.md",
+    "docs/experiments/EXPERIMENTS_UPDATED.md",
+    "docs/experiments/METRICS.md",
+    "docs/operations/AMIS_WARMUP_2_COLAB_RUNBOOK.md",
+    "docs/operations/CONFIGURATION_SEARCH_HANDOFF.md",
+    "docs/operations/implementation_plan.md",
+    "docs/README.md",
+    "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+    "docs/research/RESEARCH_INSIGHTS.md"
+  ],
+  "records": [
+    {
+      "path": "docs/archive/BASELINE_METHODS_ANALYSIS_AND_VERIFICATION.md",
+      "sha256": "15e1eab3be8f2d2f68d7a02181120fe79e5e695dce0c3697b3f75bd2efb72c60",
+      "bytes": 14994,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/anthology.bib.txt",
+      "sha256": "79636fbc45e47f8422f5982494e6bc0b91bab873822670f0d86e24a5abeb29ca",
+      "bytes": 373,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/formatting.md",
+      "sha256": "9e004a136c5dd43300d97e5bef5eb3a77d0e2a2d3502f0f2436ec011d1c49e9c",
+      "bytes": 17923,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/acl.sty",
+      "sha256": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+      "bytes": 11615,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/acl.sty"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/acl_natbib.bst",
+      "sha256": "e332fd51dcea48e2a8a89754892c3cb99674a1cd70b527b661e9aaffc235e83c",
+      "bytes": 45186,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/acl_natbib.bst"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/clrr_main.tex",
+      "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+      "bytes": 73978,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/clrr_main_before_revision_20261003.tex"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/clrr_references.bib",
+      "sha256": "e4d866d6f2f7b082f3b0547a8834e11e904487028dd6cdde6b3d232cc6ec7d0b",
+      "bytes": 16926,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/clrr_references.bib"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/custom.bib",
+      "sha256": "19a79740db44e25c4f77d4440fb0aac602961c5904cb81b003a219f637aa723a",
+      "bytes": 75718,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/appendix_entropy_sink.pdf",
+      "sha256": "edc79ca50d4f7a5469fc9ee1f7897b3cd11c21a135e61b2b816d20bd77e2eceb",
+      "bytes": 40951,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/appendix_length_scaling.pdf",
+      "sha256": "df420274798551dfb8d476ad8ea0e1c3080f63cee53f603eb646c9e1f2da11a4",
+      "bytes": 34604,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/clrr_architecture.pdf",
+      "sha256": "280f4d242e75e4f9faa6468418e515a7142b81758b00da2e3334a434e5b7b84c",
+      "bytes": 37275,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/figures/clrr_architecture.pdf"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/huggingface_logo.png",
+      "sha256": "9cf16f4f32604eaf76dabbdf47701eea5a768ebcc7296acc1d1758181f71db73",
+      "bytes": 185450,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/openai-logo.png",
+      "sha256": "f8967e16a2c815103e23178b92061972c4d0bdd2301f850907dd56f998ed4c07",
+      "bytes": 44249,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/training_dynamics.pdf",
+      "sha256": "bf279c05aa4aa9636cc5fdc1c382acd743aa125e5a6a5928b6671c729c626aae",
+      "bytes": 32502,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/tssa_architecture.pdf",
+      "sha256": "7b85562392570936a19edbc4883e6889069f229bb5fdb9b05f231f7c5d1dbad8",
+      "bytes": 116356,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/tssa_architecture.png",
+      "sha256": "555c73521c2c106763643aa9d819bd2843248106c3a863f208ac56c3202413f8",
+      "bytes": 763290,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/wc_csconda.png",
+      "sha256": "1c25d3249bd69380e4097ef3481c70ca868005c22beeeed247ba4e5e22737605",
+      "bytes": 6795486,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/figures/wc_educoqa.png",
+      "sha256": "9f65313940bcfcbd40a380e5c86a7ba3582da3519b541d4e6339bc1bf6ed27b7",
+      "bytes": 6832829,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/main.tex",
+      "sha256": "3bfd922c830e6e3995bd4820bfd028ff3260d85a11199bc183562fb2607a98e8",
+      "bytes": 122076,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/main_tada_backup.tex",
+      "sha256": "3bfd922c830e6e3995bd4820bfd028ff3260d85a11199bc183562fb2607a98e8",
+      "bytes": 122076,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/TADA.pdf",
+      "sha256": "3109eda5728b1e5f00b16d280864c2544edbc74580e3000af9c074a855092afc",
+      "bytes": 2903972,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/latex/TADA_v1.pdf",
+      "sha256": "eb2a49f705b390adfefbb5791dee88a8f2418c6cd2a0c00db82065495356eece",
+      "bytes": 105657,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/README",
+      "sha256": "f12c1087f067461d6bcfcfe912d95386b92e9472e97faae09d71b44df55ef43b",
+      "bytes": 9,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR-paper/README.md",
+      "sha256": "72ed13896af73eaa34bc986d54917c35ee0b60c3068461f3ad80c68cd128db0f",
+      "bytes": 2393,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/CLRR_GO_NOGO_PLAN_before_followup_20261003.md",
+      "sha256": "076ac0bae4d6066b150280aefbbded832702507cd23b8f3fe499667ea940fff5",
+      "bytes": 22416,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md"
+    },
+    {
+      "path": "docs/archive/clrr_main_before_revision_20261003.tex",
+      "sha256": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+      "bytes": 73978,
+      "action": "kept",
+      "replacement": null
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/ASHANINKA_PATIENCE10_RESULTS.md",
+      "sha256": "95fd719e14c0b5f60fe7f481c24c526dcafda4934c54140ff5c3f9ff0e32e5ed",
+      "bytes": 2576,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/ASHANINKA_PATIENCE10_RUNBOOK.md",
+      "sha256": "a697a5cf2e58c68d2a3c11d75c8327cad49aedab715378ba3c862c446adece6e",
+      "bytes": 2102,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/ASHANINKA_RUNBOOK.md",
+      "sha256": "ac7498c3cc974eb39add427fef4a5b00316c40148ee18df9a8100ac066adfb63",
+      "bytes": 3600,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/CHECKPOINT_DIAGNOSTICS_20261002.md",
+      "sha256": "9c2b1e9b714c94e985b6f891710fb7625e726dadbffd351f52a9139829ff995e",
+      "bytes": 12995,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#checkpoint-diagnostics-20261002"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/EASY_DIAGNOSTICS_20261002.md",
+      "sha256": "16ec3a6832b378dfbcf7d9af7f87011b9f28a4501720cd06f2cd7c19b80b8ce1",
+      "bytes": 13383,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#easy-diagnostics-20261002"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/EXPERIMENTS_BEFORE_CONSOLIDATION.md",
+      "sha256": "c5b8705f0d5d3e69a4716652a05941270cefd5cf918ef116e554a065ecee6299",
+      "bytes": 25387,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/FOLLOWUP_RUNBOOK_20261003.md",
+      "sha256": "284fe5cf6a1b17c08f1e893612c60028fca8e58ff51c7b35433134c3f8ead096",
+      "bytes": 5862,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/MATCHED_INFERENCE_RESULTS_20261003.md",
+      "sha256": "ed6bdf6c93649ad3b187d713cf90dfcfdfcb7e27d0c16a996fea13937375db73",
+      "bytes": 10570,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#matched-inference-results-20261003"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/METRICS.md",
+      "sha256": "cbd96db9109e05377dee3203f0a9152326bfe55649ab1613ae023b1bb823c0e7",
+      "bytes": 14561,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/NEXT_STEPS_AUDITED_20261002.md",
+      "sha256": "3e31f53831a0d68fbe7020e158896638c6c99b1c44a87cdae7255a316791c4b7",
+      "bytes": 17214,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/README.md",
+      "sha256": "411cd66900e6087a21c63244aeca7268fb258dcff040118e53d6d066a374cfee",
+      "bytes": 701,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/RESEARCH_INSIGHTS.md",
+      "sha256": "7e06212ced2cfb341b0dc4c3b72885c0dbe17c81e2caa2f2b3862cda85f304c7",
+      "bytes": 28885,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/experiment_reports_20261003/RESULTS_VERIFICATION.md",
+      "sha256": "83ae66b6e7430b03112d78a062996a06282ba567ccc22f5de3d84179bebe2f3c",
+      "bytes": 23149,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#results-verification"
+    },
+    {
+      "path": "docs/archive/EXPERIMENTAL_EXTENSION_PLAN.md",
+      "sha256": "77d31244d0e48d8155b9ed79396d5dcd2c92fc0a4988bfae792a51dabbdff631",
+      "bytes": 27127,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/EXPERIMENTAL_REVALIDATION_PLAN.md",
+      "sha256": "8012a741538042c33f4e808f704d551ad715c5198f75f0a63d5a7ca850213fdf",
+      "bytes": 24713,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/EXPERIMENTS_ORIGINAL_20261003.md",
+      "sha256": "a0e83a7d777b987cabc341bd639e39cd863a0725882644c374b181af391f77db",
+      "bytes": 23495,
+      "action": "kept",
+      "replacement": null
+    },
+    {
+      "path": "docs/archive/EXPERIMENTS_v1_with_layerskip_byt5.md",
+      "sha256": "28f8439c6223b9407e20edf17b5bf1451e54739e9eb58c15ebd11f92c1b269bf",
+      "bytes": 11163,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/FOLLOWUP_CONTEXT.md",
+      "sha256": "98378a9eec14d0eed88077ca4e43c79dbfa632f6d601cab940be1c06af220203",
+      "bytes": 8057,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/GOOGLE_COLAB_SSH_GUIDE.md",
+      "sha256": "6fe60ca507e77012c3266e01423e4cd96b24fb988320e1d674049652629b757f",
+      "bytes": 5218,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/implementation_plan_original_20261003.md",
+      "sha256": "761e950060c9ba5f8623786e646c92332e1055f1c02c976fadd9d08daa6b3cff",
+      "bytes": 23168,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/PAPER_EXPERIMENT_INSIGHTS.md",
+      "sha256": "5f78bb16dcded0d2df08b2e7e8e37e3a0acb86c7c927fb7b108745b90d4b7aa9",
+      "bytes": 36041,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/PROJECT_CONTEXT.md",
+      "sha256": "ca9be23c28e59d5c3cb62551dfa9329e76041e931f82c4bac237252ca365a919",
+      "bytes": 14390,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/README.md",
+      "sha256": "0d3f92cb9386429a00b034e1a0eda0bd343b2a254c35896182ab5932f43574ca",
+      "bytes": 2151,
+      "action": "kept",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/RESEARCH_INSIGHTS_v1_with_layerskip_byt5.md",
+      "sha256": "dc07d297200a87a31d5d8907d506341f72e4f248031e8e44b903f5e0bfc62cd8",
+      "bytes": 12506,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/data_processed/README.md",
+      "sha256": "31ae8f6b80a7efc79c1ed5a6f0132c50f474329855581f42f728af5f57de6035",
+      "bytes": 3406,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/CLRR_GO_NOGO_PLAN.md",
+      "sha256": "92c95bd5a8924533b0a13195ee2c36ca399504559f669c83a80f1fa028bf06bc",
+      "bytes": 22367,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/clrr_main.tex",
+      "sha256": "c16ad73b7b429c49ed272e3b4e58b5931c06f1cc465c7f71708100af13ccee21",
+      "bytes": 28537,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/clrr_references.bib",
+      "sha256": "93c135aa8f54e39f9fb734a7eb20683b6a92ee316f078950641867572a3459b0",
+      "bytes": 7669,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/EXPERIMENTS_UPDATED.md",
+      "sha256": "4d7e8674c91e5c4f47909237a5d907f2591454d02baa1a78c085473f2d495000",
+      "bytes": 63558,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/implementation_plan.md",
+      "sha256": "3cfe709e29b644b2c748b3b661da098d616be0dffc3381740e77f5c6377fb2c3",
+      "bytes": 2696,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/METRICS.md",
+      "sha256": "5705aa149a14b1fa887715f87e9abde4cb9a10e3d03f966d1703c2b05b8b4280",
+      "bytes": 4469,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/docs/paper_tables/ashaninka.tex",
+      "sha256": "a3873b676c196e9acc4819d93f61d216b5fe519e7be2781878297fec8d270b5a",
+      "bytes": 600,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/README.md",
+      "sha256": "2fdce1aab3399225fc7de23accd18ea2c21aadc599a83152f29ca50ea4dcf1dd",
+      "bytes": 372,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/ashaninka_environment.json",
+      "sha256": "40944e93357e7a8903d8af32bdd235d3cfbb76f86a99818fb1fb5c739fce91b2",
+      "bytes": 439,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/ashaninka_requirements_frozen.txt",
+      "sha256": "f7218bb2799afc8d2297761f7b34018cc267da3a1636eff9b72f577200850a50",
+      "bytes": 1609,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/ashaninka_source_manifest.json",
+      "sha256": "3de78258c5f4704d24b43386ab7e5ca3f8d398475df97863945c56e62d28abeb",
+      "bytes": 3125,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/prepare_ashaninka_spanish.py",
+      "sha256": "0dc9feb89b557fc9561d4d07fccc96870cc67c3673d79915f4f3d6d3e345c712",
+      "bytes": 3793,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/revalidation/analyze_followup.py",
+      "sha256": "24ec2f0694b6cfe831a3c4c25c017e58c29a394ca6599b4e91711b4db09c9646",
+      "bytes": 7425,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/revalidation/measure_saved_output_robustness.py",
+      "sha256": "4c0a0877dabdb453b6a638024a6b65e728a09e8de6aac1dd5de765e097c2ed60",
+      "bytes": 7804,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/revalidation/sync_verified_result_tables.py",
+      "sha256": "0ae955f97697abef4683dea0ea450b0b9e1293b0e0eba4735da931c2f9b927dd",
+      "bytes": 7145,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/revalidation/verify_all_reported_numbers.py",
+      "sha256": "31ac8deaf54a4a09eeaf1f5baf559abd5553397f031bb11dd45ac077485d0db7",
+      "bytes": 11043,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/run_all_rebuttal_suite.py",
+      "sha256": "9bcebaac4bac176e6c0afc8fcc281750051c354ccf7c3b5acf20028178363d04",
+      "bytes": 2744,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/scripts/run_ashaninka_experiments.py",
+      "sha256": "275f96fd370be852a2e9f5bcb86aae13e95fd57bde1037c5454270a89b930aaa",
+      "bytes": 12927,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__init__.py",
+      "sha256": "6404c3e8a51dceadf29cc9697f3eb37fe9707c4fd95f4cc12304c7d0e47e6356",
+      "bytes": 172,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__pycache__/__init__.cpython-311.pyc",
+      "sha256": "e7307cedbcc1d080d8928f4aed5fc37f9bbd7d8fd53bf7396b893bb3e3f11076",
+      "bytes": 385,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/__pycache__/model.cpython-311.pyc",
+      "sha256": "1dcb03db2c86555c2612f2cd660a553db5a48d1b5e1fc640c1281f54658c1be1",
+      "bytes": 10239,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/model.py",
+      "sha256": "be731c5e8182bec1a3c3cfc934fbeb2553304d37fae438e5095caab902a78647",
+      "bytes": 6107,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/retired/src/comparative_baselines/layerskip_acl2024/train.py",
+      "sha256": "0d52632977d9513204f44845e81a257b1038e2f0691679b361def38f8087ccd3",
+      "bytes": 14855,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/nllb/run_nllb_suite.sh",
+      "sha256": "d481b61a0b379bed63661f0dfb1edb9bdf6f1fe2153b190876683ab405676184",
+      "bytes": 1984,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/nllb/smoke_test_nllb.py",
+      "sha256": "fd752475eb5cf6a930f726f3882e610007eb2bce52c083f99d712c013329ba39",
+      "bytes": 6303,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/revalidation/build_paper_tables.py",
+      "sha256": "7323fa7ccbffecefc4fa80c82e7c7806e6a9598c0e66130cf0c748981ac8f3c7",
+      "bytes": 12028,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/revalidation/measure_checkpoint_mechanisms.py",
+      "sha256": "5aabe428cede3947c7b5b75292ed2323f996e6254ba8d66defb1365f49a9bace",
+      "bytes": 23057,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/revalidation/measure_utf8_truncation.py",
+      "sha256": "b6c7cb5413c5ec6d2f22b17d3763da6e1927fed7d164f67983ddf7b0a836f5eb",
+      "bytes": 3427,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/revalidation/reevaluate_checkpoints.py",
+      "sha256": "0623bdf06153d8f6434e0688f97cdbc04f6349715b7da3cfa291485ceb1ab11b",
+      "bytes": 8123,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/run_comparative_models.py",
+      "sha256": "d6e39ce3500d1b26c00999218dd79e77750bba1a6e64847459045aa9490d6150",
+      "bytes": 19154,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/scripts/smoke_test_comparative.py",
+      "sha256": "3db7ab60810a7dbcc1a44a4bea8a3479545c60a4d0f544a19c3023b9e076da1e",
+      "bytes": 7496,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/src/amis_rewire/train.py",
+      "sha256": "7edaee4e0d89db3c655f2e343be583f917a194b30b81fc4a8f91730ecaf04f03",
+      "bytes": 22991,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/src/nllb_suite/modeling_nllb.py",
+      "sha256": "75595953232892e66cdf289bcf63ea9ca7bed2750a166bb8a32e6b0a6fda12cb",
+      "bytes": 6580,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/src/nllb_suite/train_nllb.py",
+      "sha256": "5a93d7369a1926e45d652295150a076cd0936353ca07055bd541c2e1940b14de",
+      "bytes": 21049,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/tests/smoke_ashaninka_training.py",
+      "sha256": "7ef8d1882a26cbe1c1ec41c64e65a12c93cd351184693e8c6ed4e7066365c7c2",
+      "bytes": 5893,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/scope_before_20261003/tests/test_audit_repairs.py",
+      "sha256": "cc9139ea6a8c00ba1cf6761383c934980e9f986792d71e96e51dbdbb5a670aa7",
+      "bytes": 4749,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/archive/TEMPLATE_PLAN.md",
+      "sha256": "ec957a1128177c6253b235d70ea174403d036f5c1d63fce8b89588cf43aaa120",
+      "bytes": 9303,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/ACCUMULATION_CONFIRMATION_20261005.md",
+      "sha256": "2ce8b478b791767cb65fcb17a0944311ca41c50cec63d56d48d52e8a526cc867",
+      "bytes": 8355,
+      "action": "merged",
+      "replacement": "docs/archive/CORRECTED_RESULTS_20261005.md#accumulation-confirmation-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/ACCUMULATION_CONFIRMATION_INSIGHTS_20261005.md",
+      "sha256": "ed3d38ba0b1c027177bfb241201310399dae3549accf10b539115e2f4773a08b",
+      "bytes": 3551,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/CORRECTED_RESULTS_20261005.md#accumulation-confirmation-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/ACCUMULATION_PILOT_20261005.md",
+      "sha256": "739dca7c5a058af819b8fda58a236d81f998de55ad0cd456e135be19c6324c74",
+      "bytes": 8161,
+      "action": "merged",
+      "replacement": "docs/archive/CORRECTED_RESULTS_20261005.md#accumulation-pilot-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+      "sha256": "c8e71c59a3ca44ab64b3b7cda155a172dc92ef442611b3545b4e859d26ac70de",
+      "bytes": 47569,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/AMIS_WARMUP_V2_RESULTS.md",
+      "sha256": "3aa39d63737bfbf32a607fe363cb169816d883fdaeed8967def88bd40c62c92f",
+      "bytes": 9403,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#amis-warmup-v2-results"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/CLRR_GO_NOGO_PLAN.md",
+      "sha256": "c9eaf9f55e65e16d939328e6a1d94203653d84bd1c3f11fbef4227e37da9d688",
+      "bytes": 39188,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/CORRECTED_ACCUMULATION_SIGNIFICANCE_20261005.md",
+      "sha256": "af1b3d39b0e0be5ef88a6d1f1c69c20cd07222f0c290111a6af359bd91e34019",
+      "bytes": 6003,
+      "action": "merged",
+      "replacement": "docs/archive/CORRECTED_RESULTS_20261005.md#corrected-accumulation-significance-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/CORRECTED_CONTROLS_20261005.md",
+      "sha256": "c55524f2fe1bba6e7695e17f07115dedf764267c234b68217d214e960288336c",
+      "bytes": 4258,
+      "action": "merged",
+      "replacement": "docs/archive/CORRECTED_RESULTS_20261005.md#corrected-controls-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md",
+      "sha256": "7dcbb9712e58199009136080a5529803835215ab432303685bc30ba437d20d1b",
+      "bytes": 10896,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#fixed-experiments-if-method-changes"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/FULLSIZE_GATE_AND_BASELINE42_20261005.md",
+      "sha256": "07461821aa3a5c90b1b378377aed37d5a56fd57f2c4fc51daf4889b70f53be81",
+      "bytes": 7133,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#fullsize-gate-and-baseline42-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/G0_G1_LOCAL_AUDIT_20261005.md",
+      "sha256": "736a34344ec0196e164c70540877b896dd8b2f0b57bcb93f6616bdfd4a9c1c74",
+      "bytes": 7218,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#g0-g1-local-audit-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/G0_G1_VERIFICATION_20261005.md",
+      "sha256": "496ea7673bbc39448b72ae09a7286da91921228de2614142c557a68a2d64d14b",
+      "bytes": 11792,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#g0-g1-verification-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/GPU_PREFLIGHT_AND_BASELINE_GATE_20261005.md",
+      "sha256": "9e37ac094fddcd755f75bbe8ef39d6b34ed94b0e07babab95feb5fe6fa18e091",
+      "bytes": 4688,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#gpu-preflight-and-baseline-gate-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/PRE_RERUN_PROVENANCE_AUDIT_20261005.md",
+      "sha256": "fe5052768a1be3d90f75556a278ce1f5a89e5040418fbbcd57cecec24e3c2f09",
+      "bytes": 10877,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#pre-rerun-provenance-audit-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/PRE_RERUN_VERIFICATION_20261005.md",
+      "sha256": "b7c3b3c89e2c5ade4824285949403d356db7d210ab9307301a100e3f0f680073",
+      "bytes": 8652,
+      "action": "merged",
+      "replacement": "docs/archive/TECHNICAL_AUDITS_20261005.md#pre-rerun-verification-20261005"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/relocation_manifest.json",
+      "sha256": "13cb5c4cf6321974a7d4384e61c2516206312f7e6fc091a005040dbef7c6b979",
+      "bytes": 3188,
+      "action": "deleted_superseded_or_retired",
+      "replacement": "docs/archive/README.md"
+    },
+    {
+      "path": "docs/research/archive/20261005_before_consolidation/RESEARCH_INSIGHTS.md",
+      "sha256": "645a7846c223acb95ceb308d6d6db731d03bf68fcd3dbeab28b2a6a14345efd5",
+      "bytes": 28124,
+      "action": "merged",
+      "replacement": "docs/archive/HISTORICAL_DIAGNOSTICS_20261002_05.md#research-insights"
+    }
+  ],
+  "deletion_status": "PENDING_USER_CONFIRMATION_AUTO_REVIEW_REJECTED",
+  "rejection_reason": "Approval review requires explicit approval of the 102-file deletion set and preserved paper/assets."
+}

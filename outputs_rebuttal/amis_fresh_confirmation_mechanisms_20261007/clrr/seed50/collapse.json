@@ -1,0 +1,35 @@
+{
+  "source": {
+    "rows": 575,
+    "hidden_dim": 1024,
+    "maximum_centered_rank": 574,
+    "numerical_rank": 574,
+    "effective_rank_singular_values": 387.8563282478192,
+    "effective_rank_covariance_energy": 152.74323907414416,
+    "participation_ratio": 77.47953539932244,
+    "covariance_trace": 51.55441589749083,
+    "top1_variance_fraction": 0.04221232078546662,
+    "top10_variance_fraction": 0.2817073123684919,
+    "mean_pairwise_cosine": 0.3873706952976093,
+    "std_pairwise_cosine": 0.07497145803438782,
+    "pooled_norm_mean": 9.121950588006943,
+    "pooled_norm_std": 0.6117512636153601
+  },
+  "target": {
+    "rows": 575,
+    "hidden_dim": 1024,
+    "maximum_centered_rank": 574,
+    "numerical_rank": 574,
+    "effective_rank_singular_values": 389.29883611035444,
+    "effective_rank_covariance_energy": 155.3301704667022,
+    "participation_ratio": 71.1721482828875,
+    "covariance_trace": 32.75962875833187,
+    "top1_variance_fraction": 0.0616600851140757,
+    "top10_variance_fraction": 0.29458027264794506,
+    "mean_pairwise_cosine": 0.5031125122475603,
+    "std_pairwise_cosine": 0.06900986485533925,
+    "pooled_norm_mean": 8.079668800835881,
+    "pooled_norm_std": 0.47490005074091995
+  },
+  "source_target_alignment_cosine_mean": 0.3229321241378784
+}

@@ -3,24 +3,32 @@
     "method": "baseline",
     "passed": true,
     "cuda_bf16_training": false,
-    "generation_precision": "fp32"
+    "generation_precision": "fp32",
+    "audit_rerun_accumulation4_checkpointing": false,
+    "best_weights_exact": true
   },
   {
     "method": "clrr-enc",
     "passed": true,
     "cuda_bf16_training": false,
-    "generation_precision": "fp32"
+    "generation_precision": "fp32",
+    "audit_rerun_accumulation4_checkpointing": false,
+    "best_weights_exact": true
   },
   {
     "method": "jepa",
     "passed": true,
     "cuda_bf16_training": false,
-    "generation_precision": "fp32"
+    "generation_precision": "fp32",
+    "audit_rerun_accumulation4_checkpointing": false,
+    "best_weights_exact": true
   },
   {
     "method": "jepa-clrr-enc",
     "passed": true,
     "cuda_bf16_training": false,
-    "generation_precision": "fp32"
+    "generation_precision": "fp32",
+    "audit_rerun_accumulation4_checkpointing": false,
+    "best_weights_exact": true
   }
 ]

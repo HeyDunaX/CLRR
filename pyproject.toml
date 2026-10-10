@@ -25,6 +25,7 @@ dependencies = [
 [project.scripts]
 amis-rewire-train = "amis_rewire.train:main"
 amis-rewire-prepare = "amis_rewire.prepare_data:main"
+clrr-experiment = "experiment_runner.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

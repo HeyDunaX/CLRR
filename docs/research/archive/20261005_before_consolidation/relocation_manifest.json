@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-05",
+  "preserved_snapshots": [
+    "ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+    "RESEARCH_INSIGHTS.md"
+  ],
+  "moved": {
+    "docs\\research\\ACCUMULATION_CONFIRMATION_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_CONFIRMATION_20261005.md",
+    "docs\\research\\ACCUMULATION_CONFIRMATION_INSIGHTS_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_CONFIRMATION_INSIGHTS_20261005.md",
+    "docs\\research\\ACCUMULATION_PILOT_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_PILOT_20261005.md",
+    "docs\\research\\AMIS_WARMUP_V2_RESULTS.md": "docs\\research\\archive\\20261005_before_consolidation\\AMIS_WARMUP_V2_RESULTS.md",
+    "docs\\research\\CLRR_GO_NOGO_PLAN.md": "docs\\research\\archive\\20261005_before_consolidation\\CLRR_GO_NOGO_PLAN.md",
+    "docs\\research\\CORRECTED_ACCUMULATION_SIGNIFICANCE_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\CORRECTED_ACCUMULATION_SIGNIFICANCE_20261005.md",
+    "docs\\research\\CORRECTED_CONTROLS_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\CORRECTED_CONTROLS_20261005.md",
+    "docs\\research\\FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md": "docs\\research\\archive\\20261005_before_consolidation\\FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md",
+    "docs\\research\\FULLSIZE_GATE_AND_BASELINE42_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\FULLSIZE_GATE_AND_BASELINE42_20261005.md",
+    "docs\\research\\G0_G1_LOCAL_AUDIT_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\G0_G1_LOCAL_AUDIT_20261005.md",
+    "docs\\research\\G0_G1_VERIFICATION_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\G0_G1_VERIFICATION_20261005.md",
+    "docs\\research\\GPU_PREFLIGHT_AND_BASELINE_GATE_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\GPU_PREFLIGHT_AND_BASELINE_GATE_20261005.md",
+    "docs\\research\\PRE_RERUN_PROVENANCE_AUDIT_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\PRE_RERUN_PROVENANCE_AUDIT_20261005.md",
+    "docs\\research\\PRE_RERUN_VERIFICATION_20261005.md": "docs\\research\\archive\\20261005_before_consolidation\\PRE_RERUN_VERIFICATION_20261005.md"
+  },
+  "markdown_links_updated": [
+    "README.md",
+    "docs/README.md",
+    "docs/experiments/EXPERIMENTS_UPDATED.md",
+    "docs/operations/AMIS_WARMUP_2_COLAB_RUNBOOK.md",
+    "docs/operations/CONFIGURATION_SEARCH_HANDOFF.md",
+    "docs/research/ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+    "docs/research/RESEARCH_INSIGHTS.md",
+    "docs/research/archive/20261005_before_consolidation/ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+    "docs/research/archive/20261005_before_consolidation/CLRR_GO_NOGO_PLAN.md",
+    "docs/research/archive/20261005_before_consolidation/FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md",
+    "docs/research/archive/20261005_before_consolidation/G0_G1_VERIFICATION_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/PRE_RERUN_VERIFICATION_20261005.md",
+    "docs/research/archive/20261005_before_consolidation/RESEARCH_INSIGHTS.md"
+  ]
+}

@@ -1,0 +1,7 @@
+# Python and shell entry points must run identically on Windows and Linux.
+*.py text eol=lf
+*.sh text eol=lf
+
+# Integrity checks use exact dataset/artifact bytes, including archived workers.
+data_processed/**/*.csv -text -eol
+outputs_rebuttal/** -text -eol

@@ -1,0 +1,17 @@
+{
+  "files": {
+    "src/amis_rewire/ablation.py": "2dac024b77250e27c62db075e82a463685bbb6157a0a5cd8f53ee931e9d50cc8",
+    "src/amis_rewire/evaluation.py": "e6a5da9de30315c2a0624888eb18d9811e7716966c5a8d730da5b32d5b90c6ef",
+    "src/amis_rewire/metrics.py": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+    "src/amis_rewire/modeling.py": "092ef3809e742448849a7737691e9fabe4919688385f006eb4be7ca4e9db49e4",
+    "src/amis_rewire/prepare_data.py": "82a5db8863221e657c698bbd913fff05d65f0ec0403b7bba03328ffa66b84fad",
+    "src/amis_rewire/scientific_records.py": "caeb724bc15934dfd756fc77fffac74f43c2edf8b6cf80991185bb666fcf5648",
+    "src/amis_rewire/train.py": "fce206f0e9114df4dca6d48f5f9a73c786e9e2db976303e5603f917a60dba15b",
+    "src/amis_rewire/__init__.py": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+    "scripts/revalidation/probe_target_anchor_g1.py": "c9b71778fa38a2e8192663549a20f4ef69cd96efd4cd70661ded2e86176d802a",
+    "scripts/revalidation/amis_v4_measurements.py": "d7f2b12709b577a86cfc7c84a7e775bc5052b8c46f488f1f66911e315dfb7bd2",
+    "data_processed/amis_mandarin/validation.csv": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+    "g1_inventory.json": "e12cca6fd6672d6356c1233e980f6b8d877126e1d76a95c19190e4b3c172ee95",
+    "g1_batches.json": "8f68886f97a479f624be15510d4c7f8c5dc9c957ffacce70b56858ad8fb4f196"
+  }
+}

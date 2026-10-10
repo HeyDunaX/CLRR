@@ -1,0 +1,178 @@
+[
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "baseline/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/baseline/historical-baseline/original-training/seed-unknown/metrics.json",
+    "size": 547,
+    "sha256": "d7f515b1c8d0bb826271bd83c0eef29ab3f90c115340eda88d11426aa7ab3024",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "baseline/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/baseline/historical-baseline/original-training/seed-unknown/test_predictions.csv",
+    "size": 59339,
+    "sha256": "63036b43d55c64085ca9135a053ba4cb323b57bc59444e0ec55cadf1d7b1ab68",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "bitfit/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/bitfit/historical-bitfit/original-training/seed-unknown/metrics.json",
+    "size": 1050,
+    "sha256": "d8ff7e2b3a2a6b9a29269d68f38c3e29be2015c75e3494b6da51c954a45b4406",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "bitfit/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/bitfit/historical-bitfit/original-training/seed-unknown/test_predictions.csv",
+    "size": 68509,
+    "sha256": "b71904236f3cb688d451aba7634c9282a3baa7ac7002a085e748a3274f6f28d5",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_dec/checkpoint-684/tokenizer_config.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/provenance/aggregate/checkpoint-684/tokenizer_config.json",
+    "size": 3680,
+    "sha256": "1a89fa94c83677d600cb2a8e83aaa5aa8b185d8cdfd5e7ea2292b52372768f83",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_dec/checkpoint-684/trainer_state.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/provenance/aggregate/checkpoint-684/trainer_state.json",
+    "size": 18707,
+    "sha256": "91c2aea5e6804820744c0775d83c54824537a11a30437cb1ad26cb600d057a79",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_dec/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/metrics.json",
+    "size": 649,
+    "sha256": "b1bb8b7e182b0bb41cded6fa3be9a254db1eb59cecc323da0f23950c5f7964d7",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_dec/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full-decoder/historical-clrr_dec/original-training/seed-unknown/test_predictions.csv",
+    "size": 60162,
+    "sha256": "c9c3eb688eabac67949d2fd5af36789000019db3c8a6d150df286927c58d1b90",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_enc/checkpoint-648/tokenizer_config.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/provenance/aggregate/checkpoint-648/tokenizer_config.json",
+    "size": 3680,
+    "sha256": "1a89fa94c83677d600cb2a8e83aaa5aa8b185d8cdfd5e7ea2292b52372768f83",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_enc/checkpoint-648/trainer_state.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/provenance/aggregate/checkpoint-648/trainer_state.json",
+    "size": 17692,
+    "sha256": "42a0d4e4a6c6aeaae1b5b8cd1931a24292403c3dc7116ce40339d98a0e9051f9",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_enc/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/metrics.json",
+    "size": 646,
+    "sha256": "305aeada82acc92b660982e8d54a61933f9ea8caf4cacac459a281a30d157897",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "clrr_enc/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/full/historical-clrr_enc/original-training/seed-unknown/test_predictions.csv",
+    "size": 58901,
+    "sha256": "731a8b2e4a40a62ffb5d76166ddc3c4c2c8620df6a7cbe9a7306eed4d5424a1f",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/checkpoint-720/adapter_config.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/provenance/aggregate/checkpoint-720/adapter_config.json",
+    "size": 1090,
+    "sha256": "9c5b23c88b30645fd4ee991836e336e46747a3f56cf134140ba389d3d3a3cdd9",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/checkpoint-720/README.md",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/provenance/aggregate/checkpoint-720/README.md",
+    "size": 5188,
+    "sha256": "3a3136ba032483abe205bbe135360898b0f6e7083febf52e2387b782f09a16de",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/checkpoint-720/tokenizer_config.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/provenance/aggregate/checkpoint-720/tokenizer_config.json",
+    "size": 3680,
+    "sha256": "1a89fa94c83677d600cb2a8e83aaa5aa8b185d8cdfd5e7ea2292b52372768f83",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/checkpoint-720/trainer_state.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/provenance/aggregate/checkpoint-720/trainer_state.json",
+    "size": 19688,
+    "sha256": "ca859df9d17538932963f65329faa2b60966ff5cd2992d0a8413b2cd41bf95bf",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/metrics.json",
+    "size": 782,
+    "sha256": "569902b80b0ff5e8996677d6fa3c4cb72cfb991a788a763be22be35b41af88da",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "lora/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/lora/historical-lora/original-training/seed-unknown/test_predictions.csv",
+    "size": 58998,
+    "sha256": "2b4774036aacdbafa8476cfa693009dc93ef948944a7bd84ae029f32ab06837d",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "middle_align/checkpoint-684/tokenizer_config.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/provenance/aggregate/checkpoint-684/tokenizer_config.json",
+    "size": 3680,
+    "sha256": "1a89fa94c83677d600cb2a8e83aaa5aa8b185d8cdfd5e7ea2292b52372768f83",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "middle_align/checkpoint-684/trainer_state.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/provenance/aggregate/checkpoint-684/trainer_state.json",
+    "size": 18703,
+    "sha256": "4c3fd482c0a97ab2c3bccb9b26f33c5833bfef1cc2ecf5856a9377afba223ace",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "middle_align/metrics.json",
+    "destination": "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/metrics.json",
+    "size": 622,
+    "sha256": "515d8fb4e7ef667e82aa2f1702a6fb2b4e686fa7c8e9c6de029321e7a47614dd",
+    "verified": true
+  },
+  {
+    "source_archive": "nllb-200/nllb_results.zip",
+    "member": "middle_align/test_predictions.csv",
+    "destination": "checkpoints/amis_mandarin/nllb-200/middle-alignment/historical-middle_align/original-training/seed-unknown/test_predictions.csv",
+    "size": 59059,
+    "sha256": "4285842935b364519df337e3e8b6004e58c459ec219c4b9d2fa325a051d5f32e",
+    "verified": true
+  }
+]

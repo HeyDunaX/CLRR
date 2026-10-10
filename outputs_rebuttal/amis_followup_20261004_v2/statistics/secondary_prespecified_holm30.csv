@@ -1,0 +1,31 @@
+seed,challenger,control,comparison_name,metric,delta,ci_low_unadjusted,ci_high_unadjusted,p_value,p_holm30,significant_holm30_05
+42,clrr_only_detached,baseline,CLRR-only detached vs Baseline,BLEU,-0.08778861422908335,-1.054454821707219,0.8900348135505097,0.32626737326267374,1.0,False
+42,clrr_only_detached,baseline,CLRR-only detached vs Baseline,chrF++,-0.14994061098921563,-0.7655657768249512,0.4469786167144775,0.21247875212478753,1.0,False
+42,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,BLEU,0.31628098521187553,-0.782814726153773,1.4390631490593053,0.1972802719728027,1.0,False
+42,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,chrF++,0.32391375967990044,-0.37395381927490234,1.0663678169250486,0.1377862213778622,1.0,False
+42,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),BLEU,0.60348286190289,-0.3647418973415221,1.554805209305275,0.09049095090490951,1.0,False
+42,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),chrF++,0.34661554551946594,-0.24415607452392576,0.9527294635772703,0.10228977102289771,1.0,False
+42,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),BLEU,-1.4129686443063285,-2.5995009361836416,-0.2764258901739778,0.008899110088991101,0.266973302669733,False
+42,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),chrF++,-0.7965450363537201,-1.5481935739517212,-0.1165254116058354,0.015798420157984203,0.4581541845815419,False
+42,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),BLEU,0.7438633278385929,-0.19823997189256806,1.702480947475801,0.0565943405659434,1.0,False
+42,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),chrF++,0.49545104483466673,-0.09707498550415038,1.1306753158569336,0.05419458054194581,1.0,False
+43,clrr_only_detached,baseline,CLRR-only detached vs Baseline,BLEU,0.8041894552387987,-0.3800955224131249,2.0662795306044073,0.08839116088391161,1.0,False
+43,clrr_only_detached,baseline,CLRR-only detached vs Baseline,chrF++,4.923131056018551,-0.2967717885971069,13.202244067192078,0.1287871212878712,1.0,False
+43,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,BLEU,0.6702391178789036,-0.3000937105302622,1.6502051159241284,0.0765923407659234,1.0,False
+43,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,chrF++,0.39302581897704414,-0.1899172306060791,0.9954442262649534,0.0847915208479152,1.0,False
+43,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),BLEU,-0.16518498763545253,-1.1120574935648146,0.7795251481490325,0.2628737126287371,1.0,False
+43,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),chrF++,-0.03776085092071568,-0.6282159328460692,0.5463181257247922,0.34966503349665035,1.0,False
+43,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),BLEU,-0.5557279288017867,-1.7266528215309735,0.5891641888618622,0.132986701329867,1.0,False
+43,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),chrF++,4.062266011506054,-1.1885504961013793,12.302643656730652,0.1444855514448555,1.0,False
+43,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),BLEU,0.4933261688260373,-0.40225536175894894,1.423263615027699,0.11548845115488451,1.0,False
+43,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),chrF++,0.25743185925806245,-0.28368167877197265,0.83107419013977,0.1384861513848615,1.0,False
+44,clrr_only_detached,baseline,CLRR-only detached vs Baseline,BLEU,-0.15156604329515488,-1.3730197723552984,1.0851017833044092,0.3027697230276972,1.0,False
+44,clrr_only_detached,baseline,CLRR-only detached vs Baseline,chrF++,0.003794907369506717,-0.7433539628982544,0.7715095520019531,0.4136586341365863,1.0,False
+44,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,BLEU,-0.41131510320607845,-1.618122546879546,0.7830511914150838,0.17348265173482652,1.0,False
+44,original_full_detached,clrr_only_detached,Full detached (lambda=0.10) vs CLRR-only detached,chrF++,-0.2989849483094531,-1.0437149047851562,0.4224397659301758,0.15658434156584342,1.0,False
+44,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),BLEU,0.1704052721972289,-0.8158555328949552,1.1718631304865825,0.262973702629737,1.0,False
+44,original_full_detached,full_source_attached,Full detached (lambda=0.10) vs Full attached (lambda=0.10),chrF++,-0.028991154909761008,-0.6305482387542725,0.5946031093597411,0.37296270372962703,1.0,False
+44,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),BLEU,-0.4613027177004234,-1.4198112103201896,0.49332586166428366,0.1292870712928707,1.0,False
+44,full_detached_l003,tuned_lsr,Full detached (lambda=0.03) vs Tuned LSR (lambda=0.03),chrF++,-0.44555216465170844,-1.0763060569763183,0.15072875022888169,0.06769323067693231,1.0,False
+44,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),BLEU,0.8126169389194402,-0.210212512053858,1.819353685054315,0.0522947705229477,1.0,False
+44,original_full_detached,full_detached_l003,Full detached (lambda=0.10) vs Full detached (lambda=0.03),chrF++,0.5196477662607393,-0.07819504737854001,1.136523151397705,0.04689531046895311,1.0,False

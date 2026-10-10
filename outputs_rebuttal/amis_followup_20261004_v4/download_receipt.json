@@ -1,0 +1,97 @@
+{
+  "zip_sha256": "1a379161826a3494b9dde7b688db10ea243153920fa209ca53161097628d9a81",
+  "zip_bytes": 1207903146,
+  "parts": [
+    {
+      "name": "amis_v4_part_000.bin",
+      "bytes": 67108864,
+      "sha256": "a6261fcee96bac40ad4030023bfda4b9fd561f29ca27fc8fb7ddbc47f9289827"
+    },
+    {
+      "name": "amis_v4_part_001.bin",
+      "bytes": 67108864,
+      "sha256": "0687b0e9fdd53db3ec569e8fe2074842a9d9051643aa564fc3424fc1d019d957"
+    },
+    {
+      "name": "amis_v4_part_002.bin",
+      "bytes": 67108864,
+      "sha256": "a98d48dadc035ddebf971013a1aa7d3cad2b4c9d94a1fcc7d759304cbda8d1ca"
+    },
+    {
+      "name": "amis_v4_part_003.bin",
+      "bytes": 67108864,
+      "sha256": "c1210b8d278e97d8c9c53afd9c2e4c9c6302412bb6c242cdb7519841d8b9f1d9"
+    },
+    {
+      "name": "amis_v4_part_004.bin",
+      "bytes": 67108864,
+      "sha256": "586b96831ca2e449eea2ceb26fcfaf4694a567648b53b7906bbcd970d0998ef3"
+    },
+    {
+      "name": "amis_v4_part_005.bin",
+      "bytes": 67108864,
+      "sha256": "870453e1400ecb71d148a07e26db36636ab0d18104cc2acd5bb5b60f0837e5fc"
+    },
+    {
+      "name": "amis_v4_part_006.bin",
+      "bytes": 67108864,
+      "sha256": "974c5ca008951f51dfc7dfacaa5a92d982625312af73a3b42549003dbdfde9e6"
+    },
+    {
+      "name": "amis_v4_part_007.bin",
+      "bytes": 67108864,
+      "sha256": "fcd02f85bd7fdc4298e718a6d35afb547d5f5a0c6ab8fc76c6bb58f8d085d8b1"
+    },
+    {
+      "name": "amis_v4_part_008.bin",
+      "bytes": 67108864,
+      "sha256": "84325d47b7b06d4631ea8585aa3cd7b767be2987821b920500875b7eec899298"
+    },
+    {
+      "name": "amis_v4_part_009.bin",
+      "bytes": 67108864,
+      "sha256": "bd2e998a4f450c57d3c15caf18687266088b3df61b5d7d2b59bbecb1fdba6e34"
+    },
+    {
+      "name": "amis_v4_part_010.bin",
+      "bytes": 67108864,
+      "sha256": "8eb16943039a7b9e310a1753eb8900ee5f0a70300613d2b0af25e0baa72e28ce"
+    },
+    {
+      "name": "amis_v4_part_011.bin",
+      "bytes": 67108864,
+      "sha256": "ffe4735dc0a18ea01c97e2857716767b7d79c46485716c97dc1d90b6ca364fff"
+    },
+    {
+      "name": "amis_v4_part_012.bin",
+      "bytes": 67108864,
+      "sha256": "f20da0efd1a1dfddd3cec1757cf35572b1bcff06291778921b7a2d854cf5f40a"
+    },
+    {
+      "name": "amis_v4_part_013.bin",
+      "bytes": 67108864,
+      "sha256": "9bb6586d2723d2f4a9d38f1aeae887f4829e6cffdb6add6e9864f5e7f41f54f9"
+    },
+    {
+      "name": "amis_v4_part_014.bin",
+      "bytes": 67108864,
+      "sha256": "c90029fb824f3b4fb633186e7d51df23b614db9150d834d818d2846fc4633a11"
+    },
+    {
+      "name": "amis_v4_part_015.bin",
+      "bytes": 67108864,
+      "sha256": "1e333164e0d80b8e19c7f0712fd86830103d487e02e8865022df3a49bd05c40d"
+    },
+    {
+      "name": "amis_v4_part_016.bin",
+      "bytes": 67108864,
+      "sha256": "9b658bfa792fa9cead87c724a8d9cc47be00d794aad256458f131022abfcb5df"
+    },
+    {
+      "name": "amis_v4_part_017.bin",
+      "bytes": 67052458,
+      "sha256": "f311817067adcaa6411ec56c504cacfa56a03ea7eeeb9995bc09e2825866bbef"
+    }
+  ],
+  "temporary_zip_removed_after_verified_extraction_and_audit": true
+}

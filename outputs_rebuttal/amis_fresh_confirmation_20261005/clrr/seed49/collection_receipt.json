@@ -1,0 +1,211 @@
+{
+  "repo": "FiveC/amis-fresh-confirmation-clrr-20261005",
+  "revision": "386be88a24d6344463b1ec073644f378ca4e843b",
+  "files": {
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/mbart-amis-clrr-seed49-fresh-confirmation-best.zip": {
+      "size": 2270711560,
+      "sha256": "075db927538296248fef2e1a593d9b3c50cb64fabcc59a361d6d62904867796a"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/metrics.json": {
+      "size": 2808,
+      "sha256": "670f8db570aaa35d1b019b3a09fb67d13ca8e44df463c629a91b065083d4e952"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/VAL_COMPLETE.json": {
+      "size": 4761,
+      "sha256": "dccacb1010802f84fa5d9899f947e472b65e5871f4a15b936fbe42585ee695f1"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/command.json": {
+      "size": 1588,
+      "sha256": "2aa925c13da668fafde04f84612363d96c3db859a8446d03624dc98a40697242"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/final_trainer_state.json": {
+      "size": 19245,
+      "sha256": "299f778251e1ddc4241c65e080668464a9d79006f7334af7257d3b8deb70a7a1"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/latest_trainer_state.json": {
+      "size": 18998,
+      "sha256": "0fb0c42a6cd9f0236c2d514c36aeeda042ada0dc68dabae92d9fb2b89141e6b5"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/trainer_gate.json": {
+      "size": 210,
+      "sha256": "105874db57ed4911e885a296f696d736b7b6a2bfa3f6a5c425312df5d63425e2"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/provenance/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selected_provenance/trainer_state.json": {
+      "size": 18998,
+      "sha256": "0fb0c42a6cd9f0236c2d514c36aeeda042ada0dc68dabae92d9fb2b89141e6b5"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selected_provenance/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-108/trainer_state.json": {
+      "size": 3665,
+      "sha256": "c31166bbd8254d74c3a82c8060d01626a799eeac1f0db8ff1be49c25119d5c6d"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-108/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-144/trainer_state.json": {
+      "size": 4635,
+      "sha256": "dc23cc7c10caf7d0a1c11464e49cc56da8f771b955e36e8b268979fb5713e90f"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-144/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-180/trainer_state.json": {
+      "size": 5588,
+      "sha256": "dd93a4347337002ea3a45542caee64b0bb9caa6978a19a67c4dff48cf7dee1aa"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-180/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-216/trainer_state.json": {
+      "size": 6383,
+      "sha256": "56719064ddeda7e1f3e624f0ef194cb2378446d3a464e817c6db8437d0974335"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-216/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-252/trainer_state.json": {
+      "size": 7349,
+      "sha256": "4785480f73dc5085ea0ce4134b0650c5a8bd7fce3a876f699ce03d12d298bd3a"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-252/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-288/trainer_state.json": {
+      "size": 8131,
+      "sha256": "b5631cc0e156db7ba3c827d3e6d6f2435b0d2cea66de0c33b1b0c807df86bb72"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-288/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-324/trainer_state.json": {
+      "size": 9082,
+      "sha256": "e12a486abff2191ba42a02cfd29f8d6a35c755691c4f6763220d21716fe2a665"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-324/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-36/trainer_state.json": {
+      "size": 1926,
+      "sha256": "c47ea37df64e390a6e6d7ea5f2880491ca2e3046104c866900fff14d080fa1b0"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-36/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-360/trainer_state.json": {
+      "size": 10041,
+      "sha256": "ebb3293dd4f0421ac3a54ef4226d86e68fd0be9633d91af754d2a99005497873"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-360/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-396/trainer_state.json": {
+      "size": 10841,
+      "sha256": "fa07019bd0529e7301f8b60c2bd8f209408c2b4fbb4a7936a25b6ce4896a02a0"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-396/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-432/trainer_state.json": {
+      "size": 11803,
+      "sha256": "29250294202d852dc4f804ee41bb61d1e5e46516fd60da35baa5cb9032b02ae9"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-432/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-468/trainer_state.json": {
+      "size": 12589,
+      "sha256": "f7a3001246916eec78096f53e77a246356f60908e473ef2633c6ea51e34561cc"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-468/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-504/trainer_state.json": {
+      "size": 13559,
+      "sha256": "e8c519d70b2cbb85a68ce6311aaf57d112db54ee3c3470f8757e55684d2dd9c6"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-504/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-540/trainer_state.json": {
+      "size": 14520,
+      "sha256": "cf877439ad03df101610c4f2aa6581fb31d384038d0410145d8e979c335d9625"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-540/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-576/trainer_state.json": {
+      "size": 15319,
+      "sha256": "65626ff3d98b25adb356beac7f94a9d3558bc2760a3e84cfb87388281d32de1e"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-576/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-612/trainer_state.json": {
+      "size": 16289,
+      "sha256": "afa13048ce04872beaa2aee0cf4e8e94213674f84d094dea6cbdc06e418290a2"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-612/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-648/trainer_state.json": {
+      "size": 17069,
+      "sha256": "912e008ffda1c24c0a6d3e952298bd143a7e2a18940645f4dee6ebf7b80ca4ab"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-648/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-684/trainer_state.json": {
+      "size": 18040,
+      "sha256": "3749da2f62463b16a21c2e39b975d853127cf5582bea2958e7c8ed1d3f1f655a"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-684/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-72/trainer_state.json": {
+      "size": 2887,
+      "sha256": "00e008ee0fd20e894765092a9c0ef430837191a469ca1a059275036d35735b1f"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-72/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-720/trainer_state.json": {
+      "size": 18998,
+      "sha256": "0fb0c42a6cd9f0236c2d514c36aeeda042ada0dc68dabae92d9fb2b89141e6b5"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/selection/checkpoint-720/training_receipt.json": {
+      "size": 2214,
+      "sha256": "c477d4ae72fa950880c997611e5c34624b90a17bf9a8b065ddc9fcee82c243bf"
+    },
+    "amis_fresh_confirmation_20261005/mbart-amis-clrr-seed49-fresh-confirmation/validation_predictions.csv": {
+      "size": 64593,
+      "sha256": "1308eb8d2dc5a307a4eb97610ff3260a716a0c7a3ec20bbbbf775e3200c3bdc3"
+    }
+  },
+  "verified": true
+}

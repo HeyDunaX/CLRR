@@ -1,0 +1,14 @@
+{
+  "account": "2",
+  "authorized_scope": "four families, seed42 only",
+  "current": {
+    "family": "lsr",
+    "seed": 42,
+    "run_name": "mbart-tr-en-lsr-seed42-es10"
+  },
+  "preserved_worker_pid": 12100,
+  "terminated_queue_pid": 11707,
+  "next_family": "middle",
+  "changed_at_epoch": 1791379836.1574605,
+  "new_supervisor_pid": 19531
+}

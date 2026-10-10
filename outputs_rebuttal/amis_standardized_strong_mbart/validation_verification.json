@@ -1,0 +1,38 @@
+{
+  "status": "ALL_2_VALIDATION_VERIFIED",
+  "phase": "validation",
+  "runs": {
+    "A05": {
+      "revision": "3b89186b01cc86bfbeff9b13f43678e5fe84a1e4",
+      "archive_path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-a/seed-42/es10/best.zip",
+      "archive_sha256": "5978abfd0ce017d386d634667e203132145b7e8bc5c17b500e7ef4ce7847682c",
+      "validation_receipt_sha256": "624d44936999d53a88617324119f88ce254d83032fa400cf6ba31030786ab0be",
+      "selected_step": 684,
+      "scores": {
+        "bleu": 9.25131181076381,
+        "chrf++": 9.381943865008603,
+        "chrf0": 10.945601175843372
+      },
+      "selected_epoch": 19.0,
+      "completed_epoch": 20.0,
+      "stop_reason": "epoch_cap"
+    },
+    "A06": {
+      "revision": "23954b834f164db11e8ce4713ddd7dfdfefbe51c",
+      "archive_path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/best.zip",
+      "archive_sha256": "4cf6ccac866db298b93134a69b015545271a9ef18793dcda483e42cf718a5a94",
+      "validation_receipt_sha256": "0ceefa7efdf91d88099baba4bb990d410df261b27bd7cd1300a916f7bceedd4f",
+      "selected_step": 684,
+      "scores": {
+        "bleu": 10.985001982576682,
+        "chrf++": 10.382518202338122,
+        "chrf0": 12.0560421743657
+      },
+      "selected_epoch": 19.0,
+      "completed_epoch": 20.0,
+      "stop_reason": "epoch_cap"
+    }
+  },
+  "pending": [],
+  "public_revision": "67a73c696be006a3280117cdc54cf2abcfc5912f"
+}

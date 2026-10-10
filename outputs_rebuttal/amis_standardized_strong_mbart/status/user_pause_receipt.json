@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-09T00:16:32.824364+07:00",
+  "account": 1,
+  "session": "colab",
+  "stop_result": "Session terminated",
+  "active_assignments": 0,
+  "usage_rate_per_hour": 0.0,
+  "balance_compute_units": 65.29,
+  "pending_run": "A06",
+  "reason": "User requested stop and rerun the final model tomorrow",
+  "last_training_observation": "2026-10-09 00:00 Asia/Saigon; epoch 9.7235/20, step 350/720; not a current or final observation",
+  "a06_completion_or_backup_verified": false
+}

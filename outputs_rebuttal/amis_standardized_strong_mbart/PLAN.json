@@ -1,0 +1,106 @@
+{
+  "status": "APPROVED_COLAB3_AFTER_C01",
+  "dataset": "amis_mandarin",
+  "data": {
+    "train": {
+      "rows": 4600,
+      "sha256": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6"
+    },
+    "validation": {
+      "rows": 576,
+      "sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+    },
+    "test": {
+      "rows": 575,
+      "sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    }
+  },
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "runs": [
+    {
+      "id": "A05",
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "strong-lora-a",
+      "seed": 42,
+      "data_seed": 42,
+      "learning_rate": 0.0002,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "account": 3,
+      "middle_layer_idx": 6,
+      "temperature": 0.1,
+      "alignment_weight": 0.1,
+      "source_prefix": "",
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-a/seed-42/es10"
+    },
+    {
+      "id": "A06",
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "strong-lora-b",
+      "seed": 42,
+      "data_seed": 42,
+      "learning_rate": 0.0001,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "account": 3,
+      "middle_layer_idx": 6,
+      "temperature": 0.1,
+      "alignment_weight": 0.1,
+      "source_prefix": "",
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10"
+    }
+  ],
+  "protocol": {
+    "epochs": 20,
+    "patience": 10,
+    "weight_decay": 0.0,
+    "warmup_ratio": 0.06,
+    "optim": "adamw_torch_fused",
+    "scheduler": "linear",
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "max_grad_norm": 1.0,
+    "bf16": true,
+    "tf32_training": true,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_use_reentrant": true,
+    "loss_reduction": "microbatch_mean",
+    "eval_batch": 8,
+    "pad_multiple": 8,
+    "generation_precision": "fp32",
+    "tf32_generation": false,
+    "test_beams": 4,
+    "bleu_tokenizer": "zh",
+    "selection": "original-reference validation chrF++",
+    "selection_ties": "earliest best",
+    "test_barrier": "all 12 verified validation backups",
+    "save_limit": 2
+  },
+  "runtime": {
+    "python": "3.13",
+    "torch": "2.6.0",
+    "transformers": "4.57.6",
+    "accelerate": "1.15.0",
+    "peft": "0.21.0",
+    "sacrebleu": "2.6.0",
+    "huggingface_hub": "0.36.2"
+  },
+  "reuse_policy": "Historical scores unchanged. Completed cap20 reuse still requires recipe audit; not relabeled ES10 or pooled with old method cohorts.",
+  "code_git_head": "5eb4167ee130598c2020fd7705305de9c16186ad",
+  "test_barrier": "All 14 validation selections and public backups independently verified"
+}

@@ -1,0 +1,172 @@
+{
+  "checked_unix": 1791552720.7196324,
+  "process_alive": false,
+  "queue": {
+    "account": 2,
+    "status": "FAILED",
+    "completed": [],
+    "current": "U2L",
+    "updated_unix": 1791550902.0965695,
+    "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', '/content/CLRR_candidates/scripts/revalidation/run_method_candidates.py', '--id', 'U2L', '--stage', 'train']' returned non-zero exit status 1."
+  },
+  "gates": {
+    "U2L": {
+      "passed": true,
+      "id": "U2L",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 48.9245343208313,
+      "parameters": {
+        "candidate": "lsr-centered",
+        "definition": "CE+0.10*mean(1-cos(s-mean_microbatch(s),sg(t-mean_microbatch(t)))); no CLRR",
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "extra_parameters": 0,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 11.86604928970337,
+      "bundle_sha256": "6c4fcc32508e75f074d6ed0914566be9018609f79173722ccdca749c96a32f3b"
+    },
+    "U2F": {
+      "passed": true,
+      "id": "U2F",
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "bf16": true,
+      "checkpointing": true,
+      "microbatch": 32,
+      "accumulation": 4,
+      "steps": 2,
+      "save_reload_logits_match": true,
+      "trainer_best_checkpoint_reload": true,
+      "optimizer_rng_present": true,
+      "seconds": 47.30510711669922,
+      "parameters": {
+        "candidate": "full-centered",
+        "definition": "original postcache CLRR plus centered LSR; routed target anchor",
+        "trainable_params": 610879488,
+        "allocated_params": 610879488,
+        "extra_parameters": 0,
+        "loss_reduction": "microbatch_mean"
+      },
+      "max_memory_gb": 11.86604928970337,
+      "bundle_sha256": "6c4fcc32508e75f074d6ed0914566be9018609f79173722ccdca749c96a32f3b"
+    }
+  },
+  "progress": {
+    "U2F": {
+      "id": "U2F",
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "scores": {
+        "bleu": 17.02266061171663,
+        "chrf++": 14.508005494907971,
+        "chrf0": 16.61419955974122
+      },
+      "updated_unix": 1791552706.876489
+    }
+  },
+  "validation_complete": {
+    "U2F": {
+      "status": "VALIDATION_COMPLETE_VERIFIED",
+      "id": "U2F",
+      "spec": {
+        "id": "U2F",
+        "backbone": "mbart-large-50",
+        "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+        "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+        "method": "full-centered",
+        "seed": 42,
+        "data_seed": 42,
+        "learning_rate": 5e-05,
+        "microbatch": 32,
+        "accumulation": 4,
+        "max_source_length": 256,
+        "max_target_length": 256,
+        "validation_beams": 1,
+        "account": 2,
+        "middle_layer_idx": 6,
+        "temperature": 0.1,
+        "alignment_weight": 0.1,
+        "source_prefix": "",
+        "src_lang": "tl_XX",
+        "tgt_lang": "zh_CN",
+        "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10",
+        "definition": "original postcache CLRR plus centered LSR; routed target anchor"
+      },
+      "scores": {
+        "bleu": 17.02266061171663,
+        "chrf++": 14.508005494907971,
+        "chrf0": 16.61419955974122
+      },
+      "archive_sha256": "121453b3bdc095b605c5b94db44223efb40119d09e06507af476672322de71bf",
+      "backup": {
+        "repo": "FiveC/amis-rewire-checkpoints",
+        "revision": "d0f01dcb297bac08fd25415059282f59081632c4",
+        "files": {
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/best.zip": {
+            "size": 2466896772,
+            "sha256": "121453b3bdc095b605c5b94db44223efb40119d09e06507af476672322de71bf"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/run_metadata.json": {
+            "size": 3496,
+            "sha256": "4330445a130f35544649271d823a7375a2b3ffa75949cd8af3a982001b8b2292"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/training_receipt.json": {
+            "size": 2736,
+            "sha256": "8ad84ce59e56c94a1441821569751bdb53526e7dcabc6a6e02d787f43af601ea"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/resolved_training_arguments.json": {
+            "size": 4417,
+            "sha256": "d6d7aa256d1531f0ae073780307bbdfa50d26a86649cab8d8370908f85ea93f0"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/validation_metrics.json": {
+            "size": 747,
+            "sha256": "6d39602ca2c6c6b89db98917dd50de2fd9e7a7e0aebfbbb9bc0efbc73e7d32f8"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/validation_predictions.csv": {
+            "size": 62336,
+            "sha256": "110ebce06e8114d387954db520a0e2f35f371a99a7a4765f3f5cf28b28ef1031"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/final_trainer_state.json": {
+            "size": 19209,
+            "sha256": "03f95d61000fdefe1b6bb88c804e17c16ba310cf6c86b509342bf4fa42b55f88"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/selected_trainer_state.json": {
+            "size": 18962,
+            "sha256": "730151e5d8cec43e1f220c4caa45da32c9fc0c024247e01d36ca2aef407c2e91"
+          },
+          "checkpoints/amis_mandarin/mbart-large-50/full-centered/seed-42/es10/stop_state.json": {
+            "size": 317,
+            "sha256": "6bcb4796f3a0557ed8f93e342aaeb2ba3b61c85cca32a8a12fabf5282486a4a1"
+          }
+        },
+        "verified": true
+      },
+      "run_metadata_sha256": "4330445a130f35544649271d823a7375a2b3ffa75949cd8af3a982001b8b2292"
+    }
+  },
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB, 0 %",
+  "log_tail": [
+    "AssertionError: Remote target exists; do not overwrite",
+    "Traceback (most recent call last):",
+    "  File \"/content/CLRR_candidates/scripts/revalidation/run_method_candidates.py\", line 74, in <module>",
+    "    if __name__ == '__main__': main()",
+    "                               ~~~~^^",
+    "  File \"/content/CLRR_candidates/scripts/revalidation/run_method_candidates.py\", line 58, in main",
+    "    subprocess.run([sys.executable, '-u', __file__, '--id', spec['id'], '--stage', stage],",
+    "    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",
+    "                   check=True, cwd=ROOT)",
+    "                   ^^^^^^^^^^^^^^^^^^^^^",
+    "  File \"/content/miniforge3/envs/clrr/lib/python3.13/subprocess.py\", line 578, in run",
+    "    raise CalledProcessError(retcode, process.args,",
+    "                             output=stdout, stderr=stderr)",
+    "subprocess.CalledProcessError: Command '['/content/miniforge3/envs/clrr/bin/python', '-u', '/content/CLRR_candidates/scripts/revalidation/run_method_candidates.py', '--id', 'U2L', '--stage', 'train']' returned non-zero exit status 1."
+  ]
+}

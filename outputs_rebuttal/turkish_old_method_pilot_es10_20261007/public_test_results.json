@@ -1,0 +1,102 @@
+[
+  {
+    "family": "baseline",
+    "seed": 42,
+    "test_bleu": 22.634203392110155,
+    "test_chrfpp": 41.549537525731154,
+    "test_chrf0": 42.595474500103705,
+    "selected_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/baseline/seed42/runs/mbart-tr-en-baseline-seed42-es10/checkpoint-314",
+    "repo": "FiveC/amis-rewire-checkpoints",
+    "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+    "prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42",
+    "verified_files": {
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+        "sha256": "83ec89f5fe107592100b1d69499cd6eb6cf7a7f7dd2afc4a09bd59e4fb181f15",
+        "size": 5327
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+        "sha256": "d6846e6cf269823c4fea2f2237dda0229aa23ae93abc2fbf906173f01fc0ea83",
+        "size": 862
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+        "sha256": "a7e76d625c9bfa94887365f2626dd692b0739a4b91d578dbde086152a3bbffad",
+        "size": 253367
+      }
+    }
+  },
+  {
+    "family": "middle",
+    "seed": 42,
+    "test_bleu": 22.519995695374803,
+    "test_chrfpp": 41.389459540160445,
+    "test_chrf0": 42.4272571121108,
+    "selected_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/middle/seed42/runs/mbart-tr-en-middle-seed42-es10/checkpoint-314",
+    "repo": "FiveC/amis-rewire-checkpoints",
+    "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+    "prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42",
+    "verified_files": {
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+        "sha256": "060a4c91f665b7fcda85d0ae80f509c00f67f9622a71587ab38acbb7cb130fb2",
+        "size": 5380
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+        "sha256": "acc77f36d0e9887e48ca281cefa5d1461f0cf90cce95a520c1914995a1d28f17",
+        "size": 860
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+        "sha256": "49e5618433c051ed8193e1304ad1bab04d4a19a4c23391f71d238a0db5e93030",
+        "size": 253159
+      }
+    }
+  },
+  {
+    "family": "lsr",
+    "seed": 42,
+    "test_bleu": 22.200583986449296,
+    "test_chrfpp": 41.27131109045175,
+    "test_chrf0": 42.30502752153848,
+    "selected_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/lsr/seed42/runs/mbart-tr-en-lsr-seed42-es10/checkpoint-314",
+    "repo": "FiveC/amis-rewire-checkpoints",
+    "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+    "prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42",
+    "verified_files": {
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+        "sha256": "6eb6ff29ebddea66a4c878b56fd6a685136132cb7a7f0569b4bbae3fef9224e0",
+        "size": 5312
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+        "sha256": "f6cb8f33e019f83fe63a752e7d31ad507c5679c61eb5451065b17d0616b5522f",
+        "size": 860
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+        "sha256": "10156a1311a08d99dfb8a9d518a2448fb49cb90105b73e030491f7c29d641200",
+        "size": 253691
+      }
+    }
+  },
+  {
+    "family": "full",
+    "seed": 42,
+    "test_bleu": 22.570620186619088,
+    "test_chrfpp": 41.5493040930389,
+    "test_chrf0": 42.61601085465619,
+    "selected_checkpoint": "/content/CLRR_turkish/outputs_rebuttal/turkish_old_method_pilot_es10_20261007/full/seed42/runs/mbart-tr-en-full-seed42-es10/checkpoint-314",
+    "repo": "FiveC/amis-rewire-checkpoints",
+    "revision": "b6f035c86fba2489781747f03fba0545a61f3d08",
+    "prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42",
+    "verified_files": {
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance/COMPLETE.json": {
+        "sha256": "11b18c3fcc1e441ad623f57bff514b7b6b89ee991e615c31b56027aecae8a574",
+        "size": 5355
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_metrics.json": {
+        "sha256": "e872a221ce97ddaedd662ec3ac5ae10bee80be8ad644a6d75934600245f7ea21",
+        "size": 859
+      },
+      "checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/test_predictions.csv": {
+        "sha256": "1b659d91bf6641ca950f6b958bef6397e747694face5469737bfdcd0c3f51a8b",
+        "size": 252925
+      }
+    }
+  }
+]

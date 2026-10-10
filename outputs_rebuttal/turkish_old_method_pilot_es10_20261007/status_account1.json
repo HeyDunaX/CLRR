@@ -1,0 +1,36 @@
+{
+  "account": "1",
+  "status": "TEST_QUEUE_COMPLETE",
+  "completed": [],
+  "started_utc_epoch": 1791422395.3387885,
+  "current": {
+    "family": "full",
+    "seed": 42
+  },
+  "run_started_utc_epoch": 1791422462.592225,
+  "error_type": "CalledProcessError",
+  "error": "Command '['/content/miniforge3/envs/clrr/bin/python', '-u', 'scripts/revalidation/run_turkish_old_method_pilot.py', '--family', 'baseline', '--seed', '42', '--stage', 'train']' returned non-zero exit status 1.",
+  "alive": false,
+  "completed_utc_epoch": 1791428200.54021,
+  "checked_at_epoch": 1791428591.6581676,
+  "gpu_gate_complete": true,
+  "fullsize_completed": [
+    "middle-align",
+    "baseline",
+    "jepa",
+    "FULLSIZE_PASS",
+    "jepa-clrr-enc"
+  ],
+  "validation_done": [
+    "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/full/alpha0p10-lambda0p10-distance2-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+    "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/middle-alignment/layer6-tau0p10-weight0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+    "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/ce-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+    "public_metadata_cache/checkpoints/opus100_turkish_english_20k/mbart-large-50/lsr/lambda0p10-lr5e-5-bs32-ga4-bf16-es10/pilot/seed-42/provenance",
+    "full/seed42",
+    "baseline/seed42",
+    "middle/seed42",
+    "lsr/seed42"
+  ],
+  "log_tail": "c/peft_baselines/train_peft.py\": \"02e4f1e51feb907c9a52b676eecc3d4ac48e69d58079a833fb60bb4ce5d74cd1\", \"src/peft_baselines/__init__.py\": \"d0cf07c1555f8639e876744a9c851e7524ebab1b5ec91750fbab8813d2de0bda\", \"scripts/revalidation/run_turkish_old_method_pilot.py\": \"708ea62251feff3db80e096c7abbb64f774a46fda46d6fa6bff08c437a93c0ad\", \"scripts/revalidation/run_turkish_pilot_queue.py\": \"78b288792b697c82d0790f6e3541dc9849727c8d7b6341d52bc16d1b256c2a4d\", \"scripts/revalidation/fresh_confirmation_integrity.py\": \"53d84d5cf0338e8b2982c414fbba78e242cd3d88fe8eec065e6e46fa9dd7e48c\", \"scripts/revalidation/smoke_fullsize_turkish.py\": \"c50cbf9830a1b8cb6a7d501212f368dca9c5234e9021d3868bffa21dffddcfa0\", \"tests/smoke_rerun_optimization.py\": \"b4facceb91574999ad8efd094b6d248b762ffd91bb1899f95c885fea73175d3e\", \"tests/smoke_precision_training.py\": \"aeb5fd6eff711f306ef5e3d86f5b3e8a2a69a2637ec29f72a477eea893275237\", \"scratch/launch_turkish_pilot.py\": \"7ff4795ce370bbf6be687060a19f651979c3c4a40c47a1f9507ccf4a5af5b63b\", \"data_processed/opus100_turkish_english_20k/manifest.json\": \"895738b222c89ff1392b88f85236b69f1211b2874c1d90539b613c0bf571931a\", \"data_processed/opus100_turkish_english_20k/README.md\": \"b69aa0f8027123aeff48550ee3a55e81ca7d4f33498cd8018d09c6836559b9ab\", \"data_processed/opus100_turkish_english_20k/test.csv\": \"283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd\", \"data_processed/opus100_turkish_english_20k/train.csv\": \"b20c042e7d096f1cd61e7235dd4ded8477ae79afd6c7c9b2da86e75352916068\", \"data_processed/opus100_turkish_english_20k/upstream_row_ids.json\": \"0b3975af51bf02541b3a5ba79b8adaf5d4c5b2d299d18fbfc8f430315c9aaea4\", \"data_processed/opus100_turkish_english_20k/validation.csv\": \"bc7542eadd1dc1327b2c4085a7171082241b1e52071ae2114f128ecae3fbf090\", \"outputs_rebuttal/turkish_old_method_pilot_es10_20261007/PLAN.json\": \"8d78a814ad50ce01a7972b75ac2945d7d9bc944051106b8868d374782d87f16a\", \"outputs_rebuttal/turkish_old_method_pilot_es10_20261007/cpu_gate/optimization_matrix.json\": \"98dca74861a37516b265485c7d3079b326c8501e9a26cbefda7d6604aec5c065\", \"outputs_rebuttal/turkish_old_method_pilot_es10_20261007/cpu_gate/rerun_lifecycle_smoke.json\": \"c020cea77632f9a12b7f2d88aa68b198e7eb2cd3d59626ffbbac7bfcdfa0e489\"}, \"post_selection_test_bleu\": 22.570620186619088, \"post_selection_test_chrfpp\": 41.5493040930389, \"post_selection_test_chrf0\": 42.61601085465619}\nPUBLIC_TEST_QUEUE_COMPLETE 1\n",
+  "last_logged_epoch": null
+}

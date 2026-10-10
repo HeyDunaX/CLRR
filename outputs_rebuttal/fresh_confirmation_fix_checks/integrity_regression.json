@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "checks": [
+    "strict_tiny_checkpoint_bin_and_safetensors_load",
+    "archive_restore_and_path_traversal_rejection",
+    "pinned_remote_checksum_then_bounded_cleanup",
+    "corrupted_backup_rejected",
+    "student_t_and_exact_sign_flip",
+    "incomplete_validation_cohort_fails_closed",
+    "two_accounts_stage_barrier_and_real_gpu_gate_commands"
+  ]
+}

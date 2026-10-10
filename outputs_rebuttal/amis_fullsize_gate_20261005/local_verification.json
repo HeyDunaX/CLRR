@@ -1,0 +1,27 @@
+{
+  "status": "FULLSIZE_GPU_PASS",
+  "local_bundle_matches": true,
+  "results_zip_sha256": "c10875cea0584c2e14f76440ac163597cd565a61f2600362c492fb2aa56267f1",
+  "families": {
+    "baseline": {
+      "actual_allocated_gib": 7.299765110015869,
+      "stress_allocated_gib": 33.44617223739624,
+      "stress_reserved_gib": 36.380859375
+    },
+    "clrr-enc": {
+      "actual_allocated_gib": 7.307732105255127,
+      "stress_allocated_gib": 33.44518804550171,
+      "stress_reserved_gib": 36.400390625
+    },
+    "jepa": {
+      "actual_allocated_gib": 7.309027194976807,
+      "stress_allocated_gib": 33.47741460800171,
+      "stress_reserved_gib": 36.400390625
+    },
+    "jepa-clrr-enc": {
+      "actual_allocated_gib": 7.327117919921875,
+      "stress_allocated_gib": 33.47643804550171,
+      "stress_reserved_gib": 36.400390625
+    }
+  }
+}

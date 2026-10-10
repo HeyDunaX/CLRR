@@ -13,7 +13,8 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 ROOT=Path(__file__).resolve().parents[1]
-OUT=ROOT/'outputs_rebuttal/followup_20261003'
+OUT=ROOT/'outputs_rebuttal/turkish_official_20261006'
+GATES=ROOT/'outputs_rebuttal/followup_20261003'
 REVISION='e30b6cb8eb0d43a0b73cab73c7676b9863223a30'
 
 
@@ -23,13 +24,14 @@ def save(path,value):
 
 
 def main():
-    while not (OUT/'reevaluation/COMPLETE.json').exists():
+    OUT.mkdir(parents=True,exist_ok=True)
+    while not (GATES/'reevaluation/COMPLETE.json').exists():
         print('WAITING_FOR_REEVALUATION_GATE',flush=True);time.sleep(30)
-    smoke=json.loads((OUT/'precision_training_smoke_gpu.json').read_text())
+    smoke=json.loads((GATES/'precision_training_smoke_gpu.json').read_text())
     assert len(smoke)==4 and all(r['passed'] and r['cuda_bf16_training'] for r in smoke)
-    probe=json.loads((OUT/'generation_precision_probe.json').read_text())
+    probe=json.loads((GATES/'generation_precision_probe.json').read_text())
     assert all(all(dtype=='torch.float32' for dtype in r['explicit_fp32_projection'].values()) for r in probe)
-    data=ROOT/'data_processed/opus100_turkish_english_20k_v2'
+    data=ROOT/'data_processed/opus100_turkish_english_20k'
     manifest=json.loads((data/'manifest.json').read_text())
     for split,record in manifest['splits'].items():
         assert hashlib.sha256((data/(split+'.csv')).read_bytes()).hexdigest()==record['sha256']
@@ -72,7 +74,7 @@ def main():
         import gc
         gc.collect();torch.cuda.empty_cache()
     models=[('baseline','baseline',0.),('lsr','jepa',.1),('clrr','clrr-enc',0.),('full','jepa-clrr-enc',.1)]
-    calibration=json.loads((OUT/'batch_calibration.json').read_text())
+    calibration=json.loads((GATES/'batch_calibration.json').read_text())
     microbatch=calibration['selected_microbatch'];accumulation=calibration['gradient_accumulation']
     assert microbatch*accumulation==128
     commands=[]
@@ -94,6 +96,8 @@ def main():
         commands.append({'id':name,'run_name':run,'command':cmd})
     source_files=['src/amis_rewire/modeling.py','src/amis_rewire/train.py','src/amis_rewire/metrics.py',
                   'src/amis_rewire/evaluation.py','scripts/run_turkish_followup.py']
+    source_files += sorted(p.relative_to(ROOT).as_posix()
+        for p in (ROOT / "src/methods").rglob("*.py"))
     save(OUT/'turkish_protocol.json',{'pretrained_model':'facebook/mbart-large-50-many-to-many-mmt',
           'pretrained_revision':REVISION,'dataset':manifest,'experiments':commands,
           'source_sha256':{p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in source_files},

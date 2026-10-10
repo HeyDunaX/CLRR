@@ -1,0 +1,8 @@
+{
+  "status": "INVALIDATED_FOR_WARMUP_GATE",
+  "stopped_utc": "2026-10-04T12:40:11+00:00",
+  "reason": "Runtime did not match frozen controls and trajectory measurements/archives were incomplete. User requested stopping both queues, correction and clean restart.",
+  "preserve_old_artifacts": true,
+  "use_for_go_nogo": false,
+  "replacement_suite": "outputs_rebuttal/amis_routing_warmup_20261004_v2"
+}

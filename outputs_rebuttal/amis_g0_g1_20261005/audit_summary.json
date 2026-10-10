@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-05",
+  "sacrebleu_version": "2.6.0",
+  "warmup_runs_verified": 6,
+  "warmup_selected_metrics_check": "PASS",
+  "routing_alpha_schedule_checks": "PASS",
+  "validation_gold_sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4",
+  "control_rows": 15,
+  "control_hash_checks": {
+    "NOT_LOCAL_PATH": 3,
+    "PASS": 12
+  },
+  "selection_rule": "raw-reference validation chrF++ beam1, alpha_eval .1",
+  "D2_recommendation": "Optional: only to identify warmup checkpoint dependence; not required to re-establish warmup NO_GO.",
+  "error_analysis_source_sha256": "136fac6971af1161554360e1d9878c474612d4da19b3cb63c952c973469f84a8",
+  "technical_status": "TECHNICAL_HOLD: independent root accumulation test found wrapper vs baseline loss scaling mismatch; see accumulation/receipt.json.",
+  "limitations": [
+    "This script performs no training or GPU forward/backward.",
+    "Control original best-step baseline42 unknown.",
+    "Configuration equality does not certify effective optimization equality.",
+    "Root accumulation correctness audit is authoritative; all causal upgrade conclusions conditional until cohort impact repaired."
+  ]
+}

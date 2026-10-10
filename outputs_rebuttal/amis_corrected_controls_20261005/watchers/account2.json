@@ -1,0 +1,120 @@
+{
+  "account": "2",
+  "family": "clrr",
+  "session": "colab2",
+  "started_at_utc": "2026-10-05T07:50:12.688521+00:00",
+  "verified_validation_seeds": [
+    42,
+    43,
+    44
+  ],
+  "verified_test_seeds": [
+    42,
+    43,
+    44
+  ],
+  "status": "COMPLETE_RUNTIME_STOPPED",
+  "updated_at_utc": "2026-10-05T09:04:35.653611+00:00",
+  "remote_status": {
+    "environment_ready": true,
+    "started": true,
+    "job_done": true,
+    "process_alive": false,
+    "family": "clrr",
+    "seeds": {
+      "42": {
+        "complete": true,
+        "validation_complete": false,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "COMPLETE",
+        "selection": {
+          "epoch": 19.0,
+          "global_step": 684,
+          "best_metric": 13.563791179947074,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42/runs/mbart-amis-clrr_a010-seed42-corrected-control/checkpoint-540"
+        },
+        "result": {
+          "status": "COMPLETE",
+          "family": "clrr",
+          "seed": 42,
+          "run": "mbart-amis-clrr_a010-seed42-corrected-control",
+          "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed42/runs/mbart-amis-clrr_a010-seed42-corrected-control/checkpoint-540",
+          "best_metric": 13.563791179947074,
+          "completed_epochs": 19.0,
+          "hf_repo": "FiveC/amis-corrected-clrr-only-20261005",
+          "hf_prefix": "amis_corrected_controls_20261005",
+          "selected_and_exported_weight_digest": "d0dd56a4ddb0e952898a5dc87690a801aaae8f86fc0d00edfbc34b9f0d9b90a2",
+          "post_selection_test_bleu": 19.223095123529678,
+          "post_selection_test_chrfpp": 18.362492132997836,
+          "old_scores_untouched": true,
+          "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+        }
+      },
+      "43": {
+        "complete": true,
+        "validation_complete": false,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "COMPLETE",
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.551933900094236,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed43/runs/mbart-amis-clrr_a010-seed43-corrected-control/checkpoint-684"
+        },
+        "result": {
+          "status": "COMPLETE",
+          "family": "clrr",
+          "seed": 43,
+          "run": "mbart-amis-clrr_a010-seed43-corrected-control",
+          "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed43/runs/mbart-amis-clrr_a010-seed43-corrected-control/checkpoint-684",
+          "best_metric": 14.551933900094236,
+          "completed_epochs": 20.0,
+          "hf_repo": "FiveC/amis-corrected-clrr-only-20261005",
+          "hf_prefix": "amis_corrected_controls_20261005",
+          "selected_and_exported_weight_digest": "171901f9c8e9087b9397b272d19942027bbada95e81c67a0bcdbd9ea3053e673",
+          "post_selection_test_bleu": 19.49299739398403,
+          "post_selection_test_chrfpp": 18.531955876538554,
+          "old_scores_untouched": true,
+          "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+        }
+      },
+      "44": {
+        "complete": true,
+        "validation_complete": false,
+        "hf_verified": true,
+        "cleaned": true,
+        "collection_status": "COMPLETE",
+        "selection": {
+          "epoch": 20.0,
+          "global_step": 720,
+          "best_metric": 14.653283648617094,
+          "best_model_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed44/runs/mbart-amis-clrr_a010-seed44-corrected-control/checkpoint-684"
+        },
+        "result": {
+          "status": "COMPLETE",
+          "family": "clrr",
+          "seed": 44,
+          "run": "mbart-amis-clrr_a010-seed44-corrected-control",
+          "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_controls_20261005/clrr/seed44/runs/mbart-amis-clrr_a010-seed44-corrected-control/checkpoint-684",
+          "best_metric": 14.653283648617094,
+          "completed_epochs": 20.0,
+          "hf_repo": "FiveC/amis-corrected-clrr-only-20261005",
+          "hf_prefix": "amis_corrected_controls_20261005",
+          "selected_and_exported_weight_digest": "58c5ff10853a477ca7a3d090cc4c375315baf4c6dfb7d93e69a5de9d66831c1b",
+          "post_selection_test_bleu": 19.34549779546226,
+          "post_selection_test_chrfpp": 18.374130004944195,
+          "old_scores_untouched": true,
+          "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+        }
+      }
+    },
+    "process_state": "Zs",
+    "crashed": false
+  },
+  "stop_receipt": {
+    "confirmed_at_utc": "2026-10-05T09:04:35.653611+00:00",
+    "stdout": "[colab] Stopping session 'colab2'...\n[colab] Session terminated.\n\n"
+  }
+}

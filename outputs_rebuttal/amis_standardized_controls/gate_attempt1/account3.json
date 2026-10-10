@@ -1,0 +1,25 @@
+{
+  "checked_unix": 1791460487.9271011,
+  "process_alive": true,
+  "gates": {},
+  "progress": {},
+  "validation_complete": {},
+  "test_complete": {},
+  "gpu": "NVIDIA A100-SXM4-40GB, 0 MiB, 40960 MiB, 0 %",
+  "log_tail": [
+    "  Downloading pandas-3.0.6-cp313-cp313-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)",
+    "Collecting numpy==2.5.3",
+    "  Downloading numpy-2.5.3-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)",
+    "Collecting scipy==1.17.1",
+    "  Downloading scipy-1.17.1-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)",
+    "Collecting protobuf==7.36.2",
+    "  Downloading protobuf-7.36.2-cp310-abi3-manylinux2014_x86_64.whl.metadata (595 bytes)",
+    "Collecting safetensors==0.8.0",
+    "  Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)",
+    "Requirement already satisfied: filelock in ./miniforge3/envs/clrr/lib/python3.13/site-packages (from transformers==4.57.6) (3.32.3)",
+    "Collecting packaging>=20.0 (from transformers==4.57.6)",
+    "  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)",
+    "Collecting pyyaml>=5.1 (from transformers==4.57.6)",
+    "  Downloading pyyaml-6.0.3-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)"
+  ]
+}

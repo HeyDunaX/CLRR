@@ -1,0 +1,9 @@
+{
+  "status": "VERIFIED",
+  "same_checkpoint": true,
+  "same_rows": true,
+  "worker_hash_match": true,
+  "rank_delta": 3.2090858752553686e-06,
+  "optimizer_steps": 0,
+  "all_conda_env_under_private_workspace": true
+}

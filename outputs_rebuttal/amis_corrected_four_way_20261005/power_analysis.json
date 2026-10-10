@@ -1,0 +1,69 @@
+{
+  "observed_parameters": {
+    "full_minus_lsr": {
+      "mean": 0.737283,
+      "sd": 0.44390406328056964,
+      "cohen_d": 1.6609061754273697
+    },
+    "full_minus_ft": {
+      "mean": 0.7416616666666668,
+      "sd": 1.2310089070800152,
+      "cohen_d": 0.6024827784763209
+    }
+  },
+  "power_table": [
+    {
+      "n_seeds": 6,
+      "t_power_full_lsr_observed_two_sided": 0.89338,
+      "t_power_full_lsr_observed_one_sided": 0.9651,
+      "t_power_full_lsr_mde03_two_sided": 0.26755,
+      "t_power_full_ft_observed_two_sided": 0.22199,
+      "t_power_full_ft_mde05_two_sided": 0.12633,
+      "binomial_sign_test_min_p": 0.03125,
+      "binomial_sign_test_req_k": 6,
+      "binomial_sign_test_exact_p": 0.03125,
+      "binomial_6_of_8_investment_p": null
+    },
+    {
+      "n_seeds": 8,
+      "t_power_full_lsr_observed_two_sided": 0.97867,
+      "t_power_full_lsr_observed_one_sided": 0.99474,
+      "t_power_full_lsr_mde03_two_sided": 0.37704,
+      "t_power_full_ft_observed_two_sided": 0.31157,
+      "t_power_full_ft_mde05_two_sided": 0.16696,
+      "binomial_sign_test_min_p": 0.0078125,
+      "binomial_sign_test_req_k": 8,
+      "binomial_sign_test_exact_p": 0.0078125,
+      "binomial_6_of_8_investment_p": 0.2890625
+    },
+    {
+      "n_seeds": 10,
+      "t_power_full_lsr_observed_two_sided": 0.99635,
+      "t_power_full_lsr_observed_one_sided": 0.99922,
+      "t_power_full_lsr_mde03_two_sided": 0.47283,
+      "t_power_full_ft_observed_two_sided": 0.39286,
+      "t_power_full_ft_mde05_two_sided": 0.20595,
+      "binomial_sign_test_min_p": 0.001953125,
+      "binomial_sign_test_req_k": 9,
+      "binomial_sign_test_exact_p": 0.021484375,
+      "binomial_6_of_8_investment_p": null
+    },
+    {
+      "n_seeds": 12,
+      "t_power_full_lsr_observed_two_sided": 0.99929,
+      "t_power_full_lsr_observed_one_sided": 0.99989,
+      "t_power_full_lsr_mde03_two_sided": 0.56566,
+      "t_power_full_ft_observed_two_sided": 0.4739,
+      "t_power_full_ft_mde05_two_sided": 0.2489,
+      "binomial_sign_test_min_p": 0.00048828125,
+      "binomial_sign_test_req_k": 10,
+      "binomial_sign_test_exact_p": 0.03857421875,
+      "binomial_6_of_8_investment_p": null
+    }
+  ],
+  "methodological_notes": {
+    "binomial_sign_test_vs_sign_flip": "Binomial sign test counts wins/losses only. Permutation sign-flip test uses exact difference magnitudes across 2^N sign flips.",
+    "investment_criterion_vs_significance": "6/8 wins is an internal project investment rule to avoid wasting effort, NOT a p < 0.05 statistical significance claim.",
+    "power_caveat": "Power of 97.9% for N=8 is conditional on true effect remaining at +0.74 BLEU with SD 0.44. Under MDE=+0.30 BLEU, power is 37.7%."
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "COMPLETE",
+  "family": "full",
+  "seed": 43,
+  "run": "mbart-amis-full_a010_l010-seed43-accumfixed",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/runs/mbart-amis-full_a010_l010-seed43-accumfixed/checkpoint-684",
+  "best_metric": 14.327070291168992,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_accumulation_confirmation_20261005",
+  "selected_and_exported_weight_digest": "8371991485108199aae765eadc28d45dd92bc1c6b3563b78de73c1140bddcbd5",
+  "post_selection_test_bleu": 20.177995172130316,
+  "post_selection_test_chrfpp": 18.856774144274585,
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; full epoch selection metadata on HF; optimizer/RNG local only"
+}

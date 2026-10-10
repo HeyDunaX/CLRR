@@ -1,0 +1,11 @@
+{
+  "status": "COMPLETE",
+  "run": "mbart-amis-baseline-seed42-corrected",
+  "selected_checkpoint": "/content/CLRR/outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/checkpoint-720",
+  "best_metric": 13.901540564847089,
+  "completed_epochs": 20.0,
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_corrected_baseline42_20261005",
+  "old_scores_untouched": true,
+  "backup_policy": "Final best archive checksum verified; epoch selection metadata uploaded. Full optimizer/RNG remains local."
+}

@@ -61,6 +61,63 @@ Bạn sẽ được đưa thẳng vào thư mục `/content` của máy ảo Col
 
 ---
 
+### 2.5. Hướng Dẫn Điều Khiển Đa Tài Khoản (Multi-Account Control: Acc 1, 2, 3)
+
+Để tăng tốc thực nghiệm và tận dụng nhiều GPU A100 cùng lúc mà không xung đột token, hệ thống sử dụng cơ chế **Profile Isolation** phân tách thư mục cấu hình:
+
+| Tài khoản | Đường dẫn Profile trên máy | Tên Session mặc định | Mục đích sử dụng |
+|---|---|:---:|---|
+| **Account 1** | `%USERPROFILE%` (`C:\Users\Lenovo`) | `colab` | Khối thực nghiệm Baseline & CLRR |
+| **Account 2** | `C:\Users\Lenovo\.colab_acc2` | `colab2` | Khối thực nghiệm CLRR & LSR |
+| **Account 3** | `C:\Users\Lenovo\.colab_acc3` | `colab3` | Khối thực nghiệm Full CLRR+LSR |
+
+#### A. Kiểm tra số dư (Compute Units) từng tài khoản:
+```powershell
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 1 usage
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 2 usage
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 3 usage
+```
+
+#### B. Khởi tạo máy ảo A100 cho từng tài khoản:
+```powershell
+# Account 1:
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 1 new -s colab --gpu A100
+
+# Account 2:
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 2 new -s colab2 --gpu A100
+
+# Account 3:
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 3 new -s colab3 --gpu A100
+```
+
+#### C. Kiểm tra trạng thái máy ảo (Status):
+```powershell
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 1 status -s colab
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 2 status -s colab2
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 3 status -s colab3
+```
+
+#### D. Tắt máy ảo ngay khi xong việc (Dừng đốt CU):
+```powershell
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 1 stop -s colab
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 2 stop -s colab2
+conda run -n clrr python -X utf8 scratch/colab_pilot_control.py --account 3 stop -s colab3
+```
+
+#### E. Đăng nhập / Xác thực lại tài khoản bất kỳ:
+Khi token hết hạn hoặc muốn đổi tài khoản Google mới:
+1. Tạo link đăng nhập:
+   ```powershell
+   C:\Users\Lenovo\miniconda3\python.exe -X utf8 scratch/reauth_colab_account.py --account 3 --generate-url
+   ```
+2. Mở trình duyệt, đăng nhập Gmail tương ứng, copy mã xác thực dạng `4/0A...`.
+3. Nhập mã để hoàn tất:
+   ```powershell
+   C:\Users\Lenovo\miniconda3\python.exe -X utf8 scratch/reauth_colab_account.py --account 3 --exchange <MA_AUTH>
+   ```
+
+---
+
 ## 3. Quy Trình Tự Động Hóa Huấn Luyện Bằng Bash Script (Autonomous Workflow)
 
 > [!TIP]
@@ -72,7 +129,7 @@ Bạn sẽ được đưa thẳng vào thư mục `/content` của máy ảo Col
 ### Sơ đồ quy trình thực thi chuẩn:
 ```
 [BƯỚC 1: Khởi tạo Máy ảo A100]
-  Lệnh: colab new -s colab_a100 --gpu A100
+  Lệnh: colab new -s colab_a100 --gpu A100 (hoặc qua scratch/colab_pilot_control.py)
          │
 [BƯỚC 2: Đồng bộ mã nguồn & Preflight Smoke Test]
   Lệnh: python scratch/sync_and_smoke.py (Đảm bảo 1 forward/backward step hoàn tất trong 20s)
@@ -83,7 +140,7 @@ Bạn sẽ được đưa thẳng vào thư mục `/content` của máy ảo Col
          │
 [BƯỚC 4: Xuất Kết quả & Upload Hugging Face]
   - Tự động nén checkpoint tốt nhất thành best.zip (2.27 GB).
-  - Stream upload lên FiveC/amis-rewire-checkpoints.
+  - Stream upload lên FiveC/amis-fresh-confirmation-*.
          │
 [BƯỚC 5: Tắt máy ảo ngay lập tức]
   Lệnh: colab stop -s colab_a100
@@ -104,3 +161,4 @@ Mọi kế hoạch thử nghiệm mới cần bám sát 9 phần bất biến:
 7. **Phần 7: Dự Toán Tài Nguyên Trên A100:** Thời gian dự kiến, ước tính Compute Units tiêu hao, kiểm tra dung lượng đĩa.
 8. **Phần 8: Bảng Kết Quả Thực Nghiệm Dự Kiến:** Định dạng các bảng so sánh BLEU và chrF++ theo chuẩn ACL.
 9. **Phần 9: Phân Tích Chuyên Sâu & Kế Hoạch Viết Bài Báo:** Luận điểm khoa học thu được và lộ trình đưa vào bản thảo bài báo.
+

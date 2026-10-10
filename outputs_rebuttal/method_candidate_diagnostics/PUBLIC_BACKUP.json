@@ -1,0 +1,148 @@
+{
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "revision": "ba3f062c20be45ca9ac5aabbe7da1c43e6236c6d",
+  "files": {
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/bootstrap.json": {
+      "size": 1915,
+      "sha256": "c7aa0391b06ea13cbed39bb052a1f97ef5fb1a107752839c46845f4ceea05be6"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/interventions.json": {
+      "size": 5435,
+      "sha256": "63eaf62a3e9702cc26aa40d540e6f40ba163335f6a9cf21afc7ce63f89e6e764"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/PLAN.json": {
+      "size": 6859,
+      "sha256": "0b75e357c69ac336c2658f72446efa77d3b9a7b1007a68a9a69976269d467931"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/REPLAY_VERIFIED.json": {
+      "size": 255,
+      "sha256": "b2835b6b18fe314f9e48a90710dc9f75420d7873265215e27d34b13ee87813f0"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/VERIFIED.json": {
+      "size": 233,
+      "sha256": "c01f7366cf5649f74957c91f4fa6b64685ae56c675417b07d067c7c00a46e6b9"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/REPORT.md": {
+      "size": 7152,
+      "sha256": "370f0a664b07b2031a9bb5f60172182dc424b62c7001e4e5f8886987d33d97bd"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/BASE/COMPLETE.json": {
+      "size": 121943,
+      "sha256": "a9f3e0cb1b9fb5478ee972bd4c38f2c9b7776af2764291963cc694b4d049f0f4"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/BASE/validation_on.csv": {
+      "size": 62319,
+      "sha256": "7208e73b88b9d80f58ef1e7b1c1193ba551d3d53838f4cddce8f4f74f3557c3b"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/COMPLETE.json": {
+      "size": 189996,
+      "sha256": "c602ebc93fdff54601ce125477a434c338fbb118eab83538b06a9c790ec84d84"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/saved_validation.csv": {
+      "size": 64830,
+      "sha256": "afd4599440487c327ce04f5b18284b5873e64485675f2fa55819176c982d51cb"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/validation_early_off.csv": {
+      "size": 62761,
+      "sha256": "87d89440bf17e8feb1aefdfeeeb5323eed866f91c4f9ba6c9de6b884426f059e"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/validation_late_off.csv": {
+      "size": 62543,
+      "sha256": "05e17d5e654ce199928ed6cb725d480a4cb03734c8d11d1bd8bc4f5136e6c5c1"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/validation_middle_off.csv": {
+      "size": 62440,
+      "sha256": "baf5fec1eb0ddc0acd2b3004aef8e5ae1b969daf56f552bc0164c6ef0c359f4e"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/OLD/validation_on.csv": {
+      "size": 62633,
+      "sha256": "6a73e2964f276287c70a91c5e4d969031eceb1ed43c4027e9168762c99004f1a"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/COMPLETE.json": {
+      "size": 124824,
+      "sha256": "ea7189fee44ccfa23f720609ebc0c161769b370003f814eb5411b7f0503eec27"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/saved_validation.csv": {
+      "size": 62879,
+      "sha256": "42a483f64467b9a8f956b6dfb907fba3ee6a6b0fc50f17b21ff4c6a2e0049007"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/validation_early_off.csv": {
+      "size": 63399,
+      "sha256": "452447670552ecc4bb4a7195d2801d19a4247ba06c4b7af2e519427036279696"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/validation_late_off.csv": {
+      "size": 63250,
+      "sha256": "8135ec26b739cff04471ebb46e4271f50fc3fd518d52c50aadec5995f55ed817"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/validation_middle_off.csv": {
+      "size": 63368,
+      "sha256": "d67c5a28446e39258aeb574250794f97d3cf108182dcd418165138f12911a1ab"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1C/validation_on.csv": {
+      "size": 62882,
+      "sha256": "ac6ec5d0e6e2dfac99fbee36d74914dfda036351c572c45ce92c3c9fde119e31"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/COMPLETE.json": {
+      "size": 190020,
+      "sha256": "173c9e214a1011ef080e8992c7fdb23ed717feeac8eef072464741fa0a133341"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/saved_validation.csv": {
+      "size": 62738,
+      "sha256": "0296ceedb1baea8b18857b0598ad000a742efe962ffeb70f68c6f1aff599cee7"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/validation_early_off.csv": {
+      "size": 62689,
+      "sha256": "afc23a749e83b7d97aa0678c679271987bf11b3981c1e0030f5d21138f9d52ee"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/validation_late_off.csv": {
+      "size": 62643,
+      "sha256": "ce022fb9209d1e1990174cf4bb69b44e113300a3fa3b975dedaf5cc3becc78eb"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/validation_middle_off.csv": {
+      "size": 62508,
+      "sha256": "1e2eaad6f2d269f550093ff13cdf815f7a08f9ad13c09b808f4f3e33c3bbe71c"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U1F/validation_on.csv": {
+      "size": 62741,
+      "sha256": "8b0b9d4266b8cb21f62c6c7da9d381b10d560738cee38b6a52d2b5b1589e8acf"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/COMPLETE.json": {
+      "size": 189741,
+      "sha256": "622f49566d90ff86838bb356e7dae44e549d2bf875e93b3dd3112e002521f98e"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/saved_validation.csv": {
+      "size": 62336,
+      "sha256": "110ebce06e8114d387954db520a0e2f35f371a99a7a4765f3f5cf28b28ef1031"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/validation_early_off.csv": {
+      "size": 62654,
+      "sha256": "efdb297231bf2d7d3bd0183f55fcab4888a6d0fb623b9688b375b24cf054c8fb"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/validation_late_off.csv": {
+      "size": 62744,
+      "sha256": "e71b4d5021071e84cf2468b498a0a034a819c57ad8b5382bf9ea21d9f57454c2"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/validation_middle_off.csv": {
+      "size": 63094,
+      "sha256": "b3f025d5b3a46f38bd3e5dbcacc20121ac543607659cb798f88e86a642f3189e"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2F/validation_on.csv": {
+      "size": 62337,
+      "sha256": "30076712a4dc8e3ff2161c276a52c10ed066b22d51ebea3044e4b77696aad378"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2L/COMPLETE.json": {
+      "size": 186678,
+      "sha256": "68202a577fb82926615660c00773c0466606dc3b726adc11dac959738afe5300"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2L/saved_validation.csv": {
+      "size": 62499,
+      "sha256": "e573aef17498690358fbaf06d661ccc88415a13afd2927bc236f4fc90c842dfc"
+    },
+    "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42/U2L/validation_on.csv": {
+      "size": 62502,
+      "sha256": "682c57ec5f17488fbc8740daae6c8a5468cbf04583c54af964ed632bb7399fcb"
+    }
+  },
+  "verified": true,
+  "prefix": "analysis/amis_mandarin/mbart-large-50/method-candidate-diagnostics/seed-42"
+}

@@ -1,0 +1,14 @@
+{
+  "account": 2,
+  "session": "colab2",
+  "status": "LAUNCHED_GATES_THEN_TRAIN",
+  "assigned": [
+    "A01",
+    "A02",
+    "A03",
+    "A04",
+    "D01",
+    "D02"
+  ],
+  "bundle_sha256": "d4cedbbe71139a7276ac63d801f0fac95834ad529a69275785cad8a273bab166"
+}

@@ -1,0 +1,475 @@
+{
+  "test_sets_verified": 21,
+  "max_score_error": 1.0658141036401503e-14,
+  "paired_deltas_and_holm30_verified": true,
+  "native_p_check_full003_vs_tuned_seed42": {
+    "BLEU": {
+      "native_p": 0.008899110088991101,
+      "difference": 0.0
+    },
+    "chrF++": {
+      "native_p": 0.015798420157984203,
+      "difference": 0.0
+    }
+  },
+  "significant_holm30_05": 0,
+  "probe_files_internal_consistency_count": 21,
+  "probe_reproduction_status": "GPU measurements not independently rerun; missing raw spectra/representations and runtime/loading provenance",
+  "probe_checks": [
+    {
+      "id": "mbart-amis-baseline-seed42",
+      "family": "baseline",
+      "source_rank_singular": 387.4759645247553,
+      "source_rank_energy": 143.7294094242901,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-baseline-seed43",
+      "family": "baseline",
+      "source_rank_singular": 389.40047705085794,
+      "source_rank_energy": 145.72737730968325,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-baseline-seed44",
+      "family": "baseline",
+      "source_rank_singular": 393.0966538459983,
+      "source_rank_energy": 148.62584941358006,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-clrr-seed42",
+      "family": "clrr_only_detached",
+      "source_rank_singular": 383.3038066782773,
+      "source_rank_energy": 145.2754091947968,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059210566538806436,
+          "max": 0.08751942962408066,
+          "skip_current_cosine_mean": 0.772134448815551,
+          "skip_current_cosine_min": 0.14671728014945984
+        },
+        "target": {
+          "mean": 0.05389580606182184,
+          "max": 0.08029777556657791,
+          "skip_current_cosine_mean": 0.8415907737592028,
+          "skip_current_cosine_min": 0.29842984676361084
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-clrr-seed43",
+      "family": "clrr_only_detached",
+      "source_rank_singular": 385.99586572751423,
+      "source_rank_energy": 148.59637720230867,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059326983320675535,
+          "max": 0.08753857761621475,
+          "skip_current_cosine_mean": 0.771902318037529,
+          "skip_current_cosine_min": 0.14609847962856293
+        },
+        "target": {
+          "mean": 0.05389585253077611,
+          "max": 0.0802696943283081,
+          "skip_current_cosine_mean": 0.841243945998657,
+          "skip_current_cosine_min": 0.30003952980041504
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-clrr-seed44",
+      "family": "clrr_only_detached",
+      "source_rank_singular": 385.7605526136887,
+      "source_rank_energy": 147.5557802422118,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059101142820549686,
+          "max": 0.08778346329927444,
+          "skip_current_cosine_mean": 0.770277263270691,
+          "skip_current_cosine_min": 0.14733360707759857
+        },
+        "target": {
+          "mean": 0.05388100164289224,
+          "max": 0.08031344413757324,
+          "skip_current_cosine_mean": 0.8409389133306427,
+          "skip_current_cosine_min": 0.29685941338539124
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed42",
+      "family": "full_source_attached",
+      "source_rank_singular": 384.35219358982613,
+      "source_rank_energy": 142.3800325252938,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0590999562160707,
+          "max": 0.08574429154396057,
+          "skip_current_cosine_mean": 0.7698711443175045,
+          "skip_current_cosine_min": 0.15966491401195526
+        },
+        "target": {
+          "mean": 0.05383058915483869,
+          "max": 0.08023356646299362,
+          "skip_current_cosine_mean": 0.8415010218198101,
+          "skip_current_cosine_min": 0.2992197573184967
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed43",
+      "family": "full_source_attached",
+      "source_rank_singular": 385.2453329818768,
+      "source_rank_energy": 144.6893391628983,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.058922098017905634,
+          "max": 0.0855734720826149,
+          "skip_current_cosine_mean": 0.7683065139429851,
+          "skip_current_cosine_min": 0.15526412427425385
+        },
+        "target": {
+          "mean": 0.053804101569241744,
+          "max": 0.0802467092871666,
+          "skip_current_cosine_mean": 0.8411292567486979,
+          "skip_current_cosine_min": 0.3009578287601471
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full-attached-a010-l010-seed44",
+      "family": "full_source_attached",
+      "source_rank_singular": 385.14301312589185,
+      "source_rank_energy": 144.1493022622017,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059004811755908625,
+          "max": 0.08596384525299072,
+          "skip_current_cosine_mean": 0.7680193500826136,
+          "skip_current_cosine_min": 0.15699218213558197
+        },
+        "target": {
+          "mean": 0.05381810491946655,
+          "max": 0.08025152236223221,
+          "skip_current_cosine_mean": 0.8410870659423785,
+          "skip_current_cosine_min": 0.30059465765953064
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed43",
+      "family": "original_full_detached",
+      "source_rank_singular": 385.30375155335724,
+      "source_rank_energy": 144.42703164855737,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.05907569754328708,
+          "max": 0.08600591123104095,
+          "skip_current_cosine_mean": 0.7672658849636921,
+          "skip_current_cosine_min": 0.15636684000492096
+        },
+        "target": {
+          "mean": 0.053860429469043285,
+          "max": 0.08025888353586197,
+          "skip_current_cosine_mean": 0.8411976599755386,
+          "skip_current_cosine_min": 0.29899635910987854
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "family": "original_full_detached",
+      "source_rank_singular": 385.6187787292855,
+      "source_rank_energy": 144.59772915566197,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.05917923720125044,
+          "max": 0.08690568804740906,
+          "skip_current_cosine_mean": 0.7675953671077473,
+          "skip_current_cosine_min": 0.15865176916122437
+        },
+        "target": {
+          "mean": 0.053907798881603713,
+          "max": 0.08027595281600952,
+          "skip_current_cosine_mean": 0.8410813674796372,
+          "skip_current_cosine_min": 0.2976299524307251
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l003-seed42",
+      "family": "full_detached_l003",
+      "source_rank_singular": 385.72031161861634,
+      "source_rank_energy": 147.1195797736652,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0590939404635315,
+          "max": 0.0869983583688736,
+          "skip_current_cosine_mean": 0.7692037301448484,
+          "skip_current_cosine_min": 0.159280464053154
+        },
+        "target": {
+          "mean": 0.053835247760030645,
+          "max": 0.08028491586446762,
+          "skip_current_cosine_mean": 0.8409177931180845,
+          "skip_current_cosine_min": 0.2991587817668915
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l003-seed43",
+      "family": "full_detached_l003",
+      "source_rank_singular": 385.0237015766617,
+      "source_rank_energy": 146.76860738399768,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059116664923203645,
+          "max": 0.0870361402630806,
+          "skip_current_cosine_mean": 0.76985492370764,
+          "skip_current_cosine_min": 0.14899003505706787
+        },
+        "target": {
+          "mean": 0.05387581007024791,
+          "max": 0.08026368916034698,
+          "skip_current_cosine_mean": 0.8409486958239641,
+          "skip_current_cosine_min": 0.29736021161079407
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l003-seed44",
+      "family": "full_detached_l003",
+      "source_rank_singular": 385.9480208392294,
+      "source_rank_energy": 146.7317772012501,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.059176354157049596,
+          "max": 0.08717435598373413,
+          "skip_current_cosine_mean": 0.7696342759532854,
+          "skip_current_cosine_min": 0.15888692438602448
+        },
+        "target": {
+          "mean": 0.05382850059654124,
+          "max": 0.08025378733873367,
+          "skip_current_cosine_mean": 0.8406815580764992,
+          "skip_current_cosine_min": 0.2999817728996277
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "family": "original_full_detached",
+      "source_rank_singular": 384.9452801811139,
+      "source_rank_energy": 143.63829596670254,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.05914758992771062,
+          "max": 0.08621055632829666,
+          "skip_current_cosine_mean": 0.7674340456801777,
+          "skip_current_cosine_min": 0.15761908888816833
+        },
+        "target": {
+          "mean": 0.05380173125126425,
+          "max": 0.08026296645402908,
+          "skip_current_cosine_mean": 0.8409449812956155,
+          "skip_current_cosine_min": 0.2992739677429199
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr-seed43",
+      "family": "matched_lsr",
+      "source_rank_singular": 386.94082230478693,
+      "source_rank_energy": 138.87864524098657,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr-seed44",
+      "family": "matched_lsr",
+      "source_rank_singular": 386.7163797685744,
+      "source_rank_energy": 136.63480234154918,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed42",
+      "family": "tuned_lsr",
+      "source_rank_singular": 392.99601494654104,
+      "source_rank_energy": 147.9763407644897,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed43",
+      "family": "tuned_lsr",
+      "source_rank_singular": 387.10515401408475,
+      "source_rank_energy": 142.20164333910307,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l003-seed44",
+      "family": "tuned_lsr",
+      "source_rank_singular": 388.63140690852447,
+      "source_rank_energy": 141.48937585743852,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    },
+    {
+      "id": "mbart-amis-lsr_l010-seed42",
+      "family": "matched_lsr",
+      "source_rank_singular": 385.32985269648725,
+      "source_rank_energy": 135.7359174939137,
+      "residual_ratios": {
+        "source": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        },
+        "target": {
+          "mean": 0.0,
+          "max": 0.0,
+          "skip_current_cosine_mean": null,
+          "skip_current_cosine_min": null
+        }
+      }
+    }
+  ],
+  "route_measurements": [
+    {
+      "id": "mbart-amis-full-seed43",
+      "changed": 0,
+      "valid_intervention": false,
+      "reason": "on/off wrappers share base_model; on hooks remain active during off"
+    },
+    {
+      "id": "mbart-amis-full-seed44",
+      "changed": 0,
+      "valid_intervention": false,
+      "reason": "on/off wrappers share base_model; on hooks remain active during off"
+    },
+    {
+      "id": "mbart-amis-full_a010_l010-seed42-replica",
+      "changed": 0,
+      "valid_intervention": false,
+      "reason": "on/off wrappers share base_model; on hooks remain active during off"
+    }
+  ],
+  "full003_minus_tuned_mean": {
+    "BLEU": -0.8099997636028462,
+    "chrF++": 0.9400562701668752,
+    "chrF0": -0.6702345710363721
+  },
+  "audit_scope": "CPU score/hash/order/statistics audit, source review, and separate CPU demonstration of F4 hook contamination. Original artifacts preserved.",
+  "worker_source_sha256": "547b5ce72905f2d46c206c5e824b437e35103f0cb304d716960f87ebb22f6419",
+  "inventory_review": {
+    "validation_predictions_marked_present": 7,
+    "missing_archive_sha": [
+      "mbart-amis-lsr_l010-seed42",
+      "mbart-amis-full_a010_l010-seed42-replica"
+    ],
+    "missing_revision_count": 12
+  }
+}

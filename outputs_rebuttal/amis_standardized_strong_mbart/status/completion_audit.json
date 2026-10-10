@@ -1,0 +1,40 @@
+{
+  "status": "COMPLETE_ALL_14_VALIDATION_VERIFIED",
+  "checked_at": "2026-10-09T11:03:36.455484+07:00",
+  "a06": {
+    "revision": "23954b834f164db11e8ce4713ddd7dfdfefbe51c",
+    "archive_path": "checkpoints/amis_mandarin/mbart-large-50/strong-lora-b/seed-42/es10/best.zip",
+    "archive_sha256": "4cf6ccac866db298b93134a69b015545271a9ef18793dcda483e42cf718a5a94",
+    "validation_receipt_sha256": "0ceefa7efdf91d88099baba4bb990d410df261b27bd7cd1300a916f7bceedd4f",
+    "selected_step": 684,
+    "scores": {
+      "bleu": 10.985001982576682,
+      "chrf++": 10.382518202338122,
+      "chrf0": 12.0560421743657
+    },
+    "selected_epoch": 19.0,
+    "completed_epoch": 20.0,
+    "stop_reason": "epoch_cap"
+  },
+  "public_selection_lock_sha256": "58af09b3663aa81cbfd09bdaa685dfdf5faacd44d1b5915d8c017d165f41b229",
+  "public_index_entries": 104,
+  "accounts": {
+    "1": {
+      "active_assignments": 0,
+      "usage_rate": 0.0,
+      "balance": 52.92
+    },
+    "2": {
+      "active_assignments": 0,
+      "usage_rate": 0.0,
+      "balance": 151.73
+    },
+    "3": {
+      "active_assignments": 0,
+      "usage_rate": 0.0,
+      "balance": 8.57
+    }
+  },
+  "weights_downloaded_to_pc": false,
+  "test_started": false
+}

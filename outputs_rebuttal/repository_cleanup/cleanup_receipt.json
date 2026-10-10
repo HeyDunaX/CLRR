@@ -1,0 +1,49 @@
+{
+    "status":  "COMPLETE",
+    "deleted_files":  2306,
+    "verified_model_copies":  2141,
+    "unverified_model_files_kept":  705,
+    "frozen_source_files_kept":  13,
+    "removed_caches":  [
+                           {
+                               "local":  "scratch\\pdflatex_toolchain",
+                               "files":  16042,
+                               "bytes":  392230330,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           },
+                           {
+                               "local":  "scratch\\tectonic",
+                               "files":  2,
+                               "bytes":  72598655,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           },
+                           {
+                               "local":  "scratch\\hf_migration_sdk",
+                               "files":  376,
+                               "bytes":  5434245,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           },
+                           {
+                               "local":  "scratch\\warmup_save_cpu_1791116057258238400",
+                               "files":  7,
+                               "bytes":  483080,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           },
+                           {
+                               "local":  "scratch\\amis_v4_downloadparts",
+                               "files":  1,
+                               "bytes":  2992,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           },
+                           {
+                               "local":  "scratch\\.hf_baseline42_recovery",
+                               "files":  49,
+                               "bytes":  383463,
+                               "reason":  "Disposable tool/cache; receipt retained when present"
+                           }
+                       ],
+    "freed_bytes":  1163054763,
+    "diagnostic_representations_removed":  0,
+    "scientific_numbers_recomputed":  false,
+    "gpu_started":  false
+}

@@ -1,0 +1,166 @@
+{
+  "status": "ALL_32_VALIDATION_VERIFIED",
+  "runs": {
+    "mbart-amis-baseline-seed45-fresh-confirmation": {
+      "weight_digest": "1f9e39835a30e05ee79ae80fcdb073faa11f247271c085473502c88dd06f2c58",
+      "archive_sha256": "c6598be901e8a359a9f4ffd9cc9057ef9d3f5c9b7f11c0dbe12d38474df85a80",
+      "validation_receipt_sha256": "503c8bfd7e408fa3bfea5bb56d0960c099d10d9798c21b00f3a21584234c8526"
+    },
+    "mbart-amis-baseline-seed46-fresh-confirmation": {
+      "weight_digest": "6c392c740b2853914e91edc443bde606e88830cbe3a7c393bddae1449078426a",
+      "archive_sha256": "14e4e50c49bfa3420d0528a20de1dbc06e0c714699b8b80c06e61d91591a6a83",
+      "validation_receipt_sha256": "4ff37bd30370a96601079c5dad7905f472e44a87360adfc2e1384e72de21f03a"
+    },
+    "mbart-amis-baseline-seed47-fresh-confirmation": {
+      "weight_digest": "4859489824a719ff53f5b433a61280b6762d801a67e12be2d51fd06d690a2326",
+      "archive_sha256": "68bbb2b170534f173f8ff4fdf85800c388c70f02f6d5d65fa178f51b5bb76606",
+      "validation_receipt_sha256": "4d4777681d54897be05837b2bf1f83326e205946d6a1d3a7471712265a1ae4b4"
+    },
+    "mbart-amis-baseline-seed48-fresh-confirmation": {
+      "weight_digest": "ed4d23b997a3b9ec38d21119301c51711d95c718ddf26c2a4b69ea72eea0d6be",
+      "archive_sha256": "47d5446ec5319d7ba8ab783097b76bb94533517ecd8af7cba84ab7f7a2d5a01f",
+      "validation_receipt_sha256": "28c2c436c93fae2d4137e3d511193acc750dd46f723f0d29e9b288cd215c36ef"
+    },
+    "mbart-amis-baseline-seed49-fresh-confirmation": {
+      "weight_digest": "06249fbf33401292630d82ea2286a72e065e5d96898089de823509e5eb3e9f9e",
+      "archive_sha256": "eebac986531bf94e4c9405f59bc5f67b86b4ec71cde1116f9ea40e2295de9e23",
+      "validation_receipt_sha256": "190c1df52186c7176d4c1a21f0377a313944e650974d5f2c190a480c0adad78a"
+    },
+    "mbart-amis-baseline-seed50-fresh-confirmation": {
+      "weight_digest": "2c04542a01c1b0342accd5ee72b24e19ed08303770efb83a5c0e18da64479e35",
+      "archive_sha256": "cccd91a771a69e0d394698edac704d4bff2e3d5faf18590ee1654e044f0a41a6",
+      "validation_receipt_sha256": "3f14a0c9b963ad132015ce8cb68185752f60f256ee3bb5fd662bc0ac7d5ee6d0"
+    },
+    "mbart-amis-baseline-seed51-fresh-confirmation": {
+      "weight_digest": "39bf18838b9af2c04a2d5c555c676766255bbbc92604a2a014d50d5950cf9ca1",
+      "archive_sha256": "ac6af5b9811d02dcf03f505725d6aac1036c465db10d93d7b65fdf6c2c597caa",
+      "validation_receipt_sha256": "8d9d2bc5961449c36d1bc0c4c74fa583cbe7c53830272832e3566d3e7a5eb9ef"
+    },
+    "mbart-amis-baseline-seed52-fresh-confirmation": {
+      "weight_digest": "83480f72ccaac8122914febd1979a1df07dc79971da4c5c251583dd5457fd07c",
+      "archive_sha256": "8a24e02b9d90932f78b67413e80e23ffe9caaa2bd4b0692dd2b2d7c693087f70",
+      "validation_receipt_sha256": "62953a003e205e1a576552e32b6cac8003354869a82e8e442569060e9fa6eee7"
+    },
+    "mbart-amis-clrr-seed45-fresh-confirmation": {
+      "weight_digest": "b5ea42b3d719e3635f387c2f51198b633f8ae12ac572557e5e43e69330abe7f7",
+      "archive_sha256": "8b6304089af2bc000adbe8291ff13478e75ab54e3f4f10ae97c0769f429b10d0",
+      "validation_receipt_sha256": "3449219afc68834cab545da20ed1f3036f3ee31535d7dc04d3180d545f59e373"
+    },
+    "mbart-amis-clrr-seed46-fresh-confirmation": {
+      "weight_digest": "eb99c39df7a037c6118db9f3122f3b5f783f2b61e0516f2a6f93fbba5eb2f80f",
+      "archive_sha256": "3dbf0758b044975684223345d48abf259b2df92dee3586406c358c84da12ac66",
+      "validation_receipt_sha256": "622959f6fdd4ed7ddec7108d385c0e9c770b90438f6ebf47ad9ccf6946483bbb"
+    },
+    "mbart-amis-clrr-seed47-fresh-confirmation": {
+      "weight_digest": "7528d30fb6d0e1f3ccdaba7355e3fe3f2eb4692324d86f4b56780ad19df8ceb4",
+      "archive_sha256": "5a01dc67dec34b3b2cda3af03cc9bffc1b6d3ee3870e46cd2f089ab7e076391a",
+      "validation_receipt_sha256": "3b829bb432f3c185b17ab64dcf0e12feef1450f05159edd74a89cbbc64460533"
+    },
+    "mbart-amis-clrr-seed48-fresh-confirmation": {
+      "weight_digest": "67e0c4448ac9992f25c2aea2074325f0883622c1fe6599eceeaa8f0a059a9924",
+      "archive_sha256": "8d03d2f1fc5de905dd6f5eb56d220ab2276824f90321e1dd3f798bb2448552e1",
+      "validation_receipt_sha256": "7eac716661089f8ec6eace5a40ef4150d785dd40f3aaa2eafa8268a5b9d3c445"
+    },
+    "mbart-amis-clrr-seed49-fresh-confirmation": {
+      "weight_digest": "f02a35cc9c10dc6fed2abafed67ba68e6dee91a9d9cb4f60771f7a8674de6de4",
+      "archive_sha256": "075db927538296248fef2e1a593d9b3c50cb64fabcc59a361d6d62904867796a",
+      "validation_receipt_sha256": "dccacb1010802f84fa5d9899f947e472b65e5871f4a15b936fbe42585ee695f1"
+    },
+    "mbart-amis-clrr-seed50-fresh-confirmation": {
+      "weight_digest": "51efdf4a35bdbfa5fac65d8a08bc0d7bf72d7a59f8892e95f8e53ba2fa676b3e",
+      "archive_sha256": "4e6e856b9afc3f6c9d52aaa4d699aba26ca7bbc742cbdc311cf5649c5a6c4220",
+      "validation_receipt_sha256": "90c684fd85dc9b0658731c9a8242b296af5a9095ce4d299afb9dfb0aeffe7d0a"
+    },
+    "mbart-amis-clrr-seed51-fresh-confirmation": {
+      "weight_digest": "a6229f87a3a625b8a58e1e9c6a5139b102629834dca21e745c568180c680e2da",
+      "archive_sha256": "3f524c48a441cb342c67fc835b7f788a7b1a684a7851ed98a87eba25ee4d4f80",
+      "validation_receipt_sha256": "e768cdb02a762a3e7224911c39df638d9e760b99eb9bccf4601ca863b063cca5"
+    },
+    "mbart-amis-clrr-seed52-fresh-confirmation": {
+      "weight_digest": "e6f914a84b788d8b2e0027864665c62740c7a6cee0bc984765b45dfc062a8cd1",
+      "archive_sha256": "434230f59ab65c960a04d38f8c3ff3861c5cdf935ee0fbcab252b074acc96205",
+      "validation_receipt_sha256": "e7a56e41f724d173b5ef9214b8e94b0ad1f67796d7e52e99d1e4ac4cbf5e9e72"
+    },
+    "mbart-amis-lsr-seed45-fresh-confirmation": {
+      "weight_digest": "23e67294b1425101b2818c6618ac4e5e725a3967591fda978449ea12b792c445",
+      "archive_sha256": "92bab9ae84d6a34aa09e205188649583fb14693d27276aad1af379c683699670",
+      "validation_receipt_sha256": "5387103856b6f766d7e6b2177e3e079bc6619eef5ef29c56709c9fd344dc3e5e"
+    },
+    "mbart-amis-lsr-seed46-fresh-confirmation": {
+      "weight_digest": "5242786d772885ad4f5006dec33f1a2c62503da1436cfaffac3330db0de9ac12",
+      "archive_sha256": "45dcf1457e4dfa77db976ad57fe28b33a9136b7b92ee8779279b7246c183f851",
+      "validation_receipt_sha256": "20ee26bf93a891711845570fed20e684a07d208f3ca2aa0e064ee379d890daff"
+    },
+    "mbart-amis-lsr-seed47-fresh-confirmation": {
+      "weight_digest": "41f01a4bbb3533846928950f43db74dca79ca717802f940ecf45af5d276a19b9",
+      "archive_sha256": "ae53faa5f216a6ef4fbdd24a52315d906b82efe0a755453a268a843ab4b50f43",
+      "validation_receipt_sha256": "508eed36ee18ea33ac5e69d356fe75dcb10fbbe739821a30cf89b72a2cfaaea2"
+    },
+    "mbart-amis-lsr-seed48-fresh-confirmation": {
+      "weight_digest": "09b12e23b72311a1954d2f91ce7b01e75e50e2c6061a4a5c288baf78b928eb87",
+      "archive_sha256": "1bc686d575ced331108a90e4bc8d61744abebd9cd576ed8f7cd71fdf8db4582d",
+      "validation_receipt_sha256": "2bf209b330dd74942c58a804cc2446e14f8a29e0eebeead319bcf9b6d09be8e4"
+    },
+    "mbart-amis-lsr-seed49-fresh-confirmation": {
+      "weight_digest": "54039a1d454ea896f49f81ea0730e8b6ee661f8423be9710ed52687cfb1366da",
+      "archive_sha256": "ea230cce8802d9dd69f727fa9ea407b9eff3cb6707857ff43a30716a6c05de22",
+      "validation_receipt_sha256": "43d4961d644762ad1ce58cc7009ff7e156ecb27c5fb5493f832233f31c460cfb"
+    },
+    "mbart-amis-lsr-seed50-fresh-confirmation": {
+      "weight_digest": "98e6d1cdd10b11664dc40e6c32759ab6d88f61c68d71f7a3bc8dd3876c461181",
+      "archive_sha256": "dbd7ddbff8832b4456ebb03072a834211a79f8ec775b82967494d6622d978482",
+      "validation_receipt_sha256": "566364adf357dbef32fba3d1ecfcbaf5a9da8c0bc9afab25ae7be6c068975ff7"
+    },
+    "mbart-amis-lsr-seed51-fresh-confirmation": {
+      "weight_digest": "d71323c447cd54160868e410a45770dc370affc419c9697df3821bd052918dc7",
+      "archive_sha256": "972346c82f886eb5ba699bac3346be93a94c97a4c778253d49ba87cb064bbe45",
+      "validation_receipt_sha256": "666f94cd325a64e7cfd9a550894323f68587f7197ad06c543c74d41bc69c2570"
+    },
+    "mbart-amis-lsr-seed52-fresh-confirmation": {
+      "weight_digest": "320b5b5ec422e65369c9a327ce6e6dae19b76ee5ab8affc4f19fe86c109e671f",
+      "archive_sha256": "ccf83e1d28013058eef2da71274fddec7908caede4970f4280b1520f97e2b60a",
+      "validation_receipt_sha256": "c5d48e25b1f7bbf76db4b2623ec3761817dd6fd6d199676176e34580992704b0"
+    },
+    "mbart-amis-full-seed45-fresh-confirmation": {
+      "weight_digest": "e4e000ad69ee0a73a0b0f2155a5cc32224231bfe28ca07b57c0f0c1d6e966473",
+      "archive_sha256": "1dc8c8c833bcb4c3b91ad1469b7da9f6cd70a1ded4eb40adfb2a7a1aad09b4b8",
+      "validation_receipt_sha256": "20266e13ce1c9870dbe7703069269e5abf5564f0ab8190a91e99b2e3a170c01f"
+    },
+    "mbart-amis-full-seed46-fresh-confirmation": {
+      "weight_digest": "a155318c8d5ecde52d1ba392be71e8108c57bcc01b7727c80f7f8b47d9abe931",
+      "archive_sha256": "68410903a9ba1343f4e75c1946a1a02bf9ca5f516fcd197252e64cba78d6c3a7",
+      "validation_receipt_sha256": "b8551d9dac42a9afa66ef268e20a6418a81319a67427f9f50f709da04f55d303"
+    },
+    "mbart-amis-full-seed47-fresh-confirmation": {
+      "weight_digest": "97d22bcb410b82254fd5f875facb80a0c76996f9955b07f2eb590188932c1c9b",
+      "archive_sha256": "dc8271f952e0cb2b96c94c83fd31abf59c27ccc428270fbde48a25301de46b5d",
+      "validation_receipt_sha256": "c0de1ef950027488e8fc2169675aa7f72528d96246c12018d8f80c10a5d38b43"
+    },
+    "mbart-amis-full-seed48-fresh-confirmation": {
+      "weight_digest": "0b22052e08cefc0bb63969bb054b04ddd5c81a68a2165862bcfa74c01a9c2815",
+      "archive_sha256": "e86347713166d7981de0b6f81114f6c15b131e6f608d33d8b621d5d3fb54668d",
+      "validation_receipt_sha256": "e3cc9570003365ecaf709cc720fcd1d4f5de5ce0608f27dabaabf26caa61989b"
+    },
+    "mbart-amis-full-seed49-fresh-confirmation": {
+      "weight_digest": "24f7372450c9f3d7a9e00efe9796ca5626dc7fa8d1e27ab891399f71f23e57f0",
+      "archive_sha256": "576a1da895ca5b73cc62235271a86aa12f1c1e610d8576ca691f431fc12b6e05",
+      "validation_receipt_sha256": "29e7a554b5be55d7218d6291e1b8245a4ba7a794703dc221e78deea88b724ed7"
+    },
+    "mbart-amis-full-seed50-fresh-confirmation": {
+      "weight_digest": "2214b5655f868a6ce6ba5abcaad16ec70ebbf0b1beb2d60a8dd42bbe899d8d30",
+      "archive_sha256": "f8e7cfe0b87bce4adaaee303ab05c512ef3c278d87ff004b49d72f923daad099",
+      "validation_receipt_sha256": "c82719fc027e32d4754109783d1bc9a2a1631cacf12820349d85cec739521bef"
+    },
+    "mbart-amis-full-seed51-fresh-confirmation": {
+      "weight_digest": "dcd99b94a7230ba257e223207f7069a864c108830c9f95c62c6ba3a49f1062c8",
+      "archive_sha256": "0d94518c5704d62b59ef4627c175a87b04ef5c5e801678dc3324fcd5d2d20c22",
+      "validation_receipt_sha256": "543395cfb6f152cb6105c4767601b1364fb287ca70e3e8f7541ea09eac15c063"
+    },
+    "mbart-amis-full-seed52-fresh-confirmation": {
+      "weight_digest": "67a5d93a7ad95c72384e2a8092423a1749b7daaa6c3e1509cc86b402396ded80",
+      "archive_sha256": "e4cff779799c2184ce066702de8a0c5565ad2a4ec3ff6e05886a1c39792f6e97",
+      "validation_receipt_sha256": "8cca0b7562eaaf06548bfc5ad90eda5dea0ca18111471df4bf99746d861b870d"
+    }
+  },
+  "test_used_for_selection": false
+}

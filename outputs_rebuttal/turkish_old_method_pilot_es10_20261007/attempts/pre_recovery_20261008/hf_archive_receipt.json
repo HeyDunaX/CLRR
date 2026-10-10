@@ -1,0 +1,9 @@
+{
+  "repo": "FiveC/turkish-old-method-pilot-baseline-20261007",
+  "prior_revision": "eb67b5ceaec4b5730204a53bb4c80820fcf49d91",
+  "new_revision": "d1dde575a96b3fa0b63a2860f74ce2e0ea922211",
+  "paths": [
+    "turkish_old_method_pilot_es10_20261007/mbart-tr-en-baseline-seed42-es10/selection/checkpoint-157/trainer_state.json",
+    "turkish_old_method_pilot_es10_20261007/mbart-tr-en-baseline-seed42-es10/selection/checkpoint-157/training_receipt.json"
+  ]
+}

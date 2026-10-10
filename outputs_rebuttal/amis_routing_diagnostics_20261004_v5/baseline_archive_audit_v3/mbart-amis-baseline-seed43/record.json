@@ -1,0 +1,38 @@
+{
+  "id": "mbart-amis-baseline-seed43",
+  "seed": 43,
+  "conditions": {
+    "validation": {
+      "scores": {
+        "bleu": 17.151270123753932,
+        "chrf++": 14.200731980464068,
+        "chrf0": 16.368745536133453
+      },
+      "rows": 576,
+      "beams": 1,
+      "repeat16_exact": true,
+      "inventory_delta": {
+        "bleu": 0.0,
+        "chrf++": 0.0
+      },
+      "prediction_sha256": "29f55553489a3533057e25a9e8ecbcf0691f4c4588e584fb09c55e074aa1ed6f"
+    },
+    "test": {
+      "scores": {
+        "bleu": 18.13783175840788,
+        "chrf++": 13.159189083183897,
+        "chrf0": 17.09042990233338
+      },
+      "rows": 575,
+      "beams": 4,
+      "gold_sha256": "7a2f66e8e84ca9845371ce993a1206bf1f03ee2678e25eed56111b06d1a8a227",
+      "different_predictions": [],
+      "old_test_metric_delta": {
+        "bleu": -7.105427357601002e-15,
+        "chrf++": 0.0,
+        "chrf0": 0.0
+      },
+      "prediction_sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe"
+    }
+  }
+}

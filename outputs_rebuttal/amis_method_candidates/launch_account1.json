@@ -1,0 +1,10 @@
+{
+  "account": 1,
+  "session": "colab",
+  "status": "LAUNCHED_GATES_THEN_TRAIN",
+  "assigned": [
+    "U1C",
+    "U1F"
+  ],
+  "bundle_sha256": "e11558319532c33929e0eef6607f73295c05c7e93f08cb85fc32d111c21ead1c"
+}

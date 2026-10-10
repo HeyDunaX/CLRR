@@ -1,0 +1,26 @@
+{
+  "versions": {
+    "torch": "2.6.0+cu124",
+    "transformers": "4.57.6",
+    "huggingface-hub": "0.36.0",
+    "accelerate": "1.15.0",
+    "sacrebleu": "2.6.0",
+    "datasets": "3.6.0",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "tokenizers": "0.22.2",
+    "sentencepiece": "0.2.2",
+    "safetensors": "0.8.0",
+    "protobuf": "7.36.2"
+  },
+  "python": "3.13.15",
+  "gpu": "NVIDIA A100-SXM4-40GB",
+  "gpu_bytes": 42405855232,
+  "host_ram_bytes": 89629196288,
+  "manifest_sha256": "79686816d6f6a028bceea17c41fb5e8f490a2a2bbb6d345d3f24ea2db2d70230",
+  "input_checks": "PASS",
+  "backbone_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+  "hf_repo": "FiveC/amis-rewire-checkpoints",
+  "hf_prefix": "amis_routing_warmup_20261004_v2",
+  "test_access": "No test tokenization/generation; hash verification only"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "split": "test",
+  "beams": 4,
+  "rows": 8,
+  "gold_sha256": "a5c3fb6f16c4f28ec138292449ebf519f5ee67e24dd5e79f39bfe8220a3f2d05"
+}

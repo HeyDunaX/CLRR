@@ -1,0 +1,29 @@
+{
+  "id": "mbart-amis-full-seed43",
+  "seed": 43,
+  "validation_rows": 576,
+  "sentences_changed": 512,
+  "pct_changed": 88.88888888888889,
+  "fixed_32_diagnostics": {
+    "teacher_forced_ce_on": 7.593804836273193,
+    "teacher_forced_ce_off": 7.9738688468933105,
+    "ce_delta_on_minus_off": -0.3800640106201172,
+    "logit_diff_mean": 2.4546585083007812,
+    "logit_diff_max": 30.967138290405273
+  },
+  "route_on": {
+    "bleu": 15.367453770388948,
+    "chrf++": 13.08366605985077,
+    "chrf0": 15.064582883329106
+  },
+  "route_off": {
+    "bleu": 14.558306481179224,
+    "chrf++": 12.510034862775704,
+    "chrf0": 14.42407470898625
+  },
+  "delta_on_minus_off": {
+    "bleu": 0.809147289209724,
+    "chrf++": 0.5736311970750663,
+    "chrf0": 0.6405081743428553
+  }
+}

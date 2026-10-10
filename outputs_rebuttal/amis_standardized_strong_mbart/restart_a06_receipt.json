@@ -1,0 +1,71 @@
+{
+  "id": "A06",
+  "account": 1,
+  "status": "TRAINING_CONFIRMED",
+  "restart_from_scratch": true,
+  "bundles": {
+    "standardized_controls_bundle.zip": "d4cedbbe71139a7276ac63d801f0fac95834ad529a69275785cad8a273bab166",
+    "strong_mbart_supplement_bundle.zip": "8027a6e1baf80fed8bb8ec988d61c1e959d509b52d04f004801cf6a3a6d92b3a"
+  },
+  "method_and_hyperparameters_unchanged": true,
+  "result": "A06_RESTART_SETUP_LAUNCHED 3594\n\n",
+  "gate": {
+    "passed": true,
+    "id": "A06",
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "bf16": true,
+    "checkpointing": true,
+    "microbatch": 4,
+    "accumulation": 32,
+    "steps": 2,
+    "save_reload_logits_match": true,
+    "trainer_best_checkpoint_reload": true,
+    "optimizer_rng_present": true,
+    "seconds": 45.19894790649414,
+    "parameters": {
+      "method": "LoRA",
+      "rank": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "out_proj",
+        "fc1",
+        "fc2"
+      ],
+      "modules_to_save": [
+        "shared",
+        "embed_tokens",
+        "lm_head"
+      ],
+      "base_params": 610879488,
+      "added_params": 8650752,
+      "trainable_params": 264706048,
+      "all_params": 619530240,
+      "trainable_percent": 42.726897076081386,
+      "allocated_params": 875585536,
+      "loss_reduction": "microbatch_mean"
+    },
+    "max_memory_gb": 8.15471076965332,
+    "bundle_sha256": "4bbf5c5270460c0aaf4cb2b26177f68504afd248c7d03ec8611773bfc800cd1d"
+  },
+  "first_training_observation": {
+    "id": "A06",
+    "status": "TRAINING",
+    "epoch": 0.2782608695652174,
+    "step": 10,
+    "max_steps": 720,
+    "best_metric": null,
+    "updated_unix": 1791510394.971409,
+    "logs": {
+      "loss": 5.846,
+      "grad_norm": 15.068217277526855,
+      "learning_rate": 2.0454545454545457e-05,
+      "epoch": 0.2782608695652174
+    },
+    "patience_counter": 0
+  },
+  "checked_unix": 1791510404.8648415
+}

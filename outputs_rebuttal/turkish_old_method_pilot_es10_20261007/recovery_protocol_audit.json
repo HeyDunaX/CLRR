@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "changed_bundle_files": [
+    "scripts/revalidation/run_turkish_old_method_pilot.py",
+    "outputs_rebuttal/turkish_old_method_pilot_es10_20261007/PLAN.json"
+  ],
+  "training_source_data_and_gate_tests_identical": true,
+  "scope": "four families seed42",
+  "test_protocol": "beam4 FP32 TF32-off BLEU13a chrF++ chrF0"
+}

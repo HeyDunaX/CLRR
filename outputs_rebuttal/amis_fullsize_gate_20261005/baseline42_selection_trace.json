@@ -1,0 +1,268 @@
+{
+  "date": "2026-10-05",
+  "local_trainer_states": [
+    {
+      "file": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-216\\trainer_state.json",
+      "sha256": "c59e62aede3b023b77c0d45b9b88bf1e2599fad7b116f8acdb801b5d0f0701e4",
+      "global_step": 216,
+      "epoch": 6.0,
+      "best_step": 216,
+      "best_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-216",
+      "best_metric": 11.776576836729637,
+      "last_evaluation": {
+        "epoch": 6.0,
+        "eval_bleu": 12.813595715933937,
+        "eval_chrf++": 11.776576836729637,
+        "eval_loss": 2.627347707748413,
+        "eval_runtime": 18.6602,
+        "eval_samples_per_second": 30.868,
+        "eval_steps_per_second": 3.858,
+        "step": 216
+      }
+    },
+    {
+      "file": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-252\\trainer_state.json",
+      "sha256": "f3cdcbb807738b69189373522f9bf0037df549c9a319093195901271214906f9",
+      "global_step": 252,
+      "epoch": 7.0,
+      "best_step": 252,
+      "best_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-252",
+      "best_metric": 11.796499687133771,
+      "last_evaluation": {
+        "epoch": 7.0,
+        "eval_bleu": 13.375274144041605,
+        "eval_chrf++": 11.796499687133771,
+        "eval_loss": 2.6693382263183594,
+        "eval_runtime": 18.8334,
+        "eval_samples_per_second": 30.584,
+        "eval_steps_per_second": 3.823,
+        "step": 252
+      }
+    },
+    {
+      "file": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-468\\trainer_state.json",
+      "sha256": "6892fb1393e8473c86d6f1bec084082cd9cfe6e0a58908773dc198a7b78a32e2",
+      "global_step": 468,
+      "epoch": 13.0,
+      "best_step": 396,
+      "best_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-396",
+      "best_metric": 13.180558840891903,
+      "last_evaluation": {
+        "epoch": 13.0,
+        "eval_bleu": 15.240309401260758,
+        "eval_chrf++": 13.03780638360422,
+        "eval_loss": 2.8458917140960693,
+        "eval_runtime": 18.985,
+        "eval_samples_per_second": 30.34,
+        "eval_steps_per_second": 3.792,
+        "step": 468
+      }
+    },
+    {
+      "file": "outputs_rebuttal\\amis_confirmation_20261003\\runs\\mbart-amis-baseline-seed42\\checkpoint-504\\trainer_state.json",
+      "sha256": "a5eae10704c8856b61a74adbb5c12c8d079d377c6f6f3288d19c332975855795",
+      "global_step": 504,
+      "epoch": 14.0,
+      "best_step": 504,
+      "best_checkpoint": "/content/clrr_diagnostics/project/outputs_rebuttal/amis_confirmation_20261003/runs/mbart-amis-baseline-seed42/checkpoint-504",
+      "best_metric": 13.34501047226921,
+      "last_evaluation": {
+        "epoch": 14.0,
+        "eval_bleu": 15.443467863817055,
+        "eval_chrf++": 13.34501047226921,
+        "eval_loss": 2.880160093307495,
+        "eval_runtime": 19.3456,
+        "eval_samples_per_second": 29.774,
+        "eval_steps_per_second": 3.722,
+        "step": 504
+      }
+    }
+  ],
+  "original_log_file": "outputs_rebuttal\\amis_confirmation_20261003\\mbart-amis-baseline-seed42.log",
+  "original_log_sha256": "3a3ea93b152c4d00a93b49f0cf167180cc4a346bf0dfd5157827e1c4932abde4",
+  "original_log_last_step_mentions": [
+    "504",
+    "510",
+    "520",
+    "530",
+    "540"
+  ],
+  "original_log_evaluations_rounded": [
+    {
+      "step": 36,
+      "loss": 3.6451,
+      "bleu": 1.4606,
+      "chrfpp": 3.6821
+    },
+    {
+      "step": 72,
+      "loss": 3.0504,
+      "bleu": 6.1443,
+      "chrfpp": 7.5035
+    },
+    {
+      "step": 108,
+      "loss": 2.7761,
+      "bleu": 8.3556,
+      "chrfpp": 8.9903
+    },
+    {
+      "step": 144,
+      "loss": 2.6906,
+      "bleu": 11.701,
+      "chrfpp": 10.9694
+    },
+    {
+      "step": 180,
+      "loss": 2.6491,
+      "bleu": 12.142,
+      "chrfpp": 11.2177
+    },
+    {
+      "step": 216,
+      "loss": 2.6273,
+      "bleu": 12.8136,
+      "chrfpp": 11.7766
+    },
+    {
+      "step": 252,
+      "loss": 2.6693,
+      "bleu": 13.3753,
+      "chrfpp": 11.7965
+    },
+    {
+      "step": 288,
+      "loss": 2.7003,
+      "bleu": 13.7608,
+      "chrfpp": 12.2272
+    },
+    {
+      "step": 324,
+      "loss": 2.7282,
+      "bleu": 14.4723,
+      "chrfpp": 12.8056
+    },
+    {
+      "step": 360,
+      "loss": 2.7539,
+      "bleu": 14.5493,
+      "chrfpp": 12.7009
+    },
+    {
+      "step": 396,
+      "loss": 2.8068,
+      "bleu": 15.3202,
+      "chrfpp": 13.1806
+    },
+    {
+      "step": 432,
+      "loss": 2.827,
+      "bleu": 14.9472,
+      "chrfpp": 12.8329
+    },
+    {
+      "step": 468,
+      "loss": 2.8459,
+      "bleu": 15.2403,
+      "chrfpp": 13.0378
+    },
+    {
+      "step": 504,
+      "loss": 2.8802,
+      "bleu": 15.4435,
+      "chrfpp": 13.345
+    }
+  ],
+  "original_log_has_selected_checkpoint_json": false,
+  "infrastructure_recovery": {
+    "status": "BASELINE_BEST_ARCHIVE_VERIFIED_LSR_PARTIAL_INTERRUPTED",
+    "cause": "Colab assignment lost; precise cause not established",
+    "completed_baseline_preserved": true,
+    "lsr_seed42_restart_from_pretrained": true,
+    "baseline_late_epoch20_probe_lost": true,
+    "baseline_original_selected_step_unavailable": true,
+    "baseline_epoch1_epoch5_probes_preserved": true,
+    "turkish_started": false,
+    "protocol_source_files_unchanged": true,
+    "foreground_kernel_execution": true
+  },
+  "selected_archive_receipt": {
+    "run_name": "mbart-amis-baseline-seed42",
+    "local_archive": "D:\\Code\\CLRR\\outputs_rebuttal\\amis_confirmation_20261003\\best_archives\\mbart-amis-baseline-seed42.zip",
+    "bytes": 2270664334,
+    "sha256": "aaed1e8cf39b4f1ad6a5f4bef6fa04d44fbeb9fb2599e2649702e937822a10c8",
+    "verified": true
+  },
+  "recovered_metrics_selection": "recovered selected best; original selected step unavailable",
+  "v5_checkpoint_metadata_files": [
+    "config.json",
+    "generation_config.json"
+  ],
+  "local_conclusion": "UNKNOWN: partial states/log do not establish selected archive original step; snapshot step504 is not proof selected best at completed training.",
+  "HF_audit": {
+    "status": "READ_SMALL_METADATA_ONLY",
+    "candidate_files": [
+      {
+        "path": "amis_confirmation_20261003/checkpoints/mbart-amis-baseline-seed42.zip",
+        "bytes": 2270664334
+      }
+    ],
+    "downloaded_small_files": [],
+    "note": "No weights/archive download. HF presence and selected best-step fields inspected only; absent fields do not prove global absence outside inspected matching namespace.",
+    "zip_directory": {
+      "status": "BOUNDED_RANGE_PASS",
+      "bytes_read": 65536,
+      "members": [
+        {
+          "name": "pytorch_model.bin",
+          "compressed_bytes": null,
+          "uncompressed_bytes": null,
+          "zip64_sizes_not_expanded": true
+        },
+        {
+          "name": "config.json",
+          "compressed_bytes": 541,
+          "uncompressed_bytes": 1361,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "special_tokens_map.json",
+          "compressed_bytes": 388,
+          "uncompressed_bytes": 992,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "sentencepiece.bpe.model",
+          "compressed_bytes": 2588794,
+          "uncompressed_bytes": 5069051,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "generation_config.json",
+          "compressed_bytes": 153,
+          "uncompressed_bytes": 269,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "tokenizer.json",
+          "compressed_bytes": 4010547,
+          "uncompressed_bytes": 17110174,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "training_args.bin",
+          "compressed_bytes": 2779,
+          "uncompressed_bytes": 5816,
+          "zip64_sizes_not_expanded": false
+        },
+        {
+          "name": "tokenizer_config.json",
+          "compressed_bytes": 928,
+          "uncompressed_bytes": 10958,
+          "zip64_sizes_not_expanded": false
+        }
+      ],
+      "has_trainer_state": false
+    }
+  }
+}

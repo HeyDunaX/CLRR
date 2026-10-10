@@ -1,0 +1,330 @@
+{
+  "status": "VERIFIED_NATIVE_P_VALUES",
+  "analysis": "Post-hoc significance characterization, no model/seed selection",
+  "bootstrap_samples": 10000,
+  "bootstrap_rng": 42,
+  "test_rows": 575,
+  "test_reference_sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa",
+  "multiplicity_family": "12 tests: 3 seeds x 2 contrasts x 2 metrics, Holm familywise correction",
+  "sentence_tests": [
+    {
+      "seed": 42,
+      "contrast": "Full_minus_lsr",
+      "metric": "BLEU",
+      "delta": 1.2258550189021804,
+      "delta_ci95": [
+        0.08300156249137594,
+        2.431773046247142
+      ],
+      "p_sacrebleu_bs": 0.021597840215978402,
+      "p_holm12": 0.23757624237576241,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 42,
+      "contrast": "Full_minus_lsr",
+      "metric": "chrF++",
+      "delta": 0.5802015099450415,
+      "delta_ci95": [
+        -0.13505949974060058,
+        1.347871732711792
+      ],
+      "p_sacrebleu_bs": 0.05959404059594041,
+      "p_holm12": 0.5959404059594041,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 42,
+      "contrast": "Full_minus_baseline",
+      "metric": "BLEU",
+      "delta": 0.593213541241667,
+      "delta_ci95": [
+        -0.5211804271746402,
+        1.7258432895794822
+      ],
+      "p_sacrebleu_bs": 0.11848815118488151,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 42,
+      "contrast": "Full_minus_baseline",
+      "metric": "chrF++",
+      "delta": 0.30086895874758923,
+      "delta_ci95": [
+        -0.38176460266113277,
+        1.0148431301116942
+      ],
+      "p_sacrebleu_bs": 0.14708529147085292,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 43,
+      "contrast": "Full_minus_lsr",
+      "metric": "BLEU",
+      "delta": 0.35874424700167395,
+      "delta_ci95": [
+        -0.6128917898222239,
+        1.3013324807093183
+      ],
+      "p_sacrebleu_bs": 0.16108389161083891,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 43,
+      "contrast": "Full_minus_lsr",
+      "metric": "chrF++",
+      "delta": 0.19577493250384848,
+      "delta_ci95": [
+        -0.37348618507385256,
+        0.7805952548980712
+      ],
+      "p_sacrebleu_bs": 0.17518248175182483,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 43,
+      "contrast": "Full_minus_baseline",
+      "metric": "BLEU",
+      "delta": 2.040163413722418,
+      "delta_ci95": [
+        0.7644992493118336,
+        3.3923814977396742
+      ],
+      "p_sacrebleu_bs": 0.0016998300169983002,
+      "p_holm12": 0.020397960203979604,
+      "holm12_below_005": true
+    },
+    {
+      "seed": 43,
+      "contrast": "Full_minus_baseline",
+      "metric": "chrF++",
+      "delta": 5.697585061090688,
+      "delta_ci95": [
+        0.4674694299697876,
+        14.028092050552369
+      ],
+      "p_sacrebleu_bs": 0.10668933106689331,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 44,
+      "contrast": "Full_minus_lsr",
+      "metric": "BLEU",
+      "delta": 0.6272504362075324,
+      "delta_ci95": [
+        -0.391437273676007,
+        1.6351998368702512
+      ],
+      "p_sacrebleu_bs": 0.0958904109589041,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 44,
+      "contrast": "Full_minus_lsr",
+      "metric": "chrF++",
+      "delta": 0.40742829154469007,
+      "delta_ci95": [
+        -0.27222042083740233,
+        1.1211828708648681
+      ],
+      "p_sacrebleu_bs": 0.10358964103589641,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 44,
+      "contrast": "Full_minus_baseline",
+      "metric": "BLEU",
+      "delta": -0.4083918879693549,
+      "delta_ci95": [
+        -1.6109442003988166,
+        0.7733685908790473
+      ],
+      "p_sacrebleu_bs": 0.17768223177682232,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    },
+    {
+      "seed": 44,
+      "contrast": "Full_minus_baseline",
+      "metric": "chrF++",
+      "delta": -0.2020434844362704,
+      "delta_ci95": [
+        -0.9263060808181762,
+        0.5263009309768677
+      ],
+      "p_sacrebleu_bs": 0.20477952204779523,
+      "p_holm12": 0.8630136986301369,
+      "holm12_below_005": false
+    }
+  ],
+  "seed_tests": [
+    {
+      "contrast": "Full_minus_lsr",
+      "metric": "BLEU",
+      "n_seeds": 3,
+      "paired_differences": [
+        1.2258550189021804,
+        0.35874424700167395,
+        0.6272504362075324
+      ],
+      "mean_delta": 0.7372832340371289,
+      "exact_two_sided_sign_flip_p": 0.25,
+      "minimum_attainable_two_sided_p": 0.25,
+      "assumption": "Symmetric exchangeability of paired seed effects under null; weakly assessable with n=3."
+    },
+    {
+      "contrast": "Full_minus_lsr",
+      "metric": "chrF++",
+      "n_seeds": 3,
+      "paired_differences": [
+        0.5802015099450415,
+        0.19577493250384848,
+        0.40742829154469007
+      ],
+      "mean_delta": 0.3944682446645267,
+      "exact_two_sided_sign_flip_p": 0.25,
+      "minimum_attainable_two_sided_p": 0.25,
+      "assumption": "Symmetric exchangeability of paired seed effects under null; weakly assessable with n=3."
+    },
+    {
+      "contrast": "Full_minus_baseline",
+      "metric": "BLEU",
+      "n_seeds": 3,
+      "paired_differences": [
+        0.593213541241667,
+        2.040163413722418,
+        -0.4083918879693549
+      ],
+      "mean_delta": 0.7416616889982434,
+      "exact_two_sided_sign_flip_p": 0.5,
+      "minimum_attainable_two_sided_p": 0.25,
+      "assumption": "Symmetric exchangeability of paired seed effects under null; weakly assessable with n=3."
+    },
+    {
+      "contrast": "Full_minus_baseline",
+      "metric": "chrF++",
+      "n_seeds": 3,
+      "paired_differences": [
+        0.30086895874758923,
+        5.697585061090688,
+        -0.2020434844362704
+      ],
+      "mean_delta": 1.9321368451340024,
+      "exact_two_sided_sign_flip_p": 0.5,
+      "minimum_attainable_two_sided_p": 0.25,
+      "assumption": "Symmetric exchangeability of paired seed effects under null; weakly assessable with n=3."
+    }
+  ],
+  "provenance": [
+    {
+      "seed": 42,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_corrected_baseline42_20261005/runs/mbart-amis-baseline-seed42-corrected/test_predictions.csv",
+      "sha256": "4a53fc044641487438750047f37fc63689cf4ad12d28d4ad02fffe882bde9d75"
+    },
+    {
+      "seed": 42,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_pilot_20261005/lsr/runs/mbart-amis-lsr_l010-seed42-accumfixed/test_predictions.csv",
+      "sha256": "5dd5181b41f491650fb6f3f5deaffccc51151d9f0c5b9a896bf7e2f2d2b68571"
+    },
+    {
+      "seed": 42,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_pilot_20261005/full/runs/mbart-amis-full_a010_l010-seed42-accumfixed/test_predictions.csv",
+      "sha256": "8ee4797be532e4e098762b58ba7e0d92a1bbd311135b912346ac4117a662791b"
+    },
+    {
+      "seed": 43,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed43/test_predictions.csv",
+      "sha256": "d8e3d42e46b552001903db70f6e298fac79f5578b13e164bc944b546512c44fe"
+    },
+    {
+      "seed": 43,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005/lsr/seed43/runs/mbart-amis-lsr_l010-seed43-accumfixed/test_predictions.csv",
+      "sha256": "539c57b0ecd7006bc1fdb7808f9d1f01dad0e09fc8f8c5d4fbd6551238e9247b"
+    },
+    {
+      "seed": 43,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005/full/seed43/runs/mbart-amis-full_a010_l010-seed43-accumfixed/test_predictions.csv",
+      "sha256": "72df959056fcf5bbebc4f0aba9af6d57784b986ba389adcd3c3c0134a67a4613"
+    },
+    {
+      "seed": 44,
+      "family": "baseline",
+      "path": "outputs_rebuttal/amis_routing_diagnostics_20261004_v5/baseline_archive_audit_v3/mbart-amis-baseline-seed44/test_predictions.csv",
+      "sha256": "83e6c9701165d12dc432cb27457f8a5b345e89cc8c184569a39931d4646bac72"
+    },
+    {
+      "seed": 44,
+      "family": "lsr",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/lsr/seed44/runs/mbart-amis-lsr_l010-seed44-accumfixed-recovery/test_predictions.csv",
+      "sha256": "cf7d200f5494c646338e7b29f8046bbd42fcfcf0a4a41e72d674c29df29ae01d"
+    },
+    {
+      "seed": 44,
+      "family": "full",
+      "path": "outputs_rebuttal/amis_accumulation_confirmation_20261005_recovery/full/seed44/runs/mbart-amis-full_a010_l010-seed44-accumfixed-recovery/test_predictions.csv",
+      "sha256": "516253b5c611d1bb3a09a372bfdea3e56d1a7791f76592e55a3ec6d696c33303"
+    }
+  ],
+  "limits": [
+    "Sentence resampling conditional on frozen checkpoints; does not cover training randomness.",
+    "Only three training seeds; exact two-sided seed sign-flip cannot attain p<0.05.",
+    "Sentences assumed exchangeable; correlated documents may invalidate sentence-level precision.",
+    "Exploratory analysis after inspecting test scores; no pre-registration claim.",
+    "P-values do not establish novelty, mechanism, cross-language generalization or ACL acceptance."
+  ],
+  "conditional_mean_intervals": [
+    {
+      "contrast": "Full_minus_lsr",
+      "metric": "BLEU",
+      "mean_delta": 0.7372832340371289,
+      "conditional_delta_ci95": [
+        0.04029126873640906,
+        1.4556857634363745
+      ],
+      "scope": "Sentence uncertainty conditional on these three frozen training seeds; excludes training-seed uncertainty."
+    },
+    {
+      "contrast": "Full_minus_lsr",
+      "metric": "chrF++",
+      "mean_delta": 0.3944682446645267,
+      "conditional_delta_ci95": [
+        -0.039169152577718094,
+        0.8657387415568031
+      ],
+      "scope": "Sentence uncertainty conditional on these three frozen training seeds; excludes training-seed uncertainty."
+    },
+    {
+      "contrast": "Full_minus_baseline",
+      "metric": "BLEU",
+      "mean_delta": 0.7416616889982434,
+      "conditional_delta_ci95": [
+        -0.026536878244089016,
+        1.5182063222722264
+      ],
+      "scope": "Sentence uncertainty conditional on these three frozen training seeds; excludes training-seed uncertainty."
+    },
+    {
+      "contrast": "Full_minus_baseline",
+      "metric": "chrF++",
+      "mean_delta": 1.9321368451340024,
+      "conditional_delta_ci95": [
+        0.00841929912567139,
+        4.793556722005208
+      ],
+      "scope": "Sentence uncertainty conditional on these three frozen training seeds; excludes training-seed uncertainty."
+    }
+  ]
+}

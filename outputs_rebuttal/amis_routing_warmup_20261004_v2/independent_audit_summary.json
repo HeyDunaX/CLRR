@@ -1,0 +1,55 @@
+{
+  "completed_runs": 6,
+  "sacrebleu_version": "2.6.0",
+  "split": "validation",
+  "beams": 1,
+  "independent_metrics": "PASS",
+  "families": {
+    "original_full_detached": {
+      "bleu": {
+        "mean": 17.004842141063854,
+        "sample_sd": 0.7838582080142772
+      },
+      "chrf++": {
+        "mean": 14.385947436331879,
+        "sample_sd": 0.5521146917768361
+      },
+      "chrf0": {
+        "mean": 16.480920193521232,
+        "sample_sd": 0.5571554496760327
+      }
+    },
+    "clrr_only_detached": {
+      "bleu": {
+        "mean": 15.984166944995678,
+        "sample_sd": 1.3763366207336292
+      },
+      "chrf++": {
+        "mean": 13.585788419479654,
+        "sample_sd": 0.9038233864521891
+      },
+      "chrf0": {
+        "mean": 15.660597103476539,
+        "sample_sd": 0.9855317706148589
+      }
+    }
+  },
+  "gate": "NO_GO",
+  "gate_checks": {
+    "bleu_plus_030": false,
+    "chrfpp_plus_030": false,
+    "chrf0_no_harm": false,
+    "two_seed_joint_improvements": false,
+    "all_metrics_above_tuned_lsr": false
+  },
+  "fixed_full_means": {
+    "bleu": 17.213538609735533,
+    "chrf++": 14.497535513163283,
+    "chrf0": 16.658588514515174
+  },
+  "tuned_lsr_means": {
+    "bleu": 16.994203899693037,
+    "chrf++": 14.31701050953942,
+    "chrf0": 16.494988863598714
+  }
+}

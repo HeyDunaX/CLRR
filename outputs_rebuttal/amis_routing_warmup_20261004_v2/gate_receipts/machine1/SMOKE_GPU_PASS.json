@@ -1,0 +1,20 @@
+[
+  {
+    "full": false,
+    "cuda_bf16": true,
+    "schedule": "PASS",
+    "alpha0_raw": "PASS",
+    "snapshot": "PASS",
+    "strict_reload": "PASS",
+    "best_reload": "PASS"
+  },
+  {
+    "full": true,
+    "cuda_bf16": true,
+    "schedule": "PASS",
+    "alpha0_raw": "PASS",
+    "snapshot": "PASS",
+    "strict_reload": "PASS",
+    "best_reload": "PASS"
+  }
+]

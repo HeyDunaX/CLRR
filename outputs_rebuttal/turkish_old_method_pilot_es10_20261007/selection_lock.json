@@ -1,0 +1,35 @@
+{
+  "runs": {
+    "mbart-tr-en-baseline-seed42-es10": {
+      "archive_sha256": "bf10a39da87fde3b45a78a78bed168572d1a52def677d04d4e03d87134cb49d1",
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+      "validation_receipt_sha256": "32ad65876ed1f6883bb3bf5c88ffda4cdf37c0ce60dbd8b46887ace008cc372e",
+      "weight_digest": "2a3f3f9a8cdb2620aae9f2bab761d16d5a529e283d3f8e2d406b9ff20b2a4ce1"
+    },
+    "mbart-tr-en-full-seed42-es10": {
+      "archive_sha256": "77a2121fb0b44989ce5e4648a72cd2b973f98dbb9db8ffce7e5d7d3ac9a44e54",
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+      "validation_receipt_sha256": "643b822137d0829b716390d7afa87af95a46d0865a934d0f4553ea6354d0329b",
+      "weight_digest": "d31ddf1c4402f9a3f247a5bcd69799a6915c836855178dadcf4acb69d7a76eb9"
+    },
+    "mbart-tr-en-lsr-seed42-es10": {
+      "archive_sha256": "3a7379acaa4a7c91e2b96ff933c5f135812515048c929a904fbe02c768bbf750",
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+      "validation_receipt_sha256": "fbabbd98193afb9481ec37b37702d6678cea66aef7bca228174aa8f7546aadd0",
+      "weight_digest": "d548f9de238f3ae048f7cd037aa7d18dc520b48d3a625cee2e92a1d86cde4f14"
+    },
+    "mbart-tr-en-middle-seed42-es10": {
+      "archive_sha256": "06916fdc4b774b77ca097acbd6cd02bb54d9b2804b0d494ef345c382546172d5",
+      "repo": "FiveC/amis-rewire-checkpoints",
+      "revision": "62f97f491dffd1c4d6f94c55c35537bd1c299dd1",
+      "validation_receipt_sha256": "da590149304c7f182ec42b4ef8e2078022725327a98f6fa1f2ef8ea09196fa6e",
+      "weight_digest": "5085c687d419e9689aeb79987a139a781eab1d4ec7614ec4dab5d94df85cad18"
+    }
+  },
+  "scope": "four seed42 selections; public canonical storage",
+  "status": "ALL_4_VALIDATION_VERIFIED",
+  "test_protocol": "beam4 FP32 TF32-off BLEU13a chrF++ chrF0"
+}

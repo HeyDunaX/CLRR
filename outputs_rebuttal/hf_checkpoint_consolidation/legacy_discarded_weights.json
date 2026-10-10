@@ -1,0 +1,1336 @@
+{
+  "authorization": "User requested final checkpoints only and allowed removing trial weights.",
+  "source_revision": "7a58bb09177cb4adcf8a663739346dd6dd24b8a8",
+  "files": [
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-full_a005_l010-seed42/mbart-amis-full_a005_l010-seed42-best.zip",
+      "size": 2270687637,
+      "digest": "4e6830fba8f6b90d23293903131a53b208c7b6dffed972ef25794378580ca035",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-full_a010_l003-seed42/mbart-amis-full_a010_l003-seed42-best.zip",
+      "size": 2270666529,
+      "digest": "09ff385520a397d9ac192c2e4b421fcc4d96b12378273c32c7ef3b4bbaaab0d9",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-full_a010_l030-seed42/mbart-amis-full_a010_l030-seed42-best.zip",
+      "size": 2270671496,
+      "digest": "d05567986bba7032c713cca103dd12839e7a2b04442a3018b9f75f729e151777",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-full_a020_l010-seed42/mbart-amis-full_a020_l010-seed42-best.zip",
+      "size": 2270706593,
+      "digest": "f091ccd40093ec514b2115e77158dd0b86a8641b1b5beca06e9a6bbf9f1945cc",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-lsr_l001-seed42/mbart-amis-lsr_l001-seed42-best.zip",
+      "size": 2270718322,
+      "digest": "949cbb5b50a9a39fc1664f7e3886e3731ead1a901d1697382f514e8f7862d230",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-lsr_l003-seed42/mbart-amis-lsr_l003-seed42-best.zip",
+      "size": 2270679004,
+      "digest": "ef41f86b3a7c6e88db59541a9f1d0216bbc789d16dbc0227d32eba13bb7d6208",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-lsr_l030-seed42/mbart-amis-lsr_l030-seed42-best.zip",
+      "size": 2270700552,
+      "digest": "457c5b51a77b07f385dc41c942e67cc8bd13ecde14d871e8d81f23997d8cf165",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_20261003_v1/mbart-amis-lsr_l060-seed42/mbart-amis-lsr_l060-seed42-best.zip",
+      "size": 2270681814,
+      "digest": "eed9a9b9872a22ef3a1cada296ef8716e7813f494b2255cdfe99717e47c55eee",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-full_a010_l003-seed43/mbart-amis-full_a010_l003-seed43-best.zip",
+      "size": 2270706619,
+      "digest": "1444eb3a0e7869767c52eda6c05e4eae3583255efddf213f189575d7dccb2637",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-full_a010_l003-seed44/mbart-amis-full_a010_l003-seed44-best.zip",
+      "size": 2270675961,
+      "digest": "568cdbb3a1901c7be0409ab8829e6f0e4c20462deb106491f29b96ab6f330c6b",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-full_a010_l010-seed42-replica/mbart-amis-full_a010_l010-seed42-replica-best.zip",
+      "size": 2270701622,
+      "digest": "a9d910c83b55b9b54b1789b2bb2b12142e9da8653a489a8de75e2290071446f2",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l003-seed43/mbart-amis-lsr_l003-seed43-best.zip",
+      "size": 2270672087,
+      "digest": "f9e81950f0fcb931562b6701d7072923a9a7d0419c553da9e0eb1925c9733385",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l003-seed44/mbart-amis-lsr_l003-seed44-best.zip",
+      "size": 2270689231,
+      "digest": "c17de7b6495f2daea45a63342e7a76c1849aa4cd454dee7a5fd8cb53be67f1df",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_configuration_confirmation_20261004_v1/mbart-amis-lsr_l010-seed42/mbart-amis-lsr_l010-seed42-best.zip",
+      "size": 2270700756,
+      "digest": "f6ab4ed7175eeb83b81b6027884db9f0b8f514731d9e490af16e8bc448601c8a",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed42/mbart-amis-full-attached-a010-l010-seed42-best.zip",
+      "size": 2270689644,
+      "digest": "96e06541dd277f6bf22f6c4ae795491cf737ae9adfdddd56f5387f519343ff46",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed43/mbart-amis-full-attached-a010-l010-seed43-best.zip",
+      "size": 2270694459,
+      "digest": "d475958742a17ab57ec8a3046da39a18323a8ff1bd37b09f75983a5d6a0f2b3b",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_detach_control_20261004_v1/mbart-amis-full-attached-a010-l010-seed44/mbart-amis-full-attached-a010-l010-seed44-best.zip",
+      "size": 2270677173,
+      "digest": "266028b67157d8f69b9dfa8c64f0edd719c97ccdf887a892f06a20edfac44406",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898457,
+      "digest": "52acc41dac4b85a1263c8efa962cf5a408c989946f4f8219a4eada867d4b7807",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901156,
+      "digest": "a7cf39fc7369d7f277ea97dad2f80602f4be5f696202eac058fc3b0caab4e1c1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906567,
+      "digest": "4884afc132e89a291e043ef01a1171f8f07f149e6d237b500a028a65f08530d9",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed42-corrected-validation/trajectory/epoch-20-step-720.zip",
+      "size": 2466915531,
+      "digest": "84a5b2edf494f0910b1cc84cdea1e6cd28fc468db2bc43e82eb52df88cffe3b4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898462,
+      "digest": "d29c2636a0721753f537697461547d78655ca459b00c6a85236e8cc3aaadb3d9",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901167,
+      "digest": "2c95511ef632fbec933ea80db4957566be8c1398e9a1d67429db02dc5c03506c",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906587,
+      "digest": "3111eab0821a13197f60b1d80c6a3a5598b47c5a5ca554ddf3528f49bacad049",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed43-corrected-validation/trajectory/epoch-20-step-720.zip",
+      "size": 2466915550,
+      "digest": "f06e4f92c23cba2e57785a4108063f5b7a280b069580cb62b9e2d30699e85035",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-01-step-36.zip",
+      "size": 2466898466,
+      "digest": "1aafb0f0f9709e9bbce74b670f7914b387933f9dbd95cbb6a396a971cb3b5040",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-04-step-144.zip",
+      "size": 2466901171,
+      "digest": "e1655c93a1b4c27dee76dbaac494f437c0600a995ce706d90359012396462c92",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-10-step-360.zip",
+      "size": 2466906580,
+      "digest": "7ec63999717790b6ff29d88bcd49e3c0d8a9fcd93886e6326e48f2b7341297be",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_lsr_l030_validation_20261005/mbart-amis-lsr_l030-seed44-corrected-validation/trajectory/epoch-16-step-576.zip",
+      "size": 2466911873,
+      "digest": "1fd552b9842afe9b877b55b2032be7ba248059522cf2309453d2458443c22cce",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed42/amis-warmup-clrr-seed42-best.zip",
+      "size": 2270651841,
+      "digest": "0e651c4bdec8350e89f71a482430b8476083079a1006491f6b6f4b87650bd7ac",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed42/trajectory/epoch-01-step-36.zip",
+      "size": 2466896041,
+      "digest": "36d805b820556c9f30313d666b0438f8875a48f7c142b94f210219ceb40b767d",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed42/trajectory/epoch-04-step-144.zip",
+      "size": 2466898753,
+      "digest": "31fdef1cdff31c2f3cc20d2468da14960967a13fe50d43fb1325e0e69c4463dd",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed42/trajectory/epoch-10-step-360.zip",
+      "size": 2466904166,
+      "digest": "f3f6dd2cdf294c2564ba2e17e98e8a2886088b28e5681411a8b01a51752d0a1c",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed42/trajectory/epoch-20-step-720.zip",
+      "size": 2466913114,
+      "digest": "8c1e644e307454411faedea417f44e13a21621c267962d91929f1b4fb592152a",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed43/amis-warmup-clrr-seed43-best.zip",
+      "size": 2270739577,
+      "digest": "366ecd6e98a8551f3f5758146b8b264efea43d877e8b1e6c1f4f777877607294",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed43/trajectory/epoch-01-step-36.zip",
+      "size": 2466896042,
+      "digest": "db5dcdf527e08353aceb3138c040590f769f340498c11ec9faa23897b3398d74",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed43/trajectory/epoch-04-step-144.zip",
+      "size": 2466898753,
+      "digest": "d1ac2c4e1c416eeba98caa27d87accc8dce39948566367fbf7beba025a68d9e8",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed43/trajectory/epoch-10-step-360.zip",
+      "size": 2466904162,
+      "digest": "133dc7f9c7a3a71180541f2380214774f7051a90962b796fe12d5dad8226d531",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed43/trajectory/epoch-12-step-432.zip",
+      "size": 2466905922,
+      "digest": "200bec7657c40e89b590525f300cc584490fe1e52bb8f9ffbf6d50658a645332",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed44/amis-warmup-clrr-seed44-best.zip",
+      "size": 2270680132,
+      "digest": "c61bb4077f674ecc99ec69086b4ac72cafc6e1ea4fc87f40f1d21feda7393a81",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed44/trajectory/epoch-01-step-36.zip",
+      "size": 2466896042,
+      "digest": "9d97abcaed4c7c16690770addce5c3c6b1bd3a107d8e1d96152149e06f1d5be7",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed44/trajectory/epoch-04-step-144.zip",
+      "size": 2466898751,
+      "digest": "296742ae3a02019a50b9670dbcbd19d2fc75133a89e4e3e1dde41d18086006f8",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed44/trajectory/epoch-10-step-360.zip",
+      "size": 2466904163,
+      "digest": "b60845955660794460ce4a6da18b4abc220069e2a18c0d5eae97311a04e2360f",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-clrr-seed44/trajectory/epoch-20-step-720.zip",
+      "size": 2466913104,
+      "digest": "76073cbda7adc31646f9a9802f66cca105987874e4d578a2c41bdcf841eb31b5",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed42/amis-warmup-full-seed42-best.zip",
+      "size": 2270696739,
+      "digest": "ac941378e3820a941be4cc350723d4f86d03366ebbda89b7f712c384ede296d6",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed42/trajectory/epoch-01-step-36.zip",
+      "size": 2466896042,
+      "digest": "4a63656115d6383da325fefa853271f1970b0102401e192430631d9363f69b98",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed42/trajectory/epoch-04-step-144.zip",
+      "size": 2466898748,
+      "digest": "41aa511355745fadfd8d213c92535a54e3ddad112fd11a91351ec89e99713dda",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed42/trajectory/epoch-10-step-360.zip",
+      "size": 2466904158,
+      "digest": "a47953a7be85d09d4f099bcd5147be70bc74ec15dc725f8cf9938e53a6313ddc",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed42/trajectory/epoch-20-step-720.zip",
+      "size": 2466913100,
+      "digest": "e06deb399199732f755e40354e9dcc79bbef98bc9933c57f2579682b75fbc924",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed43/amis-warmup-full-seed43-best.zip",
+      "size": 2270698269,
+      "digest": "309c2e5519bcb5f0ae8e0110c6b25a6826534831e2b41c4ef9424266c7918f39",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed43/trajectory/epoch-01-step-36.zip",
+      "size": 2466896037,
+      "digest": "83557ad1ad3742e47fee284b0e9abd4c78d3cb8ef548185201e5ea3b833805e5",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed43/trajectory/epoch-04-step-144.zip",
+      "size": 2466898751,
+      "digest": "8ee57edc520dafa283088d0bf9e013e6d5eea41eb508fe0e1362d32040306155",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed43/trajectory/epoch-10-step-360.zip",
+      "size": 2466904158,
+      "digest": "9b86fb1965a24c85465c95f813de418443ae36925e4c14cc96aeba2c1f50faee",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed43/trajectory/epoch-20-step-720.zip",
+      "size": 2466913109,
+      "digest": "117b4dc81b4ae51651760fdf5594b3ed92c67e3be13717c90318923f2b2e4e6f",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed44/amis-warmup-full-seed44-best.zip",
+      "size": 2270672858,
+      "digest": "5b64259aa09d80487b8d53916600fe23bb7a31e8360e2a15b7c8b3c74eec68f0",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed44/trajectory/epoch-01-step-36.zip",
+      "size": 2466896038,
+      "digest": "57eb53dd251bbbe9c361ea3880ee969e7437d59700ee6ef2b4a36e635131f632",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed44/trajectory/epoch-04-step-144.zip",
+      "size": 2466898747,
+      "digest": "3952c91c4bb79b5824df99e66e23072a8975c1987f324ee5305d0fe25248e1b3",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed44/trajectory/epoch-10-step-360.zip",
+      "size": 2466904156,
+      "digest": "3e6961d26b10eef9c6948f09507d5613de5ded1a552d26253b3c8f1d07a3b289",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "amis_routing_warmup_20261004_v2/amis-warmup-full-seed44/trajectory/epoch-20-step-720.zip",
+      "size": 2466913098,
+      "digest": "56dfa1078002e6bda950a29aeccae0999cbecc19474ea094ec88c4efd647a9ec",
+      "lfs": true,
+      "reason": "Superseded exploratory configuration, replica, attached-anchor or warmup weights; small evidence retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-108.zip",
+      "size": 3304926657,
+      "digest": "d4f1e41ca98c56c38a25fc49daa033b50c0a764863bc6d80a04c5f64107f2e20",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-144.zip",
+      "size": 3304155084,
+      "digest": "e61a94f4bf7c9feeddcbb1cf8c09458075a43367150308ea266c2383f2181735",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-180.zip",
+      "size": 3303205198,
+      "digest": "f51e4b90e93e202d3ffcf9cbbff35a48f301770fbf8f7b65b8900c187de0b556",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-252.zip",
+      "size": 3302579913,
+      "digest": "6c33265608a45b496beeb5ceeb6067934ff801490041291f61a0a98cf648ff2f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-288.zip",
+      "size": 3302093760,
+      "digest": "0b5f8801fc0cfe9ec080805e1513d26a87f1656ce318e0bce9dafff7f6c0f31d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-324.zip",
+      "size": 3301518006,
+      "digest": "6a064a57134c2c9ea04b736b653a31bccee049a497cac83ca5c27bd74de5fee1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-36.zip",
+      "size": 3307523887,
+      "digest": "3237cbb440095465330196d9448dc8952acbbafb093f4980f4a2885ba496dd5a",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-360.zip",
+      "size": 3300839113,
+      "digest": "794b55be45586bb561be46992dab966c8f1d884d00f50892ce59023e8fd45cd8",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-396.zip",
+      "size": 3300294154,
+      "digest": "1ccafdb518631e907a0cc80a9fa139b901bcdafbe4bcd5dd3c91383231355fb4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-432.zip",
+      "size": 3299929088,
+      "digest": "9be5eae1fe4aee9d9e8bbc31504318dcadfb19157f12ae4a85c101dca8b2700d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-468.zip",
+      "size": 3299676038,
+      "digest": "35d39d8a8700a10943e4c3f63f44d5ed70d6a1799b64716daeb916c81047fd05",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-504.zip",
+      "size": 3299399879,
+      "digest": "3bc6dee64e619677048b94e63e9e21802709c23a404f973353d0fb53934d563d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-540.zip",
+      "size": 3299380157,
+      "digest": "e6dd49ea3f7df08239d634680f211aa7c7fc5590d87ae8d41886ceb6368e7fe0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-576.zip",
+      "size": 3299181523,
+      "digest": "96deb35b3308cd493fd484c9d525cc2125851009d6eefeec2590578e65d9c368",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-612.zip",
+      "size": 3299233745,
+      "digest": "8b91e71921d135298b8c7e2a866faa9b51f8800485d43bf62001fff4546c751d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-648.zip",
+      "size": 3298955975,
+      "digest": "d18474889df7e74107a3f609fa72850c263a902bc4eed63a9f2427fcf2bd8557",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-684.zip",
+      "size": 3298868772,
+      "digest": "8eaac4bd6db16ccb220a7e40c99e33fca10ce7c80d1a6efbcebadb44f706af69",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-baseline/checkpoint-720.zip",
+      "size": 3298722181,
+      "digest": "794e9300817fe3d6a46bba89df4f6808d6bf3a3bb62c95d34f38f2fef5b63044",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-108.zip",
+      "size": 3306235067,
+      "digest": "48a7fd8988cb3ebb49569a05f21bf7bdfbb44f577e8381026be6e618a45fcf46",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-144.zip",
+      "size": 3305275919,
+      "digest": "fe9d9d50263ac6e670858e536d57fdcff54293e1c482d8307f7dcd64223ab65a",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-180.zip",
+      "size": 3304506375,
+      "digest": "b9117c31c708f562c29da2f0a0838b9e49713d56375cd52705eaae84ef95fa98",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-216.zip",
+      "size": 3304041671,
+      "digest": "76c9c132c189ae177d008619c83fe389c152924e8809b59a316f99fcb04b9038",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-252.zip",
+      "size": 3303559123,
+      "digest": "5ea837b4d3c41c27664e89cbe7eb5182bd034e1ae8d44da71f4df73603d03098",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-288.zip",
+      "size": 3303420088,
+      "digest": "63500594e1ff4ba095a10990e4f7333f3a39e4a98ef82ad829867561f8e45ce4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-324.zip",
+      "size": 3302956919,
+      "digest": "ca8bd754bafb66cda1b0651a9bf96a975deb314a3d635a2fc110ba96be6bc21a",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-36.zip",
+      "size": 3311047226,
+      "digest": "78315cea7133943bfa8a31b25c9aee2b1e68127051bb1126ce3aea76e01ac714",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-360.zip",
+      "size": 3301911966,
+      "digest": "6dd4d7985b4bf09e245c7b94cb9ddd0ec26d4d4b44d5b2ea6a91a52bc890b4da",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-396.zip",
+      "size": 3301561388,
+      "digest": "bcf57d793ac3eaf6d87b12b0d04e361c9c55a887d59df9b26549842da47c332c",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-432.zip",
+      "size": 3301124325,
+      "digest": "9ba2e8ecf7b48c80c615e7dd160767ebb3af15c0cda409570fcb7e7294ad02d1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-468.zip",
+      "size": 3301128328,
+      "digest": "2f2ddd4f9b9ccb152f62b92b1c280200a6b6c2a37e5c1c2bee05d0bb43ad5f0e",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-504.zip",
+      "size": 3300733005,
+      "digest": "e553c37731adfff57ffc52be7bad48e214d5f0da8a5b750dd5f0e530eacb7cae",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-540.zip",
+      "size": 3300876381,
+      "digest": "cbe896fd5d6ae9c2f22c9a3b92c2107e6ef15b766e94bb15534f6f32ea1c7ff5",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-576.zip",
+      "size": 3300664067,
+      "digest": "928bfcd138fe97638d41a909a79d48ca14314246bfc21ce8e9bc744bc62d26fb",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-612.zip",
+      "size": 3300514703,
+      "digest": "3f960c2f5bd108e53d5e0937a40d340578247989e5be53a1c4706b454c9f5d9d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-648.zip",
+      "size": 3300480604,
+      "digest": "6aac91ca1f4d27827d79fee783a5becf2b244e8b58eee40bf13fa1090416b9de",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-684.zip",
+      "size": 3300421037,
+      "digest": "52ff3dc4b16ad31fd783d6b5b02af9fd67ae1727a529ef48496e1a8fca4ce797",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-72.zip",
+      "size": 3307641505,
+      "digest": "dc422736786ccc297d48d0ecdeaeff17a712d535c8a9c5e5ba0ee37f5e820db1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/byt5-small-ami-cmn-jepa-clrr-enc/checkpoint-720.zip",
+      "size": 3300413668,
+      "digest": "cf207df41f3159815dece16113eabc97470bc0503976b42743fb963bea2284d2",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-108.zip",
+      "size": 2214438460,
+      "digest": "d933cfaef0673c506cf599335d5ac273f752e4b43515e9d40d9f8c3e4cf4b08b",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-144.zip",
+      "size": 2213952580,
+      "digest": "c3d4c1a14431279515523add00052238e3a09878d2e77a070b637c503f6b7ef7",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-180.zip",
+      "size": 2212942902,
+      "digest": "3b9d84988853ba79c2eab81d515b80f275c6ac83c895d1a2b6b497337e71873c",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-216.zip",
+      "size": 2212259827,
+      "digest": "a03f993d05ef084054f41bb21ff29842cf697fff9c83a828a272f1748231667f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-252.zip",
+      "size": 2211926257,
+      "digest": "45a250358ffec538aca7ad9cf6bf3d752fe7d61a2f4ea0b7032233a9f8c3e019",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-288.zip",
+      "size": 2211279036,
+      "digest": "00cee751435e6ef2e27b040199f710a175de258916e4d485674dc0fc31d719c6",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-324.zip",
+      "size": 2210883961,
+      "digest": "eb3f8d75c7f115e105e69ffdffc9c42c9c52ccd466ae80e6aadbc7e7fdca6113",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-36.zip",
+      "size": 2198570607,
+      "digest": "801094a1bb2f9bbb1e5cfc6d15e3b2968e7b1b23765f6fd2e124797680b4a2c9",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-360.zip",
+      "size": 2210452944,
+      "digest": "091a444a8577be79974d8333ee247d0aef510682348adec36cd9f1b7d2547f1f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-396.zip",
+      "size": 2210256157,
+      "digest": "5f7ec5a696f12959c96f52ac849ba6c9d062bdf57cd03f71bb3d31e130b3edcf",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-432.zip",
+      "size": 2209846246,
+      "digest": "98ae8872b363f7cdf295ac7f6655050ae737a6367053446cc01c5beb97b81764",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-468.zip",
+      "size": 2209739945,
+      "digest": "779edabf40b5aed7f308998018ccb45d799aa82c48ae54a0499ffb94680168f3",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-504.zip",
+      "size": 2209566223,
+      "digest": "85fabd1e1445fb55a5d8dd4c2a346bd11d16a8a1473dfa81ded5b72a5ffff737",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-540.zip",
+      "size": 2209456440,
+      "digest": "dfa8a4e4d6d6369ba08fecaa7720e7acee3f9187b9ef3d08ad254a10754bb425",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-576.zip",
+      "size": 2209270168,
+      "digest": "3a8e9d7a25c74d63a5a0103c32cc4d3e6e2d00d7305515a98dbf50095907a4b8",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-612.zip",
+      "size": 2209118382,
+      "digest": "fde29324f5fcbe0955b32f1b5959964b4ae004fa9b085c592a1edf05b5bd2529",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-648.zip",
+      "size": 2209039160,
+      "digest": "68cb1bf0d4c0d5856b60e206f1306ff2c0a366caa2169866fbd4ed753e533cce",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-684.zip",
+      "size": 2208952727,
+      "digest": "0618b68d67ba4485e6a314b3b3f81e1a69593416b2d293fae8ba8d85698df590",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-72.zip",
+      "size": 2214219626,
+      "digest": "ab2e15e1bcb81f5303faf4a92380d7a72e2c0143a6f3d3ebc87a7677c69a33fa",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-both/checkpoint-720.zip",
+      "size": 2208906528,
+      "digest": "3e5c7469d0e9d28b9a0fed278537b408585f63d2bf5558eb4ae59ea4ab34ac44",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-108.zip",
+      "size": 2214139674,
+      "digest": "1e231f54f28629e48464d6f2b841c6d14c1d538a262fc2b993d3b4a5c624a182",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-144.zip",
+      "size": 2213340382,
+      "digest": "be40bf4a67d101efc69e3922548c8550ef31a3e9ce8fc82029c6281780a653ff",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-180.zip",
+      "size": 2212364951,
+      "digest": "a7a3085439fe26d03040ce28d043c641172d6aa36bffa9f6a98782b56f2a1675",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-216.zip",
+      "size": 2211752329,
+      "digest": "1abc80926e7ff575af1e45a54fcc6875b3bfd9d20aedb16404e4f2a4ef48e729",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-252.zip",
+      "size": 2211470021,
+      "digest": "77bc3faf01f25da8cb7f78748d6ad644923a7cd01be4894fe010922da93282d3",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-288.zip",
+      "size": 2210940075,
+      "digest": "da7f469454446730a891a531163dc34d8562796d7ce8d45619e5d923556e8269",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-324.zip",
+      "size": 2210706808,
+      "digest": "737390a502ac1349353a03f3c943d44f70de5b843bc2aff9850a78765a0392b4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-36.zip",
+      "size": 2197372202,
+      "digest": "cf3384bdbab57e8d4dfe365991760639ace7209eb805b68acc0e7bf072ceacde",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-360.zip",
+      "size": 2210314787,
+      "digest": "bc4f5acfa800afcab9c5d9f3ee5bc62d8ac91d95347981f653a512157e301d3e",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-396.zip",
+      "size": 2210226753,
+      "digest": "e15729adee5894036cc7322154ead40fc98fcb0e260cb67f03ec4b9f6d36093f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-432.zip",
+      "size": 2209800909,
+      "digest": "5454255999bb4d29eed242cbe417af5dbd563f59d0acc10011aa265ccedaea5e",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-468.zip",
+      "size": 2209665235,
+      "digest": "1fbcfa19fac3fd9fb18b9931385bec314fb0dce149bbb08f6917c4d94d55619e",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-504.zip",
+      "size": 2209482093,
+      "digest": "f76142309bbb84a125ed907a6ab6821e98fd40f18c751256067300ace2a54808",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-540.zip",
+      "size": 2209352013,
+      "digest": "d08030e0e5aae8d0fc071cf6e9ad5287d502f0c14c51d6dcca9eed36a6ae8d69",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-576.zip",
+      "size": 2209210268,
+      "digest": "1aba439101951fa4b4f5714db47ca991ca5af338e8c14cb54bb2c7ad932a88d0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-612.zip",
+      "size": 2209031705,
+      "digest": "aed675605a9e1263e8f356115ff2a53d2c99365921a70e63820b00da5f95511f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-648.zip",
+      "size": 2208980008,
+      "digest": "5852ceda2e65c3b2715b8a84f273ab3b537988fa66deedc5ac686beab960abe1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-684.zip",
+      "size": 2208875411,
+      "digest": "2715eea4e6f886212b8e0863b1006e56ee9867ec56c0cad0b1e93e48a438ae94",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-72.zip",
+      "size": 2214244972,
+      "digest": "facbcf331e6f75192d405898544871f843d538d72a5e554be7ac1c7c90ada447",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "checkpoints/mt5-small-ami-cmn-jepa-clrr-dec/checkpoint-720.zip",
+      "size": 2208834726,
+      "digest": "a86a46ca2fe97ea1edc17e0dbfd2d20df40f29c38874e1a45dd0591644f70f42",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-108.zip",
+      "size": 3305447905,
+      "digest": "b03895af90b614a717182b5e0f715f193ae51b6dcc0d834a0fbb93463b26da52",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-144.zip",
+      "size": 3304914722,
+      "digest": "a3ceab1eb0afe9706e43c0baed6d47572fb3fd3f3ad7bb598cf2d9ed91d27c19",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-180.zip",
+      "size": 3305012182,
+      "digest": "d1a0e7763b27d05958dc2742a144837f340a955a5b085c794ce8a56220a46cf0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-216.zip",
+      "size": 3304814362,
+      "digest": "fbcc3652e952b1cd1a16f484be5120c6411df27f2e1ca904d1738744ada2ac5f",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-252.zip",
+      "size": 3303886045,
+      "digest": "a23fae0f49521ee2f692d5ad2b86b2c704494aa4e64c31bd403fda9275aea69d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-288.zip",
+      "size": 3303056383,
+      "digest": "c958efaeec288de4be23c2324f028033b85cc44d01a6514098570165c5fa0d6a",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-324.zip",
+      "size": 3302648603,
+      "digest": "d79556f2b63c4e148adc0880253b65e1602cc0f249da449ec93e3fe247e877b5",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-36.zip",
+      "size": 3307726022,
+      "digest": "0241951806fef2800e07e3529b3ff27fc7b6bb010bc4f80236b330d157892050",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-360.zip",
+      "size": 3302300789,
+      "digest": "423e030dde04a35448adc2fd39a034ca7f626a5d1dc8b10d2c9a878658b6b3ee",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-396.zip",
+      "size": 3301896665,
+      "digest": "862851b241d6e20492604ec3258add582cc8f05efde8d354c5998ad83c44af64",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-432.zip",
+      "size": 3301146567,
+      "digest": "3cd45622dadeadca5f39dd03c2af56dfa0704f0142793515808d12a2bf940432",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-468.zip",
+      "size": 3301083435,
+      "digest": "f51f93eed0019b52e5968f4ff5d3c24908f197cba5cd81d1ab6c2f0c3ab373d0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-504.zip",
+      "size": 3300660859,
+      "digest": "ded0f45b21fea491448cf51da15c0a872b9c5e23511a217300db02d8c44e14c6",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-540.zip",
+      "size": 3300393148,
+      "digest": "3c96eeb7c42d6b695f9d2290bbaa3af2cf44bb3698bad3e43270ba9b8e56d28c",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-576.zip",
+      "size": 3300460519,
+      "digest": "c967b3e6c4c6d3357a6d976a46bea2722c320fd867a53fe0fdd4ad75c842c566",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-612.zip",
+      "size": 3300256025,
+      "digest": "c27a30054003cb827728a4ea1a5af7c9623fce9b9bc265801d2b8aa13233a223",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-648.zip",
+      "size": 3299970223,
+      "digest": "191e945d65eb8e48a9a679502dbae03a00511a4cc91c2002a702c79557a675fd",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-684.zip",
+      "size": 3299863161,
+      "digest": "03d794324efba41be6c5217f64f5a78d789b29ecf190f8eb8e046bbab558e918",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-72.zip",
+      "size": 3306519294,
+      "digest": "0ce9053d29ca9a50ec06cd112422b5698a46017d6ccb15cd06e05180020d06be",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/byt5-small-ami-cmn-jepa-clrr-dec/checkpoint-720.zip",
+      "size": 3299837422,
+      "digest": "8a577c505f2efeb1dacc28f489f7091faba7493a60c48b5a18d4e6e2f3179bf6",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-108.zip",
+      "size": 6773551401,
+      "digest": "044050779ba97ad332696ddd374a02cfdbffefe4cc452bf0cf537e45bc07b06e",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-144.zip",
+      "size": 6769761328,
+      "digest": "ac2b1d31be81911760915ef902f81f97c5b78449998d5c9c2715279e127a31d0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-180.zip",
+      "size": 6766187618,
+      "digest": "6221d45ba84da996ed9f849507b8ea7ad286d1f01789931728dc7f1828a4dbee",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-216.zip",
+      "size": 6763349949,
+      "digest": "1ad38ca0191b2a517cf98dc2b8a0807ea05defce74f365d5295c9661d1ef2694",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-252.zip",
+      "size": 6761058799,
+      "digest": "e13522a3943a47bd717c3119aa86a1b22b2f9cf284f0a4c92f83333e9f4656fd",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-288.zip",
+      "size": 6759558564,
+      "digest": "109aaf733844399d674241ff6898f77c0a26f5bfc65971885b472c4cf4f59851",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-324.zip",
+      "size": 6758429775,
+      "digest": "6f7d9329def2448d962c1cb32ece1d0ed88a25b84063fd33792c1eda25757714",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-36.zip",
+      "size": 6791054062,
+      "digest": "a76dbc9bdd6f547c58c8183408b59ebdb1d7523e3dcb7ad6d044b1154a4696c4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-360.zip",
+      "size": 6757538680,
+      "digest": "cfafd0fb3311f3abf3fd9619e32e7049fbcff9d0596c366639d6183c87b56183",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-396.zip",
+      "size": 6756525727,
+      "digest": "6df323a03c20723138e3de8fe64be9bbf77b1d45c2f84fbbdcac6c8efbc597aa",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-432.zip",
+      "size": 6756020787,
+      "digest": "1810240d2959acc1f3a1604e3ae8679d13b0b53788cc3ecd1c441e6ab2eff29b",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-468.zip",
+      "size": 6755198688,
+      "digest": "7160062a1935716fe183c0a14e2c5fd41ba65e526339e38ea16ffea4a323061b",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-504.zip",
+      "size": 6754866547,
+      "digest": "c1dbc56f91c424c5c0213b1ddc2f246e35d25460dd1216177258b524dbdaae58",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-540.zip",
+      "size": 6754290729,
+      "digest": "aa098bb397cc3deeb11b3bd017bd2295e184451acd37674ee3a04ff963b56073",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-576.zip",
+      "size": 6753890581,
+      "digest": "40b6c70a50a0de201abca26a493c20b4ca35c5c0443dac6770b1ba1f1b292ea4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-612.zip",
+      "size": 6754284107,
+      "digest": "61be1313089d36f39fcdb6a91f9e445fc66c21f33bdec984eb47ac6800976500",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-648.zip",
+      "size": 6753648783,
+      "digest": "0f457b06cf3e56b88cd44a68d4eab780d20beb1850f6ea11a5827cbb6bf15527",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-684.zip",
+      "size": 6753369214,
+      "digest": "db36c04366c44dc5d51287dfb65afead9eb4ce2a54bd31fd97838ca95295e23b",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-72.zip",
+      "size": 6780157451,
+      "digest": "776543f2117124fc50e35211e8f2f7678ee7ad0163e25debcd9ab24dafb64bd9",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "comparative_baselines/mbart-large-50-ami-cmn-jepa-clrr-dec/checkpoint-720.zip",
+      "size": 6752838092,
+      "digest": "4c8155d9f80d6be1cd37152ac1a8ce27b2a146c3e3ce2044afc6630a31277d2b",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "nllb-200/nllb_results.zip",
+      "size": 41046143831,
+      "digest": "741784db8c2005a91a540babef47279155eceb1d05ab65681bf25867c141447a",
+      "lfs": true,
+      "reason": "Aggregate contains intermediate optimizer/model copies; all six final standalone archives and extracted small evidence retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-108.zip",
+      "size": 6774045594,
+      "digest": "70b76a34a29372c6762dd4f01f564fde852d2db834c4351b510b154f076c177d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-144.zip",
+      "size": 6769485691,
+      "digest": "b78009166930db0406005d6660a73618186fff4afba2c590bc9436b35799ddaa",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-180.zip",
+      "size": 6764971831,
+      "digest": "76c6619d7bdcd8d1fa73aadcfc630c7ca16981c1456a08620ba6ba302e3118b4",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-216.zip",
+      "size": 6761738223,
+      "digest": "018819f023c31ea3ebc4c891add11cf2622a2b2b6a34dff60e3ebfba76dedfd1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-252.zip",
+      "size": 6759471608,
+      "digest": "cbc170eaaa06eae6a2baa0381c85f25a613a7b3105d7df16e55d7db81e4e72b1",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-288.zip",
+      "size": 6758146308,
+      "digest": "24fd3f21ce4bacec8076a981633e29ca4c0a17d6cfda5e573e29e333788c8f00",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-324.zip",
+      "size": 6756052892,
+      "digest": "850efd4afc9a8a5785cfc6a181c3aec47258df07b9ce0988b8d4e9343232b74d",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-36.zip",
+      "size": 6789353450,
+      "digest": "f3098865a57318f803165e3b9114b4cba49da3c7c11140faa6164cfea9b71cc6",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-360.zip",
+      "size": 6755071155,
+      "digest": "a46b194032f91e0386a1f69de2652f0a133e751e82c1850def7d5073f4fa4512",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-396.zip",
+      "size": 6754264942,
+      "digest": "1a0c9bdb739e5492bc83cc10e0067b2ca3d15dd79e4b60dcd3412bdb245e57d0",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-432.zip",
+      "size": 6753151210,
+      "digest": "aef81366b45913737eb846d03ce84048cbfff721a344e956c6a0bdcf15082bbd",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    },
+    {
+      "path": "revalidation_ablations/mbart-large-50-ami-cmn-clrr-only/checkpoint-72.zip",
+      "size": 6780300267,
+      "digest": "6dd949a5230cbab4686debdf22c4228f1a876c5515eaceae11f1677ecc5c5997",
+      "lfs": true,
+      "reason": "Intermediate training checkpoint; selected final weights retained."
+    }
+  ]
+}

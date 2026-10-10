@@ -1,0 +1,30 @@
+{
+  "rows": 576,
+  "matched_cosine": 0.8138087925895746,
+  "shuffled_cosine_mean": 0.7268011389793994,
+  "shuffled_cosine_sd": 0.0009643918122714802,
+  "matched_minus_shuffled": 0.08700765361017526,
+  "centered_matched_cosine": 0.3443009943705978,
+  "centered_shuffled_cosine_mean": 0.00045769907122386247,
+  "centered_matched_minus_shuffled": 0.34384329529937396,
+  "shuffle_seed": 20261007,
+  "shuffle_repetitions": 100,
+  "source": {
+    "singular_entropy_rank": 385.7964386790062,
+    "energy_entropy_rank": 134.72171826149724,
+    "centered_rank_limit": 575,
+    "mean_pairwise_cosine": 0.7244803260727299,
+    "mean_vector_norm": 10.03703104878226,
+    "mean_squared_norm": 139.91162640632817,
+    "common_mean_energy_fraction": 0.7200401772304935
+  },
+  "target": {
+    "singular_entropy_rank": 378.9411784943509,
+    "energy_entropy_rank": 131.15016000562903,
+    "centered_rank_limit": 575,
+    "mean_pairwise_cosine": 0.7754797298365529,
+    "mean_vector_norm": 9.861228083523683,
+    "mean_squared_norm": 125.6711604978205,
+    "common_mean_energy_fraction": 0.773795824993298
+  }
+}

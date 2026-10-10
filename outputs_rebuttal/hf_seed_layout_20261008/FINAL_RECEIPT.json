@@ -1,0 +1,14 @@
+{
+  "status": "COMPLETE_VERIFIED",
+  "public": true,
+  "source_revision": "a719a52fd9d178621d3f00cee23e15984546c63e",
+  "copied_revision": "c92a14318c34ce4444e2499c2a3ca723f1b5841d",
+  "files_hash_verified": 3056,
+  "archives_preserved": 90,
+  "primary_seed_folders": 79,
+  "unknown_seeds_resolved": 16,
+  "old_paths_removed": true,
+  "training_started": false,
+  "weights_or_scores_changed": false,
+  "final_revision": "1e6f460bd2a2543e4b5cb90c67af6743decebe34"
+}

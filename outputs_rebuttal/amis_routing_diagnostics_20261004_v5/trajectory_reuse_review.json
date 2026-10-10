@@ -1,0 +1,1227 @@
+{
+  "status": "REUSABLE_WITH_SCOPE_LIMITS",
+  "points": 35,
+  "checks": {
+    "source_manifest_matches_local": {
+      "src/amis_rewire/__init__.py": true,
+      "src/amis_rewire/modeling.py": false,
+      "src/amis_rewire/metrics.py": false,
+      "src/amis_rewire/evaluation.py": false,
+      "src/amis_rewire/train.py": false,
+      "scripts/run_amis_confirmation.py": true,
+      "scripts/revalidation/measure_training_trajectory.py": true,
+      "scripts/revalidation/measure_checkpoint_mechanisms.py": false,
+      "scripts/revalidation/probe_generation_precision.py": true,
+      "scripts/revalidation/calibrate_turkish_batch.py": true,
+      "tests/smoke_precision_training.py": true,
+      "tests/smoke_trajectory_probe.py": true
+    },
+    "all280_gradient_batches_union_includes_decoder_ce": true,
+    "all70_spectra576_values_rank_definitions_recomputed": true,
+    "all35_residual_csvs_13824_rows": true,
+    "fixed32_common_indices": [
+      [
+        10,
+        30,
+        56,
+        60
+      ],
+      [
+        76,
+        86,
+        89,
+        115
+      ],
+      [
+        118,
+        144,
+        154,
+        185
+      ],
+      [
+        207,
+        231,
+        303,
+        307
+      ],
+      [
+        321,
+        330,
+        375,
+        380
+      ],
+      [
+        395,
+        397,
+        406,
+        428
+      ],
+      [
+        501,
+        505,
+        508,
+        509
+      ],
+      [
+        525,
+        528,
+        539,
+        556
+      ]
+    ]
+  },
+  "measurement_sites": {
+    "collapse": "masked mean of encoder last_hidden_state after final encoder LayerNorm",
+    "residual": "per block pre-routing vs post-routing; source cache i-2; flattened masked token-feature cosine",
+    "gradients": "train BF16; TF32 disabled; checkpointing disabled; native CE and native weighted auxiliary; whole encoder group not layerwise",
+    "provenance_caution": "Site and settings descriptions inferred from current helper used by hash-matched trajectory callback; helper source does not match historical manifest. Final LN site is not fully historically proven until archived source is inspected."
+  },
+  "limitations": [
+    {
+      "issue": "Historical helper/model/trainer source differs from current local files",
+      "evidence": "source_manifest mismatches modeling.py, metrics.py, evaluation.py, train.py and measure_checkpoint_mechanisms.py. Callback and summarizer-reviewed definitions plus raw consistency provide partial evidence; current helper sites/settings are inferred and require archived matching source for full executable provenance."
+    },
+    {
+      "issue": "No per-point runtime/language prefix receipt",
+      "evidence": "DONE stores epoch/step/method/seed/roles/split; protocol pinned model revision and commands plus hashed trainer provide indirect setting evidence only."
+    },
+    {
+      "issue": "No saved pooled matrices or layerwise spectra",
+      "evidence": "collapse.json retains final-output singular values; collector pooled block matrices are not saved by trajectory callback."
+    },
+    {
+      "issue": "Missing baseline seed42 late endpoint",
+      "evidence": "35 points rather than36; never impute endpoint."
+    },
+    {
+      "issue": "Late endpoints unequal epochs, and differ from selected-best V4 models",
+      "evidence": "Comparisons are observational at actual training end, not controlled matched-time or best-checkpoint trajectories."
+    },
+    {
+      "issue": "Baseline/CLRR LSR gradients are counterfactual lambda .1",
+      "evidence": "They are not evidence of an auxiliary objective used in those training runs."
+    },
+    {
+      "issue": "summary_sha256 names source-script hash",
+      "evidence": "summarize_amis_trajectories.py hashes __file__, not trajectory_summary.csv; raw trajectory files lack stored artifact digest receipts."
+    },
+    {
+      "issue": "Residual cosine differs from V4 statistic",
+      "evidence": "old skip_current_cosine is cosine of flattened masked tokens/features; V4 averages tokenwise cosine. Do not pool these statistics."
+    }
+  ],
+  "allowed_conclusions": [
+    "Descriptive early/middle/actual-endpoint final-LayerNorm collapse trajectory with correctly distinguished singular and energy effective ranks.",
+    "Descriptive global/encoder/shared/decoder CE-versus-weighted-LSR norms/cosines; union CE denominator valid, decoder CE is included.",
+    "Per-layer residual magnitude changes and early/middle/late layer-group aggregation from saved residual CSVs.",
+    "No causal routing mechanism attribution, no per-layer gradient trajectory, no layerwise collapse trajectory; do not retrofit V4 endpoint corrections to old35."
+  ],
+  "points_detail": [
+    {
+      "run": "mbart-amis-baseline-seed42",
+      "epoch": 1,
+      "step": 36,
+      "method": "baseline",
+      "training_seed": 42,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 350.5875879197985,
+      "source_rank_energy": 88.4013596561491,
+      "gradient_ratio_median": 0.006318039362026735
+    },
+    {
+      "run": "mbart-amis-baseline-seed42",
+      "epoch": 5,
+      "step": 180,
+      "method": "baseline",
+      "training_seed": 42,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 371.3745623597419,
+      "source_rank_energy": 122.71732739798091,
+      "gradient_ratio_median": 0.005768871411999247
+    },
+    {
+      "run": "mbart-amis-baseline-seed43",
+      "epoch": 1,
+      "step": 36,
+      "method": "baseline",
+      "training_seed": 43,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 354.65629462008286,
+      "source_rank_energy": 94.32550237573031,
+      "gradient_ratio_median": 0.007041712318215786
+    },
+    {
+      "run": "mbart-amis-baseline-seed43",
+      "epoch": 5,
+      "step": 180,
+      "method": "baseline",
+      "training_seed": 43,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 374.1769610173538,
+      "source_rank_energy": 124.11383450888844,
+      "gradient_ratio_median": 0.005979349253139697
+    },
+    {
+      "run": "mbart-amis-baseline-seed43",
+      "epoch": 20,
+      "step": 720,
+      "method": "baseline",
+      "training_seed": 43,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 389.40047705085794,
+      "source_rank_energy": 145.72737730968325,
+      "gradient_ratio_median": 0.004008477665061209
+    },
+    {
+      "run": "mbart-amis-baseline-seed44",
+      "epoch": 1,
+      "step": 36,
+      "method": "baseline",
+      "training_seed": 44,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 346.52020665005335,
+      "source_rank_energy": 57.06269120937558,
+      "gradient_ratio_median": 0.006995280831722586
+    },
+    {
+      "run": "mbart-amis-baseline-seed44",
+      "epoch": 5,
+      "step": 180,
+      "method": "baseline",
+      "training_seed": 44,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 378.31375679044174,
+      "source_rank_energy": 130.39369451968028,
+      "gradient_ratio_median": 0.0051943580951964476
+    },
+    {
+      "run": "mbart-amis-baseline-seed44",
+      "epoch": 20,
+      "step": 720,
+      "method": "baseline",
+      "training_seed": 44,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 392.9732872933026,
+      "source_rank_energy": 148.5605491242002,
+      "gradient_ratio_median": 0.003605385304603064
+    },
+    {
+      "run": "mbart-amis-clrr-seed42",
+      "epoch": 1,
+      "step": 36,
+      "method": "clrr",
+      "training_seed": 42,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 354.2820221924402,
+      "source_rank_energy": 101.29504242057372,
+      "gradient_ratio_median": 0.004029360771242506
+    },
+    {
+      "run": "mbart-amis-clrr-seed42",
+      "epoch": 5,
+      "step": 180,
+      "method": "clrr",
+      "training_seed": 42,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 372.09919666156793,
+      "source_rank_energy": 128.3253843729086,
+      "gradient_ratio_median": 0.0033898914348869406
+    },
+    {
+      "run": "mbart-amis-clrr-seed42",
+      "epoch": 18,
+      "step": 648,
+      "method": "clrr",
+      "training_seed": 42,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 384.43845952542665,
+      "source_rank_energy": 146.48736212775162,
+      "gradient_ratio_median": 0.002800632948753776
+    },
+    {
+      "run": "mbart-amis-clrr-seed43",
+      "epoch": 1,
+      "step": 36,
+      "method": "clrr",
+      "training_seed": 43,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 354.89602785680614,
+      "source_rank_energy": 104.20358246986288,
+      "gradient_ratio_median": 0.003858043027584173
+    },
+    {
+      "run": "mbart-amis-clrr-seed43",
+      "epoch": 5,
+      "step": 180,
+      "method": "clrr",
+      "training_seed": 43,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 374.7754047900258,
+      "source_rank_energy": 131.60228696921018,
+      "gradient_ratio_median": 0.00371949940366023
+    },
+    {
+      "run": "mbart-amis-clrr-seed43",
+      "epoch": 20,
+      "step": 720,
+      "method": "clrr",
+      "training_seed": 43,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 385.99586572751423,
+      "source_rank_energy": 148.59637720230867,
+      "gradient_ratio_median": 0.0026480925972849944
+    },
+    {
+      "run": "mbart-amis-clrr-seed44",
+      "epoch": 1,
+      "step": 36,
+      "method": "clrr",
+      "training_seed": 44,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 353.76318043790957,
+      "source_rank_energy": 99.93018707659692,
+      "gradient_ratio_median": 0.004039150761043124
+    },
+    {
+      "run": "mbart-amis-clrr-seed44",
+      "epoch": 5,
+      "step": 180,
+      "method": "clrr",
+      "training_seed": 44,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 375.31400347892185,
+      "source_rank_energy": 132.81941501456197,
+      "gradient_ratio_median": 0.003992403798785887
+    },
+    {
+      "run": "mbart-amis-clrr-seed44",
+      "epoch": 20,
+      "step": 720,
+      "method": "clrr",
+      "training_seed": 44,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": true,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 385.7605526136887,
+      "source_rank_energy": 147.5557802422118,
+      "gradient_ratio_median": 0.002639755872622733
+    },
+    {
+      "run": "mbart-amis-full-seed42",
+      "epoch": 1,
+      "step": 36,
+      "method": "full",
+      "training_seed": 42,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 353.67613232870485,
+      "source_rank_energy": 97.89194931901204,
+      "gradient_ratio_median": 0.0042581953564404685
+    },
+    {
+      "run": "mbart-amis-full-seed42",
+      "epoch": 5,
+      "step": 180,
+      "method": "full",
+      "training_seed": 42,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 369.3487282769158,
+      "source_rank_energy": 122.64795418051557,
+      "gradient_ratio_median": 0.0033156351686296913
+    },
+    {
+      "run": "mbart-amis-full-seed42",
+      "epoch": 20,
+      "step": 720,
+      "method": "full",
+      "training_seed": 42,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 384.9452801811139,
+      "source_rank_energy": 143.63829596670254,
+      "gradient_ratio_median": 0.0014649872399360938
+    },
+    {
+      "run": "mbart-amis-full-seed43",
+      "epoch": 1,
+      "step": 36,
+      "method": "full",
+      "training_seed": 43,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 354.5340624451592,
+      "source_rank_energy": 80.12579385400879,
+      "gradient_ratio_median": 0.005368338375534215
+    },
+    {
+      "run": "mbart-amis-full-seed43",
+      "epoch": 5,
+      "step": 180,
+      "method": "full",
+      "training_seed": 43,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 370.85724976155467,
+      "source_rank_energy": 124.61122491972301,
+      "gradient_ratio_median": 0.003222752046311026
+    },
+    {
+      "run": "mbart-amis-full-seed43",
+      "epoch": 20,
+      "step": 720,
+      "method": "full",
+      "training_seed": 43,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 385.32778698636946,
+      "source_rank_energy": 144.4371797328012,
+      "gradient_ratio_median": 0.0014700377683366682
+    },
+    {
+      "run": "mbart-amis-full-seed44",
+      "epoch": 1,
+      "step": 36,
+      "method": "full",
+      "training_seed": 44,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 353.31242629690945,
+      "source_rank_energy": 98.66663903151272,
+      "gradient_ratio_median": 0.004254436405194732
+    },
+    {
+      "run": "mbart-amis-full-seed44",
+      "epoch": 5,
+      "step": 180,
+      "method": "full",
+      "training_seed": 44,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 370.6767163223769,
+      "source_rank_energy": 124.8708155992364,
+      "gradient_ratio_median": 0.0031543985463964074
+    },
+    {
+      "run": "mbart-amis-full-seed44",
+      "epoch": 20,
+      "step": 720,
+      "method": "full",
+      "training_seed": 44,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 385.6342886075528,
+      "source_rank_energy": 144.4765851833636,
+      "gradient_ratio_median": 0.0015020814315975235
+    },
+    {
+      "run": "mbart-amis-lsr-seed42",
+      "epoch": 1,
+      "step": 36,
+      "method": "lsr",
+      "training_seed": 42,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 349.69772048723934,
+      "source_rank_energy": 84.22668426134766,
+      "gradient_ratio_median": 0.007558717272586599
+    },
+    {
+      "run": "mbart-amis-lsr-seed42",
+      "epoch": 5,
+      "step": 180,
+      "method": "lsr",
+      "training_seed": 42,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 364.9624277945495,
+      "source_rank_energy": 110.5875160830927,
+      "gradient_ratio_median": 0.004861174157513722
+    },
+    {
+      "run": "mbart-amis-lsr-seed42",
+      "epoch": 20,
+      "step": 720,
+      "method": "lsr",
+      "training_seed": 42,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 385.7959939831799,
+      "source_rank_energy": 136.6718597731195,
+      "gradient_ratio_median": 0.0022872394341834456
+    },
+    {
+      "run": "mbart-amis-lsr-seed43",
+      "epoch": 1,
+      "step": 36,
+      "method": "lsr",
+      "training_seed": 43,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 352.40853856830495,
+      "source_rank_energy": 88.01119576541646,
+      "gradient_ratio_median": 0.006700464709210419
+    },
+    {
+      "run": "mbart-amis-lsr-seed43",
+      "epoch": 5,
+      "step": 180,
+      "method": "lsr",
+      "training_seed": 43,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 368.7187991165628,
+      "source_rank_energy": 115.24436077139022,
+      "gradient_ratio_median": 0.004826692660776717
+    },
+    {
+      "run": "mbart-amis-lsr-seed43",
+      "epoch": 20,
+      "step": 720,
+      "method": "lsr",
+      "training_seed": 43,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 386.78245843561984,
+      "source_rank_energy": 138.54906889614313,
+      "gradient_ratio_median": 0.002254969288477067
+    },
+    {
+      "run": "mbart-amis-lsr-seed44",
+      "epoch": 1,
+      "step": 36,
+      "method": "lsr",
+      "training_seed": 44,
+      "roles": [
+        "early"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 353.2638094070547,
+      "source_rank_energy": 88.1154363603551,
+      "gradient_ratio_median": 0.007639461728479678
+    },
+    {
+      "run": "mbart-amis-lsr-seed44",
+      "epoch": 5,
+      "step": 180,
+      "method": "lsr",
+      "training_seed": 44,
+      "roles": [
+        "middle_fixed_epoch5"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 368.0618548576331,
+      "source_rank_energy": 113.3223131266478,
+      "gradient_ratio_median": 0.004716029672500937
+    },
+    {
+      "run": "mbart-amis-lsr-seed44",
+      "epoch": 20,
+      "step": 720,
+      "method": "lsr",
+      "training_seed": 44,
+      "roles": [
+        "late_actual_training_endpoint"
+      ],
+      "split": "validation",
+      "selection_independent": true,
+      "auxiliary_counterfactual": false,
+      "scope": "observational trajectory; fixed validation rows/batches; not causal attribution",
+      "source_rank_singular": 386.7163797685744,
+      "source_rank_energy": 136.63480234154918,
+      "gradient_ratio_median": 0.0021368416283254303
+    }
+  ],
+  "historical_source_recovery": {
+    "matching_members": {
+      "src/amis_rewire/__init__.py": {
+        "archive": "amis_configuration_code.zip",
+        "member": "src/amis_rewire/__init__.py",
+        "sha256": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620"
+      }
+    },
+    "archive_candidates_inspected": [
+      {
+        "archive": "amis_confirmation_code.zip",
+        "source": "src/amis_rewire/__init__.py",
+        "member": "src/amis_rewire/__init__.py",
+        "sha256": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+        "matches_manifest": true
+      },
+      {
+        "archive": "amis_confirmation_code.zip",
+        "source": "src/amis_rewire/modeling.py",
+        "member": "src/amis_rewire/modeling.py",
+        "sha256": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_confirmation_code.zip",
+        "source": "src/amis_rewire/metrics.py",
+        "member": "src/amis_rewire/metrics.py",
+        "sha256": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_confirmation_code.zip",
+        "source": "src/amis_rewire/evaluation.py",
+        "member": "src/amis_rewire/evaluation.py",
+        "sha256": "70e1d408307e93ad914b19361afa39ea7db16bd611b742305ab87ea89cf8c14f",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_confirmation_code.zip",
+        "source": "src/amis_rewire/train.py",
+        "member": "src/amis_rewire/train.py",
+        "sha256": "a4994f3bc25258b2afb367703e6c273b1c1020bcea4461e9981c240445e772a0",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_configuration_code.zip",
+        "source": "src/amis_rewire/__init__.py",
+        "member": "src/amis_rewire/__init__.py",
+        "sha256": "7b223fd0828e405ae77f68543bc7851807b4bbc681cb71d8b923d7c0db753620",
+        "matches_manifest": true
+      },
+      {
+        "archive": "amis_configuration_code.zip",
+        "source": "src/amis_rewire/modeling.py",
+        "member": "src/amis_rewire/modeling.py",
+        "sha256": "f2fc257b1b7f0998c77aefc0a186ed032594eb934afb1bd89d7c2d8d6e5aa551",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_configuration_code.zip",
+        "source": "src/amis_rewire/metrics.py",
+        "member": "src/amis_rewire/metrics.py",
+        "sha256": "b44c542ba3e84ae8ad9388b94eceb90b8efad39cba52ad7479b0431f61b6ee89",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_configuration_code.zip",
+        "source": "src/amis_rewire/evaluation.py",
+        "member": "src/amis_rewire/evaluation.py",
+        "sha256": "70e1d408307e93ad914b19361afa39ea7db16bd611b742305ab87ea89cf8c14f",
+        "matches_manifest": false
+      },
+      {
+        "archive": "amis_configuration_code.zip",
+        "source": "src/amis_rewire/train.py",
+        "member": "src/amis_rewire/train.py",
+        "sha256": "a4994f3bc25258b2afb367703e6c273b1c1020bcea4461e9981c240445e772a0",
+        "matches_manifest": false
+      }
+    ],
+    "read_scope": "Only src/*.py and measure_checkpoint_mechanisms.py/measure_training_trajectory.py; no launchers or credential material read."
+  },
+  "temporal_full_vs_matched_lsr": {
+    "scope": "Saved original full and matched LSR lambda=.1, seeds42/43/44; batch medians within point then unweighted mean across three seeds; early epoch1/middle epoch5/late actual endpoints; observational only.",
+    "rank_definitions": {
+      "singular_values": "exp entropy of normalized singular values",
+      "covariance_energy": "exp entropy of normalized squared singular values"
+    },
+    "groups": {
+      "full_early": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0042581953564404685,
+            "global_cosine_median": 0.04511711416209412,
+            "encoder_ratio_median": 0.016812607762697124,
+            "encoder_cosine_median": 0.16842754622913203,
+            "residual_mean": 0.057854503133017314,
+            "residual_max": 0.0799516886472702,
+            "source_effective_rank_singular_values": 353.67613232870485,
+            "source_effective_rank_covariance_energy": 97.89194931901204,
+            "target_effective_rank_singular_values": 372.47486729491675,
+            "target_effective_rank_covariance_energy": 134.65851020532745
+          },
+          {
+            "seed": 43,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.005368338375534215,
+            "global_cosine_median": 0.04815247767534244,
+            "encoder_ratio_median": 0.017409085399901953,
+            "encoder_cosine_median": 0.20528320030960912,
+            "residual_mean": 0.051577402367062555,
+            "residual_max": 0.08031170815229416,
+            "source_effective_rank_singular_values": 354.5340624451592,
+            "source_effective_rank_covariance_energy": 80.12579385400879,
+            "target_effective_rank_singular_values": 372.9926449066799,
+            "target_effective_rank_covariance_energy": 135.53101604713748
+          },
+          {
+            "seed": 44,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.004254436405194732,
+            "global_cosine_median": 0.04986083348208447,
+            "encoder_ratio_median": 0.017666499666759088,
+            "encoder_cosine_median": 0.19823656675945392,
+            "residual_mean": 0.05788784911484173,
+            "residual_max": 0.08037986606359482,
+            "source_effective_rank_singular_values": 353.31242629690945,
+            "source_effective_rank_covariance_energy": 98.66663903151272,
+            "target_effective_rank_singular_values": 372.04023206336126,
+            "target_effective_rank_covariance_energy": 134.22029172588506
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.004626990045723139,
+          "global_cosine_median": 0.047710141773173675,
+          "encoder_ratio_median": 0.01729606427645272,
+          "encoder_cosine_median": 0.19064910443273167,
+          "residual_mean": 0.0557732515383072,
+          "residual_max": 0.0802144209543864,
+          "source_effective_rank_singular_values": 353.84087369025787,
+          "source_effective_rank_covariance_energy": 92.22812740151119,
+          "target_effective_rank_singular_values": 372.5025814216527,
+          "target_effective_rank_covariance_energy": 134.80327265945002
+        },
+        "epochs": [
+          1,
+          1,
+          1
+        ]
+      },
+      "full_middle_fixed_epoch5": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0033156351686296913,
+            "global_cosine_median": 0.08178490662928618,
+            "encoder_ratio_median": 0.008410566174022338,
+            "encoder_cosine_median": 0.19429182649316018,
+            "residual_mean": 0.05877539280109987,
+            "residual_max": 0.08607583492994308,
+            "source_effective_rank_singular_values": 369.3487282769158,
+            "source_effective_rank_covariance_energy": 122.64795418051557,
+            "target_effective_rank_singular_values": 376.88540911747,
+            "target_effective_rank_covariance_energy": 140.46494915267624
+          },
+          {
+            "seed": 43,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.003222752046311026,
+            "global_cosine_median": 0.06522541324611787,
+            "encoder_ratio_median": 0.007306901926471357,
+            "encoder_cosine_median": 0.15109101862964783,
+            "residual_mean": 0.05876194040829432,
+            "residual_max": 0.08495579659938812,
+            "source_effective_rank_singular_values": 370.85724976155467,
+            "source_effective_rank_covariance_energy": 124.61122491972301,
+            "target_effective_rank_singular_values": 377.265931489931,
+            "target_effective_rank_covariance_energy": 140.85031740275718
+          },
+          {
+            "seed": 44,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0031543985463964074,
+            "global_cosine_median": 0.06903597553633431,
+            "encoder_ratio_median": 0.007570471297275748,
+            "encoder_cosine_median": 0.1746807410132197,
+            "residual_mean": 0.058858356284165185,
+            "residual_max": 0.08573995530605316,
+            "source_effective_rank_singular_values": 370.6767163223769,
+            "source_effective_rank_covariance_energy": 124.8708155992364,
+            "target_effective_rank_singular_values": 375.6588959915568,
+            "target_effective_rank_covariance_energy": 138.78324831302174
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.003230928587112375,
+          "global_cosine_median": 0.07201543180391279,
+          "encoder_ratio_median": 0.007762646465923148,
+          "encoder_cosine_median": 0.17335452871200926,
+          "residual_mean": 0.05879856316451979,
+          "residual_max": 0.08559052894512813,
+          "source_effective_rank_singular_values": 370.2942314536158,
+          "source_effective_rank_covariance_energy": 124.04333156649166,
+          "target_effective_rank_singular_values": 376.6034121996526,
+          "target_effective_rank_covariance_energy": 140.03283828948506
+        },
+        "epochs": [
+          5,
+          5,
+          5
+        ]
+      },
+      "full_late_actual_training_endpoint": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0014649872399360938,
+            "global_cosine_median": 0.061739108931829656,
+            "encoder_ratio_median": 0.0028969907529614964,
+            "encoder_cosine_median": 0.12893302638974888,
+            "residual_mean": 0.05914758992625543,
+            "residual_max": 0.08621055632829666,
+            "source_effective_rank_singular_values": 384.9452801811139,
+            "source_effective_rank_covariance_energy": 143.63829596670254,
+            "target_effective_rank_singular_values": 380.6444263854204,
+            "target_effective_rank_covariance_energy": 144.3327083374412
+          },
+          {
+            "seed": 43,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0014700377683366682,
+            "global_cosine_median": 0.06147264126404896,
+            "encoder_ratio_median": 0.0028422526072024524,
+            "encoder_cosine_median": 0.12396987600049714,
+            "residual_mean": 0.0590826579096352,
+            "residual_max": 0.0859406366944313,
+            "source_effective_rank_singular_values": 385.32778698636946,
+            "source_effective_rank_covariance_energy": 144.4371797328012,
+            "target_effective_rank_singular_values": 379.7213517188795,
+            "target_effective_rank_covariance_energy": 142.43578977268447
+          },
+          {
+            "seed": 44,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0015020814315975235,
+            "global_cosine_median": 0.04866913385466999,
+            "encoder_ratio_median": 0.0027930763144462913,
+            "encoder_cosine_median": 0.08682759919097763,
+            "residual_mean": 0.05918757220780309,
+            "residual_max": 0.08677893877029419,
+            "source_effective_rank_singular_values": 385.6342886075528,
+            "source_effective_rank_covariance_energy": 144.4765851833636,
+            "target_effective_rank_singular_values": 379.1589019730448,
+            "target_effective_rank_covariance_energy": 141.25017189245162
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.001479035479956762,
+          "global_cosine_median": 0.057293628016849535,
+          "encoder_ratio_median": 0.002844106558203413,
+          "encoder_cosine_median": 0.11324350052707455,
+          "residual_mean": 0.059139273347897904,
+          "residual_max": 0.08631004393100739,
+          "source_effective_rank_singular_values": 385.30245192501206,
+          "source_effective_rank_covariance_energy": 144.1840202942891,
+          "target_effective_rank_singular_values": 379.8415600257815,
+          "target_effective_rank_covariance_energy": 142.6728900008591
+        },
+        "epochs": [
+          20,
+          20,
+          20
+        ]
+      },
+      "lsr_early": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.007558717272586599,
+            "global_cosine_median": 0.06344542615737177,
+            "encoder_ratio_median": 0.02304016711197235,
+            "encoder_cosine_median": 0.1849567854093075,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 349.69772048723934,
+            "source_effective_rank_covariance_energy": 84.22668426134766,
+            "target_effective_rank_singular_values": 371.783795156457,
+            "target_effective_rank_covariance_energy": 119.20390805409785
+          },
+          {
+            "seed": 43,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.006700464709210419,
+            "global_cosine_median": 0.056819764043423246,
+            "encoder_ratio_median": 0.02265724480590619,
+            "encoder_cosine_median": 0.18918385902464868,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 352.40853856830495,
+            "source_effective_rank_covariance_energy": 88.01119576541646,
+            "target_effective_rank_singular_values": 372.3446234884694,
+            "target_effective_rank_covariance_energy": 120.85672271344261
+          },
+          {
+            "seed": 44,
+            "epoch": 1,
+            "step": 36,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.007639461728479678,
+            "global_cosine_median": 0.07234118339020698,
+            "encoder_ratio_median": 0.024030563113528115,
+            "encoder_cosine_median": 0.23379260302748184,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 353.2638094070547,
+            "source_effective_rank_covariance_energy": 88.1154363603551,
+            "target_effective_rank_singular_values": 371.17195111953663,
+            "target_effective_rank_covariance_energy": 119.17699456892068
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.007299547903425564,
+          "global_cosine_median": 0.064202124530334,
+          "encoder_ratio_median": 0.02324265834380222,
+          "encoder_cosine_median": 0.20264441582047935,
+          "residual_mean": 0.0,
+          "residual_max": 0.0,
+          "source_effective_rank_singular_values": 351.79002282086634,
+          "source_effective_rank_covariance_energy": 86.78443879570641,
+          "target_effective_rank_singular_values": 371.7667899214877,
+          "target_effective_rank_covariance_energy": 119.74587511215371
+        },
+        "epochs": [
+          1,
+          1,
+          1
+        ]
+      },
+      "lsr_middle_fixed_epoch5": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.004861174157513722,
+            "global_cosine_median": 0.09756899504999039,
+            "encoder_ratio_median": 0.010131865170296878,
+            "encoder_cosine_median": 0.19644033178818496,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 364.9624277945495,
+            "source_effective_rank_covariance_energy": 110.5875160830927,
+            "target_effective_rank_singular_values": 374.8566551719637,
+            "target_effective_rank_covariance_energy": 127.10289618809756
+          },
+          {
+            "seed": 43,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.004826692660776717,
+            "global_cosine_median": 0.06577823401118671,
+            "encoder_ratio_median": 0.00983615748731459,
+            "encoder_cosine_median": 0.13797359088791694,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 368.7187991165628,
+            "source_effective_rank_covariance_energy": 115.24436077139022,
+            "target_effective_rank_singular_values": 375.6263355998977,
+            "target_effective_rank_covariance_energy": 127.54760960139612
+          },
+          {
+            "seed": 44,
+            "epoch": 5,
+            "step": 180,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.004716029672500937,
+            "global_cosine_median": 0.09020802813443646,
+            "encoder_ratio_median": 0.009104126881759357,
+            "encoder_cosine_median": 0.20009223061590167,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 368.0618548576331,
+            "source_effective_rank_covariance_energy": 113.3223131266478,
+            "target_effective_rank_singular_values": 373.2154067613461,
+            "target_effective_rank_covariance_energy": 125.98012768721111
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.004801298830263792,
+          "global_cosine_median": 0.08451841906520452,
+          "encoder_ratio_median": 0.009690716513123608,
+          "encoder_cosine_median": 0.1781687177640012,
+          "residual_mean": 0.0,
+          "residual_max": 0.0,
+          "source_effective_rank_singular_values": 367.2476939229152,
+          "source_effective_rank_covariance_energy": 113.0513966603769,
+          "target_effective_rank_singular_values": 374.56613251106916,
+          "target_effective_rank_covariance_energy": 126.87687782556827
+        },
+        "epochs": [
+          5,
+          5,
+          5
+        ]
+      },
+      "lsr_late_actual_training_endpoint": {
+        "individual_seeds": [
+          {
+            "seed": 42,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0022872394341834456,
+            "global_cosine_median": 0.059412134455961774,
+            "encoder_ratio_median": 0.0037523454851353,
+            "encoder_cosine_median": 0.09338131893714241,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 385.7959939831799,
+            "source_effective_rank_covariance_energy": 136.6718597731195,
+            "target_effective_rank_singular_values": 380.17318968762316,
+            "target_effective_rank_covariance_energy": 133.47084590699126
+          },
+          {
+            "seed": 43,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.002254969288477067,
+            "global_cosine_median": 0.06775549027457935,
+            "encoder_ratio_median": 0.0037234390839177988,
+            "encoder_cosine_median": 0.11428626057070587,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 386.78245843561984,
+            "source_effective_rank_covariance_energy": 138.54906889614313,
+            "target_effective_rank_singular_values": 379.4219793115193,
+            "target_effective_rank_covariance_energy": 131.88892935356554
+          },
+          {
+            "seed": 44,
+            "epoch": 20,
+            "step": 720,
+            "actual_weighted_lsr_lambda": 0.1,
+            "global_ratio_median": 0.0021368416283254303,
+            "global_cosine_median": 0.05863592116709144,
+            "encoder_ratio_median": 0.003555648638974845,
+            "encoder_cosine_median": 0.10646441611333976,
+            "residual_mean": 0.0,
+            "residual_max": 0.0,
+            "source_effective_rank_singular_values": 386.7163797685744,
+            "source_effective_rank_covariance_energy": 136.63480234154918,
+            "target_effective_rank_singular_values": 378.6695238635725,
+            "target_effective_rank_covariance_energy": 130.29608435262531
+          }
+        ],
+        "mean_over_three_seeds": {
+          "actual_weighted_lsr_lambda": 0.10000000000000002,
+          "global_ratio_median": 0.0022263501169953142,
+          "global_cosine_median": 0.061934515299210846,
+          "encoder_ratio_median": 0.0036771444026759813,
+          "encoder_cosine_median": 0.10471066520706268,
+          "residual_mean": 0.0,
+          "residual_max": 0.0,
+          "source_effective_rank_singular_values": 386.4316107291247,
+          "source_effective_rank_covariance_energy": 137.2852436702706,
+          "target_effective_rank_singular_values": 379.4215642875717,
+          "target_effective_rank_covariance_energy": 131.88528653772738
+        },
+        "epochs": [
+          20,
+          20,
+          20
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,2876 @@
+{
+  "date": "2026-10-08",
+  "scope": "Active Markdown only; archives and paper untouched.",
+  "sources": [
+    {
+      "source": "docs\\experiments\\TURKISH_MBART_SEED42_RESULTS.md",
+      "source_sha256": "794204fad0dda725723a528330e7137815e38db43864ff5c6bcf2bddfc3e990c",
+      "destination": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+      "anchor": "turkish-seed42",
+      "source_blocks": 8,
+      "new_blocks": 8,
+      "coverage": [
+        {
+          "block_sha256": "ae7658fb42d63ca5f0b642c7993ff1af6065bc2033ec260f8c04724edbde3e6c",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "67edc157b2e497c0114d4c38f41a8faf6012d76b44ddec81716980ec986457ef",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "14e191ab45fb6128d6818881aa6ea3985ac51dbb312cb774bbb7147cb7e00a88",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f200c21b9fd7f78339cfcfee884314bab8250a64b1814315f034d4e58dba976f",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3621e732d53af613679a1cf01b154d0e130870d1e6ddffbae1546d04805fce9c",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d5da114b5fac7b65f63c275a3caff490710e4c68f52b2f6fb260b85cb98bd9b8",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dcd47919c264f27531f92ebec18aba07cd29819341989ba88e5232d4da319036",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "71e2a90ea60392a354f49e7798f0ee80d89e8e614d6d4357b402d8a030cb2105",
+          "preserved_in": "docs\\experiments\\EXPERIMENTS_UPDATED.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\research\\CONFIRMATION_DESIGN_AND_GATES.md",
+      "source_sha256": "fe06ac3b9865ad8e4ce7edab2ad10932b5f0d2fa8421e7b03e9db70d1f9e6aaf",
+      "destination": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+      "anchor": "locked-confirmation-protocol",
+      "source_blocks": 19,
+      "new_blocks": 16,
+      "coverage": [
+        {
+          "block_sha256": "dafc00b1be6db1f70d629a7592c3649544e162ca4605cf422f41b69fe8ab4123",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d32b856856187cd88595dbc1a5062769459f67cf4da12d04268931e824115cfd",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "34ed9e9be4cccf2cba24b2d18ef9955f9316650f962cd171e072242928a2db57",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "bf1610d088a44eceb230342776d8329a8a10f28391c44792f8daac10a6582513",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "30b54561751e138bca655e9b053328b90f7c2e4a39a04d38cd9188e61a6ca361",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "42ffb32f980376afa5ab75089e8893f2d75c4d068e24f3ff7b45ab92c0cc6688",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d6cd8ec2b0b2e756f4151c2ffae0b94dcb315c2fe32969ab10c9e4f05ea19e50",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "16ee1af4c4cf67cd7c041898f1cb619415013df936a0c0fc2d79e541db9e6bcc",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "57be460d384c9c09a13cffb5dcb16e4bf4b2ea6448513409a91d20120406e6d8",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "29a3e31d92df5adf4567b29e58dc64928befb22508f59cd5922b076e56f34e95",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "399ed824398f5fc358ec1368e758e33f6d5ab648d68bab5f60df7e635d0f9916",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "3dca1e3f0c9317f339ad25edb1ab63f56fe737e2834904492417dae19d3993ec",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7788363c8a526224635ef924969801cc34b78160a4422e639c15c0a7e7db897a",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5203c05cfe0f61c0d3278934c3d12da2f63708f4a08d03833fb4df46e735688e",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fff75055ee321c65fe65cb7455c3df480961528ef2a2cebb707ce7959fd66fc1",
+          "preserved_in": "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\research\\NOVELTY_AND_COMPARATOR_CARD.md",
+      "source_sha256": "bcee40c7f7afd6e98cf9b03869750820ce3a95039e7d5dc11bd3ceef55b3cc53",
+      "destination": "docs\\research\\RESEARCH_INSIGHTS.md",
+      "anchor": "novelty-card-history",
+      "source_blocks": 15,
+      "new_blocks": 12,
+      "coverage": [
+        {
+          "block_sha256": "3033ae66525bdd1124c874350897f4720a10a71b3893ffcf16d6146a1a2f620c",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5f32d2bfbc35c4399100b02d2e48a44bc0130bb801dece5949da26f54a038374",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "39ce5047c6aead6484b0c2bdba4dbd2b319f35a705adc91f9d265ac7b29fe8e2",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f7b6ffe1a40cd096b7b9b5cff5e261a5e88ec5204bad6f7aa121d0ff19a368f2",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "07fabf05e33f2a188d6bf84ea27f2dcc64fb452a91cbb0163ab01d3e80c9260d",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d2e2f70928bd6fb930504b83d26fbb84c74b2840be2710311d099ec2375ee36c",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "0cca9827d3bb85bc4a300cbc0d1a98ac1cec3296329c6ff7641afd46e3f1e45d",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "36ea1b1bac8f0549f9b285a7280452aa38e99c965cd0f4cc7927601b8552f818",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dee2b644d771fd8c0f00238b3bdc2027d75fb6ca6fb5ad064a2a7ebff1437745",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "ae36d4a4d11db01d52417b52a328692f2a213e844b843720fab48d17d5942635",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "08e078549b99dff1ece7b1b653a960fb752e3dd3dcbafe5b4db9907e6bf887ce",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\experiments\\PEFT_PAPERS_REFERENCE.md",
+      "source_sha256": "5ca81c4451a51fc28f8214a8883c7f570de7a3a5f1a427016c547ecd37941336",
+      "destination": "docs\\research\\RESEARCH_INSIGHTS.md",
+      "anchor": "peft-reference-history",
+      "source_blocks": 19,
+      "new_blocks": 14,
+      "coverage": [
+        {
+          "block_sha256": "7c6dbe7f539a98c2d19dd71fa44e89783f44cae27b53e150aa7021a27ca036d4",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "88b74961d96851c6b68956c7e9925c7c908b69c12f0f2bc60473cbb6b3bbcc26",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "c8ac555514384a8542f354f1542479e9023b2d5f432cf32e522990ffbbd1e314",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "bc942b3c335d1d2ac1b09e65f3e4cba598e7148d71d81076afc38b7de58ddb87",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "a7db98d25801ec67fa558cfd38bbc42d6efac72f95afd6acef4fe43716eafebf",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8f2fa8e81312604e53433f1f9955506f901558cb565987fa56fab629b7afd798",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3a13c178d722e114bd7b5ee64d5d2cf8aab56df813ea1b32af3b96d752b90872",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "951383ad53a6a69163ae243c3a2f41cb59952919d759699940cbfdd0192cb0f9",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d7fc584e58226e17b8628f2dc8bf4b041a97c67137bd93bb11acb337b07a74ed",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8d03d2471ac7be1940baa5e7455392051d5c1249d3b6c0a3765aa15ae5bbfc98",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "eaa8303eda08a105fc991fbbdbd636e9dcfd1633f4bfed82f4d73a844bdb4cd4",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c98622c62be0354c4a5f5482f72e57a21aa1f5f5d2ed5a9d283c4dc63d3991bb",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "453678cc1161230e3071a3ae79ec1ca688092020b112773c882699e94242a6b8",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "6fad6fdb78c2be8cbd34dc8839ea48a64ee7d41ab2b859cd474e9cd03873968e",
+          "preserved_in": "docs\\research\\RESEARCH_INSIGHTS.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\operations\\CONFIGURATION_SEARCH_HANDOFF.md",
+      "source_sha256": "0444164e3836dd088b56a22b6efee970e8482359833706048752f114e444ec09",
+      "destination": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+      "anchor": "configuration-handoff-history",
+      "source_blocks": 372,
+      "new_blocks": 364,
+      "coverage": [
+        {
+          "block_sha256": "40ae1611369c25bfff52612582902e1939ae37aab0ec6002b5aef738918cc6f5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e5c31394a1f37871f936414fda30fef8ca5332cbc8ee16c9fa0ebf19d41f8916",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "bad3368ffbdaf92112119de2f53c0d4015ff8121f9fc41762f126f19e6e70c4e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ab1bf35507b4a6fd7d332582d04819a9193d860bbffe78a104af35b71015ebec",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "216b3fcfdf8e318521599e2dfa0c7c3343f83bf8a6e9f34e0047feb2a7e5a027",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8a0ae5e74f0fb2d98c5bb28f67926ce27c8798ce0fae6e5630043c949b03ae44",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b76e8140e98abd1cffe23eb6c25891f60254db7dd7102a42f8f3d03b532c56ff",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d803330bf097f6aea0eab875739b04b8f4a18810613d0444509936c865f45226",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ea63744c52bed2d1b3a77b60b0c132b09740ccaccaccad264932e30ca0a34c65",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f12ada64e779d6ea4cfeda4238296bbbfebfc7f846b3fc9105c8797600b28195",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ba3cb89efb62b254f15c41bcce8c3db8414dc23ea2f37409c1fa30558942184b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7a088d14f4286a35c96060f7234ef689e6bea9c7b9c136763e06540c631349e7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ea2331d4c1dc944f71076f472686bf5552e521aab27d80c342581aef07d7275b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "96bf5bd01e5b231604ca197e6ce2ba2f5807b2c18f65e9483383195edb36692a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2eeb189cdda28e2ad08060b8b5842bbeaaff1c7bd4eee38ca9f996841fac9df0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ec3a322b82258c9ad2086fa76aadde2add181874fb5f50a3c405a0315e5e2a1d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fbbb9e0821a1fca27df043a733f46fee9e565f934255cbaf92550e9c00508568",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1bf640984d3301580d725ee0dbb60f7e45befb0c135603843ebe4a79e13e69bc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0fe66742059f1c703de1e43822787eef291a869ff090c2bf63d003ad9417b826",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1072d44a25260e3b70ed6fe7ff6e18decc4b6c504966424277c62b1ecb30d1d8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7be28856a810ddb9fc161ba8fb909a1b1b3d64e12e44d4a4f85a7d09e975afdc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7c6a5c6b068113bf05ad4b0b3d5f4243b17ef305ca97c1b5ad004f6db710fd17",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2459ea29d9642d8ee1c1d886b310c15ca53fcc4e0c2f613568adc5f0ece4bc44",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4ccc4f5d03b0f34a3242dbbad16f6dc4923afc1cb59a7f6f52b6a5c9c0248e9d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "04ecae5db3dd07cc38093beedc1a0cb2419d6b9a182cbdc3560bf9df2a0d3a52",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "62d9419483bbd5328ed2d115ecb5749e54b4dc0f4eb5de565561c4f565052a11",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cd8790e60b8845d7d04b9e383b4b57d173e327aa71605222c64b0727597dc2d4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "659d5dba9b77fc6bb61b6bfecab0a0d3d9a686eefe678f504f138cbb8dd9d3d6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b4d7e05c111ad78ae239ea5984d50f511c1bf6d087295518b9250dc0a7d3451a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0556fb2dffa82f3456d2a05a0e9ac2dad1bb882660739e570ee80fecca8a1b34",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fcf04a45ea1718b93fb85067a52482683e9c67ca71f9c35799d5118862dca6e8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "39141cbf9324c21758a8fb40ddda0d46be74968ffbf392bcd757ff54aabf48fa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e6d98848039e15bd16a6e55b966b8c78d0f6ce970ff2e54fb4571d24bf6d2f5f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ac8ac94101f3b313c9907ce5bde573d2984f40fc6a2e5487c5eb6d6f7694db06",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dc94155e34fc3d4b8c4daceae08edb2fc49b4a0ec7c7a907a940a2e774050756",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "680518e09f2239a4b51e9865c0b72dfd5141ca888342aa52270172e9d82aa612",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3787d0760245e9be2b7aeb2faa7164cdbdfa745835d1490a4914ca8b7e5b9733",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e90650068a2b89f68c80527be1b8fe7271f2c20ad12e762f1cb5cfd653ca2b0a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4ba5b01634587519a21ca383b87a09272d74805207129187ef943fad90a700b4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8593d6ddaf673373c67fd5b7922218b4f2ac5f252a4d35606e6c6531ea0a765b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "60e820b3d72f2a4dc1de536ac37d838bcfdfa3cd6fa764e5de9b46243688c14a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6a3f3cec74c8a34d2cbf19bd6731c5c021e130c2b846cea5190349807399d255",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "21576226beb1cef2493b4b38a78191bdb995a9ad87be4f3305d5e3ad55756437",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2d41178efe413422f0c06e6f18753eddf97dc4c98c46ce45c361ff9193075d3e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "12937ae6e1d3855db04a8cc696739a8c8e719564dc46e67b2b5a422fefdf0c73",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8a2fef8b2bafb7347c74ccc82ca3c061f87fa3acfd65d656741c5e1b01349b2e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "24268b9efb147035303229f14d6ecd82e8aee01abf4a3b2310e2c240113e415c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "75002e4c55a38f97d8ff49b29ddb7a10dbbb2057ba4dd6e3d614396be59f5483",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "519645c3e56616417cb62e509801acd96abd2242b4facb3a96498fec8f2be614",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "420b692ba7837a5eb0d935baa2d4a8ca77f7831d51e1283d346d190a1ccd9f08",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5133862faeb41595e9e4a7a852718c516b5f1f5b6d4e99d59907695d3339e720",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7c1f7121cf8d7446c9ce651823264e8325404ada02fe1ab81d46188ec64c5b3a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1a6e6402622791e8c0e50d8b524476c82b5012cbde03a3ac92b0954711377633",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8fa961d16eae9c6916483556465164686bcde60e7f5e26de91b4d4b115d05979",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "33229d6279e52f5e35461dba7be51307f27d660099cfc54ee9623a99a393052c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a90700f1391bd2f747726a73c4f8b6cbc53cc0464459267cb725b0fad561e5e6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "264d80edb5d540e1a76a4e579fa38c59ff58b9a871b64427c6538311256f3b75",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0775deeeb8b5f2cdc255cdd1b08bf98146391dd408047b5d79f9f071b702544f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cf1cd9290e149617bf7fef11fe8b9f66261a17d54d679582ef7dc654f94fcbea",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "027dd1654c2087ac36a49a53581ff406e475e1795b94c670c05576e012de4569",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "07e55515e1454489f86eb7d54530e81998305a01efde735a1c0ba90bf025b706",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e72fd29f4f00c78c72e05a1a065f845e93ada30925d74d72078dc827916c36dc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1746f0233d62ad0c204589c6df633ecaf80b386811d18821c82ea68983b6b5b2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f4ef9355ac8ac4797450d6b99a24053ecd7052229754291616a17f7f2e20f539",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ba22f7f2293ba4e4d06307692b4f4df97ebcb3c538b11538c8a2c320fe0ac71f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "565a202ad9adbd145d36c76bc2f6a6025b72a442525d2a53f08baa9d48fbce30",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5c5bb2c90bc57548f5661233a9e662fc821c00cd3ddef1703719ae1b14aad9b1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fbfbbe490f3a8f8d6b01d2a3c0c042822d054a4514c234253c7bcfa40e159a1c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3a461176a402d067bf83361e8134e743b432f28a7bf3f05fad7ca76651c57238",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "74641f74f538fa126098f00b3de424da0b65195ab745b321b634fc65e188b6b9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "473e506cf98564f79a0b5b37ddb56afd1f2420d445eb9eaf4fac12c64793dcc5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c6b5c761444590d815d10c1a735c66df1369b728986b2db578c64d67e0190da5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5728a6672edd823c04c0cc1854d08cdf39c3b19d4c81e2335c2d62a1f486e9e6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fbe28b2cd8cde12dec47486810cd27d9ce99e9cb36bb9252c78f17ab3743a991",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "23c6ff28ec65dde09652cbad536cb80a842fb40ef46fb02e869be7439973e203",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "12e88f3ba8b261cdcaeba9629312df79f62206a0a14188356874ce3398e50edf",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9213148bea7f29b8c2b2826234e1da0657693f0498dc9b023115ee14cdd48778",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6bca36125bf71b1e8647a3732a9431ec0f7c4f03714c3cf0759785165b6857a7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4456919ae0f139b54ff878d08e894342fd043a967fb2efd03fd84c6501253cda",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "059d47a90f6796ac61859b49f28c0d225aa8f3501488dcb00eca7ab716ac38f1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "29846605d0278ed3e1216c16b45e998d6d2934eb117f880da2fdf8e1b3e2aac8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "583084497a964f40441491bdd592c2f8245426d8808e4b2528bb83a172c249fb",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2b98038ede899ce3b3a4ad56ad9b64ff3b82b702c1407fa8ef6dcb7ee48041c0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6bbd4cd345f8fc11d9ad460f80ddcd91613a1e0ffb9c0800323af8439c082730",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cdb5440c07b7fa7fb74acba558e5ae57ad40a3d076eba22b633e30b61d295ac8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "62088e83bef43a34222cff5318dca5c9e63296ba9980d88ad01e8fae067f73d5",
+          "preserved_in": "docs\\archive\\CORRECTED_RESULTS_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "74c2ef4213139fac40d5047f3416389adaf7a4edcb6bd0de2fc2ba88d54a822c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f9e310993af6b5217a86549ce03d324fe86919330a8c062a01d7947b33133d5a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "add17916d73c75610c446a63440f2ec19f15e3a17c2faa7bf31e28b20b356cf9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "decff5716599a021c7246cd15d7b9505a6a74f023e03e240cf68c050a5a0b50c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "aadba33e996cd10ddb9564b10b199628389efce6ab26ca72eb27418079e24faa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d0f32793aafd81e394a6d568c943af4dbf9366ff221be775456cbf9efb075360",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "560ecd833d17c867dee02b08d71f50118a93ce6f4211d6800c9292cd99f7f66b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9a6bfe102d8e927a2bd1fa3c86969420ff1325ddf32ff44c2239b8c099444aba",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e161b3085606280a454b3e65f62f693bd530495bca73acecae8bf1d0208da977",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "046b5e08ddc6216c045b35bdc8c695620611326d40c130b87c894224ceffd775",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e0481ca3578ff0952142979db2db1ada6a8626657e1ee3620accbcad768f2e8d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b085a20ad7c2b250c8250325530c6965ca6ef0689c5c11f4a0a38bbbdd489241",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c7cd632806bb77c3bcca91b4121f45fbca8229d49627a7ede07f1ac18fd8b292",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "372a9edb6e2cae62b8e1c1992b03c2baf828e4a92782a11a950e48b3b9560427",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "38420b945f019a58f59b05a331bc10c767e2a650c43b6ab7e1887852550c23a4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "538fb8c0e3a790868245cc8421ba07554ac8d1e70a8ecd6bd449a0b2ab2d1d16",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f93b30255f4785e3d1a0a18ec5ce430821650962d0320b7b3fa6c7488137e829",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b1b5f60f10e1ad4ebbce4cd5b555deecc5e923b28dcb694dc6362795363b229f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "46096a301dca3d81538f84309cb92f46c6eeaa5d7773ab200d6160704b730f9d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f7144e0b317058e566af931d8e9024b3a3190d17945445eae0342bddc34f4572",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0b7733e03f97913954760a111c7a56905e1ac2fe35d0d41bdbfa8f60db446915",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ef830059f83c8f6781ab28eafe9ecb0b20f3f42360140cfc75f7e316f4023df3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "89e19cb4e3a97ebab012673e6e9050b98790369863d10df5a7ab192c10f81fb6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2670968a1d656217255c13618127b4accf5c15dc09a7907b19ec0f937698a706",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "710499854a5b2bb6675d6d648ff1d6e04dfc405c5e07471d3eb9f23597b5058e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9fcc5769c5113a0ac9a317681fce555fde45ea61c1ada45b3da4da905aa69b66",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5e6a2e4aedba0c423df229b0c152a7a79c7f0ce5a4009bf72ebe62c648f4b40d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ca0d9b6df35ccebb138076cba4ec358ecfc340c3657761eeb03888156fa63a60",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "570d394416e3d1a90b7ae185a67b3b807581a824c623dfc6efb73891f71b429f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cf7c1b9080f9d572e4ca2789c2d077c627ad0f1594ecf679d3b091c1e4a88f99",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9319e565c464c6ca6a2389da73e4803c63d028749961597207e012e87b6a04d7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9756baadddb4c4b5d80f479e03a37a17f79d3456b85c4f94dc6c5d8655194706",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "937599b15a3491632c45b16c9c43c1cdef2d06bb96b4b0ad2d8e2c4315f8ee0b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9c2fb55e195154b0a1c957d9919ff3c902888102e8a0ec026103661d665aa8ce",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6a06447ef33fbff0dbfdb2c859fa87ef4e7982be92ea98bfe22743966bfab22a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a86f2ce3bdfe5756bc382fa4a21a879354fb47425d07fd66c16b6dcb8b8bbb9d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e90043785ea99bd41d087215bcf056fa204b8b536bf1f0639f4eb8da90454dd7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "15c6d971e5d6eedb019c4fdea006de9938dc64aa58e6102e7070edc2909e7557",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fbe28b2cd8cde12dec47486810cd27d9ce99e9cb36bb9252c78f17ab3743a991",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "ac72b0d930f8ca05ec351ce88124965bb47510ff8b3624f66fc20526edfc01b1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e4eafc69f6648313103be36089f4e796b82e4198c4017ff2a2ce184118757ce3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ad189d512511ffa9e86204514d5a7dd09676ebe7aba4532853eb4fbd8cf86a5b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d3d7179567633c471608736d0d1219d50042e58ae09ba200eccf74e5696b43c1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "33ac37dbb1c793e14fab637fda5c7b8fb227268db1520cc4e37bf1498a73a133",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d075d069985768179370b372b47235008cf0b02f3c68825fc39af5c5014feec3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "36793634c26c484f5b942a8cf731d142b5cfba326f4abf825fd3c0704ff26fde",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6e1b6f818a5a17d106c0930cf3ebcb5ec2eb3d9e2828335abeaca6a1f70f8dfd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4220eaf6b4e467f30bcf4a47eebe95123023f0f1e2f95e783abd276e0490eba6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "abba49517f07bc8a0cc7a1b433ef22ad1caf9d26d58e99574446d8c4f334111e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "af76b90784e4b75adabb783f2a1fccd629641085b2d927b042a8bb8aa5d297c6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "99aaf4f3050603cfdb1d18768c84e2a4061d00750a6e636b49b37da389df584b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8e3fa8dd6ed7a8b714acd93b231bc949e28f38dfc536faa425156a5e8149e570",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1b98f11213ee00ee8893aab1fa61c4b1cb2db84d118b41723962f188304ec575",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4fb79041a51c7aad2f8e0cf49c597426c8d79a5d85ee10a021a383876d5d2866",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "86ec0b5e67107ca88b9e9372e5ef3fb935d197e579cbfcdf402e3a6edecefffe",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c35ead770343e5fd5d6f6c96deb3b0de28d948884c115aad9847c35de1482b2f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "49c379a6fab64e91ef868b2c8aed09fdfe73a9b40b4e15c9918f8b290624c738",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2704ba13fa1e15a11901d691274fdf1d4a70469f6f741170b25307c44c8f6024",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9dbbf509678f6e0bb7124508e20c93e0fa9736855898ee3772dc817136459901",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "299f05030ec5778d979c2c48ff69ba7e4e8486e71c6d74219005e2e8e175d171",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d03aac0dbb69a7ecf015bf569b3f34394a482fe148774a02feb26c4f246c6ae6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "740e113052cc556ff7949ff5266c0005cad4cdff897d6a2d6698cb9026f5efaa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "39028ffdb5f7a641940bfbcfb71d09dd0d2c584425595bfd74afd79b4da30be7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "479bbb6ba7de72e88e11c8e6585f234aa602610efcabfbfb178d6dfe0da7b1e7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e329530b9659f186480a82dc5eca446c83ffe95a2b7d4a5b58ca1f942fb33164",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b240e9ef250c61f86dd17de299d1259e4a960c28c198a3f290a8fb002cc1f1f0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d61d41988a1de3da4d20cef4b24c681bcbf11d2dc74716a80e8e5b056499628a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "75fd6ab80ede6ab34307be7b918f381fc5fc6676770a53685292f8a3cca4c98e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "31713f944ad298cd9f2b3c1816af755c83dcedf693ed7f1b47f4e18cc3e7a6eb",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0678e38f7656899ecf879c40571dc54dfacc5c5289deb3319994e45dfdf7738b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f19685464b4182d61450f31c5b6dc56391218fb0973dd921a60beebd61a5ec9d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "bc07d8e97dd58d66ab6cffc88861e2f53eaf6786cef2e1d849a348781ba41f0d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5703d08d835f070c9aa8e1676a38a156820685d05ea0b4427a62320380c73f78",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9bd54823095f3e9a8e00fa24956863d2125e2e6994679903b37bb261a5f31239",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "783831d1353a7e5de717d9a014f8524541054a670e2379126543c42039cc654a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "8cc9543c8feec53177ae5d797c393f6d996ee3ed8ebf1d43b3258e276e3ecdaa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "00974a81ede13f3186f3c4c9689fdd8e5bd910296e5d333dc91224ab0f39d24b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "01abfd684fc4bc2452153dbbded10e8da6413d75f93f556931ec973403604908",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cfa333184046362314b2c68e89bc1b7fb99975341c84dfe7987306d4b742fe31",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6b5ab503fb8a12a3f2137b8d5041645bc831da2d30bc2f6d55f402e4818b62ce",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5a75e9fb9604251526f24533f595b99399ff67fdc60797d4422d15fd00e87099",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ab32fdf36061429f69e39d54db63978d75cf8a8a75438d886948aa5ee42d7744",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "bad54a9cf9b76454d75876e0fc4d4346cc5281e50b708836a851dffe008a2957",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b24520197ed0d78e653c60013f49cefa6916dc3094f03817d5b7e34bb01f19ae",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fa217d95a777ab9d6bedb71eb0ae0f588b7db3d05cd76ffc34af03e9187a486d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fea21b28890f83451887a515009e739942827b0697d20659283a05bceaa820d1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4bceba6598cc7a77e65d06f77a4754334e2ce8802ec96c08451c708508e9d5b1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dd50948c1c49aa4d17ab47942864f379b8de8142c4b889cd4e882db835eeadaa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "64800c4d08af8e4ae7e2d6e62531a2b96d97f4ae832de06e26dd35492e95b019",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "74d6089f3b34ad3b0ffa2d754bbf4ba7c4e5f01c41f208400fef75e5bdc678cf",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "030bd997e4928487028b4153abea567df99aa0a538ca925cacda389e2ba724b4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0687b0c48a9fc41ef5fea0735d30f93cd338e7be846b26e6d8698b5c5e8722a5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d818a5cd84b2defd680e9404b1d670e7ac3a30ad9603810de9b904f481b55a3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7c804ed84ae953b833377009a514f23d7ce4ae93e4f9d87be23084e3639c963c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "496da8857b1ed7c7868f1fc7609e405c57dfad5a0e994ff807db2ef8b88f0b14",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2d80948f73157e16f5bad94c3bd09f94728be9a4e61e018590509d17fac0faf3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fc4b9a92d61343d814f4222976e955bced1354aa9b720df3d12b6137d220d182",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c22bbb4753a2fbf1e23526d661347bff051e5aa42068634939dd7114871298bb",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c47b7f1f011058f4141df44e4ef8a79b10fc9c1cd8169a06b8abefea224fb140",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e6047171f6c34244e801eb990b1566e63a63e3b066297a4bba3dc432894f5641",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "835dfa47e53685bf0ddf7a6e6cccf3e9176a5534aca1f6b9fb1040dcf03a6a10",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2e48f60b685b02035e45fa77dbe97ee6e605c1d5b735a960bdec4ecf6cdfb320",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d69e00cae9dbb82bbcc73bd58c2dee19d5546580c3c1541050b476eb15e82ad7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c52dad98746a5aff0719f7aef728bbc70d25d8d676567c0302e810a6e83a6dac",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "215755805ed4dc38c8d79ec61dcce27a887cefaf8251230326a9b4c1e57f9b1d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d7e741d70f7c43c4d9df9738aacf346443f64a47eb9906f5343352effe8b918b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c10025750c5a6d4740313b7b19ca4687bf448326ba4b2c733f5bbff78c9b5c0f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b1b314b1fb839b2af75e2484e5ad84b18601f3d69785672bf49ce8a0244cd581",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "40e4d9ffd1a0fa055668733821eab390a0ff8eecf7d2af9ba979abfdb255b9cd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d8119b982a3cd900ac258fb27732df7e7bb73f5151b64da80bf7d2decd4e60ca",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2e05ff63fe856e53be47c1d38cdb683d2ac50ae7ada58274205fbe55da80e471",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f1def74bbe3a1c36451374ec4748ab8e09e18f6cebecc6adfae89cea3782b0a3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b2015185e8052efc624ddb4e73ab0e61f253db0e5e13a04d92d4c5f353c23756",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "79c45945b849369f408da44fdd7ee211144683b3d6a8381cb1c3780e9507a2e7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ea208e7406784f43a6eab0638644b087a5b9ad879b00b602618aa203a98da689",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c41ca8de5d4cf56e5af9d8c6def1ac2dca32c47659a53fbefd408a873f0f3cab",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2fc4165eb0afdca3f6784857b583d95f75b2d97a093af90d3530809fba88004d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0d281918596806542698c533fdbbde9b3628d48e510b9129a856d2b4f5196046",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5be1e701d01264e8165e42747566570ad3af95c1a0e970d03ab78a1196ef86ed",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "994956549abe374e0ca2a75934c4d156fafcd95274e7c4eba34e6f4a93570621",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7361827102dc0ea466736e1681a9644bb08485b5941ff4966b814d1c87e5fdef",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cefbcfce63ecb561b653b852a6d90ed84ca680e49192f0ec8d44b3150b3ae0f6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1562d91702270817ae4ad91173640bab739538a774994a41f8bb3f1e6a055cbe",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "02ef918525a20fba71fef3ddd93826df0ddef477a64a356a32054b25f790ad6d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b741d20a3eb935b7b1b01a4790f1bc232d22296da4a4a2115e3e12e2f75a86af",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7db72a9f8ec02c1706a541eb4f8e2b904f5fc364e1b81df3260086278a158bcb",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c2ffb8894ba533bab65cfb191099e104620e730fcf05303064e7f2fc42747cd5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "deef6807f7855e48b6d9d9eecc75e375112885c3b8b472cafcae5ac7331cf4df",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5a3d766b220cb29e875c01e7e24c1c48a829bfb346e4a6e60536855824423208",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "14baaa24044a9c21bf8d085983060724d5fa1bcdf4ca4ec0ea902291932cc051",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c0ac9afee331470fedcbe88aa674a2b05bbae2256dc928efa879c36fa95ebe65",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "209dbd6e1ad5a3340521b5b8020289ddee7025239877d1bb5c48b3d277c074fd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d97ce9d3d58225bf9ab5b62bd0677c15bccfaa94143ff237faee2a96a3e6b9e8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e5700fc6728386123b09c704356573edd3472e94a1e608e709e571cb4e848138",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2a0e69007c23a081f3ebc57a20e611860672c2b5c097cd7eea10ea05ddf9718d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8c503f5762559364350bf2b498548b4e5e5db5fb5dd12a47cbb26cb9245ba716",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "baf76464bc07f701efcd6cccc1cb612ee88e0db92ad2264fd50f7dd32da1b3f7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "30241d89d75c41e3e94b4af0269f51af108b354b77f8ce07b4ba993075d2e784",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "62e7c51a27e49a67c0a59cb0d252b4d5dfe3e9ed3201629dce153892f49a3eb8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "25c564100c67fcc00217a4e15a147e62a11b3d7871ec63ed79ac8a53c4e95ae6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "76ff06b7fc087432047ce8a83e2680fde6079d653199e86df8f1598c5a43b5f3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5bc05c47f67fea6bf00bc67abccdb1497d1681c6d407829d8386c4d8527da478",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3298d4683bac3871b381bd2dc65ff588c15ff87bcee8783764efa5bf59caf430",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "f818cd4a8cee56fd8b80ae00cc13e49192a17682be14de0d89a59511f7fc2874",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b0df99e051ef086952b9879559e607b4dfaf60f737f4e9eba3140ddfcd160108",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ef2dbed51396a82a25c21def44dffd3a6603353a11c6493c0ae39cb7bd7f0cd5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d4e28efd4dfb0c6be3867d72a9bbf59b32ed0ee8fc0537d68d8b9b1d90838fc4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7876d7bea0d33567a2d71b056ded29ce1fada8ed5f4be1b9d77dc9219eafb21a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2d709233ec9e25e62f031bb77d0e7ccfb544de5ad83f5bb3d617bb9a4e2f7bf6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "760518d5897a362c6714789a090ea204f60ea2de8a74609d609be1e70cb1c333",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "125c13ca840568bb7884a8beed6c10553ab20a546608ebc3514df3ad942e9fc8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c3c88220336bdcf9d461b371ca3753b63579c0f404d9122f9277715fdfdf54f6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "31ed036a40cd99297f0eef836f98d461690181740b67efe14065ec852122497e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e5d259092c976f7f1fd815d69f714dda8de6eb717222bbcda57520ca211ecd2e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6ebde6dfb80564b82811d8b35c781b71861b33546e3acfaae226c9ada929795d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "889b812d700abe755fee1291800d095f347e94278a18ebc38d30361fba2adc55",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "61f11a7dae0235a7b965e4bc4322b174c8ff0c83ccc4c5b218401727c56cc1fa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6ab1da3ab641a31e2b9cc4c7df9e4f2a9d4476e7eb5eeb81d370a66af41e832f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "314d32a26605144c5e94df7c82b32dec4b78f1ddf74eb9828dfd1b07dc397616",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d7a799a939b7dd39209db2c436ca3973d29a2fb9fe746d4d4aec17257a274ef4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b70609b0bc72043cf9139231fd8af57eed3f627e5e2b9f0db4d97aabce75474f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a6dee2931dfd86562d3d9cb1f1f01f416c39af36f1a4f67a4850b71db4996076",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e561d65064866affad4392f8c74b9cc69142cbc0a7d9894c2286d2cfdb39a0c5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "243ffcc42fbdaf99958f43e0df04ada3179ba350ed7f1a196e4e642477664184",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2d16287abc087fd1a08965b7036eac3115854e0fd000d748b89a798301531b35",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3612a41ac12b50e028f638d059d2885598a3b8b3d92bfe63f8e3f48e10023875",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b65ebb0a635914adad8d6bf0cbcd20ce39dade2276173d06fa7547317e92565b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "92c23995e23074959f932322fece068873878b8df30811ab28d4a1f0081550da",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "64aede1df54e0cc961f031ab5c7910fada36dcd29099a876f6db8366e8134b6d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b013713b1bb52a4a7e4539b6e5367df4fb62aef7d7dfd36c9dfa0333431941d5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "108a84b19ab521a5957625067b58a6d4a96f87f7df76ebe9e96211542a544b7c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ce8c2f9e5623f1e3a1ddaf56607535a130974ae25622c8cb8782711ab0b46271",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f3492973c49757b3e1e7ab066f4ce56adba290f6efb8866667abdb349c078f71",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c74ee8772ab8bfe6a89d68bba404e751bd18a1b00c2c226c1c691fd854a9c7dc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a42182f2606bb1dbc399e198d26a451e2974f636138fc5437e1cc9197c1c1644",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6395a90035026e2988497594de66ed80633737c5e4c04719c4f1db9c8c7d392a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a5d3153329d86a1022192083583a33a812203b070c9de0e3e368cdee0b3d5d7d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "219d81ce3b8e9bd1e04965e41378c5696202d980bbc7ad173485067667471059",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2fc4abf9c28397898eb8c7011bd70bcd14bd5b978708c450a8b7c5e36715cf88",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fd4a9a46f0fb2ad25b951fee0611e8d7f85f7174328bd1b0fb471e50d1b29fb3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3856bfafd192964004d847a877da96080fd08fcbb51fd8a98a5ea41770ad00e9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "739583ae1bd15cc0e417980028f58aa34fbacfb15a5760280f241d63a92875ad",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1702193025eacc5bed15303c0f894c2172a5195384876beb37462ebd43a31cd8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c47df073b763e2b2d5e371dc4efbad590131b040f96d4edd1bf13dc0e3052be6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "10a9b445270deab470b099140fae98a4cab6a44e4c816195b512bec6b4118a1a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c8cb49415c735e21a9d43eb6c79eb4f2c2bffb0126a2a1d43c061c1197c0dbe5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3c7d55b4f3183f8de681b7217782290a3c92d6129f7f6fb71a053da027986d95",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d793886c81d3dc186c088e0d433ad0d64772d7f49c07144098e424349ab19c66",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b1d7934ebf31d65eff6bfdf926669ea2ef121848dce24f941d89391bae479937",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fc51552443a5bf6d1ace3647a0bf42b369b8ce46a4859a1a38c93bdea87e3da2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "404a604f2a1ac27b50f56eec8db4a4efa383c0c8ad77a15dbd6a718546c846cf",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a88ff88b154d2d7f3b412292c4a59db46ff436a4857d80399a93b9afb527f573",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e583dd23cbd3b602a4480ca5b6145cb7972145354da08fc352149a7c7112a0d8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e951749eef9c1ca0f5bfee0611a3e60e19fff152da2e700fed122a5bacf1d12d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "db79b68fcf55581eb91815beca485fc01846e899828503ca45c71e6ce7fd2b0a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b18f74fad449318e480387ca76a2a634d8de3849a62f90fc94652aeca6b9a6a3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "15cf7081a3e1e6d4b3da36bd5f2222a6e1e70ee0ee3767e69f50414d6e693c53",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b12da9d14382c9cb9f85d63f0afdf2a831fa25ac802cfd6e73bce93a106935bd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "509cf1c71fcdf9747f5d1c9267cb41582cc73493e44294ffae255ec4a12a81cc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dd621f300ed1c6717c47cf4c7583408fae0a704728928a957f2bc54ceb6da53f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4a60da81ef9b662c3243c7429ecafb27e619ee14b305d4fb1287e16086dc0579",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "639406285f3c39a366b9186888447713ee52a3bf40aa3549923724a099b9e3cd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "212782e86debfae440eab19c9dc718da36f08714168a8bcd24ed55e4b1b0fc6b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3a0d8d8369a948fdc867d86a840842504ac95a37b14fed2b7aae6f4edfc4ebb6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b49d82fd05b9ae554707200e4004e3c32933b706d61c88f31148c093ecc24ecb",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "728d99c93e06fa8647f15c8bfffaafe80be0d6215af40bfd98a1bbf8d2d6d464",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "232353a94c096477fd6a332af99fc8943624694dcd755ce158a30696cbf9abc6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5da083c28e76a38ce02cd42d667a358fd22c4c2186f6fe20712922a0977ac5d2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9662d3e24e3da942ffa7652b179dfebf860827edd7376c450b0a096c409f6eff",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "236d3b8d4cda240d508705e5a35c941e97f4a985b4bbf64999cde8976e5e1fe8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c3b3d72e39b2e9ea3e713e0e8f5395e410642f71a6ca1fefa29403c9f61482b0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "824342c0a14cc6587ae53a1ea951bec1b3b7e5ea71bcabad8ac6ab3bdd20ef6d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4ccf2695a52bdcb272228b6a0a57af660e445e1df8fbf5af091c9d681c8dad79",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e21cbec011c8c726a4ccf3388f41ab3027bc085cec1ee42b6e67cc8fc7cdd36b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "be934e2bc21484283976474eedf7223e1bb3f4127e62ad1abba737592f7ef59c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2f3a65a2c3f7e5cc3a50a36f959a95e5d7b5d4a1db04c90a12b257bb26675828",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5ea65177a9fe779ed410c993133660e826ed0decab9ce42e6b7ef5db48b1ab75",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "32663ab063e8921d5fda3ee71c3109c466fd10a997b26c8232bd403a1750f7c5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "95b1ec192785a964b0ac45487f5c6ce205cdddba25055ed82358f220acd0b54e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d7b407708a4bb140c1d270339ccaf3022b16c89826c84f5c0f7820a4c9456003",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d66759866f8706c2a14b013196acf4675e452fd63472e808868e8daedc028901",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a1c19276ac2cfafbb7ae64bcb5fb9925bb166ac4e19c936abec1dadbc0ef296f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "52c5be15d5e510123b1760a2ce34d313508f106d4b8cd6ec553f10c6e252ce00",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6b2061cba2aa9520f71104bbec60506dbd8664c67e7c60f7b80685388958e8af",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "56b784a84e22721dfd2f6f9e209804dfc33009fa0eebdbab036fd72f10d7407a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2b24fcb78c2d005726bf92fa349099959a89e608a394897f8239a1a9a2330c7b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b02c138d3c39408a3ab0fe9bed6ba3c009de2f57794a7f9384744a7b8b702989",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8ea5df66a129d66df70a448f5c27ba438671bdffe0e7b2e6a9596a67886ab35e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "870381286010e560f4d5ff8751da361b46be7ef5a294c6d692a9dd239af1f007",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "14d711d0612eef828e37314723902c8226aa5e27e7c96902acdeb360d628fc55",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8ea4dd248a1bd42f8334b7820dc7e51e4f096ada696e7c25a132f9325e93f81c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2f1a8815b47dd4536561915ec8208e980de5ef7cda7c0483afa2e921e40da9a2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "afa072b30756b1c3d0c4546a38f0c4b32b9559a1df97a11b850c94c70e76eb64",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "df12c9a08d3205ed07d83da863769fbe8c66aebc6e308b0a28a21e2b66f909dc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6e475ec260a42bed25cc4c83e7c91a1e24250fe3d58bab8d6105707781f119de",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6cac540ada15908d4d8cee75e528ba01858f8dfe408c7d09bb20b43ab0c6d041",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4a91ab5e3b5564e874f2d0c9b316b6e15d8eda644915bfc5a0faaef463785568",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "77662640b70c4cb2586620cf524cdd957f20604655645286aa851feef6cd2dbd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a0f255b30dc3a31356c3071fe5412b0b27db54e097b3c583218647f7bf9fc93b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e54b1c646433d1fb3ca300ff05ab5436b46a8b510d760794a5e0a0266c4bc7dc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7531de97f1d3ef83975f58496521472d2162e004d832fdb73f9a5ac18ed93880",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f29f147a12656962e9a8638c05eae2dd5ffd1a1eef637e91bfb63a31c03b32f6",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d0283e748f985468b892c95b2c908fd11416b808ff55b2ead1f34ebfd54e6acd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "62088e83bef43a34222cff5318dca5c9e63296ba9980d88ad01e8fae067f73d5",
+          "preserved_in": "docs\\archive\\CORRECTED_RESULTS_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "d32aca91646c059283c711805cc11169c5adccf46b6c2502ca7934c5544e9e1e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "35d7155ea0f045929762e63885ea19c7650b7cb4dceb2179aa4d02806885d7dc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "721a5ad800b0583922dbb1eae2d1b8cf3f4009ed42e2f6c179ecaa79bb82cbc7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9f1b970b69fea8ac34efa47f0061fc766039e0138064e3a1ee28d3e9cb586e73",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d98370e4a73cc3ffb9a295d56fea95a8a8b919b539def81c07ef909a704eabe7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "49e85c8d696070d40dc9d07b7dc15e03430af7c339be9ef7554ac4ec7d21458d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c30f432b0e546d7cba2bbc563b4adbb63d9ae2bddf3f8291d03815c6d2ac1254",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "12d1530232a52eaa2e9a47d0e82f4492229d6714be635518dfbe4fd4d4925098",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "933d550d4cdb13af5f9b365cc5b8dab9d8dc6676a9ffb9bce94ac72cf4636e9a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3128b4e0b992a0d31b443dac96690addc987a30cc4a37e3dc2ce6fac4f562168",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8907580c35dda0ef0ec1fca774b35b6aa8f8ba38b3a2606a019a919695d35325",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b2a31edf1a333c248d8cf157ce49eed0929ed6c3336820ddea47f5081a257a47",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "87eaaf059f4c26fb57f9e60ffd6043d4979ef8eeff1afb0ec1345acb473f0360",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "daba763c149a04d4b804407f3a128bb5f73fc39b66688e2b701d0ed8b8e036c9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0805c156648674a3f327cd92de5af733379711ce48320812f135b58fd30ab1d2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "97df3fac1edfa844db358d9fb4527016f17ca5b0396b870cd76656f9a61099f5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2ae716ac8631f4249795a3258dc6f040ff03b97a9533f25b798900893813cd42",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8a211c2a7e039e7d59c2b3045bf10bcbe3e08c94bf501c22761e0d6f49730180",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "db6f371cbd7e6c0e7182c1692b02bec2a5c6d2898bdadf26d40f2a0f5b011e3f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fe47c3b7a2ec4ebec23b401dc05f9b09b62452bfbc38de5c13513859b4f61f1c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5bba12926e56b4650bf839cbc6fa4a516bd40842507eaafc43be944f47f65fd0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6f7ec2143dfa9fc2330c0818990cbbf0166e7954a715f3f7f3419d1fcfd4a1f4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1ff39926fcc3f198f8ddaead3e3eec7cd5bde2fd82d8f00f326305e5d661233d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3ec88cedffc7c4e132bc231d5f69c8e66f22d247e8399f26ff3efc4b5a61dcc2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b665c89f26c130e4ef8a8ff5c11770679de529cab9d2984d373cbd025b384827",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0a48a822ad0d983ea8d57254feb112345e14f5c5a8ba4e990804db9fcd19e6f5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "45f30716a4f56e11e65b7bbaea7d90735869c38a49420d9a69ba2764b0992464",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2668b2ccf4c8cf4d8d27f0b9e27fdb04b6f78d80640b562f6262f163ccfefb78",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "74b137c37d495dd2556f126e3112c4f766b3f9189be56a64da6556c58ffaaf30",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e4b7d109ecf464311106f03daa25c26f9661ac2f29f850f4f3836694d5a5de8b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "4f404e5a65ead9c828b520c8e2b7150aa2e2799eea4b08ff51013bdcadb72255",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ddc178d650cd086a76f34834fc7452eb0aaa353d4f236f75a76394702285cab2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e3099b29339770eaf25e29ea948148650dc4152cf9d09c1c3ad3a7bc1f158c7c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "56acddc427dd93d9d1e96e8561fcda395ea276f6458189c0987a94204a257719",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a789faaa27442f859d89b95e03de95ce54f7412fb36f3388774013200637b98a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8eb1f682b657140798b98868da77f44ae67e7bb527bc808a451d1c28bb0ddee9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "37afc019ee754ed7ebd0c54f6b2836d5a43f9ade0793a7e05b8aff5b51ed9847",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\operations\\AMIS_WARMUP_2_COLAB_RUNBOOK.md",
+      "source_sha256": "e5a024d978b5cd3be9e5db031e45a057564fc29e48ea83eaa17f3491cea1cac9",
+      "destination": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+      "anchor": "warmup-runbook-history",
+      "source_blocks": 49,
+      "new_blocks": 43,
+      "coverage": [
+        {
+          "block_sha256": "319223c3de01b172911e213945e90a563b80746f3be1e26a2861e2c8c605f922",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ebaac3bf4a7c8f5ae5d35f231e6a0add2a547c7df7f59f9891eae129a4bcb89b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7c9dc8b507e01605b0aba8ecb92ab965d9b29ce1b86749fc4489e94ad6fffed9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3a7d0e0b29d5e5b521b0f7082bdead94e6fb2429a11c425c9ebc4b61b67e5d7e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "f30a6770a614f916429a5c0b25da328f7f7ee6be7b4962cadd53e241f95f1082",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "163c4a8d9f09d0bb3c42c7470b5ddd5c6066be3c1cea00a87f34dde9616f9511",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "dee033e8ec06c99bff4ee95dcfe38c3b85e74462b67d7e45d0bcff09f9a2651c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e4b8ee0671dbcc0706e930454aa129b43a5947dcd744cd5ccd85a05ab05b62e2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "10235927f7cbdb6bbc8e241969cdc4389af2aa06a4b9de4e97642360ca3e7ffc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ead2f70e2bccdf2038bcd66b5cadf9262f4633516b4c6d28d0291deca4a631ef",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "c1f9ca98398e3cd10fc1864f8d3b450dfbc268939d494383dd34986a606f38c7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6c02f0d5ef5ea147f7e67edf7814324ef9149025b6390b256ac304a003ab2d8c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a701b20c59ef10aa0fa63aed3e0d70e8854e4a3d31d7fe0c752a3d5318731987",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9e5e21f2aeaabe19913a4a92c114119a484f2e87487b74d62b1a390f355ba411",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c6d4d34b793c004668ecb565f3258dd1b30293dabbb2f92990f56022c5c5a7a3",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "b0b11a0f410a2beec2e6f36d3c7bb9af0f92cb8ff78064c6321abf5b57b89b66",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b38e6d256c887d190eb0fc80e3746e690b77b48b7acc90ffd179329cc95e0812",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e3ee35261dc1fcd0e78b6dddd977d40b1e592d3572d2c574f62a95d6e782226f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "3165b8f5cb3b13e167652dbe790a75d35eec058563f738335da621c0003f353a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e253b9c15410015c1d0fbd7b8604ff172131b1cc829c0dea6f03d22673b1a856",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "ab43b67ed1417f9d76e9606a530e9213b6e3e859de0782551e627f29592b1992",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "8d5858a7a8110ba3d15cb84a8a689817b198c234d4d8214f6a2def41074d1d71",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fe9501e03d50c5e12e0c0b870c4596898fe390a7c4d7b637537067d5e6fa795b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "84e9de5bf4b2963681ce760fcec9df004fe4f9d33ce87d6b1e9bfad1cdb2f300",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "662e363de86ebab37b15ca7c47d8f3ab41eca601ecedee8e399612ca6faf4489",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "dc90dc4d9217fab6c10a7720d08e3481421329e688cc60ce90f155cfed4e04ab",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "594a29017afacbbdcbb6b191642555b171e5dab41ca8e691431eb1410e59a8e0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b05f4ca3afb3243ee54a386c9162ed0f85ebf2af35a2312e654456f738560451",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "85db2708b7a2695397c9df98d59650ded2624d92f223417e1063932b1601542a",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0c7b431f0748b494b98e1e2d2fb31b7ab85207fa710b4f5702b6c7b10b8b3a70",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "0149c2a1bc97630f79fce4eb1d29ef7bba4392bec403e58c00057fc5ad08ead2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9b7d1b02a44c9347df9e9b84193089838f46ed681c1bebe82332727925b68134",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f458ccca1acc441c001c86b8c431a929948263190a93203f2a99332fc91f73a2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "abeb107874953343d2cbcb039bd8584178333334b192876068ba69245426a587",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "5f486d75c77a7f3483d8e50ee9fc8a25b16a9a680c4ee5e4258d091f0a008431",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f0062e037f671c2ff4f72c67e21767e9ea443689300603600a53745b85147f9d",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1b796f47d054d4ddbb4d12274bd9da4e7f5350059941f9cccdf314031bd64454",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ed4dfacee26f3ceaf7be989f3b14d48d087c496ce775c0ac138fec961185eec2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "a6b3c21b719929622e7ae8c1fdf19f986a1f95ec3468906221182034e1c79fbf",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "922fef940df1dfd1009187ec7b05fd4a13efc9f100ccf6474b763a4463d5820b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e34357519553b33e206264678a11e1871a7e59c29a4fa3ff5c48c13b741483c8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "32f9edf6d64697a20ebefbf61bd66ba087d606487b92139a40f44da103bb61fa",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9a697957b7f2c77e0b369dd9b95ee49b7ba5ed08681ab7b6f522b4b69af326f0",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\operations\\BAN_GIAO_CHAY_2_COLAB.md",
+      "source_sha256": "70744e2033780f3e3d61b320cf3faab4ab2a310e928e91e3e295922fa4c14fae",
+      "destination": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+      "anchor": "warmup-handoff-history",
+      "source_blocks": 36,
+      "new_blocks": 28,
+      "coverage": [
+        {
+          "block_sha256": "2386f5089c72831650ed2da0845f7fda007711a2552d7b07e2535fbae71eb4ba",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "c5e5569a36f48719a3b3eff431493b970b3aa29bed16c7ff334a8d015e197fb8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "bc6796ea48f0c6b05bd8490eb4a89aedfda82170856ea34731fc669eccc5aeee",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "aba01594328d84a18a3add89a4aef47346982f341d555ca28ef4939bc90af83e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e0cbc10e5de0c45178cd6d84cd23bfb439f3c84d99e57c6f2246bea0860171cc",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "7ec50335d28ca12440621a0de10ffd9bddc36a5f6162a9627514941ea3200ebf",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "6dd5dceab35bd81f31acaa19b559c55c4ac47df68597b0d7dc4a659c021a4089",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d0ab0f4c26ee41b092303be3956f80ed9279a1000ff3cf215ffa3cbb0f7b9ed5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "fb7e5630b989809d5b76457cd2ccc7f011f7ed4bcc54c9c64449115a55af16a7",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "e1c0a2904b53b385f11193f13bbd14d0038704e6e9dfad41a3b105e889b9927b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "b712f6945a9d0168117b19a4f1da19bce535dff64da12abc0d7b0802c4bd1a20",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "117cf7f46ad5a2b4181e11f0d35224c9544e488626f03d08ffd5916dbda69f3f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "f13e159a241861a589750533aa84aa19c1dacb6b4c37d5a30bb440a4e4deb36c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "67590aa7de21fd9da3339c5907d603fc39ecad38e5120cf1cb97b09166263883",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9af573941a0597ec2ef15cadc996fdc9689ae68ecaded54ff5514f71e5e4c08b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "956e8ee533c20cd2dc8d1164b7211495d0521f87349f3b7f4341b9e5f6d6bb5e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "1327d7b33046a97752eebec84f519b618a4f6a19ce31bddef0d27a6110db52e1",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "6010c260f6fa35f162407579d135bfe5656fc4be15d0fc161a41d57f5035661c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "2b9b1402beea85511372847d6970e4bbe36d9fc1d0de66377354f0707e68c3c4",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "ca0a1eae33d3e1ff83859065e6e63f7b4c5cad90aa6e359b6fbc16614d143d14",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cef5f7097b5a0c605303dedc3faea23674aeb3710b1d4df42601391ab3a22aa2",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "65d989053a5101938495592c467c7c86a07a6460e08e778ed9f726d12b4c9389",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "d58aa9822cea98558a27704443dabe4a2cc3b2e19b530e5fc6cfb8b8395f83a9",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "04673db09934afde6197e0903ced38517538e1189c5d29001a07a2fa86c98022",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "cb3f91d54eee30e53e35b2b99905f70f169ed549fd78909d3dac2defc9ed8d3b",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "72ee827f5a830327772de01a7a8827de4dded7a0d00f7c45e490592edf0d491c",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "70dff7fce8ffbe5c8731d6ad84d7f3fd63bee6fff88e954d6f30d23646f5ce7e",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "9ff9a06b9cf82b45a853951ffcdb94b02bb22f991c29c4b62fc157ea2891b5e8",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "13547758062c8c00f441ba471fef3887ac745e3a741726cc61dc00e88c12eba5",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        }
+      ]
+    },
+    {
+      "source": "docs\\operations\\implementation_plan.md",
+      "source_sha256": "2b72752148eeac662c96494b412c1546807e65f3018cb35cd6f0e9728e3fda57",
+      "destination": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+      "anchor": "implementation-history",
+      "source_blocks": 13,
+      "new_blocks": 7,
+      "coverage": [
+        {
+          "block_sha256": "580807c90a8da7012142cc1f535c1f0625f2e565f264e38c2abd04b3123f8fe1",
+          "preserved_in": "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "cb31de8160c9d623e949623ae1bd55794b10b2d3f0cc27423bc5964196e3cd2a",
+          "preserved_in": "docs\\archive\\TECHNICAL_AUDITS_20261005.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "5f038e5e74ab3263c4247e4e4a4e48e5f7446a9958c14eee5f505f8c4367c5fd",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "be746c273d14dac35ec160a3c8573239dabd16c14613e40a5e2a28196cb13cce",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "1c33a9e7f5fb2f6aeae44d691be7310b2434c2ee3349fdd507ee993b2ec7a4da",
+          "preserved_in": "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "aeca2009510b2e41aa4120ebb66500be07d6851182b1a36c01a568e6cab0e794",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "d107ada34e0191ec215e46a2c551ceb5fc283bd5e61a8f0b510837f0a10153da",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "b0c1bdec594af8eef999a645382fa0560b3400b820034787113c68b7d846f628",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "2103352153560c69bde48d9513b6a2180b9936aa787741fccc46b910316e34f2",
+          "preserved_in": "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "5c81eddcaf963af5722ab18047015ca00971e88ad50211888af924f0636110f3",
+          "preserved_in": "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "ab44b6a1173f13d6947446b9ba8b2a580a9a52428adc01c7a3fecf42ab5c2e9f",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        },
+        {
+          "block_sha256": "18005920f0876dfd8c7cfa7afc903528797b659c6b3462287b127002aea9b34d",
+          "preserved_in": "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md",
+          "already_present": true
+        },
+        {
+          "block_sha256": "0c5076d15cae87825daca93b7a3972ed4bfdf52872d300fc415a2776b22ba619",
+          "preserved_in": "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md",
+          "already_present": false
+        }
+      ]
+    }
+  ],
+  "archive_hashes": {
+    "docs\\archive\\acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+    "docs\\archive\\acl_natbib.bst": "e332fd51dcea48e2a8a89754892c3cb99674a1cd70b527b661e9aaffc235e83c",
+    "docs\\archive\\BASELINE_METHODS_ANALYSIS_AND_VERIFICATION.md": "15e1eab3be8f2d2f68d7a02181120fe79e5e695dce0c3697b3f75bd2efb72c60",
+    "docs\\archive\\CLEANUP_MANIFEST_20261006.json": "81669b49ab49c17964de686528de1eb9444f55f024d85a66c09a21745a4d2f0f",
+    "docs\\archive\\CLRR_GO_NOGO_PLAN_before_followup_20261003.md": "076ac0bae4d6066b150280aefbbded832702507cd23b8f3fe499667ea940fff5",
+    "docs\\archive\\clrr_main_before_revision_20261003.tex": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+    "docs\\archive\\clrr_references.bib": "e4d866d6f2f7b082f3b0547a8834e11e904487028dd6cdde6b3d232cc6ec7d0b",
+    "docs\\archive\\CORRECTED_RESULTS_20261005.md": "852b07d63ef12b89f61748b81799e077251791b0cf376e0a693191909b583ad3",
+    "docs\\archive\\EXPERIMENTAL_EXTENSION_PLAN.md": "77d31244d0e48d8155b9ed79396d5dcd2c92fc0a4988bfae792a51dabbdff631",
+    "docs\\archive\\EXPERIMENTAL_REVALIDATION_PLAN.md": "8012a741538042c33f4e808f704d551ad715c5198f75f0a63d5a7ca850213fdf",
+    "docs\\archive\\EXPERIMENTS_ORIGINAL_20261003.md": "b07eac7e6f2382dbfa843fd027d0e8a4503987e6a292e43693af25ea3ca68d6e",
+    "docs\\archive\\EXPERIMENTS_v1_with_layerskip_byt5.md": "28f8439c6223b9407e20edf17b5bf1451e54739e9eb58c15ebd11f92c1b269bf",
+    "docs\\archive\\FOLLOWUP_CONTEXT.md": "98378a9eec14d0eed88077ca4e43c79dbfa632f6d601cab940be1c06af220203",
+    "docs\\archive\\GOOGLE_COLAB_SSH_GUIDE.md": "6fe60ca507e77012c3266e01423e4cd96b24fb988320e1d674049652629b757f",
+    "docs\\archive\\HISTORICAL_DIAGNOSTICS_20261002_05.md": "4f7aa80369a6902d431a44733cb95b83d32d43605c238d7d53815bc8c8e9dc2b",
+    "docs\\archive\\implementation_plan_original_20261003.md": "761e950060c9ba5f8623786e646c92332e1055f1c02c976fadd9d08daa6b3cff",
+    "docs\\archive\\LINK_CHECK_20261006.json": "e0f5a4c3a9d8be9f500edfa3e2c20827256fdc55514f9db33c049cd004f05cd9",
+    "docs\\archive\\PAPER_EXPERIMENT_INSIGHTS.md": "5f78bb16dcded0d2df08b2e7e8e37e3a0acb86c7c927fb7b108745b90d4b7aa9",
+    "docs\\archive\\PROJECT_CONTEXT.md": "ca9be23c28e59d5c3cb62551dfa9329e76041e931f82c4bac237252ca365a919",
+    "docs\\archive\\README.md": "7224e3873f1303ca992b03f6a33e807034aafc643e55291bec42dbf44d34d511",
+    "docs\\archive\\RESEARCH_INSIGHTS_v1_with_layerskip_byt5.md": "dc07d297200a87a31d5d8907d506341f72e4f248031e8e44b903f5e0bfc62cd8",
+    "docs\\archive\\TECHNICAL_AUDITS_20261005.md": "2507bb74ecbeed10c554f6d30a1fca9a3717073d9a1e1535fc8637943eb748b5",
+    "docs\\archive\\TEMPLATE_PLAN.md": "ec957a1128177c6253b235d70ea174403d036f5c1d63fce8b89588cf43aaa120",
+    "docs\\archive\\CLRR-paper\\anthology.bib.txt": "79636fbc45e47f8422f5982494e6bc0b91bab873822670f0d86e24a5abeb29ca",
+    "docs\\archive\\CLRR-paper\\formatting.md": "9e004a136c5dd43300d97e5bef5eb3a77d0e2a2d3502f0f2436ec011d1c49e9c",
+    "docs\\archive\\CLRR-paper\\README": "f12c1087f067461d6bcfcfe912d95386b92e9472e97faae09d71b44df55ef43b",
+    "docs\\archive\\CLRR-paper\\README.md": "72ed13896af73eaa34bc986d54917c35ee0b60c3068461f3ad80c68cd128db0f",
+    "docs\\archive\\CLRR-paper\\latex\\acl.sty": "19dfeddc2c0e448f3926a0bef048a9db3f3611b46265b760caabd7ada4f361de",
+    "docs\\archive\\CLRR-paper\\latex\\acl_natbib.bst": "e332fd51dcea48e2a8a89754892c3cb99674a1cd70b527b661e9aaffc235e83c",
+    "docs\\archive\\CLRR-paper\\latex\\clrr_main.tex": "9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb",
+    "docs\\archive\\CLRR-paper\\latex\\clrr_references.bib": "e4d866d6f2f7b082f3b0547a8834e11e904487028dd6cdde6b3d232cc6ec7d0b",
+    "docs\\archive\\CLRR-paper\\latex\\custom.bib": "19a79740db44e25c4f77d4440fb0aac602961c5904cb81b003a219f637aa723a",
+    "docs\\archive\\CLRR-paper\\latex\\main.tex": "3bfd922c830e6e3995bd4820bfd028ff3260d85a11199bc183562fb2607a98e8",
+    "docs\\archive\\CLRR-paper\\latex\\main_tada_backup.tex": "3bfd922c830e6e3995bd4820bfd028ff3260d85a11199bc183562fb2607a98e8",
+    "docs\\archive\\CLRR-paper\\latex\\TADA.pdf": "3109eda5728b1e5f00b16d280864c2544edbc74580e3000af9c074a855092afc",
+    "docs\\archive\\CLRR-paper\\latex\\TADA_v1.pdf": "eb2a49f705b390adfefbb5791dee88a8f2418c6cd2a0c00db82065495356eece",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\appendix_entropy_sink.pdf": "edc79ca50d4f7a5469fc9ee1f7897b3cd11c21a135e61b2b816d20bd77e2eceb",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\appendix_length_scaling.pdf": "df420274798551dfb8d476ad8ea0e1c3080f63cee53f603eb646c9e1f2da11a4",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\clrr_architecture.pdf": "280f4d242e75e4f9faa6468418e515a7142b81758b00da2e3334a434e5b7b84c",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\huggingface_logo.png": "9cf16f4f32604eaf76dabbdf47701eea5a768ebcc7296acc1d1758181f71db73",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\openai-logo.png": "f8967e16a2c815103e23178b92061972c4d0bdd2301f850907dd56f998ed4c07",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\training_dynamics.pdf": "bf279c05aa4aa9636cc5fdc1c382acd743aa125e5a6a5928b6671c729c626aae",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\tssa_architecture.pdf": "7b85562392570936a19edbc4883e6889069f229bb5fdb9b05f231f7c5d1dbad8",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\tssa_architecture.png": "555c73521c2c106763643aa9d819bd2843248106c3a863f208ac56c3202413f8",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\wc_csconda.png": "1c25d3249bd69380e4097ef3481c70ca868005c22beeeed247ba4e5e22737605",
+    "docs\\archive\\CLRR-paper\\latex\\figures\\wc_educoqa.png": "9f65313940bcfcbd40a380e5c86a7ba3582da3519b541d4e6339bc1bf6ed27b7",
+    "docs\\archive\\experiment_reports_20261003\\ASHANINKA_PATIENCE10_RESULTS.md": "95fd719e14c0b5f60fe7f481c24c526dcafda4934c54140ff5c3f9ff0e32e5ed",
+    "docs\\archive\\experiment_reports_20261003\\ASHANINKA_PATIENCE10_RUNBOOK.md": "a697a5cf2e58c68d2a3c11d75c8327cad49aedab715378ba3c862c446adece6e",
+    "docs\\archive\\experiment_reports_20261003\\ASHANINKA_RUNBOOK.md": "ac7498c3cc974eb39add427fef4a5b00316c40148ee18df9a8100ac066adfb63",
+    "docs\\archive\\experiment_reports_20261003\\CHECKPOINT_DIAGNOSTICS_20261002.md": "9c2b1e9b714c94e985b6f891710fb7625e726dadbffd351f52a9139829ff995e",
+    "docs\\archive\\experiment_reports_20261003\\EASY_DIAGNOSTICS_20261002.md": "16ec3a6832b378dfbcf7d9af7f87011b9f28a4501720cd06f2cd7c19b80b8ce1",
+    "docs\\archive\\experiment_reports_20261003\\EXPERIMENTS_BEFORE_CONSOLIDATION.md": "c5b8705f0d5d3e69a4716652a05941270cefd5cf918ef116e554a065ecee6299",
+    "docs\\archive\\experiment_reports_20261003\\FOLLOWUP_RUNBOOK_20261003.md": "284fe5cf6a1b17c08f1e893612c60028fca8e58ff51c7b35433134c3f8ead096",
+    "docs\\archive\\experiment_reports_20261003\\MATCHED_INFERENCE_RESULTS_20261003.md": "ed6bdf6c93649ad3b187d713cf90dfcfdfcb7e27d0c16a996fea13937375db73",
+    "docs\\archive\\experiment_reports_20261003\\METRICS.md": "cbd96db9109e05377dee3203f0a9152326bfe55649ab1613ae023b1bb823c0e7",
+    "docs\\archive\\experiment_reports_20261003\\NEXT_STEPS_AUDITED_20261002.md": "3e31f53831a0d68fbe7020e158896638c6c99b1c44a87cdae7255a316791c4b7",
+    "docs\\archive\\experiment_reports_20261003\\README.md": "411cd66900e6087a21c63244aeca7268fb258dcff040118e53d6d066a374cfee",
+    "docs\\archive\\experiment_reports_20261003\\RESEARCH_INSIGHTS.md": "7e06212ced2cfb341b0dc4c3b72885c0dbe17c81e2caa2f2b3862cda85f304c7",
+    "docs\\archive\\experiment_reports_20261003\\RESULTS_VERIFICATION.md": "83ae66b6e7430b03112d78a062996a06282ba567ccc22f5de3d84179bebe2f3c",
+    "docs\\archive\\figures\\clrr_architecture.pdf": "280f4d242e75e4f9faa6468418e515a7142b81758b00da2e3334a434e5b7b84c",
+    "docs\\archive\\scope_before_20261003\\README.md": "2fdce1aab3399225fc7de23accd18ea2c21aadc599a83152f29ca50ea4dcf1dd",
+    "docs\\archive\\scope_before_20261003\\data_processed\\README.md": "31ae8f6b80a7efc79c1ed5a6f0132c50f474329855581f42f728af5f57de6035",
+    "docs\\archive\\scope_before_20261003\\docs\\CLRR_GO_NOGO_PLAN.md": "92c95bd5a8924533b0a13195ee2c36ca399504559f669c83a80f1fa028bf06bc",
+    "docs\\archive\\scope_before_20261003\\docs\\clrr_main.tex": "c16ad73b7b429c49ed272e3b4e58b5931c06f1cc465c7f71708100af13ccee21",
+    "docs\\archive\\scope_before_20261003\\docs\\clrr_references.bib": "93c135aa8f54e39f9fb734a7eb20683b6a92ee316f078950641867572a3459b0",
+    "docs\\archive\\scope_before_20261003\\docs\\EXPERIMENTS_UPDATED.md": "4d7e8674c91e5c4f47909237a5d907f2591454d02baa1a78c085473f2d495000",
+    "docs\\archive\\scope_before_20261003\\docs\\implementation_plan.md": "3cfe709e29b644b2c748b3b661da098d616be0dffc3381740e77f5c6377fb2c3",
+    "docs\\archive\\scope_before_20261003\\docs\\METRICS.md": "5705aa149a14b1fa887715f87e9abde4cb9a10e3d03f966d1703c2b05b8b4280",
+    "docs\\archive\\scope_before_20261003\\docs\\paper_tables\\ashaninka.tex": "a3873b676c196e9acc4819d93f61d216b5fe519e7be2781878297fec8d270b5a",
+    "docs\\archive\\scope_before_20261003\\retired\\ashaninka_environment.json": "40944e93357e7a8903d8af32bdd235d3cfbb76f86a99818fb1fb5c739fce91b2",
+    "docs\\archive\\scope_before_20261003\\retired\\ashaninka_requirements_frozen.txt": "f7218bb2799afc8d2297761f7b34018cc267da3a1636eff9b72f577200850a50",
+    "docs\\archive\\scope_before_20261003\\retired\\ashaninka_source_manifest.json": "3de78258c5f4704d24b43386ab7e5ca3f8d398475df97863945c56e62d28abeb",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\prepare_ashaninka_spanish.py": "0dc9feb89b557fc9561d4d07fccc96870cc67c3673d79915f4f3d6d3e345c712",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\run_all_rebuttal_suite.py": "9bcebaac4bac176e6c0afc8fcc281750051c354ccf7c3b5acf20028178363d04",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\run_ashaninka_experiments.py": "275f96fd370be852a2e9f5bcb86aae13e95fd57bde1037c5454270a89b930aaa",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\revalidation\\analyze_followup.py": "24ec2f0694b6cfe831a3c4c25c017e58c29a394ca6599b4e91711b4db09c9646",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\revalidation\\measure_saved_output_robustness.py": "4c0a0877dabdb453b6a638024a6b65e728a09e8de6aac1dd5de765e097c2ed60",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\revalidation\\sync_verified_result_tables.py": "0ae955f97697abef4683dea0ea450b0b9e1293b0e0eba4735da931c2f9b927dd",
+    "docs\\archive\\scope_before_20261003\\retired\\scripts\\revalidation\\verify_all_reported_numbers.py": "31ac8deaf54a4a09eeaf1f5baf559abd5553397f031bb11dd45ac077485d0db7",
+    "docs\\archive\\scope_before_20261003\\retired\\src\\comparative_baselines\\layerskip_acl2024\\model.py": "be731c5e8182bec1a3c3cfc934fbeb2553304d37fae438e5095caab902a78647",
+    "docs\\archive\\scope_before_20261003\\retired\\src\\comparative_baselines\\layerskip_acl2024\\train.py": "0d52632977d9513204f44845e81a257b1038e2f0691679b361def38f8087ccd3",
+    "docs\\archive\\scope_before_20261003\\retired\\src\\comparative_baselines\\layerskip_acl2024\\__init__.py": "6404c3e8a51dceadf29cc9697f3eb37fe9707c4fd95f4cc12304c7d0e47e6356",
+    "docs\\archive\\scope_before_20261003\\retired\\src\\comparative_baselines\\layerskip_acl2024\\__pycache__\\model.cpython-311.pyc": "1dcb03db2c86555c2612f2cd660a553db5a48d1b5e1fc640c1281f54658c1be1",
+    "docs\\archive\\scope_before_20261003\\retired\\src\\comparative_baselines\\layerskip_acl2024\\__pycache__\\__init__.cpython-311.pyc": "e7307cedbcc1d080d8928f4aed5fc37f9bbd7d8fd53bf7396b893bb3e3f11076",
+    "docs\\archive\\scope_before_20261003\\scripts\\run_comparative_models.py": "d6e39ce3500d1b26c00999218dd79e77750bba1a6e64847459045aa9490d6150",
+    "docs\\archive\\scope_before_20261003\\scripts\\smoke_test_comparative.py": "3db7ab60810a7dbcc1a44a4bea8a3479545c60a4d0f544a19c3023b9e076da1e",
+    "docs\\archive\\scope_before_20261003\\scripts\\nllb\\run_nllb_suite.sh": "d481b61a0b379bed63661f0dfb1edb9bdf6f1fe2153b190876683ab405676184",
+    "docs\\archive\\scope_before_20261003\\scripts\\nllb\\smoke_test_nllb.py": "fd752475eb5cf6a930f726f3882e610007eb2bce52c083f99d712c013329ba39",
+    "docs\\archive\\scope_before_20261003\\scripts\\revalidation\\build_paper_tables.py": "7323fa7ccbffecefc4fa80c82e7c7806e6a9598c0e66130cf0c748981ac8f3c7",
+    "docs\\archive\\scope_before_20261003\\scripts\\revalidation\\measure_checkpoint_mechanisms.py": "5aabe428cede3947c7b5b75292ed2323f996e6254ba8d66defb1365f49a9bace",
+    "docs\\archive\\scope_before_20261003\\scripts\\revalidation\\measure_utf8_truncation.py": "b6c7cb5413c5ec6d2f22b17d3763da6e1927fed7d164f67983ddf7b0a836f5eb",
+    "docs\\archive\\scope_before_20261003\\scripts\\revalidation\\reevaluate_checkpoints.py": "0623bdf06153d8f6434e0688f97cdbc04f6349715b7da3cfa291485ceb1ab11b",
+    "docs\\archive\\scope_before_20261003\\src\\amis_rewire\\train.py": "7edaee4e0d89db3c655f2e343be583f917a194b30b81fc4a8f91730ecaf04f03",
+    "docs\\archive\\scope_before_20261003\\src\\nllb_suite\\modeling_nllb.py": "75595953232892e66cdf289bcf63ea9ca7bed2750a166bb8a32e6b0a6fda12cb",
+    "docs\\archive\\scope_before_20261003\\src\\nllb_suite\\train_nllb.py": "5a93d7369a1926e45d652295150a076cd0936353ca07055bd541c2e1940b14de",
+    "docs\\archive\\scope_before_20261003\\tests\\smoke_ashaninka_training.py": "7ef8d1882a26cbe1c1ec41c64e65a12c93cd351184693e8c6ed4e7066365c7c2",
+    "docs\\archive\\scope_before_20261003\\tests\\test_audit_repairs.py": "cc9139ea6a8c00ba1cf6761383c934980e9f986792d71e96e51dbdbb5a670aa7",
+    "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_CONFIRMATION_20261005.md": "2ce8b478b791767cb65fcb17a0944311ca41c50cec63d56d48d52e8a526cc867",
+    "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_CONFIRMATION_INSIGHTS_20261005.md": "ed3d38ba0b1c027177bfb241201310399dae3549accf10b539115e2f4773a08b",
+    "docs\\research\\archive\\20261005_before_consolidation\\ACCUMULATION_PILOT_20261005.md": "739dca7c5a058af819b8fda58a236d81f998de55ad0cd456e135be19c6324c74",
+    "docs\\research\\archive\\20261005_before_consolidation\\ACL_LONG_TERM_EXPERIMENT_PLAN.md": "c8e71c59a3ca44ab64b3b7cda155a172dc92ef442611b3545b4e859d26ac70de",
+    "docs\\research\\archive\\20261005_before_consolidation\\AMIS_WARMUP_V2_RESULTS.md": "3aa39d63737bfbf32a607fe363cb169816d883fdaeed8967def88bd40c62c92f",
+    "docs\\research\\archive\\20261005_before_consolidation\\CLRR_GO_NOGO_PLAN.md": "c9eaf9f55e65e16d939328e6a1d94203653d84bd1c3f11fbef4227e37da9d688",
+    "docs\\research\\archive\\20261005_before_consolidation\\CORRECTED_ACCUMULATION_SIGNIFICANCE_20261005.md": "af1b3d39b0e0be5ef88a6d1f1c69c20cd07222f0c290111a6af359bd91e34019",
+    "docs\\research\\archive\\20261005_before_consolidation\\CORRECTED_CONTROLS_20261005.md": "c55524f2fe1bba6e7695e17f07115dedf764267c234b68217d214e960288336c",
+    "docs\\research\\archive\\20261005_before_consolidation\\FIXED_EXPERIMENTS_IF_METHOD_CHANGES.md": "7dcbb9712e58199009136080a5529803835215ab432303685bc30ba437d20d1b",
+    "docs\\research\\archive\\20261005_before_consolidation\\FULLSIZE_GATE_AND_BASELINE42_20261005.md": "07461821aa3a5c90b1b378377aed37d5a56fd57f2c4fc51daf4889b70f53be81",
+    "docs\\research\\archive\\20261005_before_consolidation\\G0_G1_LOCAL_AUDIT_20261005.md": "736a34344ec0196e164c70540877b896dd8b2f0b57bcb93f6616bdfd4a9c1c74",
+    "docs\\research\\archive\\20261005_before_consolidation\\G0_G1_VERIFICATION_20261005.md": "496ea7673bbc39448b72ae09a7286da91921228de2614142c557a68a2d64d14b",
+    "docs\\research\\archive\\20261005_before_consolidation\\GPU_PREFLIGHT_AND_BASELINE_GATE_20261005.md": "9e37ac094fddcd755f75bbe8ef39d6b34ed94b0e07babab95feb5fe6fa18e091",
+    "docs\\research\\archive\\20261005_before_consolidation\\PRE_RERUN_PROVENANCE_AUDIT_20261005.md": "fe5052768a1be3d90f75556a278ce1f5a89e5040418fbbcd57cecec24e3c2f09",
+    "docs\\research\\archive\\20261005_before_consolidation\\PRE_RERUN_VERIFICATION_20261005.md": "b7c3b3c89e2c5ade4824285949403d356db7d210ab9307301a100e3f0f680073",
+    "docs\\research\\archive\\20261005_before_consolidation\\relocation_manifest.json": "13cb5c4cf6321974a7d4384e61c2516206312f7e6fc091a005040dbef7c6b979",
+    "docs\\research\\archive\\20261005_before_consolidation\\RESEARCH_INSIGHTS.md": "645a7846c223acb95ceb308d6d6db731d03bf68fcd3dbeab28b2a6a14345efd5"
+  },
+  "preserved_master_sha256": "d170a9ed25da731631d57ea8dd157d46837f7942a9736876f33be1f9b1739fbf",
+  "sources_removed": true,
+  "verification": "Every source Markdown block passed coverage validation before writes; archive hashes and unchanged author snapshot verified again before source deletion. Scores and raw experiment artifacts unchanged.",
+  "active_local_link_check": "PASS",
+  "archive_integrity_after_cleanup": "PASS: 114 files unchanged",
+  "final_documents": {
+    "docs\\README.md": "614d720c980717a733561f073d0c45da539014475533e83330029bd60a6c2e64",
+    "docs\\experiments\\EXPERIMENTS_UPDATED.md": "12d616d0a820a8aad3060c046bf2e04aafc6a73caff0127430057c2075fdf3a4",
+    "docs\\experiments\\METRICS.md": "6e9e1eb15f00a2f68a7362b38a0d1f51cd5f3ec77c929d276d4a3fc98d66e128",
+    "docs\\research\\ACL_LONG_TERM_EXPERIMENT_PLAN.md": "9f7af708d09b2b4ecbfbaa9cadc817de03494e3058861ab4e0cbc5a17d3903a0",
+    "docs\\research\\RESEARCH_INSIGHTS.md": "757be3456bba175d4ef6b8e91ac0b47eb209412aa234f5e3c4c016541354c59a",
+    "docs\\operations\\COLAB_SSH_GUIDE.md": "84787d69bc645c0b9bf15c625571f11297571199e03c3d68e642751d6048296f",
+    "docs\\operations\\HUGGINGFACE_CHECKPOINT_STORAGE.md": "d2319c5de4225b159b3505cc11ff002a33aa95d85eb8af94ccf8ef7d5c0ac2cf",
+    "docs\\operations\\NEXT_EXPERIMENTS_HANDOFF_20261005.md": "49ababd74fa49cf2cb2e9a798acf631496b90ef9def298e873c8aeadb9314598",
+    "docs\\operations\\RTX6000_TAILSCALE_RUNBOOK.md": "d38c5c5c1800c2dab73a75b92b5e36e85647eb2f57ff046c43de0e8f0a8d6873",
+    "README.md": "04d79cfe9eaa17315b73a86708a5ebd45578cd7b7f79ba001002a9bf2102dfb4"
+  },
+  "active_core_markdown": 9,
+  "additional_untouched_paper_snapshot": "docs\\experiments\\EXPERIMENTS_PAPER_MASTER_20261006.md"
+}

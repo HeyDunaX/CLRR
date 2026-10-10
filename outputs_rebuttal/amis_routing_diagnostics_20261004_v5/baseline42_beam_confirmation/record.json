@@ -1,0 +1,20 @@
+{
+  "id": "mbart-amis-baseline-seed42",
+  "rows": 576,
+  "beams": 4,
+  "saved_training_args_selected_fields": {
+    "generation_num_beams": 4,
+    "generation_max_length": 256
+  },
+  "scores": {
+    "bleu": 17.87347711882429,
+    "chrf++": 14.900876118250695,
+    "chrf0": 17.09988389415773
+  },
+  "prediction_sha256": "e18f39a4f225b283575859d9a7be09cd1a78b444e7c8e2206d2732f42a352e58",
+  "inventory_delta": {
+    "bleu": 0.0,
+    "chrf++": 0.0
+  },
+  "historical_best_step": "unknown; inventory step216 not certified"
+}

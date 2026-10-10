@@ -2,29 +2,42 @@
   "dataset": "opus100_turkish_english_20k",
   "source_language": "tr",
   "target_language": "en",
-  "dataset_source": "Helsinki-NLP/opus-100",
-  "sampling": "Fixed seed 42 sampling of 20,000 train pairs; official validation (2,000) and test (2,000)",
+  "upstream_repo": "Helsinki-NLP/opus-100",
+  "upstream_revision": "805090dc28bf78897da9641cdf08b61287580df9",
+  "upstream_parquet_sha256": {
+    "train": "a1a2979fe986891682913dba5da0888323a5d21b3b3249f69c373c9fb3a3b5ae",
+    "validation": "0c52bc5106b2e4f84ceffd79a15e913f8d4fdfb3eacc5377804c6e668f243a48",
+    "test": "a512f2d6fa5a215eeeda862fff9909b4d5b048219055f11bdef0892f76d8b143"
+  },
+  "sampling": "Previously retained seed42 20000-pair training subset, unchanged bytes/order; membership verified against pinned official train. CSV/row IDs reproduce the sample; original RNG implementation not asserted.",
+  "validation": "All 2000 official rows, exact strings and original order; no filtering/deduplication.",
+  "test": "All 2000 official rows, exact strings and original order; no filtering/deduplication.",
+  "cross_split_stripped_source_overlap": {
+    "train/validation": 0,
+    "train/test": 0,
+    "validation/test": 17
+  },
+  "overlap_policy": "Audit only; retain official validation/test regardless of overlap.",
+  "upstream_row_ids_sha256": "0b3975af51bf02541b3a5ba79b8adaf5d4c5b2d299d18fbfc8f430315c9aaea4",
   "splits": {
     "train": {
       "rows": 20000,
+      "unique_pairs": 19601,
+      "duplicate_pair_excess": 399,
       "sha256": "b20c042e7d096f1cd61e7235dd4ded8477ae79afd6c7c9b2da86e75352916068"
     },
     "validation": {
       "rows": 2000,
-      "sha256": "645664aab1c33bfdb767df112340d2d8b5cf3d00c7ef5c6692f54136a3d6e9ba"
+      "unique_pairs": 1970,
+      "duplicate_pair_excess": 30,
+      "sha256": "bc7542eadd1dc1327b2c4085a7171082241b1e52071ae2114f128ecae3fbf090"
     },
     "test": {
       "rows": 2000,
-      "sha256": "6135d9a7daa39e69b542f7fe972216694b736e5713f6a0311cd6230ed9d4e051"
+      "unique_pairs": 1982,
+      "duplicate_pair_excess": 18,
+      "sha256": "283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd"
     }
   },
-  "cross_split_overlap": {
-    "train/validation": {
-      "exact_sources": 0
-    },
-    "train/test": {
-      "exact_sources": 0
-    }
-  },
-  "preprocessing": "UTF-8; stripped whitespace; non-empty strings; strictly disjoint splits."
+  "scope": "OPUS-100 official evaluation splits with simulated low-resource 20k training subset, not full 1M training benchmark; no pretraining-disjointness claim."
 }

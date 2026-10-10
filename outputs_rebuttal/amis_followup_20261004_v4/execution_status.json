@@ -1,0 +1,36 @@
+{
+  "status": "VERIFIED_COMPLETE_COLAB_STOPPED",
+  "cpu_formula_checks": {
+    "gradient_union_check": "PASS",
+    "rank_definition_check": "PASS",
+    "zero_spectrum_check": "PASS"
+  },
+  "independent_cpu_checks": {
+    "hook_alpha0_raw": "PASS",
+    "route_on_changes_logits": "PASS",
+    "native_ce_capture": "PASS",
+    "target_no_grad": "PASS",
+    "collector_blocks_and_final_LayerNorm": "PASS"
+  },
+  "colab_session": "gpu-a100-s-kkb-ass1b2-1463odjoydtyv",
+  "gpu": "A100",
+  "shape": "Standard",
+  "high_mem_requested": false,
+  "gpu_worker_started": true,
+  "blocker": null,
+  "colab_stopped": true,
+  "payload_uploaded": true,
+  "export_authorized": true,
+  "started_utc": "2026-10-04T08:43:00Z",
+  "gpu_result_runs": 21,
+  "route_control_runs": 3,
+  "independent_audit": "VERIFIED",
+  "validation_replay_seeds": [
+    42,
+    43,
+    44
+  ],
+  "checkpoint_probes": 21,
+  "route_controls": 3,
+  "new_training_runs": 0
+}

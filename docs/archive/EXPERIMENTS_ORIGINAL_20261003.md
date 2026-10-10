@@ -2,13 +2,13 @@
 
 Đây là **bản ghi số gốc dùng trong paper**, trước việc chuẩn hóa lại reference,
 generate lại checkpoint và các phép đo bổ sung. Không đưa số mới vào file này.
-Các kết quả và nhận xét sau xác minh nằm tại [EXPERIMENTS_UPDATED.md](EXPERIMENTS_UPDATED.md).
+Các kết quả và nhận xét sau xác minh nằm tại [EXPERIMENTS_UPDATED.md](../experiments/EXPERIMENTS_UPDATED.md).
 
 ## Nguồn và phạm vi
 
-- Nguồn trực tiếp: [clrr_main.tex](clrr_main.tex), khớp byte với bản paper lưu trước audit.
+- Nguồn trực tiếp: [clrr_main.tex](clrr_main_before_revision_20261003.tex), khớp byte với bản paper lưu trước audit.
 - SHA-256 paper: `9eef948c389a9936817ad3c59fd01e018eabcc276d6f02609be887dacb1f3aeb`.
-- Bản paper đóng băng: [clrr_main_original.tex](../outputs_rebuttal/documentation_consolidation_20261003/clrr_main_original.tex).
+- Bản paper đóng băng: [clrr_main_original.tex](../../outputs_rebuttal/documentation_consolidation_20261003/clrr_main_original.tex).
 - Toàn bộ **10 bảng** bên dưới trích từ paper, giữ nguyên con số, độ làm tròn và dấu significance.
 - “Gốc” ở đây là **bản paper đã có sẵn trước audit**, có cả Strong LoRA đã được tác giả đưa vào bản đó; không phải bản repo đầu tiên chưa chạy Strong LoRA.
 - Asháninka, ByT5, kiểm tra precision và kết quả mới không có trong các bảng paper gốc này; xem file sau.
@@ -427,4 +427,4 @@ CLRR-Both + LSR & Both Enc \& Dec & 3.4478 & 4.5752 \\
 - Paper kết luận **≤0.4% inference overhead** và **+2.2% training overhead**.
 - mBART: paper nêu tăng **+5.03 chrF++**; mT5 decoder: **+2.04 BLEU**.
 
-Đây là các số được bản thảo công bố. Đối chiếu artifact và kết luận sau kiểm tra tại [file sau, mục 7](EXPERIMENTS_UPDATED.md#7-doi-chieu-claim-goc-voi-bang-chung-hien-tai).
+Đây là các số được bản thảo công bố. Đối chiếu artifact và kết luận sau kiểm tra tại [file sau, mục 7](README.md).
