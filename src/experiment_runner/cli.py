@@ -57,6 +57,10 @@ def cpu_gate(config):
     from methods.virtual_corrective_order.v1.model import METHODS as VIRTUAL_ORDER_METHODS
     if all(s['method'] in VIRTUAL_ORDER_METHODS for s in plan['runs']):
         name = 'smoke_virtual_order_training'
+    from methods.gold_ordered_consistency import METHODS as GOC_METHODS
+    if (any(s['method'] in GOC_METHODS for s in plan['runs'])
+            and all(s['method'] in {*GOC_METHODS, 'baseline', 'weak-full-consistency-v1'} for s in plan['runs'])):
+        name = 'smoke_gold_ordered_consistency'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
     sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')

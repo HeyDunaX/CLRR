@@ -25,6 +25,7 @@ from .virtual_corrective_order.v1.model import VirtualCorrectiveOrderMT, METHODS
 
 from .antisymmetric_consistency import AntisymmetricConsistencyMT, METHODS as AC_METHODS
 from .decision_residual_memory import DecisionResidualMemoryMT, METHODS as DRM_METHODS
+from .gold_ordered_consistency import GoldOrderedConsistencyMT, METHODS as GOC_METHODS
 TWO_METHODS = AC_METHODS.keys() | DRM_METHODS.keys()
 
 ALIASES = {
@@ -60,6 +61,8 @@ def wrap_method(base, spec):
         return AntisymmetricConsistencyMT(base, beta=spec['consistency_beta'])
     if method in DRM_METHODS:
         return DecisionResidualMemoryMT(base, eta=spec['memory_eta'], beta=spec['consistency_beta'])
+    if method in GOC_METHODS:
+        return GoldOrderedConsistencyMT(base, method=method, beta=spec['consistency_beta'])
     if method in CMC_METHODS:
         return cmc_model_class(method)(base, method, top_k=spec['continuation_top_k'],
             beta=spec['consistency_beta'], probe_chunk=spec['probe_chunk'])

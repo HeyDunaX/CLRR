@@ -1,5 +1,6 @@
 """Validate and freeze recipes without starting a GPU or changing old receipts."""
 import copy
+import hashlib
 import json
 import re
 import subprocess
@@ -12,6 +13,15 @@ ROOT = Path(__file__).resolve().parents[2]
 REPO = 'FiveC/amis-rewire-checkpoints'
 
 
+def _sha256_matches(path: Path, expected_sha256: str) -> bool:
+    data = path.read_bytes()
+    if hashlib.sha256(data).hexdigest() == expected_sha256:
+        return True
+    lf_to_crlf = hashlib.sha256(data.replace(b'\r\n', b'\n').replace(b'\n', b'\r\n')).hexdigest()
+    crlf_to_lf = hashlib.sha256(data.replace(b'\r\n', b'\n')).hexdigest()
+    return expected_sha256 in (lf_to_crlf, crlf_to_lf)
+
+
 def read_config(path):
     path = Path(path).resolve()
     if not path.is_relative_to(ROOT / 'configs/experiments'):
@@ -21,7 +31,7 @@ def read_config(path):
         lock_path = (ROOT / config['protocol_lock']['path']).resolve()
         if not lock_path.is_relative_to(ROOT / 'configs/protocols'):
             raise ValueError('Protocol lock must live under configs/protocols/')
-        if sha256(lock_path) != config['protocol_lock']['sha256']:
+        if not _sha256_matches(lock_path, config['protocol_lock']['sha256']):
             raise ValueError('Locked baseline protocol changed')
         locked = json.loads(lock_path.read_text(encoding='utf-8'))
         for field in ('data', 'runtime'):
@@ -85,6 +95,8 @@ def read_config(path):
     from methods.virtual_corrective_order.v1.model import METHODS as VIRTUAL_ORDER_METHODS
     supported.update(VIRTUAL_ORDER_METHODS)
     supported.update(TWO_METHODS)
+    from methods.gold_ordered_consistency import METHODS as GOC_METHODS
+    supported.update(GOC_METHODS)
     if config['protocol'].get('hardware_profile', 'a100-standard') == 'rtx6000-fp32':
         p = config['protocol']
         if p['bf16'] or p.get('fp16', False) or p['tf32_training']:
@@ -101,6 +113,9 @@ def read_config(path):
             raise ValueError(f"Unimplemented method: {run['method']}")
         if run['method'] in VIRTUAL_ORDER_METHODS:
             from methods.virtual_corrective_order.v1.validation import validate_recipe
+            validate_recipe(config, run, ROOT)
+        if run['method'] in GOC_METHODS:
+            from methods.gold_ordered_consistency.v1.validation import validate_recipe
             validate_recipe(config, run, ROOT)
         if run['method'] in ORDER_METHODS:
             from methods.corrective_order.v1.data import validate_recipe
@@ -537,6 +552,9 @@ def build(path):
         sources.append(ROOT/'scripts/analysis/run_two_method_round1.py')
     if config.get('virtual_order_calibration'):
         record = config['virtual_order_calibration']
+        sources.append(ROOT / record['path'])
+    if config.get('goc_zero_step_admission'):
+        record = config['goc_zero_step_admission']
         sources.append(ROOT / record['path'])
     if config.get('estimator_admission'):
         receipt=ROOT/config['estimator_admission']['path']

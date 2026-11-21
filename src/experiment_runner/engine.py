@@ -45,6 +45,7 @@ from methods.prefix_consistency import METHODS as PREFIX_METHODS
 from methods.continuation_consistency import METHODS as CMC_METHODS
 from methods.corrective_order import METHODS as ORDER_METHODS
 from methods.virtual_corrective_order.v1.model import METHODS as VIRTUAL_ORDER_METHODS
+from methods.gold_ordered_consistency import METHODS as GOC_METHODS
 
 OUT = ROOT / 'outputs_rebuttal/amis_standardized_controls'
 DATA = ROOT / 'data_processed/amis_mandarin'
@@ -138,7 +139,7 @@ def wrap_model(base, spec):
             modules_to_save=['shared', 'embed_tokens', 'lm_head'] if method == 'strong-lora-b' else None)
         if method != 'strong-lora-b':
             assert not any('embed' in n and p.requires_grad for n, p in model.named_parameters())
-    elif ALIASES.get(method, method) in CANDIDATES or method in TOKEN_METHODS | CONTRASTIVE_METHODS | INTERACTION_METHODS | SEQUENCE_METHODS | DEPTH_METHODS.keys() | ALIGNMENT_RESIDUAL_METHODS.keys() | DRB_METHODS.keys() | DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | STRENGTH_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() or method in ('original-clrr', 'original-lsr', 'original-full'):
+    elif ALIASES.get(method, method) in CANDIDATES or method in TOKEN_METHODS | CONTRASTIVE_METHODS | INTERACTION_METHODS | SEQUENCE_METHODS | DEPTH_METHODS.keys() | ALIGNMENT_RESIDUAL_METHODS.keys() | DRB_METHODS.keys() | DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | STRENGTH_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() or method in ('original-clrr', 'original-lsr', 'original-full'):
         model = wrap_method(base, spec)
         metadata = {'candidate': method, 'definition': spec.get('definition', method),
                     'extra_parameters': 0}
@@ -151,6 +152,8 @@ def wrap_model(base, spec):
             metadata['decoupled_consistency'] = model.method_metadata()
         if method in TWO_METHODS:
             metadata['two_method_round1'] = model.method_metadata()
+        if method in GOC_METHODS:
+            metadata['gold_ordered_consistency'] = model.method_metadata()
         if method in CMC_METHODS:
             metadata['continuation_consistency'] = model.method_metadata()
         if method in PREFIX_METHODS:
@@ -277,10 +280,14 @@ def load_model(spec, folder=None):
         if folder and spec['method'] in INTERACTION_METHODS:
             saved = json.loads((Path(folder) / 'interaction_config.json').read_text())
             assert saved == model.method_metadata(), 'Interaction checkpoint/recipe mismatch'
-    if folder and spec['method'] in PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys():
+    if folder and spec['method'] in PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys():
         model.verify_checkpoint_metadata(folder)
-    tokenizer = AutoTokenizer.from_pretrained(str(folder) if folder else spec['model_id'],
-                                             revision=None if folder else spec['model_revision'], use_fast=True)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(str(folder) if folder else spec['model_id'],
+                                                  revision=None if folder else spec['model_revision'], use_fast=True)
+    except Exception:
+        tokenizer = AutoTokenizer.from_pretrained(str(folder) if folder else spec['model_id'],
+                                                  revision=None if folder else spec['model_revision'], use_fast=False)
     configure_languages(model, tokenizer, spec)
     if spec['method'] in TRANSITION_METHODS:
         if folder:
@@ -526,16 +533,19 @@ def gpu_gate(spec, technical_only=False):
         paired_checks = dict(corrective_order=True, diagnostics=diagnostic,
             all_parameters_virtual=True, full_higher_order_gradient=True,
             whole_view_checkpointing=model.view_checkpointing, saved_tensors=model.offload+'-offload')
-    if spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS:
+    if spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in GOC_METHODS:
         diagnostic = dict(model.last_diagnostics)
         assert np.isfinite(diagnostic['ce']) and np.isfinite(diagnostic['kl'])
         assert diagnostic['checkpoint_context_empty'] and not model._checkpoint_context
-        if spec['method'] in TWO_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or PAIRED_ROUTE_METHODS[spec['method']][1]:
+        if spec['method'] in TWO_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in GOC_METHODS or PAIRED_ROUTE_METHODS[spec['method']][1]:
             if spec['method'] == 'continuation-control-variate-v2':
                 assert diagnostic['dense_kl'] > 0, 'Dense consistency must be active'
                 # The unbiased control-variate estimate may be negative.
             else:
                 assert diagnostic['kl'] > 0, 'Consistency must be active on real dropout views'
+        if spec['method'] in GOC_METHODS:
+            assert 0. <= diagnostic['winner_view1_fraction'] <= 1.
+            assert 0. <= diagnostic['tie_fraction'] <= 1.
         if spec['method'] in CMC_METHODS:
             assert diagnostic['channel_separation'] > 1e-6, 'Continuation channel is degenerate'
             assert 0 < diagnostic['selected_mass'] <= 1
@@ -587,7 +597,7 @@ def gpu_gate(spec, technical_only=False):
         reload_source = folder / 'secondary_reload'
         restore_archive(folder / 'best_chrf.zip', reload_source)
         depth_checks['secondary_archive_restore'] = True
-    if spec['method'] in DEPTH_METHODS or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS:
+    if spec['method'] in DEPTH_METHODS or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS:
         inputs = {key: probe[key] for key in ('input_ids','attention_mask')}
         with torch.no_grad(), generation_precision(model,'fp32'):
             cached = model.generate(**inputs,num_beams=4,max_new_tokens=8,use_cache=True)
@@ -598,7 +608,7 @@ def gpu_gate(spec, technical_only=False):
     restored, _, _ = load_model(spec, reload_source); restored.to('cuda')
     actual = probe_logits(restored, probe)
     torch.testing.assert_close(actual, expected, rtol=1e-5, atol=2e-5)
-    if spec['method'] == 'depth-difference-value-scaled-v2' or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS:
+    if spec['method'] == 'depth-difference-value-scaled-v2' or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS:
         # Shared Trainer resume path: reload step1 weights plus optimizer/scheduler/RNG,
         # repeat step2, and compare against uninterrupted step2.
         del restored; gc.collect(); torch.cuda.empty_cache()
@@ -647,6 +657,9 @@ def upload_and_verify(folder, spec, names):
 
 
 def train_run(spec, resume=None):
+    if spec['method'] in GOC_METHODS:
+        from methods.gold_ordered_consistency.v1.validation import require_admission
+        require_admission(plan(), ROOT)
     if spec['method'] in VIRTUAL_ORDER_METHODS:
         record = plan()['virtual_order_calibration']
         path = ROOT / record['path']
@@ -710,7 +723,7 @@ def train_run(spec, resume=None):
         assert all((Path(resume) / n).exists() for n in ['optimizer.pt', 'scheduler.pt', 'rng_state.pth', 'trainer_state.json'])
     set_seed(spec['seed'])
     model, tokenizer, meta = load_model(spec)
-    if resume and spec['method'] in DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys():
+    if resume and spec['method'] in DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys():
         model.verify_checkpoint_metadata(resume)
     raw_val, val_ds = dataset('validation', tokenizer, spec)
     _, train_ds = dataset('train', tokenizer, spec)
