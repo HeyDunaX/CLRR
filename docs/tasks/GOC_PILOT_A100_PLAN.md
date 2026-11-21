@@ -113,6 +113,12 @@ for id in BASELINE_S42 W_B125_S42 W_B250_S42 GOC_B125_S42 GOC_B250_S42 GOC_SYM_B
   conda run -n clrr python -X utf8 scripts/experiment.py run --config configs/experiments/amis_goc_pilot_a100.json --id "$id" --stage train
 done
 ```
+- **Theo dõi thanh tiến trình (Progress Bar & Live Board) khi train:**
+  - Trong luồng chạy `train`, callback `Progress` tự động in thanh tiến trình trực tiếp ra stdout mỗi 10 bước:
+    `PROGRESS GOC_B125_S42 [######--------------] 30.6% step 220/720 (ep 6.11) loss=3.1420 best=16.8500 ETA=8.2m`
+  - Ở một tab Terminal JupyterLab khác (hoặc khi kiểm tra tiến độ), chạy bảng theo dõi toàn bộ 9 runs:
+    - Xem 1 lần: `conda run -n clrr python -X utf8 scripts/experiment.py watch --config configs/experiments/amis_goc_pilot_a100.json`
+    - Tự động cập nhật mỗi 15 giây: `conda run -n clrr python -X utf8 scripts/experiment.py watch --config configs/experiments/amis_goc_pilot_a100.json --interval 15`
 
 ---
 

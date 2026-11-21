@@ -2,6 +2,7 @@
 import argparse
 import importlib.util
 import json
+from pathlib import Path
 import subprocess
 import sys
 import time
@@ -152,6 +153,66 @@ def lock(config):
     return receipt
 
 
+def watch(config, interval=0):
+    _, cfg = read_config(config)
+    out = workspace(config)
+    runs = cfg['runs']
+    while True:
+        lines = []
+        done_gates, done_trains = 0, 0
+        for idx, spec in enumerate(runs, 1):
+            ident = spec['id']
+            gate_ok = (out / 'gates' / ident / 'PASS.json').exists()
+            val_path = out / 'runs' / ident / 'VAL_COMPLETE.json'
+            prog_path = out / 'runs' / ident / 'progress.json'
+            if gate_ok:
+                done_gates += 1
+            if val_path.exists():
+                done_trains += 1
+                val = json.loads(val_path.read_text(encoding='utf-8'))
+                scores = val.get('scores', {})
+                lines.append(
+                    f"[{idx}/{len(runs)}] {ident:<16} | DONE  | [####################] 100.0% | "
+                    f"BLEU={scores.get('bleu', 0):.4f} chrF0={scores.get('chrf0', 0):.4f} "
+                    f"chrF++={scores.get('chrf++', 0):.4f}"
+                )
+            elif prog_path.exists():
+                prog = json.loads(prog_path.read_text(encoding='utf-8'))
+                step, total = prog.get('step', 0), prog.get('max_steps', 720) or 720
+                bar = prog.get('progress_bar')
+                if not bar:
+                    ratio = max(0., min(1., float(step) / float(total)))
+                    filled = int(round(ratio * 20))
+                    bar = '[' + ('#' * filled) + ('-' * (20 - filled)) + f'] {ratio*100:5.1f}%'
+                ep = prog.get('epoch')
+                ep_str = f"{ep:5.2f}" if isinstance(ep, (int, float)) else '  ?  '
+                best = prog.get('best_metric')
+                best_str = f"{best:.4f}" if isinstance(best, (int, float)) else '  n/a '
+                eta = prog.get('eta_seconds')
+                eta_str = f"{eta/60:4.1f}m" if isinstance(eta, (int, float)) else '  ? '
+                lines.append(
+                    f"[{idx}/{len(runs)}] {ident:<16} | TRAIN | {bar} | "
+                    f"step {step:3d}/{total} (ep {ep_str}) | best_bleu={best_str} | ETA={eta_str}"
+                )
+            elif gate_ok:
+                gate = json.loads((out / 'gates' / ident / 'PASS.json').read_text(encoding='utf-8'))
+                vram = gate.get('max_memory_gb', 0)
+                lines.append(
+                    f"[{idx}/{len(runs)}] {ident:<16} | GATE_PASS (peak {vram:.2f} GiB) | waiting to train"
+                )
+            else:
+                lines.append(f"[{idx}/{len(runs)}] {ident:<16} | PENDING")
+        overall_ratio = done_trains / max(1, len(runs))
+        overall_fill = int(round(overall_ratio * 20))
+        overall_bar = '[' + ('#' * overall_fill) + ('-' * (20 - overall_fill)) + f'] {overall_ratio*100:5.1f}%'
+        header = (f"=== PROGRESS BOARD: {Path(config).stem} | "
+                  f"Gates: {done_gates}/{len(runs)} | Trained: {done_trains}/{len(runs)} {overall_bar} ===")
+        print('\n'.join([header, *lines]), flush=True)
+        if interval <= 0 or done_trains == len(runs):
+            return {'gates_passed': done_gates, 'trained': done_trains, 'total': len(runs)}
+        time.sleep(interval)
+
+
 def status(config):
     out = workspace(config)
     return {p.relative_to(out).as_posix(): json.loads(p.read_text())
@@ -181,9 +242,11 @@ def main():
     for flag in ('lr', 'epochs', 'alignment-weight', 'temperature', 'strength', 'jepa-weight', 'interaction-weight'):
         p.add_argument('--' + flag, type=float)
     p.add_argument('--allow-test', action='store_true', help='Declare a later locked test phase; does not evaluate test')
-    for name in ('inspect', 'build', 'cpu', 'run', 'lock', 'status', 'launch', 'monitor', 'prepare-continuation'):
+    for name in ('inspect', 'build', 'cpu', 'run', 'lock', 'status', 'watch', 'launch', 'monitor', 'prepare-continuation'):
         p = sub.add_parser(name)
         p.add_argument('--config', required=True)
+        if name == 'watch':
+            p.add_argument('--interval', type=int, default=0, help='Refresh interval in seconds (0 = print once)')
         if name == 'run':
             p.add_argument('--stage', required=True, choices=('gate', 'technical-gate', 'train', 'test', 'gate-train', 'pool', 'preflight', 'summarize', 'cleanup-initialization'))
             group = p.add_mutually_exclusive_group(required=True)
@@ -221,6 +284,7 @@ def main():
         elif args.command == 'run': result = run(path, args.stage, args.id, args.account, args.resume)
         elif args.command == 'lock': result = lock(path)
         elif args.command == 'status': result = status(path)
+        elif args.command == 'watch': result = watch(path, args.interval)
         else:
             if config['protocol'].get('hardware_profile') == 'rtx6000-fp32':
                 from .rtx import launch, monitor

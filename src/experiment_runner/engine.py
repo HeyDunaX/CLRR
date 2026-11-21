@@ -410,6 +410,15 @@ class ControlTrainer(PrecisionSeq2SeqTrainer):
 class Progress(TrainerCallback):
     def __init__(self, folder, ident, early=None):
         self.folder, self.ident, self.early = folder, ident, early
+        self.started_unix = time.time()
+
+    @staticmethod
+    def _bar(current, total, width=20):
+        if not total or total <= 0:
+            return '[' + ('-' * width) + ']'
+        ratio = max(0., min(1., float(current) / float(total)))
+        filled = int(round(ratio * width))
+        return '[' + ('#' * filled) + ('-' * (width - filled)) + f'] {ratio*100:5.1f}%'
 
     def on_log(self, args, state, control, logs=None, **kwargs):
         diagnostics = getattr(kwargs.get('model'), 'last_diagnostics', None)
@@ -417,10 +426,22 @@ class Progress(TrainerCallback):
             with (self.folder / 'loss_components.jsonl').open('a', encoding='utf-8') as stream:
                 stream.write(json.dumps(dict(step=state.global_step, epoch=state.epoch,
                     scope='last training microbatch; not epoch mean', **diagnostics)) + '\n')
+        elapsed = max(1e-6, time.time() - self.started_unix)
+        eta = ((elapsed / state.global_step) * max(0, state.max_steps - state.global_step)
+               if state.global_step and state.max_steps else None)
+        bar = self._bar(state.global_step, state.max_steps)
         write(self.folder / 'progress.json', {'id': self.ident, 'status': 'TRAINING',
-              'epoch': state.epoch, 'step': state.global_step, 'max_steps': state.max_steps,
+              'progress_bar': bar, 'epoch': state.epoch, 'step': state.global_step,
+              'max_steps': state.max_steps, 'elapsed_seconds': round(elapsed, 1),
+              'eta_seconds': round(eta, 1) if eta is not None else None,
               'best_metric': state.best_metric, 'updated_unix': time.time(), 'logs': logs,
               'patience_counter': self.early.early_stopping_patience_counter if self.early else None})
+        if logs and 'loss' in logs:
+            ep = f"{state.epoch:.2f}" if state.epoch is not None else '?'
+            best = f"{state.best_metric:.4f}" if state.best_metric is not None else 'n/a'
+            eta_str = f"{eta/60:.1f}m" if eta is not None else '?'
+            print(f"PROGRESS {self.ident:<16} {bar} step {state.global_step}/{state.max_steps} "
+                  f"(ep {ep}) loss={logs['loss']:.4f} best={best} ETA={eta_str}", flush=True)
 
     def on_evaluate(self, args, state, control, metrics=None, **kwargs):
         self.on_log(args, state, control, logs=metrics)
