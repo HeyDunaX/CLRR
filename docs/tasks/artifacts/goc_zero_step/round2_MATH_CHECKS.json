@@ -1,0 +1,68 @@
+{
+  "dtype": "float64",
+  "GOC_v1": {
+    "max_grad_err_z1": 5.204170427930421e-18,
+    "max_grad_err_z2": 5.204170427930421e-18,
+    "view_swap_err": 0.0,
+    "identical_view_aux": 0.0,
+    "all_loser_gold_descent_pushes_positive": true,
+    "case2_winner_aux_grad_max": 0.0,
+    "case2_loser_descent_push": [
+      -0.24701922259585904,
+      0.3572540999909683,
+      -0.05511743869755467,
+      -0.05511743869755467
+    ]
+  },
+  "IPAM_v1": {
+    "analytic_grad_max_err": 1.3877787807814457e-17,
+    "alpha0_equals_ce_err": 0.0,
+    "toy_func_word_ce_descent": [
+      0.009906668673254404,
+      -0.0033022228910848444,
+      -0.0033022228910848444,
+      -0.0033022228910848444
+    ],
+    "toy_func_word_ipam_descent": [
+      0.005367460474156233,
+      -0.0017891534913854435,
+      -0.0017891534913854435,
+      -0.0017891534913854435
+    ],
+    "toy_rare_word_ce_descent": [
+      -0.23930299809870773,
+      0.30407527615282615,
+      -0.032386139027059196,
+      -0.032386139027059196
+    ],
+    "toy_rare_word_ipam_descent": [
+      -0.3584422961783227,
+      0.3961338874827216,
+      -0.018845795652199435,
+      -0.018845795652199435
+    ]
+  },
+  "rejected_sign_ISGS_subtraction_check": {
+    "bayes_identity_max_err": 1.1102230246251565e-16,
+    "analytic_grad_max_err": 1.3877787807814457e-17,
+    "toy_surprise_gates": [
+      0.019813337346508808,
+      0.9991010518983352
+    ],
+    "toy_func_word_grad_norm": 0.016840328773982057,
+    "toy_rare_word_grad_norm": 0.05224210560375611,
+    "toy_rare_word_descent_push": [
+      -0.0010442335203583208,
+      0.042992215379532905,
+      -0.02097399092958729,
+      -0.02097399092958729
+    ]
+  },
+  "note": "Toy FP64 algebra/gradient verification only; NOT GPU gate or translation quality evidence.",
+  "GOC_vs_W_gradient_scale_synthetic": {
+    "beta_1.25_median_norm_ratio_vs_W": 0.7050043202038181,
+    "beta_2.50_median_norm_ratio_vs_W": 1.4100086404076362,
+    "theoretical_small_d_norm_factor": 0.7071067811865475,
+    "note": "Around p1~p2, GOC differentiates 1 view (grad = p_l - p_w) vs W differentiating 2 views (grad ~ +- (p1 - p2)), so logit-space L2 norm scales by 1/sqrt(2) at equal beta and total single-view displacement scales by 1/2."
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "note": "Tracked small handoff artifacts copied from git-ignored outputs/ directory.",
+  "files": [
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/round2_MATH_CHECKS.json",
+      "original_local_path": "outputs/experiments/round2_method_design/MATH_CHECKS.json",
+      "size_bytes": 2292,
+      "sha256": "7ae8a3820af39a9cc3c050d8652c1e6bd99508cd044aed9189979ac0d246d3f1"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/round2_NLM_ADDED_SOURCES.json",
+      "original_local_path": "outputs/experiments/round2_method_design/NLM_ADDED_SOURCES.json",
+      "size_bytes": 707,
+      "sha256": "c030811572866cc729daf6450c7be38033c5f3d32b3b36cb019f1f1611562da0"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/round2_NOTEBOOKLM_ROUND_A.json",
+      "original_local_path": "outputs/experiments/round2_method_design/NOTEBOOKLM_ROUND_A.json",
+      "size_bytes": 76989,
+      "sha256": "dd97b344be0ca10f707f6a339a55ac4b35174952ef40864716517e00bfaf2bfd"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/round2_NOTEBOOKLM_ROUND_B.json",
+      "original_local_path": "outputs/experiments/round2_method_design/NOTEBOOKLM_ROUND_B.json",
+      "size_bytes": 53399,
+      "sha256": "834e61bb2872c5853c1a35383db8eb2ec98e9a3600da1920593795f8e0496cb9"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/sec3_REPORT.md",
+      "original_local_path": "outputs/experiments/sec3_diagnosis_vco_drm_ac_w/REPORT.md",
+      "size_bytes": 23487,
+      "sha256": "5e50bd38cf44ed0f27dc8aa8c3d1779e7af5a231e9f55a1e84ec4d28329374a3"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/sec3_SUMMARY.json",
+      "original_local_path": "outputs/experiments/sec3_diagnosis_vco_drm_ac_w/SUMMARY.json",
+      "size_bytes": 26917,
+      "sha256": "990394599145e4e9033de61819da28c700ea3ef29f36fbb9f0f9f19d3f55ee5c"
+    },
+    {
+      "tracked_path": "docs/tasks/artifacts/goc_zero_step/a100_selector_AUDIT.json",
+      "original_local_path": "outputs/experiments/a100_selector_audit/AUDIT.json",
+      "size_bytes": 6927,
+      "sha256": "c195d0434d7a0fd0d027a909b13860cf930c4d730cd720d93d30e1b67a348abb"
+    }
+  ]
+}

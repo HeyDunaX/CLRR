@@ -1,0 +1,470 @@
+{
+  "prompt": "Act as a strict, adversarial ACL Main Conference reviewer looking for concrete reasons to REJECT two proposed low-resource NMT training methods for adapting a pretrained multilingual encoder-decoder model to an unseen source language. Neither proposal is established evidence yet.\n\nPROPOSAL 1 — Gold-Ordered Asymmetric Dropout Consistency (GOC):\nGiven two native dropout forward passes yielding token distributions p_1, p_2 at each supervised target position t with gold token y_t, define the gold-stronger view w_t = argmax_{v in {1,2}} log p_{v,t}(y_t) and weaker view l_t = 3 - w_t (average on ties).\nObjective: L_GOC = 0.5*(CE(z_1, y) + CE(z_2, y)) + beta * mean_t KL(sg(p_{w_t, t}) || p_{l_t, t}), where sg is stop-gradient.\nMotivation: In symmetric R-Drop SKL(p_1, p_2), the degraded view drags down the gold-aligned view, and the symmetric gradient component (g_1+g_2)/2 suppresses fluctuating rare gold tokens while boosting stable frequent target priors. GOC eliminates both effects while preserving full-vocabulary dark-knowledge transfer. Zero extra parameters, zero inference overhead.\n\nPROPOSAL 2 — Internal Prior-Amplified Margin (IPAM / Self-PoE):\nPass 1 runs native encoder+decoder -> logits z_full. Pass 2 runs decoder-only (torch.no_grad) with all cross-attention residual outputs zeroed -> internal target LM prior logits z_ilm (zero external LM, zero extra parameters, zero inference overhead).\nObjective: L_IPAM = (1 - lambda) * CE(z_full, y) + lambda * CE(z_full + alpha * sg(z_ilm), y).\nMotivation: On target-predictable function words where z_ilm already predicts y_t, CE(z_full + alpha*z_ilm, y) vanishes while (1-lambda)*CE(z_full, y) preserves inference calibration. On rare source-grounded content words where z_ilm favors a frequent target competitor, adding alpha*sg(z_ilm) amplifies the internal prior competitor and forces encoder cross-attention to build a larger discriminative margin.\n\nUsing ONLY the selected primary papers, answer rigorously with section/equation citations where available (mark absent details unknown):\n1. For PROPOSAL 1 (GOC): What are the strongest reasons to reject it? Specifically check overlap with R-Drop, unidirectional KL ablations, self-distillation, and whether ordering by gold likelihood creates a hidden confound (e.g., effective CE reweighting, variance collapse, or optimization instability).\n2. For PROPOSAL 2 (IPAM): Compare exact formulas and gradient paths against Miao et al. (2021) MTO/MSO, Clark et al. (2019) Product of Experts, Meng et al. (2021) ILME, Baziotis et al. (2020), and Sennrich et al. (2024). What is already established prior, what is genuinely different (if anything), and what are the sharpest failure modes (e.g., out-of-distribution zeroed cross-attention in a pretrained decoder, calibration shift, or memorization)?\n3. Do NOT certify novelty. Identify the exact matched controls required to falsify each proposal.",
+  "source_ids": [
+    "3f48a525-0c39-494b-85cb-62067da08d96",
+    "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+    "67b0c77f-8a1f-4ab7-9259-f7ae9876aac7",
+    "79845b89-6411-4663-b8da-e84017cf5f80",
+    "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+    "abb9d87b-1499-490f-a241-6364bfd31d3b",
+    "924ba3d2-bb50-4a2a-bae6-be998f8a79e6"
+  ],
+  "returncode": 0,
+  "stderr": "",
+  "response": {
+    "answer": "### Meta-Reviewer / Reviewer Evaluation (ACL Main Conference)\n\n**Recommendation:** **STRONG REJECT**  \n**Summary of Submissions:** The proposals present two heuristic modifications to sequence-to-sequence training for low-resource cross-lingual adaptation: (1) **Gold-Ordered Asymmetric Dropout Consistency (GOC)**, an asymmetric, stop-gradient variant of R-Drop conditioned on per-token ground-truth likelihood; and (2) **Internal Prior-Amplified Margin (IPAM / Self-PoE)**, a Product-of-Experts loss adding zeroed cross-attention decoder logits to full model logits during training. \n\nNeither proposal presents established empirical evidence. Both rely on theoretical and causal premises that directly conflict with established findings on consistency regularization, probability calibration, internal language model estimation, and dataset debiasing. \n\n---\n\n### 1. Detailed Critique of Proposal 1 (GOC)\n\n#### 1.1 Overlap with R-Drop, Unidirectional KL, and Self-Distillation\n* **Symmetric Regularization vs. Unidirectional Gradient Halving:** Standard R-Drop minimizes the symmetric bidirectional KL divergence between two stochastic dropout sub-models: \\\\(\\mathcal{L}_{\\text{KL}} = \\frac{1}{2}(D_{\\text{KL}}(P_1 \\parallel P_2) + D_{\\text{KL}}(P_2 \\parallel P_1))\\\\) [1, 2]. Liang et al. explicitly establish that R-Drop functions as mutual instance-wise self-distillation [3] and constrained parameter optimization [4, 5], where updating **both** sub-models symmetrically is essential to constrain parameter freedom and bridge the training–inference gap [6, 7]. In Section 2.4 of Liang et al., they specifically critique earlier methods like ELD for only backpropagating through one branch, noting that updating both sub-models provides superior regularization efficiency and stability [7]. GOC discards this foundation by arbitrarily imposing a unidirectional stop-gradient \\\\(\\text{KL}(\\text{sg}(p_{w}) \\parallel p_l)\\\\).\n* **Degeneracy of Dropout Perturbations as Teacher Targets:** In GOC, \\\\(p_{w_t}\\\\) is merely a single stochastic sub-network sampled via native Bernoulli dropout [8]. Unlike true knowledge distillation where the teacher is an ensemble or a converged, larger model [3, 9], a single dropout pass is notoriously high-variance. Freezing \\\\(p_w\\\\) with stop-gradient forces the model to treat an instantaneous, noisy dropout configuration as an unshakeable ground-truth teacher over the entire vocabulary.\n\n#### 1.2 The Hidden Confound: Label-Conditioned Selection Bias and Optimization Instability\n* **Conditioning Teacher Selection on Gold Tokens (\\\\(y_t\\\\)):** GOC dynamically assigns the teacher role via \\\\(w_t = \\operatorname{argmax}_{v \\in \\{1,2\\}} \\log p_{v,t}(y_t)\\\\). The gradient of \\\\(\\mathcal{L}_{\\text{KL}, t} = \\text{KL}(\\text{sg}(p_{w_t, t}) \\parallel p_{l_t, t})\\\\) with respect to the weaker logits \\\\(z_{l_t}\\\\) is analytically given by:\n\\\\[\\nabla_{z_{l_t}} \\mathcal{L}_{\\text{KL}, t} = p_{l_t, t} - p_{w_t, t}\\\\]\nBecause \\\\(w_t\\\\) is selected *specifically* because \\\\(p_{w_t, t}(y_t) > p_{l_t, t}(y_t)\\\\), the gradient update along the gold coordinate \\\\(y_t\\\\) is strictly:\n\\\\[\\frac{\\partial \\mathcal{L}_{\\text{KL}, t}}{\\partial z_{l_t}(y_t)} = p_{l_t, t}(y_t) - p_{w_t, t}(y_t) < 0\\\\]\nThis acts as an **implicit, uncontrolled label-sharpening objective** that operates in direct opposition to label smoothing [10, 11].\n* **Variance Collapse and Spurious Confidence in Low-Resource Adaptation:** In low-resource NMT, models overfit rapidly and produce pathology-level overconfident (low-entropy) distributions on small parallel corpora [12, 13]. If a dropout configuration randomly zeroes out contextual gating and spuriously spikes the probability mass on \\\\(y_t\\\\) while scrambling the tail, GOC crowns that noisy configuration as the target \\\\(p_w\\\\). The weaker view \\\\(p_l\\\\) is then forced to mimic the entire distribution of the noisy view. Rather than regularizing the model toward a smoother manifold [14, 15], GOC reinforces stochastic spikes on gold tokens, accelerating overfitting and inducing severe training instability.\n* **The \"Degraded View Drags Down Gold View\" Fallacy:** GOC’s foundational motivation asserts that in symmetric R-Drop, \"the degraded view drags down the gold-aligned view.\" Liang et al. disprove this: the bidirectional KL constraint bounds the empirical loss gap between the full model and sub-models \\\\(\\sqrt{\\epsilon}\\\\) via the Lipschitz constant of the softmax operator [7, 16]. Symmetrizing the gradient updates both parameter states toward a shared flat minimum; it does not suppress rare tokens.\n\n---\n\n### 2. Detailed Critique of Proposal 2 (IPAM / Self-PoE)\n\n#### 2.1 Formal Comparison of Equations and Gradient Paths\n\n| Method | Formulation / Objective | Role & Nature of Prior / Bias | Gradient Path & Execution Stage |\n| :--- | :--- | :--- | :--- |\n| **IPAM (Proposal 2)** | \\\\(\\mathcal{L} = (1-\\lambda)\\text{CE}(z_{\\text{full}}, y) + \\lambda\\text{CE}(z_{\\text{full}} + \\alpha \\cdot \\text{sg}(z_{\\text{ilm}}), y)\\\\) | \\\\(z_{\\text{ilm}}\\\\) obtained by zeroing cross-attention residuals in the decoder. | Training time. Gradient backpropagates **only** into \\\\(z_{\\text{full}}\\\\). No external model. |\n| **Clark et al. (2019)** [17, 18] | \\\\(\\hat{p} = \\text{softmax}(\\log p + \\log b)\\\\) (Eq. 3.2.3: Bias Product / Product of Experts). Loss on \\\\(\\hat{p}\\\\). | Pretrained bias-only model \\\\(b\\\\) capturing known dataset artifacts. | Training time. Gradients backpropagate only into robust model \\\\(p\\\\); bias model \\\\(b\\\\) is frozen [19]. |\n| **Miao et al. (2021) MTO/MSO** [20-22] | \\\\(\\mathcal{L}_T = \\mathcal{L}_{\\text{CE}}^{\\text{NMT}} + \\lambda_M \\sum_t (1-p_{\\text{NMT}}(t)) M(\\Delta(t))\\\\) (Eq. 7); MSO applies sentence gate \\\\(I_{R<k}\\\\) (Eq. 10). | Explicit margin: \\\\(\\Delta(t) = p_{\\text{NMT}}(y_t) - p_{\\text{LM}}(y_t)\\\\) (Eq. 5). | Training time. Auxiliary LM decoder (no cross-attention) jointly pretrained with shared embeddings [23, 24]. |\n| **Baziotis et al. (2020)** [10, 25, 26] | \\\\(\\mathcal{L} = \\mathcal{L}_{\\text{MT}} + \\lambda \\tau^2 D_{\\text{KL}}(p_{\\text{TM}}(\\tau) \\parallel p_{\\text{LM}}(\\tau))\\\\) (Eq. 1). Also analyses POSTNORM: \\\\(p \\propto p_{\\text{TM}} \\cdot p_{\\text{LM}}\\\\) [27]. | External autoregressive LM trained on target monolingual data as a prior. | Training time. Posterior regularization via soft KL constraint; TM free to deviate from prior [28, 29]. |\n| **Meng et al. (2021) ILME** [30-32] | \\\\(\\text{Score} = \\log P_{\\text{E2E}} + \\lambda_T \\log P_{\\text{extLM}} - \\lambda_I \\log P_{\\text{ILM}}\\\\) (Eq. 18, 33). | Internal LM estimated by eliminating acoustic/context representations (\\\\(c_u=0\\\\)). | **Inference time only**. No training loss modification. Standard E2E model unchanged [33, 34]. |\n| **Sennrich et al. (2024)** [35] | \\\\(\\text{Score} = \\log P(y_t \\mid x, y_{<t}) - \\alpha \\log P(y_t \\mid x_{\\text{rand}}, y_{<t})\\\\) (Source-Contrastive). | Random/unrelated source segment or incorrect language token. | **Inference time only**. Decoding objective modification; zero retraining or architectural surgery [35]. |\n\n#### 2.2 Prior Art vs. Genuinely Different Aspects\n* **What is Already Established Prior:**\n  1. The objective structure \\\\(\\text{CE}(z + \\alpha \\cdot \\text{sg}(z_{\\text{bias}}), y)\\\\) is the exact **Bias Product (Product of Experts)** objective introduced by Clark et al. (2019) to factor out superficial dataset biases [18, 36].\n  2. The concept of approximating an internal language model by zeroing out encoder context/cross-attention was derived and formalized by Meng et al. (2021) as the Joint Softmax Approximation (JSA) for Attention-based Encoder-Decoder (AED) models [31, 37].\n  3. Training an encoder-decoder with a sum of decoder and LM logits was analyzed in NMT by Stahlberg et al. (2018) and Baziotis et al. (2020) under the POSTNORM objective [25, 27].\n* **What is \"Genuinely Different\":**\n  - IPAM simply grafts Meng et al.'s inference-time zeroing heuristic directly into Clark et al.'s training-time Product of Experts formula inside a single sequence-to-sequence model.\n\n#### 2.3 Sharpest Failure Modes and Inherent Flaws\n1. **Severe Out-of-Distribution (OOD) Degradation in the Decoder:**\n   In an Attention-Based Encoder-Decoder (AED) Transformer, decoder layers are trained with residual connections and Layer Normalization conditioned on cross-attention outputs [38]. Meng et al. (2021) explicitly evaluated the internal LM perplexity (ILM-PPL) when zeroing context representations in AED models (Section 5.5, Figure 1b): **AED ILM-PPL exploded to 796.7**, compared to 99.4 for RNN-T and 30.1 for a trained source LM [39, 40]. They proved that an AED decoder *does not function as a standalone LM* without encoder representations [39]. Artificially zeroing cross-attention outputs produces wildly uncalibrated, chaotic logits \\\\(z_{\\text{ilm}}\\\\). Injecting these uncalibrated logits into the training loss poisons the gradient.\n2. **Probability Sharpening, Entropic Collapse, and Inability to Deviate:**\n   Baziotis et al. (2020) conducted an extensive analysis of Product-of-Experts / POSTNORM training (\\\\(\\log p \\propto \\log p_{\\text{TM}} + \\log p_{\\text{LM}}\\\\)) in low-resource NMT (Section 5, Figure 3, Figure 4) [13, 41, 42]. They proved that adding prior logits during training acts like a logical AND, forcing the model into an ultra-low-entropy state that destroys translation quality [28, 43]. On WMT En–De and En–Tr, POSTNORM caused catastrophic degradation (e.g., dropping En–De BLEU from 26.9 to 24.5) [44]. When target words disagree with the prior (such as rare content words or source-grounded named entities), PoE training assigns high probability to incorrect tokens and severely penalizes legitimate source conditioning [41, 42].\n3. **Severe Inference Calibration Shift:**\n   In IPAM, the model is trained against the combined logits \\\\(z_{\\text{full}} + \\alpha z_{\\text{ilm}}\\\\). The gradient forces \\\\(z_{\\text{full}}\\\\) to learn the *residual*:\n   \\\\[\\nabla_{z_{\\text{full}}} \\mathcal{L}_{\\text{IPAM}} = (1-\\lambda)(p_{\\text{full}} - y) + \\lambda(\\text{softmax}(z_{\\text{full}} + \\alpha z_{\\text{ilm}}) - y)\\\\]\n   At inference time, the proposal discards \\\\(z_{\\text{ilm}}\\\\) and decodes with \\\\(z_{\\text{full}}\\\\) alone. Because \\\\(z_{\\text{full}}\\\\) was trained to predict \\\\(y\\\\) in the presence of \\\\(+\\alpha z_{\\text{ilm}}\\\\), removing \\\\(\\alpha z_{\\text{ilm}}\\\\) at test time creates a severe test-time logit shift, destroying model calibration and beam search performance.\n4. **Failure Modes of Bias Product / Over-Compensation:**\n   Clark et al. (2019, Section 5.1) demonstrated that when the bias is not strictly conditionally independent of the main features (the \"Dependent Bias\" setting), the Bias Product method causes the robust model to become *anti-correlated* with the bias, over-compensating and actively learning to undo the bias model's errors [45]. Because cross-attention is fragile in low-resource adaptation to an unseen source language, adding a degraded internal prior will cause cross-attention either to over-compensate erratically or overfit to training artifacts.\n\n---\n\n### 3. Matched Experimental Controls Required to Falsify the Proposals\n\nNovelty cannot be certified for either proposal. To prevent rejection, an empirical submission must evaluate against the following rigorous, matched baselines:\n\n#### For Proposal 1 (GOC):\n1. **Symmetric R-Drop (Liang et al., 2021) [46]:** Compute-matched and hyperparameter-tuned (\\\\(\\alpha \\in \\{1, 3, 5\\}\\\\)) standard bidirectional R-Drop [2, 47].\n2. **Unidirectional R-Drop with Random Orientation:** Optimize \\\\(\\text{KL}(\\text{sg}(p_1) \\parallel p_2)\\\\) with random view orientation rather than gold likelihood ordering. This isolates whether stopping gradients itself has any effect independent of gold selection.\n3. **Reverse-GOC Control:** Set \\\\(w_t = \\operatorname{argmin}_{v \\in \\{1,2\\}} \\log p_{v,t}(y_t)\\\\) (transferring from the gold-weaker to the gold-stronger view). If the author's hypothesis—that weaker views drag down stronger views—is correct, Reverse-GOC must catastrophically underperform GOC. If Reverse-GOC performs comparably, the claimed mechanism is falsified and any effect is an artifact of gradient filtering.\n4. **Confidence-Penalized Label Smoothing (Szegedy et al., 2016; Baziotis et al., 2020) [10, 11]:** Since GOC implicitly sharpens updates on \\\\(y_t\\\\), it must be compared against tuned label smoothing (\\\\(\\alpha \\in \\{0.0, 0.1, 0.2\\}\\\\)) to prove the gain is not trivial label-distribution re-scaling.\n5. **Double-Batch Standard Training (Liang et al., 2021, Appendix C.1) [16]:** A baseline doubling the mini-batch size without KL loss to isolate whether gains stem simply from processing \\\\(2\\times\\\\) the forward instances per step.\n\n#### For Proposal 2 (IPAM):\n1. **Auxiliary LM Baseline (Miao et al., 2021 MTO/MSO) [23]:** A jointly trained auxiliary decoder sharing embeddings and output projections without cross-attention. This isolates whether zeroing cross-attention in an integrated decoder introduces harmful out-of-distribution representations compared to a properly trained architectural prior.\n2. **Inference-Time Internal LM Estimation (Meng et al., 2021 ILME) [30]:** Standard fine-tuning without IPAM, subtracting \\\\(\\lambda_I z_{\\text{ilm}}\\\\) only during inference beam search (Eq. 33) [32]. This verifies whether intrusive training-time PoE is even necessary or inferior to inference-time subtraction.\n3. **Posterior Regularization via Soft KL (Baziotis et al., 2020) [26]:** Replacing the PoE term with a KL penalty against an external target LM (\\\\(D_{\\text{KL}}(p_{\\text{TM}} \\parallel p_{\\text{LM}})\\\\)) to verify whether preserving model flexibility and inference calibration outperforms hard logit addition.\n4. **Static / Unigram Prior Control:** Replacing \\\\(z_{\\text{ilm}}\\\\) with static target marginal log-frequencies. This determines whether IPAM is merely acting as a crude frequency-based competitor penalty rather than a meaningful contextual LM prior.\n5. **Target-Side Word Dropout & Minimum Risk Training (MRT) (Wang & Sennrich, 2020; Voita et al., 2021) [48, 49]:** Established training methods proven to prevent over-reliance on target history and reduce hallucinations without perturbing cross-attention manifolds [48, 50].\n\n---\nWould you like me to formalize these failure modes into a complete reviewer report draft with targeted revision experiments?",
+    "question": "Act as a strict, adversarial ACL Main Conference reviewer looking for concrete reasons to REJECT two proposed low-resource NMT training methods for adapting a pretrained multilingual encoder-decoder model to an unseen source language. Neither proposal is established evidence yet.\n\nPROPOSAL 1 — Gold-Ordered Asymmetric Dropout Consistency (GOC):\nGiven two native dropout forward passes yielding token distributions p_1, p_2 at each supervised target position t with gold token y_t, define the gold-stronger view w_t = argmax_{v in {1,2}} log p_{v,t}(y_t) and weaker view l_t = 3 - w_t (average on ties).\nObjective: L_GOC = 0.5*(CE(z_1, y) + CE(z_2, y)) + beta * mean_t KL(sg(p_{w_t, t}) || p_{l_t, t}), where sg is stop-gradient.\nMotivation: In symmetric R-Drop SKL(p_1, p_2), the degraded view drags down the gold-aligned view, and the symmetric gradient component (g_1+g_2)/2 suppresses fluctuating rare gold tokens while boosting stable frequent target priors. GOC eliminates both effects while preserving full-vocabulary dark-knowledge transfer. Zero extra parameters, zero inference overhead.\n\nPROPOSAL 2 — Internal Prior-Amplified Margin (IPAM / Self-PoE):\nPass 1 runs native encoder+decoder -> logits z_full. Pass 2 runs decoder-only (torch.no_grad) with all cross-attention residual outputs zeroed -> internal target LM prior logits z_ilm (zero external LM, zero extra parameters, zero inference overhead).\nObjective: L_IPAM = (1 - lambda) * CE(z_full, y) + lambda * CE(z_full + alpha * sg(z_ilm), y).\nMotivation: On target-predictable function words where z_ilm already predicts y_t, CE(z_full + alpha*z_ilm, y) vanishes while (1-lambda)*CE(z_full, y) preserves inference calibration. On rare source-grounded content words where z_ilm favors a frequent target competitor, adding alpha*sg(z_ilm) amplifies the internal prior competitor and forces encoder cross-attention to build a larger discriminative margin.\n\nUsing ONLY the selected primary papers, answer rigorously with section/equation citations where available (mark absent details unknown):\n1. For PROPOSAL 1 (GOC): What are the strongest reasons to reject it? Specifically check overlap with R-Drop, unidirectional KL ablations, self-distillation, and whether ordering by gold likelihood creates a hidden confound (e.g., effective CE reweighting, variance collapse, or optimization instability).\n2. For PROPOSAL 2 (IPAM): Compare exact formulas and gradient paths against Miao et al. (2021) MTO/MSO, Clark et al. (2019) Product of Experts, Meng et al. (2021) ILME, Baziotis et al. (2020), and Sennrich et al. (2024). What is already established prior, what is genuinely different (if anything), and what are the sharpest failure modes (e.g., out-of-distribution zeroed cross-attention in a pretrained decoder, calibration shift, or memorization)?\n3. Do NOT certify novelty. Identify the exact matched controls required to falsify each proposal.",
+    "conversation_id": "c5c26a27-ae04-4a33-98d3-51d9a99e6db9",
+    "sources_used": [
+      "3f48a525-0c39-494b-85cb-62067da08d96",
+      "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "79845b89-6411-4663-b8da-e84017cf5f80",
+      "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "67b0c77f-8a1f-4ab7-9259-f7ae9876aac7",
+      "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e"
+    ],
+    "citations": {
+      "1": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "2": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "3": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "4": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "5": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "6": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "7": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "8": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "9": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "10": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "11": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "12": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "13": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "14": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "15": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "16": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "17": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "18": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "19": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "20": "79845b89-6411-4663-b8da-e84017cf5f80",
+      "21": "79845b89-6411-4663-b8da-e84017cf5f80",
+      "22": "79845b89-6411-4663-b8da-e84017cf5f80",
+      "23": "79845b89-6411-4663-b8da-e84017cf5f80",
+      "24": "79845b89-6411-4663-b8da-e84017cf5f80",
+      "25": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "26": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "27": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "28": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "29": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "30": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "31": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "32": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "33": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "34": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "35": "67b0c77f-8a1f-4ab7-9259-f7ae9876aac7",
+      "36": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "37": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "38": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "39": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "40": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+      "41": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "42": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "43": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "44": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+      "45": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+      "46": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "47": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "48": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+      "49": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+      "50": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e"
+    },
+    "references": [
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 1,
+        "cited_text": "1 i i P w (y |x ). Thus the distributions of P w (y |x ) and P w (y |x ) are different for the same input 2ii 1ii 2ii data pair ( xi,yi). Then, at this training step, our R-Drop method tries to regularize on the model\npredictions by minimizing the bidirectional Kullback-Leibler (KL) divergence between these two\noutput distributions for the same sample, which is: Li = 1 / 2( D (P w (y |x )||P w (y |x )) + D (P w (y |x )||P w (y |x ))). ( 2) KL KL1ii2ii KL2ii1ii With the basic negative log-likelihood learning objective Li of the two forward passes:"
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 2,
+        "cited_text": "NLL Li = − logPw ( y |x ) − log Pw (y |x ), ( 3) NLL 1ii 2ii the final training objective is to minimize Li for data ( x ,y ): i i Li = Li +α· Li =− logPw ( y |x ) − log Pw (y |x ) ( 4) NLL KL 1ii 2ii + α / 2[ D (P w (y |x )||P w (y |x )) + D (P w (y |x )||P w (y |x ))], KL1ii 2ii KL2ii 1ii where α is the coefficient weight to control Li . In this way, our R-Drop further regularizes KL the model space beyond dropout and improves the generalization ability of a model. Compared\nEquation (1) with Equation (4), our R-Drop only adds a KL-divergence loss Li based on two"
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 3,
+        "cited_text": "Self-distillation. Minimizing the KL-divergence between the output distributions of two different\nmodels correlates with knowledge distillation [23, 15, 2, 36, 13, 78], where the two models refer to\nteacher and student, respectively. In our setting, the teacher and student are the dropout instantiations\nof the same model, thus it resembles self-knowledge distillation [44] scenario. Different from existing\nmethod that exploits dark knowledge from the model itself [20, 19] or distills knowledge between\ndifferent layers [75], our strategy can be regarded as an instance-wise self-knowledge distillation, i.e.,\neach pair of sampled sub models perform distillation between each other for the same input, which\nalso relates to mutual learning [76] but ours is much more efficient without extra parameters."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 4,
+        "cited_text": "ξ ξL ξ 1 ξ 0 The objective for R-Drop enhanced training can be formulated as solving the following constrained\noptimization problem: 1 ∑ n min E [− log P w (y |x )], ( 5) n ξ ξ i i w i= 1 ∑n s.t. 1 / n E [ D (P w (y |x )||P w (y |x )))] ≤ ϵ. ( 6) ξ( 1), ξ( 2) KL ξ ( 1) i i ξ ( 2) i i i= 1 More precisely, R-Drop optimizes the constrained optimization problem in Equation (5) and Equa-\ntion (6) in a stochastic manner, i.e., it samples two random vectors ξ ( 1) and ξ ( 2) (corresponding to\ntwo dropout instantiations) from Bernoulli distribution and one training instance ( xi,yi), and updates\nthe parameter w according to the stochastic gradient ∇ Li from Equation (4)."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 5,
+        "cited_text": "w As we presented, one problem for dropout is the inconsistency between the training and inference\nmodels.∑Specifically, the training objective for dropout is the average loss of the sub models, i.e.,\nmin 1 n E [− log P w (y |x )], while the full model (denoted as P˜ w(y|x)) is used for inference. wni= 1ξ ξii Our proposed R-Drop enhanced training reduces this inconsistency by forcing the sub structures to\nbe similar. The following proposition uses a linear model to demonstrate that with the constraint in\nEquation (6), the inconsistency gap between the average loss of sub structures and the loss of the full\nmodel can be bounded (detailed proof can be found in Appendix B)."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 6,
+        "cited_text": "From the perspective of deep neural network regularization, our proposed R-Drop can be treated as a\nnew variation of dropout. Different from most of the previous methods that merely work on the hidden\nunits of each layer (e.g., the standard dropout [24]) or model parameters (e.g., dropconnect [64]),\nR-Drop works on both the hidden units and the output of sub models sampled by dropout, which is\nmuch more effective. We theoretically analyze the regularization effect of R-Drop, where the result\nshows that R-Drop can reduce the inconsistency existed in the training and inference."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 7,
+        "cited_text": "Proposition 2.1. For a linear model P w(y|x) = softmax(Norm(wTx)) where Norm(·) denotes the\nnormalization layer and x ∈ Rd, with the constraint in Equation (6) in the main paper, we have √ |Lnll(w) − Eξ[ Lnll(w,ξ)]| ≤ c ϵ, where Lnll(w), Lnll(w,ξ) are the empirical loss calculated by\nthe full model and a random sub model respectively, c is a constant related to the Liptschtz constant\nof the softmax operator. 2.4 Discussion The most related works with our R-Drop are ELD [41] and FD [81], which also study the consistency\ntraining with dropout. However, R-Drop has key differences with them. (1) The gap control is from\ndifferent views. ELD works on directly reducing the gap between the sub model with dropout (train)\nand the expected full model without dropout (inference), while R-Drop and FD are both working on\npenalizing the discrepancy between the sub models, the superiority of regularizing the sub models\nhas been proved in FD. (2) The regularization efficiency is different. ELD only back-propagates the\ngradients through sub model without the full model, which is less efficient than R-Drop that updates\nboth sub models. (3) The regularization effect is different. Both ELD and FD use the L2 distance on\nhidden states as the regularization loss function. However, this is far away from the main training\nobjective that minimizes the negative log-likelihood over model output distribution. The distance of\nhidden states is not in the same space as the probability distribution since log-softmax hugely affects\nthe optimization. In comparison, R-Drop utilizes the KL-divergence between the output probability\ndistributions as the consistency regularization, which is in the same space as the training objective.\nMore analysis and experimental comparisons are shown in Appendix C.4."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 8,
+        "cited_text": "2.3 Theoretical Analysis We analyze the regularization effect of R-Drop in this subsection. Let hl(x) ∈ Rd denote the output\nof the l- th layer of a neural network with input vector x, and let ξ l ∈ Rd denote a random vector,\neach dimension of which is independently sampled from a Bernoulli distribution B(p): { l 1, with probability p, ξi = 0, with probability 1-p. Then the dropout operation on hl(x) can be represented by h l (x) = 1ξ l⊙hl(x), where ⊙ denotes the ξl p element-wised product. Hence, the output distribution of the neural network with parameter w after\napplying dropout is P w (y|x) := softmax(linear( hL (· · ·( h1 ( x ))))), where ξ = (ξ L,· · · , ξ0)."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 9,
+        "cited_text": "Results The evaluation metrics for above 8 tasks are as follows: The result for STS-B is the Pearson\ncorrelation; Matthew’s correlation is used for CoLA; Other tasks are measured by Accuracy. The\nresults are presented in Table 3. We can see that R-Drop achieves 1.21 points and 0.80 points\n(on average) improvement over the two baselines BERT-base and RoBERTa-large, respectively,\nwhich clearly demonstrate the effectiveness of R-Drop. Specifically, our RoBERTa-large + RD\nalso surpasses the other two strong models: XLNet-large [72] and ELECTRA-large [7], which are\nspecially designed with different model architecture and pre-training task."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 10,
+        "cited_text": "We use τ > 1 only for computing the DKL be-\ntween the distributions of the TM and the LM and\nis the same for both. The magnitude of DKL scales\nas 1/ τ 2 , so it is important to multiply its output\nwith τ 2 to keep the scale of the LKL loss invariant\nto τ . Otherwise, this would implicitly change the\nweight to λ applied to LKL . Finally, we re-write the\nregularization term of Eq. (1) as follows: LKL= τ 2DKL (pTM ( yt| y< t, x;τ )‖ pLM ( yt| y< t; τ )) 3.2 Relation to Label Smoothing Label smoothing (LS) (Szegedy et al., 2016) is a\n“trick” widely used in machine translation that also\nuses soft targets. Specifically, the target distribution\nat each step is the weighted average between the\none-hot distribution yk of the ground-truth label\nand a uniform distribution over all other K labels,\nparameterized by a smoothing parameter α: yiLS = yi ( 1 − α) +α/K. The purpose of LS is to penalize\nconfidence (i.e., low-entropy distributions)."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 11,
+        "cited_text": "<cited_table> Table 1: Dataset statistics after preprocessing. We note that LS differs from the LM-prior in two\nways. First, LS encourages the model to assign equal probability to all incorrect words (Mu¨ller\net al., 2019), which can be interpreted as a form of\nuninformative prior (Fig. 1). By contrast, the dis-\ntributions of the LM are informative, because they\nexpress the beliefs of the LM at each step. Second,\nLS changes the target distribution (i.e., first term\nin Eq. (1)), whereas the LM-prior involves an addi-\ntional term, hence the two methods are orthogonal.",
+        "cited_table": {
+          "num_columns": 4,
+          "rows": [
+            [
+              "language-pair",
+              "train",
+              "dev",
+              "test"
+            ],
+            [
+              "English-Turkish",
+              "192,482",
+              "3,007",
+              "3,000"
+            ],
+            [
+              "English-German",
+              "275,561",
+              "3,004",
+              "2,998"
+            ]
+          ]
+        }
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 12,
+        "cited_text": "5 Analysis The main results show that LS, that simply penal-\nizes confidence, is a very effective form of regu-\nlarization in low-resource settings. We conduct\na qualitative comparison to test whether the im-\nprovements from the proposed LM-prior are due to\npenalizing confidence, similar to LS, or from actu-\nally using information from the LM. Specifically,\nwe evaluate each model on the DE→EN test-set and\nfor each target token we compute the entropy of\neach model’s distribution. In Fig. 3 we plot for\neach model the density 6 over all its entropy values."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 13,
+        "cited_text": "6We fit a Gaussian kernel with bandwidth 0.3 on the en-\ntropy values of each model. Density plots are more readable 1.0\nBase\nBase+LS\n0.8 LM\nBase+Prior\nPOSTNORM\n0.6\ndensity\n0.4\n0.2\n0.0\n0 1 3 5 7\nentropy per token Figure 3: Estimated densities based on each model’s\nentropy on the DE→EN test set. First, we observe that the un-regularized “Base”\nmodel generates very confident (low-entropy) dis-\ntributions, which suggests that it overfits on the\nsmall parallel data. As expected, the LS regular-\nization successfully makes the TM less confident\nand therefore more robust to over-fitting. For addi-\ntional context, we plot the entropy density of the\nLM and observe that, unsurprisingly, it is the most\nuncertain, since it is unconditional."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 14,
+        "cited_text": "∑n L = 1 / n −logPw( y |x ). ( 1) nll i i i= 1 Since the deep neural networks are prone to over-fitting, regularization methods such as dropout [61]\nare usually adopted during training to reduce the generalization error of the model. Specifically,\ndropout randomly drops part of units in each layer of the neural network to avoid co-adapting and\nover-fitting. Besides, dropout also approximately performs to combine exponentially many different\nneural network architectures efficiently [61], while model combination can always improve the\nmodel performance. Though simple and effective, there is a huge inconsistency between training\nand inference that hinders the model performance. That is, the training stage takes the sub model\nwith randomly dropped units, while the inference phase adopts the full model without dropout. Also,\nthe sub models caused by randomly sampled dropout units are also different without any constraints.\nBased on above observations and the randomness of the structure brought by dropout, we propose\nour R-Drop to regularize the output predictions of sub models from dropout."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 15,
+        "cited_text": "Unlike previous researches of designing specific dropout variants or adapting dropout to different\napplications, we consider to further regularize the model on the success of dropout. Specifically, any\ntwo sub models sampled from dropout are encouraged to produce consistent model prediction for an\ninput data by utilizing KL-divergence in the training stage. That is, we conduct regularization on the\nmodel output level. In doing so, the sub model outputs produced by the randomness of dropout are\nregularized to reduce the parameter freedom, which will enhance generalization in inference."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 16,
+        "cited_text": "∑n √ ‖ 1 ‖ ϵ 1 / 2n E ‖ · wTx⊙ξ−1 / p·wTx⊙ξ‖≤c ( 12) ξ ( 1), ξ ( 2) i 1 i 2 2 p 2 i= 1 ∑n ‖ ‖ For the left term in Eq.(5), we have 1 E ‖ wTx ⊙ ξ − wTx ⊙ ξ ‖ = 2np i= 1 ξ ( 1), ξ ( 2) i 1 i 2 1− p ∑n T ( 1) (2) n∑ i= 1 ‖ w xi ‖, beca√use ξ ,ξ independently follow Bernoulli distribution. Then we have n ‖wTx ‖ ≤ c2 ϵ . Combined with Eq.(4), we have 1 / n i= 1 i 1− p 2 √ |Lnll(w) − Eξ[ Lnll(w,ξ)]| ≤ c1c2 ϵ / 2 ( 13) √ Let c = 1 c c , we can get the result. 2 1 2 C More Studies C.1 Batch Size Doubled Training As discussed in Section 2.2, we implement the algorithm by repeating input data x once and\nconcatenating the x with repeated one in the same mini-batch to forward once. This is similar to\nenlarging the batch size to be double at each step. The difference is that half of the data are the\nsame as the other half, while directly doubling the batch size, the data in the same mini-batch are\nall different. Therefore, we are still interested in the result of directly doubling the batch size to\nsee the performance. We conduct experiments on IWSLT14 De→En translation with Transformer,\nand the batch size is enlarged from 4, 096 to be 8, 192. The result is 34.93 BLEU score. We can\nsee that though slight improvement is achieved (compared to baseline 34.64), it falls far behind our\nstrong performance 37.25. For the detailed training cost for each step, we present the number here:\nTransformer + Double Batch costs near 9ms per step, while Transformer + DR costs about 10ms\nper step. The additional cost is from the KL-divergence loss backward computation. We can see\nthe cost is 1.1 times, which is a negligible cost. We also plot the valid BLEU curves along with\nthe training for this study. The curves are shown in Figure 6. Compared to this batch size doubled\ntraining and our R-Drop, we can clearly see the advantage of R-Drop. With similar training costs,\nR-Drop gradually improves the performance to a much stronger one. In the figures, we also plot the\ncurve for Transformer with the original batch size training (e.g., 4, 096) for a better comparison."
+      },
+      {
+        "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+        "citation_number": 17,
+        "cited_text": "Don’t Take the Easy Way Out: Ensemble Based Methods for Avoiding Known Dataset Biases Christopher Clark ∗, Mark Yatskar †, Luke Zettlemoyer ∗ ∗Paul G. Allen School of CSE, University of Washington {csquared, lsz}@cs.uw.edu †Allen Institute for Artificial Intelligence, Seattle WA marky@allenai.org Abstract State-of-the-art models often make use of su-\nperficial patterns in the data that do not gener-\nalize well to out-of-domain or adversarial set-\ntings. For example, textual entailment mod-\nels often learn that particular key words im-\nply entailment, irrespective of context, and vi-\nsual question answering models learn to pre-\ndict prototypical answers, without considering\nevidence in the image. In this paper, we show\nthat if we have prior knowledge of such biases,\nwe can train a model to be more robust to do-\nmain shift. Our method has two stages: we (1)\ntrain a naive model that makes predictions ex-\nclusively based on dataset biases, and (2) train\na robust model as part of an ensemble with the\nnaive one in order to encourage it to focus on\nother patterns in the data that are more likely to\ngeneralize. Experiments on five datasets with\nout-of-domain test sets show significantly im-\nproved robustness in all settings, including a\n12 point gain on a changing priors visual ques-\ntion answering dataset and a 9 point gain on an\nadversarial question answering test set."
+      },
+      {
+        "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+        "citation_number": 18,
+        "cited_text": "3.2.3 Bias Product Our simplest ensemble is a product of ex-\nperts (Hinton, 2002): p ˆi = softmax ( log( pi ) + log( bi )) Equivalently, pˆi ∝ pi ◦ bi , where ◦ is element-\nwise multiplication. Probabilistic Justification: For a given ex-\nample, x, let x b be the bias of the example. That\nis, it is the features we will use in our bias-only\nmodel. Let x −b be a view of the example that\ncaptures all information about that example\nexcept the bias. Assume that x −b and x b are\nconditionally independent given the label, c. Then\nto compute p(c|x) we have:"
+      },
+      {
+        "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+        "citation_number": 19,
+        "cited_text": "3.2.2 General Approach We train an ensemble of h and f . In particular,\nfor each example, a new class distribution, pˆi , is\ncomputed by combining pi and bi . During train-\ning, the loss is computed using pˆi and the gradi-\nents are backproped through f . During evaluation f is used alone. We propose several different en-\nsembling methods. 2Since the bias-only model is trained on the same train-\nset as the robust model care should also be taken to minimize\noverfitting, although the bias-only model is typically simple\nenough that this is not an issue."
+      },
+      {
+        "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+        "citation_number": 20,
+        "cited_text": "t- th time step by the difference of the predicted\nprobabilities of them: ∆(t) = pN M T (yt| y< t, x) − pLM (yt| y< t), ( 5) where pN M T denotes the predicted probability of\nthe NMT model, i.e., p(yt | y< t, x), and pLM de-\nnotes that of the LM, i.e., p(yt | y< t ). The Margin ∆(t) is negatively correlated to the\noverconfidence degree of the LM, and different\nvalues of the Margin indicate different cases: If ∆( t) is big, the NMT model is apparently\nbetter than the LM, and yt is strongly related\nto the source sentence x. Hence the LM is not\noverconfident. If ∆( t) is medium, the LM may be slightly\noverconfident and the NMT model has the\npotential to be enhanced. If ∆( t) is small, the NMT model might de-\ngrade to the LM and not correctly translate\nthe source sentence, i.e., the LM is overconfi-\ndent. 2"
+      },
+      {
+        "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+        "citation_number": 21,
+        "cited_text": "As shown in Figure 1, the four variations3 have\nquite different slopes. Specifically, the three non-\nlinear functions are more stable around ∆ = 0 (e.g., (6) ∆ ∈ [−0.5, 0.5]) than Linear, especially Quintic. We will report the performance of the four M(∆) concretely and analyze why the three non-linear M(∆) perform better than Linear in Section 5.4. Finally, based on LM , we propose the Margin- based Token-level Objective (MTO): LT = LNc MT + λM LM, ( 7) e where LNMT is the cross-entropy loss of the NMT"
+      },
+      {
+        "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+        "citation_number": 22,
+        "cited_text": "LS = IR( x,y)< k · LT, ( 10) where IR( x,y)< k is a dynamic weight function in\nsentence level. The indicative function IR( x,y)< k equals to 1 if R( x, y) < k, else 0, where k is a\nhyperparameter. LT is MTO defined in Eq. 7. IR( x,y)< k is dynamic at the training stage. Dur-\ning training, as the model gets better, its ability to\ndistinguish hallucinations improves thus IR( x,y)< k becomes more accurate. We will analyze the\nchanges of IR( x,y)< k in Section 5.4. 3.4 Two-stage Training We elaborate our two-stage training in this section,"
+      },
+      {
+        "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+        "citation_number": 23,
+        "cited_text": "1) jointly pretraining an NMT model and an auxil-\niary LM, and 2) finetuning the NMT model. Jointly Pretraining. The language model mech-\nanism in NMT cannot be directly evaluated, thus\nwe train an auxiliary LM to represent it. We pre-\ntrain them together using a fusion loss function: Lpre = LNc MT + λLM LLc M , ( 11) e e where LNMT and LLM are the cross entropy loss ce ce functions of the NMT model and the LM defined\nin Eq. 2 and Eq. 4, respectively. λLM is a hyperpa-\nrameter. Specifically, we jointly train them through\nsharing their decoders’ embedding layers and their\npre-softmax linear transformation layers (Vaswani\net al., 2017). There are two reasons for joint train-\ning: (1) making the auxiliary LM as consistent as\npossible with the language model mechanism in\nNMT; (2) avoiding abundant extra parameters."
+      },
+      {
+        "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+        "citation_number": 24,
+        "cited_text": "Evaluation. We measure the case-sensitive\nBLEU scores using multi-bleu.perl 5 for En→De\nand En→Fr. For Zh→En, case-sensitive BLEU\nscores are calculated by Moses mteval-v13a.pl script 6 . Moreover, we use the paired bootstrap\nresampling (Koehn, 2004) for significance test. We\nselect the model which performs the best on the\nvalidation sets and report its performance on the\ntest sets for evaluation. Model and Hyperparameters. We conduct ex-\nperiments based on the Transformer (Vaswani et al.,\n2017) and implement our approaches with the open-\nsource tooklit Opennmt-py ( Klein et al., 2017). Fol-\nlowing the Transformer-Base setting in (Vaswani\net al., 2017), we set the hidden size to 512 and\nthe encoder/decoder layers to 6. All three tasks\nare trained with 8 NVIDIA V100 GPUs, and the\nbatch size for each GPU is 4096 tokens. The beam\nsize is 5 and the length penalty is 0.6. Adam op-\ntimizer (Kingma and Ba, 2014) is used in all the\nmodels. The LM architecture is the decoder of the\nTransformer excluding the cross-attention layers,\nsharing the embedding layer and the pre-softmax"
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 25,
+        "cited_text": "Fusion Gulcehre et al. (2015) proposed to incor-\nporate pretrained LMs in NMT, using shallow- and deep-fusion. In shallow-fusion, the LM re-weights the TM’s scores via log-linear interpolation: logp( yt) =( 1 − β) logpTM ( yt| y< t, x) + β logpLM( yt| y< t) In deep fusion, they alter the model architecture to\ninclude the hidden states of a RNN-LM (Mikolov\net al., 2011) as additional features for predicting\nthe next word in the decoder, which are weighted\nwith a controller mechanism (i.e., gating). In both\napproaches, the TM and LM are first trained inde-\npendently and are combined later. Sriram et al.\n(2018) extend these ideas with cold-fusion, where\nthey train the TM from scratch with the LM, using\nits logits as features, instead of its LM hidden states.\nStahlberg et al. (2018) simplify this, by training a\nTM together with a fixed LM, using combinations\nof the TM’s and LM’s outputs. By training the TM\nwith the assistance of the LM, the motivation is that\nthe TM will rely on the LM for fluency, whereas the\nTM will be able to focus on modeling the source.\nThey report the best results with the POSTNORM\nmethod, outperforming other LM-fusion techniques.\nPOSTNORM parameterizes p(yt ) as follows:"
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 26,
+        "cited_text": "3 Language Model Prior We propose to move the LM out of the TM and\nuse it as a prior over its decoder, by employing\nposterior regularization (PR) (Ganchev et al., 2010).\nPR incorporates prior information, by imposing\nsoft constraints on a model’s posterior distributions,\nwhich is much easier than putting Bayesian priors\nover all the parameters of a deep neural network. ∑N L = − logpTM ( yt| y< t, x) ( 1) t= 1 + λDKL(pTM( yt| y< t, x) ‖ pLM( yt| y< t)) The first term is the standard translation objective\nLMT and the second is the regularization term LKL ,\nwhich we interpret as a weakly informative prior\nover the TM’s distributions pTM , that expresses par-\ntial information about y. LKL is defined as the\nKullback-Leibler divergence between the output\ndistributions of the TM and the LM, weighted by λ."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 27,
+        "cited_text": "p(yt )= softmax(logpTM ( yt |y<t, x)+ logpLM ( yt )) It is practically the same as shallow-fusion, but\nwith the LM used also during training, instead of\nused just in inference, and interpolating with λ= 1. Fusion methods face the same computational\nlimitation as noisy channel, since the LM needs to\nbe used during inference. Also, probability inter-\npolation methods, such as shallow fusion or POST-\nNORM, use a fixed weight for all time-steps, which\ncan lead to translation errors. Gated fusion (Gul-\ncehre et al., 2015; Sriram et al., 2018) is more flexi-\nble, but requires changing the network architecture."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 28,
+        "cited_text": "This formulation gives flexibility to the model,\nunlike probability interpolation, such as in fusion\nmethods. For example, POSTNORM multiplies the\nprobabilities of the LM and TM, which is the same\nas applying a logical AND operation, where only\nwords that are probable under both distributions\nwill receive non-negligible probabilities. This pre-\nvents the model from generating the correct word\nwhen there is a large “disagreement” between the\nTM and the LM, which is inevitable as the LM is not\naware of the source sentence (i.e., unconditional).\nHowever, by using the LM-prior we do not change\nthe outputs of the TM. LKL pushes the TM to stay on average close to the prior, but crucially, it en-\nables the TM to deviate from it when needed, for\nexample to copy words from the source."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 29,
+        "cited_text": "7 Conclusions In this work, we present a simple approach for in-\ncorporating knowledge from monolingual data to\nNMT. Specifically, we use a LM trained on target-\nside monolingual data, to regularize the output dis-\ntributions of a TM. This method is more efficient\nthan alternative approaches that used pretrained\nLMs, because it is not required during inference.\nAlso, we avoid the translation errors introduced by\nLM-fusion, because the TM is able to deviate from\nthe prior when needed. We empirically show that while this method\nworks by simply changing the training objective, it\nachieves better results than alternative LM-fusion\ntechniques. Also, it yields consistent performance\ngains even with modest monolingual data (3M sen-\ntences) across all translation directions. This makes\nit useful for low-resource languages, where not\nonly parallel but also monolingual data are scarce."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 30,
+        "cited_text": "[ Yˆ = arg max log P ( Y|X; θES2E) + λT logP ( Y; θLTM ) Y ]\n− λI logP ( Y; θES2E ) , (18) where λI is internal LM weight. We call this LM integration method internal LM estimation (ILME). Compared to Density Ratio, ILME\nsubtracts the log probability of an E2E internal LM parameterized\nby θES2E rather than that of a source-domain LM separately-trained\nwith the training transcript of the E2E model. The key step of ILME is to estimate the internal LM below de-\nfined as the token sequence probability distribution an E2E model"
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 31,
+        "cited_text": "d u− 1 d ear and non-linear functions. We view fu , a linear combination of\nencoder output, as the acoustic representation, and gu , the token\nembedding, as the language representation. JSA allows us to remove fu , i.e., the context vector cu , from\nthe decoder, and compute the conditional probability of the AED\ninternal LM by applying a softmax over logits output as follows P (yu| Y0: u− 1;θASED ) = softmax [ J( gu )] [ ] = softmax Wd · DecoderRNN( h dec , eu−1) + bd u− 1 Note that, without fti , AED is entirely driven by the decoder with\nthe token sequence Y as the only input, acting exactly the same as\nan RNN-LM. With Eq. (19), the AED internal LM is estimated as"
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 32,
+        "cited_text": "Score( yu | X, Y0: u− 1 ) = log P (yu | X, Y0: u− 1 ; θASED ) + λT log P (yu| Y0: u− 1;θLTM ) S − λI log P (yu| Y0: u− 1;θAED ) (29) of lin- (32) (33) target domain. We use the RNN-T or AED trained with 30K-hour 5. EXPERIMENT In this work, we perform both cross-domain and intra-domain eval-\nuations with different LM integration methods. For all evaluations\nin this paper, we perform beam search inference with a beam size\nof 25. All E2E models and RNN-LMs predict word-piece output to-\nkens. We generate 3999 word pieces as the token vocabulary V by\nrunning byte-pair encoding [49] on acoustic training text, and tok-\nenize all the training transcripts of E2E models and the training text\nof LMs with these word pieces. We use PyTorch toolkit [50] for all\nthe experiments."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 33,
+        "cited_text": "Inspired by HAT, we propose an internal LM estimation (ILME) method to effectively integrate external LMs with all pre-existing\nE2E models without any additional model training, including the\nmost popular time-synchoronrous RNN-T and time-asynchonrous\nAED. With ILME, we estimate and subtract the internal LM scores\nof an E2E model from the log-linear combination of the E2E and\nLM scores during inference. By removing the separable AM-LM assumption, ILME enables a more accurate and a lighter-weight ex-\nternal LM integration than Density Ratio with no additional source-\ndomain LM running at the inference. We evaluate 30K-hour RNN-T\nand AED models on cross-domain LibriSpeech test sets and intra-\ndomain Microsoft production test sets. ILME achieves up to 15.5%\nand 6.8% relative word error rate (WER) reductions from Shallow\nFusion for cross- and intra-domain evaluations, respectively. Fur-\nther, despite having 26.8%-29.8% fewer parameters, ILME consis-\ntently outperforms Density Ratio in terms of lower WER."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 34,
+        "cited_text": "6. CONCLUSION We propose an internal LM estimation method to effectively inte-\ngrate an external LM with all pre-existing E2E models without any\nadditional training. The internal LM is approximated by the output\nof an E2E model when zeroing out its acoustic components. Dur-\ning inference, the internal LM score is subtracted from the log-linear\ncombination of E2E model and LM scores. We evaluate 30K-hour\nRNN-T and AED models on cross-domain LibriSpeech test sets and\nintra-domain Microsoft production test sets with different LM in-\ntegration methods. ILME reduces the WER of Shallow Fusion by\n8.1%-15.5% relatively in cross-domain evaluations, and 2.4%-6.8%\nrelatively in intra-domain evaluations. Further, ILME consistently\noutperforms Density Ratio in terms of better WER despite having\n26.8%-29.8% fewer run-time parameters."
+      },
+      {
+        "source_id": "67b0c77f-8a1f-4ab7-9259-f7ae9876aac7",
+        "citation_number": 35,
+        "cited_text": "View a PDF of the paper titled Mitigating Hallucinations and Off-target Machine Translation with Source-Contrastive and Language-Contrastive Decoding, by Rico Sennrich and Jannis Vamvas and Alireza Mohammadshahi View PDF HTML (experimental) Abstract: Hallucinations and off-target translation remain unsolved problems in MT, especially for low-resource languages and massively multilingual models. In this paper, we introduce two related methods to mitigate these failure cases with a modified decoding objective, without either requiring retraining or external models. In source-contrastive decoding, we search for a translation that is probable given the correct input, but improbable given a random input segment. In language-contrastive decoding, we search for a translation that is probable, but improbable given the wrong language indicator token. Experiments on the massively multilingual models M2M-100 (418M) and SMaLL-100 show that these methods suppress hallucinations and off-target translations, reducing the number of translations with segment-level chrF2 below 10 by 67-83% on average, and the number of translations with oscillatory hallucinations by 75-92% on average, across 57 tested translation directions. In a proof of concept on out-of-English translation, we also show that we can suppress off-target translations with large language models. We release our source code at this https URL ."
+      },
+      {
+        "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+        "citation_number": 36,
+        "cited_text": "Our method has two stages. First, we build\na bias-only model designed to capture a naive\nsolution that performs well on the training data,\nbut generalizes poorly to out-of-domain settings.\nNext, we train a second model in an ensemble\nwith the pre-trained bias-only model, which in-\ncentivizes the second model to learn an alternative\nstrategy, and use the second model alone on the\ntest set. We explore several different ensembling\nmethods, building on product-of-expert style ap-\nproaches (Hinton, 2002; Smith et al., 2005). Fig-\nure 1 shows an example of applying this proce-\ndure to prevent a visual question answering (VQA)\nmodel from guessing answers because they are\ntypical for the question, a flaw observed in VQA\nmodels (Goyal et al., 2018; Agrawal et al., 2018)."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 37,
+        "cited_text": "JSA suggests that if ft is a high-level acoustic representation\nof the speech feature xt , gu is a language representation of the\ntoken yu , and the output probability of an E2E model can be\nexpressed by ft and gu in form of P (yu | X, Y0: u− 1 ; θES2E )) =\nsoftmax[ J( ft + gu )], where J is any function that satisfies J( ft + (15) gu ) ≈ J( ft ) + J( gu ), the conditional probability of the E2E in-\nternal LM, i.e., P (yu | Y0: u− 1 ; θES2E ), can be approximated as the\noutput of the E2E model at the step u after we zero out the acoustic\nrepresentation ft from the network, i.e., softmax[ J( gu )]."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 38,
+        "cited_text": "Model Configuration We employ the atten-\ntional encoder-decoder (Bahdanau et al., 2015)\narchitecture, using the “global” attention mech-\nanism (Luong et al., 2015). The recurrent cells\nare implemented using Long short-term memory\n(LSTM; Hochreiter and Schmidhuber (1997)) units.\nWe use a bidirectional LSTM encoder and a unidi-\nrectional LSTM decoder. We also tie the embed-\nding and the output (projection) layers of the de-\ncoders (Press and Wolf, 2017; Inan et al., 2017).\nand apply layer normalization (Ba et al., 2016) to\nthe last decoder representation, before the softmax."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 39,
+        "cited_text": "5.5. Internal LM Perplexity We evaluate the internal LM perplexities (ILM-PPLs) of AED and\nRNN-T models at different epochs on the validation set of 30K-hour\ntraining data which is drawn from the same distribution as the train-\ning data. In Fig. 1, both ILM-PPLs first decrease and then increase\nas the E2E models get trained with more data. Both ILM-PPLs fall\nsharply at initial epochs, but the one of AED begins to increase and\nthen gradually converge at much earlier training stages than that of\nRNN-T. The significantly larger ILM-PPL of AED than RNN-T sug-\ngests that in AED, the decoder needs to work together with the en-\ncoder to perform the language modeling. The decoder does not func-\ntion well as a standalone LM without the encoder input. However,\nin RNN-T, the prediction network is trained to act like an individual\nLM and is later combined with the encoder by the joint network."
+      },
+      {
+        "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+        "citation_number": 40,
+        "cited_text": "(a) RNN-T Internal LM (b) AED Internal LM Fig. 1. The internal LM perplexity of RNN-T and AED as a function\nof thousand (K) hours of training speech. The perplexity is evaluated\non the validation set of the 30K-hour E2E training data. The ILM-PPLs of the RNN-T and AED used in Sections 5.2 and\n5.3 are 99.4 and 796.7, respectively, while the source-domain LM\ntrained with 30K-hour training transcript has a PPL of 30.1 on the\nsame data. Given the maximum perplexity of 4000 under uniform\ndistribution over tokens, the internal LM indeed learns, to some ex-\ntent, the distribution of token sequences through the E2E training."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 41,
+        "cited_text": "Interestingly, the model trained with the LM-\nprior emits more confident distributions than the\n“Base+LS” model, although it also achieves signifi-\ncantly better performance. This clearly shows that\nthe gains cannot be explained just from smoothing\nthe distributions of the TM and suggests that the\nmodel indeed exploits information from the LM. Next, we focus on the “Base+POSTNORM”\nmodel and observe that it generates the most confi-\ndent predictions. Note that, this finding aligns with\na similar analysis in the original paper, where it was\nshown that under POSTNORM the TM generates low-\nentropy distributions. However, even though this\nmethod might improve fluency, it can hurt transla-\ntion quality in certain cases. As described in Sec. 3,\nby multiplying the two distributions, only a small\nsubset of words will have non-zero probability in\nthe final distribution. This means that when there\nare “disagreements” between the TM and LM this\ncan lead to wrong predictions. We illustrate this\nwith a concrete example in Fig. 4. Although the\nTM predicted the correct word, the multiplication\nwith the LM distribution caused the model to finally\nmake a wrong prediction. Also, the final distribu-\ntion assigns a relatively high probability to a word"
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 42,
+        "cited_text": "compared to plotting overlapping histograms. DE: die Republikaner im Kongress drängen auf eine umfassendere Neufassung der Ozonregeln. EN: Republicans in Congress are pushing for a broader rewrite of the ozone rules. more TM LM broader 34.3% new 8.9% more 44.8% wider 22.4% x repeal 7.1% = wider 31.8% larger 7.2% bill 3.7% larger 11.8% … … … Figure 4: Example of failure of probability interpola-\ntion between LM and TM, while translating DE→EN. (“more”), which is not among the top predictions\nof neither the LM or the TM. By contrast, the LM-\nprior does not change the TM’s predictions, and the\nmodel has the flexibility to deviate from the prior."
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 43,
+        "cited_text": "Shallow-fusion achieves consistent but marginal\nimprovements in all language-pairs. It works by\nmaking small (local) changes to pTM , which pri-\nmarily helps improve fluency when the TM is very\nunsure about what to generate next. Surprisingly,\nwhen training the TM with the POSTNORM objec-\ntive, it barely reaches the baseline. As we show\nin our analysis (§ 5), under POSTNORM the TM\ngenerates very sharp distributions, which is a result\nof how it combines pTM and pLM5 . We identify two\npotential reasons for this result. First, in (Stahlberg\net al., 2018) POSTNORM was only tested with LS,\nwhich to some extend hid the issue of low-entropy\noutputs. To verify this, we trained POSTNORM\nwith LS. We observed that in this case, the scores\nimprove significantly, but it still falls short in com-\nparison with the other methods. Second, we note\nthat the LMs used in the original paper were also\ntrained with LS. We hypothesize that by using an\nLM that emitted smoother distribution, it implic-\nitly down-weighted the contribution of pLM , that is"
+      },
+      {
+        "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+        "citation_number": 44,
+        "cited_text": "We developed our models in PyTorch (Paszke\net al., 2019) and we used the Transformer imple-\nmentation from JoeyNMT (Kreutzer et al., 2019).\nWe make our code publically available3 . 3github.com/cbaziotis/lm-prior-for-nmt <cited_table>",
+        "cited_table": {
+          "num_columns": 9,
+          "rows": [
+            [
+              "Method",
+              "",
+              "DE→EN",
+              "",
+              "EN→DE",
+              "",
+              "TR→EN",
+              "",
+              "EN→TR"
+            ],
+            [
+              "",
+              "dev",
+              "test",
+              "dev",
+              "test",
+              "dev",
+              "test",
+              "dev",
+              "test"
+            ],
+            [
+              "Base",
+              "22.6±0.1",
+              "26.9±0.1",
+              "18.3±0.3",
+              "25.6±0.2",
+              "15.9±0.0",
+              "16.6±0.3",
+              "12.2±0.1",
+              "11.2±0.2"
+            ],
+            [
+              "Shallow-fusion",
+              "23.4±0.1",
+              "27.8±0.1",
+              "18.5±0.2",
+              "26.0±0.1",
+              "16.5±0.1",
+              "17.3±0.3",
+              "12.7±0.0",
+              "11.5±0.1"
+            ],
+            [
+              "POSTNORM",
+              "20.4±0.2",
+              "24.5±0.3",
+              "16.6±0.1",
+              "22.9±0.3",
+              "13.8±0.2",
+              "14.8±0.1",
+              "11.0±0.1",
+              "10.2±0.2"
+            ],
+            [
+              "POSTNORM+ LS",
+              "22.0±0.3",
+              "26.4±0.2",
+              "16.9±0.5",
+              "23.3±0.5",
+              "15.0±0.1",
+              "16.0±0.0",
+              "12.5±0.2",
+              "11.0±0.2"
+            ],
+            [
+              "Base + LS",
+              "23.8±0.6",
+              "28.4±0.7",
+              "19.2±0.3",
+              "27.3±0.3",
+              "17.5±0.1",
+              "18.4±0.2",
+              "13.8±0.2",
+              "12.6±0.0"
+            ],
+            [
+              "Base + Prior",
+              "24.9±0.0",
+              "30.2±0.1",
+              "20.5±0.3",
+              "29.1±0.7",
+              "18.5±0.2",
+              "19.5±0.2",
+              "15.1±0.1",
+              "13.8±0.1"
+            ],
+            [
+              "Base + Prior + LS",
+              "25.1±0.3",
+              "30.3±0.3",
+              "20.8±0.4",
+              "29.7±0.7",
+              "18.5±0.3",
+              "19.5±0.2",
+              "15.5±0.1",
+              "14.1±0.2"
+            ],
+            [
+              "Base + Prior (30M)",
+              "24.9±0.1",
+              "30.0±0.1",
+              "21.0±0.4",
+              "29.8±0.3",
+              "18.6±0.0",
+              "19.5±0.2",
+              "–",
+              "–"
+            ]
+          ]
+        }
+      },
+      {
+        "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+        "citation_number": 45,
+        "cited_text": "The bias product method performs poorly on\nthe Dependent bias. Inspection shows that, when\nthe indicator is 1, the bias product model is anti-\ncorrelated with the bias. In particular, it assigns\nan average of 22.5% probability to the class indi-\ncated by the bias, where an unbaised model would\nassign an average of 33% since the bias is ran-\ndom. The root cause is that, if the indicator is 1,\nthe model knows the bias is likely to be wrong, so\nit learns to subtract the value the bias-only model will produce from its own output in order to cancel\nout the bias-only model’s effect on the ensemble’s\noutput."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 46,
+        "cited_text": "R-Drop: Regularized Dropout for Neural Networks Xiaobo Liang 1∗ Lijun Wu 2∗ Juntao Li 1 Yue Wang 1 Qi Meng 2 Tao Qin 2 Wei Chen 2 Min Zhang 1 Tie-Yan Liu 2 1Soochow University, 2Microsoft Research Asia Abstract Dropout is a powerful and widely used technique to regularize the training of deep\nneural networks. Though effective and performing well, the randomness introduced\nby dropout causes unnegligible inconsistency between training and inference. In\nthis paper, we introduce a simple consistency training strategy to regularize dropout,\nnamely R-Drop, which forces the output distributions of different sub models gen-\nerated by dropout to be consistent with each other. Specifically, for each training\nsample, R-Drop minimizes the bidirectional KL-divergence between the output dis-\ntributions of two sub models sampled by dropout. Theoretical analysis reveals that\nR-Drop reduces the above inconsistency. Experiments on 5 widely used deep learn-\ning tasks ( 18 datasets in total), including neural machine translation, abstractive\nsummarization, language understanding, language modeling, and image classifica-\ntion, show that R-Drop is universally effective. In particular, it yields substantial\nimprovements when applied to fine-tune large-scale pre-trained models, e.g., ViT,\nRoBERTa-large, and BART, and achieves state-of-the-art (SOTA) performances\nwith the vanilla Transformer model on WMT14 English→German translation\n( 30.91 BLEU) and WMT14 English→French translation ( 43.95 BLEU), even\nsurpassing models trained with extra large-scale data and expert-designed advanced\nvariants of Transformer models. Our code is available at GitHub 2."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 47,
+        "cited_text": "4.5 Effect of Weight α Further, we investigate the impact of the KL-divergence loss weight α. As mentioned in Section 3.1, we set α = 5 for NMT experiments.\nHere we vary the α in {1, 3, 5, 7, 10} and conduct experiments. As\nshown in Table 7, small α ( e.g., 1) can not perform as good as large α ( e.g., 5), which means we should pay more attention to the KL-\ndivergence regularization. However, too much regularization ( α = 10)\nis also not good, and the best balanced choice is α = 5. Note that\nthe choice of α is distinct for different tasks (e.g., NMT, language\nunderstanding), which depends on how easy the over-fitting happens\ncaused by the specific data size and model size of each task."
+      },
+      {
+        "source_id": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+        "citation_number": 48,
+        "cited_text": "5 Exposure Bias and Source Contributions The results in the previous section agree with some\nobservations made in previous work studying self-\nrecovery and hallucinations. In this section, we\nillustrate more explicitly how our methodology can\nbe used to shed light on the effects of exposure bias\nand training objectives. Wang and Sennrich (2020) empirically link the\nhallucination mode to exposure bias (Ranzato et al.,\n2016), i.e. the mismatch between the gold history\nseen at training time, and the (potentially erro-\nneous) model-generated prefixes at test time. The\nauthors hypothesize that exposure bias leads to\nan over-reliance on target history, and show that\nMinimum Risk Training (MRT), which does not\nsuffer from exposure bias, reduces hallucinations.\nHowever, they did not directly measure this over-\nreliance on target history. Our method is able to di-\nrectly test whether there is indeed an over-reliance\non the target history with MLE-trained models, and\nmore robust inclusion of source context with MRT.\nWe also consider a simpler heuristic, word dropout,\nwhich we hypothesize to have a similar effect."
+      },
+      {
+        "source_id": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+        "citation_number": 49,
+        "cited_text": "Random prefixes. We see that, among all mod-\nels, the MRT model has the highest influence of\nsource (Figure 5a) and the most focused source\ncontributions (Figure 5b). This agrees with our\nexpectations: by construction, MRT removes ex-\nposure bias completely. Therefore, it is confused\nby random prefixes less than other models. Ad-\nditionally, this also links to Wang and Sennrich\n(2020) who showed that MRT reduces hallucina-\ntions. When using word dropout, both its variants\nalso increase the influence of source, but to a much\nlesser extent (Figure 5a). As expected, since target-\nside word dropout slightly reduces exposure bias\n(in contrast to source-side word dropout), it leads\nto a larger increase of source influence."
+      },
+      {
+        "source_id": "0f4ec420-4eb6-4a67-acf2-07ea1a3efa3e",
+        "citation_number": 50,
+        "cited_text": "(a) (b)\nFigure 4: Contribution of source (a) and entropy of\nsource (b) with model-generated prefixes. Minimum Risk Training (Shen et al., 2016) is\na sentence-level objective that inherently avoids ex-\nposure bias. It minimises the expected loss (‘risk’)\nwith respect to the posterior distribution: ∑ ∑ R(θ) = P (y˜|x,θ)∆(y˜,y), (x,y)y˜∈Y(x) where Y(x) is a set of candidate translations for x,\n∆(y˜,y) is the discrepancy between the model pre-\ndiction y˜ and the gold translation y ( e.g., a nega-\ntive smoothed sentence-level BLEU). More details\non the method can be found in Shen et al. (2016)\nor Edunov et al. (2018); training details for our\nmodels are in the appendix."
+      }
+    ]
+  }
+}

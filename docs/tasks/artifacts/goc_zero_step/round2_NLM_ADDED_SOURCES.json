@@ -1,0 +1,22 @@
+{
+  "Miao2021_OverconfidentLM": {
+    "source_type": "url",
+    "source_id": "79845b89-6411-4663-b8da-e84017cf5f80",
+    "title": "https://aclanthology.org/2021.acl-long.268.pdf"
+  },
+  "Baziotis2020_LMPriorNMT": {
+    "source_type": "url",
+    "source_id": "42a8bc65-5ec9-4935-9354-9d7d75cfb146",
+    "title": "https://aclanthology.org/2020.emnlp-main.615.pdf"
+  },
+  "Meng2021_ILME": {
+    "source_type": "url",
+    "source_id": "abb9d87b-1499-490f-a241-6364bfd31d3b",
+    "title": "https://arxiv.org/pdf/2011.01991"
+  },
+  "Clark2019_PoE": {
+    "source_type": "url",
+    "source_id": "924ba3d2-bb50-4a2a-bae6-be998f8a79e6",
+    "title": "https://aclanthology.org/D19-1418.pdf"
+  }
+}
