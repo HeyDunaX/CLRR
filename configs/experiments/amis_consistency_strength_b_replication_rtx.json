@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "dataset": "amis_mandarin",
+  "data": {
+    "train": {
+      "rows": 4600,
+      "sha256": "4e13d83f035a18c67e1b2e3990baff3aa92154a34b754a4d0cdef9a71d85b8e6"
+    },
+    "validation": {
+      "rows": 576,
+      "sha256": "eac078ab237b55c10614f4db5ff026dc3a96a09a69c648ced29b5cdd8d4d11b4"
+    },
+    "test": {
+      "rows": 575,
+      "sha256": "2e3cea3f9011ef6ee237a437b57a1ac21bd9fae9682473bce00c99a80afde0aa"
+    }
+  },
+  "runtime": {
+    "python": "3.13",
+    "torch": "2.6.0",
+    "transformers": "4.57.6",
+    "accelerate": "1.15.0",
+    "peft": "0.21.0",
+    "sacrebleu": "2.6.0",
+    "huggingface_hub": "0.36.2"
+  },
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "protocol": {
+    "epochs": 20,
+    "patience": 10,
+    "weight_decay": 0.0,
+    "warmup_ratio": 0.06,
+    "optim": "adamw_torch_fused",
+    "scheduler": "linear",
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "max_grad_norm": 1.0,
+    "bf16": false,
+    "tf32_training": false,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_use_reentrant": true,
+    "loss_reduction": "microbatch_mean",
+    "eval_batch": 2,
+    "pad_multiple": 8,
+    "generation_precision": "fp32",
+    "tf32_generation": false,
+    "test_beams": 4,
+    "bleu_tokenizer": "zh",
+    "selection": "original-reference validation BLEU; beam1 FP32",
+    "selection_ties": "earliest best",
+    "save_limit": 2,
+    "dataloader_num_workers": 0,
+    "hardware_profile": "rtx6000-fp32",
+    "fp16": false,
+    "minimum_free_gpu_mib": 20000,
+    "attention_implementation": "sdpa",
+    "selection_metric": "eval_bleu",
+    "early_stopping_enabled": true,
+    "retain_secondary_chrf": false,
+    "test_barrier": "No test stage in this pilot",
+    "wait_for_gpu": true
+  },
+  "protocol_lock": {
+    "path": "configs/protocols/amis_drb_bleu.json",
+    "sha256": "bdca2050235d6e938bb4866cf68354ee4ec63f443298a90eed6df3bdea6ad926"
+  },
+  "status": "AUTHOR_AUTHORIZED_STRENGTH_REPLICATION",
+  "purpose": "W beta1.25 vs B beta2.5 fixed-coefficient development replication; no new ACL novelty claim",
+  "test_policy": "No test; both datasets have already been used for development.",
+  "runs": [
+    {
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "learning_rate": 5e-05,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "source_prefix": "",
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "id": "B_S43",
+      "method": "paired-native-rdrop-v1",
+      "seed": 43,
+      "data_seed": 43,
+      "account": 1,
+      "jepa_weight": 0.0,
+      "distance": 2,
+      "strength": 0.0,
+      "definition": "paired-native-rdrop-v1",
+      "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/paired-native-rdrop-v1/seed-43/rtx6000-fp32-sdpa-b4-ga32-es10-select-bleu",
+      "consistency_weight": 2.5
+    },
+    {
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "learning_rate": 5e-05,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "source_prefix": "",
+      "src_lang": "tl_XX",
+      "tgt_lang": "zh_CN",
+      "id": "B_S44",
+      "method": "paired-native-rdrop-v1",
+      "seed": 44,
+      "data_seed": 44,
+      "account": 1,
+      "jepa_weight": 0.0,
+      "distance": 2,
+      "strength": 0.0,
+      "definition": "paired-native-rdrop-v1",
+      "remote_prefix": "checkpoints/amis_mandarin/mbart-large-50/paired-native-rdrop-v1/seed-44/rtx6000-fp32-sdpa-b4-ga32-es10-select-bleu",
+      "consistency_weight": 2.5
+    }
+  ],
+  "screening": {
+    "post_pilot_development_followup": true,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "primary": "W minus B",
+    "secondary": "W minus reused baseline",
+    "mean_min_bleu_vs_baseline": 0.3,
+    "mean_min_bleu_vs_b": 0.2,
+    "positive_seeds_each_comparison": 2,
+    "mean_chrf_not_below_both": true,
+    "test_used": false,
+    "no_automatic_followup": true
+  },
+  "design_review": {
+    "path": "docs/research/CONSISTENCY_STRENGTH_REPLICATION.md",
+    "sha256": "d1d860834f4de99efc00d43d859b2cb303d6ed1a3d8f8cebd01d8db82c6e256f",
+    "decision": "ENGINEERING_PILOT_AUTHORIZED_NOT_NOVELTY_CLAIM"
+  },
+  "minimum_free_disk_gib": 40,
+  "baseline_reuse_audit": [
+    {
+      "seed": 43,
+      "selected_step": 684,
+      "bleu": 16.734500706740533,
+      "chrf": 14.206054664021368,
+      "prefix": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-43/rtx6000-fp32-b4-ga32-es10",
+      "revision": "22d27e349f90592a5960c691f803c50820c03074",
+      "archive_sha256": "b435b7a62772d2482a104c2f334d09319a71697652bef2d02db770c9e6c005f0",
+      "selector_equivalent_on_completed_trajectory": true,
+      "backend": "SDPA reconstructed from historical runtime; not contemporaneous receipt",
+      "source_sha256": {
+        "final_trainer_state.json": "159caa0a556beb00aa930d4bb939bee56697956f38cc9e06108bc15632e02879",
+        "run_metadata.json": "fb448850af5b0c6c7da478406368b0ce66649129a47737f72cc7a176e8001e03",
+        "VAL_COMPLETE.json": "04b12f88627169f542a849a92b7788fb71765c6b13d0607bfb4b2b68386c2b72"
+      }
+    },
+    {
+      "seed": 44,
+      "selected_step": 720,
+      "bleu": 16.208940879376257,
+      "chrf": 13.745001465404949,
+      "prefix": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-44/rtx6000-fp32-b4-ga32-es10",
+      "revision": "e2011af93fea49fcbbad3b3abeb2d98500bbd108",
+      "archive_sha256": "d38c5d07743de3e5a7ac9fae0c79307d3fc7bfc6555277e1364e6db72087f00e",
+      "selector_equivalent_on_completed_trajectory": true,
+      "backend": "SDPA reconstructed from historical runtime; not contemporaneous receipt",
+      "source_sha256": {
+        "final_trainer_state.json": "a51a8bf97c94876c74d9ecbf40bc7440921b0ce7b6fed8342a5422cfa0ae5aa2",
+        "run_metadata.json": "3515dc70a783e9f575352fe05352fc31456094bb95e99261ace9b2d1bbc966a7",
+        "VAL_COMPLETE.json": "8e440bc08ef390e672f8b3eaf7e2c53410517ca7a08cc9b942aa812cb2df3bbc"
+      }
+    }
+  ]
+}

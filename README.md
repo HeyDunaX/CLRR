@@ -325,7 +325,7 @@ src/amis_rewire/
 src/comparative_baselines/   # Shared-encoder Middle-Align adaptation (ACL 2025)
 data_processed/
 ├── amis_mandarin/            # train.csv (4600), validation.csv (576), test.csv (575)
-└── opus100_turkish_english_20k/ # 20k train; official validation/test; training paused
+└── rhade_vietnamese/          # Ê Đê→Vietnamese: original splits 15092/1000/1000
 scripts/
 ├── run_all_models.sh        # Batch execution matrix
 └── revalidation/            # Targeted defense & ablation scripts

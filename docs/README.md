@@ -5,6 +5,7 @@
 | Cần xem | File chính |
 |---|---|
 | Mục lục | `docs/README.md` |
+| Các hướng phát triển method RTX đã thử; tránh làm trùng | [RESULTS_REGISTRY.md](experiments/RESULTS_REGISTRY.md) |
 | Toàn bộ bảng số, cohort và provenance | [EXPERIMENTS_UPDATED.md](experiments/EXPERIMENTS_UPDATED.md) |
 | Protocol metrics, selection và thống kê | [METRICS.md](experiments/METRICS.md) |
 | Diễn giải kết quả, novelty và hypothesis | [RESEARCH_INSIGHTS.md](research/RESEARCH_INSIGHTS.md) |
@@ -14,8 +15,14 @@
 | Điều khiển ba Colab | [COLAB_SSH_GUIDE.md](operations/COLAB_SSH_GUIDE.md) |
 | Tìm/lưu/push checkpoint public | [HUGGINGFACE_CHECKPOINT_STORAGE.md](operations/HUGGINGFACE_CHECKPOINT_STORAGE.md) |
 | Máy RTX6000 qua Tailscale | [RTX6000_TAILSCALE_RUNBOOK.md](operations/RTX6000_TAILSCALE_RUNBOOK.md) |
+| RTX C0/CE controls: kiểm chứng mới nhất, novelty và kế hoạch | [ALIGNMENT_RESIDUAL_CONTROLS_REVIEW.md](research/ALIGNMENT_RESIDUAL_CONTROLS_REVIEW.md) |
 
 ## Trạng thái nghiên cứu
+
+29/10/2026: RTX C0/CE controls và frozen probes đã hoàn tất kiểm chứng.
+C0 hơn controls về point estimate nhưng chưa xác nhận gain so với baseline;
+quality/novelty HOLD, C2 NO-GO. Chưa mở block9/test/A100 mới.
+Đọc report hiện hành ở bảng trên; đoạn sau là mốc chiến dịch cũ.
 
 Amis fresh confirmation32runs đã xong và không đạt gates của Full cũ. Kiểm chứng cơ chế đã xong. Turkish OPUS100 gốc seed42, bốn nhánh Baseline/Middle/LSR/Full đã train/test xong. GPU đã tắt sau backup. Bước tiếp theo là candidate card có controls; chưa launch nâng cấp. Đọc trạng thái ở đầu Insight/Long-term/Handoff thay vì lệnh cũ trong phụ lục lịch sử.
 

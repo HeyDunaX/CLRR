@@ -14,7 +14,51 @@ def cpu_gate(config):
     from methods.registry import ALIASES, CANDIDATES
     candidate_only = all(ALIASES.get(s['method'], s['method']) in CANDIDATES for s in plan['runs'])
     name = 'smoke_method_candidates' if candidate_only else 'smoke_standardized_controls'
+    from methods.alignment_residual import METHODS as ALIGNMENT_RESIDUAL_METHODS
+    if (any(s['method'] in ALIGNMENT_RESIDUAL_METHODS for s in plan['runs'])
+            and all(s['method'] in {*ALIGNMENT_RESIDUAL_METHODS, 'baseline'} for s in plan['runs'])):
+        name = 'smoke_alignment_residual'
+    from methods.decoder_residual_bridge.v1 import METHODS as DRB_METHODS
+    if all(s['method'] in DRB_METHODS for s in plan['runs']):
+        name = 'smoke_decoder_residual_bridge'
+    from methods.difference_preserving.v1 import METHODS as DIFFERENCE_METHODS
+    from methods.difference_preserving.v2.model import METHODS as RELATIONAL_METHODS
+    if all(s['method'] in DIFFERENCE_METHODS for s in plan['runs']):
+        name = 'smoke_difference_preserving'
+    if all(s['method'] in RELATIONAL_METHODS for s in plan['runs']):
+        name = 'smoke_relational_v2'
+    from methods.transition_lsr import METHODS as TRANSITION_METHODS
+    if all(s['method'] in TRANSITION_METHODS for s in plan['runs']):
+        name = 'smoke_transition_lsr'
+    from methods.learned_strength import METHODS as STRENGTH_METHODS
+    if all(s['method'] in STRENGTH_METHODS for s in plan['runs']):
+        name = 'smoke_learned_strength'
+    from methods.paired_route import METHODS as PAIRED_ROUTE_METHODS
+    if all(s['method'] in PAIRED_ROUTE_METHODS for s in plan['runs']):
+        name = 'smoke_paired_route'
+    from methods.decoupled_consistency import METHODS as CONSISTENCY_METHODS
+    if all(s['method'] in CONSISTENCY_METHODS for s in plan['runs']):
+        name = 'smoke_decoupled_consistency'
+    from methods.prefix_consistency import METHODS as PREFIX_METHODS
+    if all(s['method'] in PREFIX_METHODS for s in plan['runs']):
+        name = 'smoke_prefix_consistency'
+    from methods.continuation_consistency import METHODS as CMC_METHODS
+    if all(s['method'] in CMC_METHODS for s in plan['runs']):
+        name = 'smoke_continuation_consistency'
+    from methods.continuation_consistency.v2 import METHODS as ESTIMATOR_METHODS
+    if all(s['method'] in ESTIMATOR_METHODS for s in plan['runs']):
+        name = 'smoke_continuation_estimator'
+    from methods.registry import TWO_METHODS
+    if all(s['method'] in TWO_METHODS for s in plan['runs']):
+        name = 'smoke_two_method_round1'
+    from methods.corrective_order import METHODS as ORDER_METHODS
+    if all(s['method'] in ORDER_METHODS for s in plan['runs']):
+        name = 'smoke_corrective_order'
+    from methods.virtual_corrective_order.v1.model import METHODS as VIRTUAL_ORDER_METHODS
+    if all(s['method'] in VIRTUAL_ORDER_METHODS for s in plan['runs']):
+        name = 'smoke_virtual_order_training'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
+    sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')
     gate = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(gate)
@@ -63,7 +107,14 @@ def run(config, stage, ident=None, account=None, resume=None):
         raise ValueError('Use --account for a gate/train queue, or run the two stages explicitly')
     from . import engine
     engine.configure(out)
-    dispatch = {'gate': engine.gpu_gate, 'train': lambda s: engine.train_run(s, resume), 'test': engine.test_run}
+    if stage in ('gate', 'technical-gate', 'train', 'pool', 'preflight'):
+        engine.wait_for_gpu()
+    from .sequence import prepare_pool, preflight, summarize, cleanup_initialization
+    dispatch = {'gate': engine.gpu_gate,
+                'technical-gate': lambda s: engine.gpu_gate(s, technical_only=True),
+                'train': lambda s: engine.train_run(s, resume),
+                'test': engine.test_run, 'pool': prepare_pool, 'preflight': preflight,
+                'summarize': summarize, 'cleanup-initialization': cleanup_initialization}
     dispatch[stage](selected[0])
     return {'id': ident, 'stage': stage, 'finished': True}
 
@@ -107,6 +158,10 @@ def status(config):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
+    technical = sub.add_parser('technical-suite', help='RTX technical fixtures only; no training admission')
+    technical.add_argument('--configs', nargs='+', required=True)
+    suite = sub.add_parser('launch-suite', help='RTX multi-dataset queue; all gates precede training')
+    suite.add_argument('--configs', nargs='+', required=True)
     p = sub.add_parser('create', help='Create one reusable recipe from explicit CLI arguments')
     for flag in ('template', 'from-run', 'name', 'method'):
         p.add_argument('--' + flag, required=True)
@@ -117,16 +172,16 @@ def main():
         p.add_argument('--' + flag)
     p.add_argument('--stack', choices=('encoder', 'decoder', 'both'))
     for flag in ('batch-size', 'accumulation', 'max-source-length', 'max-target-length',
-                 'validation-beams', 'workers', 'patience', 'middle-layer-idx', 'distance'):
+                 'validation-beams', 'workers', 'patience', 'middle-layer-idx', 'distance', 'adapter-rank', 'module-seed', 'donor-layer', 'decoder-layer'):
         p.add_argument('--' + flag, type=int)
-    for flag in ('lr', 'epochs', 'alignment-weight', 'temperature', 'strength', 'jepa-weight'):
+    for flag in ('lr', 'epochs', 'alignment-weight', 'temperature', 'strength', 'jepa-weight', 'interaction-weight'):
         p.add_argument('--' + flag, type=float)
     p.add_argument('--allow-test', action='store_true', help='Declare a later locked test phase; does not evaluate test')
-    for name in ('inspect', 'build', 'cpu', 'run', 'lock', 'status', 'launch', 'monitor'):
+    for name in ('inspect', 'build', 'cpu', 'run', 'lock', 'status', 'launch', 'monitor', 'prepare-continuation'):
         p = sub.add_parser(name)
         p.add_argument('--config', required=True)
         if name == 'run':
-            p.add_argument('--stage', required=True, choices=('gate', 'train', 'test', 'gate-train'))
+            p.add_argument('--stage', required=True, choices=('gate', 'technical-gate', 'train', 'test', 'gate-train', 'pool', 'preflight', 'summarize', 'cleanup-initialization'))
             group = p.add_mutually_exclusive_group(required=True)
             group.add_argument('--id')
             group.add_argument('--account', type=int, choices=(1, 2, 3))
@@ -134,11 +189,17 @@ def main():
         if name in ('launch', 'monitor'):
             p.add_argument('--account', type=int, choices=(1, 2, 3), required=True)
         if name == 'launch':
-            p.add_argument('--stage', choices=('gate-train', 'test'), default='gate-train')
+            p.add_argument('--stage', choices=('gate', 'gate-train', 'test'), default='gate-train')
     p = sub.add_parser('fetch')
     p.add_argument('--local-path', required=True, help='Original repo-relative path recorded by the cleanup index')
     args = parser.parse_args()
-    if args.command == 'create':
+    if args.command == 'technical-suite':
+        from .rtx import launch_technical
+        result = launch_technical(args.configs)
+    elif args.command == 'launch-suite':
+        from .rtx import launch_suite
+        result = launch_suite(args.configs)
+    elif args.command == 'create':
         result = create_recipe(args)
     elif args.command == 'fetch':
         from .storage import fetch
@@ -150,10 +211,16 @@ def main():
                 'runs': config['runs'], 'gpu_started': False}
         elif args.command == 'build': result = build(path)
         elif args.command == 'cpu': result = cpu_gate(path)
+        elif args.command == 'prepare-continuation':
+            from methods.continuation_consistency.v1.probe import main
+            result = main(path)
         elif args.command == 'run': result = run(path, args.stage, args.id, args.account, args.resume)
         elif args.command == 'lock': result = lock(path)
         elif args.command == 'status': result = status(path)
         else:
-            from .remote import launch, monitor
+            if config['protocol'].get('hardware_profile') == 'rtx6000-fp32':
+                from .rtx import launch, monitor
+            else:
+                from .remote import launch, monitor
             result = launch(path, args.account, args.stage) if args.command == 'launch' else monitor(path, args.account)
     print(json.dumps(result, indent=2, ensure_ascii=False, default=str))

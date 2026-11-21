@@ -21,6 +21,16 @@ class FakeTokenizer:
 
 
 class OriginalReferenceMetricsTest(unittest.TestCase):
+    def test_optional_chrf0_logging_preserves_selection_metrics(self):
+        from sacrebleu.metrics import CHRF
+        references = ['那個人來了。', '來吧。']
+        predictions = (np.array([[1], [2]]), np.array([[90], [-100]]))
+        before = build_compute_metrics(FakeTokenizer(), references, tokenize='zh')(predictions)
+        after = build_compute_metrics(FakeTokenizer(), references, tokenize='zh', include_chrf0=True)(predictions)
+        self.assertEqual({key: after[key] for key in before}, before)
+        self.assertEqual(after['chrf0'], CHRF(word_order=0).corpus_score(
+            ['那個人來了。', ''], [references]).score)
+
     def test_original_references_and_empty_prediction_are_preserved(self):
         refs=["那個人來了。", "來吧。"]
         callback=build_compute_metrics(FakeTokenizer(), refs, tokenize="zh")

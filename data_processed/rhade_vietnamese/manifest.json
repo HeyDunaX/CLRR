@@ -1,0 +1,60 @@
+{
+  "dataset": "rhade_vietnamese",
+  "upstream_repo": "NIRVLab/rhade-vietnamese-mt",
+  "upstream_revision": "dfbbffa09652e34054ef676589067f2ef965633b",
+  "source_language": "ede",
+  "target_language": "vi",
+  "mapping": {
+    "translation.ede": "source",
+    "translation.vi": "target"
+  },
+  "conversion": "UTF-8 CSV with source,target header; text, row order and split membership unchanged",
+  "text_operations": [],
+  "filtering": false,
+  "deduplication": false,
+  "resampling": false,
+  "unicode_normalization": false,
+  "audit_only_cross_split_overlap": {
+    "train/validation": {
+      "exact_shared_source_types": 104,
+      "exact_source_overlap_rows_in_second": 104,
+      "exact_shared_pair_types": 0
+    },
+    "train/test": {
+      "exact_shared_source_types": 92,
+      "exact_source_overlap_rows_in_second": 94,
+      "exact_shared_pair_types": 0
+    },
+    "validation/test": {
+      "exact_shared_source_types": 5,
+      "exact_source_overlap_rows_in_second": 6,
+      "exact_shared_pair_types": 0
+    }
+  },
+  "splits": {
+    "train": {
+      "rows": 15092,
+      "sha256": "783abf48a426f012396e08eb38706814646513419792e19009a07ceb28ae707e",
+      "upstream_file": "data/train-00000-of-00001.parquet",
+      "upstream_parquet_sha256": "33addd30a6cb417537075d77639ff098e6666de46ef95bda75c638041de1d73b",
+      "upstream_row_order": "0..rows-1, unchanged",
+      "roundtrip_text_and_order_equal": true
+    },
+    "validation": {
+      "rows": 1000,
+      "sha256": "0e2a55a1beef9e2dc29dceea641aa192ea8bb35485464d7eb8f1d0edff043a75",
+      "upstream_file": "data/validation-00000-of-00001.parquet",
+      "upstream_parquet_sha256": "4f7d7a568dceb0ae6cc6a9f9382f170ea9866124793ea878e5247b7b4d5c2890",
+      "upstream_row_order": "0..rows-1, unchanged",
+      "roundtrip_text_and_order_equal": true
+    },
+    "test": {
+      "rows": 1000,
+      "sha256": "f25f23756c25de0151162c44a79c49acc13a3d2fc6340f10a14bc005fdb557c6",
+      "upstream_file": "data/test-00000-of-00001.parquet",
+      "upstream_parquet_sha256": "2ffacb118ad6f737da910be3af8186f8629ad2cfa8ab3d521d90bb3a7573842f",
+      "upstream_row_order": "0..rows-1, unchanged",
+      "roundtrip_text_and_order_equal": true
+    }
+  }
+}

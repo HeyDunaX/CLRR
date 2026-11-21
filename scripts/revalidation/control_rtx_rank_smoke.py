@@ -27,28 +27,18 @@ def launch():
         'scripts/revalidation/rtx_rank_smoke.py':(ROOT/'scripts/revalidation/rtx_rank_smoke.py').read_bytes()}
     shell='''#!/usr/bin/env bash
 set -euo pipefail
-source /workspace/ura/thanhdat/environment.sh
-export XDG_CACHE_HOME=/workspace/ura/thanhdat/cache
-export CONDARC=/workspace/ura/thanhdat/conda/condarc.yaml
+source /workspace/ura/thanhdat/projects/CLRR/environment.sh
+export XDG_CACHE_HOME=/workspace/ura/thanhdat/projects/CLRR/cache
+export CONDARC=/workspace/ura/thanhdat/projects/CLRR/conda/condarc.yaml
 export CONDA_REGISTER_ENVS=false
-export PYTHONPYCACHEPREFIX=/workspace/ura/thanhdat/cache/pycache
+export PYTHONPYCACHEPREFIX=/workspace/ura/thanhdat/projects/CLRR/cache/pycache
 export TOKENIZERS_PARALLELISM=false
 export HF_HUB_DISABLE_TELEMETRY=1
 export OPENBLAS_NUM_THREADS=4
 export OMP_NUM_THREADS=4
 cd /workspace/ura/thanhdat/projects/CLRR
 nvidia-smi --query-gpu=name,memory.used,memory.free,utilization.gpu --format=csv,noheader
-if [ ! -x /workspace/ura/thanhdat/conda/runtime/bin/conda ]; then
- bash /workspace/ura/thanhdat/conda/miniforge-private.sh -b -p /workspace/ura/thanhdat/conda/runtime
-fi
-if [ ! -x /workspace/ura/thanhdat/conda/envs/clrr/bin/python ]; then
- /workspace/ura/thanhdat/conda/runtime/bin/conda create -y -n clrr python=3.13 pip --override-channels -c conda-forge
-fi
-if [ ! -f outputs/rtx_rank_smoke/ENV_READY ]; then
- /workspace/ura/thanhdat/conda/envs/clrr/bin/python -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
- /workspace/ura/thanhdat/conda/envs/clrr/bin/python -m pip install transformers==4.57.6 tokenizers==0.22.2 huggingface_hub==0.36.2 sentencepiece==0.2.2 numpy==2.5.3 scipy==1.17.1 safetensors==0.8.0 protobuf==7.36.2
- touch outputs/rtx_rank_smoke/ENV_READY
-fi
+test -x /workspace/ura/thanhdat/projects/CLRR/conda/envs/clrr/bin/python
 /workspace/ura/thanhdat/conda/runtime/bin/conda run --no-capture-output -n clrr python -u scripts/revalidation/rtx_rank_smoke.py
 '''
     files['rtx_rank_smoke.sh']=shell.encode()
@@ -67,17 +57,6 @@ files=PAYLOAD
 for relative,b64 in files.items():
  dest=(project/relative).resolve();assert root in dest.parents
  dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(base64.b64decode(b64))
-# Preserve constructor payload byte offsets, disable all home env registration.
-installer=(root/'conda/miniforge.sh').read_bytes()
-original=b'CONDA_REGISTER_ENVS="true"';replacement=b'CONDA_REGISTER_ENVS=false '
-assert len(original)==len(replacement) and original in installer
-installer=installer.replace(original,replacement)
-line=next(x for x in installer.split(b'\\n')[:700] if x.startswith(b'test -d ~/.conda'))
-replacement=b'mkdir -p "$PREFIX/registry"'
-assert len(replacement)<=len(line)
-installer=installer.replace(line,replacement+b' '*(len(line)-len(replacement)),1)
-(root/'conda/miniforge-private.sh').write_bytes(installer)
-(root/'conda/condarc.yaml').write_text('register_envs: false\\nauto_activate: false\\nenvs_dirs:\\n  - /workspace/ura/thanhdat/conda/envs\\npkgs_dirs:\\n  - /workspace/ura/thanhdat/conda/pkgs\\nchannels:\\n  - conda-forge\\n')
 with (output/'worker.log').open('w') as log:
  p=subprocess.Popen(['bash',str(project/'rtx_rank_smoke.sh')],stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
 pid.write_text(str(p.pid));print(json.dumps({'status':'LAUNCHED','pid':p.pid,'project':str(project)}))

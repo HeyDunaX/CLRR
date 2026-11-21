@@ -1,0 +1,449 @@
+{
+  "notebook_id": "bf1aec9f-aab7-4a1d-8ca5-d5fbea3a1890",
+  "title": "CLRR — Literature Review & Method Development",
+  "url": "https://notebook.google.com/notebook/bf1aec9f-aab7-4a1d-8ca5-d5fbea3a1890",
+  "sources": [
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/sushko2025_skipclm.pdf",
+      "sha256": "54358614be0e49aefc622d59f4311d984a0cbd3006d6a64654e155449cff0a7d",
+      "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "status": "imported"
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/2024.acl-long.681.pdf",
+      "sha256": "a3cbdcb1350418d25106e8441b80c5b0709f3ffe33ea0ec205e48653542cb73f",
+      "status": "imported",
+      "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "title": "2024.acl-long.681.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/2106.14448v2.pdf",
+      "sha256": "f2e260a7cb6de25e4750e3b68e3b7a19b20b6ddf0d67835dad7162d1ffd63382",
+      "status": "imported",
+      "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "title": "2106.14448v2.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/2406.03136v2.pdf",
+      "sha256": "20b10e435d3bcf2e1264eb6d822b091dd60c2739548a45ad07a037b132cf9356",
+      "status": "imported",
+      "source_id": "3dfbe9bd-d5dd-4a53-9ee7-4ecb9f42e885",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "3dfbe9bd-d5dd-4a53-9ee7-4ecb9f42e885",
+        "title": "2406.03136v2.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/2502.14830v3.pdf",
+      "sha256": "43f693f07849e1198582ca25371353f4c5ec031e251e19fc54859eb97d012873",
+      "status": "imported",
+      "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "title": "2502.14830v3.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/anonto2025_cross_attention_patch_alignment.pdf",
+      "sha256": "6d74b84354705b60a2b5d2b39c0cc33715405f52a801c1575ca39524e37272dc",
+      "status": "imported",
+      "source_id": "fab2a3eb-ceb2-441a-b5e8-4e021a0c8f4a",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "fab2a3eb-ceb2-441a-b5e8-4e021a0c8f4a",
+        "title": "anonto2025_cross_attention_patch_alignment.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/arivazhagan2019_missing_ingredient.pdf",
+      "sha256": "4f7fb5722d8628792983a617b2f45c3f75a48f82fbfcfe41ae7a222b053fc720",
+      "status": "imported",
+      "source_id": "ceb063f9-b75c-471e-a162-8dd5a5c289c6",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "ceb063f9-b75c-471e-a162-8dd5a5c289c6",
+        "title": "arivazhagan2019_missing_ingredient.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/benzaken2022_bitfit_2022.acl-short.1.pdf",
+      "sha256": "0081928bfff2264ecd55f299fcf03d2177124d0516706d1f2f4f0b3b79c4098b",
+      "status": "imported",
+      "source_id": "4de51157-ef39-4cab-9e51-96aedce50672",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "4de51157-ef39-4cab-9e51-96aedce50672",
+        "title": "benzaken2022_bitfit_2022.acl-short.1.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/gao2023_crossconst.pdf",
+      "sha256": "f8db2699a5b1c6a8d9de9fd90056f337afc8bb302e17176af26513fbac6b1204",
+      "status": "imported",
+      "source_id": "732301f9-5972-423c-a38b-7591cef8f826",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "732301f9-5972-423c-a38b-7591cef8f826",
+        "title": "gao2023_crossconst.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/gu2022_universal_cross_mappings.pdf",
+      "sha256": "1dfb85d36b926bafeaf23324e6dd959a00c704eb71eaeb4dd51e65e2e2628efc",
+      "status": "imported",
+      "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "title": "gu2022_universal_cross_mappings.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/hu2022_lora_2106.09685.pdf",
+      "sha256": "e9a0d3128767db616085dc0f4e6e455e672e89af823e8ed1282793682787395a",
+      "status": "imported",
+      "source_id": "fb01f872-1b34-4849-9e29-0b49c3b38a14",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "fb01f872-1b34-4849-9e29-0b49c3b38a14",
+        "title": "hu2022_lora_2106.09685.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/li2022_structural_word_alignment.pdf",
+      "sha256": "8eb8149b526839dbf6d71a9b8cc7848cd1177a836d0c889601a571d5e61bbd17",
+      "status": "imported",
+      "source_id": "14a8fb29-6901-4a2a-95b7-bb6977d7e784",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "14a8fb29-6901-4a2a-95b7-bb6977d7e784",
+        "title": "li2022_structural_word_alignment.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/lu2021_attention_calibration.pdf",
+      "sha256": "df247042eb506d16be6091f5873128ef3200cb0777653966e75b0664a2c5ff7e",
+      "status": "imported",
+      "source_id": "970bbd50-b810-4c5b-99a9-f6c6d99e9c8a",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "970bbd50-b810-4c5b-99a9-f6c6d99e9c8a",
+        "title": "lu2021_attention_calibration.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/pan2021_mrasp2.pdf",
+      "sha256": "98fab6c8066ae6e3b98bcf7842d93860755ee74eaf923b9336266d20f0e87104",
+      "status": "imported",
+      "source_id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+        "title": "pan2021_mrasp2.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/tang2021_cross_attentive_regularization.pdf",
+      "sha256": "5ee82971fef2ac4243831d78cf81af7d4b606937aea70bafcbf1fb061e8ea44c",
+      "status": "imported",
+      "source_id": "4ed6fb42-ad5d-4bb2-99a4-4143c4a33859",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "4ed6fb42-ad5d-4bb2-99a4-4143c4a33859",
+        "title": "tang2021_cross_attentive_regularization.pdf"
+      }
+    },
+    {
+      "kind": "file",
+      "path": "docs/paper/baseline-paper/zheng2021_duplex_reder.pdf",
+      "sha256": "0328ee30a1c20e70e043b44b727fae99687b566a615e6248a186c8581cbbc9e0",
+      "status": "imported",
+      "source_id": "dda6d8b4-68c0-4adb-b250-582213cee199",
+      "receipt": {
+        "source_type": "file",
+        "source_id": "dda6d8b4-68c0-4adb-b250-582213cee199",
+        "title": "zheng2021_duplex_reder.pdf"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "R-Drop (NeurIPS 2021)",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2021/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf",
+      "status": "imported",
+      "source_id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+        "title": "https://proceedings.neurips.cc/paper_files/paper/2021/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "LR-Drop (2024)",
+      "url": "https://arxiv.org/pdf/2402.16361",
+      "status": "imported",
+      "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "title": "https://arxiv.org/pdf/2402.16361"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "Decoupled Knowledge Distillation (CVPR 2022)",
+      "url": "https://arxiv.org/pdf/2203.08679",
+      "status": "imported",
+      "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "title": "https://arxiv.org/pdf/2203.08679"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "Middle Alignment (ACL 2025)",
+      "url": "https://aclanthology.org/2025.acl-long.778.pdf",
+      "status": "imported",
+      "source_id": "b62d51bc-6724-430c-9943-1aa9504ba68a",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "b62d51bc-6724-430c-9943-1aa9504ba68a",
+        "title": "https://aclanthology.org/2025.acl-long.778.pdf"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "Beyond Logits: Aligning Feature Dynamics (ACL 2025)",
+      "url": "https://aclanthology.org/2025.acl-long.1125.pdf",
+      "status": "imported",
+      "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "title": "https://aclanthology.org/2025.acl-long.1125.pdf"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "MTO/MSO (ACL 2021)",
+      "url": "https://aclanthology.org/2021.acl-long.268.pdf",
+      "status": "imported",
+      "source_id": "59ca22d3-3292-4c18-b627-f5255809aa93",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "59ca22d3-3292-4c18-b627-f5255809aa93",
+        "title": "https://aclanthology.org/2021.acl-long.268.pdf"
+      }
+    },
+    {
+      "kind": "url",
+      "title": "ConsistTL (EMNLP 2022)",
+      "url": "https://aclanthology.org/2022.emnlp-main.574.pdf",
+      "status": "imported",
+      "source_id": "b4275a13-f2c2-4895-af92-1c801bd05dfe",
+      "receipt": {
+        "source_type": "url",
+        "source_id": "b4275a13-f2c2-4895-af92-1c801bd05dfe",
+        "title": "https://aclanthology.org/2022.emnlp-main.574.pdf"
+      }
+    }
+  ],
+  "verification": {
+    "date": "2026-11-13",
+    "source_count": 23,
+    "all_source_ids_match": true,
+    "remote_status_counts": {
+      "2": 23
+    },
+    "remote_sources": [
+      {
+        "id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "title": "2024.acl-long.681.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "title": "2106.14448v2.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "3dfbe9bd-d5dd-4a53-9ee7-4ecb9f42e885",
+        "title": "2406.03136v2.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "title": "2502.14830v3.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "fab2a3eb-ceb2-441a-b5e8-4e021a0c8f4a",
+        "title": "anonto2025_cross_attention_patch_alignment.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "ceb063f9-b75c-471e-a162-8dd5a5c289c6",
+        "title": "arivazhagan2019_missing_ingredient.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "4de51157-ef39-4cab-9e51-96aedce50672",
+        "title": "benzaken2022_bitfit_2022.acl-short.1.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "732301f9-5972-423c-a38b-7591cef8f826",
+        "title": "gao2023_crossconst.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "title": "gu2022_universal_cross_mappings.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "59ca22d3-3292-4c18-b627-f5255809aa93",
+        "title": "https://aclanthology.org/2021.acl-long.268.pdf",
+        "type": "pdf",
+        "url": "https://aclanthology.org/2021.acl-long.268.pdf",
+        "status": 2
+      },
+      {
+        "id": "b4275a13-f2c2-4895-af92-1c801bd05dfe",
+        "title": "https://aclanthology.org/2022.emnlp-main.574.pdf",
+        "type": "pdf",
+        "url": "https://aclanthology.org/2022.emnlp-main.574.pdf",
+        "status": 2
+      },
+      {
+        "id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "title": "https://aclanthology.org/2025.acl-long.1125.pdf",
+        "type": "pdf",
+        "url": "https://aclanthology.org/2025.acl-long.1125.pdf",
+        "status": 2
+      },
+      {
+        "id": "b62d51bc-6724-430c-9943-1aa9504ba68a",
+        "title": "https://aclanthology.org/2025.acl-long.778.pdf",
+        "type": "pdf",
+        "url": "https://aclanthology.org/2025.acl-long.778.pdf",
+        "status": 2
+      },
+      {
+        "id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "title": "https://arxiv.org/pdf/2203.08679",
+        "type": "pdf",
+        "url": "https://arxiv.org/pdf/2203.08679",
+        "status": 2
+      },
+      {
+        "id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "title": "https://arxiv.org/pdf/2402.16361",
+        "type": "pdf",
+        "url": "https://arxiv.org/pdf/2402.16361",
+        "status": 2
+      },
+      {
+        "id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+        "title": "https://proceedings.neurips.cc/paper_files/paper/2021/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf",
+        "type": "pdf",
+        "url": "https://proceedings.neurips.cc/paper_files/paper/2021/file/5a66b9200f29ac3fa0ae244cc2a51b39-Paper.pdf",
+        "status": 2
+      },
+      {
+        "id": "fb01f872-1b34-4849-9e29-0b49c3b38a14",
+        "title": "hu2022_lora_2106.09685.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "14a8fb29-6901-4a2a-95b7-bb6977d7e784",
+        "title": "li2022_structural_word_alignment.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "970bbd50-b810-4c5b-99a9-f6c6d99e9c8a",
+        "title": "lu2021_attention_calibration.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+        "title": "pan2021_mrasp2.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "title": "sushko2025_skipclm.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "4ed6fb42-ad5d-4bb2-99a4-4143c4a33859",
+        "title": "tang2021_cross_attentive_regularization.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      },
+      {
+        "id": "dda6d8b4-68c0-4adb-b250-582213cee199",
+        "title": "zheng2021_duplex_reder.pdf",
+        "type": "pdf",
+        "url": null,
+        "status": 2
+      }
+    ]
+  }
+}

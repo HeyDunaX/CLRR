@@ -1,0 +1,370 @@
+{
+  "notebook_id": "bf1aec9f-aab7-4a1d-8ca5-d5fbea3a1890",
+  "question": "Using only the uploaded papers, give a concise literature map in English covering (1) skip/residual routing, (2) cross-lingual representation alignment, (3) dropout consistency and decoupled KL. Identify the closest papers and their exact objective or mechanism with source citations. Distinguish established prior from unverified hypotheses. Do not assess CLRR novelty as you have not been given its manuscript. Limit to 700 words.",
+  "response": {
+    "answer": "### 1. Skip and Residual Routing\n\n* **SkipCLM** introduces a trainable skip connection bridging early decoder Transformer layers directly to later blocks [1, 2]. Its exact mechanism integrates a linear layer with a ReLU activation into the residual stream—formulated as \\\\(R_\\alpha = H_\\alpha + \\frac{\\lambda}{3} \\cdot \\text{Skip}(H_\\beta)\\\\)—to bypass layers constrained by contrastive loss [3, 4]. This allows the model to preserve language-specific generation features that are otherwise degraded by representation alignment [2, 5].\n* **LayerSkip** applies layer dropout during training (scaled with lower rates in early layers and higher rates in later layers) paired with a shared early-exit loss across all layers [6, 7]. During inference, it uses this residual exit structure for self-speculative decoding, drafting tokens at early layers and verifying them with remaining layers via KV-cache and activation reuse [6, 8, 9].\n* **Feature Dynamics Distillation (FDD)** formulates Transformer layer-wise residual streams through an Ordinary Differential Equation (ODE) perspective [10, 11]. It aligns intermediate feature trajectories and first-order derivatives across teacher and student layers via language modeling head projections, matching layer-to-layer feature evolution [11-13].\n\n---\n\n### 2. Cross-Lingual Representation Alignment\n\n* **mRASP2** aligns multilingual representations in the encoder via **Aligned Augmentation (AA)** and a contrastive InfoNCE loss (\\\\(\\mathcal{L}_{\\text{ctr}}\\\\)) [14, 15]. The objective minimizes the distance between semantic equivalents (parallel or synonym-perturbed sentences) while contrasting negative samples from the same training batch using cosine similarity over average-pooled representations [15, 16].\n* **State Mover’s Distance (SMD) & Agreement Training** addresses the inadequacy of sentence-level pooling in encoder-decoder NMT [17, 18]. It applies an optimal-transport token-level distance (SMD) to map sequence states across languages, while introducing an agreement-based objective (\\\\(\\mathcal{L}_{\\text{AT}}\\\\)) that enforces prediction consistency via bidirectional KL divergence on decoder outputs for cross-lingual mixed pseudo-sentences [18-21].\n* **CrossConST** implements cross-lingual consistency regularization directly on the decoder [22, 23]. For a parallel sentence pair \\\\((x, y)\\\\), it minimizes the forward-backward prediction gap with \\\\(\\mathcal{L}_{\\text{kl}} = \\text{KL}(f(x, y; \\theta) \\parallel f(y, y; \\theta))\\\\), allowing gradients to backpropagate through both branches without decoupling [23, 24].\n* **Middle-Layer Alignment in Decoder LLMs** analyzes internal representations across 1,000+ language pairs and shows that cross-lingual semantic alignment naturally peaks in the middle layers (e.g., layer 16 in 32-layer models) [25, 26]. Enforcing representation alignment at these middle layers during task fine-tuning significantly improves zero-shot cross-lingual transfer compared to input- or output-layer alignment [25, 27, 28].\n\n---\n\n### 3. Dropout Consistency and Decoupled KL\n\n* **R-Drop (Regularized Dropout)** mitigates the inconsistency between training (sub-models with dropped units) and inference (full models) [29-31]. It passes each sample \\\\(x_i\\\\) through the network twice under different dropout instantiations and minimizes the bidirectional KL divergence between the resulting output distributions: \\\\(\\mathcal{L}_{\\text{KL}}^i = \\frac{1}{2} [D_{\\text{KL}}(P_1 \\parallel P_2) + D_{\\text{KL}}(P_2 \\parallel P_1)]\\\\) [32-34]. This is proven to bound the empirical loss gap between sub-models and the full model [35, 36].\n* **LR-Drop** expands R-Drop to internal layers by combining output bidirectional KL regularization with layer-wise hidden-state MSE (\\\\(\\mathcal{L}_{\\text{HSR}}\\\\)) and multi-head attention weight MSE (\\\\(\\mathcal{L}_{\\text{MHAR}}\\\\)) between dropout sub-models [37-40].\n* **Decoupled Knowledge Distillation (DKD)** reformulates classical KD loss into two mathematically independent terms: **Target Class Knowledge Distillation (TCKD)** and **Non-Target Class Knowledge Distillation (NCKD)** [41-43]:\n\\\\[\\mathcal{L}_{\\text{KD}} = \\text{TCKD} + (1 - p_t^{\\mathcal{T}})\\text{NCKD}\\\\] [44]\nDKD reveals that standard KD couples NCKD with \\\\((1 - p_t^{\\mathcal{T}})\\\\), which suppresses non-target knowledge transfer precisely when the teacher is highly confident (\\\\(p_t^{\\mathcal{T}} \\approx 1\\\\)) [45-47]. DKD replaces this factor with independent hyper-parameters: \\\\(\\mathcal{L}_{\\text{DKD}} = \\alpha \\text{TCKD} + \\beta \\text{NCKD}\\\\) [41].\n\n---\n\n### Established Prior vs. Unverified Hypotheses\n\n* **Established Prior**: \n  1. Output-level bidirectional KL consistency under dropout (R-Drop) tightens generalization bounds and outperforms hidden-state \\\\(L_2\\\\) penalties [35].\n  2. NCKD is the primary carrier of \"dark knowledge\" in logit distillation; decoupling it from teacher confidence consistently outperforms coupled KD [45, 46, 48].\n  3. Intermediate representations in decoder LLMs exhibit higher cross-lingual semantic isometry than final layers, which specialize in next-token vocabulary selection [26, 49, 50].\n* **Unverified Hypotheses / Open Questions**:\n  1. *Residual stream degradation*: While SkipCLM demonstrates empirical gains on XGLM-564M, the hypothesis that contrastive alignment inherently destroys language-specific generative capacity across larger scale models remains incompletely explored [1, 5, 51].\n  2. *Multi-layer simultaneous alignment*: Determining whether aligning multiple layers simultaneously provides complementary benefits or conflicting optimization constraints is explicitly documented as an unresolved, task-dependent challenge [28].\n  3. *Analytical grounding of DKD scaling*: A formal theoretical derivation determining the optimal value of the decoupling parameter \\\\(\\beta\\\\) across arbitrary datasets remains an open research question [52].\n\nWould you like to examine how the layer-wise objectives in FDD and SkipCLM compare geometrically when applied to decoder-only Transformer blocks?",
+    "question": "Using only the uploaded papers, give a concise literature map in English covering (1) skip/residual routing, (2) cross-lingual representation alignment, (3) dropout consistency and decoupled KL. Identify the closest papers and their exact objective or mechanism with source citations. Distinguish established prior from unverified hypotheses. Do not assess CLRR novelty as you have not been given its manuscript. Limit to 700 words.",
+    "conversation_id": "8ec5ca51-f2be-4cca-a640-c5b4035a99d5",
+    "sources_used": [
+      "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+      "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "732301f9-5972-423c-a38b-7591cef8f826",
+      "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "b62d51bc-6724-430c-9943-1aa9504ba68a",
+      "3f48a525-0c39-494b-85cb-62067da08d96",
+      "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+      "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "0cfea90e-faf7-41b9-a290-18517e019d0c"
+    ],
+    "citations": {
+      "1": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "2": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "3": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "4": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "5": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "6": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "7": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "8": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "9": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+      "10": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "11": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "12": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "13": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "14": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+      "15": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+      "16": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+      "17": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "18": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "19": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "20": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "21": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+      "22": "732301f9-5972-423c-a38b-7591cef8f826",
+      "23": "732301f9-5972-423c-a38b-7591cef8f826",
+      "24": "732301f9-5972-423c-a38b-7591cef8f826",
+      "25": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "26": "b62d51bc-6724-430c-9943-1aa9504ba68a",
+      "27": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "28": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "29": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "30": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "31": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+      "32": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "33": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "34": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+      "35": "3f48a525-0c39-494b-85cb-62067da08d96",
+      "36": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+      "37": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "38": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "39": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "40": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+      "41": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "42": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "43": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "44": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "45": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "46": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "47": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "48": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+      "49": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+      "50": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+      "51": "5b1b785b-776a-45fc-8472-92b472120a5e",
+      "52": "0cfea90e-faf7-41b9-a290-18517e019d0c"
+    },
+    "references": [
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 1,
+        "cited_text": "SkipCLM: Enhancing Crosslingual Alignment of Decoder Transformer Models via Contrastive Learning and Skip Connection Nikita Sushko 1,2 Alexander Panchenko 2,1 Elena Tutubalina 1,3,4 1AIRI 2Skoltech 3Sber AI 4Kazan Federal University Correspondence: sushko@airi.net Abstract This paper proposes SkipCLM, a novel\nmethod for improving multilingual machine\ntranslation in Decoder Transformers. We\naugment contrastive learning for cross-lingual\nalignment with a trainable skip connection to\npreserve information crucial for accurate tar-\nget language generation. Experiments with\nXGLM-564M on the Flores-101 benchmark\ndemonstrate improved performance, particu-\nlarly for en-de and en-zh direction transla-\ntions, compared to direct sequence-to-sequence\ntraining and existing contrastive learning meth-\nods. Code is available at: https://github.com/s-\nnlp/skipclm."
+      },
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 2,
+        "cited_text": "This paper proposes SkipCLM, a novel method\nof enhancing cross-lingual alignment of multilin-\ngual embeddings in Decoder Transformer models.\nWe introduce a linear skip connection to transfer\nhidden representations from the initial stages di-\nrectly to the final transformer blocks. This, in con-\njunction with contrastive learning, facilitates both Proceedings of the 2025 Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 4: Student Research Workshop), pages 517–528"
+      },
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 3,
+        "cited_text": "3 Methodology 3.1 Proposed Approach This work proposes two key modifications to the\nDecoder Transformer architecture and training pro-\ncedure: Incorporating InfoNCE Loss: Following the\napproach of AFP (Lin et al., 2022), we inte-\ngrate an InfoNCE loss function to enhance\ncross-lingual alignment between the pivot lan-\nguage (English) and other selected languages.\nThis aims to improve the quality of multilin-\ngual representations and increase the transla-\ntion abilities of the final model. Trainable Skip Connection: We introduce a\ntrainable skip connection, implemented as a\nlinear layer within the Decoder Transformer.\nThis connection is designed to selectively fil-\nter language-specific information using a lin-\near layer with a ReLU activation function, pre-\nserving only the information relevant for sub-\nsequent translation to the target language. Ap-\nplying the linear transformation with the acti-\nvation function effectively creates a learnable\nnon-linear filter, which removes unwanted\nnoise from the residual connection from the\nstart to the end of the model. This mitigates in-\nformation loss during processing, improving\nthe model’s ability to reconstruct vital infor-\nmation otherwise lost in the standard architec-\nture when contrastive loss is applied. The skip"
+      },
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 4,
+        "cited_text": "Rα = Hα + λ / 3 · Skip( Hβ) Where Hα is the layer, after which the skip con-\nnection is integrated into the residual stream, Hβ represents the hidden state at the source layer of\nthe skip connection β, Skip(·) denotes the linear\ntransformation applied by the skip connection, and λ is a scaling coefficient. During training, λ is gradually increased from 0\nto 1 using a warm-up schedule; during inference, λ is set to 1. The choice of layers α and β is ex-\nplored in Sec. 4.3. The selection of the normalizing\nconstant 1 was done empirically, with higher coef-"
+      },
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 5,
+        "cited_text": "Existing techniques such as AFP (Li et al., 2024)\nand Lens (Zhao et al., 2024) address multilingual\nmisalignment for low-resource languages by incor-\nporating an auxiliary contrastive loss to improve\nthe alignment of initial layer representations with\nthe pivot language. While improving performance\non tasks like translation, adding contrastive loss\nalone suffers from a potential loss of information\nwithin the residual stream, which hurts the model’s\nperformance in such aspects as original language\npreservation, context understanding, and instruc-\ntion following. The authors of AFP added a sepa-\nrate instruction tuning stage to mitigate this infor-\nmation loss, but this greatly limited the applications\nof such models due to them being instruction tuned\ninstead of utilized in a zero-shot manner."
+      },
+      {
+        "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "citation_number": 6,
+        "cited_text": "LayerSkip: Enabling Early Exit Inference and Self-Speculative Decoding Mostafa Elhoushi 1∗†, Akshat Shrivastava 1∗†, Diana Liskovich 2†, Basil Hosmer 1, Bram\nWasti 2, Liangzhen Lai 3, Anas Mahmoud 4, Bilge Acun 1, Saurabh Agrawal 6, Ahmed Roman 7, Ahmed A Aly 3, Beidi Chen 1,5, Carole Jean-Wu 1, 1FAIR at Meta 2GenAI at Meta 3Reality Labs at Meta 4University of Toronto\n5Carnegie Mellon University 6University of Wisconsin-Madison 7Dana-Farber Cancer Institute m.elhoushi@ieee.org Abstract We present LayerSkip, an end-to-end solution\nto speed-up inference of large language mod-\nels (LLMs). First, during training we apply\nlayer dropout, with low dropout rates for ear-\nlier layers and higher dropout rates for later\nlayers, and an early exit loss where all trans-\nformer layers share the same exit. Second, dur-\ning inference, we show that this training recipe\nincreases the accuracy of early exit at earlier\nlayers, without adding any auxiliary layers or\nmodules to the model. Third, we present a\nnovel self-speculative decoding solution where\nwe exit at early layers and verify and correct\nwith remaining layers of the model. Our pro-\nposed self-speculative decoding approach has\nless memory footprint than other speculative"
+      },
+      {
+        "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "citation_number": 7,
+        "cited_text": "e˜(t, l) = C(t, l)e(l) / (i=L−1 C(t, i)e(i) i=0)∑ (3) (4) scale that increases across layers, such as the scale\nat one layer is proportional to the sum of the scales\nof all previous layers: { ∑ e i=li, if0≤ l<L− 1 e(l) = scale i= 0 ∑ L − 1 + e i=L− 2 i, if l = L− 1 scale i= 0 (2) This way, we penalize later layers with quadrat-\nically higher weight, as predicting in later layers\nis easier. 0 ≤ escale ≤ 1 is a hyperparameter that\ncontrols the scale of early exit loss. Note that we do not add additional LM heads as\nproposed in other early exit papers Elbayad et al.\n(2020); Schuster et al. (2022), as we essentially use\nthe same LM head for all layers."
+      },
+      {
+        "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "citation_number": 8,
+        "cited_text": "Figure 1: Overview of our end-to-end solution, Layer-\nSkip, showing its 3 components. decoding approaches and benefits from shared area Çöplü et al. (2023); Liu et al. (2024). While a\ncompute and activations of the draft and ver- large portion of LLM acceleration approaches re-\nification stages. We run experiments on dif-\nferent Llama model sizes on different types\nof training: pretraining from scratch, contin-\nual pretraining, finetuning on specific data do-\nmain, and finetuning on specific task. We\nimplement our inference solution and show\nspeedups of up to 2.16× on summarization for\nCNN/DM documents, 1.82× on coding, and\n2.0× on TOPv2 semantic parsing task. We"
+      },
+      {
+        "source_id": "0f323fa2-c7a4-405a-8b5b-ce368aeb9288",
+        "citation_number": 9,
+        "cited_text": "and feed forward network (FFN) layers skipped.\nThe advantage of our proposed solution compared\nto Zhang et al. (2023) is that verification and\ncorrection stages can reuse the activation and KV\ncache from the draft stage as both stages execute\nthe same early layers in the same order, while\nZhang et al. (2023) can not reuse them as it skips\nintermediate layers. Hooper et al. (2024) used\nshared transformer layer groups and a shared LM\nhead to exit each token at a different layer and\nexecute different layer groups in a pipeline fashion."
+      },
+      {
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "citation_number": 10,
+        "cited_text": "Beyond Logits: Aligning Feature Dynamics for Effective Knowledge Distillation Guoqiang Gong 1,*, Jiaxing Wang 1,*, Jin Xu 2, Deping Xiang 1, Zicheng Zhang 1, Leqi Shen 3, Yifeng Zhang 1, Junhua Shu 1, Zhaolong Xing 1, Zhen Chen 1, Pengzhang Liu 1,†, Ke Zhang 1 1 JD.com 2 University of Oxford 3 Tsinghua University {gongguoqiang1, wangjiaxing41,liupengzhang}@jd.com *Equal contribution. †Corresponding author. Abstract Knowledge distillation (KD) compresses large\nlanguage models (LLMs), known as teacher\nmodels, into lightweight versions called stu-\ndent models, enabling efficient inference and\ndownstream applications. However, prevail-\ning approaches accomplish this by predomi-\nnantly focusing on matching the final output\ndistributions of student/teacher models. Draw-\ning on the perspective that transformers can\nbe viewed as discretizing ordinary differential\nequation (ODEs) on integer time steps (corre-\nsponding to layer indices), where intermediate\nfeatures evolve across layers, we argue that ef-\nfective KD requires aligning the entire feature\ndynamics between teacher and student mod-\nels, which we call feature dynamics distilla-\ntion (FDD). This alignment involves matching\nboth the feature trajectory and its first-order\nderivative, rather than just the final states. Our\napproach extends the original KD objective\nwith two additional loss terms: layer-wise fea-\nture KD, which matches discretized feature\ntrajectory, and layer feature delta KD, which\nmatches first-order changes in features across\nadjacent layers. Extensive experiments on vari-\nous tasks validate the effectiveness of our dis-\ntillation method."
+      },
+      {
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "citation_number": 11,
+        "cited_text": "to a smaller student model, knowledge distillation\n(KD) emerges as a promising solution. The rich\ninformation learned by the teacher model helps\noptimize the student to achieve performance lev-\nels that would be unattainable through training the\nstudent model alone. The backbone of LLMs, the transformer archi-\ntecture (Vaswani et al.), with layer-wise skip con-\nnections, can be viewed as discretized ODEs where\ninteger time steps correspond to layer indices (Chen\net al., 2018; Lu et al., 2019). The ODE states repre-\nsent intermediate features that evolve across layers\nfrom initial input embeddings to final layer fea-\ntures, which are then projected to logits for next-\ntoken predictions. Through this lens, student mod-\nels can be understood as a coarse discretization\nof the underlying feature dynamics. The teacher\nmodels’ more accurate representation of feature\ndynamics can thus guide student models toward\nbetter discretizations within their representation\ncapacity. From this perspective, we argue that ef-\nfective and comprehensive knowledge distillation\nshould align the entire feature dynamics between\nstudent and teacher models, extending beyond the\nconventional approach of solely matching output\ndistributions through various divergence losses, in-\ncluding Kullback-Leibler divergence (Hinton et al.,\n2015; Muralidharan et al., 2024; Liu et al., 2024)\nor reverse Kullback-Leibler divergence (Gu et al.,\n2024; Ko et al., 2024). To this end, we propose\nfeature dynamics distillation (FDD), which opti-\nmizes student models to match both the discretized\nfeature trajectory and its first-order derivative (esti-\nmated through finite differences) with the teacher\nmodels. This comes down to two additional KD\nloss terms: the layer-wise KD loss for trajectory\nmatching and the layer-delta KD loss for derivative\nmatching. We demonstrate that these additional\nKD loss terms consistently improve distillation ef-\nfectiveness, outperforming previous state-of-the-art\napproaches, validating the importance of feature"
+      },
+      {
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "citation_number": 12,
+        "cited_text": "concretized in Section 3.1. It then translates into in-\ncorporating layer-wise KD (Section 3.2) and layer-\ndelta KD (Section 3.3) after discretization. The\nframework of feature dynamics distillation (FDD)\nis illustrated in Figure 1. 3.1 Distillation under the ODE Perspective Given the underlying corresponding ODEs (Equa-\ntion 2) for the teacher T and the student S, our goal\nis to align their feature dynamics. Nevertheless,\nfeatures in the teacher and student typically reside\nin different spaces with different dimensions. To\nbridge the gap and thus facilitate the alignment, we\nproject both teacher and student features into the\nshared vocabulary prediction distribution space by\nmultiplexing the language modeling head fhead(·)\nof their own. The overall dynamic is then 1 :"
+      },
+      {
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "citation_number": 13,
+        "cited_text": "KD Cos i Ij i Ij\nj= 1 i= 1 (7) 2We can also use other distillation schemes. Different\nschemes can be accomplished by adjusting the teacher and\nstudent discretize step. Where L∆ = LD − 1. The feature changes (∆)\nbetween adjacent selected layers are: ∆T(lT)= yT( lT)− yT( lT ) i Ij i Ij i Ij− 1 ∆S (lS ) = yS ( lS )− yS ( lS ) i Ij i Ij i Ij− 1 This layer-delta distillation loss measures the simi-\nlarity of feature transitions between the teacher and\nthe student, ensuring that the student model learns\nnot only the knowledge encoded in each layer but\nalso the pattern of representation refinement across\nlayers."
+      },
+      {
+        "source_id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+        "citation_number": 14,
+        "cited_text": "The key idea of contrastive learning is to\nminimize the representation gap of similar sen-\ntences and maximize that of irrelevant sen-\ntences. Formally, given a bilingual translation\npairs (xi , xj ) ∈ D, ( xi , xj ) is the positive exam-\nple and we randomly choose a sentence yj from\nlanguage L to form a negative example 3 (xi , yj ). j 3It is possible that L = L j i xF R J’adore chanter et danser <EOS> x < EOS>\nZ H\nEncoder Decoder Encoder Decoder\nC( x ) xF R C( x ) xZ H\nE N Z H\n<EN id> I like and <FR id> J’adore chanter et danser <ZH id> like quel انواع من Musik <ZH id>\nsinging dancing"
+      },
+      {
+        "source_id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+        "citation_number": 15,
+        "cited_text": "(a) AA for Parallel Corpora (b) AA for Monolingual Corpora Figure 2: Aligned augmentation on both parallel and monolingual data by replacing words with the same meaning\nin synonym dictionaries. It either creates a pseudo-parallel example (left) or a pseudo self-parallel example (right). The objective of contrastive learning is to mini-\nmize the following loss: ∑ e sim+ ( R( xi ), R( xj ))/ τ Lctr =− log∑ − i j esim ( R( x ), R( y ))/ τ x ,x ∈ D yj i j where sim(·) calculates the similarity of differ-\nent sentences. + and − denotes positive and\nnegative respectively. R(s) denotes the average-\npooled encoded output of an arbitrary sentence s. τ is the temperature, which controls the diffi-\nculty of distinguishing between positive and neg-\native examples 4 . In our experiments, it is set to\n0.1. The similarity of two sentences is calcu-\nlated with the cosine similarity of the average-\npooled encoded output. To simplify implementa-\ntion, the negative samples are sampled from the\nsame training batch. Intuitively, by maximizing\nthe softmax term sim+( R( xi ), R( xj )), the con-\ntrastive loss forces their semantic representations\nprojected close to each other. In the meantime, the\nsoftmax function also minimizes the non-matched\npairs sim−( R( xi ), R( yj ))."
+      },
+      {
+        "source_id": "149a7f70-624c-4b0e-8cbe-181b1b9e3766",
+        "citation_number": 16,
+        "cited_text": "For a bilingual sentence pair (xi , xj ), AA\ncreates a pseudo-parallel training example\n( C( xi ), xj ). For monolingual data, AA takes a\nsentence xi and generates its perturbed C( xi ) to\nform a pseudo self-parallel example ( C( xi ), xi ).\n( C( xi ),xj ) and ( C( xi ),xi ) is then used in the\ntraining by calculating both the translation loss\nand contrastive loss. For a pseudo self-parallel\nexample ( C( xi ), xi ), the contrastive loss is basi-\ncally the reconstruction loss from the perturbed\nsentence to the original one."
+      },
+      {
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "citation_number": 17,
+        "cited_text": "Many researchers have made their attempts to\nsolve this problem. Pham et al. (2019) propose to\ncompress the output of the encoder into a consis-\ntent number of states to only encode the language-\nindependent features. Arivazhagan et al. (2019)\nadd a regularizing loss to maximize the similarities\nbetween the sentence representations of the source\nand target sentences. Pan et al. (2021) propose con-\ntrastive learning schemes to minimize the sentence\nrepresentation gap of similar sentences and max-\nimize that of irrelevant sentences. All the above\nwork tries to minimize the representation discrep-\nancies of different languages at the sentence level,\nbringing two problems for NMT. Firstly, these\nwork usually get the sentence-level representation\nof the encoder output by max-pooling or averaging,\nwhich may potentially ignore the sentence length,\nword alignment relationship, and other token-level\ninformation. Secondly, regularizing sentence repre-\nsentation mismatches to the working paradigm of\nthe NMT model, because the decoder directly per-\nforms cross attention on the whole state sequences\nrather than the sentence representation. Besides,"
+      },
+      {
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "citation_number": 18,
+        "cited_text": "Findings of the Association for Computational Linguistics: EMNLP 2022, pages 6492–6504 December 7-11, 2022 ©2022 Association for Computational Linguistics all the above work focuses on the encoder side and\ncannot help learn the universal mapping relation-\nship for the decoder. Given the above, we propose a method to learn\nthe universal representations and cross-mappings\nto improve the zero-shot translation performance.\nBased on the optimal transport theory, we propose\nstate mover’s distance (SMD) to model the differ-\nences of two state sequences at the token level. To\nmap the semantic-equivalent sentences from dif-\nferent languages to the same place of the semantic\nspace, we add an auxiliary loss to minimize the\nSMD of the source and target sentences. Besides,\nwe propose an agreement-based training scheme\nto learn universal mapping relationships for the\ntranslation directions with the same target language.\nWe mixup the source and target sentences to ob-\ntain a pseudo sentence. Then, the decoder makes\npredictions separately conditioned on this pseudo\nsentence and the corresponding source or target\nsentences. We try to improve the prediction consis-\ntency by minimizing the KL divergence of the two\noutput distributions. The experimental results on\ndiverse multilingual datasets show that our method\ncan bring 2~3 BLEU improvements over the strong\nbaseline system and consistently outperform other\ncontrast methods. The analysis proves that our\nmethod can better align the semantic space and\nimprove the prediction consistency."
+      },
+      {
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "citation_number": 19,
+        "cited_text": "k= 1 + KL (p(zk | z< k, Hy)|| p(zk | z< k, Hx)). (13) We omit the model parameters for convenience. 3.3 The Final Loss The final loss consists of three parts, the cross en-\ntropy loss (Equation 1), the optimal transport loss p(zk | z< k, x; θ) = p(zk | z< k, y; θ), ( 11) based on SMD (Equation 9) and the KL divergence <cited_table> Table 1: The statics of our datasets. loss for the agreement-based training (Equation 13):",
+        "cited_table": {
+          "num_columns": 3,
+          "rows": [
+            [
+              "Dataset",
+              "Language Pairs",
+              "Size"
+            ],
+            [
+              "IWSLT",
+              "En↔{De, It, Nl, Ro}",
+              "1.79M"
+            ],
+            [
+              "IWSLT-b",
+              "Nl↔De↔En↔It↔Ro",
+              "1.79M"
+            ],
+            [
+              "PC-6",
+              "En↔{Kk, Tr, Ro, Cs, Ru}",
+              "7.9M"
+            ],
+            [
+              "OPUS-7",
+              "En↔{De, Fr, Nl, Ru, Zh, Ar}",
+              "11.6M"
+            ]
+          ]
+        }
+      },
+      {
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "citation_number": 20,
+        "cited_text": "State Mover’s Distance Following EMD, we de-\nfine the state mover’s distance (SMD) to mea- As illustrated before, we want decoder to make\nsure the minimum ’travel cost’ between two state\nconsistent predictions conditioned on the equiva-\nsequences. Given a pair of translations x = lent state sequences. Considering that the vector (x ,...,x ), and y = ( y ,...,y ), we can get\nnorm and direction both have impacts on the cross- 1 nx 1 ny attention results of decoder, we use the Euclidean their corresponding state sequences after feeding\nthem to the encoder, which are denoted as:"
+      },
+      {
+        "source_id": "e9f15a44-5092-4c45-aa36-afe8da56a047",
+        "citation_number": 21,
+        "cited_text": "z = g⊙x′ + ( 1− g)⊙y′, ( 12) where g ∈ { 0, 1} n′, ⊙ denotes the element-wise\nproduct. Each element in g is sampled from\nBernoulli( λ), where the parameter λ is sampled\nfrom Beta( α,β), and α and β are two hyperparam-\neters. The language tag in z, which determines the\ntranslation direction, is either come from x or y. Objective Function Similar to Equation 9, we de-\nfine another symmetrical loss based on the KL di-\nvergence of the model prediction distributions: ∑n′ LAT = 1 / 2n′ KL (p(zk | z< k, Hx)|| p(zk | z< k, Hy))"
+      },
+      {
+        "source_id": "732301f9-5972-423c-a38b-7591cef8f826",
+        "citation_number": 22,
+        "cited_text": "Let Si,j denote the parallel corpus of language\npair ( Li,Lj ), and S denotes the entire training cor-\npus. The standard training objective is to minimize\nthe empirical risk: Lce(θ) = E [ ℓ(f ( x, y; θ), y¨)], ( 1) (x,y)∈ S where ℓ denotes the cross-entropy loss, θ is a set\nof model parameters, f ( x, y; θ) is a sequence of\nprobability predictions, i.e., fj ( x, y; θ) = P (y| x, y< j ;θ), ( 2) and y¨ is a sequence of one-hot label vectors for y. 2.2 CrossConST: A Cross-lingual Consistency\nRegularization for Multilingual NMT"
+      },
+      {
+        "source_id": "732301f9-5972-423c-a38b-7591cef8f826",
+        "citation_number": 23,
+        "cited_text": "The main idea of our method is to close the\nrepresentation gap among semantic-equivalent sen-\ntences in the encoder output and force the output\ndistribution of the decoder to be consistent among\ndifferent semantic-equivalent representations. Dur-\ning the training of multilingual NMT model, for\neach sentence pair ( x, y), the training objective of\nCrossConST is defined as: LCrossConST (θ) = Lce(θ) + αLkl (θ), ( 4) where Lkl (θ) = KL( f ( x, y; θ)∥f ( y, y; θ)), ( 5) KL(·∥·) denotes the Kullback-Leibler (KL) diver-\ngence of two distributions, and α is a scalar hyper-\nparameter that balances Lce(θ) and Lkl (θ). Note\nthat the gradient could be backpropagated through\nboth sides of the KL regularization in CrossConST.\nFigure 2 illustrates CrossConST regularization for\nlearning multilingual NMT model."
+      },
+      {
+        "source_id": "732301f9-5972-423c-a38b-7591cef8f826",
+        "citation_number": 24,
+        "cited_text": "To stabilize the multilingual NMT training pro-\ncedure and accelerate the convergence of the multi-\nlingual NMT model, we adopt a two-stage training\nstrategy. We first train a conventional multilingual\nNMT model as the pretrained model and then fine-\ntune the model with CrossConST objective func-\ntion (4). It is worth mentioning that Pham et al.\n(2019) derive a similar problem formulation and\ntraining strategy. However, they do not demon-\nstrate the effectiveness of their proposed method\n(KL Softmax) in Pham et al. (2019). To the best of\nour knowledge, we for the first time show the ef-\nfectiveness of the simple cross-lingual consistency\nregularization for improving the translation perfor-\nmance of the multilingual NMT model. Note that\nwhile Pham et al. (2019) decouple the gradient path\nin the decoder from the KL divergence term, our\ndesign allows for backpropagation through both\nsides of the KL regularization in CrossConST. We\ndo not decouple any gradient path in our model."
+      },
+      {
+        "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "citation_number": 25,
+        "cited_text": "Middle-Layer Representation Alignment for Cross-Lingual Transfer in Fine-Tuned LLMs Danni Liu Jan Niehues Karlsruhe Institute of Technology, Germany {danni.liu, jan.niehues}@kit.edu Abstract While large language models demonstrate re-\nmarkable capabilities at task-specific applica-\ntions through fine-tuning, extending these ben-\nefits across diverse languages is essential for\nbroad accessibility. However, effective cross-\nlingual transfer is hindered by LLM perfor-\nmance gaps across languages and the scarcity\nof fine-tuning data in many languages. Through\nanalysis of LLM internal representations from\nover 1,000+ language pairs, we discover that\nmiddle layers exhibit the strongest potential\nfor cross-lingual alignment. Building on this\nfinding, we propose a middle-layer alignment\nobjective integrated into task-specific training.\nOur experiments on slot filling, machine trans-\nlation, and structured text generation show con-\nsistent improvements in cross-lingual transfer,\nespecially to lower-resource languages. The\nmethod is robust to the choice of alignment\nlanguages and generalizes to languages unseen\nduring alignment. Furthermore, we show that\nseparately trained alignment modules can be\nmerged with existing task-specific modules, im-\nproving cross-lingual capabilities without full\nre-training. Our code is publicly available 1."
+      },
+      {
+        "source_id": "b62d51bc-6724-430c-9943-1aa9504ba68a",
+        "citation_number": 26,
+        "cited_text": "Cross-lingual alignment approaches have been\nsuccessfully applied to models preceding LLMs.\nFor encoder-only models, outputs can be aligned\nby e.g., minimizing distances between parallel Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 15979–15996 July 27 - August 1, 2025 ©2025 Association for Computational Linguistics Transfer result Avg. retrieval\naccuracy (%) 100\nLow-res.\n50\n0\n0 4 8 12 16 20 24 28 32 0 4 8 12 16 20 24 28 Llama 3 Overall Qwen 2.5"
+      },
+      {
+        "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "citation_number": 27,
+        "cited_text": "100 Llama 3 Qwen 2.5 75 50 25 Correlation: 0.56 Correlation: 0.70 0 0 20 40 60 0 20 40 60 F1 Cross-lingual representation retrieval accuracy (%) Positive correlation between base model cross-lingual se-\nmantic alignment and downstream transfer performance. Figure 1: Two observations (§2) motivating our ap-\nproach of aligning multilingual representations (§3). sentence representations (Feng et al., 2022) or\ncross-lingual masked language modeling objectives\n(Conneau and Lample, 2019). These techniques\nare largely applicable to encoder-decoder models,\nwhere alignment is typically enforced to the en-\ncoder outputs (Duquenne et al., 2023). In contrast, decoder-only models lack such clear separation be-\ntween input processing and output generation. This\nmakes it less obvious where and how to optimize\nfor cross-lingual alignment, as also highlighted in\nthe survey by Hämmerl et al. (2024)."
+      },
+      {
+        "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "citation_number": 28,
+        "cited_text": "translation. This task-dependent behavior indicates\nthat how to best align multiple layers still requires\nfurther investigation. 5.3 Impact on Representation Retrieval To assess the impact of the alignment loss on the\nlearned model representations, we also report the\nretrieval accuracy for all languages involved in each\ntask (20 for slot filling and 9 for machine transla-\ntion) after fine-tuning in Table 2. For Llama on\nthe slot filling task, the alignment loss substantially\nimproves retrieval accuracy from 39.4% to 73.2%.\nFor Qwen, the alignment loss does not improve re-\ntrieval among the 20 slot filling languages, possibly\ndue to the lower accuracy of the base model with\nmany low-resource languages with 0% accuracy,\nmaking improvement more challenging. For ma-\nchine translation, as noted earlier §4.2, the retrieval\ntest data overlaps with part of the task training data,\npotentially inflating accuracy (marked in brackets\nin Table 2). However, we verify that this overlap\ndoes not lead to perfect retrieval accuracy: Specif-\nically, at the 16 th layer where the alignment loss\nis applied, English-source retrieval accuracies for\nsupervised languages show varying accuracy: cs\n(98.1%), de (96.5%), is (66.9%), ru (90.6%), and\nzh (94.8%). This suggests that the overlap does not\nmake the retrieval diagnostic task trivial."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 29,
+        "cited_text": "R-Drop: Regularized Dropout for Neural Networks Xiaobo Liang 1∗ Lijun Wu 2∗ Juntao Li 1 Yue Wang 1 Qi Meng 2 Tao Qin 2 Wei Chen 2 Min Zhang 1 Tie-Yan Liu 2 1Soochow University, 2Microsoft Research Asia Abstract Dropout is a powerful and widely used technique to regularize the training of deep\nneural networks. Though effective and performing well, the randomness introduced\nby dropout causes unnegligible inconsistency between training and inference. In\nthis paper, we introduce a simple consistency training strategy to regularize dropout,\nnamely R-Drop, which forces the output distributions of different sub models gen-\nerated by dropout to be consistent with each other. Specifically, for each training\nsample, R-Drop minimizes the bidirectional KL-divergence between the output dis-\ntributions of two sub models sampled by dropout. Theoretical analysis reveals that\nR-Drop reduces the above inconsistency. Experiments on 5 widely used deep learn-\ning tasks ( 18 datasets in total), including neural machine translation, abstractive\nsummarization, language understanding, language modeling, and image classifica-\ntion, show that R-Drop is universally effective. In particular, it yields substantial\nimprovements when applied to fine-tune large-scale pre-trained models, e.g., ViT,\nRoBERTa-large, and BART, and achieves state-of-the-art (SOTA) performances\nwith the vanilla Transformer model on WMT14 English→German translation\n( 30.91 BLEU) and WMT14 English→French translation ( 43.95 BLEU), even\nsurpassing models trained with extra large-scale data and expert-designed advanced\nvariants of Transformer models. Our code is available at GitHub 2."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 30,
+        "cited_text": "∑n L = 1 / n −logPw( y |x ). ( 1) nll i i i= 1 Since the deep neural networks are prone to over-fitting, regularization methods such as dropout [61]\nare usually adopted during training to reduce the generalization error of the model. Specifically,\ndropout randomly drops part of units in each layer of the neural network to avoid co-adapting and\nover-fitting. Besides, dropout also approximately performs to combine exponentially many different\nneural network architectures efficiently [61], while model combination can always improve the\nmodel performance. Though simple and effective, there is a huge inconsistency between training\nand inference that hinders the model performance. That is, the training stage takes the sub model\nwith randomly dropped units, while the inference phase adopts the full model without dropout. Also,\nthe sub models caused by randomly sampled dropout units are also different without any constraints.\nBased on above observations and the randomness of the structure brought by dropout, we propose\nour R-Drop to regularize the output predictions of sub models from dropout."
+      },
+      {
+        "source_id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+        "citation_number": 31,
+        "cited_text": "∑n L = 1 / n −logPw( y |x ). ( 1) nll i i i= 1 Since the deep neural networks are prone to over-fitting, regularization methods such as dropout [57]\nare usually adopted during training to reduce the generalization error of the model. Specifically,\ndropout randomly drops part of units in each layer of the neural network to avoid co-adapting and\nover-fitting. Besides, dropout also approximately performs to combine exponentially many different\nneural network architectures efficiently [57], while model combination can always improve the\nmodel performance. Though simple and effective, there is a huge inconsistency between training\nand inference that hinders the model performance. That is, the training stage takes the sub model\nwith randomly dropped units, while the inference phase adopts the full model without dropout. Also,\nthe sub models caused by randomly sampled dropout units are also different without any constraints.\nBased on above observations and the randomness of the structure brought by dropout, we propose\nour R-Drop to regularize the output predictions of sub models from dropout."
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 32,
+        "cited_text": "1 i i P w (y |x ). Thus the distributions of P w (y |x ) and P w (y |x ) are different for the same input 2ii 1ii 2ii data pair ( xi,yi). Then, at this training step, our R-Drop method tries to regularize on the model\npredictions by minimizing the bidirectional Kullback-Leibler (KL) divergence between these two\noutput distributions for the same sample, which is: Li = 1 / 2( D (P w (y |x )||P w (y |x )) + D (P w (y |x )||P w (y |x ))). ( 2) KL KL1ii2ii KL2ii1ii With the basic negative log-likelihood learning objective Li of the two forward passes:"
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 33,
+        "cited_text": "NLL Li = − logPw ( y |x ) − log Pw (y |x ), ( 3) NLL 1ii 2ii the final training objective is to minimize Li for data ( x ,y ): i i Li = Li +α· Li =− logPw ( y |x ) − log Pw (y |x ) ( 4) NLL KL 1ii 2ii + α / 2[ D (P w (y |x )||P w (y |x )) + D (P w (y |x )||P w (y |x ))], KL1ii 2ii KL2ii 1ii where α is the coefficient weight to control Li . In this way, our R-Drop further regularizes KL the model space beyond dropout and improves the generalization ability of a model. Compared\nEquation (1) with Equation (4), our R-Drop only adds a KL-divergence loss Li based on two"
+      },
+      {
+        "source_id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+        "citation_number": 34,
+        "cited_text": "1 i i P w (y |x ). Thus the distributions of P w (y |x ) and P w (y |x ) are different for the same input 2ii 1ii 2ii data pair ( xi,yi). Then, at this training step, our R-Drop method tries to regularize on the model\npredictions by minimizing the bidirectional Kullback-Leibler (KL) divergence between these two\noutput distributions for the same sample, which is: Li = 1 / 2( D (P w (y |x )||P w (y |x )) + D (P w (y |x )||P w (y |x ))). ( 2) KL KL1ii2ii KL2ii1ii With the basic negative log-likelihood learning objective Li of the two forward passes:"
+      },
+      {
+        "source_id": "3f48a525-0c39-494b-85cb-62067da08d96",
+        "citation_number": 35,
+        "cited_text": "Proposition 2.1. For a linear model P w(y|x) = softmax(Norm(wTx)) where Norm(·) denotes the\nnormalization layer and x ∈ Rd, with the constraint in Equation (6) in the main paper, we have √ |Lnll(w) − Eξ[ Lnll(w,ξ)]| ≤ c ϵ, where Lnll(w), Lnll(w,ξ) are the empirical loss calculated by\nthe full model and a random sub model respectively, c is a constant related to the Liptschtz constant\nof the softmax operator. 2.4 Discussion The most related works with our R-Drop are ELD [41] and FD [81], which also study the consistency\ntraining with dropout. However, R-Drop has key differences with them. (1) The gap control is from\ndifferent views. ELD works on directly reducing the gap between the sub model with dropout (train)\nand the expected full model without dropout (inference), while R-Drop and FD are both working on\npenalizing the discrepancy between the sub models, the superiority of regularizing the sub models\nhas been proved in FD. (2) The regularization efficiency is different. ELD only back-propagates the\ngradients through sub model without the full model, which is less efficient than R-Drop that updates\nboth sub models. (3) The regularization effect is different. Both ELD and FD use the L2 distance on\nhidden states as the regularization loss function. However, this is far away from the main training\nobjective that minimizes the negative log-likelihood over model output distribution. The distance of\nhidden states is not in the same space as the probability distribution since log-softmax hugely affects\nthe optimization. In comparison, R-Drop utilizes the KL-divergence between the output probability\ndistributions as the consistency regularization, which is in the same space as the training objective.\nMore analysis and experimental comparisons are shown in Appendix C.4."
+      },
+      {
+        "source_id": "ee8203d7-ff45-4901-8e67-00fc68f009c9",
+        "citation_number": 36,
+        "cited_text": "Proposition 2.1. For a linear model P w(y|x) = softmax(Norm(wTx)) where Norm(·) denotes the\nnormalization layer and x ∈ Rd, with the constraint in Equation (6) in the main paper, we have √ |Lnll(w) − Eξ[ Lnll(w,ξ)]| ≤ c ϵ, where Lnll(w), Lnll(w,ξ) are the empirical loss calculated by\nthe full model and a random sub model respectively, c is a constant related to the Liptschtz constant\nof the softmax operator. 2.4 Discussion The most related works with our R-Drop are ELD [40] and FD [77], which also study the consistency\ntraining with dropout. However, R-Drop has key differences with them. (1) The gap control is from\ndifferent views. ELD works on directly reducing the gap between the sub model with dropout (train)\nand the expected full model without dropout (inference), while R-Drop and FD are both working on\npenalizing the discrepancy between the sub models, the superiority of regularizing the sub models\nhas been proved in FD. (2) The regularization efficiency is different. ELD only back-propagates the\ngradients through sub model without the full model, which is less efficient than R-Drop that updates\nboth sub models. (3) The regularization effect is different. Both ELD and FD use the L2 distance on\nhidden states as the regularization loss function. However, this is far away from the main training\nobjective that minimizes the negative log-likelihood over model output distribution. The distance of\nhidden states is not in the same space as the probability distribution since log-softmax hugely affects\nthe optimization. In comparison, R-Drop utilizes the KL-divergence between the output probability\ndistributions as the consistency regularization, which is in the same space as the training objective.\nMore analysis and experimental comparisons are shown in Appendix C.4."
+      },
+      {
+        "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "citation_number": 37,
+        "cited_text": "In addition to the losses obtained from the compu-\ntation with labels, LR-Drop contains three regular- egular- ization (containing (1) hidden states regularization\nloss and (2) multi-head attention regularization loss)\nand (3) output regularization loss. Next we will de-\nscribe each of these three regularization processes 3. Method: LR-Drop the hard label y: L = − log w (y|x) − log w (y|x).\nCE 1 2 ization losses, which are Transformer-layer r and details. HS( x) = max(0,xW1 + b1)W2 + b2, where there are two linear transformations and\none ReLU activation in each feed-forward network.\nWe regularize the knowledge from the Transformer\nlayer outputs of the two sub-models with the follow-\ning objectives:"
+      },
+      {
+        "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "citation_number": 38,
+        "cited_text": "LHSR = MSE( HS( x) 1, HS( x) 2), Rl× d are the hidden states of first sub-mode (2) the second sub-model respectively, which are cal-\nculated by Equation 2. MSE() is the mean squared\nerror loss function, l is the input text length, and d is the hidden sizes of this two sub-models. Multi-head Attention Regularization. The key\npoint for the Transformer-based model to work well\nis that each Transformer contains a multi-headed\nattention module whose attention function is com-\nputed depending on the query, key and value, rep-\nresented as matrices Q, K and V. The attention\nfunction is called “Scaled Dot-Product Attention”, it\ncan be expressed as:"
+      },
+      {
+        "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "citation_number": 39,
+        "cited_text": "MHAR i i i= 1 where h is the number of attention heads, A 1 ∈ i Rl× l and A 2 ∈ Rl× l refer to the attention matrix i corresponding to the i-th head of first sub-model\nand the second sub-model, l is the input text length,\nand MSE() refer to the mean squared error loss\nfunction. 3.2. Output Regularization In addition to regularizing the Transformer layer\nwithin the model, we also apply regularization to\nthe output of the model, similar to R-Drop. Specifi-\ncally, our approach, LR-Drop, aims to minimize the\nbidirectional KL-divergence between the output dis-\ntributions of the two sub-models obtained through"
+      },
+      {
+        "source_id": "12d35f62-0b9f-402a-b0bd-8a9a7bec2e5f",
+        "citation_number": 40,
+        "cited_text": "where P1 and P2 are the output distributions of the\nfirst and second sub-models, respectively, and KL()\ndenotes the KL-divergence loss function. 3.3. Total Optimization Objective To summarize, the total optimization objective of\nour proposed LR-Drop during training is expressed\nas follows: LT otal = LCE +αLHSR +βLMHAR +γLOR, ( 8) where α, β, and γ are the weight coefficients for the\nregularization loss functions LHSR, LMHAR, and LOR, respectively. 4. Experiments We assessed the effectiveness of LR-Drop on vari-\nous natural language processing tasks. Our evalua-\ntion involved eight datasets for natural language un-\nderstanding, six datasets for neural machine trans-\nlation, and one dataset for abstractive summariza-\ntion. In the table below, we use the abbreviations\n\"RD\" to refer to R-Drop and \"LRD\" to refer to LR-\nDrop in the presentation of the experimental results."
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 41,
+        "cited_text": "rately considered since their contributions are from dif-\nferent aspects. Benefiting from our reformulation of KD, we propose\na novel logit distillation method named Decoupled Knowl-\nedge Distillation(DKD) to address the above issues. Our\nproposed DKD independently considers TCKD and NCKD\nin a decoupled formulation, as shown in Figure 1b. Specif-\nically, we introduce two hyper-parameters α and β, as the\nweights of TCKD and NCKD, respectively. The loss func-\ntion of DKD can be written as follows: \\text {DKD} = \\alpha \\text {TCKD} + \\beta \\text {NCKD}. (7)"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 42,
+        "cited_text": "Logit distillation requires marginal computational and\nstorage costs, but the performance is inferior. Intuitively,\nlogit distillation should achieve comparable performance\nas feature distillation, since logits are in higher semantic\nlevel than deep features. We suppose that the potential of\nlogit distillation is limited by unknown reasons, causing\nthe unsatisfactory performance. To revitalize logits-based\nmethods, we start this work by delving into the mecha-\nnism of KD. Firstly, we divide a classification prediction\ninto two levels: (1) a binary prediction for the target class\nand all the non-target classes and (2) a multi-category pre-\ndiction for each non-target class. Based on this, we refor-\nmulate the classical KD loss [12] into two parts, as shown\nin Figure 1b. One is a binary logit distillation for the tar-\nget class and the other is a multi-category logit distilla-\ntion for non-target classes. For simplification, we respec-\ntively name them as target classification knowledge distil-\nlation (TCKD) and non-target classification knowledge dis-\ntillation (NCKD). The reformulation allows us to study the\neffects of the two parts independently."
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 43,
+        "cited_text": "(4) Then, Eqn.(4) can be rewritten as: \\begin {split} \\text {KD} &= \\text {KL}(\\mathbf {b}^{\\mathcal {T}}||\\mathbf {b}^{\\mathcal {S}}) + (1-p_{t}^{\\mathcal {T}}) \\text {KL}(\\hat {\\mathbf {p}}^{\\mathcal {T}} || \\hat {\\mathbf {p}}^{\\mathcal {S}}) \\end {split} \\label {form_dkd} (5) As reflected by Eqn.(5), the KD loss is reformulated\ninto a weighted sum of two terms. KL(bT ||bS) repre-\nsents the similarity between the teacher’s and student’s bi-\nnary probabilities of the target class. Thus, we name it\nTarget Class Knowledge Distillation(TCKD). Meanwhile,\nKL(pˆT ||pˆS) represents the similarity between the teacher’s\nand student’s probabilities among non-target classes, named"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 44,
+        "cited_text": "Non-Target Class Knowledge Distillation(NCKD). Eqn.(5)\ncould be rewritten as: \\begin {split} \\text {KD} &= \\text {TCKD} + (1-p_{t}^{\\mathcal {T}}) \\text {NCKD}. \\end {split} \\label {form_general} (6) Obviously, the weight of NCKD is coupled with p T . t The reformulation above inspires us to investigate the in-\ndividual effects of TCKD and NCKD, which will reveal the\nlimitations of the classical coupled formulation. 3.2. Effects of TCKD and NCKD Performance gain of each part. We individually study the\neffects of TCKD and NCKD on CIFAR-100 [16]. ResNet\n[9], WideResNet (WRN) [42] and ShuffleNet [21] are se-\nlected as training models, among which both the same and\ndifferent architectures are considered. The experimental re-\nsults are reported in Table 1. For each teacher-student pair,"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 45,
+        "cited_text": "NCKD only considers the knowledge among non-target\nlogits. Interestingly, we empirically prove that only ap-\nplying NCKD achieves comparable or even better results\nthan the classical KD, indicating the vital importance of\nknowledge contained in non-target logits, which could be\nthe prominent “dark knowledge”. More importantly, our reformulation demonstrates that\nthe classical KD loss is a highly coupled formulation (as\nshown in Figure 1b), which could be the reason why the po-\ntential of logit distillation is limited. Firstly, the NCKD loss\nterm is weighted by a coefficient that negatively correlates\nwith the teacher’s prediction confidence on the target class.\nThus larger prediction scores would lead to smaller weights.\nThe coupling significantly suppresses the effects of NCKD\non well-predicted training samples. Such suppression is not\npreferable since the more confident the teacher is in the\ntraining sample, the more reliable and valuable knowledge"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 46,
+        "cited_text": "NCKD is the prominent reason why logit distillation\nworks but is greatly suppressed. Interestingly, we notice\nin Table 1 when only NCKD is applied, the performances\nare comparable or even better than the classical KD. It\nshows that the knowledge among non-target classes is of vi-\ntal importance to logit distillation, which can be the promi-\nnent “dark knowledge”. However, by reviewing Eqn.(5),\nwe notice that the NCKD loss is coupled with (1 − p T ), t where p T represents the teacher’s confidence on the tar-"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 47,
+        "cited_text": "t Instinctively, both TCKD and NCKD are indispensable\nand crucial. However, in the classical KD formulation,\nTCKD and NCKD are coupled from the following aspects: For one thing, NCKD is coupled with (1 − p T ), which t could suppress NCKD on the well-predicted samples.\nSince results in Table 5 show that well-predicted sam-\nples could bring more performance gain, the coupled\nform could limit the effectiveness of NCKD. For another, weights of NCKD and TCKD are coupled\nunder the classical KD framework. It’s not allowed to\nchange each term’s weight to balance the importance.\nWe suppose that TCKD and NCKD should be sepa-"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 48,
+        "cited_text": "Notably, DKD achieves consistent improvements on all\nteacher-student pairs, compared with the baseline and the\nclassical KD. Our method achieves 1 ∼ 2% and 2 ∼ 3%\nimprovements on teacher-student pairs of the same and dif-\nferent series, respectively. It strongly supports the effec-\ntiveness of DKD. Furthermore, DKD achieves comparable\nor even better performances than feature-based distillation\nmethods, significantly improving the trade-off between dis-\ntillation performance and training efficiency, which will be\nfurther discussed in Sec 4.2."
+      },
+      {
+        "source_id": "82c28fed-88c9-4d7f-a83d-1c26307473cd",
+        "citation_number": 49,
+        "cited_text": "While cross-lingual transfer has been extensively\nstudied (Wang and Zheng, 2015; Ruder et al., 2019; 1https://github.com/dannigt/mid-align Artetxe and Schwenk, 2019b; Pfeiffer et al., 2020),\nachieving it on generative tasks with variable-\nlength outputs remains challenging (Vu et al., 2022;\nLi and Murray, 2023) compared to classification\ntasks. This challenge is especially relevant for\nLLMs, which formulate all tasks as next-token pre-\ndiction problems. The theoretical foundation of cross-lingual trans-\nfer lies in the analogous relationships between con-\ncepts across languages. This intuition was first\ndemonstrated in cross-lingual word embeddings\n(Mikolov et al., 2013; Lample et al., 2018; Xu and\nKoehn, 2021), where these vector representations\nexhibit isometric relationships, i.e., the geometric\nstructure of semantically equivalent items is pre-\nserved across different languages. This isometry\nproperty has proven crucial for transferring learned\nmodels across languages (Schuster et al., 2019;\nWang et al., 2024b). Subsequent encoder-decoder\nmodels (Ha et al., 2016) and decoder-only models\n(Wu et al., 2024a) also exhibit similar properties in\ntheir internal representations."
+      },
+      {
+        "source_id": "9f45ef29-3160-42dd-8b0a-7b30ff243799",
+        "citation_number": 50,
+        "cited_text": "Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), pages 23067–23077 July 27 - August 1, 2025 ©2025 Association for Computational Linguistics dynamics distillation. Our ODE perspective on KD is further supported\nby recent empirical observations about LLMs, in-\ncluding findings that intermediate layers can en-\ncode richer representations (Skean et al., 2025;\nGeva et al., 2022; Dar et al., 2023; Elhoushi\net al., 2024) and that decoding through layer con-\ntrasting can better surface factual knowledge in\nLLMs (Chuang et al., 2024). The former demon-\nstrates the necessity of conducting layer-wise KD,\nwhile the latter corroborates the importance of\nlayer-delta KD. In addition, there is a growing\nbody of literature exploring layer-wise distillation\nschemes (Jiao et al., 2020; Wang et al., 2020) by\nmatching various aspects of teacher and student\nmodels such as intermediate features and attention\nscores. These studies, though heuristically estab-\nlished and primarily focus on BERT-based mod-\nels (Devlin et al., 2019), show the promise of devel-\noping KD scheme that can more comprehensively\nmimic the teacher."
+      },
+      {
+        "source_id": "5b1b785b-776a-45fc-8472-92b472120a5e",
+        "citation_number": 51,
+        "cited_text": "3 ficients leading to model breakage. 3.2 Model Selection For our experiments, we have used XGLM-\n564M (Lin et al., 2022) multilingual autoregressive\nLM. It was pretrained on a diverse corpus encom-\npassing 30 languages, ranging from high-resource\nlanguages such as English, German, French, Chi-\nnese, and Russian to low-resource languages in-\ncluding Turkish, Vietnamese, Arabic, and Swahili. 3.3 Data 3.3.1 Training Data Our models were trained on the Bactrian-X dataset\n(Li et al., 2023), a multilingual corpus comprising\n3.4 million instruction-response pairs across 52 lan-\nguages. This dataset leverages and expands upon\nthe alpaca-52k (Taori et al., 2023) and Dolly-15k\n(Conover et al., 2023) datasets, with translation\nto all 52 languages performed using the Google\nTranslate API. Responses in each language were\ngenerated using the GPT-3.5 model (Ouyang et al.,\n2022). To ensure comparability with prior work,\ndata preparation followed the procedures outlined"
+      },
+      {
+        "source_id": "0cfea90e-faf7-41b9-a290-18517e019d0c",
+        "citation_number": 52,
+        "cited_text": "limitations and future works. Noticeable limitations are\ndiscussed as follows. DKD could not outperform state-\nof-the-art feature-based methods ( e.g., ReviewKD [1]) on\nobject detection tasks because logits-based methods can-\nnot transfer knowledge about localization. Besides, we\nhave provided an intuitive guidance on how to adjust β in\nour supplement. However, the strict correlation between\nthe distillation performance and β is not fully investigated,\nwhich will be our future research direction."
+      }
+    ]
+  },
+  "status": "AI-generated literature map; verify citations and formulas in original PDFs before research decisions"
+}

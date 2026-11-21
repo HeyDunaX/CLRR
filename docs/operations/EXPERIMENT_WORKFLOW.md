@@ -1,3 +1,16 @@
+## Required method-development order (author instruction, 2026-11-09)
+
+1. Design the method and state its mechanism/formula.
+2. Read primary related work and audit novelty. Record overlap, defensible
+   contribution and unresolved uncertainty. UNESTABLISHED/HOLD cannot pass.
+3. Only after the novelty review is accepted, implement/run smoke and correctness gates.
+4. Only after every required gate PASS, launch long training.
+
+Never launch long training to decide novelty later. Good scores do not establish
+novelty; different names, code, or small design changes alone are insufficient.
+
+---
+
 # Quy trình thực nghiệm dùng chung
 
 ## Cấu trúc hiện hành
@@ -91,8 +104,27 @@ conda run -n clrr python scripts/experiment.py run --config configs/experiments/
 ```
 
 Resume phải chọn `--id`, `--stage train` và `--resume` rõ ràng. Không resume cả
-queue hoặc ghi đè run đã hoàn thành. Engine này giữ gate A100 Standard 40GB,
-BF16/checkpointing theo protocol đã kiểm chứng; chưa là launcher RTX6000.
+queue hoặc ghi đè run đã hoàn thành. Recipe không ghi hardware profile vẫn giữ
+gate A100 Standard40GB/BF16. Recipe `hardware_profile=rtx6000-fp32` dùng gate
+RTX riêng, bắt buộc FP32/BF16-off/FP16-off/TF32-off và validation-only; không tự
+chuyển recipe A100 sang RTX.
+
+RTX dùng chung CLI với recipe riêng, ví dụ `amis_token_rtx.json`. `launch` chọn
+transport Tailscale theo hardware profile, account1 là queue duy nhất trên RTX,
+không phải mở Colab1. CPU gate chạy lại trên private conda `clrr`, GPU gates của
+tất cả nhánh PASS rồi mới training tuần tự. Queue giữ project training lock,
+kiểm tra free VRAM trước mỗi GPU stage và dừng khi lỗi. Monitor chỉ thu JSON/CSV
+nhỏ; không tải weights về PC.
+
+```bash
+conda run -n clrr python scripts/experiment.py launch --config configs/experiments/amis_token_rtx.json --account 1
+conda run -n clrr python scripts/experiment.py monitor --config configs/experiments/amis_token_rtx.json --account 1
+```
+
+Ví dụ trên là queue đã được duyệt và đã launch; không launch lại. Workspace RTX
+khóa tại `/workspace/ura/thanhdat/projects/CLRR/`; xem trạng thái chi tiết trong
+`docs/experiments/EXPERIMENTS_RTX6000.md`. Không ghép số RTX với cohort A100 để
+claim superiority; dùng controls cùng recipe RTX cho development pilot.
 
 ## Test sau khi khóa checkpoint
 

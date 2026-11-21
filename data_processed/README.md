@@ -7,7 +7,7 @@ Each dataset lives in `data_processed/<dataset_name>/`, with `train.csv`,
 | Dataset | Direction | Train | Validation | Test | Use |
 | --- | --- | ---: | ---: | ---: | --- |
 | `amis_mandarin` | Amis → Mandarin | 4,600 | 576 | 575 | Current manuscript and matched component study |
-| `opus100_turkish_english_20k` | Turkish → English | 20,000 | 2,000 | 2,000 | Official OPUS-100 evaluation splits; retained 20k training sample; training not launched by this change |
+| `rhade_vietnamese` | Ê Đê (Rhade) → Vietnamese | 15,092 | 1,000 | 1,000 | Second language dataset; original published splits, text and row order |
 
 Select explicitly with `--data-dir data_processed/<dataset_name>` and a separate
 output/run name. Trainers default to `data_processed/amis_mandarin`.
@@ -22,12 +22,15 @@ hashes and source provenance are recorded in `amis_mandarin/manifest.json`.
 The paper uses mBART `tl_XX→zh_CN` and historical NLLB `zho_Hant→zho_Hant`.
 See [metrics](../docs/experiments/METRICS.md) and [current experiments](../docs/experiments/EXPERIMENTS_UPDATED.md).
 
-Turkish uses the official OPUS-100 validation/test: all 2,000 rows per split,
-exact strings and upstream order, including duplicates. The existing 20k train
-sample retains its bytes and order. Manifest pins upstream revision, hashes and
-row IDs. Overlap is audited, not filtered: 17 exact stripped-source types overlap
-between validation/test; no train/evaluation source overlap was found. This is
-a simulated low-resource training subset, not the full OPUS-100 1M-pair training
-benchmark. Use mBART `tr_TR→en_XX`, BLEU `13a` and native chrF++.
-The filtered preparation v2 was retired at the author's request on 06/10/2026.
-Old v2 outputs are historical and must not be silently reused for this protocol.
+Ê Đê replaces Turkish as the second language dataset (author decision, 15/10/2026).
+The local Turkish processed directory was removed; its existing checkpoint receipts
+and historical results are retained for traceability and are not Ê Đê controls.
+
+Ê Đê conversion maps only `translation.ede → source` and `translation.vi → target`.
+No trimming, Unicode normalization, filtering, deduplication, resampling, split
+changes or row reordering is performed. Parquet/CSV hashes and an audit-only
+overlap report live in [the manifest](rhade_vietnamese/manifest.json).
+Preparation and verification commands are in [the dataset README](rhade_vietnamese/README.md).
+See [the proposed experiment plan](../docs/research/EDE_SECOND_LANGUAGE_PLAN.md)
+for the approved language-token policy and four-run pilot, now launched through
+the shared RTX gate/training queue (15/10/2026).

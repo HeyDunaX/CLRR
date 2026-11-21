@@ -1,0 +1,173 @@
+{
+  "dataset": "opus100_turkish_english_20k",
+  "data": {
+    "train": {
+      "rows": 20000,
+      "sha256": "b20c042e7d096f1cd61e7235dd4ded8477ae79afd6c7c9b2da86e75352916068"
+    },
+    "validation": {
+      "rows": 2000,
+      "sha256": "bc7542eadd1dc1327b2c4085a7171082241b1e52071ae2114f128ecae3fbf090"
+    },
+    "test": {
+      "rows": 2000,
+      "sha256": "283d3c6ba709604bace7f279748ebc77d4854f8e50c33995df8adda4356bd5cd"
+    }
+  },
+  "repo": "FiveC/amis-rewire-checkpoints",
+  "protocol": {
+    "epochs": 20,
+    "patience": 10,
+    "weight_decay": 0.0,
+    "warmup_ratio": 0.06,
+    "optim": "adamw_torch_fused",
+    "scheduler": "linear",
+    "adam_beta1": 0.9,
+    "adam_beta2": 0.999,
+    "adam_epsilon": 1e-08,
+    "max_grad_norm": 1.0,
+    "bf16": false,
+    "tf32_training": false,
+    "gradient_checkpointing": true,
+    "gradient_checkpointing_use_reentrant": true,
+    "loss_reduction": "microbatch_mean",
+    "eval_batch": 2,
+    "pad_multiple": 8,
+    "generation_precision": "fp32",
+    "tf32_generation": false,
+    "test_beams": 4,
+    "bleu_tokenizer": "13a",
+    "selection": "original-reference validation chrF++; beam1 FP32",
+    "selection_ties": "earliest best",
+    "test_barrier": "No test stage in this pilot",
+    "save_limit": 2,
+    "dataloader_num_workers": 0,
+    "hardware_profile": "rtx6000-fp32",
+    "fp16": false,
+    "minimum_free_gpu_mib": 20000
+  },
+  "runtime": {
+    "python": "3.13",
+    "torch": "2.6.0",
+    "transformers": "4.57.6",
+    "accelerate": "1.15.0",
+    "peft": "0.21.0",
+    "sacrebleu": "2.6.0",
+    "huggingface_hub": "0.36.2"
+  },
+  "status": "APPROVED_3_RTX_RUNS",
+  "runs": [
+    {
+      "id": "baseline-s42",
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "baseline",
+      "seed": 42,
+      "data_seed": 42,
+      "learning_rate": 5e-05,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "account": 1,
+      "source_prefix": "",
+      "src_lang": "tr_TR",
+      "tgt_lang": "en_XX",
+      "remote_prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/baseline/seed-42/rtx6000-fp32-b4-ga32-es10",
+      "definition": "CE only",
+      "distance": 2,
+      "strength": 0.1,
+      "stack": "encoder",
+      "jepa_weight": 0.1
+    },
+    {
+      "id": "nce-s42",
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "nce-only-v1",
+      "seed": 42,
+      "data_seed": 42,
+      "learning_rate": 5e-05,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "account": 1,
+      "source_prefix": "",
+      "src_lang": "tr_TR",
+      "tgt_lang": "en_XX",
+      "remote_prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/nce-only-v1/seed-42/rtx6000-fp32-b4-ga32-es10-tau0.1-beta0.1",
+      "definition": "nce-only-v1",
+      "distance": 2,
+      "strength": 0.1,
+      "stack": "encoder",
+      "jepa_weight": 0,
+      "alignment_weight": 0.1,
+      "temperature": 0.1
+    },
+    {
+      "id": "p3-s42",
+      "backbone": "mbart-large-50",
+      "model_id": "facebook/mbart-large-50-many-to-many-mmt",
+      "model_revision": "e30b6cb8eb0d43a0b73cab73c7676b9863223a30",
+      "method": "ordinary-full-v1",
+      "seed": 42,
+      "data_seed": 42,
+      "learning_rate": 5e-05,
+      "microbatch": 4,
+      "accumulation": 32,
+      "max_source_length": 256,
+      "max_target_length": 256,
+      "validation_beams": 1,
+      "account": 1,
+      "source_prefix": "",
+      "src_lang": "tr_TR",
+      "tgt_lang": "en_XX",
+      "remote_prefix": "checkpoints/opus100_turkish_english_20k/mbart-large-50/ordinary-full-v1/seed-42/rtx6000-fp32-b4-ga32-es10-tau0.1-beta0.1",
+      "definition": "ordinary-full-v1",
+      "distance": 2,
+      "strength": 0.1,
+      "stack": "encoder",
+      "jepa_weight": 0.1,
+      "alignment_weight": 0.1,
+      "temperature": 0.1
+    }
+  ],
+  "screening": "Describe paired validation differences; no automatic winner, equivalence, novelty certification or multi-seed expansion",
+  "purpose": "Turkish original OPUS100 exploratory transfer: Baseline/NCE/P3 seed42; identical RTX FP32 recipe, lock validation selections before test.",
+  "schema_version": 1,
+  "development_gates": {
+    "primary": "validation chrF++ beam1",
+    "supporting": [
+      "validation BLEU13a",
+      "validation chrF0"
+    ],
+    "cpu_and_all_gpu_gates_before_training": true,
+    "no_test_before_all_validation_locked": true,
+    "max_new_runs": 3,
+    "no_auto_expansion": true
+  },
+  "log_validation_chrf0": true,
+  "post_training_test": {
+    "authorized": true,
+    "workspace": "turkish_contrastive_rtx_test",
+    "statistics": "paired bootstrap10000 RNG42; global Holm9 for 3pairs x 3metrics; one development seed",
+    "primary_endpoint": "P3 versus Baseline BLEU; still report all3metrics and Holm9",
+    "scope": "Exploratory development; Turkish has previously inspected old-method seed42 test."
+  },
+  "queue_policy": {
+    "authorized_runs": 3,
+    "order": [
+      "baseline-s42",
+      "nce-s42",
+      "p3-s42"
+    ],
+    "on_training_end": "lock all3 validation-selected checkpoints, evaluate all2000 official test rows then paired bootstrap",
+    "on_failure": "stop and retain unbacked weights",
+    "shutdown_host": false
+  }
+}

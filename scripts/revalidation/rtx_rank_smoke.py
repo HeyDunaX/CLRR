@@ -8,7 +8,7 @@ import time
 import zipfile
 from pathlib import Path
 for name, relative in [('CUDA_CACHE_PATH','cache/cuda'),('TRITON_CACHE_DIR','cache/triton')]:
-    path=Path('/workspace/ura/thanhdat')/relative
+    path=Path('/workspace/ura/thanhdat/projects/CLRR')/relative
     path.mkdir(parents=True,exist_ok=True)
     os.environ[name]=str(path)
 import numpy as np
@@ -26,7 +26,7 @@ def digest(path):
 
 def main():
     assert ROOT.resolve().is_relative_to(WORKSPACE)
-    assert Path(sys.prefix).resolve().is_relative_to(WORKSPACE/'conda')
+    assert Path(sys.prefix).resolve().is_relative_to(ROOT/'conda')
     for key in ('HF_HOME','TORCH_HOME','PIP_CACHE_DIR','CONDA_ENVS_PATH','CONDA_PKGS_DIRS','TMPDIR'):
         assert Path(os.environ[key]).resolve().is_relative_to(WORKSPACE),(key,os.environ.get(key))
     plan=json.loads((ROOT/'PLAN.json').read_text())

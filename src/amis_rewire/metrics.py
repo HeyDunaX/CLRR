@@ -35,7 +35,7 @@ def safe_decode_inputs(predictions: np.ndarray, pad_token_id: int = 0) -> np.nda
     predictions = np.asarray(predictions)
     return np.where(predictions != -100, predictions, pad_token_id)
 
-def build_compute_metrics(tokenizer: Any, references: list[str], tokenize: str = "zh"):
+def build_compute_metrics(tokenizer: Any, references: list[str], tokenize: str = "zh", *, include_chrf0: bool = False):
     """Bind the original references for one ordered evaluation split."""
     raw_references = tuple(references)
 
@@ -48,7 +48,13 @@ def build_compute_metrics(tokenizer: Any, references: list[str], tokenize: str =
             safe_decode_inputs(predictions, 0 if pad_id is None else pad_id),
             skip_special_tokens=True,
         )
-        return generation_metrics(decoded, list(raw_references), tokenize=tokenize)
+        scores = generation_metrics(decoded, list(raw_references), tokenize=tokenize)
+        if include_chrf0:
+            scores['chrf0'] = float(CHRF(word_order=0).corpus_score(
+                [prediction.strip() for prediction in decoded],
+                [[reference.strip() for reference in raw_references]],
+            ).score)
+        return scores
 
     return compute_metrics
 

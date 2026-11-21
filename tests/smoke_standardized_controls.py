@@ -33,10 +33,28 @@ def main():
     worker.validate_environment(gpu=False)
     torch.set_num_threads(2)
     results = []
+    from methods.registry import TOKEN_METHODS, CONTRASTIVE_CONTROL_METHODS, SEQUENCE_METHODS, DEPTH_METHODS
+    token_checks = None
+    contrastive_control_checks = None
+    if any(s['method'] in CONTRASTIVE_CONTROL_METHODS for s in worker.plan()['runs']):
+        from test_contrastive_controls import run_correctness_checks
+        contrastive_control_checks = run_correctness_checks()
+    if any(s['method'] in TOKEN_METHODS for s in worker.plan()['runs']):
+        from smoke_token_lsr import check_formula, check_wrapper
+        token_checks = check_formula()
     with tempfile.TemporaryDirectory(prefix='controls-cpu-') as tmp:
         for spec in worker.plan()['runs']:
             torch.manual_seed(42)
-            model, stats = worker.wrap_model(base_model(spec['backbone']), spec)
+            base = base_model(spec['backbone'])
+            if spec['method'] in DEPTH_METHODS:
+                base.config.encoder_layers = 8
+                base.config.decoder_layers = 12
+                base.config._attn_implementation = worker.protocol()['attention_implementation']
+                base = AutoModelForSeq2SeqLM.from_config(base.config)
+            elif worker.protocol().get('attention_implementation'):
+                base.config._attn_implementation = worker.protocol()['attention_implementation']
+                base = AutoModelForSeq2SeqLM.from_config(base.config)
+            model, stats = worker.wrap_model(base, spec)
             model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={'use_reentrant': True})
             assert stats['trainable_params'] > 0
             for module in model.modules():
@@ -45,6 +63,14 @@ def main():
             ids = torch.randint(3, 90, (4, 12))
             labels = torch.randint(3, 90, (4, 10)); labels[:, -2:] = -100
             batch = {'input_ids': ids, 'attention_mask': torch.ones_like(ids), 'labels': labels}
+            if spec['method'] in SEQUENCE_METHODS:
+                other = labels.clone()
+                other[:, 1] = (other[:, 1] + 1).clamp(max=89)
+                batch.update(candidate_labels=torch.stack([labels, other], 1),
+                    candidate_costs=torch.tensor([[0., .7]]).repeat(len(labels), 1),
+                    candidate_valid=torch.ones(len(labels), 2, dtype=torch.bool))
+            if spec['method'] in TOKEN_METHODS:
+                check_wrapper(worker, base_model, spec, batch)
             model.zero_grad()
             loss = model(**batch).loss
             assert torch.isfinite(loss)
@@ -71,7 +97,7 @@ def main():
             folder = Path(tmp) / spec['id']
             trainer = worker.ControlTrainer(model=model,
                 args=Seq2SeqTrainingArguments(output_dir=str(folder), use_cpu=True, report_to=[],
-                    gradient_accumulation_steps=4, save_safetensors=False), generation_dtype='fp32')
+                    gradient_accumulation_steps=spec['accumulation'], save_safetensors=False), generation_dtype='fp32')
             assert trainer.model_accepts_loss_kwargs is False
             model.zero_grad()
             trainer.compute_loss(model, dict(batch), num_items_in_batch=torch.tensor(999)).backward()
@@ -80,6 +106,14 @@ def main():
             model(**batch).loss.backward()
             for n, p in model.named_parameters():
                 if n in first: torch.testing.assert_close(p.grad, first[n])
+            reference_loss = model(**batch).loss.detach()
+            model.zero_grad()
+            trainer.current_gradient_accumulation_steps = spec['accumulation']
+            returned = trainer.training_step(model, dict(batch), num_items_in_batch=torch.tensor(999))
+            torch.testing.assert_close(returned, reference_loss / spec['accumulation'], rtol=2e-4, atol=2e-6)
+            for n, p in model.named_parameters():
+                if n in first:
+                    torch.testing.assert_close(p.grad, first[n] / spec['accumulation'], rtol=2e-4, atol=2e-6)
             model.eval()
             with torch.no_grad(): expected = model(**batch).logits.clone()
             trainer._save(str(folder))
@@ -109,6 +143,10 @@ def main():
                     for module in (core.model.encoder.embed_tokens, core.model.decoder.embed_tokens, core.lm_head):
                         assert torch.equal(module.modules_to_save['default'].weight, weight)
                         module.modules_to_save['default'].weight = weight
+            elif spec['method'] in DEPTH_METHODS:
+                from methods.depth_difference.v2 import ValueScaledDepthDifference
+                restored = ValueScaledDepthDifference.from_pretrained(folder)
+                assert restored.method_id == spec['method']
             else:
                 base, info = AutoModelForSeq2SeqLM.from_pretrained(folder, output_loading_info=True)
                 assert not any(info.get(k) for k in ('missing_keys', 'unexpected_keys', 'mismatched_keys', 'error_msgs')), info
@@ -122,6 +160,8 @@ def main():
             print('CPU_GATE_PASS', spec['id'], flush=True)
             del trainer, model, restored
     worker.write(worker.OUT / 'CPU_GATE.json', {'passed': True, 'cases': results,
+        'token_checks': token_checks,
+        'contrastive_control_checks': contrastive_control_checks,
         'bundle_sha256': worker.sha256(worker.OUT / 'bundle_manifest.json')})
     print('CPU_ALL_PASS', len(results), flush=True)
 

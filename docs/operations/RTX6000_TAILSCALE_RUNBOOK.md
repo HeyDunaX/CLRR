@@ -1,291 +1,292 @@
-# RTX6000 qua Tailscale: SSH và chạy CLRR
+# Hướng dẫn Vận hành & Thực thi Thực nghiệm NCKH trên GPU Server (RTX 6000 qua Tailscale SSH)
 
-Ngày: 07/10/2026 (Asia/Saigon).
+Tài liệu này cung cấp quy chuẩn vận hành, thiết lập môi trường và quy trình chạy thực nghiệm Nghiên cứu Khoa học (NCKH) trên máy chủ GPU dùng chung (GPU Server), lấy cấu hình tham chiếu là cụm **NVIDIA Quadro RTX 6000** kết nối qua mạng an toàn **Tailscale SSH**.
 
-## Trạng thái hiện hành: SSH ĐÃ KẾT NỐI — 07/10/2026
+> [!IMPORTANT]
+> **Quy tắc Vàng trên Máy chủ Dùng chung (Shared Server Ethics):**
+> 1. **Tuyệt đối không can thiệp vào tiến trình của người khác:** Không dừng (`kill`), đổi độ ưu tiên (`renice`), hoặc chiếm dụng GPU khi người khác đang chạy job.
+> 2. **Cô lập triệt để tài nguyên:** Mọi dự án phải có workspace riêng, conda environment riêng, và chuyển toàn bộ cache/temp vào thư mục dự án của mình. Không ghi đè hay cài đè vào môi trường hệ thống.
+> 3. **Kiểm tra tài nguyên trước khi chạy:** Luôn kiểm tra VRAM, tiến trình GPU và dung lượng đĩa trước khi xếp lịch chạy job.
 
-Dùng từ PowerShell:
+---
+
+## 1. Thông tin Máy chủ & Môi trường Tham khảo
+
+Thông tin cấu hình mặc định dùng cho việc kết nối và quản lý:
+
+| Thông số | Giá trị mặc định / Tham khảo | Ghi chú |
+|---|---|---|
+| **Tailscale IP** | `100.90.53.12` | Địa chỉ IP nội bộ qua Tailnet |
+| **User / Hostname** | `ura` / `ura-RTX6000` | Tài khoản được cấp quyền |
+| **GPU phần cứng** | NVIDIA Quadro RTX 6000 (24 GB VRAM) | Hỗ trợ CUDA, FP16/BF16 (tùy kiến trúc) |
+| **Thư mục gốc người dùng** | `/workspace/ura/thanhdat/` | Toàn bộ dự án đặt tại đây |
+| **Quy ước thư mục dự án** | `/workspace/ura/thanhdat/projects/<project_name>/` | Ví dụ: `.../projects/PhonoRepair/` |
+
+---
+
+## 2. Kết nối & Kiểm tra Trạng thái Máy chủ (Pre-flight Checks)
+
+### 2.1. Kết nối qua Tailscale SSH
+
+Từ máy cá nhân (Windows PowerShell hoặc Linux/macOS Terminal):
 
 ```powershell
+# Kiểm tra trạng thái mạng Tailscale
+& 'C:\Program Files\Tailscale\tailscale.exe' status
+
+# Kết nối SSH vào GPU server qua Tailscale
 & 'C:\Program Files\Tailscale\tailscale.exe' ssh ura@100.90.53.12
 ```
 
-Đã chạy thành công whoami/hostname/nvidia-smi: userura, hostura-RTX6000, Quadro RTX6000 24576MiB, driver535.261.03. SSH server tự nhận Tailscale và dùng port22. Không cần dò các forwarded ports của IDE. OpenSSH thường chặn vì host key chưa có; Tailscale SSH đã kết nối thành công. Aliasrtx6000 chưa có trong SSHconfig local được kiểm tra.
+*(Trên Linux/macOS, có thể dùng trực tiếp lệnh `tailscale ssh ura@100.90.53.12` hoặc alias trong file `~/.ssh/config`).*
 
-GPU đang dùng666MiB, utilization0% ở thời điểm kiểm tra. Đĩa chứa home chỉ còn4.7GB (99%used). Có miniconda tại /home/ura/miniconda3 nhưng chưa có envclrr; không chạy Python bằng env khác, chưa cài môi trường hoặc train. Quadro RTX6000 là Turing, không có nativeBF16 như A100; cần đánh giá khả năng chạy recipe riêng trước khi dùng nghiên cứu. Không tự đổi precision trong32runs. Chưa chạy runtimeBF16 probe vì chưa có clrr.
+### 2.2. Kiểm tra Tài nguyên Phần cứng & Ổ đĩa
 
-Các mục chẩn đoán trước đó bên dưới là lịch sử, được thay bằng trạng thái này.
-
-## Thông tin kết nối do tác giả cung cấp
-
-- Tailscale IP máy GPU: 100.90.53.12.
-- Username SSH: ura.
-- Lệnh kết nối từ PowerShell: `ssh ura@100.90.53.12`.
-- Đã thử từ công cụ của agent: SSH exit255, không có stdout/stderr. Chưa xác nhận đăng nhập hoặc GPU.
-
-## 1. Trạng thái và thông tin còn thiếu
-
-- Ảnh cho thấy peer tên ura-rtx6000. Chưa xác nhận IP, username SSH, hệ điều hành, GPU thực tế hoặc quyền truy cập.
-- 100.122.134.41 trong ảnh là máy Windows desktop-biojune, không phải địa chỉ máy GPU.
-- Công cụ terminal của phiên chat lỗi khởi tạo. Công cụ dự phòng gọi Tailscale status nhưng daemon trả Access is denied. Chưa SSH thành công và chưa chạy training trên RTX6000.
-- Tác giả đã cung cấp username ura và IP100.90.53.12; cần xác nhận đăng nhập thực tế. Tài khoản GitHub/Tailscale không mặc định là username SSH.
-- 32 Amis runs có thể đang chạy trên Colab: phải kiểm tra hàng đợi thực tế trước phân công máy mới. Không chạy lại family/seed đã chạy hoặc đang chạy. Turkish vẫn chưa mở training.
-
-## 2. Kết nối từ PowerShell trên Windows
-
-Chạy trong terminal của chính tài khoản Windows đang đăng nhập Tailscale:
-
-```powershell
-& 'C:\Program Files\Tailscale\tailscale.exe' status
-& 'C:\Program Files\Tailscale\tailscale.exe' ping ura-rtx6000
-# Thay <user> bằng username Linux, <gpu-ip> bằng IP peer GPU.
-Test-NetConnection <gpu-ip> -Port 22
-ssh <user>@<gpu-ip>
-# Nếu MagicDNS phân giải hostname:
-ssh <user>@ura-rtx6000
-```
-
-Lần đầu xác minh fingerprint với chủ máy rồi chấp nhận. Không dùng StrictHostKeyChecking=no. Nếu dùng SSH key, chủ máy cần thêm public key vào authorized_keys của đúng user; không chia sẻ private key.
-
-Tailscale tạo mạng riêng; máy đích vẫn cần OpenSSH hoặc Tailscale SSH. Tailscale SSH cần cấu hình SSH và policy cho phép user/thiết bị nguồn đến peer; máy tagged cần rule phù hợp. Không tự thay ACL của cả tailnet. Nếu OpenSSH thông thường chạy qua Tailscale thì xác thực bằng user/key của hệ điều hành như SSH bình thường.
-
-Nguồn: [SSH qua Tailscale](https://tailscale.com/docs/reference/ssh-over-tailscale), [Tailscale SSH và policy](https://tailscale.com/docs/features/tailscale-ssh).
-
-Các lỗi thường gặp:
-
-| Lỗi | Kiểm tra |
-|---|---|
-| status: Access is denied | Chạy CLI trong terminal của tài khoản có quyền dùng daemon; nếu vẫn lỗi, chủ máy kiểm tra quyền Windows/Tailscale. Không suy ra peer offline |
-| Không resolve ura-rtx6000 | Dùng IP 100.x của peer hoặc hostname đầy đủ trong Tailscale |
-| Connection refused | SSH service/port trên máy đích |
-| Timeout | Peer online, ACL/network access, firewall và port |
-| Permission denied (publickey) | Username và SSH key được cấp |
-| Permission denied (tailscale) | Tailscale SSH policy cho tagged device và user đích |
-
-## 3. Inventory trên máy GPU (giả định Linux; phải xác nhận)
+Ngay sau khi đăng nhập thành công vào remote host, thực hiện chuỗi lệnh kiểm tra:
 
 ```bash
+# 1. Kiểm tra định danh người dùng và máy chủ
 whoami
-uname -a
+hostname
+
+# 2. Kiểm tra trạng thái GPU (VRAM còn trống, tiến trình đang chạy)
 nvidia-smi
-nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv
-conda env list
-df -h
+nvidia-smi --query-gpu=name,memory.total,memory.free,driver_version --format=csv
+
+# 3. Kiểm tra dung lượng ổ đĩa khả dụng trong thư mục làm việc
+df -h /workspace/ura/thanhdat
+
+# 4. Kiểm tra Python và Conda hệ thống
+command -v python3
+python3 --version
+command -v conda || which conda
 ```
 
-Không mặc định RTX6000 = A100. Tên có thể là Quadro RTX 6000, RTX A6000 hoặc RTX 6000 Ada, khác VRAM và BF16. PyTorch BF16 support và GPU preflight mới quyết định có chạy recipe được không. Nếu BF16 không hỗ trợ, dừng: không tự đổi FP16/FP32 trong cohort đã khóa.
+> [!WARNING]
+> Nếu VRAM khả dụng không đủ cho mô hình (ví dụ: cần tối thiểu 10–16 GiB nhưng máy chỉ còn dưới 4 GiB), hoặc GPU đang phục vụ dự án khác với mức sử dụng 100%, bạn **phải chờ hoặc trao đổi lịch chạy với người phụ trách**, tuyệt đối không tự ý kill tiến trình của người khác.
 
-## 4. Triển khai đúng frozen bundle
+---
 
-Dùng directory Linux riêng, không copy toàn bộ outputs/checkpoints. Bundle đã gồm source, Amis CSV, worker, integrity module và hai smoke tests. Không dùng launcher Colab trực tiếp: nó hard-code /content/miniforge3, /content/CLRR, accounts và kiểm tên A100.
+## 3. Cấu trúc Dự án & Cô lập Môi trường (Isolation)
 
-Trên Windows, đọc SHA hiện hành và chuyển bundle đang khóa (không rebuild giữa cohort):
+### 3.1. Tạo Thư mục Dự án Mới
 
-```powershell
-Get-Content scratch/fresh_confirmation_manifest.json
-Get-FileHash scratch/fresh_confirmation_bundle.zip -Algorithm SHA256
-ssh <user>@<gpu-ip> 'mkdir -p ~/clrr_confirmation_20261007'
-scp scratch/fresh_confirmation_bundle.zip <user>@<gpu-ip>:~/clrr_confirmation_20261007/
-```
-
-Trên Linux:
+Mỗi dự án NCKH phải được tổ chức hoàn toàn độc lập theo cấu trúc chuẩn:
 
 ```bash
-cd ~/clrr_confirmation_20261007
-sha256sum fresh_confirmation_bundle.zip
-unzip -q fresh_confirmation_bundle.zip
-export PYTHONPATH="$PWD/src"
+# Đặt tên dự án của bạn (ví dụ: PhonoRepair, ViNID, AudioGen, v.v.)
+export PROJECT_NAME="<project_name>"
+
+# Tạo cấu trúc thư mục
+mkdir -p /workspace/ura/thanhdat/projects/$PROJECT_NAME
+cd /workspace/ura/thanhdat/projects/$PROJECT_NAME
+
+# Tạo các thư mục phục vụ cô lập cache, log, tạm và dữ liệu
+mkdir -p cache/huggingface cache/torch cache/pip tmp logs configs data outputs checkpoints
+```
+
+Cấu trúc thư mục khuyến nghị:
+
+```text
+/workspace/ura/thanhdat/projects/<project_name>/
+├── src/                          # Mã nguồn chính của dự án
+├── scripts/                      # Scripts thực thi (run_train.py, run_eval.py, ...)
+├── configs/                      # Cấu hình thực nghiệm (yaml, json)
+├── data/                         # Dữ liệu huấn luyện, benchmark, cache dữ liệu
+├── outputs/ (hoặc results/)      # Kết quả xuất ra (metrics, predictions, leaderboards)
+├── checkpoints/                  # Lưu checkpoint tạm thời của mô hình
+├── conda/envs/<project_name>/    # Môi trường Conda cô lập (hoặc named env)
+├── cache/                        # Cache độc lập (huggingface, torch, pip)
+│   ├── huggingface/
+│   ├── torch/
+│   └── pip/
+├── logs/                         # File log chạy nền
+└── tmp/                          # Thư mục tạm thời
+```
+
+### 3.2. Cấu hình Chuyển hướng Cache & Temp
+
+Mặc định, Hugging Face, PyTorch và Pip sẽ lưu cache vào thư mục `/home/<user>/.cache`, dễ gây tràn dung lượng phân vùng hệ thống root `/`. Để tránh điều này, hãy xuất các biến môi trường trỏ trực tiếp về thư mục dự án:
+
+```bash
+# Đứng tại thư mục root của dự án (/workspace/ura/thanhdat/projects/<project_name>)
+export HF_HOME="$PWD/cache/huggingface"
+export TORCH_HOME="$PWD/cache/torch"
+export PIP_CACHE_DIR="$PWD/cache/pip"
+export TMPDIR="$PWD/tmp"
 export TOKENIZERS_PARALLELISM=false
-conda run -n clrr python -c 'import hashlib,json,pathlib; r=pathlib.Path.cwd(); m=json.loads((r/"fresh_bundle_files.json").read_text()); bad=[n for n,h in m.items() if hashlib.sha256((r/n).read_bytes()).hexdigest()!=h]; print("files",len(m),"mismatches",bad); assert not bad'
 ```
 
-SHA ghi trong bàn giao ngày06/10 là 52fcd0fc2881d414a8ea1ab0e21ca1961eec74cd32b01858fda5c77a3d64bc3c. Đối chiếu manifest thực tế; nếu khác, điều tra phiên bản đang chạy trước khi triển khai, không tự thay bằng bản cũ.
+### 3.3. Khởi tạo Môi trường Conda Riêng biệt
 
-## 5. Môi trường và GPU gate
-
-Mọi Python chạy bằng conda clrr. Nếu máy chưa có env này, tạo riêng với chủ máy; không ghi đè env đang dùng. Worker assert torch2.6.0, transformers4.57.6, accelerate1.15.0. Launcher hiện pin Python3.13 và torch CUDA12.4, cùng tokenizers0.22.2, huggingface_hub0.36.0, numpy2.5.3, sentencepiece0.2.2, protobuf7.36.2, safetensors0.8.0, pandas3.0.6, datasets3.6.0, sacrebleu2.6.0, scipy1.17.1. Đây là pins đọc từ source, chưa xác nhận có thể cài trên máy RTX. Kiểm tra runtime thực tế của cohort đang chạy và wheel availability trước bootstrap. Không dùng requirements-colab.txt rộng để tự suy ra môi trường confirmation tương đương.
+Khởi tạo môi trường ảo độc lập để không làm xung đột gói thư viện với các dự án khác:
 
 ```bash
-conda run -n clrr python -c 'import torch,transformers,accelerate; print(torch.__version__,transformers.__version__,accelerate.__version__); print(torch.cuda.is_available()); print(torch.cuda.get_device_name(0)); print(torch.cuda.get_device_capability(0)); print("BF16",torch.cuda.is_bf16_supported())'
-conda run --no-capture-output -n clrr python tests/smoke_rerun_optimization.py --cuda --result-dir outputs_rebuttal/amis_fresh_confirmation_20261005/gpu_gate
-conda run --no-capture-output -n clrr python tests/smoke_precision_training.py --cuda --audit-rerun --result-dir outputs_rebuttal/amis_fresh_confirmation_20261005/gpu_gate
+# Cách 1: Tạo môi trường theo prefix đặt ngay trong project (khuyên dùng để quản lý gọn gàng)
+conda create -p ./conda/envs/<project_name> python=3.10 -y
+conda activate ./conda/envs/<project_name>
+
+# Cách 2: Tạo named conda environment
+# conda create -n <project_name> python=3.10 -y
+# conda activate <project_name>
 ```
 
-Gate cần đủ16 optimization cases và4 lifecycle branches PASS, có CUDA/BF16 flags. Lưu receipts mới của RTX6000; không copy gate A100 để giả PASS. Nếu OOM ở recipe batch32/accum4 thì dừng để quyết định protocol: không tự giảm batch hoặc tăng accumulation giữa cohort. GPU khác có thể ảnh hưởng numerical reproducibility; ghi GPU/runtime per run và kiểm tra phân bố family/seed không bị confound với hardware trước pooling.
-
-## 6. Chỉ phân công run còn thiếu sau inventory
-
-Worker đã đọc và có CLI thật:
+Cài đặt PyTorch và các thư viện tương thích với phiên bản CUDA của RTX 6000:
 
 ```bash
-conda run --no-capture-output -n clrr python scripts/revalidation/run_fresh_seed_confirmation.py --family full --seed 45 --stage train
+# Cài đặt PyTorch tương thích CUDA (ví dụ CUDA 11.8 hoặc 12.1)
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+# Cài đặt thư viện NCKH cơ bản
+pip install transformers datasets accelerate evaluate sentencepiece scikit-learn pandas numpy tqdm
+
+# Nếu dự án có requirements.txt hoặc pyproject.toml
+pip install -r requirements.txt
+# hoặc: pip install -e .
 ```
 
-Lệnh trên là ví dụ, KHÔNG chạy full45 nếu đã có hoặc đang chạy trên Colab. Choices family: baseline, clrr, lsr, full; seeds45–52. Worker dùng namespace amis_fresh_confirmation_20261005, repo HF riêng theo family, từ chối run đã tồn tại. Không đổi prefix để né guard và tạo duplicate.
+### 3.4. Xác thực Môi trường Đồ họa & GPU Stack
 
-Recipe đã khóa: mBART Amis→Mandarin, LR5e-5, weight_decay0, warmup.06, batch32×accum4, BF16+checkpointing, lengths256, max20epochs, patience4; chọn checkpoint validation raw chrF++ greedy beam1. Full encoder distance2 alpha.10/lambda.10, routing warmup0. Không đổi patience chỉ vì dừng sớm; các family phải cùng protocol.
-
-HF_TOKEN cần quyền write đúng repos. Nhập kín trong terminal remote (không đặt token trong lệnh/history/docs):
+Xác minh xem PyTorch đã nhận diện đúng GPU Quadro RTX 6000 chưa:
 
 ```bash
-read -rsp 'HF write token: ' HF_TOKEN
-printf '\n'
-export HF_TOKEN
+python -c "import torch; print('CUDA Available:', torch.cuda.is_available()); print('Device Name:', torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'N/A'); print('CUDA Version:', torch.version.cuda)"
+
+# Lưu lại thông tin môi trường vào log để đảm bảo tính tái lập (reproducibility)
+python -m pip freeze > logs/environment_snapshot.txt
 ```
 
-Để SSH ngắt mà training tiếp tục, dùng tmux đã cài trên máy:
+---
+
+## 4. Quy trình Thực thi Thực nghiệm (2 Bước Chuẩn)
+
+### Bước 1: Smoke Test (Chạy thử nghiệm nhỏ)
+
+Trước khi tiến hành chạy hàng ngàn mẫu hoặc huấn luyện qua đêm, **bắt buộc** phải chạy một smoke test nhỏ (ví dụ 16–32 mẫu hoặc 1–2 batch) để kiểm tra:
+1. Pipeline load model lên CUDA thành công (không crash do thiếu thư viện hoặc thiếu VRAM).
+2. Định dạng dữ liệu và tính toán metric không phát sinh ngoại lệ.
+3. Thư mục xuất kết quả được tạo đúng quyền ghi.
 
 ```bash
-tmux new -s clrr_confirmation
-cd ~/clrr_confirmation_20261007
-export PYTHONPATH="$PWD/src"
+# Ví dụ chạy smoke test đánh giá hoặc huấn luyện với giới hạn mẫu nhỏ:
+python scripts/run_evaluation.py \
+  --model_name <model_key_or_path> \
+  --data_path data/benchmark_sample.jsonl \
+  --output_dir outputs/smoke_test \
+  --batch_size 8 \
+  --limit 16 \
+  --device cuda
+```
+
+Kiểm tra file log và `nvidia-smi` để đảm bảo mức tiêu thụ VRAM nằm trong ngưỡng an toàn.
+
+---
+
+### Bước 2: Chạy Thực nghiệm Chính thức với `tmux`
+
+Để quá trình chạy không bị ngắt quãng khi mất kết nối mạng cá nhân, luôn thực thi qua công cụ quản lý terminal **`tmux`**.
+
+```bash
+# 1. Tạo session tmux mới với tên dự án và mã đợt chạy (run_id)
+tmux new -s <project_name>_run1
+
+# 2. Di chuyển vào thư mục dự án và kích hoạt môi trường
+cd /workspace/ura/thanhdat/projects/<project_name>
+conda activate ./conda/envs/<project_name>
+
+# 3. Nạp lại biến môi trường cache
+export HF_HOME="$PWD/cache/huggingface"
+export TORCH_HOME="$PWD/cache/torch"
+export PIP_CACHE_DIR="$PWD/cache/pip"
+export TMPDIR="$PWD/tmp"
 export TOKENIZERS_PARALLELISM=false
-# Nhập HF_TOKEN kín trong tmux rồi chạy đúng run còn thiếu được phân công.
-conda run --no-capture-output -n clrr python scripts/revalidation/run_fresh_seed_confirmation.py --family <family> --seed <seed> --stage train > train_<family>_<seed>.log 2>&1
+
+# 4. Chạy lệnh thực nghiệm với logging ra file (sử dụng python -u để unbuffer log)
+python -u scripts/run_experiment.py \
+  --config configs/train_config.yaml \
+  --output_dir outputs/run_full_001 \
+  > logs/run_full_001.log 2>&1
 ```
 
-Detach bằng Ctrl-b rồi d; attach lại bằng tmux attach -t clrr_confirmation. Mỗi GPU một model tại một thời điểm. Không tạo queue32 mới khi queue Colab đang chạy. Cần bảng ownership family/seed/host/status trước khi chuyển bất kỳ run nào.
+**Các thao tác phím tắt cơ bản trong tmux:**
+- **Rời khỏi session (Detach):** Bấm tổ hợp phím `Ctrl + b`, sau đó nhả ra và bấm phím `d`. Job vẫn sẽ tiếp tục chạy trên máy chủ.
+- **Quay lại session (Attach):**
+  ```bash
+  tmux attach -t <project_name>_run1
+  ```
+- **Xem danh sách các session đang chạy:**
+  ```bash
+  tmux ls
+  ```
+- **Xóa session sau khi chạy xong:**
+  ```bash
+  tmux kill-session -t <project_name>_run1
+  ```
 
-## 7. Theo dõi, HF backup và test
+---
+
+## 5. Giám sát & Quản lý Tiến trình
+
+Từ một terminal khác kết nối qua Tailscale, bạn có thể theo dõi tiến độ công việc:
 
 ```bash
-nvidia-smi
-tail -n 40 train_<family>_<seed>.log
-find outputs_rebuttal/amis_fresh_confirmation_20261005 -name VAL_COMPLETE.json -print
+# Theo dõi trực tiếp dòng log mới nhất
+tail -f -n 50 /workspace/ura/thanhdat/projects/<project_name>/logs/run_full_001.log
+
+# Giám sát GPU theo chu kỳ 2 giây/lần
+watch -n 2 nvidia-smi
 ```
 
-- Worker upload selected checkpoint/provenance lên HF, kiểm pinned revision/hash rồi mới cleanup weights. Chỉ coi hoàn tất khi có VAL_COMPLETE.json VÀ collection_receipt.json verified; file hoàn tất riêng lẻ chưa đủ xác nhận backup.
-- Giữ JSON/CSV/logs nhỏ, không tải weights về laptop. Lấy artifacts từ RTX bằng scp theo thư mục cụ thể. Collector/watch hiện dành cho Colab; không giả định chúng tự biết host RTX.
-- Chưa có collector RTX turnkey. Nếu chạy research run ở RTX, cần bổ sung thu artifacts vào đúng local family/seed tree và replay verifier, không invent flag --host trong launcher hiện tại.
-- Test chỉ mở sau đủ32validation verified và selection_lock.json khóa. Test stage còn cần VAL_COMPLETE.json, collection_receipt.json và selection lock trong đúng paths trên host; không chỉ truyền --stage test lên máy trống.
-- Frozen test beam4 FP32/TF32off; không dùng test chọn seed/config. Giữ code/bundle cùng version.
-- Khi có người/agent theo dõi chủ động: kiểm10phút/lần và báo chat epoch, best validation, stop reason, HF backup status, lỗi. tail/tmux không tự gửi chat.
+> [!TIP]
+> **Xử lý sự cố Out-Of-Memory (OOM):**
+> Nếu gặp lỗi `CUDA out of memory`:
+> 1. Giảm `--batch_size` (ví dụ từ 32 xuống 16 hoặc 8).
+> 2. Sử dụng Gradient Accumulation (`--gradient_accumulation_steps`) nếu đang train.
+> 3. Kích hoạt Mixed Precision (`fp16` hoặc `bf16`) nếu mô hình và GPU hỗ trợ.
+> 4. Dùng `torch.cuda.empty_cache()` giữa các chu kỳ đánh giá để dọn sạch bộ nhớ đệm.
 
-## 8. Điều kiện GO / HOLD
+---
 
-| GO | HOLD |
-|---|---|
-| SSH thành công, host/GPU/runtime xác nhận | Username/IP hoặc quyền SSH chưa có |
-| BF16, batch32×accum4 và gate thực tế PASS | BF16 không hỗ trợ, OOM hoặc gate fail |
-| Bundle/runtime khớp protocol đã khóa | Source/pins không thống nhất |
-| Run còn thiếu có ownership, không duplicate | Colab vẫn đang chạy cùng run hoặc HF đã có run |
-| HF write/verification và disk đủ cho training | Upload thất bại hoặc disk thiếu |
+## 6. Thu thập Kết quả (Artifacts) & Đồng bộ
 
-Tài liệu này hướng dẫn chuẩn bị và nêu các điểm cần hoàn thiện. Không xác nhận RTX6000 đã kết nối hay training đã chạy.
+Sau khi thực nghiệm hoàn tất, kiểm tra các tệp kết quả tạo ra trong thư mục output:
+- `metrics.json`: Báo cáo chỉ số định lượng (Accuracy, F1, BLEU, ROUGE, Loss, v.v.).
+- `predictions.jsonl` hoặc `.csv`: Dự đoán chi tiết của mô hình trên tập kiểm thử.
+- `run_metadata.json`: Lưu vết cấu hình, git commit, seed, thời gian chạy.
 
-## Chẩn đoán thực tế mới — 07/10/2026
+### Tải Kết quả về Máy cá nhân
 
-Đã chạy CLI ngoài sandbox sau khi sandbox bị Access is denied:
+> [!WARNING]
+> **Lưu ý về Xác thực Tailscale SSH:**
+> `tailscale ssh` sử dụng chứng chỉ xác thực định danh của Tailnet, không mặc định dùng chung SSH Key thông thường của OpenSSH. Do đó, lệnh `scp` truyền thống có thể bị từ chối xác thực (Permission denied). 
 
-- tailscale status: chỉ có máy local desktop-biojune, IP100.76.168.27, account Thanhdat3010@.
-- tailscale ping --c 1 --timeout 5s 100.90.53.12: no matching peer.
-- tailscale switch --list: chỉ profile8daa, tailnet thanhdat3010.github, account Thanhdat3010@github đang active. Không có profile khác để switch.
-- ssh ura@100.90.53.12: banner exchange Connection refused, chưa xác thực user.
+Bạn nên sử dụng một trong các phương án truyền file sau:
 
-Kết luận: peer100.90.53.12 chưa được công bố/hiển thị cho client trong tailnet hiện tại; chưa thể kết luận dịch vụ SSH trên GPU có bật hay không. Ảnh cũ có peerura-rtx6000 và địa chỉ local100.122.134.41, ảnh mới không có danh sách peer. Cần khôi phục quyền nhìn thấy peer qua đúng tailnet hoặc machine sharing từ quản trị viên. Khi status có peer, ping lại rồi SSH. Không mở SSH ra Internet, không tự thay ACL/tài khoản.
-
-Nguồn: https://tailscale.com/docs/how-to/connect-to-devices và https://tailscale.com/docs/reference/troubleshooting/connectivity/connect-device-failure .
-
-## Workspace riêng đã tạo — 07/10/2026
-
-- Path: /workspace/ura/thanhdat, ownerura, mode700.
-- Ổ /workspace: tổng458GB, còn111GB tại thời điểm kiểm tra; ổ /priority còn26GB, ổ / còn4.7GB. Không ghi project/cache vào ổroot.
-- Đã tạo repo/, outputs/, logs/, cache/{huggingface,torch,pip}/, conda/{envs,pkgs}/, tmp/, credentials/. Chưa copy code, chưa cài env hoặc chạy training.
-- environment.sh đặt THANHDAT_WORKSPACE, HF_HOME, TORCH_HOME, PIP_CACHE_DIR, CONDA_ENVS_PATH, CONDA_PKGS_DIRS, TMPDIR trong workspace riêng. Không sửa shell profile chung.
-
-```bash
-source /workspace/ura/thanhdat/environment.sh
-cd "$THANHDAT_WORKSPACE/projects"
-# Khi cài env sau này: dùng /home/ura/miniconda3/bin/conda và conda clrr.
-```
-
-Quyền700 tránh userLinux khác đọc nhưng mọi người dùng cùng userura vẫn có quyền. GPU và111GBfree là tài nguyên chung, không phải quota dành riêng. Outputs mặc định của scripts có thể nằm trong repo/outputs_rebuttal; vẫn ở dưới workspace này. Sau HFbackupverified mới cleanup weights thuộc project. Không xóa file người khác.
-
-## Bố cục cuối cùng theo yêu cầu tác giả — 07/10/2026
-
-Workspace tổng /workspace/ura/thanhdat, các project đặt trong projects/<project_name>/. Thư mục clrr_thanhdat đã được đổi tên; bỏ các thư mục repo/outputs/logs/credentials trống cũ. Giữ cache/, conda/, tmp/ và environment.sh dùng chung trong workspace. Chưa triển khai hoặc train CLRR trên RTX6000; tác giả chỉ chuẩn bị máy cho project tương lai.
-
-## Quy định hiện hành — 09/10/2026
-
-Người dùng yêu cầu ưu tiên RTX6000 cho diagnostics, forward/backward probes,
-smoke tests và các phép đo không training trong tương lai để tiết kiệm Colab.
-SSH qua `tailscale ssh ura@100.90.53.12` đã được kiểm tra lại thành công:
-Quadro RTX6000,24576MiB; workspace `/workspace/ura/thanhdat`, ownerura, mode700.
-Đã triển khai project và môi trường riêng, và chạy PASS phép đo rank đầu tiên;
-chi tiết ở mục smoke verification bên dưới. Không chạy training.
-
-Chỉ ghi và quản lý dữ liệu trong `/workspace/ura/thanhdat/`; project CLRR sẽ ở
-`projects/CLRR/` dưới workspace này. Source `environment.sh` để cache, env và
-tmp đi vào đúng vùng riêng. Không sửa/xóa các project, môi trường, process hoặc
-checkpoint của người khác. Quyền700 không cách ly những người cùng userura.
-
-Giữ cùng checkpoint SHA, validation rows/indices, tokenizer, công thức, versions,
-FP32, dropout off và TF32 off khi so diagnostics giữa RTX6000/A100. Replay một
-phần phép đo với artifacts A100 đã có; chênh lệch vượt tolerance cần audit trước
-khi gộp bảng. Hardware và precision phải có trong runtime receipts.
-Không bảo đảm predictions hoặc floating-point outputs giống bit-for-bit giữa GPU.
-
-Centered-LSR gradient diagnostics phải giữ microbatch32 đã khóa. Không tự giảm
-batch vì24GB VRAM: centering theo batch sẽ đổi objective. Nếu cần giải pháp bộ
-nhớ, phải xác minh tương đương phép đo; chưa được thay protocol để lấy số.
-Quy định này dành cho phép đo không training, không đổi hardware của các runs
-training đối sánh đã khóa trên A100. Không tự mở Colab nếu có thể đo đúng trên RTX.
-
-## Smoke verification thực tế — 09/10/2026
-
-Trước setup: GPU dùng670MiB, còn23538MiB, utilization0%. Worker kiểm tra lại
-trước tải checkpoint: free23380MiB, yêu cầu ít nhất8GiB; thiếu thì dừng,
-không evict/kill process người khác. Sau khi worker kết thúc: used666MiB,
-free23542MiB, utilization0%. Không tắt máy GPU dùng chung.
-
-Mọi thứ được cài/ghi trong `/workspace/ura/thanhdat/`:
-
-| Thành phần | Đường dẫn |
-|---|---|
-| Conda runtime riêng | `conda/runtime/` |
-| Conda env `clrr` | `conda/envs/clrr/` |
-| Conda packages/config | `conda/pkgs/`, `conda/condarc.yaml` |
-| Project | `projects/CLRR/` |
-| Data | `projects/CLRR/data_processed/amis_mandarin/validation.csv` |
-| Code | `projects/CLRR/scripts/revalidation/rtx_rank_smoke.py` |
-| Receipts/logs | `projects/CLRR/outputs/rtx_rank_smoke/` |
-| HF/Torch/pip/CUDA/Triton/bytecode cache | `cache/` |
-| File tạm | `tmp/` |
-
-Không cài vào conda chung ở `/home/ura/miniconda3`, không `conda init` hoặc sửa
-shell profile chung. Installer riêng giữ nguyên payload offsets, tắt env
-registration vào home; config `register_envs:false`. `environment.sh` trong
-workspace đặt private runtime PATH, CONDARC, cache và envs/pkgs/tmp paths.
-
-Phép đo: baseline42 encoder final-LayerNorm source pooled effective covariance
-rank trên cùng128validation rows, cùngbatch32 và checkpoint SHA của A100,
-FP32/dropout off/TF32 off. Torch2.6.0+cu124, Transformers4.57.6.
-
-| GPU | Effective rank |
-|---|---:|
-| A100 đã lưu | 73.0966697754 |
-| RTX6000 đo lại | 73.0966729845 |
-| Delta RTX−A100 | +0.0000032091 |
-
-PASS tolerance absolute1e−3 đã đặt trước phép đo. Peak allocated2393MiB;
-strict loading, archive hash, validation hash, indices và worker hash PASS;
-zero optimizer steps. Chỉ xác minh phép đo này, không mặc định mọi generation,
-gradient hoặc training đều giống trên haiGPU.
-
-Receipt local: `outputs_rebuttal/rtx_rank_smoke/COMPLETE.json`, `VERIFIED.json`.
-Chạy monitor bằng conda `clrr` local:
-
+**Cách 1: Sử dụng `tailscale cp` (Khuyên dùng khi dùng Tailscale):**
 ```powershell
-conda run -n clrr python scripts/revalidation/control_rtx_rank_smoke.py --stage monitor
+# Chạy từ máy cá nhân Windows
+& 'C:\Program Files\Tailscale\tailscale.exe' cp ura@100.90.53.12:/workspace/ura/thanhdat/projects/<project_name>/logs/run_full_001.log .\logs\
 ```
 
-Để dùng env remote:
+**Cách 2: Sử dụng tính năng Download qua VS Code Remote SSH:**
+Khi kết nối vào server bằng VS Code Remote SSH, bạn chỉ cần click chuột phải vào thư mục `outputs/` hoặc file log trong cây thư mục Explorer và chọn **Download...**.
 
-```bash
-source /workspace/ura/thanhdat/environment.sh
-cd /workspace/ura/thanhdat/projects/CLRR
-conda run --no-capture-output -n clrr python <script>
+**Cách 3: Nếu máy chủ đã cấu hình OpenSSH Key riêng:**
+```powershell
+New-Item -ItemType Directory -Force "results\<project_name>\" | Out-Null
+scp -r ura@100.90.53.12:/workspace/ura/thanhdat/projects/<project_name>/outputs/run_full_001 results\<project_name>\
 ```
 
-Luôn kiểm tra `nvidia-smi` trước mỗi job. Không relaunch cùng smoke vì receipt
-đã complete; nếu muốn đo lại phải dùng output/job riêng và giữ provenance.
+### Lưu trữ Checkpoint lên Hugging Face
+
+Để chia sẻ mô hình hoặc giải phóng dung lượng đĩa của server sau khi hoàn thành huấn luyện, hãy tải checkpoint lên tổ chức **FiveC** theo hướng dẫn tại:
+👉 [Quy chuẩn Lưu trữ Checkpoints trên Hugging Face (FiveC)](HUGGINGFACE_CHECKPOINT_STORAGE.md).
+
+---
+
+## 7. Dọn dẹp sau Thực nghiệm
+
+Sau khi đã xác minh kết quả đã được sao lưu an toàn về máy cá nhân hoặc đồng bộ lên Hugging Face:
+1. Xóa các checkpoint phụ hoặc file tạm trong `tmp/` và `cache/`.
+2. Đóng session tmux đã hoàn tất (`tmux kill-session -t ...`).
+3. **Không bao giờ tắt máy chủ GPU dùng chung** (`shutdown` / `reboot`). Chỉ cần thoát SSH bằng lệnh `exit`.
