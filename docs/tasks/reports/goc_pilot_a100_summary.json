@@ -1,0 +1,1047 @@
+{
+  "status": "NINE_VALIDATION_RUNS_COMPLETE",
+  "analysis_created_unix": 1795309179.2262363,
+  "source_commit": "bb4c0fcd8d5f9014544c090dd55a50b27216998a",
+  "dataset": "amis_mandarin",
+  "model_seed": 42,
+  "split": "validation",
+  "rows": 576,
+  "cohort": "New A100 BF16/TF32 training, B32xGA4, pinned pretrained revision; beam1 FP32 TF32-off validation; single-seed exploratory pilot",
+  "test_used_for_prediction_scoring_or_selection": false,
+  "bundle_manifest_sha256": "a45119f868d9574cae99e655aed39e646988efb176ca53b3fccb4baeff634308",
+  "preflight": {
+    "created_unix": 1795263319.150602,
+    "requested_commit": "bb4c0fcd8d5f9014544c090dd55a50b27216998a",
+    "actual_head": "bb4c0fcd8d5f9014544c090dd55a50b27216998a",
+    "cpu_unit_tests": {
+      "passed": true,
+      "tests": 15,
+      "seconds": 4.79,
+      "initial_failure": "NFS TemporaryDirectory cleanup with mmap-backed checkpoint; fixed object lifetime, no tolerance or formula changes"
+    },
+    "cpu_gate": {
+      "passed": true,
+      "cases": 9,
+      "scientific_tests": 5,
+      "bundle_sha256": "a45119f868d9574cae99e655aed39e646988efb176ca53b3fccb4baeff634308"
+    },
+    "fixture_cleanup_diff_sha256": "695a7accf2e04ebf98c5f1a24d585487a7683d99e1d3a2a83a50635ea5ea85ae",
+    "fixture_cleanup_files": [
+      "tests/test_gold_ordered_consistency.py",
+      "tests/smoke_gold_ordered_consistency.py"
+    ],
+    "hf_authentication": {
+      "token_present": true,
+      "token_printed": false,
+      "token_file_mode": "0o600",
+      "authenticated": true,
+      "role": "write",
+      "canonical_repo_access": true
+    },
+    "phase2_authorization": "Latest explicit user instruction: automatic train only after all 9 GPU gates PASS and HF_TOKEN available; supersedes wait wording in plan",
+    "test_policy": "SHA256 and source/data bundle only; no prediction, scoring or selection"
+  },
+  "gates": [
+    {
+      "id": "BASELINE_S42",
+      "passed": true,
+      "seconds": 198.49920129776,
+      "max_memory_gb": 11.873823642730713,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": null,
+      "receipt_sha256": "cffd7cc19f2101553d2599ac997f1e1983d7598d60c594be58e6fc2a8ced2c6b"
+    },
+    {
+      "id": "W_B125_S42",
+      "passed": true,
+      "seconds": 363.58479285240173,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "28f1dada176fee76fab2dcb87a153dd34e31c510cbf21b4a5e5c59131de28ae6"
+    },
+    {
+      "id": "W_B250_S42",
+      "passed": true,
+      "seconds": 316.88826751708984,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "b1ff1bba43c873ab603a27b864a3f54224ebceff7ae50a39538edfb5c08207fa"
+    },
+    {
+      "id": "GOC_B125_S42",
+      "passed": true,
+      "seconds": 317.7884187698364,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "f0af79fe486e41fe3b0ccd770f407d1094b2f810ce1266c5dd7622bc9e6c1f5a"
+    },
+    {
+      "id": "GOC_B250_S42",
+      "passed": true,
+      "seconds": 336.8535633087158,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "013ed7fdb6afd8212603aef1fccb00d940577387ead98b881b653c0bab14a427"
+    },
+    {
+      "id": "GOC_SYM_B125_S42",
+      "passed": true,
+      "seconds": 359.2951674461365,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "f15e94a72f75382bcad1952f364caa1057e9aac932abe91c9c0b81bb1f69022c"
+    },
+    {
+      "id": "GOC_SYM_B250_S42",
+      "passed": true,
+      "seconds": 363.547678232193,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "6091435e2f449ffd605838b9e93e92a22825b413e2b9b812124bf494a67f7fbf"
+    },
+    {
+      "id": "GOC_INV_B125_S42",
+      "passed": true,
+      "seconds": 335.8184118270874,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "86139e712e11f82b473c565d78123e022fce4521ef4e18be100158cd9e43e7d8"
+    },
+    {
+      "id": "GOC_INV_B250_S42",
+      "passed": true,
+      "seconds": 342.90970492362976,
+      "max_memory_gb": 15.753971099853516,
+      "save_reload_logits_match": true,
+      "optimizer_rng_present": true,
+      "optimizer_scheduler_rng_resume_matches": true,
+      "receipt_sha256": "b7896c8c2faf0621e9e5977b064464dcd43e798bc29064d1d740b190264a1f0a"
+    }
+  ],
+  "runs": [
+    {
+      "id": "BASELINE_S42",
+      "method": "baseline",
+      "beta": 0,
+      "selected_epoch": 19.0,
+      "selected_step": 684,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 17.52639221941822,
+      "chrf0": 16.763184881783197,
+      "chrf++": 14.53819082028379,
+      "val_loss_at_best": 2.8913424015045166,
+      "gate_peak_allocated_gib": 11.873823642730713,
+      "train_peak_process_gpu_gib_sampled": 16.32421875,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 3048.728595495224,
+      "archive_sha256": "985f9fc49574c111fd885b3ef076bba477aeb9f6bd6fd01d6434f2f9b86953ad",
+      "hf_revision": "01a0b7a709ea5fcd24a95982f22c8150adaca4d5",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/baseline/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu",
+      "cjk_recall": {
+        "rare": {
+          "matched": 78,
+          "reference": 789,
+          "recall": 0.09885931558935361
+        },
+        "medium": {
+          "matched": 740,
+          "reference": 2253,
+          "recall": 0.328450954283178
+        },
+        "frequent": {
+          "matched": 1781,
+          "reference": 2930,
+          "recall": 0.6078498293515359
+        }
+      }
+    },
+    {
+      "id": "W_B125_S42",
+      "method": "rdrop-consistency-v1",
+      "beta": 1.25,
+      "selected_epoch": 16.0,
+      "selected_step": 576,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 17.706895200522567,
+      "chrf0": 17.08168866085783,
+      "chrf++": 14.885189795947626,
+      "val_loss_at_best": 2.749927520751953,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 20.0390625,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 3963.160393476486,
+      "archive_sha256": "4df107c087aa3b4a6389121fc4965111c91f3e8ea3d1ef1870400e426405f4a0",
+      "hf_revision": "d964649a6651c90580b342862694fb6d19fdc11d",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/rdrop-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta1.25",
+      "cjk_recall": {
+        "rare": {
+          "matched": 79,
+          "reference": 789,
+          "recall": 0.10012674271229405
+        },
+        "medium": {
+          "matched": 778,
+          "reference": 2253,
+          "recall": 0.3453173546382601
+        },
+        "frequent": {
+          "matched": 1780,
+          "reference": 2930,
+          "recall": 0.6075085324232082
+        }
+      }
+    },
+    {
+      "id": "W_B250_S42",
+      "method": "rdrop-consistency-v1",
+      "beta": 2.5,
+      "selected_epoch": 14.0,
+      "selected_step": 504,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 17.380221029565,
+      "chrf0": 16.802229934026673,
+      "chrf++": 14.596896735934308,
+      "val_loss_at_best": 2.5853865146636963,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 20.0390625,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 3912.711515188217,
+      "archive_sha256": "98fa0c08cf98e7e8065b538408719bdd4f616a1e8d2ca849d9f93ff838e747c3",
+      "hf_revision": "81c721448cd129f8e659405a2f856d0169e036da",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/rdrop-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta2.50",
+      "cjk_recall": {
+        "rare": {
+          "matched": 83,
+          "reference": 789,
+          "recall": 0.10519645120405577
+        },
+        "medium": {
+          "matched": 749,
+          "reference": 2253,
+          "recall": 0.3324456280514869
+        },
+        "frequent": {
+          "matched": 1787,
+          "reference": 2930,
+          "recall": 0.6098976109215017
+        }
+      }
+    },
+    {
+      "id": "GOC_B125_S42",
+      "method": "gold-ordered-consistency-v1",
+      "beta": 1.25,
+      "selected_epoch": 20.0,
+      "selected_step": 720,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 18.094443977734517,
+      "chrf0": 17.330528600522378,
+      "chrf++": 15.171114501820526,
+      "val_loss_at_best": 2.870528221130371,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 20.0390625,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 4129.207589626312,
+      "archive_sha256": "fe326c55034f41c6bba61c63ee8570e9a9cbe20d7b0723175857329dbb40d903",
+      "hf_revision": "07f062d2dc07b6ef682e60b1b46742658fd3f874",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/gold-ordered-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta1.25",
+      "cjk_recall": {
+        "rare": {
+          "matched": 76,
+          "reference": 789,
+          "recall": 0.09632446134347275
+        },
+        "medium": {
+          "matched": 759,
+          "reference": 2253,
+          "recall": 0.33688415446071907
+        },
+        "frequent": {
+          "matched": 1780,
+          "reference": 2930,
+          "recall": 0.6075085324232082
+        }
+      }
+    },
+    {
+      "id": "GOC_B250_S42",
+      "method": "gold-ordered-consistency-v1",
+      "beta": 2.5,
+      "selected_epoch": 16.0,
+      "selected_step": 576,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 17.809719719502557,
+      "chrf0": 17.088690125724593,
+      "chrf++": 14.866492826026317,
+      "val_loss_at_best": 2.7488276958465576,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 20.0390625,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 6589.488249063492,
+      "archive_sha256": "13ed5e0b139d85b23941d3e46c4343fb065a39b883476016326ece9bab27c2bf",
+      "hf_revision": "7688f2fd26463e9ef1e27b669eb6d3c86bab8b0c",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/gold-ordered-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta2.50",
+      "cjk_recall": {
+        "rare": {
+          "matched": 74,
+          "reference": 789,
+          "recall": 0.09378960709759189
+        },
+        "medium": {
+          "matched": 742,
+          "reference": 2253,
+          "recall": 0.3293386595650244
+        },
+        "frequent": {
+          "matched": 1784,
+          "reference": 2930,
+          "recall": 0.6088737201365187
+        }
+      }
+    },
+    {
+      "id": "GOC_SYM_B125_S42",
+      "method": "symmetric-stopgrad-consistency-v1",
+      "beta": 1.25,
+      "selected_epoch": 19.0,
+      "selected_step": 684,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 18.402209466424953,
+      "chrf0": 17.440652840786413,
+      "chrf++": 15.21712222589732,
+      "val_loss_at_best": 2.732146739959717,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 20.0390625,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 4429.530765533447,
+      "archive_sha256": "ef577b252de407876fae2c3899f37375ed823f9ca09ed7515a8cdb670f3d6e9c",
+      "hf_revision": "c0fa794374eb20bec5f7c428130c8b1f83372783",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/symmetric-stopgrad-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta1.25",
+      "cjk_recall": {
+        "rare": {
+          "matched": 79,
+          "reference": 789,
+          "recall": 0.10012674271229405
+        },
+        "medium": {
+          "matched": 763,
+          "reference": 2253,
+          "recall": 0.3386595650244119
+        },
+        "frequent": {
+          "matched": 1772,
+          "reference": 2930,
+          "recall": 0.604778156996587
+        }
+      }
+    },
+    {
+      "id": "GOC_SYM_B250_S42",
+      "method": "symmetric-stopgrad-consistency-v1",
+      "beta": 2.5,
+      "selected_epoch": 18.0,
+      "selected_step": 648,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 18.5142744030895,
+      "chrf0": 17.540466956770352,
+      "chrf++": 15.326564564179149,
+      "val_loss_at_best": 2.6049036979675293,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 15.548828125,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 4678.398863554001,
+      "archive_sha256": "47f6f925be8558c265e95aa0b64065200dc4065542d23b6a6456feba215a53a9",
+      "hf_revision": "dfc11d02c7fe17fccd8d699b46c406d9bb3af1fe",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/symmetric-stopgrad-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta2.50",
+      "cjk_recall": {
+        "rare": {
+          "matched": 83,
+          "reference": 789,
+          "recall": 0.10519645120405577
+        },
+        "medium": {
+          "matched": 762,
+          "reference": 2253,
+          "recall": 0.3382157123834887
+        },
+        "frequent": {
+          "matched": 1788,
+          "reference": 2930,
+          "recall": 0.6102389078498294
+        }
+      }
+    },
+    {
+      "id": "GOC_INV_B125_S42",
+      "method": "inverted-gold-consistency-v1",
+      "beta": 1.25,
+      "selected_epoch": 18.0,
+      "selected_step": 648,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 16.221321867067182,
+      "chrf0": 15.632818079993523,
+      "chrf++": 13.56999679238321,
+      "val_loss_at_best": 2.507108449935913,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 17.23046875,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 4601.412699460983,
+      "archive_sha256": "01d854ee523e6f0c5a3e6a0cbbb38f212d89ba69da463227a841966fdf796c7a",
+      "hf_revision": "b07289d0987fe571b18d9909d1eba1fb6a07087a",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/inverted-gold-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta1.25",
+      "cjk_recall": {
+        "rare": {
+          "matched": 71,
+          "reference": 789,
+          "recall": 0.08998732572877059
+        },
+        "medium": {
+          "matched": 697,
+          "reference": 2253,
+          "recall": 0.3093652907234798
+        },
+        "frequent": {
+          "matched": 1742,
+          "reference": 2930,
+          "recall": 0.5945392491467577
+        }
+      }
+    },
+    {
+      "id": "GOC_INV_B250_S42",
+      "method": "inverted-gold-consistency-v1",
+      "beta": 2.5,
+      "selected_epoch": 17.0,
+      "selected_step": 612,
+      "completed_epoch": 20.0,
+      "completed_step": 720,
+      "stop_reason": "epoch_cap",
+      "bleu": 15.146552662336202,
+      "chrf0": 15.0899617791791,
+      "chrf++": 13.081228001150839,
+      "val_loss_at_best": 2.467134714126587,
+      "gate_peak_allocated_gib": 15.753971099853516,
+      "train_peak_process_gpu_gib_sampled": 17.23046875,
+      "memory_sampling_seconds": 2,
+      "memory_attribution": "single-GPU-process + single pilot CUDA-device owner; namespace inference",
+      "wall_train_eval_export_seconds": 4772.396308660507,
+      "archive_sha256": "2b453561eeff43e215befd18f06f2bb527a191fa6c9bef439dbd1cd379cd3a33",
+      "hf_revision": "d63078cf2c799d4c1d3ac1a8dd135ec352c964d0",
+      "hf_prefix": "checkpoints/amis_mandarin/mbart-large-50/inverted-gold-consistency-v1/seed-42/a100-bf16-sdpa-b32-ga4-es10-select-bleu-beta2.50",
+      "cjk_recall": {
+        "rare": {
+          "matched": 49,
+          "reference": 789,
+          "recall": 0.062103929024081114
+        },
+        "medium": {
+          "matched": 627,
+          "reference": 2253,
+          "recall": 0.2782956058588549
+        },
+        "frequent": {
+          "matched": 1749,
+          "reference": 2930,
+          "recall": 0.5969283276450512
+        }
+      }
+    }
+  ],
+  "contrasts": [
+    {
+      "beta": 1.25,
+      "goc_id": "GOC_B125_S42",
+      "w_best_id": "W_B125_S42",
+      "goc_minus_w_best": 0.3875487772119506,
+      "goc_minus_same_beta_w": 0.3875487772119506,
+      "goc_minus_same_beta_sym": -0.3077654886904355,
+      "goc_minus_same_beta_inv": 1.8731221106673352,
+      "conditions": {
+        "goc_minus_w_best_at_least_0.30": true,
+        "goc_minus_same_beta_sym_at_least_0.20": false,
+        "goc_above_same_beta_inv": true
+      },
+      "all_locked_quality_conditions_pass": false
+    },
+    {
+      "beta": 2.5,
+      "goc_id": "GOC_B250_S42",
+      "w_best_id": "W_B125_S42",
+      "goc_minus_w_best": 0.10282451897998968,
+      "goc_minus_same_beta_w": 0.4294986899375566,
+      "goc_minus_same_beta_sym": -0.7045546835869452,
+      "goc_minus_same_beta_inv": 2.663167057166355,
+      "conditions": {
+        "goc_minus_w_best_at_least_0.30": false,
+        "goc_minus_same_beta_sym_at_least_0.20": false,
+        "goc_above_same_beta_inv": true
+      },
+      "all_locked_quality_conditions_pass": false
+    }
+  ],
+  "w_best_id": "W_B125_S42",
+  "character_frequency_definition": "U+4E00..U+9FFF; occurrences in raw train targets, no normalization; rare <=10 includes frequency0",
+  "reference_character_counts": {
+    "frequent": 2930,
+    "rare": 789,
+    "medium": 2253
+  },
+  "character_frequency_disagreement_analysis": [
+    {
+      "id": "BASELINE_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 495,
+      "model_only_character_occurrences": 2263,
+      "w_only_character_occurrences": 2203,
+      "model_only_mean_train_frequency": 214.54794520547946,
+      "w_only_mean_train_frequency": 225.1162051747617,
+      "model_only_median_train_frequency": 52,
+      "w_only_median_train_frequency": 52,
+      "mean_frequency_delta": -10.568259969282224
+    },
+    {
+      "id": "W_B125_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 0,
+      "model_only_character_occurrences": 0,
+      "w_only_character_occurrences": 0,
+      "model_only_mean_train_frequency": null,
+      "w_only_mean_train_frequency": null,
+      "model_only_median_train_frequency": null,
+      "w_only_median_train_frequency": null,
+      "mean_frequency_delta": null
+    },
+    {
+      "id": "W_B250_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 452,
+      "model_only_character_occurrences": 1886,
+      "w_only_character_occurrences": 1838,
+      "model_only_mean_train_frequency": 228.96500530222693,
+      "w_only_mean_train_frequency": 219.6093579978237,
+      "model_only_median_train_frequency": 53.0,
+      "w_only_median_train_frequency": 52.0,
+      "mean_frequency_delta": 9.35564730440322
+    },
+    {
+      "id": "GOC_B125_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 433,
+      "model_only_character_occurrences": 1770,
+      "w_only_character_occurrences": 1815,
+      "model_only_mean_train_frequency": 210.74011299435028,
+      "w_only_mean_train_frequency": 238.29366391184573,
+      "model_only_median_train_frequency": 53.0,
+      "w_only_median_train_frequency": 51,
+      "mean_frequency_delta": -27.553550917495443
+    },
+    {
+      "id": "GOC_B250_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 470,
+      "model_only_character_occurrences": 1956,
+      "w_only_character_occurrences": 1930,
+      "model_only_mean_train_frequency": 216.75460122699386,
+      "w_only_mean_train_frequency": 200.34093264248705,
+      "model_only_median_train_frequency": 53.0,
+      "w_only_median_train_frequency": 52.0,
+      "mean_frequency_delta": 16.41366858450681
+    },
+    {
+      "id": "GOC_SYM_B125_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 411,
+      "model_only_character_occurrences": 1631,
+      "w_only_character_occurrences": 1671,
+      "model_only_mean_train_frequency": 233.17841814837524,
+      "w_only_mean_train_frequency": 236.51705565529622,
+      "model_only_median_train_frequency": 54,
+      "w_only_median_train_frequency": 53,
+      "mean_frequency_delta": -3.338637506920975
+    },
+    {
+      "id": "GOC_SYM_B250_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 404,
+      "model_only_character_occurrences": 1502,
+      "w_only_character_occurrences": 1572,
+      "model_only_mean_train_frequency": 231.1271637816245,
+      "w_only_mean_train_frequency": 222.03180661577608,
+      "model_only_median_train_frequency": 58.5,
+      "w_only_median_train_frequency": 53.0,
+      "mean_frequency_delta": 9.095357165848412
+    },
+    {
+      "id": "GOC_INV_B125_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 479,
+      "model_only_character_occurrences": 1893,
+      "w_only_character_occurrences": 2071,
+      "model_only_mean_train_frequency": 258.47754886423667,
+      "w_only_mean_train_frequency": 204.45919845485273,
+      "model_only_median_train_frequency": 54,
+      "w_only_median_train_frequency": 51,
+      "mean_frequency_delta": 54.01835040938394
+    },
+    {
+      "id": "GOC_INV_B250_S42",
+      "reference_run": "W_B125_S42",
+      "different_sentences": 525,
+      "model_only_character_occurrences": 2385,
+      "w_only_character_occurrences": 2386,
+      "model_only_mean_train_frequency": 238.32830188679245,
+      "w_only_mean_train_frequency": 206.53855825649623,
+      "model_only_median_train_frequency": 48,
+      "w_only_median_train_frequency": 52.0,
+      "mean_frequency_delta": 31.789743630296215
+    }
+  ],
+  "note": "Character multiset differences are not aligned substitutions or verified semantic errors. Gradient subword units from 0-step are separate from CJK generation character recall.",
+  "files": [
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/VAL_COMPLETE.json",
+      "sha256": "34e05a5351693708799f17d006e3b0a8c3178b27d1f1546ba7aeec44eb28f385",
+      "bytes": 3500
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/run_metadata.json",
+      "sha256": "6cb48c86e8e6d7755e7217acb7b1e5c02d60ae815972794764f90da5209777c9",
+      "bytes": 3530
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/training_receipt.json",
+      "sha256": "b33f036b03ed79291dbc612672a8b512bbd4df88d494c39b33c53b947f6f5ceb",
+      "bytes": 2766
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/final_trainer_state.json",
+      "sha256": "3661247bb5ece31ecdcbb3f78d71f2a28f17f4f561b560cf6d5a338db832ee93",
+      "bytes": 19993
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/selected_trainer_state.json",
+      "sha256": "261cfde668075a0be7ec8bb668ccf7f65fe23e01373b483e339b0a31ad3d0e3b",
+      "bytes": 18750
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/stop_state.json",
+      "sha256": "a3ec1138f6067441add06a7bd450d14a9855395a089175cbe6d47f5ee504abec",
+      "bytes": 321
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/validation_predictions.csv",
+      "sha256": "82ed4f3e0c8d479e54d5af8f079521a9f0f163be79aa941ac0880d55e5017a2e",
+      "bytes": 62778
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/validation_metrics.json",
+      "sha256": "bed2e6baaa259d0cc4d59b5955210073c5254e1e79c9a9c60cb99a43935afe49",
+      "bytes": 747
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/BASELINE_S42/collection_receipt.json",
+      "sha256": "e1c424d86487bd21979a219790d6e19fbbafc226b470be709f545d28d3c2fdeb",
+      "bytes": 2302
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/VAL_COMPLETE.json",
+      "sha256": "09c791a836002892baf919831614f6260d8845af6c73af620bd03ce3aa12e761",
+      "bytes": 4039
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/run_metadata.json",
+      "sha256": "85d1b23fbf4ac7aa24aa96c82ce78849f76b85e1c17054bc14c26044aa828b69",
+      "bytes": 4564
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/training_receipt.json",
+      "sha256": "61eff6d27b3bb3fb30746b6b06b5eb4a0ce1defc4e8786fe35540a2c87c45901",
+      "bytes": 3801
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/final_trainer_state.json",
+      "sha256": "8ca4bbe529a52410b2c8940fb7dcaa8aca3a53c8805681130516d8027558e8c6",
+      "bytes": 19987
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/selected_trainer_state.json",
+      "sha256": "97bdcdf99a65ef183cf4c84a0cd2c087ad2c3b76c80c55249d5ce6c77e09b446",
+      "bytes": 15900
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/stop_state.json",
+      "sha256": "cfe9bf4ad33584c082b22849822d95584095ab569d45303fcfe28336b7ee04b9",
+      "bytes": 320
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/validation_predictions.csv",
+      "sha256": "1daa7d91084934eb056e4e4c196968430d48f6db99d2f329b3656ee5a9b66978",
+      "bytes": 62573
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/validation_metrics.json",
+      "sha256": "1237f1d83199685185592b300e39224cd46ea74957f9c1445e02ebea84e03b76",
+      "bytes": 748
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B125_S42/collection_receipt.json",
+      "sha256": "e36ac812d63f99f3301e370ec6a9300fd7424d1165b2234d998998f6b928b85e",
+      "bytes": 2752
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/VAL_COMPLETE.json",
+      "sha256": "9c129a8f9a092dae4e77e5d596c244ff3a429f0c07247634040dd6b975d0c560",
+      "bytes": 4036
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/run_metadata.json",
+      "sha256": "8847074c63a2b0ff263d3471af751ed7f79abf9f335ed44088f92bc8cae7e70e",
+      "bytes": 4558
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/training_receipt.json",
+      "sha256": "5436ed99c8bf9fec2b2d3c903e7db30430b448b57f7d58932603205ce4ff6f81",
+      "bytes": 3799
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/final_trainer_state.json",
+      "sha256": "072c0e52aa7989c963e8ae18a510a0c5668a91bc194dd56f4f5571d873223c2e",
+      "bytes": 19987
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/selected_trainer_state.json",
+      "sha256": "4fc3c7c7254506985bff6663b475e49ec5bc770b280bb5408cebca38a716a765",
+      "bytes": 14062
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/stop_state.json",
+      "sha256": "cf7dac012f7734bfafb082fe1f4ba220a08f74b82b73f2357eacb1a9c2c8138f",
+      "bytes": 317
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/validation_predictions.csv",
+      "sha256": "115fb92375ebacfd0311cd6ebe9aab543850f0b013992d5e7026a9ff95cf2fb2",
+      "bytes": 62712
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/validation_metrics.json",
+      "sha256": "808bd9bdbc1d70d688363b97958d649a2497a1b5a1fb8e39db59f9ff6dabc563",
+      "bytes": 746
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/W_B250_S42/collection_receipt.json",
+      "sha256": "650574de9fb65e3b12470e19eaac2efc84d67ac13cc6aedf9ff049de574e2aea",
+      "bytes": 2752
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/VAL_COMPLETE.json",
+      "sha256": "567149448b7fcaff297f7b160083fb809b48a1fe37bcf8c1d07cbe6700274160",
+      "bytes": 4135
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/run_metadata.json",
+      "sha256": "619f4a9cdb71c037593229cc47de088567259f68ad25d3050c90df906d9bdd2b",
+      "bytes": 4604
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/training_receipt.json",
+      "sha256": "b03455bdd362a0a65cdd293c25688e65204ae0808aa0ffc685a6c4b80478bf13",
+      "bytes": 3837
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/final_trainer_state.json",
+      "sha256": "87e2e3a89406d0d4fdbd9caae7c96f8069364e4f91ef19e70c78c68f6801d935",
+      "bytes": 20000
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/selected_trainer_state.json",
+      "sha256": "8225d3dbcf21d54d427a57f5ce37b60e4406d100afd779f9b74f00b67823589f",
+      "bytes": 19754
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/stop_state.json",
+      "sha256": "5f45bcdfa13646ed69775f3c675a58d9aaef139fc11ccb9a4411e4880222b0cf",
+      "bytes": 322
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/validation_predictions.csv",
+      "sha256": "9c7f7ce8664a1fe736eb30d812fb0db72e36a2b51d1e16f90022f24039406f9a",
+      "bytes": 62478
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/validation_metrics.json",
+      "sha256": "18f8913e898fae4e8ed3e3d605da7d4cc264c77faaecd5951e0ef580a8d0ed7e",
+      "bytes": 749
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B125_S42/collection_receipt.json",
+      "sha256": "21f1cf899d10f40cb4416f2a6e93790c7cc8047854417ce9246acc0f291b1a97",
+      "bytes": 2822
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/VAL_COMPLETE.json",
+      "sha256": "035c10a9ce7d7daa06a9ad335d99c6fb30909d1501b28cc9a1f8eb5a0e19ebcb",
+      "bytes": 4134
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/run_metadata.json",
+      "sha256": "939d1b376045076a98d4c806714827395a259e154ec3d77f573b78b75ecd5ee6",
+      "bytes": 4601
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/training_receipt.json",
+      "sha256": "d56888b9a880d3288e87f0f021bb421a1a38f15fa934e4e7ca1a9cdecd383d02",
+      "bytes": 3835
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/final_trainer_state.json",
+      "sha256": "7e0b118a9b1f498a69c7bff516df084208d7a142801d3777c1f37b248093f6b8",
+      "bytes": 19987
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/selected_trainer_state.json",
+      "sha256": "a77bd30bf1cc69b611bb55d0608e62a35d4573cfa3d83d63ae0545e1538c3920",
+      "bytes": 15912
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/stop_state.json",
+      "sha256": "90e79941a9265a688fd3033575e0bc2b0397138c006135529a661577269c0c78",
+      "bytes": 322
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/validation_predictions.csv",
+      "sha256": "b46c50156cf7d4439543048b69500cd226f9b89e3da53a2fb87f32d4e87087f5",
+      "bytes": 62658
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/validation_metrics.json",
+      "sha256": "14ac412350e5cb15f94e56eda36df0614e21c9ad5c73b2bab9cbd62353a50584",
+      "bytes": 749
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_B250_S42/collection_receipt.json",
+      "sha256": "7a2197e1c0a05e74c2616bdf299d6e93850eabcc962919b876faa1c2115bdd6e",
+      "bytes": 2822
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/VAL_COMPLETE.json",
+      "sha256": "fd3407b034ef2e27ddea5f10c9e3cc31acbc42ab951a47c8fb62be27e9074abc",
+      "bytes": 4220
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/run_metadata.json",
+      "sha256": "140343d59edc1017fbe6da0b0285da3e51d73a8eaa248c04bbd1d6b656e61dad",
+      "bytes": 4638
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/training_receipt.json",
+      "sha256": "639f80e59eeec1d259a4586ff8707d83b70d36e5b445e37b5c84a30fd52f2481",
+      "bytes": 3868
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/final_trainer_state.json",
+      "sha256": "076991a1f87fdd7f8139c4680b33bd1da3e840bcdf4d08fb4d546ecbcd4eebcf",
+      "bytes": 20020
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/selected_trainer_state.json",
+      "sha256": "8f21bd0cd8d6878680d1b15ab86fb71c59fb257c005476ea714e96290c6f23b4",
+      "bytes": 18772
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/stop_state.json",
+      "sha256": "0b32587672d799859aab13d440687b50985133271ee5d85df874f810ef83b6c5",
+      "bytes": 326
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/validation_predictions.csv",
+      "sha256": "2e011cbd1985a99bff24fc73a98811c9e50675737d25a1d914bf49cbba73ed5b",
+      "bytes": 62445
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/validation_metrics.json",
+      "sha256": "2870f359dc2d19e6006e635078ae62bc9f6808e1e5602d47811689225c50de81",
+      "bytes": 748
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B125_S42/collection_receipt.json",
+      "sha256": "504cc8943a07f98a25b581a212cfa778a7e21d600da17fe7d735ac59985ca5b8",
+      "bytes": 2882
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/VAL_COMPLETE.json",
+      "sha256": "61f09e55abfbb73092c0c76514ab5be6103429bf10176dd63d37353c018986d2",
+      "bytes": 4218
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/run_metadata.json",
+      "sha256": "7d5f55601bd78ce6de9bed51a72237520f349be992c156c5e6d18b6e60989884",
+      "bytes": 4633
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/training_receipt.json",
+      "sha256": "7608f248b2eaf818683b596e7eb07f46ba199734e948dfff09b686fed5487f20",
+      "bytes": 3866
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/final_trainer_state.json",
+      "sha256": "2d5c259caef64f1e7838b909ea1b9f0f511ff08b33d3eafd84d8faae1dc460fa",
+      "bytes": 20007
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/selected_trainer_state.json",
+      "sha256": "706ac344ae75e63d6c6999e76cc513af77e54085e9820fe8542902fe5c30f755",
+      "bytes": 17753
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/stop_state.json",
+      "sha256": "4906c42235e43087c673d1939e1f2008c062c8dc9bfb6ea7f971b2e50b37978c",
+      "bytes": 324
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/validation_predictions.csv",
+      "sha256": "ffabfd6f6d726125af836adf071402d5813a19ba12b0169776ca91ae482f357b",
+      "bytes": 62389
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/validation_metrics.json",
+      "sha256": "4c7682c7715f50e59586e7e279e3d35b8ee4e5d6dfabaad007409a87df76d519",
+      "bytes": 747
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_SYM_B250_S42/collection_receipt.json",
+      "sha256": "c1cf20a774301efe157fcf85413c05e8e198009844aa7cc3f0e4ff1be05ec807",
+      "bytes": 2882
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/VAL_COMPLETE.json",
+      "sha256": "bb9ff34be99d12180ff5b09253dbb9cf2ff3fd4a601229d1a28216b90d6676f0",
+      "bytes": 4155
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/run_metadata.json",
+      "sha256": "35682ea22f8c8a59101b425b4cf82fc7697fd6ddab7ae29420040bbf8f98d5f6",
+      "bytes": 4634
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/training_receipt.json",
+      "sha256": "1a535f1a3a7e4d4b540fe84b0a1ee4ef2bc16bd436600744c9f3611cf351f890",
+      "bytes": 3864
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/final_trainer_state.json",
+      "sha256": "1508aa85f112e818953818178714225cc92a316dd76867fbd1a599e9e4b8a6e8",
+      "bytes": 20011
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/selected_trainer_state.json",
+      "sha256": "d4e01793e68b282805c137577cb70c2e883962fdbc1c46ad0c3fd88d0b502b69",
+      "bytes": 17760
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/stop_state.json",
+      "sha256": "0c3ddf4ebea17acd923053dc939bade9db16b22c2e4fda232cb5d66a1069ec32",
+      "bytes": 326
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/validation_predictions.csv",
+      "sha256": "2d09d2c1c2504d6a8fece8da9983c1c9acfb431e45ed1ec3977aa77a73d1c2b2",
+      "bytes": 62461
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/validation_metrics.json",
+      "sha256": "88f62b5f09e725c6a8d41b2c77b27040dbb7690858c780bc47f860d672bc8885",
+      "bytes": 748
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B125_S42/collection_receipt.json",
+      "sha256": "b7dffe6832584b8f0c68ac537d92204fb4bfd51be669903ba9301410c22baa06",
+      "bytes": 2832
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/VAL_COMPLETE.json",
+      "sha256": "8d3f2eccc1b878df00038994bbd1bf8393b3695834d398928ed7b9ff503fa870",
+      "bytes": 4153
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/run_metadata.json",
+      "sha256": "bd4df7d52594a570efadbbe192781a1721b3bd546b5da481bbca8126f09a8e41",
+      "bytes": 4631
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/training_receipt.json",
+      "sha256": "eb454a78a550886e1aaa0ebefe716f32b150d2b12c94609ec618acbacc2f53e2",
+      "bytes": 3862
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/final_trainer_state.json",
+      "sha256": "ecf93e2523ab8348abb5eb8a5d1f31299a2143ac1eab90ce0796305724dbe701",
+      "bytes": 19987
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/selected_trainer_state.json",
+      "sha256": "b45045cf699c91a7565cb62777670ecb39dce3e9fc9eee9a86601b935398e4bd",
+      "bytes": 16917
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/stop_state.json",
+      "sha256": "45fd21d476fb76cd3ef506923606721a316d7839aeb8fc5df03b14c759ec694c",
+      "bytes": 326
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/validation_predictions.csv",
+      "sha256": "13f63b63c876937617b91326fbcb4ab7d410700cdbac9989eadc0a0950e8566f",
+      "bytes": 62445
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/validation_metrics.json",
+      "sha256": "9c04266e5ac3fb6ffc01e372662a6109732f6c9a149e390f4f9c9c2c551d9b5d",
+      "bytes": 747
+    },
+    {
+      "path": "outputs/experiments/amis_goc_pilot_a100/runs/GOC_INV_B250_S42/collection_receipt.json",
+      "sha256": "7f1659a789a6b5ebb811d17423b2a2e97569ccfb10bd6490bc264c501394c7a6",
+      "bytes": 2832
+    }
+  ],
+  "trajectory_csv_sha256": "38d3410291f3bdeffe923599d1af2c9ce44f5cc3ba0ace4e7245c5469212c20b"
+}

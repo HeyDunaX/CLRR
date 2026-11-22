@@ -1,5 +1,6 @@
 """Scientific, gradient, replay, and persistence gates for Gold-Ordered Consistency (GOC)."""
 import copy
+import gc
 import json
 from pathlib import Path
 import sys
@@ -200,6 +201,9 @@ class GoldOrderedConsistencyGate(unittest.TestCase):
                         restored.generate(**inputs, max_new_tokens=4, use_cache=False)))
                 with self.assertRaises(ValueError):
                     GoldOrderedConsistencyMT(native(), method=method, beta=1.25).verify_checkpoint_metadata(folder)
+                # Release mmap-backed checkpoint tensors before NFS temp cleanup.
+                del restored
+                gc.collect()
         with self.assertRaises(ValueError):
             goc_loss(torch.randn(1, 2, 5), torch.randn(1, 2, 5), torch.tensor([[-100, -100]]))
         with self.assertRaises(ValueError):

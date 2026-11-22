@@ -1,5 +1,6 @@
 """CPU gate for the frozen Gold-Ordered Consistency (GOC) and matched controls bundle."""
 import sys
+import gc
 import tempfile
 import unittest
 from pathlib import Path
@@ -44,6 +45,9 @@ def main():
             restored.eval()
             with torch.no_grad():
                 torch.testing.assert_close(restored(**batch()).logits, expected)
+            # Both wrappers can retain mmap-backed checkpoint tensors on NFS.
+            del restored, base
+            gc.collect()
         cases.append(dict(id=spec['id'], passed=True, finite_gradients=True,
                           save_reload_logits_match=True, parameters=metadata))
     worker.write(worker.OUT / 'CPU_GATE.json', dict(
