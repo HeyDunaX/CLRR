@@ -97,6 +97,8 @@ def read_config(path):
     supported.update(TWO_METHODS)
     from methods.gold_ordered_consistency import METHODS as GOC_METHODS
     supported.update(GOC_METHODS)
+    from methods.cross_ratio_dual import METHODS as CR_DUAL_METHODS
+    supported.update(CR_DUAL_METHODS)
     if config['protocol'].get('hardware_profile', 'a100-standard') == 'rtx6000-fp32':
         p = config['protocol']
         if p['bf16'] or p.get('fp16', False) or p['tf32_training']:
@@ -116,6 +118,9 @@ def read_config(path):
             validate_recipe(config, run, ROOT)
         if run['method'] in GOC_METHODS:
             from methods.gold_ordered_consistency.v1.validation import validate_recipe
+            validate_recipe(config, run, ROOT)
+        if run['method'] in CR_DUAL_METHODS:
+            from methods.cross_ratio_dual.v1.validation import validate_recipe
             validate_recipe(config, run, ROOT)
         if run['method'] in ORDER_METHODS:
             from methods.corrective_order.v1.data import validate_recipe

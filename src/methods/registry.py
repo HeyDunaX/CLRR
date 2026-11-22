@@ -26,6 +26,7 @@ from .virtual_corrective_order.v1.model import VirtualCorrectiveOrderMT, METHODS
 from .antisymmetric_consistency import AntisymmetricConsistencyMT, METHODS as AC_METHODS
 from .decision_residual_memory import DecisionResidualMemoryMT, METHODS as DRM_METHODS
 from .gold_ordered_consistency import GoldOrderedConsistencyMT, METHODS as GOC_METHODS
+from .cross_ratio_dual import CrossRatioDualMT, METHODS as CR_DUAL_METHODS
 TWO_METHODS = AC_METHODS.keys() | DRM_METHODS.keys()
 
 ALIASES = {
@@ -63,6 +64,18 @@ def wrap_method(base, spec):
         return DecisionResidualMemoryMT(base, eta=spec['memory_eta'], beta=spec['consistency_beta'])
     if method in GOC_METHODS:
         return GoldOrderedConsistencyMT(base, method=method, beta=spec['consistency_beta'])
+    if method in CR_DUAL_METHODS:
+        return CrossRatioDualMT(
+            base,
+            method=method,
+            alpha_rev=spec.get('alpha_rev', 0.5),
+            cr_lambda=spec.get('cr_lambda', 0.25),
+            cr_delta=spec.get('cr_delta', 1.0),
+            cr_warmup_fraction=spec.get('cr_warmup_fraction', 0.2),
+            contrast_margin=spec.get('contrast_margin', 2.0),
+            paired_rng=spec.get('paired_rng', True),
+            logit_chunk_tokens=spec.get('logit_chunk_tokens', 64),
+        )
     if method in CMC_METHODS:
         return cmc_model_class(method)(base, method, top_k=spec['continuation_top_k'],
             beta=spec['consistency_beta'], probe_chunk=spec['probe_chunk'])

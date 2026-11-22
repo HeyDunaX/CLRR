@@ -62,6 +62,10 @@ def cpu_gate(config):
     if (any(s['method'] in GOC_METHODS for s in plan['runs'])
             and all(s['method'] in {*GOC_METHODS, 'baseline', 'weak-full-consistency-v1'} for s in plan['runs'])):
         name = 'smoke_gold_ordered_consistency'
+    from methods.cross_ratio_dual import METHODS as CR_DUAL_METHODS
+    if (any(s['method'] in CR_DUAL_METHODS for s in plan['runs'])
+            and all(s['method'] in {*CR_DUAL_METHODS, 'baseline'} for s in plan['runs'])):
+        name = 'smoke_cross_ratio_dual'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
     sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')
@@ -257,6 +261,14 @@ def main():
             p.add_argument('--account', type=int, choices=(1, 2, 3), required=True)
         if name == 'launch':
             p.add_argument('--stage', choices=('gate', 'gate-train', 'test'), default='gate-train')
+    p = sub.add_parser('a100-pilot', help='One-command resumable A100 pilot runner (build, CPU gate, GPU gates, Step-0, train, summary)')
+    p.add_argument('--config', required=True)
+    p.add_argument('--gates-only', action='store_true', help='Stop after CPU gate and all GPU 2-step gates pass')
+    p.add_argument('--step0-only', action='store_true', help='Stop after BIT_CE_S42 and Step-0 diagnostic complete')
+    p.add_argument('--skip-step0', action='store_true', help='Skip Step-0 diagnostic after BIT_CE_S42')
+    p = sub.add_parser('cr-dual-diagnose', help='Run zero-optimizer-step Step-0 diagnostic on completed BIT_CE checkpoint')
+    p.add_argument('--config', required=True)
+    p.add_argument('--bit-run-id', default='BIT_CE_S42')
     p = sub.add_parser('fetch')
     p.add_argument('--local-path', required=True, help='Original repo-relative path recorded by the cleanup index')
     args = parser.parse_args()
@@ -268,6 +280,17 @@ def main():
         result = launch_suite(args.configs)
     elif args.command == 'create':
         result = create_recipe(args)
+    elif args.command == 'a100-pilot':
+        from .a100_pilot import run_a100_pilot
+        result = run_a100_pilot(
+            args.config,
+            gates_only=args.gates_only,
+            step0_only=args.step0_only,
+            skip_step0=args.skip_step0,
+        )
+    elif args.command == 'cr-dual-diagnose':
+        from methods.cross_ratio_dual.v1.diagnostic import run_step0_diagnostic
+        result = run_step0_diagnostic(args.config, bit_run_id=args.bit_run_id)
     elif args.command == 'fetch':
         from .storage import fetch
         result = {'cache_path': str(fetch(args.local_path))}
