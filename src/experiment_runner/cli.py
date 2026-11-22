@@ -66,6 +66,10 @@ def cpu_gate(config):
     if (any(s['method'] in CR_DUAL_METHODS for s in plan['runs'])
             and all(s['method'] in {*CR_DUAL_METHODS, 'baseline'} for s in plan['runs'])):
         name = 'smoke_cross_ratio_dual'
+    from methods.compositional_consistency import METHODS as COCC_METHODS
+    if (any(s['method'] in COCC_METHODS for s in plan['runs'])
+            and all(s['method'] in {*COCC_METHODS, 'baseline'} for s in plan['runs'])):
+        name = 'smoke_compositional_consistency'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
     sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')
@@ -269,6 +273,8 @@ def main():
     p = sub.add_parser('cr-dual-diagnose', help='Run zero-optimizer-step Step-0 diagnostic on completed BIT_CE checkpoint')
     p.add_argument('--config', required=True)
     p.add_argument('--bit-run-id', default='BIT_CE_S42')
+    p = sub.add_parser('cocc-diagnose', help='Run zero-optimizer-step Step-0 CoCC gradient calibration & frozen probe')
+    p.add_argument('--config', required=True)
     p = sub.add_parser('fetch')
     p.add_argument('--local-path', required=True, help='Original repo-relative path recorded by the cleanup index')
     args = parser.parse_args()
@@ -291,6 +297,9 @@ def main():
     elif args.command == 'cr-dual-diagnose':
         from methods.cross_ratio_dual.v1.diagnostic import run_step0_diagnostic
         result = run_step0_diagnostic(args.config, bit_run_id=args.bit_run_id)
+    elif args.command == 'cocc-diagnose':
+        from methods.compositional_consistency.v1.diagnostic import run_step0_diagnostic
+        result = run_step0_diagnostic(args.config)
     elif args.command == 'fetch':
         from .storage import fetch
         result = {'cache_path': str(fetch(args.local_path))}

@@ -27,6 +27,7 @@ from .antisymmetric_consistency import AntisymmetricConsistencyMT, METHODS as AC
 from .decision_residual_memory import DecisionResidualMemoryMT, METHODS as DRM_METHODS
 from .gold_ordered_consistency import GoldOrderedConsistencyMT, METHODS as GOC_METHODS
 from .cross_ratio_dual import CrossRatioDualMT, METHODS as CR_DUAL_METHODS
+from .compositional_consistency import CompositionalConsistencyMT, METHODS as COCC_METHODS
 TWO_METHODS = AC_METHODS.keys() | DRM_METHODS.keys()
 
 ALIASES = {
@@ -75,6 +76,17 @@ def wrap_method(base, spec):
             contrast_margin=spec.get('contrast_margin', 2.0),
             paired_rng=spec.get('paired_rng', True),
             logit_chunk_tokens=spec.get('logit_chunk_tokens', 64),
+        )
+    if method in COCC_METHODS:
+        return CompositionalConsistencyMT(
+            base,
+            method=method,
+            beta=spec.get('consistency_beta', 1.25),
+            layout=spec.get('layout', 's1'),
+            mask_y_j1=spec.get('mask_y_j1', True),
+            max_source_length=spec.get('max_source_length', 256),
+            max_target_length=spec.get('max_target_length', 256),
+            logit_chunk_tokens=spec.get('logit_chunk_tokens', 32),
         )
     if method in CMC_METHODS:
         return cmc_model_class(method)(base, method, top_k=spec['continuation_top_k'],
