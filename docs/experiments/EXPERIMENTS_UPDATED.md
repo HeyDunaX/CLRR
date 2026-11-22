@@ -1,5 +1,25 @@
 # Thực nghiệm sau xác minh — kết quả hiện hành của CLRR
 
+## Pilot A100 GOC hai mức hệ số ($\beta \in \{1.25, 2.50\}$) — 22/11/2026 (9 runs, validation-only)
+
+- **Cohort mới trên A100 40GB:** `amis_mandarin` (`tl_XX → zh_CN`, 4600/576/575), `mBART-50` rev `e30b6cb8eb0d43a0b73cab73c7676b9863223a30`, `BF16`, `TF32 train=on`, `SDPA`, `B32×GA4`, `LR 5e-5`, `max 20 epochs`, `ES10`, selector **`eval_bleu` (beam 1, FP32, TF32 off)**, seed 42. Không trộn với cohort A100 `chrF++` cũ (09/10) hoặc RTX FP32. Không chạy stage test (`test.csv` chỉ hash/đóng bundle).
+- **Provenance:** Recipe [amis_goc_pilot_a100.json](../../configs/experiments/amis_goc_pilot_a100.json), protocol lock [amis_a100_bleu.json](../../configs/protocols/amis_a100_bleu.json), báo cáo nguồn [GOC_PILOT_A100_REPORT.md](../tasks/reports/GOC_PILOT_A100_REPORT.md), summary [goc_pilot_a100_summary.json](../tasks/reports/goc_pilot_a100_summary.json), commit `63364038c0392a26874b1841bbdf16ba7d44c07f`, bundle manifest SHA256 `a45119f868d9574cae99e655aed39e646988efb176ca53b3fccb4baeff634308`. Tất cả 9/9 GPU gates và 9/9 HF backup SHA256 đã xác minh `PASS`.
+- **Quyết định khóa trước:** **NO-GO cho GOC** (cả $\beta=1.25$ và $\beta=2.50$ đều thua đối chứng tất định `GOC_SYM` cùng $\beta$: `-0.3078` và `-0.7046` Val BLEU; đồng thời tụt recall ký tự Hán hiếm `<=10`). Không mở thêm seed hay test cho GOC.
+
+| ID | Method | $\beta$ | Best ep/step | Val BLEU | Val chrF0 | Val chrF++ | Val Loss (best) | Rare CJK (`/789`) | Archive SHA256 (prefix) | HF Revision (prefix) |
+|---|---|---:|---|---:|---:|---:|---:|---:|---|---|
+| `BASELINE_S42` | `baseline` | `0.00` | `19/684` | `17.5264` | `16.7632` | `14.5382` | `2.8913` | `78 (9.89%)` | `985f9fc4…` | `01a0b7a7…` |
+| `W_B125_S42` | `rdrop-consistency-v1` | `1.25` | `16/576` | `17.7069` | `17.0817` | `14.8852` | `2.7499` | `79 (10.01%)` | `4df107c0…` | `d964649a…` |
+| `W_B250_S42` | `rdrop-consistency-v1` | `2.50` | `14/504` | `17.3802` | `16.8022` | `14.5969` | `2.5854` | `83 (10.52%)` | `98fa0c08…` | `81c72144…` |
+| `GOC_B125_S42` | `gold-ordered-consistency-v1` | `1.25` | `20/720` | `18.0944` | `17.3305` | `15.1711` | `2.8705` | `76 (9.63%)` | `fe326c55…` | `07f062d2…` |
+| `GOC_B250_S42` | `gold-ordered-consistency-v1` | `2.50` | `16/576` | `17.8097` | `17.0887` | `14.8665` | `2.7488` | `74 (9.38%)` | `13ed5e0b…` | `7688f2fd…` |
+| `GOC_SYM_B125_S42` | `symmetric-stopgrad-consistency-v1` | `1.25` | `19/684` | `18.4022` | `17.4407` | `15.2171` | `2.7321` | `79 (10.01%)` | `ef577b25…` | `c0fa7943…` |
+| `GOC_SYM_B250_S42` | `symmetric-stopgrad-consistency-v1` | `2.50` | `18/648` | `18.5143` | `17.5405` | `15.3266` | `2.6049` | `83 (10.52%)` | `47f6f925…` | `dfc11d02…` |
+| `GOC_INV_B125_S42` | `inverted-gold-consistency-v1` | `1.25` | `18/648` | `16.2213` | `15.6328` | `13.5700` | `2.5071` | `71 (9.00%)` | `01d854ee…` | `b07289d0…` |
+| `GOC_INV_B250_S42` | `inverted-gold-consistency-v1` | `2.50` | `17/612` | `15.1466` | `15.0900` | `13.0812` | `2.4671` | `49 (6.21%)` | `2b453561…` | `d63078cf…` |
+
+---
+
 <!-- standardized-es10-final-status -->
 ## Đối sánh ES10 đã hoàn tất — 09/10/2026
 

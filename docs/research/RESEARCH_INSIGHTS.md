@@ -1,3 +1,21 @@
+## Cập nhật 2026-11-22 — Pilot A100 GOC 9 runs (validation-only, NO-GO cho GOC)
+
+**[ĐO ĐƯỢC]** Hoàn tất và xác minh 9/9 HF backups trên A100 40GB (`BF16`, `TF32 train=on`, `SDPA`, `B32×GA4`, `LR 5e-5`, `max 20 epochs`, `ES10`, selector `eval_bleu` beam1 FP32, seed 42; báo cáo [GOC_PILOT_A100_REPORT.md](../tasks/reports/GOC_PILOT_A100_REPORT.md), commit `63364038c0392a26874b1841bbdf16ba7d44c07f`):
+- `BASELINE_S42`: `17.5264` BLEU / `16.7632` chrF0 / Val Loss `2.8913` / Rare CJK `78/789 (9.89%)`.
+- `W_B125_S42` / `W_B250_S42` (R-Drop): `17.7069` / `17.3802` BLEU (`17.0817` / `16.8022` chrF0); Rare CJK `79` (`10.01%`) / `83` (`10.52%`).
+- `GOC_B125_S42` / `GOC_B250_S42` (`w→l`, sg): `18.0944` / `17.8097` BLEU (`17.3305` / `17.0887` chrF0); Rare CJK `76` (`9.63%`) / `74` (`9.38%`).
+- `GOC_SYM_B125_S42` / `GOC_SYM_B250_S42` (`0.5/0.5`, sg, EDWARD-NMT Eq. 13): **`18.4022` / `18.5143` BLEU** (`17.4407` / **`17.5405`** chrF0); Rare CJK `79` (`10.01%`) / **`83` (`10.52%`)**.
+- `GOC_INV_B125_S42` / `GOC_INV_B250_S42` (`l→w`, sg falsifier): `16.2213` / `15.1466` BLEU (`15.6328` / `15.0900` chrF0); Val Loss thấp nhất bảng `2.5071` / `2.4671`; Rare CJK `71` (`9.00%`) / `49` (`6.21%`).
+
+**[QUYẾT ĐỊNH — NO-GO CHO GOC]** GOC đạt `GOC > W` và `GOC >> INV`, nhưng **thất bại trên cổng cơ chế trước đối chứng `GOC_SYM` ở cả 2 mức $\beta$** (`-0.3078` BLEU tại `1.25`, `-0.7046` BLEU tại `2.50`) và giảm recall ký tự hiếm. Dừng GOC, không mở thêm seed hay test.
+
+**[ĐO ĐƯỢC — CHẨN ĐOÁN LỖI CÒN LẠI TRÊN A100 VALIDATION]**
+1. **`W` vs `SYM-SG`:** Loại bỏ thành phần Reverse-KL Jacobian `0.5*beta*p_v*(log(p_v/p_bar)-KL)` bằng `stop-gradient` hai chiều tăng `+0.70` ($\beta=1.25$) đến `+1.13` ($\beta=2.50$) Val BLEU, chủ yếu ở 3-gram/4-gram precision (`p3: 12.6→13.8`, `p4: 7.3→8.6`). Tuy nhiên `SYM-SG` trùng dạng với EDWARD-NMT Eq. 13 nên giữ làm **comparator A100 mạnh nhất mới (`18.5143`)**, không dùng làm claim novelty độc lập.
+2. **Mất cân bằng teacher-forced CE vs autoregressive BLEU:** Trên cả `BASELINE`, `W`, `SYM-SG`, `eval_loss` chạm đáy ở epoch 6–7 (`2.46–2.60`) rồi tăng đều tới epoch 18–20, trong khi beam-1 Val BLEU vẫn tăng thêm `+4.15` đến `+4.18` điểm. Ngược lại `GOC_INV_B250` giữ `eval_loss` thấp nhất (`2.467`) nhưng BLEU tệ nhất (`15.15`).
+3. **Khủng hoảng source OOV & hallucination trên Amis vs Ê Đê:** Trên Amis validation, **84.2% (485/576)** câu có $\ge 1$ từ nguồn OOV (16.6% tổng token; 98.2% OOV chia sẻ chuỗi con $\ge 4$ ký tự với train); BLEU của `GOC_SYM_B250` tụt từ `29.73` (`0% OOV`, `n=90`) xuống `18.50` (`0–25% OOV`, `n=386`) và sụp xuống `7.93` (`>25% OOV`, `n=100`), kèm hiện tượng hallucination toàn câu dù các từ còn lại đều quen. Trên Ê Đê (`rhade_vietnamese`, 15.092 train / 1.000 val), OOV nguồn chỉ là **1.0%** (`10.0%` số câu), cho thấy method mới hướng tới bài ACL đa ngôn ngữ cần giải quyết vấn đề tổng quát hơn chỉ riêng hình thái OOV của Amis.
+
+---
+
 ## Cập nhật 2026-11-19 — initialization calibration và pilot mới
 
 **[ĐO ĐƯỢC]** Hiệu chuẩn đúng pretrained mBART, 3 fixed TRAIN batches, 0 optimizer steps: median lambda136.27606275570483 cho target0.1×full-backbone CE gradient norm. FP32/FP64 penalty error lớn nhất0.001649%; eta1/r32/basis11. Không dùng lambda4.13724e7 tại trained W. Receipt/hash: `outputs/experiments/amis_virtual_order_initialization_rtx/{COMPLETE,CALIBRATION_BATCHES,COLLECTION}.json`.
