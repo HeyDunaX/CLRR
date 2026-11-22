@@ -1,5 +1,22 @@
 # Thực nghiệm sau xác minh — kết quả hiện hành của CLRR
 
+## Pilot A100 CR-Dual & Đối chứng hai chiều/contrastive — 22/11/2026 (4 runs mới + Step-0, validation-only, `NO_GO`)
+
+- **Cùng cohort A100 40GB với pilot GOC:** `amis_mandarin` (`tl_XX → zh_CN`, 4600/576/575), `mBART-50` rev `e30b6cb8eb0d43a0b73cab73c7676b9863223a30`, `BF16`, `TF32 train=on`, `SDPA`, `B32×GA4`, `LR 5e-5`, `max 20 epochs`, `ES10`, selector **`eval_bleu` (beam 1, FP32, TF32 off)**, seed 42; tái sử dụng `BASELINE_S42 (17.5264)`, `W_B125_S42 (17.7069)`, `GOC_SYM_B250_S42 (18.5143)`. Không mở test.
+- **Provenance:** Recipe [amis_cr_dual_pilot_a100.json](../../configs/experiments/amis_cr_dual_pilot_a100.json), thiết kế [ROUND3_METHOD_DESIGN_AUDIT.md](../research/ROUND3_METHOD_DESIGN_AUDIT.md), báo cáo nguồn [CR_DUAL_PILOT_A100_REPORT.md](../tasks/reports/CR_DUAL_PILOT_A100_REPORT.md), summary [cr_dual_pilot_a100_summary.json](../tasks/reports/cr_dual_pilot_a100_summary.json), commit `5fc80a7dc9394435f16fe7feb09fe20f56394fca`, bundle SHA256 `1852c18cb3fbff55f834b00766b1dc899fd065503fb189eb38f295320a8a0960`. 4/4 GPU gates và 4/4 HF backups xác minh `PASS`.
+- **Quyết định khóa trước:** **`NO_GO` toàn diện (0/5 cổng đạt).** `BIT_CE` tụt `-1.0690` BLEU dưới `BASELINE`; `CR_DUAL` thua `BIT_CE` (`-0.2597`) và bị falsifier `CR_SHUFFLED` đánh bại (`-0.7185` BLEU); `UNI_CONTRAST` cũng tụt `-0.7965` dưới `BASELINE`. Dừng hoàn toàn nhánh bidirectional/off-diagonal sequence contrast này, không sweep thêm và không mở test.
+
+| ID | Method | Val BLEU | Val chrF0 | Val chrF++ | $\Delta$ vs `BASELINE` | Archive SHA256 (prefix) |
+|---|---|---:|---:|---:|---:|---|
+| `BIT_CE_S42` | `bidirectional-ce-v1` ($\alpha_{\text{rev}}=0.5$) | `16.4574` | `15.8076` | `13.6946` | `-1.0690` | `55c51fddd989` |
+| `CR_DUAL_S42` | `cross-ratio-dual-v1` ($\lambda=0.25$) | `16.1977` | `15.8281` | `13.7608` | `-1.3287` | `6045bdddb08d` |
+| `CR_SHUFFLED_S42` | `cross-ratio-shuffled-v1` (falsifier) | `16.9163` | `16.4246` | `14.2490` | `-0.6101` | `6609bb24a96c` |
+| `UNI_CONTRAST_S42` | `unidirectional-contrast-v1` (falsifier) | `16.7299` | `16.1342` | `13.9757` | `-0.7965` | `1334bdb1552d` |
+
+- **Step-0 Diagnostic trên `BIT_CE_S42` (112 cặp val):** `mean_m_fwd=2.4677` < `mean_m_rev=3.4471` (`92.0%` cặp có $M^{\to}<M^{\leftarrow}$); Paired-RNG chỉ giảm `17.1%` phương sai (<70%); `rho_grad=1.373` (`eff_ratio=0.343` ở $\lambda=0.25$).
+
+---
+
 ## Pilot A100 GOC hai mức hệ số ($\beta \in \{1.25, 2.50\}$) — 22/11/2026 (9 runs, validation-only)
 
 - **Cohort mới trên A100 40GB:** `amis_mandarin` (`tl_XX → zh_CN`, 4600/576/575), `mBART-50` rev `e30b6cb8eb0d43a0b73cab73c7676b9863223a30`, `BF16`, `TF32 train=on`, `SDPA`, `B32×GA4`, `LR 5e-5`, `max 20 epochs`, `ES10`, selector **`eval_bleu` (beam 1, FP32, TF32 off)**, seed 42. Không trộn với cohort A100 `chrF++` cũ (09/10) hoặc RTX FP32. Không chạy stage test (`test.csv` chỉ hash/đóng bundle).

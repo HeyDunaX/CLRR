@@ -1,3 +1,18 @@
+## Cập nhật 2026-11-22 — Pilot A100 CR-Dual 4 runs + Step-0 (validation-only, `NO_GO`)
+
+**[ĐO ĐƯỢC]** Hoàn tất 4/4 runs + 4/4 HF backups + Step-0 diagnostic trên A100 40GB (cùng cohort `eval_bleu` beam1 FP32 seed42 với pilot GOC; báo cáo [CR_DUAL_PILOT_A100_REPORT.md](../tasks/reports/CR_DUAL_PILOT_A100_REPORT.md), commit `5fc80a7`):
+- `BIT_CE_S42` (`CE_fwd + 0.5*CE_rev`): `16.4574` BLEU / `15.8076` chrF0 (**`-1.0690`** vs `BASELINE_S42 = 17.5264`).
+- `CR_DUAL_S42` (exact Arnold-Press cross-ratio, $\lambda=0.25$): `16.1977` BLEU / `15.8281` chrF0 (**`-1.3287`** vs `BASELINE`, **`-0.2597`** vs `BIT_CE`, **`-0.7185`** vs `CR_SHUFFLED`).
+- `CR_SHUFFLED_S42` (Control 1 falsifier, tráo cặp $(k,l)\neq(i,j)$): `16.9163` BLEU / `16.4246` chrF0 (`-0.6101` vs `BASELINE`).
+- `UNI_CONTRAST_S42` (Control 3 falsifier, 1-way SCD-style off-diagonal margin): `16.7299` BLEU / `16.1342` chrF0 (`-0.7965` vs `BASELINE`).
+- Step-0 trên `BIT_CE_S42` (112 cặp val): bất đối xứng $M^{\to} < M^{\leftarrow}$ có thật trên `mBART-50` (`2.4677` vs `3.4471`, `92.0%` cặp), nhưng Paired-RNG chỉ giảm `17.1%` phương sai (<70%) và `rho_grad=1.373` (`eff_ratio=0.3433` ở $\lambda=0.25$).
+
+**[QUYẾT ĐỊNH — NO-GO VÀ BÀI HỌC CẤU TRÚC CHO VÒNG SAU]**
+1. **Đóng dứt điểm nhánh bidirectional training (`BiT`) và sequence-level off-diagonal negative contrast trên `mBART-50` unseen-source:** Ép decoder `mBART-50` sinh thêm ngôn ngữ nguồn chưa pretrain (`Amis`) gây tụt thẳng `-1.07` BLEU ngay từ nền `BiT`; ghép nối từng cặp theo chiều nghịch nhiễu bị falsifier `CR_SHUFFLED` bác bỏ (`-0.72` BLEU); đẩy negative một chiều (`UNI_CONTRAST`) cũng giảm `-0.80` BLEU.
+2. **Tổng kết toàn cục >115 run của dự án:** Architectural/hidden-state rewiring (`CLRR/LSR/DRB/AlignmentResidual/Middle`), bidirectional/dual (`BIT_CE/CR_DUAL/CR_SHUFFLED`), và sequence-level off-diagonal contrast (`UNI_CONTRAST`) đều **thua `BASELINE (17.53)`**. Duy nhất nhóm **regularization trực tiếp trên hàm/phân phối dự đoán chiều thuận** (`W = 17.71`, `GOC = 18.09`, `SYM-SG = 18.51`) bật dương mạnh (`+0.99` BLEU). Mọi thiết kế Vòng 4 cần giữ nguyên **chiều thuận 100%** (không cannibalize decoder bằng chiều nghịch) và tránh đẩy off-diagonal sequence negatives.
+
+---
+
 ## Cập nhật 2026-11-22 — Pilot A100 GOC 9 runs (validation-only, NO-GO cho GOC)
 
 **[ĐO ĐƯỢC]** Hoàn tất và xác minh 9/9 HF backups trên A100 40GB (`BF16`, `TF32 train=on`, `SDPA`, `B32×GA4`, `LR 5e-5`, `max 20 epochs`, `ES10`, selector `eval_bleu` beam1 FP32, seed 42; báo cáo [GOC_PILOT_A100_REPORT.md](../tasks/reports/GOC_PILOT_A100_REPORT.md), commit `63364038c0392a26874b1841bbdf16ba7d44c07f`):
