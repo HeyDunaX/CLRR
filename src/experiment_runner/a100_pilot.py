@@ -294,6 +294,122 @@ def _write_cocc_summary(out: Path, plan: dict):
     return summary
 
 
+def _write_off_eos_summary(out: Path, plan: dict):
+    bleu_tok = plan.get('protocol', {}).get('bleu_tokenizer', 'zh')
+    rows = []
+    scores_by_id = {}
+    length_by_id = {}
+    for spec in plan['runs']:
+        ident = spec['id']
+        run_dir = out / 'runs' / ident
+        val_path = run_dir / 'VAL_COMPLETE.json'
+        if not val_path.exists():
+            continue
+        val = json.loads(val_path.read_text(encoding='utf-8'))
+        sc = val.get('scores', {})
+        lstats = _compute_length_stats(run_dir / 'validation_predictions.csv', bleu_tok)
+        scores_by_id[ident] = sc
+        length_by_id[ident] = lstats
+        rows.append(dict(
+            id=ident,
+            method=spec['method'],
+            stop_weight=spec.get('stop_weight', 0.10),
+            bleu=round(float(sc.get('bleu', 0.0)), 4),
+            chrf0=round(float(sc.get('chrf0', 0.0)), 4),
+            chrfpp=round(float(sc.get('chrf++', 0.0)), 4),
+            bp=lstats.get('bp'),
+            lr=lstats.get('lr'),
+            archive_sha256=val.get('archive_sha256', '')[:12],
+        ))
+
+    gates = {}
+    verdict = 'INCOMPLETE'
+    if all(k in scores_by_id for k in ('OFF_EOS_LENGTH_S42', 'OFF_EOS_CHRF_S42')):
+        b_len = scores_by_id['OFF_EOS_LENGTH_S42']['bleu']
+        c_len = scores_by_id['OFF_EOS_LENGTH_S42']['chrf0']
+        b_chrf = scores_by_id['OFF_EOS_CHRF_S42']['bleu']
+        c_chrf = scores_by_id['OFF_EOS_CHRF_S42']['chrf0']
+        cpp_chrf = scores_by_id['OFF_EOS_CHRF_S42']['chrf++']
+        lr_len = length_by_id.get('OFF_EOS_LENGTH_S42', {}).get('lr', 0.0)
+        lr_chrf = length_by_id.get('OFF_EOS_CHRF_S42', {}).get('lr', 0.0)
+
+        b_base = REUSED_A100_COMPARATORS['BASELINE_S42']['bleu']
+        c_base = REUSED_A100_COMPARATORS['BASELINE_S42']['chrf0']
+        b_w125 = REUSED_A100_COMPARATORS['W_B125_S42']['bleu']
+        c_w125 = REUSED_A100_COMPARATORS['W_B125_S42']['chrf0']
+        cpp_w125 = REUSED_A100_COMPARATORS['W_B125_S42']['chrf++']
+        b_sym = REUSED_A100_COMPARATORS['GOC_SYM_B250_S42']['bleu']
+
+        g1 = (b_chrf - b_base) >= 0.70 and c_chrf > c_base
+        g2 = (b_chrf - b_w125) >= 0.50 and c_chrf > c_w125 and cpp_chrf > cpp_w125
+        g3 = (b_chrf - b_len) >= 0.30
+        g4 = 0.93 <= lr_chrf <= 1.05
+        gates = {
+            'gate1_vs_baseline_ge_070': g1,
+            'gate2_vs_rdrop_ge_050': g2,
+            'gate3_vs_length_control_ge_030': g3,
+            'gate4_lr_in_093_to_105': g4,
+            'deltas': {
+                'chrf_minus_baseline_bleu': round(b_chrf - b_base, 4),
+                'chrf_minus_rdrop_bleu': round(b_chrf - b_w125, 4),
+                'chrf_minus_length_control_bleu': round(b_chrf - b_len, 4),
+                'chrf_minus_length_control_chrf0': round(c_chrf - c_len, 4),
+                'chrf_minus_sym_sg_bleu_ref_only': round(b_chrf - b_sym, 4),
+                'chrf_lr': lr_chrf,
+                'length_control_lr': lr_len,
+            },
+        }
+        if g1 and g2 and g3 and g4:
+            verdict = 'FULL_GO'
+        elif (b_chrf - b_w125) >= 0.20 and c_chrf > c_w125 and g3 and g4:
+            verdict = 'PROMISING_MECHANISM_REVIEW'
+        else:
+            verdict = 'NO_GO'
+
+    step0_path = out / 'step0_diagnostic.json'
+    step0 = json.loads(step0_path.read_text(encoding='utf-8')) if step0_path.exists() else None
+    summary = dict(
+        status='COMPLETE' if len(rows) == len(plan['runs']) else 'PARTIAL',
+        verdict=verdict,
+        updated_unix=time.time(),
+        reused_a100_comparators=REUSED_A100_COMPARATORS,
+        new_runs=rows,
+        gates=gates,
+        step0_diagnostic=step0,
+    )
+    (out / 'PILOT_SUMMARY.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+
+    md = [
+        f'# Pilot Summary: `{out.name}`',
+        '',
+        f'- **Verdict:** `{verdict}`',
+        '- **Protocol:** Locked A100 BF16 `B32xGA4` `eval_bleu` (`beam 1` FP32 `zh`), validation-only (no test split).',
+        '',
+        '## Reused A100 Comparators (Same Protocol)',
+        '| Run | BLEU | chrF0 | chrF++ | SHA prefix |',
+        '|---|---:|---:|---:|---|',
+    ]
+    for name, rec in REUSED_A100_COMPARATORS.items():
+        md.append(f"| `{name}` | {rec['bleu']:.4f} | {rec['chrf0']:.4f} | {rec['chrf++']:.4f} | `{rec['archive_sha256']}` |")
+    md += [
+        '',
+        '## New Off-EOS Pilot Runs',
+        '| Run | Method | stop_weight | BLEU | chrF0 | chrF++ | BP | LR | SHA prefix |',
+        '|---|---|---:|---:|---:|---:|---:|---:|---|',
+    ]
+    for r in rows:
+        bp_s = f"{r['bp']:.4f}" if r['bp'] is not None else 'n/a'
+        lr_s = f"{r['lr']:.4f}" if r['lr'] is not None else 'n/a'
+        md.append(
+            f"| `{r['id']}` | `{r['method']}` | {r['stop_weight']:.2f} | {r['bleu']:.4f} | "
+            f"{r['chrf0']:.4f} | {r['chrfpp']:.4f} | {bp_s} | {lr_s} | `{r['archive_sha256']}` |"
+        )
+    if gates:
+        md += ['', '## Pre-Locked GO/NO-GO Gates', '```json', json.dumps(gates, indent=2), '```']
+    (out / 'PILOT_SUMMARY.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
+    return summary
+
+
 def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=False):
     path, cfg = read_config(config_path)
     out = workspace(path)
@@ -337,8 +453,10 @@ def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=F
     # 4) Step-0 diagnostics & validation-only training in locked order
     from methods.compositional_consistency import METHODS as COCC_METHODS
     from methods.cross_ratio_dual import METHODS as CR_DUAL_METHODS
+    from methods.off_eos_stopping import METHODS as OFF_EOS_METHODS
     is_cocc_pilot = any(r['method'] in COCC_METHODS for r in plan['runs'])
     is_cr_dual_pilot = any(r['method'] in CR_DUAL_METHODS for r in plan['runs'])
+    is_off_eos_pilot = any(r['method'] in OFF_EOS_METHODS for r in plan['runs'])
 
     if is_cocc_pilot and not skip_step0:
         step0_path = out / 'step0_diagnostic.json'
@@ -347,6 +465,15 @@ def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=F
             _run_subcommand(['cocc-diagnose', '--config', str(path)], env)
         if step0_only:
             summary = _write_cocc_summary(out, plan)
+            return {'status': 'STEP0_COMPLETE', 'workspace': str(out), 'summary': summary}
+
+    if is_off_eos_pilot and not skip_step0:
+        step0_path = out / 'step0_diagnostic.json'
+        if not step0_path.exists():
+            print('=== [STEP-0] ZERO-OPTIMIZER-STEP OFF-EOS ORACLE & LATENCY DIAGNOSTIC ===', flush=True)
+            _run_subcommand(['off-eos-diagnose', '--config', str(path)], env)
+        if step0_only:
+            summary = _write_off_eos_summary(out, plan)
             return {'status': 'STEP0_COMPLETE', 'workspace': str(out), 'summary': summary}
 
     print('=== [4/5] VALIDATION-ONLY A100 TRAINING ===', flush=True)
@@ -376,5 +503,10 @@ def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=F
 
     # 5) Write final summary + GO/NO-GO gates
     print('=== [5/5] FINAL PILOT SUMMARY & GO/NO-GO GATES ===', flush=True)
-    summary = _write_cocc_summary(out, plan) if is_cocc_pilot else _write_cr_dual_summary(out, plan)
+    if is_cocc_pilot:
+        summary = _write_cocc_summary(out, plan)
+    elif is_off_eos_pilot:
+        summary = _write_off_eos_summary(out, plan)
+    else:
+        summary = _write_cr_dual_summary(out, plan)
     return summary

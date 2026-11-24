@@ -28,6 +28,7 @@ from .decision_residual_memory import DecisionResidualMemoryMT, METHODS as DRM_M
 from .gold_ordered_consistency import GoldOrderedConsistencyMT, METHODS as GOC_METHODS
 from .cross_ratio_dual import CrossRatioDualMT, METHODS as CR_DUAL_METHODS
 from .compositional_consistency import CompositionalConsistencyMT, METHODS as COCC_METHODS
+from .off_eos_stopping import OffEosStoppingMT, METHODS as OFF_EOS_METHODS
 TWO_METHODS = AC_METHODS.keys() | DRM_METHODS.keys()
 
 ALIASES = {
@@ -85,6 +86,21 @@ def wrap_method(base, spec):
             layout=spec.get('layout', 's1'),
             mask_y_j1=spec.get('mask_y_j1', True),
             max_source_length=spec.get('max_source_length', 256),
+            max_target_length=spec.get('max_target_length', 256),
+            logit_chunk_tokens=spec.get('logit_chunk_tokens', 32),
+        )
+    if method in OFF_EOS_METHODS:
+        return OffEosStoppingMT(
+            base,
+            method=method,
+            stop_weight=spec.get('stop_weight', 0.10),
+            stop_margin=spec.get('stop_margin', 0.1),
+            stop_tau=spec.get('stop_tau', 0.25),
+            chrf_band=spec.get('chrf_band', 0.5),
+            extra_past_eos=spec.get('extra_past_eos', 12),
+            max_rollout_cap=spec.get('max_rollout_cap', 96),
+            max_len_ratio=spec.get('max_len_ratio', 1.5),
+            stop_warmup_fraction=spec.get('stop_warmup_fraction', 0.10),
             max_target_length=spec.get('max_target_length', 256),
             logit_chunk_tokens=spec.get('logit_chunk_tokens', 32),
         )

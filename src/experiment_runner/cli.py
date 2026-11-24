@@ -70,6 +70,10 @@ def cpu_gate(config):
     if (any(s['method'] in COCC_METHODS for s in plan['runs'])
             and all(s['method'] in {*COCC_METHODS, 'baseline'} for s in plan['runs'])):
         name = 'smoke_compositional_consistency'
+    from methods.off_eos_stopping import METHODS as OFF_EOS_METHODS
+    if (any(s['method'] in OFF_EOS_METHODS for s in plan['runs'])
+            and all(s['method'] in {*OFF_EOS_METHODS, 'baseline'} for s in plan['runs'])):
+        name = 'smoke_off_eos_stopping'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
     sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')
@@ -275,6 +279,8 @@ def main():
     p.add_argument('--bit-run-id', default='BIT_CE_S42')
     p = sub.add_parser('cocc-diagnose', help='Run zero-optimizer-step Step-0 CoCC gradient calibration & frozen probe')
     p.add_argument('--config', required=True)
+    p = sub.add_parser('off-eos-diagnose', help='Run zero-optimizer-step Step-0 Off-EOS 2-sided oracle & timing diagnostic')
+    p.add_argument('--config', required=True)
     p = sub.add_parser('fetch')
     p.add_argument('--local-path', required=True, help='Original repo-relative path recorded by the cleanup index')
     args = parser.parse_args()
@@ -299,6 +305,9 @@ def main():
         result = run_step0_diagnostic(args.config, bit_run_id=args.bit_run_id)
     elif args.command == 'cocc-diagnose':
         from methods.compositional_consistency.v1.diagnostic import run_step0_diagnostic
+        result = run_step0_diagnostic(args.config)
+    elif args.command == 'off-eos-diagnose':
+        from methods.off_eos_stopping.v1.diagnostic import run_step0_diagnostic
         result = run_step0_diagnostic(args.config)
     elif args.command == 'fetch':
         from .storage import fetch
