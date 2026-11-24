@@ -410,6 +410,152 @@ def _write_off_eos_summary(out: Path, plan: dict):
     return summary
 
 
+def _read_jsonl(path: Path):
+    if not path.is_file():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+
+
+def _write_lexical_fork_summary(out: Path, plan: dict):
+    bleu_tok = plan.get('protocol', {}).get('bleu_tokenizer', 'zh')
+    rows = []
+    scores_by_id = {}
+    length_by_id = {}
+    telemetry = {}
+    for spec in plan['runs']:
+        ident = spec['id']
+        run_dir = out / 'runs' / ident
+        ep_rows = _read_jsonl(run_dir / 'lexical_fork_epochs.jsonl')
+        tm_rows = _read_jsonl(run_dir / 'lexical_fork_timing.jsonl')
+        total_sel = sum(int(r.get('selected_total', 0)) for r in ep_rows)
+        active_eps = sum(1 for r in ep_rows if r.get('active'))
+        telemetry[ident] = dict(
+            epochs=ep_rows,
+            timing=tm_rows,
+            active_epochs=active_eps,
+            total_selected_forks=total_sel,
+            total_labeling_sec=round(sum(float(r.get('seconds_labeling', 0.0)) for r in tm_rows), 2),
+            total_train_sec=round(sum(float(r.get('seconds_train_epoch', 0.0)) for r in tm_rows), 2),
+            total_eval_sec=round(sum(float(r.get('seconds_eval', 0.0)) for r in tm_rows), 2),
+        )
+        val_path = run_dir / 'VAL_COMPLETE.json'
+        if not val_path.exists():
+            continue
+        val = json.loads(val_path.read_text(encoding='utf-8'))
+        sc = val.get('scores', {})
+        lstats = _compute_length_stats(run_dir / 'validation_predictions.csv', bleu_tok)
+        scores_by_id[ident] = sc
+        length_by_id[ident] = lstats
+        rows.append(dict(
+            id=ident,
+            method=spec['method'],
+            bleu=round(float(sc.get('bleu', 0.0)), 4),
+            chrf0=round(float(sc.get('chrf0', 0.0)), 4),
+            chrfpp=round(float(sc.get('chrf++', 0.0)), 4),
+            bp=lstats.get('bp'),
+            lr=lstats.get('lr'),
+            active_epochs=active_eps,
+            total_selected_forks=total_sel,
+            archive_sha256=val.get('archive_sha256', '')[:12],
+        ))
+
+    gates = {}
+    epoch1_ce_parity = {}
+    verdict = 'INCOMPLETE'
+    if all(k in telemetry for k in ('CTRL_NATURAL_S42', 'FORK_2X2_S42')):
+        ep1_ctrl = next((t for t in telemetry['CTRL_NATURAL_S42']['timing'] if t.get('epoch') == 1), None)
+        ep1_2x2 = next((t for t in telemetry['FORK_2X2_S42']['timing'] if t.get('epoch') == 1), None)
+        if ep1_ctrl and ep1_2x2:
+            b_diff = abs(float(ep1_2x2.get('eval_bleu') or 0.0) - float(ep1_ctrl.get('eval_bleu') or 0.0))
+            l_diff = abs(float(ep1_2x2.get('eval_loss') or 0.0) - float(ep1_ctrl.get('eval_loss') or 0.0))
+            epoch1_ce_parity = dict(
+                ctrl_epoch1=ep1_ctrl,
+                fork_2x2_epoch1=ep1_2x2,
+                eval_bleu_abs_diff=round(b_diff, 6),
+                eval_loss_abs_diff=round(l_diff, 6),
+                step_match=(ep1_2x2.get('global_step') == ep1_ctrl.get('global_step')),
+                parity_ok=(b_diff < 0.05 and l_diff < 1e-3 and ep1_2x2.get('global_step') == ep1_ctrl.get('global_step')),
+            )
+
+    if all(k in scores_by_id for k in ('CTRL_NATURAL_S42', 'FORK_2X2_S42')):
+        b_ctrl = scores_by_id['CTRL_NATURAL_S42']['bleu']
+        c_ctrl = scores_by_id['CTRL_NATURAL_S42']['chrf0']
+        lr_ctrl = length_by_id.get('CTRL_NATURAL_S42', {}).get('lr', 0.0)
+        b_2x2 = scores_by_id['FORK_2X2_S42']['bleu']
+        c_2x2 = scores_by_id['FORK_2X2_S42']['chrf0']
+        lr_2x2 = length_by_id.get('FORK_2X2_S42', {}).get('lr', 0.0)
+        b_base = REUSED_A100_COMPARATORS['BASELINE_S42']['bleu']
+
+        g1 = (b_2x2 - b_ctrl) >= 0.30
+        g2 = c_2x2 > c_ctrl
+        g3 = abs(lr_2x2 - lr_ctrl) <= 0.01
+        g4 = b_2x2 > b_base
+        sel_2x2 = telemetry['FORK_2X2_S42']['total_selected_forks']
+        sel_ctrl = telemetry['CTRL_NATURAL_S42']['total_selected_forks']
+        act_2x2 = telemetry['FORK_2X2_S42']['active_epochs']
+
+        gates = {
+            'gate1_2x2_vs_ctrl_bleu_ge_030': g1,
+            'gate2_2x2_gt_ctrl_chrf0': g2,
+            'gate3_lr_diff_le_001': g3,
+            'gate4_2x2_gt_baseline': g4,
+            'deltas': {
+                'fork_2x2_minus_ctrl_bleu': round(b_2x2 - b_ctrl, 4),
+                'fork_2x2_minus_ctrl_chrf0': round(c_2x2 - c_ctrl, 4),
+                'fork_2x2_minus_baseline_bleu': round(b_2x2 - b_base, 4),
+                'abs_lr_diff': round(abs(lr_2x2 - lr_ctrl), 4),
+                'fork_2x2_lr': lr_2x2,
+                'ctrl_lr': lr_ctrl,
+                'selected_forks_2x2': sel_2x2,
+                'selected_forks_ctrl': sel_ctrl,
+                'realized_selected_fork_delta': sel_2x2 - sel_ctrl,
+                'active_epochs_2x2': act_2x2,
+            },
+        }
+        if act_2x2 == 0 or sel_2x2 < 64:
+            verdict = 'TRAIN_SIGNAL_EXHAUSTED'
+        elif g1 and g2 and g3 and g4:
+            verdict = 'GO_MULTISEED'
+        elif b_2x2 <= b_ctrl + 0.05 and b_ctrl > b_base + 0.10:
+            verdict = 'NO_GAIN_OVER_NATURAL_CONTROL'
+        else:
+            verdict = 'NO_GO'
+
+    summary = dict(
+        status='COMPLETE' if len(rows) == len(plan['runs']) else 'PARTIAL',
+        verdict=verdict,
+        updated_unix=time.time(),
+        reused_a100_comparators=REUSED_A100_COMPARATORS,
+        new_runs=rows,
+        epoch1_ce_parity=epoch1_ce_parity,
+        gates=gates,
+        telemetry=telemetry,
+    )
+    (out / 'PILOT_SUMMARY.json').write_text(json.dumps(summary, indent=2), encoding='utf-8')
+
+    md = [
+        f'# Pilot Summary: `{out.name}`',
+        '',
+        f'- **Verdict:** `{verdict}`',
+        '- **Protocol:** Locked A100 BF16 `B32xGA4` `eval_bleu` (`beam 1` FP32 `zh`), validation-only (no test split).',
+        '',
+        '## New Lexical Fork Pilot Runs',
+        '| Run | Method | BLEU | chrF0 | chrF++ | BP | LR | Active Eps | Selected Forks | SHA prefix |',
+        '|---|---|---:|---:|---:|---:|---:|---:|---:|---|',
+    ]
+    for r in rows:
+        bp_s = f"{r['bp']:.4f}" if r['bp'] is not None else 'n/a'
+        lr_s = f"{r['lr']:.4f}" if r['lr'] is not None else 'n/a'
+        md.append(
+            f"| `{r['id']}` | `{r['method']}` | {r['bleu']:.4f} | {r['chrf0']:.4f} | {r['chrfpp']:.4f} | "
+            f"{bp_s} | {lr_s} | {r['active_epochs']} | {r['total_selected_forks']} | `{r['archive_sha256']}` |"
+        )
+    if gates:
+        md += ['', '## Pre-Locked GO/NO-GO Gates', '```json', json.dumps(gates, indent=2), '```']
+    (out / 'PILOT_SUMMARY.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
+    return summary
+
+
 def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=False):
     path, cfg = read_config(config_path)
     out = workspace(path)
@@ -454,9 +600,11 @@ def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=F
     from methods.compositional_consistency import METHODS as COCC_METHODS
     from methods.cross_ratio_dual import METHODS as CR_DUAL_METHODS
     from methods.off_eos_stopping import METHODS as OFF_EOS_METHODS
+    from methods.lexical_fork import METHODS as LEXICAL_FORK_METHODS
     is_cocc_pilot = any(r['method'] in COCC_METHODS for r in plan['runs'])
     is_cr_dual_pilot = any(r['method'] in CR_DUAL_METHODS for r in plan['runs'])
     is_off_eos_pilot = any(r['method'] in OFF_EOS_METHODS for r in plan['runs'])
+    is_lexical_fork_pilot = any(r['method'] in LEXICAL_FORK_METHODS for r in plan['runs'])
 
     if is_cocc_pilot and not skip_step0:
         step0_path = out / 'step0_diagnostic.json'
@@ -507,6 +655,8 @@ def run_a100_pilot(config_path, gates_only=False, step0_only=False, skip_step0=F
         summary = _write_cocc_summary(out, plan)
     elif is_off_eos_pilot:
         summary = _write_off_eos_summary(out, plan)
+    elif is_lexical_fork_pilot:
+        summary = _write_lexical_fork_summary(out, plan)
     else:
         summary = _write_cr_dual_summary(out, plan)
     return summary

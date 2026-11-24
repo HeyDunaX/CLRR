@@ -29,6 +29,7 @@ from .gold_ordered_consistency import GoldOrderedConsistencyMT, METHODS as GOC_M
 from .cross_ratio_dual import CrossRatioDualMT, METHODS as CR_DUAL_METHODS
 from .compositional_consistency import CompositionalConsistencyMT, METHODS as COCC_METHODS
 from .off_eos_stopping import OffEosStoppingMT, METHODS as OFF_EOS_METHODS
+from .lexical_fork import LexicalForkMT, METHODS as LEXICAL_FORK_METHODS
 TWO_METHODS = AC_METHODS.keys() | DRM_METHODS.keys()
 
 ALIASES = {
@@ -103,6 +104,21 @@ def wrap_method(base, spec):
             stop_warmup_fraction=spec.get('stop_warmup_fraction', 0.10),
             max_target_length=spec.get('max_target_length', 256),
             logit_chunk_tokens=spec.get('logit_chunk_tokens', 32),
+        )
+    if method in LEXICAL_FORK_METHODS:
+        return LexicalForkMT(
+            base,
+            method=method,
+            seed=spec.get('seed', 42),
+            lambda_epoch2=spec.get('lambda_epoch2', 0.05),
+            lambda_epoch3_plus=spec.get('lambda_epoch3_plus', 0.10),
+            min_pos_2x2=spec.get('min_pos_2x2', 32),
+            num_margin_strata=spec.get('num_margin_strata', 5),
+            rollout_batch_size=spec.get('rollout_batch_size', 64),
+            max_source_length=spec.get('max_source_length', 256),
+            max_target_length=spec.get('max_target_length', 256),
+            logit_chunk_tokens=spec.get('logit_chunk_tokens', 32),
+            bleu_tokenizer=spec.get('bleu_tokenizer', 'zh'),
         )
     if method in CMC_METHODS:
         return cmc_model_class(method)(base, method, top_k=spec['continuation_top_k'],

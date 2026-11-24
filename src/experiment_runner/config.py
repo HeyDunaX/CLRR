@@ -103,6 +103,8 @@ def read_config(path):
     supported.update(COCC_METHODS)
     from methods.off_eos_stopping import METHODS as OFF_EOS_METHODS
     supported.update(OFF_EOS_METHODS)
+    from methods.lexical_fork import METHODS as LEXICAL_FORK_METHODS
+    supported.update(LEXICAL_FORK_METHODS)
     if config['protocol'].get('hardware_profile', 'a100-standard') == 'rtx6000-fp32':
         p = config['protocol']
         if p['bf16'] or p.get('fp16', False) or p['tf32_training']:
@@ -131,6 +133,9 @@ def read_config(path):
             validate_recipe(config, run, ROOT)
         if run['method'] in OFF_EOS_METHODS:
             from methods.off_eos_stopping.v1.validation import validate_recipe
+            validate_recipe(config, run, ROOT)
+        if run['method'] in LEXICAL_FORK_METHODS:
+            from methods.lexical_fork.v1.validation import validate_recipe
             validate_recipe(config, run, ROOT)
         if run['method'] in ORDER_METHODS:
             from methods.corrective_order.v1.data import validate_recipe

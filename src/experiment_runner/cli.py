@@ -74,6 +74,10 @@ def cpu_gate(config):
     if (any(s['method'] in OFF_EOS_METHODS for s in plan['runs'])
             and all(s['method'] in {*OFF_EOS_METHODS, 'baseline'} for s in plan['runs'])):
         name = 'smoke_off_eos_stopping'
+    from methods.lexical_fork import METHODS as LEXICAL_FORK_METHODS
+    if (any(s['method'] in LEXICAL_FORK_METHODS for s in plan['runs'])
+            and all(s['method'] in {*LEXICAL_FORK_METHODS, 'baseline'} for s in plan['runs'])):
+        name = 'smoke_lexical_fork'
     sys.path.insert(0, str(ROOT / 'scripts/revalidation'))
     sys.path.insert(0, str(ROOT / 'tests'))
     spec = importlib.util.spec_from_file_location(name, ROOT / 'tests' / f'{name}.py')

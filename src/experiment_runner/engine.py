@@ -49,6 +49,7 @@ from methods.gold_ordered_consistency import METHODS as GOC_METHODS
 from methods.cross_ratio_dual import METHODS as CR_DUAL_METHODS
 from methods.compositional_consistency import METHODS as COCC_METHODS
 from methods.off_eos_stopping import METHODS as OFF_EOS_METHODS
+from methods.lexical_fork import METHODS as LEXICAL_FORK_METHODS
 
 OUT = ROOT / 'outputs_rebuttal/amis_standardized_controls'
 DATA = ROOT / 'data_processed/amis_mandarin'
@@ -142,7 +143,7 @@ def wrap_model(base, spec):
             modules_to_save=['shared', 'embed_tokens', 'lm_head'] if method == 'strong-lora-b' else None)
         if method != 'strong-lora-b':
             assert not any('embed' in n and p.requires_grad for n, p in model.named_parameters())
-    elif ALIASES.get(method, method) in CANDIDATES or method in TOKEN_METHODS | CONTRASTIVE_METHODS | INTERACTION_METHODS | SEQUENCE_METHODS | DEPTH_METHODS.keys() | ALIGNMENT_RESIDUAL_METHODS.keys() | DRB_METHODS.keys() | DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | STRENGTH_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys() or method in ('original-clrr', 'original-lsr', 'original-full'):
+    elif ALIASES.get(method, method) in CANDIDATES or method in TOKEN_METHODS | CONTRASTIVE_METHODS | INTERACTION_METHODS | SEQUENCE_METHODS | DEPTH_METHODS.keys() | ALIGNMENT_RESIDUAL_METHODS.keys() | DRB_METHODS.keys() | DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | STRENGTH_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys() | LEXICAL_FORK_METHODS.keys() or method in ('original-clrr', 'original-lsr', 'original-full'):
         model = wrap_method(base, spec)
         metadata = {'candidate': method, 'definition': spec.get('definition', method),
                     'extra_parameters': 0}
@@ -163,6 +164,8 @@ def wrap_model(base, spec):
             metadata['compositional_consistency'] = model.method_metadata()
         if method in OFF_EOS_METHODS:
             metadata['off_eos_stopping'] = model.method_metadata()
+        if method in LEXICAL_FORK_METHODS:
+            metadata['lexical_fork'] = model.method_metadata()
         if method in CMC_METHODS:
             metadata['continuation_consistency'] = model.method_metadata()
         if method in PREFIX_METHODS:
@@ -220,7 +223,7 @@ def configure_languages(model, tokenizer, spec):
         model.special_token_ids = tuple(sorted(set(tokenizer.all_special_ids)))
     if spec['method'] in DRB_METHODS:
         model.special_ids = sorted(tokenizer.all_special_ids)
-    if spec['method'] in OFF_EOS_METHODS:
+    if spec['method'] in OFF_EOS_METHODS | LEXICAL_FORK_METHODS.keys():
         model.set_tokenizer(tokenizer)
     if spec['src_lang']:
         tokenizer.src_lang, tokenizer.tgt_lang = spec['src_lang'], spec['tgt_lang']
@@ -291,8 +294,10 @@ def load_model(spec, folder=None):
         if folder and spec['method'] in INTERACTION_METHODS:
             saved = json.loads((Path(folder) / 'interaction_config.json').read_text())
             assert saved == model.method_metadata(), 'Interaction checkpoint/recipe mismatch'
-    if folder and spec['method'] in PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys():
+    if folder and spec['method'] in PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys() | LEXICAL_FORK_METHODS.keys():
         model.verify_checkpoint_metadata(folder)
+    if folder and spec['method'] in LEXICAL_FORK_METHODS:
+        model.restore_fork_state(folder)
     try:
         tokenizer = AutoTokenizer.from_pretrained(str(folder) if folder else spec['model_id'],
                                                   revision=None if folder else spec['model_revision'], use_fast=True)
@@ -368,10 +373,15 @@ def dataset(split, tokenizer, spec, technical_peers=False):
         assert len(records) == len(raw)
         encoded = encoded.add_column('candidate_labels', [r['labels'] for r in records])
         encoded = encoded.add_column('candidate_costs', [r['costs'] for r in records])
+    if split == 'train' and spec['method'] in LEXICAL_FORK_METHODS:
+        encoded = encoded.add_column('row_id', list(range(len(raw))))
     return raw, encoded
 
 
 def collator(model, tokenizer, spec):
+    if spec['method'] in LEXICAL_FORK_METHODS:
+        from methods.lexical_fork.v1.data import LexicalForkCollator
+        return LexicalForkCollator(tokenizer, model, pad_to_multiple_of=8)
     if spec['method'] in ORDER_METHODS:
         from methods.corrective_order.v1.data import ProbeCollator
         return ProbeCollator(tokenizer, model)
@@ -389,6 +399,14 @@ class ControlTrainer(PrecisionSeq2SeqTrainer):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.model_accepts_loss_kwargs = False
+
+    def get_batch_samples(self, epoch_iterator, num_batches, device):
+        batch_samples, num_items_in_batch = super().get_batch_samples(epoch_iterator, num_batches, device)
+        unwrapped = self.accelerator.unwrap_model(self.model, keep_torch_compile=False)
+        if batch_samples and getattr(unwrapped, 'method', None) in LEXICAL_FORK_METHODS:
+            from methods.lexical_fork.v1.data import annotate_window_fork_counts
+            annotate_window_fork_counts(batch_samples, unwrapped.selected_map)
+        return batch_samples, num_items_in_batch
 
     def training_step(self, model, inputs, num_items_in_batch=None):
         if getattr(model, 'method', None) in VIRTUAL_ORDER_METHODS:
@@ -540,12 +558,27 @@ def gpu_gate(spec, technical_only=False):
         if not paired:
             raise ValueError('GPU gate requires reviewed eligible train pairs')
         indices = paired + [i for i in indices if not eligible[i]]
-    sample = ds.select(indices[:spec['microbatch'] * spec['accumulation'] * 2])
+    sample_indices = indices[:spec['microbatch'] * spec['accumulation'] * 2]
+    sample = ds.select(sample_indices)
     data_collator = collator(model, tokenizer, spec)
     callbacks = []
     if spec['method'] in ORDER_METHODS:
         from methods.corrective_order.v1.telemetry import TrainingTelemetry
         callbacks.append(TrainingTelemetry(folder))
+    if spec['method'] in LEXICAL_FORK_METHODS:
+        from methods.lexical_fork.v1.data import LexicalForkEpochCallback
+        callbacks.append(
+            LexicalForkEpochCallback(
+                folder,
+                [raw.iloc[i]['source'] for i in sample_indices],
+                [raw.iloc[i]['target'] for i in sample_indices],
+                tokenizer,
+                spec['seed'],
+                row_ids=sample_indices,
+                gate_mode=True,
+                bleu_tokenizer=protocol().get('bleu_tokenizer', 'zh'),
+            )
+        )
     trainer = ControlTrainer(model=model, args=arguments(folder, spec, gate=True), processing_class=tokenizer,
                              data_collator=data_collator, train_dataset=sample, generation_dtype='fp32',
                              callbacks=callbacks)
@@ -597,6 +630,11 @@ def gpu_gate(spec, technical_only=False):
         else:
             assert diagnostic['active_fraction'] > 0.0
         paired_checks = dict(off_eos_stopping_active=True, diagnostics=diagnostic)
+    if spec['method'] in LEXICAL_FORK_METHODS:
+        diagnostic = dict(model.last_diagnostics)
+        assert np.isfinite(diagnostic['ce']) and np.isfinite(diagnostic['fork_window_scaled'])
+        assert diagnostic['active_lambda'] > 0 and diagnostic['window_selected'] >= 1
+        paired_checks = dict(lexical_fork_active=True, diagnostics=diagnostic)
     if spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in GOC_METHODS:
         diagnostic = dict(model.last_diagnostics)
         assert np.isfinite(diagnostic['ce']) and np.isfinite(diagnostic['kl'])
@@ -661,7 +699,7 @@ def gpu_gate(spec, technical_only=False):
         reload_source = folder / 'secondary_reload'
         restore_archive(folder / 'best_chrf.zip', reload_source)
         depth_checks['secondary_archive_restore'] = True
-    if spec['method'] in DEPTH_METHODS or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS or spec['method'] in CR_DUAL_METHODS or spec['method'] in COCC_METHODS or spec['method'] in OFF_EOS_METHODS:
+    if spec['method'] in DEPTH_METHODS or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS or spec['method'] in CR_DUAL_METHODS or spec['method'] in COCC_METHODS or spec['method'] in OFF_EOS_METHODS or spec['method'] in LEXICAL_FORK_METHODS:
         inputs = {key: probe[key] for key in ('input_ids','attention_mask')}
         with torch.no_grad(), generation_precision(model,'fp32'):
             cached = model.generate(**inputs,num_beams=4,max_new_tokens=8,use_cache=True)
@@ -672,15 +710,31 @@ def gpu_gate(spec, technical_only=False):
     restored, _, _ = load_model(spec, reload_source); restored.to('cuda')
     actual = probe_logits(restored, probe)
     torch.testing.assert_close(actual, expected, rtol=1e-5, atol=2e-5)
-    if spec['method'] == 'depth-difference-value-scaled-v2' or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS or spec['method'] in CR_DUAL_METHODS or spec['method'] in COCC_METHODS or spec['method'] in OFF_EOS_METHODS:
+    if spec['method'] == 'depth-difference-value-scaled-v2' or spec['method'] in ALIGNMENT_RESIDUAL_METHODS or spec['method'] in DRB_METHODS or spec['method'] in DIFFERENCE_METHODS or spec['method'] in RELATIONAL_METHODS or spec['method'] in TRANSITION_METHODS or spec['method'] in STRENGTH_METHODS or spec['method'] in PAIRED_ROUTE_METHODS or spec['method'] in CONSISTENCY_METHODS or spec['method'] in PREFIX_METHODS or spec['method'] in CMC_METHODS or spec['method'] in TWO_METHODS or spec['method'] in ORDER_METHODS or spec['method'] in VIRTUAL_ORDER_METHODS or spec['method'] in GOC_METHODS or spec['method'] in CR_DUAL_METHODS or spec['method'] in COCC_METHODS or spec['method'] in OFF_EOS_METHODS or spec['method'] in LEXICAL_FORK_METHODS:
         # Shared Trainer resume path: reload step1 weights plus optimizer/scheduler/RNG,
         # repeat step2, and compare against uninterrupted step2.
         del restored; gc.collect(); torch.cuda.empty_cache()
         set_seed(spec['seed'])
         resumed, _, _ = load_model(spec, folder/'checkpoint-1')
         resumed_args = arguments(folder/'resume_check',spec,gate=True)
+        resumed_callbacks = []
+        if spec['method'] in LEXICAL_FORK_METHODS:
+            from methods.lexical_fork.v1.data import LexicalForkEpochCallback
+            resumed_callbacks.append(
+                LexicalForkEpochCallback(
+                    folder/'resume_check',
+                    [raw.iloc[i]['source'] for i in sample_indices],
+                    [raw.iloc[i]['target'] for i in sample_indices],
+                    tokenizer,
+                    spec['seed'],
+                    row_ids=sample_indices,
+                    gate_mode=True,
+                    bleu_tokenizer=protocol().get('bleu_tokenizer', 'zh'),
+                )
+            )
         resumed_trainer = ControlTrainer(model=resumed,args=resumed_args,processing_class=tokenizer,
-            data_collator=collator(resumed,tokenizer,spec),train_dataset=sample,generation_dtype='fp32')
+            data_collator=collator(resumed,tokenizer,spec),train_dataset=sample,generation_dtype='fp32',
+            callbacks=resumed_callbacks)
         resumed_trainer.train(resume_from_checkpoint=str(folder/'checkpoint-1'))
         assert resumed_trainer.state.global_step == 2
         torch.testing.assert_close(probe_logits(resumed,probe),expected,rtol=1e-5,atol=2e-5)
@@ -787,10 +841,12 @@ def train_run(spec, resume=None):
         assert all((Path(resume) / n).exists() for n in ['optimizer.pt', 'scheduler.pt', 'rng_state.pth', 'trainer_state.json'])
     set_seed(spec['seed'])
     model, tokenizer, meta = load_model(spec)
-    if resume and spec['method'] in DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys():
+    if resume and spec['method'] in DIFFERENCE_METHODS.keys() | RELATIONAL_METHODS.keys() | TRANSITION_METHODS.keys() | PAIRED_ROUTE_METHODS.keys() | CONSISTENCY_METHODS.keys() | PREFIX_METHODS.keys() | CMC_METHODS.keys() | TWO_METHODS | VIRTUAL_ORDER_METHODS | ORDER_METHODS.keys() | GOC_METHODS.keys() | CR_DUAL_METHODS.keys() | COCC_METHODS.keys() | OFF_EOS_METHODS.keys() | LEXICAL_FORK_METHODS.keys():
         model.verify_checkpoint_metadata(resume)
+    if resume and spec['method'] in LEXICAL_FORK_METHODS:
+        model.restore_fork_state(resume)
     raw_val, val_ds = dataset('validation', tokenizer, spec)
-    _, train_ds = dataset('train', tokenizer, spec)
+    raw_train, train_ds = dataset('train', tokenizer, spec)
     metadata = {'run': spec, 'protocol': plan()['protocol'], 'data': plan()['data'], 'method': meta,
                 'runtime': versions, 'gpu': torch.cuda.get_device_name(0),
                 'bundle_sha256': sha256(OUT / 'bundle_manifest.json'), 'git_head': plan()['code_git_head'],
@@ -803,6 +859,19 @@ def train_run(spec, resume=None):
     if spec['method'] in ORDER_METHODS:
         from methods.corrective_order.v1.telemetry import TrainingTelemetry
         callbacks.append(TrainingTelemetry(folder))
+    if spec['method'] in LEXICAL_FORK_METHODS:
+        from methods.lexical_fork.v1.data import LexicalForkEpochCallback
+        callbacks.append(
+            LexicalForkEpochCallback(
+                folder,
+                raw_train['source'].tolist(),
+                raw_train['target'].tolist(),
+                tokenizer,
+                spec['seed'],
+                gate_mode=False,
+                bleu_tokenizer=protocol().get('bleu_tokenizer', 'zh'),
+            )
+        )
     if protocol().get('retain_secondary_chrf', False):
         from .selection import SecondaryBestCheckpoint
         callbacks.append(SecondaryBestCheckpoint(folder))
